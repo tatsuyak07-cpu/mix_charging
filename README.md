@@ -99,3 +99,7 @@ python -m pytest -q
 
 CSV・PNG・計算記録は [exports](exports/README.md) に収録しています。
 クラウドの環境構築には `bash tools/setup_cloud.sh` を使用します（uvが必要）。
+
+周期C3D8Iの内部モード・仕事・圧縮分割数の追加検証は
+[検証報告](docs/periodic-incompatible-verification.md)に記載しています。
+25 mm角・1%圧縮の実験用モデルです。100 mm角・0.1 MPaやメッシュ収束は未検証です。

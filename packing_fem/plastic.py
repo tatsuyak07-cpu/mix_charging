@@ -65,7 +65,9 @@ def write_model(directory,c,points,elements,integers,estimate,allow_large=False)
 
 
 def analyze(directory,completed,code):
-    directory=Path(directory);m=json.loads((directory/'plastic-metadata.json').read_text());c=m['config']
+    directory=Path(directory)
+    if (directory/'mode-metadata.json').exists():raise ValueError('Use incompatible.analyze for internal-mode runs')
+    m=json.loads((directory/'plastic-metadata.json').read_text());c=m['config']
     with np.load(directory/'sintered-geometry.npz') as g:p,e=g['points'],g['elements']
     history=[];last=None;initial=sintered.hex_quadrature(p,e).sum()
     for time,s in read_dat(directory/'plastic.dat'):
@@ -132,7 +134,9 @@ def analyze(directory,completed,code):
 
 
 def run(directory,solver,timeout):
-    directory=Path(directory).resolve();m=json.loads((directory/'plastic-metadata.json').read_text())
+    directory=Path(directory).resolve()
+    if (directory/'mode-metadata.json').exists():raise ValueError('Use incompatible.run for internal-mode runs')
+    m=json.loads((directory/'plastic-metadata.json').read_text())
     executable=shutil.which(solver)
     if executable is None:raise ValueError('CalculiX unavailable')
     command=['/bin/bash','-c','ulimit -v "$1"; exec "$2" -i plastic','fem-limit',

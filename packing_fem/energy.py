@@ -12,7 +12,9 @@ from .results import read_dat,find
 
 
 def audit(run,output):
-    run=Path(run);output=Path(output);output.mkdir(parents=True,exist_ok=False)
+    run=Path(run);output=Path(output)
+    if (run/'mode-metadata.json').exists():raise ValueError('Internal-mode runs require incompatible.analyze, not the eight-node work audit')
+    output.mkdir(parents=True,exist_ok=False)
     m=json.loads((run/'plastic-metadata.json').read_text());c=m['config'];L=c['length_mm']
     with np.load(run/'sintered-geometry.npz') as g:p,e=g['points'],g['elements']
     w0=hex_quadrature(p,e);eye=np.eye(3)

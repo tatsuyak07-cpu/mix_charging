@@ -99,6 +99,8 @@ def main(argv=None):
     args=parser.parse_args(argv)
     try:
         if args.command=='solve':
+            if (args.directory/'mode-metadata.json').exists():
+                raise ValueError('Internal-mode experiment uses packing_fem.incompatible; legacy solver refused')
             if (args.directory/'plastic-metadata.json').exists():
                 raise ValueError('Nonlinear trial uses python -m packing_fem.plastic; do not send it to the linear solver')
             if args.timeout<=0 or args.cycles<1:

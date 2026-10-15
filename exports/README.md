@@ -35,3 +35,9 @@
 
 [比較CSV・グラフ・使用メッシュ・全記録](neck-elements-001/) / [ZIP](neck-elements-001.zip)。
 C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全体や局所塑性ひずみの収束とは区別します。
+
+## 周期C3D8Iの内部モードと圧縮分割数
+
+[比較PNG・CSV・入力・メッシュ・検査記録](periodic-modes-001/) / [ZIP](periodic-modes-001.zip)。
+25 mm角・1%圧縮後に除荷。C3D8Iの20→40分割で最大応力差0.019%、残留ひずみ差0.018%。
+[検証報告](../docs/periodic-incompatible-verification.md)。メッシュ収束・自己接触は未検証です。

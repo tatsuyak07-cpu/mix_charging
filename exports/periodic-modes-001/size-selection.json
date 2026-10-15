@@ -1,0 +1,11 @@
+{
+  "purpose": "small periodic implementation verification, not RVE-size convergence",
+  "excluded_20mm": {
+    "particles": 6,
+    "winding_rank": 2,
+    "reason": "does not percolate in three independent directions"
+  },
+  "selected_length_mm": 25,
+  "selected_winding_rank": 3,
+  "original_100mm_specification_unchanged": true
+}

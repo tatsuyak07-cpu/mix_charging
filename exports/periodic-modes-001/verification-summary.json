@@ -1,0 +1,168 @@
+{
+  "cases": {
+    "C3D8_n20": {
+      "status": "experimental_periodic_checks_passed_not_mesh_or_contact_validated",
+      "solver_exit_code": 0,
+      "element_type": "C3D8",
+      "checks": {
+        "solver_completed": true,
+        "unload_complete": true,
+        "native_green_strain_match": true,
+        "positive_material_J": true,
+        "positive_macro_J": true,
+        "periodic_displacements": true,
+        "physical_geometry_porosity": true,
+        "volume_definition_difference": true,
+        "macro_stress_virial": true,
+        "macro_micro_work": true,
+        "compression_internal_work": true,
+        "cycle_internal_work": true,
+        "plastic_accumulation": true,
+        "unloaded_macro_stress": true
+      },
+      "max_native_green_strain_error": 4.9995313687600795e-09,
+      "max_omitting_modes_green_error": 4.9995313687600795e-09,
+      "max_mode_displacement_mm": 0.0,
+      "periodic_max_residual_mm": 2.6957602816679582e-15,
+      "stress_virial_relative_error": 8.110656008951699e-08,
+      "force_control_relative_error": 0.0,
+      "macro_micro_work_relative_error": 7.282542088833712e-06,
+      "compression_work_relative_error": 3.888397274994738e-05,
+      "cycle_work_relative_error": 0.0018337522542603685,
+      "max_porosity_definition_difference": 2.220446049250313e-16,
+      "peak_nominal_compression_MPa": 0.0032069337199399444,
+      "peak_cauchy_compression_MPa": 0.003198173918870623,
+      "residual_compression_strain": 0.005102475985873046,
+      "final_geometry_porosity": 0.5904294960674126,
+      "final_material_porosity": 0.5904294960674124,
+      "peak_peeq": 0.1019613,
+      "solver_EVOL_definition": "reference volume (not deformed)",
+      "limitations": [
+        "uncalibrated material",
+        "no self-contact or damage",
+        "mesh convergence unverified",
+        "not a 100 mm / 0.1 MPa calculation"
+      ]
+    },
+    "C3D8I_n20": {
+      "status": "experimental_periodic_checks_passed_not_mesh_or_contact_validated",
+      "solver_exit_code": 0,
+      "element_type": "C3D8I",
+      "checks": {
+        "solver_completed": true,
+        "unload_complete": true,
+        "native_green_strain_match": true,
+        "positive_material_J": true,
+        "positive_macro_J": true,
+        "periodic_displacements": true,
+        "physical_geometry_porosity": true,
+        "volume_definition_difference": true,
+        "macro_stress_virial": true,
+        "macro_micro_work": true,
+        "compression_internal_work": true,
+        "cycle_internal_work": true,
+        "plastic_accumulation": true,
+        "unloaded_macro_stress": true
+      },
+      "max_native_green_strain_error": 4.999787552723012e-09,
+      "max_omitting_modes_green_error": 0.022002900536769468,
+      "max_mode_displacement_mm": 0.011391965408007436,
+      "periodic_max_residual_mm": 2.761679773755077e-15,
+      "stress_virial_relative_error": 3.231125241337433e-10,
+      "force_control_relative_error": 0.0,
+      "macro_micro_work_relative_error": 1.7662642749503343e-08,
+      "compression_work_relative_error": 4.8298320882615385e-05,
+      "cycle_work_relative_error": 0.001414939078108214,
+      "max_porosity_definition_difference": 3.7836749622321975e-07,
+      "peak_nominal_compression_MPa": 0.0027433136012858356,
+      "peak_cauchy_compression_MPa": 0.0027357537220727046,
+      "residual_compression_strain": 0.005683276159857177,
+      "final_geometry_porosity": 0.5902879830054086,
+      "final_material_porosity": 0.590287805079885,
+      "peak_peeq": 0.1139921,
+      "solver_EVOL_definition": "reference volume (not deformed)",
+      "limitations": [
+        "uncalibrated material",
+        "no self-contact or damage",
+        "mesh convergence unverified",
+        "not a 100 mm / 0.1 MPa calculation"
+      ]
+    },
+    "C3D8I_n40": {
+      "status": "experimental_periodic_checks_passed_not_mesh_or_contact_validated",
+      "solver_exit_code": 0,
+      "element_type": "C3D8I",
+      "checks": {
+        "solver_completed": true,
+        "unload_complete": true,
+        "native_green_strain_match": true,
+        "positive_material_J": true,
+        "positive_macro_J": true,
+        "periodic_displacements": true,
+        "physical_geometry_porosity": true,
+        "volume_definition_difference": true,
+        "macro_stress_virial": true,
+        "macro_micro_work": true,
+        "compression_internal_work": true,
+        "cycle_internal_work": true,
+        "plastic_accumulation": true,
+        "unloaded_macro_stress": true
+      },
+      "max_native_green_strain_error": 4.9998893913993925e-09,
+      "max_omitting_modes_green_error": 0.02195896694122869,
+      "max_mode_displacement_mm": 0.01139499403091791,
+      "periodic_max_residual_mm": 2.761679773755077e-15,
+      "stress_virial_relative_error": 2.02397639507597e-08,
+      "force_control_relative_error": 0.0,
+      "macro_micro_work_relative_error": 7.865302210646779e-07,
+      "compression_work_relative_error": 1.2194691826345456e-05,
+      "cycle_work_relative_error": 0.0014513651650056346,
+      "max_porosity_definition_difference": 3.7663818797106785e-07,
+      "peak_nominal_compression_MPa": 0.0027438397294972544,
+      "peak_cauchy_compression_MPa": 0.0027362734688921625,
+      "residual_compression_strain": 0.005682231971277496,
+      "final_geometry_porosity": 0.5902890012708275,
+      "final_material_porosity": 0.5902888249342655,
+      "peak_peeq": 0.1141038,
+      "solver_EVOL_definition": "reference volume (not deformed)",
+      "limitations": [
+        "uncalibrated material",
+        "no self-contact or damage",
+        "mesh convergence unverified",
+        "not a 100 mm / 0.1 MPa calculation"
+      ]
+    }
+  },
+  "additional_reporting_checks": {
+    "C3D8_n20": {
+      "hardening_table_range": true,
+      "physical_material_porosity": true,
+      "native_EVOL_reference_only": true
+    },
+    "C3D8I_n20": {
+      "hardening_table_range": true,
+      "physical_material_porosity": true,
+      "native_EVOL_reference_only": true
+    },
+    "C3D8I_n40": {
+      "hardening_table_range": true,
+      "physical_material_porosity": true,
+      "native_EVOL_reference_only": true
+    }
+  },
+  "n20_to_n40_relative_differences": {
+    "peak_cauchy_compression_MPa": 0.00018998304389186731,
+    "peak_nominal_compression_MPa": 0.00019178566065947857,
+    "residual_compression_strain": 0.00018373004413481638
+  },
+  "step_count_trial_2percent": true,
+  "identical_geometry": true,
+  "scope": "25 mm cube, 1% displacement compression then release; not 100 mm / 0.1 MPa",
+  "limitations": [
+    "uncalibrated J2 material",
+    "no self-contact or damage",
+    "no mesh or RVE-size convergence",
+    "native restart reader restricted to CalculiX 2.20 layout"
+  ],
+  "archive_note": "Helper C3D8 template metadata omitted; mode-metadata.json and plastic.inp describe executed model. Large native DAT/FRD/restart remain in original cloud result directories."
+}

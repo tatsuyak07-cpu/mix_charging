@@ -128,3 +128,8 @@ C3D8Iは曲げ試験とネック細分化の結果から、次の検証に進め
 [使用メッシュの断面](../exports/neck-elements-001/neck-mesh-section.png) /
 [比較CSV](../exports/neck-elements-001/comparison.csv) /
 [記録ZIP](../exports/neck-elements-001.zip)。元データは `results/neck-elements-001/` に保持。
+
+追記：周期C3D8Iの内部モードを用いる実験用評価と追加検証を
+[別文書](periodic-incompatible-verification.md)に追加した。
+本書のEVOL正値確認はソルバーの参照体積の検査であり、変形後体積の検査ではない。
+角節点による幾何Jacobianの検査とは別の確認である。
