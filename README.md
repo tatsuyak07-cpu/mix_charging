@@ -1,5 +1,8 @@
 # Periodic sphere-packing compression — solid FEM
 
+追加モデル：**温度依存性なし・大変形弾塑性の試験モデル**。[仮の物性・圧縮除荷手順・適用範囲](docs/plastic-trial.md)。
+専用コマンドは `python -m packing_fem.plastic`。自己接触と0.1 MPa到達の検証は今後の段階です。
+
 最新の追加計算：**E=10 MPa・圧縮応力0.1 MPa** は小ひずみ基準に不合格の診断用です。[計算記録と適用限界](docs/sintered-10mpa.md)。
 
 最新の追加計算：**E=1 GPa・圧縮応力0.1 MPa**。[変形後メッシュ画像と結果](docs/sintered-1gpa.md)。

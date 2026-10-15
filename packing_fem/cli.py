@@ -99,6 +99,8 @@ def main(argv=None):
     args=parser.parse_args(argv)
     try:
         if args.command=='solve':
+            if (args.directory/'plastic-metadata.json').exists():
+                raise ValueError('Nonlinear trial uses python -m packing_fem.plastic; do not send it to the linear solver')
             if args.timeout<=0 or args.cycles<1:
                 raise ValueError('Positive timeout and cycle count required')
             if (args.directory/'sintered-metadata.json').exists():
@@ -108,6 +110,8 @@ def main(argv=None):
                 result=execute(args.directory,args.solver,args.timeout,args.cycles)
             return 0 if result['status']=='equilibrium_candidate_requires_refinement' else 2
         c=json.loads(args.config.read_text())
+        if c.get('model_type')=='finite_strain_elastoplastic_trial':
+            raise ValueError('Use python -m packing_fem.plastic for the nonlinear trial; linear backend is refused')
         if c.get('model_type')=='sintered':
             from . import sintered
             sintered.validate(c)

@@ -20,3 +20,8 @@
 
 [計算記録・CSV](sintered-10mpa-diagnostics-001/) / [ZIP](sintered-10mpa-diagnostics-001.zip)。
 局所ひずみ約92.6%で小ひずみ基準に不合格。変形・空隙率は物理的な予測として採用できません。
+
+## 大変形弾塑性の初期モデル
+
+[30 mm角の圧縮・除荷CSVとPNG、入力、メッシュ](plastic-trial-001/) / [ZIP](plastic-trial-002.zip)。
+未校正・自己接触未実装。1%圧縮後の永久変形を確認する試験で、0.1 MPa到達の計算ではありません。

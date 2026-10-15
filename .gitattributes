@@ -1,0 +1,4 @@
+# Keep generated solver records byte-for-byte; omit raw dumps from text diffs.
+exports/**/*.log -diff
+exports/**/*.inp -diff
+exports/**/*.vtu -diff

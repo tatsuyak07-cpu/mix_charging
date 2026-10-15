@@ -1,0 +1,12 @@
+{
+  "tests_passed": 24,
+  "material_benchmarks": [
+    "small elastic response and complete unloading",
+    "uniaxial isotropic hardening and permanent strain after unloading"
+  ],
+  "trial_run": "results/plastic-packing-001",
+  "failed_manual_run_retained": "results/plastic-material-001",
+  "full_100mm_run_performed": false,
+  "self_contact_implemented": false,
+  "target_0_1_mpa_reached": false
+}
