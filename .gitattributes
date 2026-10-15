@@ -2,3 +2,5 @@
 exports/**/*.log -diff
 exports/**/*.inp -diff
 exports/**/*.vtu -diff
+# CSV writers use standard CRLF record endings; retain exported bytes.
+exports/**/*.csv whitespace=cr-at-eol
