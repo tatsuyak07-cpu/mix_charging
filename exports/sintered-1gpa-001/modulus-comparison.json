@@ -1,0 +1,17 @@
+{
+  "identical_geometry": true,
+  "only_modulus_changed": true,
+  "expected_displacement_ratio": 70.0,
+  "displacement_scaling_relative_max_error": 4.6538089705168555e-07,
+  "periodic_displacement_max_residual_mm": 7.400000002003027e-08,
+  "axial_strain_ratio": 70.00000454771393,
+  "first_order_porosity_change": -0.000307171466687539,
+  "integrated_porosity_change": -0.0003083506379519818,
+  "porosity_change_difference": -1.1791712644428098e-06,
+  "checks": {
+    "identical_geometry": true,
+    "only_modulus_changed": true,
+    "linear_modulus_scaling": true,
+    "periodic_displacements": true
+  }
+}

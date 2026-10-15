@@ -1,5 +1,8 @@
 # Periodic sphere-packing compression — solid FEM
 
+最新の追加計算：**E=1 GPa・圧縮応力0.1 MPa**。[変形後メッシュ画像と結果](docs/sintered-1gpa.md)。
+設定は `configs/sintered-1gpa.json`、従来の70 GPa設定は比較用に保持しています。
+
 現在の既定モデルは直径10 mmの球と直径2 mmの焼結ネックを一体化した試験骨格です。
 CalculiX 2.20の静的有限要素法で圧縮と空隙率変化を計算します。円柱剛体は含みません。
 DEMやHertzばねモデルで有限要素法を代替していません。

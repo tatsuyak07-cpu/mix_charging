@@ -6,3 +6,12 @@
 画像・CSVは同フォルダの `images/` と `data/` から個別にも取得できます。GitHubではPNGをクリックして表示し、CSVやZIPは Raw / Download raw file から取得してください。
 
 ソルバーの大容量 `.dat/.frd/.inp` などの生出力はクラウドの `results/` に保持し、Gitには収録していません。結果はメッシュ収束未検証の候補解です。ネック直径2 mmに対して要素幅1 mmであり、定量的な採用には細分化検証が必要です。
+
+## 1 GPa・0.1 MPaの追加計算
+
+- [変形後メッシュPNG・履歴CSV・検査結果](sintered-1gpa-001/)
+- [画像・CSV ZIP](sintered-1gpa-images-csv-001.zip)
+- [使用メッシュNPZ・変形後VTU ZIP](sintered-1gpa-mesh-001.zip)
+- [計算条件と結果の説明](../docs/sintered-1gpa.md)
+
+画像の変形倍率はファイル名と画像内に明記しています（実倍率／20倍）。

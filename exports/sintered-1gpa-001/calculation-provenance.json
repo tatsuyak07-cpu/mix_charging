@@ -1,0 +1,5 @@
+{
+  "geometry_source": "results/sintered-baseline-03",
+  "geometry_sha256": "85f66bea949be6a4f1fd50c3d40da0310e599944687214e9f442663e699d0709",
+  "change": "Young modulus 70000 -> 1000 MPa; all other conditions and exact mesh retained"
+}

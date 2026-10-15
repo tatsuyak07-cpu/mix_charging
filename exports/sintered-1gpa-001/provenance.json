@@ -1,0 +1,11 @@
+{
+  "run": "results/sintered-1gpa-001",
+  "geometry_sha256": "85f66bea949be6a4f1fd50c3d40da0310e599944687214e9f442663e699d0709",
+  "displacement_source": "sintered-deformed.vtu: displacement_mm",
+  "display_scales": [
+    1,
+    20
+  ],
+  "elements": 400706,
+  "note": "Exact solved nodal displacements; no smoothing or remeshing. Cutaway includes section faces."
+}
