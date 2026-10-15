@@ -1,5 +1,7 @@
 # Periodic sphere-packing compression — solid FEM
 
+最新の追加計算：**E=10 MPa・圧縮応力0.1 MPa** は小ひずみ基準に不合格の診断用です。[計算記録と適用限界](docs/sintered-10mpa.md)。
+
 最新の追加計算：**E=1 GPa・圧縮応力0.1 MPa**。[変形後メッシュ画像と結果](docs/sintered-1gpa.md)。
 設定は `configs/sintered-1gpa.json`、従来の70 GPa設定は比較用に保持しています。
 

@@ -1,0 +1,6 @@
+{
+  "geometry_source": "results/sintered-1gpa-001",
+  "geometry_sha256": "85f66bea949be6a4f1fd50c3d40da0310e599944687214e9f442663e699d0709",
+  "change": "Young modulus 1000 -> 10 MPa; other conditions and exact mesh retained",
+  "model": "linear elastic; large strains must be treated as diagnostics"
+}

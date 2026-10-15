@@ -1,0 +1,43 @@
+{
+  "status": "diagnostics_only",
+  "solver_exit_code": 0,
+  "solver_completed": true,
+  "mesh_convergence": "unverified",
+  "checks": {
+    "solver_completed": true,
+    "stress_target": true,
+    "other_stresses_zero": true,
+    "positive_jacobians": true,
+    "positive_cell": true,
+    "physical_porosity": true,
+    "small_material_strain": false
+  },
+  "initial_porosity": 0.599294,
+  "final_porosity": 0.5551104019386605,
+  "macro_strain": [
+    [
+      0.03526085,
+      0.0001586317,
+      0.0036710740000000003
+    ],
+    [
+      0.0001586317,
+      0.033520060000000004,
+      -0.001098868
+    ],
+    [
+      0.0036710740000000003,
+      -0.001098868,
+      -0.1539235
+    ]
+  ],
+  "mean_stress_mpa": [
+    -4.4203461454089824e-12,
+    -8.373123439091301e-12,
+    -0.09999999997495668,
+    2.047764248093442e-12,
+    -3.9405604617542835e-12,
+    -8.714963273745435e-13
+  ],
+  "axial_compression_strain": 0.1539235
+}

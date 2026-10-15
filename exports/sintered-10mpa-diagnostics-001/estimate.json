@@ -1,0 +1,33 @@
+{
+  "model_type": "sintered",
+  "particles": 750,
+  "sphere_only_nominal_count": 764,
+  "diameter_mm": 10.0,
+  "neck_diameter_mm": 2.0,
+  "neck_bonds": 2545,
+  "grid_cells_per_axis": 100,
+  "voxel_mm": 1.0,
+  "solid_elements": 400706,
+  "initial_porosity": 0.599294,
+  "target_porosity": 0.6,
+  "porosity_error": 0.0007059999999999844,
+  "sphere_voxel_volume_mm3": 392681.0,
+  "added_neck_voxel_volume_mm3": 8025.0,
+  "periodic_components": 1,
+  "winding_rank": 3,
+  "cells_across_neck": 2.0,
+  "geometry_attempts": [
+    {
+      "particles": 764,
+      "porosity": 0.592373
+    },
+    {
+      "particles": 750,
+      "porosity": 0.599294
+    }
+  ],
+  "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+  "mesh_convergence": "unverified",
+  "nodes": 590687,
+  "upper_bound_dofs": 1772049
+}

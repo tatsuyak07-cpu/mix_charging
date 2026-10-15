@@ -15,3 +15,8 @@
 - [計算条件と結果の説明](../docs/sintered-1gpa.md)
 
 画像の変形倍率はファイル名と画像内に明記しています（実倍率／20倍）。
+
+## 10 MPa・0.1 MPa：診断用
+
+[計算記録・CSV](sintered-10mpa-diagnostics-001/) / [ZIP](sintered-10mpa-diagnostics-001.zip)。
+局所ひずみ約92.6%で小ひずみ基準に不合格。変形・空隙率は物理的な予測として採用できません。

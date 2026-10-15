@@ -1,0 +1,7 @@
+{
+  "max_abs_strain_component": 0.9257859,
+  "criterion": 0.01,
+  "passed": false,
+  "status": "diagnostics_only",
+  "reason": "Linear small-strain model is outside its validity range. Do not use porosity or deformed geometry as accepted physical predictions."
+}
