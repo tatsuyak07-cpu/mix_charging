@@ -53,3 +53,36 @@ def test_native_mode_reconstruction_energy_and_prescribed_force(tmp_path,void,co
 def test_restart_parser_refuses_unverified_version():
     with pytest.raises(ValueError,match='Unsupported restart version'):
         restart_state([b'Version 2.21'],np.zeros((8,3)),np.arange(8)[None,:],np.zeros((8,3)),np.zeros((6,3)))
+
+
+@pytest.mark.skipif(shutil.which(SOLVER) is None,reason='Native CalculiX unavailable')
+@pytest.mark.parametrize('unload',[True,False])
+def test_nominal_force_ramp_crosses_yield_and_unloads(tmp_path,unload):
+    c=json.loads((ROOT/'configs/plastic-smoke.json').read_text())
+    c.update(length_mm=3.,element_type='C3D8I',compression_steps=20,control='force',target_mpa=.06)
+    p,e,idx=sintered.mesh(np.ones((3,3,3),bool),1.)
+    estimate={'grid_cells_per_axis':3,'porosity_error':0,'periodic_components':1,'winding_rank':3,
+              'upper_bound_dofs':3*len(p)+6,'initial_porosity':0.}
+    np.savez_compressed(tmp_path/'sintered-geometry.npz',points=p,elements=e)
+    write_model(tmp_path,c,p,e,idx,estimate)
+    if not unload:
+        path=tmp_path/'plastic.inp'
+        path.write_text(path.read_text().rsplit('*STEP,NLGEOM,INC=1000',1)[0])
+    r=run(tmp_path,60)
+    h=np.genfromtxt(tmp_path/'mode-history.csv',delimiter=',',names=True)
+    loading=h[h['step_time']<=1+1e-8]
+    assert len(loading)==20
+    # Default native plastic equilibrium is iterative; require <0.01%
+    # of the full load, tighter than the backend's 1% acceptance gate.
+    assert np.max(np.abs(loading['nominal_compression_MPa']-.06*loading['step_time']))/.06<1e-4
+    assert r['peak_peeq']>.01
+    if unload:
+        assert r['residual_compression_strain']>.01
+        assert r['checks']['unloaded_macro_stress']
+    else:
+        assert r['residual_compression_strain'] is None
+        assert r['last_axial_compression_strain']>.01
+        assert not r['checks']['unload_complete']
+        assert r['status']=='diagnostics_only'
+    assert r['checks']['native_green_strain_match']
+    assert r['checks']['prescribed_nominal_stress']

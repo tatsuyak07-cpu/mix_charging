@@ -41,3 +41,11 @@ C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全�
 [比較PNG・CSV・入力・メッシュ・検査記録](periodic-modes-001/) / [ZIP](periodic-modes-001.zip)。
 25 mm角・1%圧縮後に除荷。C3D8Iの20→40分割で最大応力差0.019%、残留ひずみ差0.018%。
 [検証報告](../docs/periodic-incompatible-verification.md)。メッシュ収束・自己接触は未検証です。
+
+## 荷重増加と空隙率（探索計算）
+
+[粗い刻みのCSV・PNG・記録](pressure-ramp-001/) / [ZIP](pressure-ramp-001.zip)。
+[細かい刻みのCSV・PNG・記録](pressure-ramp-002/) / [ZIP](pressure-ramp-002.zip)。
+[荷重刻みの比較](pressure-ramp-comparison-001/) / [計算報告](../docs/pressure-ramp.md)。
+25 mm角の試験モデル。体積監査の条件を超えて停止した経路であり、0.1 MPaには未到達。
+自己接触・材料校正・メッシュ収束は未検証です。

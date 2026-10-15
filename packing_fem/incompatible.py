@@ -209,7 +209,8 @@ def analyze(directory,completed,code):
             'cycle_work_relative_error':float(abs(en[-1,2]-en[-1,3])/scale),
             'max_porosity_definition_difference':phi_difference,
             'peak_nominal_compression_MPa':float(h[:,2].max()),'peak_cauchy_compression_MPa':float(h[:,3].max()),
-            'residual_compression_strain':float(h[-1,1]),'final_geometry_porosity':float(h[-1,5]),
+            'residual_compression_strain':float(h[-1,1]) if checks['unload_complete'] and checks['unloaded_macro_stress'] else None,
+            'last_axial_compression_strain':float(h[-1,1]),'final_geometry_porosity':float(h[-1,5]),
             'final_material_porosity':float(h[-1,4]),'peak_peeq':float(h[:,6].max()),
             'solver_EVOL_definition':'reference volume (not deformed)',
             'limitations':['uncalibrated material','no self-contact or damage','mesh convergence unverified','not a 100 mm / 0.1 MPa calculation']}

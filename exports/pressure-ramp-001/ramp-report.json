@@ -1,0 +1,32 @@
+{
+  "source": "results/pressure-ramp-001/recovered-endpoints-002",
+  "requested_nominal_MPa": 0.1,
+  "completed_compression_endpoints": 6,
+  "reached_nominal_MPa": 0.006000000024281348,
+  "reached_cauchy_MPa": 0.0058106123895907275,
+  "target_reached": false,
+  "initial_porosity": 0.5921920000000003,
+  "last_compression_geometry_porosity": 0.5528354857228623,
+  "last_compression_material_porosity": 0.5527358067645299,
+  "solver_checks": {
+    "solver_completed": false,
+    "unload_complete": false,
+    "native_green_strain_match": true,
+    "positive_material_J": true,
+    "positive_macro_J": true,
+    "periodic_displacements": true,
+    "physical_geometry_porosity": true,
+    "physical_material_porosity": true,
+    "reference_EVOL_matches_mesh": true,
+    "volume_definition_difference": true,
+    "macro_stress_virial": true,
+    "macro_micro_work": true,
+    "compression_internal_work": false,
+    "cycle_internal_work": false,
+    "plastic_accumulation": true,
+    "hardening_table_range": true,
+    "unloaded_macro_stress": false,
+    "prescribed_nominal_stress": true
+  },
+  "interpretation": "Exploratory converged step endpoints only; not a validated physical pressure/porosity curve. No self-contact, no mesh convergence, uncalibrated material; 25 mm cell."
+}

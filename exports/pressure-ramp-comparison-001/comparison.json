@@ -1,0 +1,10 @@
+{
+  "sources": [
+    "exports/pressure-ramp-001",
+    "exports/pressure-ramp-002"
+  ],
+  "common_endpoints": 7,
+  "max_relative_strain_difference": 0.015237605859469075,
+  "max_absolute_porosity_difference": 0.0005954290888543312,
+  "interpretation": "Load-increment sensitivity only; not mesh convergence. Both cases retain their failed/incomplete checks."
+}

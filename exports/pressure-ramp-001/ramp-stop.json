@@ -1,0 +1,15 @@
+{
+  "reason": "Existing volume_definition_difference audit limit exceeded; target not reached",
+  "limit": 0.0001,
+  "measurement": {
+    "completed_step": 7.0,
+    "prescribed_nominal_MPa": 0.007000000000000001,
+    "geometry_porosity": 0.5235454344922332,
+    "material_porosity": 0.5233032976223311,
+    "absolute_difference": 0.00024213686990215422
+  },
+  "action": "SIGTERM only this result directory native solver",
+  "pids": [
+    1399203
+  ]
+}

@@ -103,3 +103,7 @@ CSV・PNG・計算記録は [exports](exports/README.md) に収録していま�
 周期C3D8Iの内部モード・仕事・圧縮分割数の追加検証は
 [検証報告](docs/periodic-incompatible-verification.md)に記載しています。
 25 mm角・1%圧縮の実験用モデルです。100 mm角・0.1 MPaやメッシュ収束は未検証です。
+
+荷重を増加させた[空隙率の試験計算](docs/pressure-ramp.md)と
+[CSV・PNG](exports/README.md#荷重増加と空隙率探索計算)を追加しました。
+体積評価の監査条件を超えて停止しており、0.1 MPaまでの検証済み曲線は得られていません。

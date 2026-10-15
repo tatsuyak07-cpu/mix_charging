@@ -1,0 +1,7 @@
+{
+  "source": "exports/periodic-modes-001/C3D8I_n40",
+  "geometry_sha256": "f64026e977d7e8a548f007adea64e29beb9d4a2e590a6945a098d9ca85fd86fa",
+  "input_sha256": "2554532a0d9b750bd0dd39ede0a79d359e6c1235be4024bbfb11917bca973ce3",
+  "stress_definition": "nominal axial compressive stress; Cauchy stress measured separately",
+  "scope": "25 mm exploratory cell, no self-contact, uncalibrated material, mesh convergence unverified"
+}

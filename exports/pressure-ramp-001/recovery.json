@@ -1,0 +1,19 @@
+{
+  "source": "results/pressure-ramp-001",
+  "complete_raw_times": [
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0
+  ],
+  "excluded_tail": [
+    {
+      "raw_time": 7.0,
+      "reason": "Incomplete or unordered integration-point output"
+    }
+  ],
+  "original_DAT_sha256": "ccc72e252c559b85e6a13f18431be62e6b1b4546d66c5344f81e0f0364656da2",
+  "procedure": "Byte-preserved complete DAT prefix and corresponding native restart records; original interrupted files retained. No solution reconstruction or imputation."
+}
