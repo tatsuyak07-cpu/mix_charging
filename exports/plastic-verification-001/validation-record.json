@@ -1,0 +1,11 @@
+{
+  "tests_passed": 26,
+  "solver_cases_completed": 6,
+  "solver_threads_per_case": 1,
+  "max_parallel_cases": 2,
+  "mesh_response_comparison_passed": false,
+  "self_contact_implemented": false,
+  "target_0_1_mpa_run": false,
+  "known_fixed_postprocessing_issue": "CalculiX C3D8 integration-point ordering",
+  "work_cycle_normalization": "peak absolute solver internal energy, not final energy"
+}

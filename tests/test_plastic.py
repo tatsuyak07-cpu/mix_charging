@@ -25,6 +25,13 @@ def test_periodic_material_loading_and_true_zero_load_unloading(tmp_path,yield_m
     assert r['checks']['positive_jacobians'] and r['checks']['periodic_displacements']
     assert r['checks']['physical_porosity']
     assert np.max(np.abs(r['final_mean_cauchy_stress_mpa']))<1e-7
+    from packing_fem.energy import audit
+    energy=audit(tmp_path,tmp_path/'energy-audit')
+    assert energy['checks']['finite_solver_energy']
+    assert energy['checks']['macro_micro_work']
+    assert energy['checks']['compression_work_balance']
+    assert energy['checks']['cycle_work_balance']
+    assert energy['checks']['plastic_accumulation']
     if yield_mpa==.05:
         assert r['peak_equivalent_plastic_strain']>.02
         assert .02<r['residual_compression_strain']<.03

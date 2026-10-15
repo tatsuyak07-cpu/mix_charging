@@ -1,0 +1,748 @@
+{
+  "cases": {
+    "baseline": {
+      "config": {
+        "length_mm": 30.0,
+        "diameter_mm": 10.0,
+        "porosity": 0.6,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "target_mpa": 0.1,
+        "seed": 20261015,
+        "mesh_mm": 1.0,
+        "stress_tolerance": 0.02,
+        "max_dofs": 250000,
+        "model_type": "finite_strain_elastoplastic_trial",
+        "neck_diameter_mm": 2.0,
+        "neck_neighbors": 6,
+        "porosity_tolerance": 0.02,
+        "max_geometry_iterations": 12,
+        "linear_solver": "SPOOLES",
+        "solver_memory_gib": 24,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "compression_fraction": 0.01,
+        "initial_increment": 0.05,
+        "max_increment": 0.1,
+        "contact_model": "not_implemented",
+        "material_calibration": "uncalibrated_trial"
+      },
+      "result": {
+        "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+        "solver_exit_code": 0,
+        "checks": {
+          "solver_completed": true,
+          "end_of_unload_reached": true,
+          "positive_jacobians": true,
+          "positive_cell": true,
+          "physical_porosity": true,
+          "periodic_displacements": true,
+          "hardening_table_range": true,
+          "plastic_strain_generated": true,
+          "residual_deformation": true,
+          "unloaded_stress": true
+        },
+        "material_calibration": "uncalibrated_trial",
+        "self_contact": "not_implemented",
+        "mesh_convergence": "unverified",
+        "porosity_output_tolerance": 1e-07,
+        "stress_target_mpa": 0.1,
+        "target_stress_enforced": false,
+        "initial_porosity": 0.5861851851851855,
+        "peak_compression_mpa": 0.0026610822218098395,
+        "residual_compression_strain": 0.0055731255555555555,
+        "final_mean_cauchy_stress_mpa": [
+          -1.409005096118751e-14,
+          -3.840875293943489e-12,
+          1.7575817250850343e-12,
+          -1.2000068793536046e-13,
+          -2.7839194772944612e-14,
+          -2.9705955327281157e-13
+        ],
+        "final_porosity": 0.5839078629243247,
+        "peak_equivalent_plastic_strain": 0.1428441
+      },
+      "estimate": {
+        "model_type": "sintered",
+        "particles": 21,
+        "sphere_only_nominal_count": 21,
+        "diameter_mm": 10.0,
+        "neck_diameter_mm": 2.0,
+        "neck_bonds": 71,
+        "grid_cells_per_axis": 30,
+        "voxel_mm": 1.0,
+        "solid_elements": 11173,
+        "initial_porosity": 0.5861851851851851,
+        "target_porosity": 0.6,
+        "porosity_error": 0.013814814814814835,
+        "sphere_voxel_volume_mm3": 10989.0,
+        "added_neck_voxel_volume_mm3": 184.0,
+        "periodic_components": 1,
+        "winding_rank": 3,
+        "cells_across_neck": 2.0,
+        "geometry_attempts": [
+          {
+            "particles": 21,
+            "porosity": 0.5861851851851851
+          }
+        ],
+        "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+        "mesh_convergence": "unverified",
+        "nodes": 17341,
+        "upper_bound_dofs": 52011
+      },
+      "energy": {
+        "energy_units": "N mm",
+        "macro_work_Nmm": 0.324285192416342,
+        "micro_work_Nmm": 0.32428522803264576,
+        "solver_internal_energy_Nmm": 0.323256,
+        "macro_micro_max_relative_difference": 1.0277274084049086e-07,
+        "compression_work_internal_relative_difference": 0.00017371797758597692,
+        "cycle_work_internal_relative_difference": 0.0021283876468489948,
+        "plastic_equivalent_strain_monotone": true,
+        "isotropic_hardening_integral_Nmm": 0.28029131840469523,
+        "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+        "criteria": {
+          "macro_micro_relative": 0.01,
+          "work_internal_relative": 0.02
+        },
+        "checks": {
+          "finite_solver_energy": true,
+          "macro_micro_work": true,
+          "compression_work_balance": true,
+          "cycle_work_balance": true,
+          "plastic_accumulation": true
+        },
+        "work_reference_peak_internal_energy_Nmm": 0.4835717,
+        "cycle_normalization": "peak absolute solver internal energy over cycle"
+      }
+    },
+    "half_increment": {
+      "config": {
+        "length_mm": 30.0,
+        "diameter_mm": 10.0,
+        "porosity": 0.6,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "target_mpa": 0.1,
+        "seed": 20261015,
+        "mesh_mm": 1.0,
+        "stress_tolerance": 0.02,
+        "max_dofs": 250000,
+        "model_type": "finite_strain_elastoplastic_trial",
+        "neck_diameter_mm": 2.0,
+        "neck_neighbors": 6,
+        "porosity_tolerance": 0.02,
+        "max_geometry_iterations": 12,
+        "linear_solver": "SPOOLES",
+        "solver_memory_gib": 24,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "compression_fraction": 0.01,
+        "initial_increment": 0.025,
+        "max_increment": 0.05,
+        "contact_model": "not_implemented",
+        "material_calibration": "uncalibrated_trial"
+      },
+      "result": {
+        "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+        "solver_exit_code": 0,
+        "checks": {
+          "solver_completed": true,
+          "end_of_unload_reached": true,
+          "positive_jacobians": true,
+          "positive_cell": true,
+          "physical_porosity": true,
+          "periodic_displacements": true,
+          "hardening_table_range": true,
+          "plastic_strain_generated": true,
+          "residual_deformation": true,
+          "unloaded_stress": true
+        },
+        "material_calibration": "uncalibrated_trial",
+        "self_contact": "not_implemented",
+        "mesh_convergence": "unverified",
+        "porosity_output_tolerance": 1e-07,
+        "stress_target_mpa": 0.1,
+        "target_stress_enforced": false,
+        "initial_porosity": 0.5861851851851855,
+        "peak_compression_mpa": 0.0026620195586725486,
+        "residual_compression_strain": 0.005571167777777778,
+        "final_mean_cauchy_stress_mpa": [
+          -6.689179647398354e-13,
+          -4.678073918239631e-13,
+          -1.226632807426984e-13,
+          1.6220709293092422e-13,
+          2.127836556113902e-13,
+          -8.686481176834963e-14
+        ],
+        "final_porosity": 0.5839087930246244,
+        "peak_equivalent_plastic_strain": 0.143243
+      },
+      "estimate": {
+        "model_type": "sintered",
+        "particles": 21,
+        "sphere_only_nominal_count": 21,
+        "diameter_mm": 10.0,
+        "neck_diameter_mm": 2.0,
+        "neck_bonds": 71,
+        "grid_cells_per_axis": 30,
+        "voxel_mm": 1.0,
+        "solid_elements": 11173,
+        "initial_porosity": 0.5861851851851851,
+        "target_porosity": 0.6,
+        "porosity_error": 0.013814814814814835,
+        "sphere_voxel_volume_mm3": 10989.0,
+        "added_neck_voxel_volume_mm3": 184.0,
+        "periodic_components": 1,
+        "winding_rank": 3,
+        "cells_across_neck": 2.0,
+        "geometry_attempts": [
+          {
+            "particles": 21,
+            "porosity": 0.5861851851851851
+          }
+        ],
+        "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+        "mesh_convergence": "unverified",
+        "nodes": 17341,
+        "upper_bound_dofs": 52011
+      },
+      "energy": {
+        "energy_units": "N mm",
+        "macro_work_Nmm": 0.3250693058249624,
+        "micro_work_Nmm": 0.3250693138002109,
+        "solver_internal_energy_Nmm": 0.3239777,
+        "macro_micro_max_relative_difference": 4.120019783501576e-08,
+        "compression_work_internal_relative_difference": 4.7134727431699424e-05,
+        "cycle_work_internal_relative_difference": 0.0022534393627094444,
+        "plastic_equivalent_strain_monotone": true,
+        "isotropic_hardening_integral_Nmm": 0.2804721960327179,
+        "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+        "criteria": {
+          "macro_micro_relative": 0.01,
+          "work_internal_relative": 0.02
+        },
+        "checks": {
+          "finite_solver_energy": true,
+          "macro_micro_work": true,
+          "compression_work_balance": true,
+          "cycle_work_balance": true,
+          "plastic_accumulation": true
+        },
+        "work_reference_peak_internal_energy_Nmm": 0.4844212,
+        "cycle_normalization": "peak absolute solver internal energy over cycle"
+      }
+    },
+    "quarter_increment": {
+      "config": {
+        "length_mm": 30.0,
+        "diameter_mm": 10.0,
+        "porosity": 0.6,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "target_mpa": 0.1,
+        "seed": 20261015,
+        "mesh_mm": 1.0,
+        "stress_tolerance": 0.02,
+        "max_dofs": 250000,
+        "model_type": "finite_strain_elastoplastic_trial",
+        "neck_diameter_mm": 2.0,
+        "neck_neighbors": 6,
+        "porosity_tolerance": 0.02,
+        "max_geometry_iterations": 12,
+        "linear_solver": "SPOOLES",
+        "solver_memory_gib": 24,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "compression_fraction": 0.01,
+        "initial_increment": 0.0125,
+        "max_increment": 0.025,
+        "contact_model": "not_implemented",
+        "material_calibration": "uncalibrated_trial"
+      },
+      "result": {
+        "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+        "solver_exit_code": 0,
+        "checks": {
+          "solver_completed": true,
+          "end_of_unload_reached": true,
+          "positive_jacobians": true,
+          "positive_cell": true,
+          "physical_porosity": true,
+          "periodic_displacements": true,
+          "hardening_table_range": true,
+          "plastic_strain_generated": true,
+          "residual_deformation": true,
+          "unloaded_stress": true
+        },
+        "material_calibration": "uncalibrated_trial",
+        "self_contact": "not_implemented",
+        "mesh_convergence": "unverified",
+        "porosity_output_tolerance": 1e-07,
+        "stress_target_mpa": 0.1,
+        "target_stress_enforced": false,
+        "initial_porosity": 0.5861851851851855,
+        "peak_compression_mpa": 0.002662516314057885,
+        "residual_compression_strain": 0.005570132222222222,
+        "final_mean_cauchy_stress_mpa": [
+          5.240162054057711e-13,
+          8.081918353666304e-14,
+          -1.3034637201630613e-12,
+          -2.8397046257237973e-13,
+          -2.33428620188752e-13,
+          3.230218265224097e-14
+        ],
+        "final_porosity": 0.5839092815498859,
+        "peak_equivalent_plastic_strain": 0.1434526
+      },
+      "estimate": {
+        "model_type": "sintered",
+        "particles": 21,
+        "sphere_only_nominal_count": 21,
+        "diameter_mm": 10.0,
+        "neck_diameter_mm": 2.0,
+        "neck_bonds": 71,
+        "grid_cells_per_axis": 30,
+        "voxel_mm": 1.0,
+        "solid_elements": 11173,
+        "initial_porosity": 0.5861851851851851,
+        "target_porosity": 0.6,
+        "porosity_error": 0.013814814814814835,
+        "sphere_voxel_volume_mm3": 10989.0,
+        "added_neck_voxel_volume_mm3": 184.0,
+        "periodic_components": 1,
+        "winding_rank": 3,
+        "cells_across_neck": 2.0,
+        "geometry_attempts": [
+          {
+            "particles": 21,
+            "porosity": 0.5861851851851851
+          }
+        ],
+        "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+        "mesh_convergence": "unverified",
+        "nodes": 17341,
+        "upper_bound_dofs": 52011
+      },
+      "energy": {
+        "energy_units": "N mm",
+        "macro_work_Nmm": 0.3253187119987664,
+        "micro_work_Nmm": 0.32531870390845324,
+        "solver_internal_energy_Nmm": 0.3242095,
+        "macro_micro_max_relative_difference": 2.443637974976659e-08,
+        "compression_work_internal_relative_difference": 1.215630670638486e-05,
+        "cycle_work_internal_relative_difference": 0.0022883361664836266,
+        "plastic_equivalent_strain_monotone": true,
+        "isotropic_hardening_integral_Nmm": 0.2805688513075837,
+        "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+        "criteria": {
+          "macro_micro_relative": 0.01,
+          "work_internal_relative": 0.02
+        },
+        "checks": {
+          "finite_solver_energy": true,
+          "macro_micro_work": true,
+          "compression_work_balance": true,
+          "cycle_work_balance": true,
+          "plastic_accumulation": true
+        },
+        "work_reference_peak_internal_energy_Nmm": 0.4847207,
+        "cycle_normalization": "peak absolute solver internal energy over cycle"
+      }
+    },
+    "yield_half": {
+      "config": {
+        "length_mm": 30.0,
+        "diameter_mm": 10.0,
+        "porosity": 0.6,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "target_mpa": 0.1,
+        "seed": 20261015,
+        "mesh_mm": 1.0,
+        "stress_tolerance": 0.02,
+        "max_dofs": 250000,
+        "model_type": "finite_strain_elastoplastic_trial",
+        "neck_diameter_mm": 2.0,
+        "neck_neighbors": 6,
+        "porosity_tolerance": 0.02,
+        "max_geometry_iterations": 12,
+        "linear_solver": "SPOOLES",
+        "solver_memory_gib": 24,
+        "yield_mpa": 0.025,
+        "hardening_mpa": 0.2,
+        "compression_fraction": 0.01,
+        "initial_increment": 0.05,
+        "max_increment": 0.1,
+        "contact_model": "not_implemented",
+        "material_calibration": "uncalibrated_trial"
+      },
+      "result": {
+        "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+        "solver_exit_code": 0,
+        "checks": {
+          "solver_completed": true,
+          "end_of_unload_reached": true,
+          "positive_jacobians": true,
+          "positive_cell": true,
+          "physical_porosity": true,
+          "periodic_displacements": true,
+          "hardening_table_range": true,
+          "plastic_strain_generated": true,
+          "residual_deformation": true,
+          "unloaded_stress": true
+        },
+        "material_calibration": "uncalibrated_trial",
+        "self_contact": "not_implemented",
+        "mesh_convergence": "unverified",
+        "porosity_output_tolerance": 1e-07,
+        "stress_target_mpa": 0.1,
+        "target_stress_enforced": false,
+        "initial_porosity": 0.5861851851851855,
+        "peak_compression_mpa": 0.0017560943158049886,
+        "residual_compression_strain": 0.007028401111111112,
+        "final_mean_cauchy_stress_mpa": [
+          7.067865107566909e-13,
+          2.568678200867281e-12,
+          6.328735948394971e-13,
+          -6.448337631275233e-14,
+          3.462659501576573e-13,
+          -1.0180992733830213e-13
+        ],
+        "final_porosity": 0.583317896284347,
+        "peak_equivalent_plastic_strain": 0.128475
+      },
+      "estimate": {
+        "model_type": "sintered",
+        "particles": 21,
+        "sphere_only_nominal_count": 21,
+        "diameter_mm": 10.0,
+        "neck_diameter_mm": 2.0,
+        "neck_bonds": 71,
+        "grid_cells_per_axis": 30,
+        "voxel_mm": 1.0,
+        "solid_elements": 11173,
+        "initial_porosity": 0.5861851851851851,
+        "target_porosity": 0.6,
+        "porosity_error": 0.013814814814814835,
+        "sphere_voxel_volume_mm3": 10989.0,
+        "added_neck_voxel_volume_mm3": 184.0,
+        "periodic_components": 1,
+        "winding_rank": 3,
+        "cells_across_neck": 2.0,
+        "geometry_attempts": [
+          {
+            "particles": 21,
+            "porosity": 0.5861851851851851
+          }
+        ],
+        "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+        "mesh_convergence": "unverified",
+        "nodes": 17341,
+        "upper_bound_dofs": 52011
+      },
+      "energy": {
+        "energy_units": "N mm",
+        "macro_work_Nmm": 0.25856267525974996,
+        "micro_work_Nmm": 0.2585626715883254,
+        "solver_internal_energy_Nmm": 0.2582808,
+        "macro_micro_max_relative_difference": 9.113725949416175e-08,
+        "compression_work_internal_relative_difference": 0.00016809588091630374,
+        "cycle_work_internal_relative_difference": 0.0008564352245336241,
+        "plastic_equivalent_strain_monotone": true,
+        "isotropic_hardening_integral_Nmm": 0.21988126462025598,
+        "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+        "criteria": {
+          "macro_micro_relative": 0.01,
+          "work_internal_relative": 0.02
+        },
+        "checks": {
+          "finite_solver_energy": true,
+          "macro_micro_work": true,
+          "compression_work_balance": true,
+          "cycle_work_balance": true,
+          "plastic_accumulation": true
+        },
+        "work_reference_peak_internal_energy_Nmm": 0.3291219,
+        "cycle_normalization": "peak absolute solver internal energy over cycle"
+      }
+    },
+    "hardening_double": {
+      "config": {
+        "length_mm": 30.0,
+        "diameter_mm": 10.0,
+        "porosity": 0.6,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "target_mpa": 0.1,
+        "seed": 20261015,
+        "mesh_mm": 1.0,
+        "stress_tolerance": 0.02,
+        "max_dofs": 250000,
+        "model_type": "finite_strain_elastoplastic_trial",
+        "neck_diameter_mm": 2.0,
+        "neck_neighbors": 6,
+        "porosity_tolerance": 0.02,
+        "max_geometry_iterations": 12,
+        "linear_solver": "SPOOLES",
+        "solver_memory_gib": 24,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.4,
+        "compression_fraction": 0.01,
+        "initial_increment": 0.05,
+        "max_increment": 0.1,
+        "contact_model": "not_implemented",
+        "material_calibration": "uncalibrated_trial"
+      },
+      "result": {
+        "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+        "solver_exit_code": 0,
+        "checks": {
+          "solver_completed": true,
+          "end_of_unload_reached": true,
+          "positive_jacobians": true,
+          "positive_cell": true,
+          "physical_porosity": true,
+          "periodic_displacements": true,
+          "hardening_table_range": true,
+          "plastic_strain_generated": true,
+          "residual_deformation": true,
+          "unloaded_stress": true
+        },
+        "material_calibration": "uncalibrated_trial",
+        "self_contact": "not_implemented",
+        "mesh_convergence": "unverified",
+        "porosity_output_tolerance": 1e-07,
+        "stress_target_mpa": 0.1,
+        "target_stress_enforced": false,
+        "initial_porosity": 0.5861851851851855,
+        "peak_compression_mpa": 0.0028450085176103088,
+        "residual_compression_strain": 0.005356388888888889,
+        "final_mean_cauchy_stress_mpa": [
+          -1.3576153651881306e-12,
+          -3.554524033827882e-13,
+          5.324061470956523e-13,
+          -5.3369232958571704e-14,
+          -2.176797197617379e-13,
+          2.279038437600838e-13
+        ],
+        "final_porosity": 0.5840118570309244,
+        "peak_equivalent_plastic_strain": 0.131739
+      },
+      "estimate": {
+        "model_type": "sintered",
+        "particles": 21,
+        "sphere_only_nominal_count": 21,
+        "diameter_mm": 10.0,
+        "neck_diameter_mm": 2.0,
+        "neck_bonds": 71,
+        "grid_cells_per_axis": 30,
+        "voxel_mm": 1.0,
+        "solid_elements": 11173,
+        "initial_porosity": 0.5861851851851851,
+        "target_porosity": 0.6,
+        "porosity_error": 0.013814814814814835,
+        "sphere_voxel_volume_mm3": 10989.0,
+        "added_neck_voxel_volume_mm3": 184.0,
+        "periodic_components": 1,
+        "winding_rank": 3,
+        "cells_across_neck": 2.0,
+        "geometry_attempts": [
+          {
+            "particles": 21,
+            "porosity": 0.5861851851851851
+          }
+        ],
+        "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+        "mesh_convergence": "unverified",
+        "nodes": 17341,
+        "upper_bound_dofs": 52011
+      },
+      "energy": {
+        "energy_units": "N mm",
+        "macro_work_Nmm": 0.32412064312541067,
+        "micro_work_Nmm": 0.3241206876280536,
+        "solver_internal_energy_Nmm": 0.3229273,
+        "macro_micro_max_relative_difference": 9.803939351086823e-08,
+        "compression_work_internal_relative_difference": 0.00017243934436091625,
+        "cycle_work_internal_relative_difference": 0.0023736612524199396,
+        "plastic_equivalent_strain_monotone": true,
+        "isotropic_hardening_integral_Nmm": 0.2806379377312478,
+        "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+        "criteria": {
+          "macro_micro_relative": 0.01,
+          "work_internal_relative": 0.02
+        },
+        "checks": {
+          "finite_solver_energy": true,
+          "macro_micro_work": true,
+          "compression_work_balance": true,
+          "cycle_work_balance": true,
+          "plastic_accumulation": true
+        },
+        "work_reference_peak_internal_energy_Nmm": 0.5027624,
+        "cycle_normalization": "peak absolute solver internal energy over cycle"
+      }
+    },
+    "mesh_075mm": {
+      "config": {
+        "length_mm": 30.0,
+        "diameter_mm": 10.0,
+        "porosity": 0.6,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "target_mpa": 0.1,
+        "seed": 20261015,
+        "mesh_mm": 0.75,
+        "stress_tolerance": 0.02,
+        "max_dofs": 250000,
+        "model_type": "finite_strain_elastoplastic_trial",
+        "neck_diameter_mm": 2.0,
+        "neck_neighbors": 6,
+        "porosity_tolerance": 0.02,
+        "max_geometry_iterations": 12,
+        "linear_solver": "SPOOLES",
+        "solver_memory_gib": 24,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "compression_fraction": 0.01,
+        "initial_increment": 0.05,
+        "max_increment": 0.1,
+        "contact_model": "not_implemented",
+        "material_calibration": "uncalibrated_trial"
+      },
+      "result": {
+        "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+        "solver_exit_code": 0,
+        "checks": {
+          "solver_completed": true,
+          "end_of_unload_reached": true,
+          "positive_jacobians": true,
+          "positive_cell": true,
+          "physical_porosity": true,
+          "periodic_displacements": true,
+          "hardening_table_range": true,
+          "plastic_strain_generated": true,
+          "residual_deformation": true,
+          "unloaded_stress": true
+        },
+        "material_calibration": "uncalibrated_trial",
+        "self_contact": "not_implemented",
+        "mesh_convergence": "unverified",
+        "porosity_output_tolerance": 1e-07,
+        "stress_target_mpa": 0.1,
+        "target_stress_enforced": false,
+        "initial_porosity": 0.5853750000000002,
+        "peak_compression_mpa": 0.0021337926542878086,
+        "residual_compression_strain": 0.006019540833333333,
+        "final_mean_cauchy_stress_mpa": [
+          9.330656075268176e-13,
+          -8.877077138568006e-13,
+          7.053739775963609e-13,
+          -8.260741620567685e-14,
+          1.4020203203999498e-13,
+          5.2965971468774124e-14
+        ],
+        "final_porosity": 0.582911748953287,
+        "peak_equivalent_plastic_strain": 0.1508964
+      },
+      "estimate": {
+        "model_type": "sintered",
+        "particles": 21,
+        "sphere_only_nominal_count": 21,
+        "diameter_mm": 10.0,
+        "neck_diameter_mm": 2.0,
+        "neck_bonds": 71,
+        "grid_cells_per_axis": 40,
+        "voxel_mm": 0.75,
+        "solid_elements": 26536,
+        "initial_porosity": 0.585375,
+        "target_porosity": 0.6,
+        "porosity_error": 0.014624999999999999,
+        "sphere_voxel_volume_mm3": 10994.484375,
+        "added_neck_voxel_volume_mm3": 200.390625,
+        "periodic_components": 1,
+        "winding_rank": 3,
+        "cells_across_neck": 2.6666666666666665,
+        "geometry_attempts": [
+          {
+            "particles": 21,
+            "porosity": 0.5861851851851851
+          }
+        ],
+        "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+        "mesh_convergence": "unverified",
+        "nodes": 37629,
+        "upper_bound_dofs": 112875
+      },
+      "energy": {
+        "energy_units": "N mm",
+        "macro_work_Nmm": 0.2778847238120191,
+        "micro_work_Nmm": 0.2778847490285958,
+        "solver_internal_energy_Nmm": 0.2772223,
+        "macro_micro_max_relative_difference": 8.552627533535513e-08,
+        "compression_work_internal_relative_difference": 0.00022198151785372916,
+        "cycle_work_internal_relative_difference": 0.0016867415695155275,
+        "plastic_equivalent_strain_monotone": true,
+        "isotropic_hardening_integral_Nmm": 0.23870943008434536,
+        "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+        "criteria": {
+          "macro_micro_relative": 0.01,
+          "work_internal_relative": 0.02
+        },
+        "checks": {
+          "finite_solver_energy": true,
+          "macro_micro_work": true,
+          "compression_work_balance": true,
+          "cycle_work_balance": true,
+          "plastic_accumulation": true
+        },
+        "work_reference_peak_internal_energy_Nmm": 0.3927389,
+        "cycle_normalization": "peak absolute solver internal energy over cycle"
+      }
+    }
+  },
+  "response_comparisons": {
+    "baseline_to_half_increment": {
+      "coarse": "baseline",
+      "fine": "half_increment",
+      "peak_stress_relative_change": 0.00035211494207671535,
+      "residual_strain_relative_change": 0.0003514124607028696,
+      "final_porosity_absolute_change": 9.301002996675578e-07,
+      "exploratory_response_criteria_passed": true
+    },
+    "half_increment_to_quarter_increment": {
+      "coarse": "half_increment",
+      "fine": "quarter_increment",
+      "peak_stress_relative_change": 0.00018657364941333338,
+      "residual_strain_relative_change": 0.00018591220356044014,
+      "final_porosity_absolute_change": 4.885252614661439e-07,
+      "exploratory_response_criteria_passed": true
+    },
+    "baseline_to_mesh_075mm": {
+      "coarse": "baseline",
+      "fine": "mesh_075mm",
+      "peak_stress_relative_change": 0.24711377952419805,
+      "residual_strain_relative_change": 0.07416101827995647,
+      "final_porosity_absolute_change": 0.0009961139710377154,
+      "exploratory_response_criteria_passed": false
+    }
+  },
+  "criteria": {
+    "response_relative_change": 0.02,
+    "porosity_absolute_change": 0.0001,
+    "macro_micro_work_relative": 0.01,
+    "work_internal_relative": 0.02
+  },
+  "mesh_convergence": "not_established_by_two_levels",
+  "material_calibration": "not_performed_no_experimental_data",
+  "self_contact": "not_implemented_or_verified",
+  "full_100mm_target_0_1_mpa": "not_run",
+  "limitations": [
+    "30 mm fixed-center trial without contact; absence of intersections not verified",
+    "hardening integral is not a separated thermodynamic dissipation",
+    "boundary release can undersample unloading",
+    "response thresholds are developer-defined exploratory checks"
+  ]
+}

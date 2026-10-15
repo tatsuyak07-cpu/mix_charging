@@ -1,5 +1,8 @@
 # Periodic sphere-packing compression — solid FEM
 
+追加検証：**刻み幅・材料感度・メッシュ・仕事の6ケース比較**。[結果と適用限界](docs/plastic-verification.md)。
+刻み幅の影響は小さい一方、メッシュ収束は未達です。
+
 追加モデル：**温度依存性なし・大変形弾塑性の試験モデル**。[仮の物性・圧縮除荷手順・適用範囲](docs/plastic-trial.md)。
 専用コマンドは `python -m packing_fem.plastic`。自己接触と0.1 MPa到達の検証は今後の段階です。
 

@@ -3,7 +3,6 @@
 This is a developer-defined trial geometry, not a simulation of sintering.
 No contact ties across empty space and no frictional particle surrogate.
 """
-from itertools import product
 import json
 from pathlib import Path
 import subprocess
@@ -134,16 +133,8 @@ def mesh(mask,h):
 
 
 def hex_quadrature(points,elements):
-    signs=np.array([[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
-                    [-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]])
-    grad=[]
-    for q in product((-1/np.sqrt(3),1/np.sqrt(3)),repeat=3):
-        g=np.empty((8,3))
-        for axis in range(3):
-            rest=[k for k in range(3) if k!=axis]
-            g[:,axis]=signs[:,axis]*np.prod(1+signs[:,rest]*np.array(q)[rest],axis=1)/8
-        grad.append(g)
-    return np.linalg.det(np.einsum('eni,qnj->eqij',points[elements],np.asarray(grad)))
+    from .continuum import jacobians
+    return np.linalg.det(jacobians(points,elements))
 
 
 def prepare(directory,c,allow_large=False):

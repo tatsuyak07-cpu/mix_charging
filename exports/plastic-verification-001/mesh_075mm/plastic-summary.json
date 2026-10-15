@@ -1,0 +1,35 @@
+{
+  "status": "trial_material_cycle_passed_contact_and_calibration_unverified",
+  "solver_exit_code": 0,
+  "checks": {
+    "solver_completed": true,
+    "end_of_unload_reached": true,
+    "positive_jacobians": true,
+    "positive_cell": true,
+    "physical_porosity": true,
+    "periodic_displacements": true,
+    "hardening_table_range": true,
+    "plastic_strain_generated": true,
+    "residual_deformation": true,
+    "unloaded_stress": true
+  },
+  "material_calibration": "uncalibrated_trial",
+  "self_contact": "not_implemented",
+  "mesh_convergence": "unverified",
+  "porosity_output_tolerance": 1e-07,
+  "stress_target_mpa": 0.1,
+  "target_stress_enforced": false,
+  "initial_porosity": 0.5853750000000002,
+  "peak_compression_mpa": 0.0021337926542878086,
+  "residual_compression_strain": 0.006019540833333333,
+  "final_mean_cauchy_stress_mpa": [
+    9.330656075268176e-13,
+    -8.877077138568006e-13,
+    7.053739775963609e-13,
+    -8.260741620567685e-14,
+    1.4020203203999498e-13,
+    5.2965971468774124e-14
+  ],
+  "final_porosity": 0.582911748953287,
+  "peak_equivalent_plastic_strain": 0.1508964
+}

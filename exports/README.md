@@ -25,3 +25,8 @@
 
 [30 mm角の圧縮・除荷CSVとPNG、入力、メッシュ](plastic-trial-001/) / [ZIP](plastic-trial-002.zip)。
 未校正・自己接触未実装。1%圧縮後の永久変形を確認する試験で、0.1 MPa到達の計算ではありません。
+
+## 大変形弾塑性の追加検証
+
+[6ケースの比較CSV・PNG・全記録](plastic-verification-001/) / [ZIP](plastic-verification-001.zip)。
+メッシュ変更で応力が約20%変わり、収束は未達です。[詳しい判定](../docs/plastic-verification.md)。

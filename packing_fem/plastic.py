@@ -42,7 +42,8 @@ def write_model(directory,c,points,elements,integers,estimate,allow_large=False)
     zz=meta['macro_nodes'][2];scale=meta['macro_scale'];anchor=lines[lines.index('*BOUNDARY')+1]
     fixed=[anchor]+[f'{node},2,3,0' for node in meta['macro_nodes']]
     outputs=['*NODE PRINT,NSET=PHYSICAL,FREQUENCY=1','U','*NODE PRINT,NSET=MACRO,FREQUENCY=1','U',
-             '*EL PRINT,ELSET=SOLID,FREQUENCY=1','S,PEEQ']
+             '*EL PRINT,ELSET=SOLID,FREQUENCY=1','S,PEEQ',
+             '*EL PRINT,ELSET=SOLID,FREQUENCY=1,TOTALS=ONLY','ELSE']
     for step in ('compress','release'):
         lines += ['*STEP,NLGEOM,INC=1000','*STATIC,SOLVER=SPOOLES',
                   f"{c['initial_increment']},1,1e-7,{c['max_increment']}"]

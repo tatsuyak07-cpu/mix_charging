@@ -1,0 +1,23 @@
+{
+  "energy_units": "N mm",
+  "macro_work_Nmm": 0.25856267525974996,
+  "micro_work_Nmm": 0.2585626715883254,
+  "solver_internal_energy_Nmm": 0.2582808,
+  "macro_micro_max_relative_difference": 9.113725949416175e-08,
+  "compression_work_internal_relative_difference": 0.00016809588091630374,
+  "cycle_work_internal_relative_difference": 0.001091337754588932,
+  "plastic_equivalent_strain_monotone": true,
+  "isotropic_hardening_integral_Nmm": 0.21988126462025598,
+  "note": "Hardening integral includes plastic work and stored hardening; not independently resolved dissipation. Unload boundary release may undersample the unloading path.",
+  "criteria": {
+    "macro_micro_relative": 0.01,
+    "work_internal_relative": 0.02
+  },
+  "checks": {
+    "finite_solver_energy": true,
+    "macro_micro_work": true,
+    "compression_work_balance": true,
+    "cycle_work_balance": true,
+    "plastic_accumulation": true
+  }
+}
