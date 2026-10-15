@@ -111,3 +111,6 @@ CSV・PNG・計算記録は [exports](exports/README.md) に収録していま�
 [初期40%から目標10%を目指す圧縮試算](docs/porosity40-to10.md)を追加しました。
 設定は [porosity40-to10-trial.json](configs/porosity40-to10-trial.json)。
 実際の初期メッシュ空隙率は39.8592%、体積監査で停止しており10%には未到達です。
+
+空隙率40%から10%を扱うための[大変形計算手法の変更案](docs/large-deformation-method-review.md)をまとめました。
+準静的陽解法FEM・周期自己接触・適応再メッシュを第一候補とし、MPM等との比較と導入時の検査を記載しています。
