@@ -1,5 +1,8 @@
 # Periodic sphere-packing compression — solid FEM
 
+追加検証：**焼結ネックの形状固定細分化とC3D8/C3D8I比較**。[条件と判定](docs/neck-element-verification.md)。
+C3D8Iの部品応答は最細分比較で2%基準内。局所塑性ひずみ・周期充填層全体は未検証です。
+
 追加検証：**刻み幅・材料感度・メッシュ・仕事の6ケース比較**。[結果と適用限界](docs/plastic-verification.md)。
 刻み幅の影響は小さい一方、メッシュ収束は未達です。
 

@@ -15,6 +15,8 @@ from .results import read_dat, find
 
 def validate(c):
     sintered.validate(c)
+    if c.get('element_type','C3D8')!='C3D8':
+        raise ValueError('Periodic backend supports C3D8 only; C3D8I is a separate component benchmark')
     if c.get('model_type')!='finite_strain_elastoplastic_trial':raise ValueError('Explicit nonlinear trial model_type required')
     for key in ('yield_mpa','hardening_mpa','compression_fraction','initial_increment','max_increment'):
         if key not in c or not np.isfinite(c[key]) or c[key]<=0:raise ValueError(f'Positive {key} required')

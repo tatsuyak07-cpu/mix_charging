@@ -30,3 +30,8 @@
 
 [6ケースの比較CSV・PNG・全記録](plastic-verification-001/) / [ZIP](plastic-verification-001.zip)。
 メッシュ変更で応力が約20%変わり、収束は未達です。[詳しい判定](../docs/plastic-verification.md)。
+
+## ネックの形状固定細分化・要素形式の比較
+
+[比較CSV・グラフ・使用メッシュ・全記録](neck-elements-001/) / [ZIP](neck-elements-001.zip)。
+C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全体や局所塑性ひずみの収束とは区別します。

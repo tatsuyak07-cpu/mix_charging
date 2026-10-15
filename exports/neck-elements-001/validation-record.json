@@ -1,0 +1,14 @@
+{
+  "tests_passed": 31,
+  "component_cases": 6,
+  "beam_cases": 2,
+  "same_stepped_shape_volume_mm3": 238.0,
+  "C3D8I_finest_response_within_2_percent": true,
+  "C3D8_finest_response_within_2_percent": false,
+  "local_plastic_strain_converged": false,
+  "periodic_RVE_C3D8I_validated": false,
+  "full_100mm_target_0_1_mpa_run": false,
+  "self_contact_implemented": false,
+  "reaction_displacement_mean": "reference-area-weighted",
+  "incompatible_mode_local_gradient_audit": "not_performed"
+}

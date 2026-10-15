@@ -1,0 +1,47 @@
+{
+  "status": "component_cycle_passed_not_RVE_validated",
+  "solver_exit_code": 0,
+  "checks": {
+    "solver_completed": true,
+    "unload_completed": true,
+    "positive_corner_geometry_jacobian": true,
+    "positive_solver_volume": true,
+    "plastic_strain_generated": true,
+    "residual_displacement": true,
+    "zero_final_top_external_force": true,
+    "compression_work_balance": true,
+    "cycle_work_balance": true
+  },
+  "element_type": "C3D8I",
+  "geometry": {
+    "geometry": "fixed 0.5 mm stepped union; quarter specimen",
+    "grain_diameter_mm": 10.0,
+    "neck_diameter_mm": 2.0,
+    "sphere_centers_z_mm": [
+      6.0,
+      18.0
+    ],
+    "grip_z_mm": [
+      3.0,
+      21.0
+    ],
+    "refinement_factor": 1,
+    "neck_element_edge_mm": 0.5,
+    "initial_solid_volume_mm3": 237.99999999999977,
+    "quarter_neck_area_mm2": 0.75,
+    "elements": 1904,
+    "physical_nodes": 2688,
+    "geometry_rerasterized": false,
+    "refinement_note": "Conforming coordinate planes extend through shoulders; no hanging nodes."
+  },
+  "peak_quarter_force_N": 0.060542835300000014,
+  "peak_neck_nominal_stress_MPa": 0.08072378040000001,
+  "residual_grip_compression_mm": 0.14741401620370373,
+  "peak_peeq": 0.1468043,
+  "compression_work_relative_error": 6.342384295890439e-05,
+  "cycle_work_relative_error": 0.00023733303914192272,
+  "incompatible_mode_local_work_audit": "not_performed",
+  "note": "RF-based boundary work vs solver ELSE; no fictitious eight-node local strain audit for C3D8I.",
+  "grip_mean_definition": "reference-area-weighted top surface",
+  "original_reported_residual_mm": 0.1474139338028169
+}

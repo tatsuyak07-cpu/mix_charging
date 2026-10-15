@@ -115,3 +115,8 @@ CSV・PNG・条件・判定・集計JSONをGitHubに収録する。
 [比較CSV](../exports/plastic-verification-001/comparison.csv) /
 [全記録ZIP](../exports/plastic-verification-001.zip)。
 元の大容量DATは `results/plastic-verification-001/` に保持。
+
+## ネック・要素形式の追加検証
+
+[形状固定のネック細分化とC3D8/C3D8I比較](neck-element-verification.md) を実施しました。
+固定した部品のC3D8I応答は最細分で2%基準内ですが、周期充填層への導入と局所塑性ひずみの収束は未検証です。

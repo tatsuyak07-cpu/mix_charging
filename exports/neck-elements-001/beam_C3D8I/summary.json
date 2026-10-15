@@ -1,0 +1,10 @@
+{
+  "element_type": "C3D8I",
+  "solver_completed": true,
+  "tip_displacement_mm": 0.03181266,
+  "euler_bernoulli_mm": 0.032,
+  "timoshenko_reference_mm": 0.03206384,
+  "relative_error_to_timoshenko": 0.007833746675382725,
+  "within_5_percent_beam_reference": true,
+  "note": "Independent elastic slender-beam benchmark, not a yield or RVE calibration."
+}
