@@ -1,0 +1,101 @@
+{
+  "config": {
+    "length_mm": 25.0,
+    "diameter_mm": 10.0,
+    "porosity": 0.4,
+    "young_mpa": 10.0,
+    "poisson": 0.33,
+    "target_mpa": 0.1,
+    "seed": 20261015,
+    "mesh_mm": 1.0,
+    "stress_tolerance": 0.02,
+    "max_dofs": 250000,
+    "model_type": "finite_strain_elastoplastic_trial",
+    "neck_diameter_mm": 2.0,
+    "neck_neighbors": 6,
+    "porosity_tolerance": 0.005,
+    "max_geometry_iterations": 12,
+    "linear_solver": "SPOOLES",
+    "solver_memory_gib": 24,
+    "yield_mpa": 0.05,
+    "hardening_mpa": 0.2,
+    "compression_fraction": 0.49,
+    "initial_increment": 0.05,
+    "max_increment": 0.1,
+    "contact_model": "not_implemented",
+    "material_calibration": "uncalibrated_trial",
+    "element_type": "C3D8I",
+    "compression_steps": 100,
+    "control": "displacement",
+    "target_final_porosity": 0.1,
+    "mesh_phase_mm": [
+      0.7109375,
+      0.34979423868312753,
+      0.872
+    ]
+  },
+  "estimate": {
+    "model_type": "sintered",
+    "particles": 18,
+    "sphere_only_nominal_count": 18,
+    "diameter_mm": 10.0,
+    "neck_diameter_mm": 2.0,
+    "neck_bonds": 60,
+    "grid_cells_per_axis": 25,
+    "voxel_mm": 1.0,
+    "solid_elements": 9397,
+    "initial_porosity": 0.39859199999999995,
+    "target_porosity": 0.4,
+    "porosity_error": 0.0014080000000000759,
+    "sphere_voxel_volume_mm3": 9362.0,
+    "added_neck_voxel_volume_mm3": 35.0,
+    "periodic_components": 1,
+    "winding_rank": 3,
+    "cells_across_neck": 2.0,
+    "geometry_attempts": [
+      {
+        "particles": 18,
+        "porosity": 0.39859199999999995
+      }
+    ],
+    "mesh_phase_mm": [
+      0.7109375,
+      0.34979423868312753,
+      0.872
+    ],
+    "geometry_model": "Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized",
+    "mesh_convergence": "unverified",
+    "nodes": 14326,
+    "upper_bound_dofs": 42966
+  },
+  "macro_nodes": [
+    14321,
+    14322,
+    14323,
+    14324,
+    14325,
+    14326
+  ],
+  "strain_order": [
+    "xx",
+    "yy",
+    "zz",
+    "xy",
+    "xz",
+    "yz"
+  ],
+  "model_type": "finite_strain_elastoplastic_trial",
+  "macro_scale": 25.0,
+  "contact_model": "not_implemented",
+  "material_calibration": "uncalibrated_trial",
+  "load_protocol": "prescribed compression then release to zero generalized axial load",
+  "target_stress_is_not_enforced": true,
+  "element_type": "C3D8I",
+  "backend": "experimental_periodic_internal_modes",
+  "first_mode_node": 14327,
+  "mode_nodes_per_element": 3,
+  "mode_order_source": "genmodes.f: consecutive triples, ascending element IDs",
+  "mode_gradient_source_commit": "fd588701edd6a92fde06e99b1bdf01f3b0f80f2c",
+  "compression_steps": 100,
+  "state_source": "native 2.20 unformatted restart, per-step endpoints"
+}

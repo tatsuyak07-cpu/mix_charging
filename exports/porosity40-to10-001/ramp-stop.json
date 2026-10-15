@@ -1,0 +1,17 @@
+{
+  "reason": "Existing volume_definition_difference audit limit exceeded; target not validated",
+  "limit": 0.0001,
+  "measurement": {
+    "completed_step": 20.0,
+    "prescribed_nominal_MPa": null,
+    "axial_compression_strain": 0.098,
+    "target_final_porosity": 0.1,
+    "geometry_porosity": 0.36367240043257987,
+    "material_porosity": 0.36356400163882574,
+    "absolute_difference": 0.00010839879375412753
+  },
+  "action": "SIGTERM only this result directory native solver",
+  "pids": [
+    1435909
+  ]
+}

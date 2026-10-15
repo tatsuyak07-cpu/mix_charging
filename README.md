@@ -107,3 +107,7 @@ CSV・PNG・計算記録は [exports](exports/README.md) に収録していま�
 荷重を増加させた[空隙率の試験計算](docs/pressure-ramp.md)と
 [CSV・PNG](exports/README.md#荷重増加と空隙率探索計算)を追加しました。
 体積評価の監査条件を超えて停止しており、0.1 MPaまでの検証済み曲線は得られていません。
+
+[初期40%から目標10%を目指す圧縮試算](docs/porosity40-to10.md)を追加しました。
+設定は [porosity40-to10-trial.json](configs/porosity40-to10-trial.json)。
+実際の初期メッシュ空隙率は39.8592%、体積監査で停止しており10%には未到達です。

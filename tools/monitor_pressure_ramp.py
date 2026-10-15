@@ -1,4 +1,4 @@
-"""Stop an exploratory ramp at the existing porosity-definition audit limit.
+"""Stop an exploratory ramp at a volume audit limit or observed porosity target.
 
 Read-only inspection until the limit is exceeded. Only a native ccx process
 whose parent runner explicitly targets the requested result may be stopped.
@@ -33,7 +33,8 @@ def inspect(directory):
     volume=np.linalg.det(F)*c['length_mm']**3
     phi_g=1-hex_quadrature(p+u,e).sum()/volume
     phi_m=1-(np.linalg.det(local)*hex_quadrature(p,e)).sum()/volume
-    return {'completed_step':t,'prescribed_nominal_MPa':c['target_mpa']*t/m['compression_steps'],
+    return {'completed_step':t,'prescribed_nominal_MPa':c['target_mpa']*t/m['compression_steps'] if c.get('control')=='force' else None,
+            'axial_compression_strain':float(-q[2]),'target_final_porosity':c.get('target_final_porosity'),
             'geometry_porosity':float(phi_g),'material_porosity':float(phi_m),'absolute_difference':float(abs(phi_g-phi_m))}
 
 
@@ -45,7 +46,7 @@ def native_pids(directory):
             status=(proc/'status').read_text()
             parent=int(next(line.split()[1] for line in status.splitlines() if line.startswith('PPid:')))
             parent_args=(Path('/proc')/str(parent)/'cmdline').read_bytes().split(b'\0')
-            if not any(arg.endswith(b'tools/run_pressure_ramp.py') for arg in parent_args):continue
+            if not any(arg.endswith((b'tools/run_pressure_ramp.py',b'tools/run_porosity_target.py')) for arg in parent_args):continue
             if b'--output' not in parent_args:continue
             output=os.fsdecode(parent_args[parent_args.index(b'--output')+1])
             if Path(output).resolve()!=directory:continue
@@ -54,6 +55,17 @@ def native_pids(directory):
                 result.append(int(proc.name))
         except (OSError,RuntimeError):continue
     return result
+
+
+def stop_reason(measurement,limit):
+    if min(measurement['geometry_porosity'],measurement['material_porosity'])<0 or max(measurement['geometry_porosity'],measurement['material_porosity'])>1:
+        return 'Nonphysical porosity; target not validated'
+    if measurement['absolute_difference']>limit:
+        return 'Existing volume_definition_difference audit limit exceeded; target not validated'
+    target=measurement['target_final_porosity']
+    if target is not None and max(measurement['geometry_porosity'],measurement['material_porosity'])<=target:
+        return 'Observed target porosity; independent audit still required'
+    return None
 
 
 def main():
@@ -66,8 +78,10 @@ def main():
             if not pids:pending.remove(d);continue
             try:measurement=inspect(d)
             except (OSError,ValueError,StopIteration):continue # Writer may be between records.
-            if measurement and measurement['absolute_difference']>a.limit:
-                record={'reason':'Existing volume_definition_difference audit limit exceeded; target not reached',
+            if not measurement:continue
+            reason=stop_reason(measurement,a.limit)
+            if reason:
+                record={'reason':reason,
                         'limit':a.limit,'measurement':measurement,'action':'SIGTERM only this result directory native solver','pids':pids}
                 with (d/'ramp-stop.json').open('x') as f:json.dump(record,f,indent=2);f.write('\n')
                 for pid in pids:

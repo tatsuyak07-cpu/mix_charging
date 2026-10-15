@@ -1,0 +1,4 @@
+{
+  "error": "ValueError('Trial compression must be below 50%')",
+  "accepted_result": false
+}

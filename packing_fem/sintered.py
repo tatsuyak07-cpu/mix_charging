@@ -16,6 +16,9 @@ def validate(c):
     for key in ('length_mm','diameter_mm','neck_diameter_mm','mesh_mm','young_mpa','target_mpa','porosity_tolerance'):
         if c.get(key) is None or not np.isfinite(c[key]) or c[key]<=0:
             raise ValueError(f'Sintered geometry requires positive {key}')
+    phase=np.asarray(c.get('mesh_phase_mm',[0.,0.,0.]),dtype=float)
+    if phase.shape!=(3,) or not np.all(np.isfinite(phase)):
+        raise ValueError('mesh_phase_mm must contain three finite offsets')
     if c['neck_diameter_mm']>=c['diameter_mm']:
         raise ValueError('Neck must be narrower than the sphere')
     if not 0<c['porosity']<1 or not -1<c['poisson']<.5:
@@ -49,6 +52,8 @@ def voxel_geometry(c,count):
     L,d=c['length_mm'],c['diameter_mm']
     cores_porosity=1-count*sphere_volume(d)/L**3
     x=make_packing(L,d,cores_porosity,c['seed'])
+    # Uniform torus translation changes only voxel sampling, not pair geometry.
+    x=(x+np.asarray(c.get('mesh_phase_mm',[0.,0.,0.]),dtype=float))%L
     n=int(np.ceil(L/c['mesh_mm']));h=L/n
     mask=np.zeros((n,n,n),dtype=bool)
     for p in x:
@@ -118,6 +123,7 @@ def geometry(c):
               'added_neck_voxel_volume_mm3':float(mask.sum()*h**3-core_volume),
               'periodic_components':components,'winding_rank':rank,
               'cells_across_neck':c['neck_diameter_mm']/h,'geometry_attempts':attempts,
+              'mesh_phase_mm':c.get('mesh_phase_mm',[0.,0.,0.]),
               'geometry_model':'Random nonoverlapping spheres + nearest-neighbor straight cylindrical neck union, voxelized',
               'mesh_convergence':'unverified'}
     return x,mask,h,estimate

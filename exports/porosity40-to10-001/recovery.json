@@ -1,0 +1,33 @@
+{
+  "source": "results/porosity40-to10-003",
+  "complete_raw_times": [
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    8.0,
+    9.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    14.0,
+    15.0,
+    16.0,
+    17.0,
+    18.0,
+    19.0,
+    20.0
+  ],
+  "excluded_tail": [
+    {
+      "raw_time": 21.0,
+      "reason": "Incomplete or unordered integration-point output"
+    }
+  ],
+  "original_DAT_sha256": "2d08a416420d9123d1d428d72d99cd1cc97f87c87793c78782af490c3ff98844",
+  "procedure": "Byte-preserved complete DAT prefix and corresponding native restart records; original interrupted files retained. No solution reconstruction or imputation."
+}

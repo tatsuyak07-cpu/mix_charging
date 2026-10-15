@@ -1,0 +1,38 @@
+{
+  "requested_initial_porosity": 0.4,
+  "actual_initial_porosity": 0.3985920000000005,
+  "target_final_porosity": 0.1,
+  "minimum_observed_geometry_porosity": 0.36367240043257987,
+  "minimum_observed_material_porosity": 0.36356400163882574,
+  "target_observed": false,
+  "first_volume_audit_failure_compression_percent": 9.8,
+  "complete_compression_endpoints": 20,
+  "status": "diagnostics_only",
+  "checks": {
+    "solver_completed": false,
+    "unload_complete": false,
+    "native_green_strain_match": true,
+    "positive_material_J": true,
+    "positive_macro_J": true,
+    "periodic_displacements": true,
+    "physical_geometry_porosity": true,
+    "physical_material_porosity": true,
+    "reference_EVOL_matches_mesh": true,
+    "volume_definition_difference": false,
+    "macro_stress_virial": true,
+    "macro_micro_work": true,
+    "compression_internal_work": true,
+    "cycle_internal_work": true,
+    "plastic_accumulation": true,
+    "hardening_table_range": true,
+    "unloaded_macro_stress": false
+  },
+  "limitations": [
+    "25 mm trial, original 100 mm size unverified",
+    "no self-contact or damage",
+    "uncalibrated material",
+    "mesh convergence unverified",
+    "40% is a requested nominal initial porosity; actual voxel value reported separately",
+    "no extrapolation to 10%"
+  ]
+}
