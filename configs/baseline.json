@@ -1,0 +1,19 @@
+{
+  "length_mm": 100.0,
+  "diameter_mm": 10.0,
+  "porosity": 0.6,
+  "young_mpa": 70000.0,
+  "poisson": 0.33,
+  "target_mpa": 0.1,
+  "seed": 20261015,
+  "mesh_mm": 1.0,
+  "stress_tolerance": 0.02,
+  "max_dofs": 250000,
+  "model_type": "sintered",
+  "neck_diameter_mm": 2.0,
+  "neck_neighbors": 6,
+  "porosity_tolerance": 0.002,
+  "max_geometry_iterations": 12,
+  "linear_solver": "SPOOLES",
+  "solver_memory_gib": 24
+}
