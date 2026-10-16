@@ -66,6 +66,7 @@ def write_model(directory,c,points,elements,integers,estimate,allow_large=False)
 
 def analyze(directory,completed,code):
     directory=Path(directory)
+    if (directory/'initial-mesh.npz').exists() or (directory/'model.json').exists():raise ValueError('Experimental explicit results require their own history/energy audit')
     if (directory/'mode-metadata.json').exists():raise ValueError('Use incompatible.analyze for internal-mode runs')
     m=json.loads((directory/'plastic-metadata.json').read_text());c=m['config']
     with np.load(directory/'sintered-geometry.npz') as g:p,e=g['points'],g['elements']
@@ -135,6 +136,7 @@ def analyze(directory,completed,code):
 
 def run(directory,solver,timeout):
     directory=Path(directory).resolve()
+    if (directory/'initial-mesh.npz').exists() or (directory/'model.json').exists():raise ValueError('Experimental explicit results require their own history/energy audit')
     if (directory/'mode-metadata.json').exists():raise ValueError('Use incompatible.run for internal-mode runs')
     m=json.loads((directory/'plastic-metadata.json').read_text())
     executable=shutil.which(solver)

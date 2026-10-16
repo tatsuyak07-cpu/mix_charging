@@ -13,6 +13,7 @@ from .results import read_dat,find
 
 def audit(run,output):
     run=Path(run);output=Path(output)
+    if (run/'initial-mesh.npz').exists() or (run/'model.json').exists():raise ValueError('Experimental explicit results require their own history/energy audit')
     if (run/'mode-metadata.json').exists():raise ValueError('Internal-mode runs require incompatible.analyze, not the eight-node work audit')
     output.mkdir(parents=True,exist_ok=False)
     m=json.loads((run/'plastic-metadata.json').read_text());c=m['config'];L=c['length_mm']

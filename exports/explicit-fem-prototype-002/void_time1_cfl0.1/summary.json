@@ -1,0 +1,41 @@
+{
+  "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": true,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true
+  },
+  "failure": null,
+  "steps": 3465,
+  "dt_min_s": 4.400064526253154e-08,
+  "dt_max_s": 4.330127018922193e-07,
+  "kinetic_internal_ratio_loaded": 0.0048274634255822445,
+  "closed_boundary_volume_relative_error": 0.0,
+  "material_volume_relative_error": 3.780309398848658e-13,
+  "final_static_residual_ratio": 0.00014250991298459198,
+  "energy_scale_Nmm": 0.003262418347792879,
+  "initial_available_energy_Nmm": 0.0,
+  "energy_absolute_residual_Nmm": 1.0230226701575876e-09,
+  "energy_relative_error": 3.1357801517076807e-07,
+  "remesh_events": [],
+  "initial_porosity": 0.03703703703703709,
+  "final_porosity": 0.03699313564070361,
+  "final_axial_compression": 0.005,
+  "residual_compression_strain": null,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "node-face contact omits edge-edge contact",
+    "internal 2-to-3 reconnection only; no surface remeshing",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

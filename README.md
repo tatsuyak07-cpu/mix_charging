@@ -114,3 +114,7 @@ CSV・PNG・計算記録は [exports](exports/README.md) に収録していま�
 
 空隙率40%から10%を扱うための[大変形計算手法の変更案](docs/large-deformation-method-review.md)をまとめました。
 準静的陽解法FEM・周期自己接触・適応再メッシュを第一候補とし、MPM等との比較と導入時の検査を記載しています。
+
+[準静的陽解法FEM・周期自己接触・局所再メッシュの研究用初版](docs/explicit-prototype.md)を実装しました。
+[検証画像・CSV・準備済みモデル](exports/explicit-fem-prototype-002/)と[ZIP](exports/explicit-fem-prototype-002.zip)を収録しています。
+内部再接続は実装済みですが、自由表面の全面再生成や40%→10%の圧密計算は未検証です。

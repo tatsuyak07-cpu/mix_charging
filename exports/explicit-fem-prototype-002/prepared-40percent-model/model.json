@@ -1,0 +1,12 @@
+{
+  "source": "exports/porosity40-to10-001",
+  "source_geometry_sha256": "835ca38202559c6c4773bc399ec3ee7faa2ba3b82889346c03966b41b04d036f",
+  "nodes": 14320,
+  "tetrahedra": 56382,
+  "initial_porosity": 0.39859199999999995,
+  "element": "compatible linear tetrahedron",
+  "material": "Kirchhoff-yield finite-strain Hencky J2; not identical to native CalculiX integration",
+  "mesh": "conforming tetrahedral subdivision of archived voxel geometry; no sphere surface improvement",
+  "target_10percent_validated": false,
+  "full_calculation_started": false
+}

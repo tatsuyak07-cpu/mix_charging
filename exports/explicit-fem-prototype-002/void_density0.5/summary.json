@@ -1,0 +1,41 @@
+{
+  "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": true,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true
+  },
+  "failure": null,
+  "steps": 2450,
+  "dt_min_s": 2.9990498095979097e-07,
+  "dt_max_s": 6.123724356957945e-07,
+  "kinetic_internal_ratio_loaded": 0.0023815218862382912,
+  "closed_boundary_volume_relative_error": 1.3686827065522292e-16,
+  "material_volume_relative_error": 2.9659608102861057e-13,
+  "final_static_residual_ratio": 4.4963379787738926e-05,
+  "energy_scale_Nmm": 0.003251206347020768,
+  "initial_available_energy_Nmm": 0.0,
+  "energy_absolute_residual_Nmm": 7.197797194423775e-10,
+  "energy_relative_error": 2.2138850710043218e-07,
+  "remesh_events": [],
+  "initial_porosity": 0.03703703703703709,
+  "final_porosity": 0.036993157110243535,
+  "final_axial_compression": 0.005,
+  "residual_compression_strain": null,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "node-face contact omits edge-edge contact",
+    "internal 2-to-3 reconnection only; no surface remeshing",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

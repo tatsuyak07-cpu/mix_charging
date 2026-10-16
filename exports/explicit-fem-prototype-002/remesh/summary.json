@@ -1,0 +1,129 @@
+{
+  "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+  "checks": {
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": true,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true
+  },
+  "failure": null,
+  "steps": 21235,
+  "dt_min_s": 2.2051835636390307e-08,
+  "dt_max_s": 7.082019823818456e-08,
+  "kinetic_internal_ratio_loaded": 1.160639534914643e-06,
+  "final_static_residual_ratio": 1.2197898545751798e-05,
+  "energy_relative_error": 4.371657551112613e-11,
+  "remesh_events": [
+    {
+      "operation": "2_to_3",
+      "removed_elements": [
+        0,
+        5
+      ],
+      "quality_before": 0.26194718001441136,
+      "quality_after": 0.5014061857322325,
+      "reference_volume_relative_error": 1.451211103574388e-16,
+      "current_volume_relative_error": 2.902422207152467e-16,
+      "material_energy_relative_error": 0.0,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "linear_momentum_scaled_error": 1.4029321891688457e-11,
+      "angular_momentum_scaled_error": 1.3971215456457704e-11,
+      "time_s": 3.6969228834220646e-07,
+      "kinetic_energy_scaled_error": 1.122010915941463e-19,
+      "accepted": true
+    },
+    {
+      "operation": "2_to_3",
+      "removed_elements": [
+        3,
+        4
+      ],
+      "quality_before": 0.30463589093806587,
+      "quality_after": 0.5282684503435678,
+      "reference_volume_relative_error": 2.81057713077308e-16,
+      "current_volume_relative_error": 1.4052885653990946e-16,
+      "material_energy_relative_error": 0.0,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "linear_momentum_scaled_error": 7.800688429777455e-11,
+      "angular_momentum_scaled_error": 1.1388983618088798e-10,
+      "time_s": 7.39384576684229e-07,
+      "kinetic_energy_scaled_error": 2.5709425492287437e-19,
+      "accepted": true
+    },
+    {
+      "operation": "2_to_3",
+      "removed_elements": [
+        6,
+        23
+      ],
+      "quality_before": 0.1947320854932569,
+      "quality_after": 0.3230306074206198,
+      "reference_volume_relative_error": 1.2732243132238013e-16,
+      "current_volume_relative_error": 2.546448626538853e-16,
+      "material_energy_relative_error": 1.4210092781515643e-16,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "linear_momentum_scaled_error": 3.614259169840893e-11,
+      "angular_momentum_scaled_error": 5.0139937487316006e-11,
+      "time_s": 1.1090768650246827e-06,
+      "kinetic_energy_scaled_error": 1.6360272584634547e-19,
+      "accepted": true
+    },
+    {
+      "operation": "2_to_3",
+      "removed_elements": [
+        8,
+        24
+      ],
+      "quality_before": 0.060278541904398096,
+      "quality_after": 0.07933226169471597,
+      "reference_volume_relative_error": 0.0,
+      "current_volume_relative_error": 0.0,
+      "material_energy_relative_error": 1.327236427687304e-16,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "linear_momentum_scaled_error": 2.735188932240344e-12,
+      "angular_momentum_scaled_error": 3.2696259621160535e-12,
+      "time_s": 1.4787691533598854e-06,
+      "kinetic_energy_scaled_error": 9.754524790778082e-20,
+      "accepted": true
+    },
+    {
+      "operation": "2_to_3",
+      "removed_elements": [
+        15,
+        16
+      ],
+      "quality_before": 0.33422533845171204,
+      "quality_after": 0.42868477770612773,
+      "reference_volume_relative_error": 1.236472920771326e-16,
+      "current_volume_relative_error": 2.472945841672933e-16,
+      "material_energy_relative_error": 0.0,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "linear_momentum_scaled_error": 1.223915306546753e-23,
+      "angular_momentum_scaled_error": 6.450647905990176e-24,
+      "time_s": 1.8484614416833658e-06,
+      "kinetic_energy_scaled_error": 1.7892734391470157e-24,
+      "accepted": true
+    }
+  ],
+  "initial_porosity": 1.1102230246251565e-16,
+  "final_porosity": 1.1102230246251565e-16,
+  "final_axial_compression": 0.002,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "node-face contact omits edge-edge contact",
+    "internal 2-to-3 reconnection only; no surface remeshing",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "reason": "Every-step remesh search is unnecessarily expensive; retain attempt, repeat with inspection every 100 steps. Material/contact tolerances unchanged.",
+  "action": "SIGINT own verification process"
+}

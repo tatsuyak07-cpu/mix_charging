@@ -99,6 +99,8 @@ def main(argv=None):
     args=parser.parse_args(argv)
     try:
         if args.command=='solve':
+            if (args.directory/'initial-mesh.npz').exists() or (args.directory/'model.json').exists():
+                raise ValueError('Use tools/run_explicit_model.py for the experimental explicit backend')
             if (args.directory/'mode-metadata.json').exists():
                 raise ValueError('Internal-mode experiment uses packing_fem.incompatible; legacy solver refused')
             if (args.directory/'plastic-metadata.json').exists():
