@@ -342,3 +342,17 @@ def test_partial_bulk_refinement_preserves_verification_domain():
         # The thin void stays exactly between z=1.98 and z=2.02.
         center=X[t].mean(axis=1)
         assert not np.any((center[:,0]>1)&(center[:,0]<3)&(center[:,1]>1)&(center[:,1]<3)&(center[:,2]>1.98)&(center[:,2]<2.02))
+
+
+def test_step_certificate_retains_previously_searched_periodic_images():
+    from test_explicit_backend import contact_fixture
+    from packing_fem.barrier_contact import ContactResolutionError
+    X,_,t,p=contact_fixture(True);H=np.eye(3)
+    c=BarrierContact(X,t,p,100.,0.,.1,thickness=.02)
+    c.evaluate(X,X*0,H,H*0,0.);c.accept_geometry(X,H)
+    # A conservative previously searched image can leave the trial search box.
+    # Its lattice motion must still be bounded; omitting it would accept this.
+    c.accepted_shifts=((2,0,0),);c.minimum_separation=.003
+    next_H=H.copy();next_H[0,0]+=.001
+    with pytest.raises(ContactResolutionError,match='separation certificate'):
+        c.evaluate(X,X*0,next_H,H*0,1e-6)

@@ -18,6 +18,18 @@ def main():
         shutil.copytree(root,a.output/root.name)
         s=json.loads((root/'summary.json').read_text());c=json.loads((root/'config.json').read_text())
         rows.append(dict(case=root.name,length_mm=c['length_mm'],initial_porosity_percent=100*s['initial_porosity'],final_porosity_percent=100*s['final_porosity'],axial_compression=s['final_axial_compression'],ramp_s=c['ramp_s'],hold_s=c['hold_s'],cfl=c['cfl'],barrier_thickness_mm=c.get('barrier_thickness_mm'),penalty=c['contact_penalty_mpa_mm'],damping_per_s=c['damping_per_s'],mass_frame=s.get('mass_frame','pinned'),steps=s['steps'],loaded_kinetic_internal_ratio=s['kinetic_internal_ratio_loaded'],energy_relative_error=s['energy_relative_error'],static_residual_ratio=s['final_static_residual_ratio'],all_checks_passed=all(s['checks'].values()),failed_checks=';'.join(k for k,v in s['checks'].items() if not v),failure=s['failure'],audit_sampling=s.get('audit_sampling','output_history_only')))
+    from packing_fem.explicit_periodic import deformation
+    from packing_fem.explicit_material import geometry
+    for row in rows:
+        root=a.output/row['case']
+        with np.load(root/'last-state.npz') as state:
+            solid=float(geometry(state['points'],state['tets'])[0].sum())
+            cell=float(np.linalg.det(deformation(state['generalized_position'][-6:]))*row['length_mm']**3)
+        history=np.atleast_1d(np.genfromtxt(root/'history.csv',names=True,delimiter=','))
+        row.update(final_cell_volume_mm3=cell,final_solid_volume_mm3=solid,final_pore_volume_mm3=cell-solid,peak_nominal_pressure_MPa=float(history['nominal_compression_MPa'].max()),final_time_s=float(history['time_s'][-1]))
+    report='|Case|Initial porosity [%]|Final porosity [%]|Failed checks|\n|---|---:|---:|---|\n'
+    for row in rows:report+=f"|{row['case']}|{row['initial_porosity_percent']:.7f}|{row['final_porosity_percent']:.7f}|{row['failed_checks'] or 'none among stored checks'}|\n"
+    (a.output/'comparison.md').write_text(report)
     with (a.output/'comparison.csv').open('w') as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
     fig,axes=plt.subplots(1,3,figsize=(14,4))
@@ -30,13 +42,33 @@ def main():
     axes[0].set(xlabel='Nominal compression [MPa]',ylabel='Porosity [%]');axes[1].set(xlabel='Nominal compression [MPa]',ylabel='Axial compression [%]');axes[2].set(xlabel='Numerical time [ms]',ylabel='Kinetic / internal change');axes[2].axhline(.01,color='black',ls=':',label='1% screening limit')
     for ax in axes:ax.grid(True);ax.legend(fontsize=7)
     fig.suptitle('4 mm verification cell; initial porosity 0.25%. NOT the 40% particle packing.');fig.tight_layout();fig.savefig(a.output/'pressure-porosity.png',dpi=170);plt.close(fig)
+    fig,axes=plt.subplots(1,2,figsize=(10,4))
+    for name,label in [('barrier-pressure-time16-001','standard'),('barrier-pressure-thicknesshalf-001','half barrier thickness'),('barrier-pressure-penalty2-001','double penalty'),('barrier-pressure-dampinghalf-001','half damping')]:
+        path=a.output/name/'history.csv'
+        if not path.exists():continue
+        h=np.genfromtxt(path,names=True,delimiter=',')
+        axes[0].plot(h['nominal_compression_MPa'],100*h['porosity'],label=label)
+        axes[1].plot(h['nominal_compression_MPa'],100*h['axial_compression'],label=label)
+    axes[0].set(xlabel='Nominal compression [MPa]',ylabel='Porosity [%]');axes[1].set(xlabel='Nominal compression [MPa]',ylabel='Axial compression [%]')
+    for ax in axes:ax.grid(True);ax.legend(fontsize=8)
+    fig.suptitle('4 mm verification, ramp 16 ms; contact regularization NOT converged')
+    fig.tight_layout();fig.savefig(a.output/'contact-sensitivity.png',dpi=170);plt.close(fig)
     root=a.output/a.mesh_case;s=json.loads((root/'summary.json').read_text());c=json.loads((root/'config.json').read_text())
     with np.load(root/'last-state.npz') as data:X,x,t=data['reference_points'],data['points'],data['tets']
     edges=np.sort(np.concatenate([t[:,[i,j]] for i,j in [(0,1),(0,2),(0,3),(1,2),(1,3),(2,3)]]),axis=1);edges=np.unique(edges,axis=0)
     fig=plt.figure(figsize=(12,5))
     for k,(points,title) in enumerate([(X,'Initial mesh'),(x,'Actual last accepted mesh')]):
         ax=fig.add_subplot(1,2,k+1,projection='3d');ax.add_collection3d(Line3DCollection(points[edges],colors='steelblue',linewidths=.35,alpha=.6));ax.auto_scale_xyz(points[:,0],points[:,1],points[:,2]);ax.set(xlabel='x [mm]',ylabel='y [mm]',zlabel='z [mm]',title=title);ax.set_box_aspect(np.ptp(points,axis=0))
-    fig.suptitle(f"4 mm verification cell, nominal pressure {c['pressure_mpa']} MPa; displacement scale 1\n{a.mesh_case}; numerical checks passed = {all(s['checks'].values())}");fig.tight_layout();fig.savefig(a.output/'mesh-at-pressure.png',dpi=180);plt.close(fig)
+    fig.suptitle(f"4 mm verification cell, nominal pressure {c['pressure_mpa']} MPa; displacement scale 1\n{a.mesh_case}; mesh/contact convergence NOT established");fig.tight_layout();fig.savefig(a.output/'mesh-at-pressure.png',dpi=180);plt.close(fig)
+    fig,ax=plt.subplots(figsize=(8,4))
+    pore=(X[:,0]>=1-1e-9)&(X[:,0]<=3+1e-9)&np.isclose(X[:,1],1.)
+    for points,label,style in [(X,'initial','--'),(x,'last accepted','-')]:
+        center=np.mean(points[pore&(np.isclose(X[:,2],1.98)|np.isclose(X[:,2],2.02)),2])
+        for level,color in [(1.98,'royalblue'),(2.02,'crimson')]:
+            ids=np.flatnonzero(pore&np.isclose(X[:,2],level));ids=ids[np.argsort(X[ids,0])]
+            ax.plot(points[ids,0],points[ids,2]-center,style,color=color,marker='o',label=f'{label}, reference z={level} mm')
+    ax.set(xlabel='Actual x [mm]',ylabel='Actual z minus section center [mm]',title='Verification pore wall edges at reference y=1 mm; displacement scale 1')
+    ax.grid(True);ax.legend(fontsize=8);fig.tight_layout();fig.savefig(a.output/'pore-wall-section.png',dpi=180);plt.close(fig)
     logs=a.output/'test-logs';logs.mkdir()
     for f in sorted(Path('/tmp').glob('barrier-*-tests-*.log')):shutil.copy2(f,logs/f.name)
     for f in sorted(Path('/tmp').glob('barrier-tests-*.log')):shutil.copy2(f,logs/f.name)

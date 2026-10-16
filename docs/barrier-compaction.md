@@ -33,11 +33,11 @@ cd /workspace/mix_charging
 source /workspace/environment/mix_charging/.venv/bin/activate
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONPATH=.
 # 小規模検証セル。初期空隙率0.25%、100 mmの充填層ではない。
-python tools/run_barrier_compaction.py --config configs/explicit-barrier-pressure.json --output results/new-small-pressure
+python tools/run_barrier_compaction.py --config configs/explicit-barrier-pressure.json --time-scale 2 --hold-seconds .002 --output results/new-small-pressure
 # 既存入力の再実行（アーカイブ中の元設定・メッシュを使用）
-python tools/replay_explicit.py --help
+python tools/replay_explicit.py --source exports/barrier-compaction-002/barrier-pressure-time32-001 --output results/new-pressure-replay
 # 25 mm / 39.8592%入力の接触探索規模確認
-python tools/preflight_barrier_model.py --help
+python tools/preflight_barrier_model.py --candidate-budget 1000000 --output results/new-packing-preflight
 # 未検証の40%→10%目標計算。1 MPaは探索上限であり達成荷重ではない。
 python tools/run_barrier_compaction.py --config configs/porosity40-barrier-goal.json --case packing40 --output results/new-packing-goal
 python -m pytest -q
@@ -59,8 +59,24 @@ python -m pytest -q
 
 8 msの時間刻み半減による最終空隙率の差は約1.02e-10（空隙率の分率）です。一方、16 msでバリア幅を0.02 mmから0.01 mmへ半減すると、最終空隙率は0.2193129%から0.2010704%へ変わります。正則化への収束を確認できていません。16→32 msでも最終空隙率差2.11e-7、圧縮ひずみ差2.23e-5が残ります。一水準のメッシュ比較やこれらの差から一般的な収束を主張しません。
 
+## 追加の接触・慣性比較
+
+16 msのペナルティ2倍（40 MPa/mm）では最終空隙率0.2203661%、圧縮ひずみ16.30094%でした。標準設定との差は空隙率の分率で1.05e-5です。載荷中最大運動エネルギー比は1.0856%で不合格、最終力残差・エネルギー・接触数値仕事は合格です。ペナルティ収束を主張しません。
+
+8 msの並進運動量ゼロの質量縮約では、最終空隙率0.2192557%、圧縮ひずみ16.30746%でした。従来32 msとの差は空隙率の分率で3.62e-7、ひずみで3.47e-5です。ただし載荷中最大運動エネルギー比は1.8598%で不合格です。材料や密度を変えず、力・質量・エネルギーを整合させた縮約の動作確認として保存し、速い載荷の解を準静的解として採用しません。既定の慣性設定も変更していません。
+
+16 ms・減衰半分（3000 /s）では最終空隙率0.2192907%、圧縮ひずみ16.30518%でした。標準32 msとの差は空隙率の分率で1.16e-8、ひずみで1.18e-5です。ただし載荷中最大運動エネルギー比1.5224%で不合格です。減衰を変更したケースも診断用として保存し、標準設定の変更や物理解の採用には使いません。
+
+## 空隙率目標制御・永久変形の独立試験
+
+3 mm角・中央に1 mm角の空隙を持つセルで、初期空隙率3.7037037%から目標3.7032037%へ圧密する小変形試験を実行しました。載荷を4 msに遅くした試験は、目標で圧力保持・平衡確認して終了し、最終空隙率3.7032029%、載荷中最大運動エネルギー比0.1359%で全検査を通りました。これは制御ロジックの試験で、40%→10%の代用ではありません。速い初回試験の運動エネルギー超過も保存しています。
+
+1 mm角の均質体では0.08 MPaまで載荷後に除荷し、ゼロ荷重で約10.1378%の永久圧縮ひずみを確認しました。16 msの載荷・16 msの除荷を用いた試験は運動エネルギー比0.3476%で全検査を通りました。空隙のない材料試験です。別に0.1 MPaの均質塑性平衡を `P λ = σy + H εp` と `log λ = −εp − Pλ/E` の独立スカラー根と比較しています。
+
+この2試験の載荷を遅くして全検査の合格まで強化しました。周期画像の探索範囲変更時の非交差検査を追加し、最後に全123件を再実行して合格しました。元の失敗ログも結果ZIPに含みます。
+
 ## 結果ファイル
 
-[比較CSV](../exports/barrier-compaction-001/comparison.csv)、[圧力–空隙率PNG](../exports/barrier-compaction-001/pressure-porosity.png)、[実メッシュPNG](../exports/barrier-compaction-001/mesh-at-pressure.png)、[入力・結果・失敗記録ZIP](../exports/barrier-compaction-001.zip)。各ケースの `summary.json` に合否があり、`diagnostics_only` は採用する物理解ではありません。途中停止も含むVTU/NPZは最後の受理状態です。
+[比較CSV](../exports/barrier-compaction-002/comparison.csv)、[圧力–空隙率PNG](../exports/barrier-compaction-002/pressure-porosity.png)、[実メッシュPNG](../exports/barrier-compaction-002/mesh-at-pressure.png)、[空隙壁断面](../exports/barrier-compaction-002/pore-wall-section.png)、[接触設定比較](../exports/barrier-compaction-002/contact-sensitivity.png)、[入力・結果・失敗記録ZIP](../exports/barrier-compaction-002.zip)。各ケースの `summary.json` に合否があり、`diagnostics_only` は採用する物理解ではありません。途中停止も含むVTU/NPZは最後の受理状態です。
 
 テストは接触の力・モーメント・周期仕事、特徴遷移、摩擦上限、平行辺近傍、履歴移送、時間刻みの線形スペクトル上限、均質弾性・塑性の解析解、除荷後の永久変形、目標空隙率の到達・未達を対象とします。これらは粒子充填層のメッシュ収束や材料同定の代用にはなりません。40%→10%へ進むには、表面を含む再メッシュと履歴移送、接触正則化・メッシュ・緩和への独立収束、25 mmと100 mmの代表性を確認する必要があります。

@@ -182,7 +182,7 @@ class BarrierContact(Contact):
         if not hasattr(self,'exclude'):super().update_topology(t)
 
     def accept_geometry(self,x,H):
-        self.accepted_geometry=(x.copy(),H.copy());self.minimum_separation=self.trial_separation;self.diagonal=self.trial_diagonal.copy()
+        self.accepted_geometry=(x.copy(),H.copy());self.accepted_shifts=tuple(getattr(self,'trial_shifts',[(0,0,0)]));self.minimum_separation=self.trial_separation;self.diagonal=self.trial_diagonal.copy()
 
     def edge_stiffness_diagonal(self):return self.diagonal
 
@@ -241,10 +241,13 @@ class BarrierContact(Contact):
         count=1
         for v in hi-lo+1:count*=int(v)
         if count>729:raise ValueError('Barrier image budget exceeded; no truncation')
-        shifts=list(product(*[range(a,b+1) for a,b in zip(lo,hi)]));report['image_count']=count
+        shifts=list(product(*[range(a,b+1) for a,b in zip(lo,hi)]));self.trial_shifts=shifts;report['image_count']=count
         if hasattr(self,'accepted_geometry'):
             old,oldH=self.accepted_geometry
-            bound=2*float(np.max(np.linalg.norm(x-old,axis=1)))+max(np.linalg.norm((H-oldH)@s) for s in shifts)
+            # Include disappearing images too: their motion still belongs to
+            # the accepted-to-trial linear collision certificate.
+            certificate_shifts=set(shifts).union(self.accepted_shifts)
+            bound=2*float(np.max(np.linalg.norm(x-old,axis=1)))+max(np.linalg.norm((H-oldH)@s) for s in certificate_shifts)
             if bound>=.5*self.minimum_separation:raise ContactResolutionError('Linear-step separation certificate requires a smaller timestep')
         bounds=(*lo,*hi)
         margin=float('inf')

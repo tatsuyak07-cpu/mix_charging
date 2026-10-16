@@ -2,7 +2,7 @@
 
 最新の開発：**周期自己接触を含む陽解法FEMの圧力・空隙率制御**。[実装・検証・適用限界](docs/barrier-compaction.md)。
 4 mmの検証セルで0.1 MPaまで計算。100 mmの球充填層／空隙率40%→10%の計算は未完了です。
-[結果ZIP](exports/barrier-compaction-001.zip)・[圧力と空隙率](exports/barrier-compaction-001/pressure-porosity.png)・[実メッシュ](exports/barrier-compaction-001/mesh-at-pressure.png)。
+[結果ZIP](exports/barrier-compaction-002.zip)・[圧力と空隙率](exports/barrier-compaction-002/pressure-porosity.png)・[実メッシュ](exports/barrier-compaction-002/mesh-at-pressure.png)。
 以下には過去の条件・計算記録も保持しています。
 
 追加検証：**焼結ネックの形状固定細分化とC3D8/C3D8I比較**。[条件と判定](docs/neck-element-verification.md)。
@@ -19,11 +19,11 @@ C3D8Iの部品応答は最細分比較で2%基準内。局所塑性ひずみ・�
 最新の追加計算：**E=1 GPa・圧縮応力0.1 MPa**。[変形後メッシュ画像と結果](docs/sintered-1gpa.md)。
 設定は `configs/sintered-1gpa.json`、従来の70 GPa設定は比較用に保持しています。
 
-現在の既定モデルは直径10 mmの球と直径2 mmの焼結ネックを一体化した試験骨格です。
+従来の静解析モデルは直径10 mmの球と直径2 mmの焼結ネックを一体化した試験骨格です。
 CalculiX 2.20の静的有限要素法で圧縮と空隙率変化を計算します。円柱剛体は含みません。
 DEMやHertzばねモデルで有限要素法を代替していません。
 
-仕様：100 mm角、ネック込みの初期空隙率60%（離散形状の許容差±0.2ポイント）、
+初期の静解析仕様（最新の圧密仕様は上記リンク）：100 mm角、ネック込みの初期空隙率60%（離散形状の許容差±0.2ポイント）、
 骨格E=70 GPa、ν=0.33、粒子間は焼結接合、
 一軸圧縮の目標Cauchy応力0.1 MPa、横方向平均応力ゼロ、空隙内圧ゼロ。
 焼結モデルと限界は [docs/sintered.md](docs/sintered.md)。旧非接着モデルは
