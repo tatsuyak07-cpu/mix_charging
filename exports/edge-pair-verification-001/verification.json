@@ -1,0 +1,33 @@
+{
+  "purpose": "Manufactured edge contact force/work verification, not packing mechanics.",
+  "normal_stiffness_N_mm": 10.0,
+  "tangent_stiffness_N_mm": 5.0,
+  "friction": 0.3,
+  "checks": {
+    "100": {
+      "work_Nmm": 0.0007999999999999998,
+      "analytic_work_Nmm": 0.0008,
+      "energy_Nmm": 0.00059,
+      "friction_Nmm": 0.0002121,
+      "correction_Nmm": -2.1000000000000375e-06,
+      "work_residual_Nmm": -1.7618285302889447e-19,
+      "force_balance_N": 1.3877787807814457e-17,
+      "moment_Nmm": 2.1250362580715887e-17,
+      "coulomb_ratio": 0.30000000000000004,
+      "passed": true
+    },
+    "200": {
+      "work_Nmm": 0.0008,
+      "analytic_work_Nmm": 0.0008,
+      "energy_Nmm": 0.00059,
+      "friction_Nmm": 0.00021105,
+      "correction_Nmm": -1.0500000000000344e-06,
+      "work_residual_Nmm": 3.5998900258307764e-20,
+      "force_balance_N": 1.3877787807814457e-17,
+      "moment_Nmm": 2.5587171270657905e-17,
+      "coulomb_ratio": 0.30000000000000004,
+      "passed": true
+    }
+  },
+  "all_checks_passed": true
+}

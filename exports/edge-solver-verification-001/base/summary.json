@@ -1,0 +1,63 @@
+{
+  "contact_backend": "tracked_edges",
+  "edge_edge_response_implemented": true,
+  "status": "diagnostics_only",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": false,
+    "path_completed": false,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": false,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true
+  },
+  "failure": "ValueError('Edge-node contact handoff needs energy-consistent transfer')",
+  "steps": 640,
+  "dt_min_s": 1.4784453473654518e-08,
+  "dt_max_s": 1.478769153368849e-08,
+  "kinetic_internal_ratio_loaded": null,
+  "closed_boundary_volume_relative_error": 0.0,
+  "material_volume_relative_error": 9.842466977493223e-14,
+  "final_static_residual_ratio": 2.1660508360618023,
+  "energy_scale_Nmm": 0.17640000000000003,
+  "initial_available_energy_Nmm": 0.17640000000000003,
+  "energy_absolute_residual_Nmm": 3.5137471668604374e-06,
+  "energy_relative_error": 1.9919201626192952e-05,
+  "remesh_events": [
+    {
+      "operation": "2_to_3",
+      "removed_elements": [
+        0,
+        404
+      ],
+      "quality_before": 0.172882348363616,
+      "quality_after": 0.3734969681415636,
+      "reference_volume_relative_error": 1.1917553710418456e-16,
+      "current_volume_relative_error": 2.3835107420836913e-16,
+      "material_energy_relative_error": 1.3594799607439314e-20,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "linear_momentum_scaled_error": 0.0,
+      "angular_momentum_scaled_error": 0.0,
+      "time_s": 0.0,
+      "kinetic_energy_scaled_error": 0.0,
+      "accepted": true
+    }
+  ],
+  "initial_porosity": 0.007200000000000206,
+  "final_porosity": 0.0039755993376557885,
+  "final_axial_compression": 5.001133980754587e-05,
+  "residual_compression_strain": null,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "interior edge response only in tracked_edges; endpoint/parallel/edge-node handoff unresolved",
+    "internal 2-to-3 reconnection only; no surface remeshing",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

@@ -1,0 +1,4 @@
+{"case": "base", "max_edge_contacts": 2, "max_penetration_mm": 0.00010165922011860182, "last_time_s": 9.463571587267334e-06, "edge_activation_observed": true, "failure": "ValueError('Edge-node contact handoff needs energy-consistent transfer')"}
+{"case": "half_dt", "max_edge_contacts": 2, "max_penetration_mm": 0.0001019109502845115, "last_time_s": 9.463570789519429e-06, "edge_activation_observed": true, "failure": "ValueError('Edge-node contact handoff needs energy-consistent transfer')"}
+{"case": "edge_penalty2", "max_edge_contacts": 2, "max_penetration_mm": 0.00010165922011860182, "last_time_s": 9.463571587267334e-06, "edge_activation_observed": true, "failure": "ValueError('Edge-node contact handoff needs energy-consistent transfer')"}
+{"edge_activation": true, "node_dynamic_regression": true}

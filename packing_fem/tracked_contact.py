@@ -20,6 +20,9 @@ class TrackedContact(Contact):
     def accept_geometry(self,x,H):
         self.accepted_geometry=(x.copy(),H.copy())
 
+    def handle_edge_event(self,i,j,shift,before,after,event):
+        raise ValueError('Unresolved edge-edge contact: '+str(dict(edge_a=int(i),edge_b=int(j),shift=shift,**event)))
+
     def guard_edges(self,x,H,shifts):
         if not hasattr(self,'accepted_geometry'):return
         old,oldH=self.accepted_geometry
@@ -42,7 +45,7 @@ class TrackedContact(Contact):
                 if local:continue
                 before=np.r_[olde[i],olde[j]+oldH@shift];after=np.r_[newe[i],newe[j]+H@shift]
                 event=swept_edge_event(before,after,self.L*1e-9)
-                if event is not None:raise ValueError('Unresolved edge-edge contact: '+str(dict(edge_a=int(i),edge_b=int(j),shift=shift,**event)))
+                if event is not None:self.handle_edge_event(i,j,shift,before,after,event)
 
     def evaluate(self,x,velocity,H,Hdot,dt):
         force=np.zeros_like(x);extra=np.zeros(6);history={}
