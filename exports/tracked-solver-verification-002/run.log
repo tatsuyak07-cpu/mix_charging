@@ -1,0 +1,45 @@
+{"case": "solid", "status": "prototype_checks_passed_not_mesh_or_contact_validated", "failure": null, "steps": 775}
+{"case": "void", "status": "prototype_checks_passed_not_mesh_or_contact_validated", "failure": null, "steps": 1733}
+{"case": "impact", "status": "diagnostics_only", "failure": "ValueError(\"Unresolved edge-edge contact: {'edge_a': 37, 'edge_b': 47, 'shift': (0, 0, 0), 'time_fraction': 0.20420608957647346, 'reason': 'swept edge intersection'}\")", "steps": 639}
+{"case": "impact_half_dt", "status": "diagnostics_only", "failure": "ValueError(\"Unresolved edge-edge contact: {'edge_a': 37, 'edge_b': 47, 'shift': (0, 0, 0), 'time_fraction': 0.4043997929256875, 'reason': 'swept edge intersection'}\")", "steps": 1278}
+{
+  "tracking": {
+    "passed": true,
+    "transferred_pairs": 1
+  },
+  "active_contact_internal_flip": {
+    "passed": true,
+    "details": {
+      "operation": "2_to_3",
+      "removed_elements": [
+        0,
+        5
+      ],
+      "quality_before": 0.3147953268051063,
+      "quality_after": 0.4962648638382152,
+      "reference_volume_relative_error": 1.3931668724118018e-16,
+      "current_volume_relative_error": 1.3931668724118018e-16,
+      "material_energy_relative_error": 0.0,
+      "previous_rejected_state_transfers": 0,
+      "boundary_unchanged": true,
+      "contacts": 1,
+      "tangent_energy_before_Nmm": 1.0227965508683467e-05,
+      "force_change_N": 0.0,
+      "tangent_energy_change_Nmm": 0.0,
+      "history_keys_preserved": true,
+      "volume_error_mm3": 0.0,
+      "peeq_error": 0.0
+    }
+  },
+  "edge_edge_response": {
+    "passed": false,
+    "reason": "No response law: swept crossings/ambiguous coplanar sweeps stop the run"
+  },
+  "solver_noncontact_regression": {
+    "passed": true
+  },
+  "physical_contact_compaction": {
+    "passed": false,
+    "reason": "Requires edge response, complete path, contact/time/mesh convergence and quasi-static checks"
+  }
+}

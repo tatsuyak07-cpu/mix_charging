@@ -1,0 +1,18 @@
+{
+  "impact": {
+    "last_accepted_time_s": 9.448787120256682e-06,
+    "max_contacts": 0
+  },
+  "impact_half_dt": {
+    "last_accepted_time_s": 9.448786325826112e-06,
+    "max_contacts": 0
+  },
+  "solid": {
+    "final_porosity_difference": 0.0,
+    "final_nominal_stress_difference_MPa": 0.0
+  },
+  "void": {
+    "final_porosity_difference": 0.0,
+    "final_nominal_stress_difference_MPa": 0.0
+  }
+}

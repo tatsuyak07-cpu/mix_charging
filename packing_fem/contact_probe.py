@@ -87,7 +87,12 @@ def friction_return(spring,old_normal,normal,increment,normal_force,stiffness,mu
     dissipation=float(stiffness*new@plastic)
     algorithmic=.5*stiffness*float((new-old)@(new-old))
     work=float(-force@du)
+    trapezoidal_work=.5*stiffness*float((old+new)@du)
+    # Velocity Verlet uses endpoint forces, not backward-Euler work.
+    # Keep the signed quadrature correction separate from friction dissipation.
+    trapezoidal_correction=trapezoidal_work-elastic_change-dissipation
     return dict(spring=new,force=force,energy=.5*stiffness*float(new@new),
                 elastic_change=float(elastic_change),friction_loss=dissipation,
                 algorithmic_loss=algorithmic,work=work,
-                balance_residual=float(work-elastic_change-dissipation-algorithmic))
+                balance_residual=float(work-elastic_change-dissipation-algorithmic),
+                trapezoidal_work=trapezoidal_work,trapezoidal_correction=trapezoidal_correction)

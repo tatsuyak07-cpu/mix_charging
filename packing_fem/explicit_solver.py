@@ -56,6 +56,7 @@ def validate(c):
     if not isinstance(c.get('remesh_every',0),int) or c.get('remesh_every',0)<0:raise ValueError('Invalid remesh interval')
     if c.get('unload_s',0)<0 or c.get('recovery_hold_s',0)<0:raise ValueError('Negative unloading time')
     if c.get('recovery_hold_s',0)>0 and c.get('unload_s',0)<=0:raise ValueError('Recovery hold needs an unloading segment')
+    if c.get('contact_backend','legacy') not in ('legacy','tracked_guarded'):raise ValueError('Unknown contact backend')
     constants(c)
 
 
@@ -65,7 +66,11 @@ def solve(directory,X,t,c):
     (directory/'config.json').write_text(json.dumps(c,indent=2)+'\n')
     V0,_,D=geometry(X,t);initial_V0=float(V0.sum());periodic=Periodic(X,c['length_mm'])
     mass=lumped_mass(t,V0,c['density_tonne_mm3'],len(X));periodic.mass(mass)
-    contact=Contact(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'])
+    contact_type=Contact
+    if c.get('contact_backend','legacy')=='tracked_guarded':
+        from .tracked_contact import TrackedContact
+        contact_type=TrackedContact
+    contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'])
     b=np.repeat(np.eye(3)[None],len(t),axis=0);ep=np.full(len(t),float(c.get('initial_peeq',0.)));q=np.zeros(periodic.ndof);v=q.copy();x=X.copy()
     if 'initial_velocity_mm_s' in c:
         initial_velocity=np.asarray(c['initial_velocity_mm_s'],float)
@@ -73,10 +78,12 @@ def solve(directory,X,t,c):
         v=periodic.remap_velocity(periodic.force(mass[:,None]*initial_velocity),0.)
     f_int,volume,energy,J,D,sigma=internal_force(x,t,b,ep,c)
     fc,extra,hist,ci=contact.evaluate(x,periodic.velocities(v),np.eye(3)*periodic.L,np.zeros((3,3)),0.)
-    contact.history=hist;f=periodic.force(f_int+fc,extra);a=periodic.acceleration(f,v,0.,c['damping_per_s'])
+    contact.history=hist
+    if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,np.eye(3)*periodic.L)
+    f=periodic.force(f_int+fc,extra);a=periodic.acceleration(f,v,0.,c['damping_per_s'])
     release_time=c['ramp_s']+c.get('hold_s',0.);unload=c.get('unload_s',0.)
     duration=release_time+unload+c.get('recovery_hold_s',0.);release_load=None;external=np.zeros(periodic.ndof)
-    time=0.;W=0.;damp=0.;friction=0.;released=0.;steps=0;remesh_events=[];history=[];failure=None
+    time=0.;W=0.;damp=0.;friction=0.;released=0.;algorithmic=0.;steps=0;remesh_events=[];history=[];failure=None
     def try_remesh(ap):
         nonlocal t,b,ep,V0,mass,v,f_int,volume,energy,J,D,sigma,f,a
         proposal=propose(x,t,b,ep,V0,c,c['remesh_quality'],c['remesh_energy_tolerance'])
@@ -111,13 +118,13 @@ def solve(directory,X,t,c):
         F=deformation(q[-6:]);vc=float(np.linalg.det(F)*periodic.L**3)
         if vc<=0:raise ValueError('Inverted macroscopic cell')
         kinetic=float(.5*v@(periodic.M@v));internal=float(V0@energy)
-        total=kinetic+internal+ci['normal_energy']+ci['tangent_energy']+damp+friction+released-initial_energy
+        total=kinetic+internal+ci['normal_energy']+ci['tangent_energy']+damp+friction+released+algorithmic-initial_energy
         reaction=periodic.M@a-f+c['damping_per_s']*(periodic.M@v)
         nominal=float(-reaction[periodic.prescribed]/periodic.L**3)
         dynamic=reaction-external;dynamic[-6:]/=periodic.L
         return [time,-q[periodic.prescribed],1-volume.sum()/vc,nominal,kinetic,internal,W,damp,friction,released,
                 ci['normal_energy'],ci['tangent_energy'],total-W,float(ep.max()),float(J.min()),float(quality(x,t).min()),
-                ci['penetration_mm'],ci['max_coulomb_ratio'],ci['contacts'],len(t),float(np.max(np.abs(dynamic[periodic.free])))]
+                ci['penetration_mm'],ci['max_coulomb_ratio'],ci['contacts'],len(t),float(np.max(np.abs(dynamic[periodic.free]))),algorithmic]
     history.append(snapshot())
     progress=directory/'progress.jsonl';progress.write_text('')
     def log_progress():
@@ -162,9 +169,11 @@ def solve(directory,X,t,c):
             r1=(periodic.M@anew-fnew+c['damping_per_s']*(periodic.M@vnew))[periodic.prescribed]
             W+=.5*(r0+r1)*(qnew[periodic.prescribed]-q[periodic.prescribed])
             vm=.5*(v+vnew);damp+=dt*c['damping_per_s']*float(vm@(periodic.M@vm))
-            friction+=cnew['friction_increment'];released+=cnew['released_history_energy']
+            friction+=cnew['friction_increment'];released+=cnew['released_history_energy'];algorithmic+=cnew.get('algorithmic_increment',0.)
             q,v,a,x,b,ep,volume,energy,J,D,sigma,f,ci=qnew,vnew,anew,xnew,bnew,epnew,volnew,enew,Jnew,Dnew,snew,fnew,cnew
-            contact.history=newhist;time=next_time;steps+=1
+            contact.history=newhist
+            if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,H)
+            time=next_time;steps+=1
             if c.get('remesh_every',0) and steps%c['remesh_every']==0:try_remesh(ap)
             if quality(x,t).min()<c['minimum_quality']:raise RuntimeError('Mesh quality exhausted; local remeshing cannot repair this boundary distortion')
             if steps%c['output_every']==0:
@@ -193,12 +202,12 @@ def solve(directory,X,t,c):
     if unload>0:checks['unload_completed']=failure is None and not periodic.prescribed_active and time>=duration-1e-14
     if 'target_final_porosity' in c:checks['target_porosity_observed']=bool(np.any((h[:,2]>=0)&(h[:,2]<=c['target_final_porosity'])))
     checks={k:bool(value) for k,value in checks.items()}
-    result={'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
+    result={'contact_backend':c.get('contact_backend','legacy'),'edge_edge_response_implemented':False,'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
             'checks':checks,'failure':failure,'steps':steps,'dt_min_s':dt_min,'dt_max_s':dt_max,'kinetic_internal_ratio_loaded':ke_ratio if np.isfinite(ke_ratio) else None,
             'closed_boundary_volume_relative_error':boundary_error,'material_volume_relative_error':material_volume_error,'final_static_residual_ratio':float(static_ratio),'energy_scale_Nmm':work_scale,'initial_available_energy_Nmm':initial_available_energy,'energy_absolute_residual_Nmm':float(np.max(np.abs(h[:,12]))),'energy_relative_error':float(np.max(np.abs(h[:,12]))/work_scale),'remesh_events':remesh_events,
             'initial_porosity':float(h[0,2]),'final_porosity':float(h[-1,2]),'final_axial_compression':float(h[-1,1]),'residual_compression_strain':float(h[-1,1]) if unload>0 and checks.get('unload_completed') and checks['static_equilibrium'] else None,
-            'limitations':['linear-tetra plastic locking not converged','node-face contact omits edge-edge contact','internal 2-to-3 reconnection only; no surface remeshing','numerical density and damping are not measured material data','uncalibrated Kirchhoff-yield Hencky J2 material','not a verified 40 to 10 percent compaction result']}
-    np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N')
+            'limitations':['linear-tetra plastic locking not converged','edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections','internal 2-to-3 reconnection only; no surface remeshing','numerical density and damping are not measured material data','uncalibrated Kirchhoff-yield Hencky J2 material','not a verified 40 to 10 percent compaction result']}
+    np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N,contact_algorithmic_Nmm')
     np.savez_compressed(directory/'last-state.npz',points=x,reference_points=X,tets=t,elastic_b=b,peeq=ep,reference_volume=V0,generalized_position=q,generalized_velocity=v)
     (directory/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
     import meshio

@@ -1,0 +1,3 @@
+{"case": "solid", "status": "prototype_checks_passed_not_mesh_or_contact_validated", "failure": null, "steps": 775}
+{"case": "void", "status": "prototype_checks_passed_not_mesh_or_contact_validated", "failure": null, "steps": 1733}
+{"case": "impact", "status": "diagnostics_only", "failure": "ValueError(\"Unresolved edge-edge contact: {'edge_a': 37, 'edge_b': 47, 'shift': (0, 0, 0), 'time_fraction': 0.20420608957647346, 'reason': 'swept edge intersection'}\")", "steps": 639}

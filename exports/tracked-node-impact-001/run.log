@@ -1,0 +1,2 @@
+{"case": "base", "max_contacts": 1, "max_penetration_mm": 0.001578856657610084, "energy_error": 0.000676947015348282, "completed": true, "active_force_feedback": true}
+{"case": "half_dt", "max_contacts": 1, "max_penetration_mm": 0.0015797346119271062, "energy_error": 0.00027440937688350616, "completed": true, "active_force_feedback": true}

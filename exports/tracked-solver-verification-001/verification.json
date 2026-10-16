@@ -1,0 +1,260 @@
+{
+  "gates": {
+    "tracking": {
+      "passed": true,
+      "transferred_pairs": 1
+    },
+    "active_contact_internal_flip": {
+      "passed": true,
+      "details": {
+        "operation": "2_to_3",
+        "removed_elements": [
+          0,
+          5
+        ],
+        "quality_before": 0.3147953268051063,
+        "quality_after": 0.4962648638382152,
+        "reference_volume_relative_error": 1.3931668724118018e-16,
+        "current_volume_relative_error": 1.3931668724118018e-16,
+        "material_energy_relative_error": 0.0,
+        "previous_rejected_state_transfers": 0,
+        "boundary_unchanged": true,
+        "contacts": 1,
+        "tangent_energy_before_Nmm": 1.0227965508683467e-05,
+        "force_change_N": 0.0,
+        "tangent_energy_change_Nmm": 0.0,
+        "history_keys_preserved": true,
+        "volume_error_mm3": 0.0,
+        "peeq_error": 0.0
+      }
+    },
+    "edge_edge_response": {
+      "passed": false,
+      "reason": "No response law: swept crossings/ambiguous coplanar sweeps stop the run"
+    },
+    "solver_noncontact_regression": {
+      "passed": true
+    },
+    "physical_contact_compaction": {
+      "passed": false,
+      "reason": "Requires edge response, complete path, contact/time/mesh convergence and quasi-static checks"
+    }
+  },
+  "runs": {
+    "solid": {
+      "contact_backend": "tracked_guarded",
+      "edge_edge_response_implemented": false,
+      "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+      "checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true
+      },
+      "failure": null,
+      "steps": 775,
+      "dt_min_s": 1.0461197235473634e-06,
+      "dt_max_s": 1.161830773507337e-06,
+      "kinetic_internal_ratio_loaded": 0.002322224978770869,
+      "closed_boundary_volume_relative_error": 1.1106007527749174e-16,
+      "material_volume_relative_error": 7.560618797697316e-14,
+      "final_static_residual_ratio": 1.952624893089353e-06,
+      "energy_scale_Nmm": 5.03404549270478e-06,
+      "initial_available_energy_Nmm": 0.0,
+      "energy_absolute_residual_Nmm": 6.1368937705549045e-12,
+      "energy_relative_error": 1.219077932340569e-06,
+      "remesh_events": [],
+      "initial_porosity": 1.1102230246251565e-16,
+      "final_porosity": -2.220446049250313e-16,
+      "final_axial_compression": 0.001,
+      "residual_compression_strain": null,
+      "limitations": [
+        "linear-tetra plastic locking not converged",
+        "edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections",
+        "internal 2-to-3 reconnection only; no surface remeshing",
+        "numerical density and damping are not measured material data",
+        "uncalibrated Kirchhoff-yield Hencky J2 material",
+        "not a verified 40 to 10 percent compaction result"
+      ]
+    },
+    "void": {
+      "contact_backend": "tracked_guarded",
+      "edge_edge_response_implemented": false,
+      "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+      "checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true
+      },
+      "failure": null,
+      "steps": 1733,
+      "dt_min_s": 4.4000645312188e-08,
+      "dt_max_s": 8.660254037844386e-07,
+      "kinetic_internal_ratio_loaded": 0.00548586155009652,
+      "closed_boundary_volume_relative_error": 0.0,
+      "material_volume_relative_error": 2.5479618415147343e-13,
+      "final_static_residual_ratio": 0.00014650008157469365,
+      "energy_scale_Nmm": 0.0032624180971315875,
+      "initial_available_energy_Nmm": 0.0,
+      "energy_absolute_residual_Nmm": 2.0398742185418622e-09,
+      "energy_relative_error": 6.252644994629532e-07,
+      "remesh_events": [],
+      "initial_porosity": 0.03703703703703709,
+      "final_porosity": 0.03699313854759689,
+      "final_axial_compression": 0.005,
+      "residual_compression_strain": null,
+      "limitations": [
+        "linear-tetra plastic locking not converged",
+        "edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections",
+        "internal 2-to-3 reconnection only; no surface remeshing",
+        "numerical density and damping are not measured material data",
+        "uncalibrated Kirchhoff-yield Hencky J2 material",
+        "not a verified 40 to 10 percent compaction result"
+      ]
+    },
+    "impact": {
+      "contact_backend": "tracked_guarded",
+      "edge_edge_response_implemented": false,
+      "status": "diagnostics_only",
+      "checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": false,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true
+      },
+      "failure": "ValueError(\"Unresolved edge-edge contact: {'edge_a': 13, 'edge_b': 33, 'shift': (0, 0, 0), 'time_fraction': 0.0, 'reason': 'ambiguous coplanar swept edge boxes'}\")",
+      "steps": 0,
+      "dt_min_s": 1.478769153368849e-08,
+      "dt_max_s": 1.478769153368849e-08,
+      "kinetic_internal_ratio_loaded": null,
+      "closed_boundary_volume_relative_error": 2.290226384400001e-16,
+      "material_volume_relative_error": 1.5781286907012702e-16,
+      "final_static_residual_ratio": 6.160994595071572e-09,
+      "energy_scale_Nmm": 0.17640000000000003,
+      "initial_available_energy_Nmm": 0.17640000000000003,
+      "energy_absolute_residual_Nmm": 0.0,
+      "energy_relative_error": 0.0,
+      "remesh_events": [
+        {
+          "operation": "2_to_3",
+          "removed_elements": [
+            0,
+            404
+          ],
+          "quality_before": 0.172882348363616,
+          "quality_after": 0.3734969681415636,
+          "reference_volume_relative_error": 1.1917553710418456e-16,
+          "current_volume_relative_error": 2.3835107420836913e-16,
+          "material_energy_relative_error": 1.3594799607439314e-20,
+          "previous_rejected_state_transfers": 0,
+          "boundary_unchanged": true,
+          "linear_momentum_scaled_error": 0.0,
+          "angular_momentum_scaled_error": 0.0,
+          "time_s": 0.0,
+          "kinetic_energy_scaled_error": 0.0,
+          "accepted": true
+        }
+      ],
+      "initial_porosity": 0.007200000000000206,
+      "final_porosity": 0.007200000000000206,
+      "final_axial_compression": -0.0,
+      "residual_compression_strain": null,
+      "limitations": [
+        "linear-tetra plastic locking not converged",
+        "edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections",
+        "internal 2-to-3 reconnection only; no surface remeshing",
+        "numerical density and damping are not measured material data",
+        "uncalibrated Kirchhoff-yield Hencky J2 material",
+        "not a verified 40 to 10 percent compaction result"
+      ]
+    },
+    "impact_half_dt": {
+      "contact_backend": "tracked_guarded",
+      "edge_edge_response_implemented": false,
+      "status": "diagnostics_only",
+      "checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": false,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true
+      },
+      "failure": "ValueError(\"Unresolved edge-edge contact: {'edge_a': 13, 'edge_b': 33, 'shift': (0, 0, 0), 'time_fraction': 0.0, 'reason': 'ambiguous coplanar swept edge boxes'}\")",
+      "steps": 0,
+      "dt_min_s": 7.393845766844245e-09,
+      "dt_max_s": 7.393845766844245e-09,
+      "kinetic_internal_ratio_loaded": null,
+      "closed_boundary_volume_relative_error": 2.290226384400001e-16,
+      "material_volume_relative_error": 1.5781286907012702e-16,
+      "final_static_residual_ratio": 6.160994595071572e-09,
+      "energy_scale_Nmm": 0.17640000000000003,
+      "initial_available_energy_Nmm": 0.17640000000000003,
+      "energy_absolute_residual_Nmm": 0.0,
+      "energy_relative_error": 0.0,
+      "remesh_events": [
+        {
+          "operation": "2_to_3",
+          "removed_elements": [
+            0,
+            404
+          ],
+          "quality_before": 0.172882348363616,
+          "quality_after": 0.3734969681415636,
+          "reference_volume_relative_error": 1.1917553710418456e-16,
+          "current_volume_relative_error": 2.3835107420836913e-16,
+          "material_energy_relative_error": 1.3594799607439314e-20,
+          "previous_rejected_state_transfers": 0,
+          "boundary_unchanged": true,
+          "linear_momentum_scaled_error": 0.0,
+          "angular_momentum_scaled_error": 0.0,
+          "time_s": 0.0,
+          "kinetic_energy_scaled_error": 0.0,
+          "accepted": true
+        }
+      ],
+      "initial_porosity": 0.007200000000000206,
+      "final_porosity": 0.007200000000000206,
+      "final_axial_compression": -0.0,
+      "residual_compression_strain": null,
+      "limitations": [
+        "linear-tetra plastic locking not converged",
+        "edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections",
+        "internal 2-to-3 reconnection only; no surface remeshing",
+        "numerical density and damping are not measured material data",
+        "uncalibrated Kirchhoff-yield Hencky J2 material",
+        "not a verified 40 to 10 percent compaction result"
+      ]
+    }
+  },
+  "software_coupling_implemented": true,
+  "physical_integration_validated": false,
+  "original_material_geometry_friction_unchanged": true
+}

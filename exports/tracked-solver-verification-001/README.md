@@ -1,0 +1,1 @@
+Retained first attempt. The first swept-edge guard stopped the slit fixture at step zero because overlapping coplanar edge boxes could not be certified separate. These were distant edges; version 002 adds a distance/motion separation certificate. Original results retained. This directory is not an accepted physical solution.

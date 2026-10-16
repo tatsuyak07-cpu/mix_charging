@@ -69,3 +69,7 @@ C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全�
 - [contact-features-verification-002](contact-features-verification-002): 面・凹辺・凹頂点に対する摩擦なし接触形状演算子の解析式比較。[ZIP](contact-features-verification-002.zip)。周期自己接触・圧密計算への組込みは未実施。001は単位表記分離前の記録を保持。
 
 - [periodic-friction-verification-001](periodic-friction-verification-001): 周期境界での独立試験点の内外判定、既知の接触領域の摩擦履歴と仕事の収支。[ZIP](periodic-friction-verification-001.zip)。圧縮ソルバーへの組込み・接触領域の自動追跡は未実施。
+
+- [tracked-solver-verification-003](tracked-solver-verification-003) と [tracked-node-impact-002](tracked-node-impact-002): 研究用ソルバー結合、接触履歴・内部再接続・動的な反力試験。[ZIP一式](tracked-solver-integration-002.zip)。元のスリット試験は辺―辺反力が未実装のため不合格。001は過剰な停止判定があった初版を保持。
+
+中間記録のtracked-solver-verification-002とtracked-node-impact-001、および最初のZIPも、仕事積分補正の修正前の記録として保持しています。

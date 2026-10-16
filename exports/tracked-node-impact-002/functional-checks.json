@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "active_contact_and_full_path": true,
+    "energy_under_2percent": true,
+    "penetration_under_0_02mm": true,
+    "energy_improves_with_half_step": true,
+    "material_and_force_audits": true
+  },
+  "all_dynamic_functional_checks_passed": true,
+  "quasistatic_validated": false,
+  "edge_edge_response_implemented": false
+}

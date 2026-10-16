@@ -1,0 +1,106 @@
+{
+  "purpose": "Manufactured tip impact in a periodic solid with a cubic pore.\n\nExercises force feedback in the compression solver, NOT quasi-static compaction.\nThe tip initially touches no solid; edge guard remains enabled throughout.\n",
+  "runs": {
+    "base": {
+      "summary": {
+        "contact_backend": "tracked_guarded",
+        "edge_edge_response_implemented": false,
+        "status": "diagnostics_only",
+        "checks": {
+          "closed_boundary_volume": true,
+          "material_volume_consistency": true,
+          "static_equilibrium": false,
+          "path_completed": true,
+          "positive_J": true,
+          "physical_porosity": true,
+          "energy_balance": true,
+          "low_kinetic_energy": false,
+          "coulomb_bound": true,
+          "reference_volume_conserved": true,
+          "penetration_bound": true
+        },
+        "failure": null,
+        "steps": 125,
+        "dt_min_s": 2.318989801320401e-09,
+        "dt_max_s": 1.209490404215283e-07,
+        "kinetic_internal_ratio_loaded": 2.260291906312954,
+        "closed_boundary_volume_relative_error": 1.3664401588986649e-16,
+        "material_volume_relative_error": 3.4139358007223564e-14,
+        "final_static_residual_ratio": 0.3558585159576939,
+        "energy_scale_Nmm": 3.1457551644875077e-06,
+        "initial_available_energy_Nmm": 6.499999999999999e-07,
+        "energy_absolute_residual_Nmm": 2.129509569616262e-09,
+        "energy_relative_error": 0.000676947015348282,
+        "remesh_events": [],
+        "initial_porosity": 0.03698888888888885,
+        "final_porosity": 0.03698710983165632,
+        "final_axial_compression": 0.0001,
+        "residual_compression_strain": null,
+        "limitations": [
+          "linear-tetra plastic locking not converged",
+          "edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections",
+          "internal 2-to-3 reconnection only; no surface remeshing",
+          "numerical density and damping are not measured material data",
+          "uncalibrated Kirchhoff-yield Hencky J2 material",
+          "not a verified 40 to 10 percent compaction result"
+        ]
+      },
+      "max_contacts": 1,
+      "max_penetration_mm": 0.001578856657610084,
+      "energy_error": 0.000676947015348282,
+      "completed": true,
+      "active_force_feedback": true
+    },
+    "half_dt": {
+      "summary": {
+        "contact_backend": "tracked_guarded",
+        "edge_edge_response_implemented": false,
+        "status": "diagnostics_only",
+        "checks": {
+          "closed_boundary_volume": true,
+          "material_volume_consistency": true,
+          "static_equilibrium": false,
+          "path_completed": true,
+          "positive_J": true,
+          "physical_porosity": true,
+          "energy_balance": true,
+          "low_kinetic_energy": false,
+          "coulomb_bound": true,
+          "reference_volume_conserved": true,
+          "penetration_bound": true
+        },
+        "failure": null,
+        "steps": 249,
+        "dt_min_s": 2.3189884273228464e-09,
+        "dt_max_s": 6.047452021076415e-08,
+        "kinetic_internal_ratio_loaded": 2.3462505693818474,
+        "closed_boundary_volume_relative_error": 0.0,
+        "material_volume_relative_error": 3.397282455352979e-14,
+        "final_static_residual_ratio": 0.3558669468461912,
+        "energy_scale_Nmm": 3.1463592387456395e-06,
+        "initial_available_energy_Nmm": 6.499999999999999e-07,
+        "energy_absolute_residual_Nmm": 8.633904781558537e-10,
+        "energy_relative_error": 0.00027440937688350616,
+        "remesh_events": [],
+        "initial_porosity": 0.03698888888888885,
+        "final_porosity": 0.036987109871750024,
+        "final_axial_compression": 0.0001,
+        "residual_compression_strain": null,
+        "limitations": [
+          "linear-tetra plastic locking not converged",
+          "edge-edge response absent; tracked backend stops on detected or ambiguous swept intersections",
+          "internal 2-to-3 reconnection only; no surface remeshing",
+          "numerical density and damping are not measured material data",
+          "uncalibrated Kirchhoff-yield Hencky J2 material",
+          "not a verified 40 to 10 percent compaction result"
+        ]
+      },
+      "max_contacts": 1,
+      "max_penetration_mm": 0.0015797346119271062,
+      "energy_error": 0.00027440937688350616,
+      "completed": true,
+      "active_force_feedback": true
+    }
+  },
+  "quasistatic_validated": false
+}
