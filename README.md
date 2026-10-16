@@ -122,3 +122,5 @@ CSV・PNG・計算記録は [exports](exports/README.md) に収録していま�
 次段階の検討: [周期接触の不連続・計算負荷と検証順序](docs/explicit-contact-next-review.md)。接触辺の通過時に生じるエネルギーの跳びを特定し、時間刻み半減でも残ることを確認しました。
 
 接触の次段階検証: [面・凹辺・凹頂点の最近点処理と力・エネルギーの検証](docs/contact-feature-verification.md)。閉じた表面の試験用処理であり、圧縮ソルバーへの組込みは未実施です。
+
+[周期切断面の内外判定と既知の接触領域の摩擦履歴の検証](docs/periodic-friction-verification.md)を追加しました。試験用演算子の検証であり、圧縮ソルバーへの組込みと接触領域の自動追跡は未実施です。

@@ -1,0 +1,49 @@
+{
+  "purpose": "periodic independent-probe and prescribed known-patch friction verification",
+  "checks": {
+    "periodic_cut_path": {
+      "samples": 246,
+      "max_force_error_N": 6.938893903907228e-15,
+      "max_energy_error_Nmm": 1.3877787807814457e-16,
+      "passed": true
+    },
+    "friction_seam_201": {
+      "triangle_count": 2,
+      "final_force_N": 0.6,
+      "elastic_energy_Nmm": 0.0036,
+      "friction_loss_Nmm": 0.17279999999999987,
+      "algorithmic_loss_Nmm": 0.00045,
+      "backward_euler_work_Nmm": 0.1768499999999998,
+      "analytic_continuum_work_Nmm": 0.1764,
+      "discrete_work_residual_Nmm": -4.954803928258755e-17,
+      "max_step_residual_Nmm": 2.168404344971009e-19,
+      "passed": true
+    },
+    "friction_seam_401": {
+      "triangle_count": 2,
+      "final_force_N": 0.6,
+      "elastic_energy_Nmm": 0.0036,
+      "friction_loss_Nmm": 0.17279999999999915,
+      "algorithmic_loss_Nmm": 0.000225,
+      "backward_euler_work_Nmm": 0.17662499999999906,
+      "analytic_continuum_work_Nmm": 0.1764,
+      "discrete_work_residual_Nmm": -8.02851708725516e-17,
+      "max_step_residual_Nmm": 3.1340219048409113e-19,
+      "passed": true
+    },
+    "friction_step_refinement": {
+      "passed": true
+    },
+    "normal_rotation_sliding": {
+      "max_step_residual_Nmm": 2.211772431870429e-17,
+      "discrete_work_residual_Nmm": 6.941062308252199e-16,
+      "friction_loss_Nmm": 0.2942388980384676,
+      "passed": true
+    }
+  },
+  "all_checks_passed": true,
+  "integrated_with_compression_solver": false,
+  "automatic_contact_patch_tracking": false,
+  "edge_edge_contact": false,
+  "quasistatic_compaction_validated": false
+}

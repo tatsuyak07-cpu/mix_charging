@@ -67,3 +67,5 @@ C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全�
 - [explicit-contact-review-001](explicit-contact-review-001): 接触有効化の不連続、時間刻み半減比較、計算負荷の診断。[ZIP](explicit-contact-review-001.zip)。準静的圧密の合格結果ではありません。
 
 - [contact-features-verification-002](contact-features-verification-002): 面・凹辺・凹頂点に対する摩擦なし接触形状演算子の解析式比較。[ZIP](contact-features-verification-002.zip)。周期自己接触・圧密計算への組込みは未実施。001は単位表記分離前の記録を保持。
+
+- [periodic-friction-verification-001](periodic-friction-verification-001): 周期境界での独立試験点の内外判定、既知の接触領域の摩擦履歴と仕事の収支。[ZIP](periodic-friction-verification-001.zip)。圧縮ソルバーへの組込み・接触領域の自動追跡は未実施。
