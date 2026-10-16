@@ -1,0 +1,28 @@
+.........................F                                               [100%]
+=================================== FAILURES ===================================
+________ test_homogeneous_pressure_plastic_equilibrium_matches_analytic ________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-70/test_homogeneous_pressure_plas0')
+
+    def test_homogeneous_pressure_plastic_equilibrium_matches_analytic(tmp_path):
+        import json
+        from pathlib import Path
+        from scipy.optimize import brentq
+        from packing_fem import sintered
+        from packing_fem.explicit_material import hex_to_tet
+        from packing_fem.explicit_solver import solve
+        c=json.loads(Path('configs/explicit-prototype.json').read_text())
+        c.update(contact_backend='distance_barrier',loading_mode='nominal_pressure',pressure_mpa=.1,length_mm=1.,ramp_s=.016,hold_s=.002,timestep_method='assembled_mass_bound')
+        X,h,_=sintered.mesh(np.ones((1,1,1),bool),1.);r=solve(tmp_path/'plastic-pressure',X,hex_to_tet(X,h),c)
+        expected=brentq(lambda lam:c['pressure_mpa']*lam-c['yield_mpa']-c['hardening_mpa']*(-np.log(lam)-c['pressure_mpa']*lam/c['young_mpa']),.5,1.)
+>       assert all(r['checks'].values()),r
+E       AssertionError: {'porosity_goal_equilibrated': None, 'peak_nominal_pressure_MPa': 0.09994747799628884, 'contact_quadrature_variation_Nmm': 0.0, 'contact_released_history_Nmm': 0.0, ...}
+E       assert False
+E        +  where False = all(dict_values([True, True, True, False, True, True, True, True, True, True, True, True, False]))
+E        +    where dict_values([True, True, True, False, True, True, True, True, True, True, True, True, False]) = <built-in method values of dict object at 0x7fc1e38ec340>()
+E        +      where <built-in method values of dict object at 0x7fc1e38ec340> = {'closed_boundary_volume': True, 'material_volume_consistency': True, 'static_equilibrium': True, 'path_completed': False, ...}.values
+
+tests/test_barrier_contact.py:300: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_barrier_contact.py::test_homogeneous_pressure_plastic_equilibrium_matches_analytic
+1 failed, 25 passed in 53.46s

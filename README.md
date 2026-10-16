@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+最新の開発：**周期自己接触を含む陽解法FEMの圧力・空隙率制御**。[実装・検証・適用限界](docs/barrier-compaction.md)。
+4 mmの検証セルで0.1 MPaまで計算。100 mmの球充填層／空隙率40%→10%の計算は未完了です。
+[結果ZIP](exports/barrier-compaction-001.zip)・[圧力と空隙率](exports/barrier-compaction-001/pressure-porosity.png)・[実メッシュ](exports/barrier-compaction-001/mesh-at-pressure.png)。
+以下には過去の条件・計算記録も保持しています。
+
 追加検証：**焼結ネックの形状固定細分化とC3D8/C3D8I比較**。[条件と判定](docs/neck-element-verification.md)。
 C3D8Iの部品応答は最細分比較で2%基準内。局所塑性ひずみ・周期充填層全体は未検証です。
 

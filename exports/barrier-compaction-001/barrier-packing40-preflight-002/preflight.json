@@ -1,0 +1,19 @@
+{
+  "source": "exports/explicit-fem-prototype-002/prepared-40percent-model",
+  "source_mesh_sha256": "1249e95256ae192824c735c4e5caaf7c9db080cd1ca4634351b0436c429fb6a6",
+  "length_mm": 25.0,
+  "nodes": 14320,
+  "tetrahedra": 56382,
+  "initial_porosity": 0.39859199999999995,
+  "candidate_budget": 1000000,
+  "full_compaction_started": false,
+  "physical_solution_validated": false,
+  "initial_contact_evaluation_completed": true,
+  "initial_contacts": 0,
+  "minimum_separation_mm": 0.1,
+  "elapsed_s": 12.193080084995017,
+  "search_counts": {
+    "point_triangle_broad_candidates": 49402,
+    "edge_edge_broad_candidates": 717397
+  }
+}
