@@ -1,0 +1,66 @@
+{"refinement": 1, "phase_fraction": 0.0, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 112, "edge_contacts": 64, "point_triangle_force_N": 0.3796746320557839, "edge_edge_force_N": 0.5484189129694644, "tangent_resultant_N": 0.0, "initial_tangent_energy_Nmm": 0.0, "initial_friction_increment_Nmm": 0.0, "force_N": 0.9280935450252477, "energy_Nmm": 0.0016152149692865978, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 14.666666666666885, "energy_gain": 14.666666666666995, "force_balance_relative": 5.981202167476309e-17, "gap_gradient_relative": 1.1550167919165816e-10, "macro_work_relative": 4.3757897871247514e-10, "elapsed_s": 0.24526743200840428}
+{"refinement": 1, "phase_fraction": 0.0025, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 112, "edge_contacts": 64, "point_triangle_force_N": 0.3597787100074389, "edge_edge_force_N": 0.5236256898486218, "tangent_resultant_N": 0.07367062519068601, "initial_tangent_energy_Nmm": 4.269681610646148e-31, "initial_friction_increment_Nmm": 0.0, "force_N": 0.8834043998560608, "energy_Nmm": 0.0015130766655743393, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 13.960443894912858, "energy_gain": 13.739218318966172, "force_balance_relative": 6.402507518117616e-17, "gap_gradient_relative": 1.1084165649606454e-10, "macro_work_relative": 4.5000512084887715e-10, "elapsed_s": 0.3938819879840594}
+{"refinement": 1, "phase_fraction": 0.005, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 113, "edge_contacts": 65, "point_triangle_force_N": 0.3076430839515025, "edge_edge_force_N": 0.4585013309098954, "tangent_resultant_N": 0.11091105385313497, "initial_tangent_energy_Nmm": 1.4997733676012266e-31, "initial_friction_increment_Nmm": 0.0, "force_N": 0.766144414861398, "energy_Nmm": 0.0012578821483833053, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 12.107383799329181, "energy_gain": 11.421970776086448, "force_balance_relative": 1.477493679607903e-16, "gap_gradient_relative": 1.2805863487838182e-10, "macro_work_relative": 4.464746657120312e-10, "elapsed_s": 0.4926260829961393}
+{"refinement": 1, "phase_fraction": 0.01, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 113, "edge_contacts": 65, "point_triangle_force_N": 0.18284205981887539, "edge_edge_force_N": 0.3009259001022756, "tangent_resultant_N": 0.05626317224564436, "initial_tangent_energy_Nmm": 1.3345925910047636e-32, "initial_friction_increment_Nmm": 0.0, "force_N": 0.483767959921151, "energy_Nmm": 0.0007608048600927219, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 7.644987350907574, "energy_gain": 6.908350587097768, "force_balance_relative": 1.1674709608247563e-16, "gap_gradient_relative": 1.7077074744989554e-10, "macro_work_relative": 4.454072934976571e-10, "elapsed_s": 0.3605646890064236}
+{"refinement": 1, "phase_fraction": 0.015, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 62, "edge_contacts": 38, "point_triangle_force_N": 0.13378417417661187, "edge_edge_force_N": 0.23578365727902917, "tangent_resultant_N": 0.026851894800060543, "initial_tangent_energy_Nmm": 7.35827313140449e-32, "initial_friction_increment_Nmm": 0.0, "force_N": 0.3695678314556411, "energy_Nmm": 0.0005895558376917368, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 5.840282182476943, "energy_gain": 5.3533548891213085, "force_balance_relative": 7.539559054167495e-17, "gap_gradient_relative": 1.4257243478268515e-10, "macro_work_relative": 4.5067431244343644e-10, "elapsed_s": 0.2842131770157721}
+{"refinement": 1, "phase_fraction": 0.02, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 60, "edge_contacts": 36, "point_triangle_force_N": 0.10451810094651841, "edge_edge_force_N": 0.1959714360423405, "tangent_resultant_N": 0.02350788714581365, "initial_tangent_energy_Nmm": 1.7064144733542096e-31, "initial_friction_increment_Nmm": 0.0, "force_N": 0.30048953698885905, "energy_Nmm": 0.0004660231695494564, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 4.748637569413084, "energy_gain": 4.231638894322763, "force_balance_relative": 9.239322654542387e-17, "gap_gradient_relative": 1.5136727708540667e-10, "macro_work_relative": 4.533255024812048e-10, "elapsed_s": 0.26802158798091114}
+{"refinement": 1, "phase_fraction": 0.025, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 62, "edge_contacts": 38, "point_triangle_force_N": 0.08059728013642528, "edge_edge_force_N": 0.16285819345174823, "tangent_resultant_N": 0.017274764529665462, "initial_tangent_energy_Nmm": 1.6578078273046463e-31, "initial_friction_increment_Nmm": 0.0, "force_N": 0.24345547358817346, "energy_Nmm": 0.0003862201691500277, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.847327996658061, "energy_gain": 3.5070022186391094, "force_balance_relative": 1.1456210538078757e-16, "gap_gradient_relative": 1.8152217167989446e-10, "macro_work_relative": 4.4757512945878026e-10, "elapsed_s": 0.2724921199842356}
+{"refinement": 1, "phase_fraction": 0.03, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 44, "edge_contacts": 28, "point_triangle_force_N": 0.0674163141046311, "edge_edge_force_N": 0.14365530878220045, "tangent_resultant_N": 0.007908964083358037, "initial_tangent_energy_Nmm": 6.33549683072809e-33, "initial_friction_increment_Nmm": 0.0, "force_N": 0.2110716228868315, "energy_Nmm": 0.0003547444119673508, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.335565851381242, "energy_gain": 3.2211923125538724, "force_balance_relative": 1.0273310619938824e-18, "gap_gradient_relative": 1.6156929304570642e-10, "macro_work_relative": 4.5120817474871305e-10, "elapsed_s": 0.23283354300656356}
+{"refinement": 1, "phase_fraction": 0.04, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "point_triangle_force_N": 0.06327910534263054, "edge_edge_force_N": 0.1371047282423661, "tangent_resultant_N": 2.5191319286616586e-16, "initial_tangent_energy_Nmm": 5.193868751421726e-32, "initial_friction_increment_Nmm": 0.0, "force_N": 0.2003838335849967, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.1666666666667145, "energy_gain": 3.16666666666674, "force_balance_relative": 1.3851205019418818e-16, "gap_gradient_relative": 1.2005130265635696e-10, "macro_work_relative": 4.5036774121688446e-10, "elapsed_s": 0.18255255901021883}
+{"refinement": 1, "phase_fraction": 0.05, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "point_triangle_force_N": 0.06327910534263054, "edge_edge_force_N": 0.13710472824236614, "tangent_resultant_N": 2.9914291547386464e-16, "initial_tangent_energy_Nmm": 1.6189700576036402e-32, "initial_friction_increment_Nmm": 0.0, "force_N": 0.2003838335849967, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.1666666666667145, "energy_gain": 3.16666666666674, "force_balance_relative": 6.151170692544924e-32, "gap_gradient_relative": 1.2005130265635696e-10, "macro_work_relative": 4.5036774121688446e-10, "elapsed_s": 0.17509141398477368}
+{"refinement": 1, "phase_fraction": 0.075, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "point_triangle_force_N": 0.06327910534263054, "edge_edge_force_N": 0.1371047282423661, "tangent_resultant_N": 2.8458253955157455e-16, "initial_tangent_energy_Nmm": 8.928387159181347e-34, "initial_friction_increment_Nmm": 0.0, "force_N": 0.20038383358499667, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.166666666666714, "energy_gain": 3.16666666666674, "force_balance_relative": 7.78068386596691e-31, "gap_gradient_relative": 1.2005144116840719e-10, "macro_work_relative": 4.503677758448971e-10, "elapsed_s": 0.17173331300728023}
+{"refinement": 1, "phase_fraction": 0.1, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "point_triangle_force_N": 0.06327910534263054, "edge_edge_force_N": 0.13710472824236614, "tangent_resultant_N": 8.983542530404493e-16, "initial_tangent_energy_Nmm": 7.527277385846429e-32, "initial_friction_increment_Nmm": 0.0, "force_N": 0.20038383358499667, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.166666666666714, "energy_gain": 3.16666666666674, "force_balance_relative": 2.077680752912823e-16, "gap_gradient_relative": 1.2005144116840719e-10, "macro_work_relative": 4.5036784510092217e-10, "elapsed_s": 0.12276595600997098}
+{"refinement": 1, "phase_fraction": 0.25, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "point_triangle_force_N": 0.06327910534263054, "edge_edge_force_N": 0.1371047282423661, "tangent_resultant_N": 2.3418893041485353e-16, "initial_tangent_energy_Nmm": 1.9124099110418236e-32, "initial_friction_increment_Nmm": 0.0, "force_N": 0.2003838335849967, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.1666666666667145, "energy_gain": 3.16666666666674, "force_balance_relative": 6.925602509709409e-17, "gap_gradient_relative": 1.2005130265635696e-10, "macro_work_relative": 4.503676719608594e-10, "elapsed_s": 0.11112730798777193}
+{"refinement": 1, "phase_fraction": 0.5, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "point_triangle_force_N": 0.06327910534263054, "edge_edge_force_N": 0.1371047282423661, "tangent_resultant_N": 7.318116638445027e-18, "initial_tangent_energy_Nmm": 5.413916647272035e-33, "initial_friction_increment_Nmm": 0.0, "force_N": 0.20038383358499667, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.166666666666714, "energy_gain": 3.16666666666674, "force_balance_relative": 7.688963365681156e-32, "gap_gradient_relative": 1.2005144116840719e-10, "macro_work_relative": 4.5036770658887197e-10, "elapsed_s": 0.10581355201429687}
+{
+  "scope": "contact_only_same_flat_interface_not_packing_compaction",
+  "tolerances": {
+    "balance": 1e-10,
+    "gradient": 1e-05,
+    "macro_work": 1e-05,
+    "phase_spread": 0.02
+  },
+  "checks": {
+    "force_balance": true,
+    "energy_gradient": true,
+    "periodic_macro_work": true,
+    "flat_interface_phase_invariance": false
+  },
+  "phase_groups": [
+    {
+      "refinement": 1,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 1.8907522124069596
+    }
+  ],
+  "status": "verification_failed_do_not_accept_packing_predictions",
+  "source_sha256": "3fac0dbd5fbc268383bd8dda3aa06af0553626b4a5e3827f819d1cf3b75daf1b",
+  "settings": {
+    "refinements": [
+      1
+    ],
+    "phases": [
+      0.0,
+      0.0025,
+      0.005,
+      0.01,
+      0.015,
+      0.02,
+      0.025,
+      0.03,
+      0.04,
+      0.05,
+      0.075,
+      0.1,
+      0.25,
+      0.5
+    ],
+    "gaps": [
+      0.015
+    ],
+    "friction": 0.3,
+    "skin_mm": 0.1,
+    "thickness_mm": 0.02,
+    "penalty_MPa_mm": 20.0
+  }
+}

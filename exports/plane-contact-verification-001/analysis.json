@@ -1,0 +1,10 @@
+{
+  "physical_check": "FAILED: flat interface depends on mesh position",
+  "cases": 32,
+  "max_balance_relative": 1.6195933874761827e-16,
+  "max_gap_gradient_relative": 4.107934667699324e-10,
+  "max_macro_work_relative": 6.818383594850952e-10,
+  "max_phase_path_tangent_force_N": 0.11091105385313497,
+  "max_initial_tangent_energy_Nmm": 4.269681610646148e-31,
+  "max_initial_friction_increment_Nmm": 0.0
+}

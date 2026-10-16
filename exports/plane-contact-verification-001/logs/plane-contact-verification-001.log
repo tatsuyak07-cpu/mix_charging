@@ -1,0 +1,87 @@
+{"refinement": 1, "phase_fraction": 0.0, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 112, "edge_contacts": 64, "force_N": 0.9280935450252477, "energy_Nmm": 0.0016152149692865978, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 14.666666666666885, "energy_gain": 14.666666666666995, "force_balance_relative": 5.981202167476309e-17, "gap_gradient_relative": 1.1550167919165816e-10, "macro_work_relative": 4.3757897871247514e-10, "elapsed_s": 0.2310623709927313}
+{"refinement": 1, "phase_fraction": 0.25, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "force_N": 0.2003838335849967, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.1666666666667145, "energy_gain": 3.16666666666674, "force_balance_relative": 6.925602509709409e-17, "gap_gradient_relative": 1.2005130265635696e-10, "macro_work_relative": 4.503676719608594e-10, "elapsed_s": 0.09190649699303322}
+{"refinement": 1, "phase_fraction": 0.5, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "force_N": 0.20038383358499667, "energy_Nmm": 0.0003487395956414248, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.166666666666714, "energy_gain": 3.16666666666674, "force_balance_relative": 7.688963365681156e-32, "gap_gradient_relative": 1.2005144116840719e-10, "macro_work_relative": 4.5036770658887197e-10, "elapsed_s": 0.07063902899972163}
+{"refinement": 1, "phase_fraction": 0.0, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 112, "edge_contacts": 64, "force_N": 3.174923797231906, "energy_Nmm": 0.011436928479239246, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 14.666666666666787, "energy_gain": 14.666666666666856, "force_balance_relative": 0.0, "gap_gradient_relative": 5.007796005294981e-11, "macro_work_relative": 4.0887505598281995e-10, "elapsed_s": 0.21930530498502776}
+{"refinement": 1, "phase_fraction": 0.25, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "force_N": 0.6854949107659796, "energy_Nmm": 0.002469336830744837, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 3.166666666666692, "energy_gain": 3.1666666666667074, "force_balance_relative": 1.4656680900860245e-31, "gap_gradient_relative": 5.295390147824378e-11, "macro_work_relative": 4.53448411967403e-10, "elapsed_s": 0.09278167900629342}
+{"refinement": 1, "phase_fraction": 0.5, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 16, "tetrahedra": 12, "contacts": 24, "edge_contacts": 16, "force_N": 0.6854949107659796, "energy_Nmm": 0.002469336830744837, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 3.166666666666692, "energy_gain": 3.1666666666667074, "force_balance_relative": 1.6195933874761827e-16, "gap_gradient_relative": 5.295390147824378e-11, "macro_work_relative": 4.5344829049789894e-10, "elapsed_s": 0.0726153329887893}
+{"refinement": 2, "phase_fraction": 0.0, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 36, "tetrahedra": 48, "contacts": 276, "edge_contacts": 168, "force_N": 1.075744790824719, "energy_Nmm": 0.0018721809871276524, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 17.000000000000256, "energy_gain": 17.000000000000426, "force_balance_relative": 2.5801264251858583e-17, "gap_gradient_relative": 1.0432338700516689e-10, "macro_work_relative": 4.548501004770512e-10, "elapsed_s": 0.6209163049934432}
+{"refinement": 2, "phase_fraction": 0.25, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 36, "tetrahedra": 48, "contacts": 60, "edge_contacts": 42, "force_N": 0.2372966450348645, "energy_Nmm": 0.0004129811001016874, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.7500000000000564, "energy_gain": 3.750000000000088, "force_balance_relative": 5.848286563754612e-17, "gap_gradient_relative": 1.1581303399337621e-10, "macro_work_relative": 4.4168067250023033e-10, "elapsed_s": 0.29406645501148887}
+{"refinement": 2, "phase_fraction": 0.5, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 36, "tetrahedra": 48, "contacts": 60, "edge_contacts": 42, "force_N": 0.23729664503486453, "energy_Nmm": 0.0004129811001016874, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.750000000000057, "energy_gain": 3.750000000000088, "force_balance_relative": 5.848286563754611e-17, "gap_gradient_relative": 1.1581291702764493e-10, "macro_work_relative": 4.416806140173646e-10, "elapsed_s": 0.22248129197396338}
+{"refinement": 2, "phase_fraction": 0.0, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 36, "tetrahedra": 48, "contacts": 276, "edge_contacts": 168, "force_N": 3.6800253104278893, "energy_Nmm": 0.013256439828209142, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 17.00000000000013, "energy_gain": 17.00000000000024, "force_balance_relative": 0.0, "gap_gradient_relative": 4.718584348000641e-11, "macro_work_relative": 4.977962038464553e-10, "elapsed_s": 0.6021831429970916}
+{"refinement": 2, "phase_fraction": 0.25, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 36, "tetrahedra": 48, "contacts": 60, "edge_contacts": 42, "force_N": 0.8117702890649757, "energy_Nmm": 0.002924214667987307, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 3.7500000000000293, "energy_gain": 3.7500000000000484, "force_balance_relative": 1.0257424787349159e-16, "gap_gradient_relative": 5.1899560579382454e-11, "macro_work_relative": 4.511285513878874e-10, "elapsed_s": 0.2868080780026503}
+{"refinement": 2, "phase_fraction": 0.5, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 36, "tetrahedra": 48, "contacts": 60, "edge_contacts": 42, "force_N": 0.8117702890649758, "energy_Nmm": 0.002924214667987307, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 3.7500000000000298, "energy_gain": 3.7500000000000484, "force_balance_relative": 1.7095707978915264e-17, "gap_gradient_relative": 5.1899423813718616e-11, "macro_work_relative": 4.5112868815355113e-10, "elapsed_s": 0.21671398199396208}
+{"refinement": 4, "phase_fraction": 0.0, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 100, "tetrahedra": 192, "contacts": 820, "edge_contacts": 520, "force_N": 1.1073843434960344, "energy_Nmm": 0.0019272451338078651, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 17.500000000000266, "energy_gain": 17.500000000000327, "force_balance_relative": 0.0, "gap_gradient_relative": 7.02865125373426e-11, "macro_work_relative": 5.266961866500349e-10, "elapsed_s": 1.6918040619930252}
+{"refinement": 4, "phase_fraction": 0.25, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 100, "tetrahedra": 192, "contacts": 180, "edge_contacts": 130, "force_N": 0.24520653320269334, "energy_Nmm": 0.0004267471367717438, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.8750000000000586, "energy_gain": 3.8750000000000924, "force_balance_relative": 5.659632158472205e-17, "gap_gradient_relative": 1.2344019954086022e-10, "macro_work_relative": 4.4916049141101254e-10, "elapsed_s": 1.3598213939985726}
+{"refinement": 4, "phase_fraction": 0.5, "gap_mm": 0.015, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 100, "tetrahedra": 192, "contacts": 180, "edge_contacts": 130, "force_N": 0.24520653320269334, "energy_Nmm": 0.0004267471367717438, "area_spring_force_N": 0.06327910534262958, "area_spring_energy_Nmm": 0.00011012829336044738, "force_gain": 3.8750000000000586, "energy_gain": 3.8750000000000924, "force_balance_relative": 3.537270099045128e-18, "gap_gradient_relative": 1.2344019954086022e-10, "macro_work_relative": 4.4916049141101254e-10, "elapsed_s": 0.9209188439999707}
+{"refinement": 4, "phase_fraction": 0.0, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 100, "tetrahedra": 192, "contacts": 820, "edge_contacts": 520, "force_N": 3.788261348969886, "energy_Nmm": 0.013646335117274068, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 17.500000000000135, "energy_gain": 17.500000000000185, "force_balance_relative": 1.465346398192737e-17, "gap_gradient_relative": 1.148636978181426e-10, "macro_work_relative": 5.610296435955666e-10, "elapsed_s": 1.9775522029958665}
+{"refinement": 4, "phase_fraction": 0.25, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 100, "tetrahedra": 192, "contacts": 180, "edge_contacts": 130, "force_N": 0.838829298700475, "energy_Nmm": 0.0030216884902535554, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 3.8750000000000306, "energy_gain": 3.875000000000056, "force_balance_relative": 2.481635029197377e-17, "gap_gradient_relative": 6.094710336293244e-11, "macro_work_relative": 4.361353783563648e-10, "elapsed_s": 1.4405955570109654}
+{"refinement": 4, "phase_fraction": 0.5, "gap_mm": 0.01, "thickness_mm": 0.02, "penalty_MPa_mm": 20.0, "skin_mm": 0.1, "nodes": 100, "tetrahedra": 192, "contacts": 180, "edge_contacts": 130, "force_N": 0.8388292987004748, "energy_Nmm": 0.0030216884902535554, "area_spring_force_N": 0.21647207708399183, "area_spring_energy_Nmm": 0.0007797905781299385, "force_gain": 3.87500000000003, "energy_gain": 3.875000000000056, "force_balance_relative": 6.617693411193007e-17, "gap_gradient_relative": 6.094723571680068e-11, "macro_work_relative": 4.361355437987001e-10, "elapsed_s": 0.8871005380060524}
+{
+  "scope": "contact_only_same_flat_interface_not_packing_compaction",
+  "tolerances": {
+    "balance": 1e-10,
+    "gradient": 1e-05,
+    "macro_work": 1e-05,
+    "phase_spread": 0.02
+  },
+  "checks": {
+    "force_balance": true,
+    "energy_gradient": true,
+    "periodic_macro_work": true,
+    "flat_interface_phase_invariance": false
+  },
+  "phase_groups": [
+    {
+      "refinement": 1,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 1.6428571428571423
+    },
+    {
+      "refinement": 1,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 1.6428571428571432
+    },
+    {
+      "refinement": 2,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 1.6224489795918366
+    },
+    {
+      "refinement": 2,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 1.6224489795918366
+    },
+    {
+      "refinement": 4,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 1.6188118811881187
+    },
+    {
+      "refinement": 4,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 1.6188118811881191
+    }
+  ],
+  "status": "verification_failed_do_not_accept_packing_predictions",
+  "source_sha256": "3fac0dbd5fbc268383bd8dda3aa06af0553626b4a5e3827f819d1cf3b75daf1b",
+  "settings": {
+    "refinements": [
+      1,
+      2,
+      4
+    ],
+    "phases": [
+      0.0,
+      0.25,
+      0.5
+    ],
+    "gaps": [
+      0.015,
+      0.01
+    ],
+    "friction": 0.3,
+    "skin_mm": 0.1,
+    "thickness_mm": 0.02,
+    "penalty_MPa_mm": 20.0
+  }
+}
