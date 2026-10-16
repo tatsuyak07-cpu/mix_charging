@@ -1,0 +1,1 @@
+Initial record of the same geometric tests. The `max_analytic_error` field combines force and energy errors and should not be assigned a single unit. Use ../contact-features-verification-002/summary.json for separate N and N mm fields. Raw results retained.

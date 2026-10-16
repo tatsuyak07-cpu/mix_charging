@@ -1,0 +1,52 @@
+{
+  "purpose": "closed-surface frictionless geometric verification only",
+  "stiffness_N_mm": 100.0,
+  "radius_mm": 0.1,
+  "checks": {
+    "edge_refine1_samples101": {
+      "max_force_error_N": 7.105427357601002e-15,
+      "max_energy_error_Nmm": 7.216449660063518e-16,
+      "passed": true,
+      "largest_sample_force_increment_N": 0.21707537038519306,
+      "largest_sample_energy_increment_Nmm": 0.005932260621931307
+    },
+    "edge_refine1_samples201": {
+      "max_force_error_N": 7.105427357601002e-15,
+      "max_energy_error_Nmm": 7.216449660063518e-16,
+      "passed": true,
+      "largest_sample_force_increment_N": 0.1085392835506124,
+      "largest_sample_energy_increment_Nmm": 0.003015454816503338
+    },
+    "edge_refine2_samples101": {
+      "max_force_error_N": 7.105427357601002e-15,
+      "max_energy_error_Nmm": 7.216449660063518e-16,
+      "passed": true,
+      "largest_sample_force_increment_N": 0.21707537038519306,
+      "largest_sample_energy_increment_Nmm": 0.005932260621931307
+    },
+    "edge_refine2_samples201": {
+      "max_force_error_N": 7.105427357601002e-15,
+      "max_energy_error_Nmm": 7.216449660063518e-16,
+      "passed": true,
+      "largest_sample_force_increment_N": 0.1085392835506124,
+      "largest_sample_energy_increment_Nmm": 0.003015454816503338
+    },
+    "coplanar_seam": {
+      "max_force_error_N": 5.551115123125783e-15,
+      "max_energy_error_Nmm": 0.0,
+      "passed": true
+    },
+    "concave_vertex": {
+      "max_force_error_N": 5.329070518200751e-15,
+      "max_energy_error_Nmm": 9.992007221626409e-16,
+      "passed": true
+    },
+    "outside_no_contact": {
+      "passed": true
+    }
+  },
+  "all_checks_passed": true,
+  "integrated_with_explicit_solver": false,
+  "periodic_self_contact_validated": false,
+  "compaction_40_to_10_validated": false
+}
