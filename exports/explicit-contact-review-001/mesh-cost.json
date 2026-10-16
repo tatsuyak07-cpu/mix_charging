@@ -1,0 +1,18 @@
+[
+  {
+    "case": "archived_with_small_internal_seed",
+    "nodes": 149,
+    "tets": 413,
+    "minimum_height_mm": 0.011999999999999995,
+    "initial_bulk_dt_s": 1.4787691533688488e-08,
+    "bulk_only_steps_for_0_0015s": 101435.71067754451
+  },
+  {
+    "case": "manufactured_slit_without_internal_seed",
+    "nodes": 144,
+    "tets": 396,
+    "minimum_height_mm": 0.09950371902099854,
+    "initial_bulk_dt_s": 1.2261919194477825e-07,
+    "bulk_only_steps_for_0_0015s": 12232.99531019196
+  }
+]

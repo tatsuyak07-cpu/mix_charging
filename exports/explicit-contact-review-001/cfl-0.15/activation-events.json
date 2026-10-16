@@ -1,0 +1,230 @@
+[
+  {
+    "evaluation_time_s": 9.478356040740987e-06,
+    "new_pairs": [
+      {
+        "node": 61,
+        "face": 34,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 8.847858168230158e-05,
+        "normal_energy_Nmm": 3.9142297082558554e-08,
+        "previous_geometry": {
+          "gap_mm": 3.825895661139145e-05,
+          "facing_dot": -0.9969915858255677,
+          "minimum_barycentric": 7.741214185194538e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 62,
+        "face": 13,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 8.84787648044808e-05,
+        "normal_energy_Nmm": 3.914245910663315e-08,
+        "previous_geometry": {
+          "gap_mm": 3.825877466237598e-05,
+          "facing_dot": -0.99699158473041,
+          "minimum_barycentric": 7.734298701367291e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 81,
+        "face": 47,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 8.847851550432117e-05,
+        "normal_energy_Nmm": 3.9142238529242e-08,
+        "previous_geometry": {
+          "gap_mm": 3.825902203678676e-05,
+          "facing_dot": -0.9969915857939997,
+          "minimum_barycentric": 7.74164066384429e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 82,
+        "face": 24,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 8.847868521209217e-05,
+        "normal_energy_Nmm": 3.9142388684302485e-08,
+        "previous_geometry": {
+          "gap_mm": 3.825885342923883e-05,
+          "facing_dot": -0.9969915845997028,
+          "minimum_barycentric": 7.733892685379828e-06,
+          "adjacent": false
+        }
+      }
+    ],
+    "normal_energy_Nmm": 1.565693834027362e-07
+  },
+  {
+    "evaluation_time_s": 9.493140480644511e-06,
+    "new_pairs": [
+      {
+        "node": 61,
+        "face": 35,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.00021510534617308151,
+        "normal_energy_Nmm": 2.3135154976120614e-07,
+        "previous_geometry": {
+          "gap_mm": -8.847935385927138e-05,
+          "facing_dot": -0.9969363397110815,
+          "minimum_barycentric": -1.548252053264662e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 62,
+        "face": 12,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.00021510552719899878,
+        "normal_energy_Nmm": 2.3135193915779597e-07,
+        "previous_geometry": {
+          "gap_mm": -8.847953352099246e-05,
+          "facing_dot": -0.9969363424953811,
+          "minimum_barycentric": -1.5412559295491235e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 81,
+        "face": 46,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.00021510527944263726,
+        "normal_energy_Nmm": 2.313514062204753e-07,
+        "previous_geometry": {
+          "gap_mm": -8.847928788975102e-05,
+          "facing_dot": -0.9969363396288741,
+          "minimum_barycentric": -1.5486798942538011e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 82,
+        "face": 25,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.0002151054465885515,
+        "normal_energy_Nmm": 2.3135176576030086e-07,
+        "previous_geometry": {
+          "gap_mm": -8.84794537263503e-05,
+          "facing_dot": -0.9969363426565788,
+          "minimum_barycentric": -1.5408492093424326e-06,
+          "adjacent": false
+        }
+      }
+    ],
+    "normal_energy_Nmm": 9.254066608997782e-07
+  },
+  {
+    "evaluation_time_s": 9.522709319608552e-06,
+    "new_pairs": [
+      {
+        "node": 58,
+        "face": 9,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.00010160999901611981,
+        "normal_energy_Nmm": 5.162295950027934e-08,
+        "previous_geometry": {
+          "gap_mm": 2.3748523962869857e-05,
+          "facing_dot": -0.9976904064068159,
+          "minimum_barycentric": -1.1547123620061172e-06,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 85,
+        "face": 51,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.00010145046861821261,
+        "normal_energy_Nmm": 5.146098791427469e-08,
+        "previous_geometry": {
+          "gap_mm": 2.390699377410119e-05,
+          "facing_dot": -0.9976904451101598,
+          "minimum_barycentric": -1.1623885498924362e-06,
+          "adjacent": false
+        }
+      }
+    ],
+    "normal_energy_Nmm": 4.484086266931135e-06
+  },
+  {
+    "evaluation_time_s": 1.1710632653158312e-05,
+    "new_pairs": [
+      {
+        "node": 57,
+        "face": 31,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.017437777810999696,
+        "normal_energy_Nmm": 0.0015203804749289664,
+        "previous_geometry": {
+          "gap_mm": -0.01733232033848153,
+          "facing_dot": -0.9996354025822777,
+          "minimum_barycentric": -4.8194097386483686e-08,
+          "adjacent": false
+        }
+      },
+      {
+        "node": 86,
+        "face": 29,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "depth_mm": 0.01743736522708576,
+        "normal_energy_Nmm": 0.0015203085303138978,
+        "previous_geometry": {
+          "gap_mm": -0.01733190985336859,
+          "facing_dot": -0.9996354359947017,
+          "minimum_barycentric": -3.789985893728367e-08,
+          "adjacent": false
+        }
+      }
+    ],
+    "normal_energy_Nmm": 0.012104962060951394
+  }
+]

@@ -118,3 +118,5 @@ CSV・PNG・計算記録は [exports](exports/README.md) に収録していま�
 [準静的陽解法FEM・周期自己接触・局所再メッシュの研究用初版](docs/explicit-prototype.md)を実装しました。
 [検証画像・CSV・準備済みモデル](exports/explicit-fem-prototype-002/)と[ZIP](exports/explicit-fem-prototype-002.zip)を収録しています。
 内部再接続は実装済みですが、自由表面の全面再生成や40%→10%の圧密計算は未検証です。
+
+次段階の検討: [周期接触の不連続・計算負荷と検証順序](docs/explicit-contact-next-review.md)。接触辺の通過時に生じるエネルギーの跳びを特定し、時間刻み半減でも残ることを確認しました。

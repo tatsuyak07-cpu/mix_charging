@@ -1,0 +1,31 @@
+{
+  "first_contact_index": 1281,
+  "first_contact": {
+    "time_s": 9.470963016288735e-06,
+    "axial_compression": 5.0115826430877464e-05,
+    "porosity": 0.003973551998799785,
+    "nominal_compression_MPa": -0.0268197680096284,
+    "kinetic_Nmm": 0.09613053965593191,
+    "internal_Nmm": 0.0643242725036522,
+    "external_work_Nmm": -0.00013226764919981198,
+    "damping_Nmm": 0.015811124325499287,
+    "friction_Nmm": 1.1829683850360521e-28,
+    "released_contact_history_Nmm": 0.0,
+    "normal_contact_Nmm": 1.2884294465766867e-08,
+    "tangent_contact_Nmm": 1.1813672309147715e-09,
+    "energy_residual_Nmm": -1.7818000551240271e-06,
+    "peak_peeq": 0.03539841439875589,
+    "min_elastic_J": 0.990394942293666,
+    "min_quality": 0.030736861767879094,
+    "penetration_mm": 2.5381512889628036e-05,
+    "coulomb_ratio": 0.21411607570210148,
+    "contacts": 4.0,
+    "elements": 414.0,
+    "free_dynamic_residual_N": 1.5509111257761e-05
+  },
+  "largest_energy_increment_Nmm": 0.00301336048313826,
+  "max_energy_residual_Nmm": 0.0030170959839708874,
+  "new_pair_events": 4,
+  "status": "diagnostics_only",
+  "interpretation": "Dynamic diagnostic only; event evaluations include the final rejected trial if any."
+}
