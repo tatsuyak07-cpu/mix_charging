@@ -1,0 +1,12 @@
+{
+  "scope": "prescribed_periodic_plane_sliding_not_packing",
+  "checks": {
+    "coulomb_cap": true,
+    "sliding_force": true,
+    "friction_dissipation": true,
+    "sliding_anchor_follows": true,
+    "facet_switch_observed": true
+  },
+  "facet_image_switches": 8,
+  "analytic_friction_dissipation_Nmm": 0.015150947075674428
+}

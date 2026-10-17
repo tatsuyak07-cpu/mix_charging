@@ -1,0 +1,3 @@
+{
+  "failure": "NumPy boolean in final JSON report was not converted to Python bool. All four numerical paths completed; CSV retained."
+}

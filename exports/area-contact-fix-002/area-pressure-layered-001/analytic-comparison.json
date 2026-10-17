@@ -1,0 +1,27 @@
+{
+  "scope": "1mm_layered_plane_pore_20percent_not_particle_packing",
+  "material_stretch": 0.8376226656962582,
+  "gap_mm": 0.013560121404386482,
+  "axial_compression": 0.316341746038607,
+  "porosity": 0.019834648855350818,
+  "checks": {
+    "axial_endpoint": false,
+    "porosity_endpoint": false
+  },
+  "solver_checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": false,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": false,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": false
+  },
+  "solver_status": "diagnostics_only"
+}

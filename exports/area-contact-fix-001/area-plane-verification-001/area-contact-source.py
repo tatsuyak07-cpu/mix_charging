@@ -1,0 +1,116 @@
+"""Two-pass reference nodal-area contact on a unique closest surface patch.
+
+Point/triangle candidates locate the surface; they are not additive contact
+springs. Edge/edge distances remain collision guards, without an added energy.
+An unresolved edge-only approach stops for surface refinement. This restricted
+research backend is not general validated self-contact or surface remeshing.
+"""
+import numpy as np
+from .barrier_contact import BarrierContact,ContactResolutionError,barrier,feature,relative
+from .explicit_periodic import affine_basis
+
+
+class SurfaceResolutionError(ValueError):
+    """The current surface discretization cannot resolve this contact."""
+
+
+def frame(z,branch):
+    r=relative(z[:4],'pt',branch);normal=r/np.sqrt(r@r)
+    edge=z[4]-z[0];tangent=edge-(edge@normal)*normal
+    length=np.sqrt(tangent@tangent)
+    if np.real(length)<1e-12:raise ContactResolutionError('Area contact friction frame is degenerate')
+    tangent/=length
+    return np.stack([tangent,np.cross(normal,tangent)],axis=1)
+
+
+def friction_force(z,branch,bary,plastic,kt):
+    """Differentiate the complete objective potential, including its frame."""
+    count=3*len(z);v=np.repeat(z.astype(complex)[None],count,axis=0)
+    for k in range(count):v[k,k//3,k%3]+=1j*1e-30
+    ids=list(branch);a=v[:,ids[0]]
+    if len(ids)==1:q=a
+    else:
+        E=np.swapaxes(v[:,ids[1:]]-a[:,None],1,2);Et=np.swapaxes(E,1,2)
+        rhs=np.einsum('nij,nj->ni',Et,v[:,0]-a)
+        uv=np.linalg.solve(Et@E,rhs[:,:,None])[:,:,0]
+        q=a+np.einsum('nij,nj->ni',E,uv)
+    r=v[:,0]-q;dot=lambda a,b:np.einsum('ij,ij->i',a,b)
+    normal=r/np.sqrt(dot(r,r))[:,None];edge=v[:,4]-v[:,0]
+    tangent=edge-dot(edge,normal)[:,None]*normal;tangent/=np.sqrt(dot(tangent,tangent))[:,None]
+    anchor=v[:,0]-np.einsum('i,nij->nj',bary,v[:,5:8])
+    coordinate=np.stack([dot(tangent,anchor),dot(np.cross(normal,tangent),anchor)],axis=1)
+    spring=coordinate-plastic;energy=.5*kt*dot(spring,spring)
+    return -energy.imag.reshape(len(z),3)/1e-30
+
+
+class AreaContact:
+    def __init__(self,X,t,periodic,kn,mu,skin,**kwargs):
+        # The legacy evaluator supplies an independent complete PT/EE distance
+        # search and non-crossing certificate. Its forces/energies are discarded.
+        self.guard=BarrierContact(X,t,periodic,kn,0.,skin,**kwargs)
+        self.history={};self.mu=mu;self.kn=kn
+        self.peers={int(node):set() for node in self.guard.nodes}
+        for face in self.guard.faces:
+            for node in face:self.peers[int(node)].update(int(k) for k in face if k!=node)
+
+    def __getattr__(self,name):return getattr(self.guard,name)
+    def update_topology(self,t):self.guard.update_topology(t)
+    def accept_geometry(self,x,H):self.guard.accept_geometry(x,H)
+    def edge_stiffness_diagonal(self):return self.guard.edge_stiffness_diagonal()
+
+    def adjacent_targets(self,a,sa,b,sb):
+        qa=np.rint((self.X[self.faces[a]]+self.L*np.asarray(sa))/self.tolerance).astype(np.int64)
+        qb=np.rint((self.X[self.faces[b]]+self.L*np.asarray(sb))/self.tolerance).astype(np.int64)
+        return bool(set(map(tuple,qa)).intersection(map(tuple,qb)))
+
+    def evaluate(self,x,velocity,H,Hdot,dt):
+        _,_,_,safety=self.guard.evaluate(x,velocity,H,Hdot,dt)
+        force=np.zeros_like(x);extra=np.zeros(6);hist={};selected={};edges=[]
+        report=dict(safety,contacts=0,edge_contacts=0,normal_energy=0.,tangent_energy=0.,friction_increment=0.,algorithmic_increment=0.,released_history_energy=0.,max_coulomb_ratio=0.,edge_guard_pairs=0,integration='two_pass_reference_nodal_area')
+        for key,ids,kind,shift,_,_ in self.guard.neighbors:
+            if kind=='ee':edges.append((ids,shift));continue
+            p=x[ids].copy();p[1:]+=H@shift
+            branch,w=feature(p,'pt');r=relative(p,'pt',branch);d=float(np.linalg.norm(r))
+            if d>=self.thickness:continue
+            node=int(ids[0]);candidate=(d,key,ids,shift,p,branch,w,r)
+            current=selected.get(node)
+            if current is not None and abs(d-current[0])<self.L*1e-10:
+                if np.linalg.norm(r-current[-1])>self.L*1e-8:
+                    raise SurfaceResolutionError('Multiple distinct closest patches require multi-contact surface integration')
+            if current is None or d<current[0]-self.L*1e-12 or (abs(d-current[0])<=self.L*1e-12 and key<current[1]):selected[node]=candidate
+        from .barrier_contact import segment_distances
+        for ids,shift in edges:
+            p=x[ids].copy();p[2:]+=H@shift
+            if segment_distances(p[None])[0]<self.thickness:
+                report['edge_guard_pairs']+=1
+                if not any(int(i) in selected for i in ids):
+                    raise SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied')
+        for node,(d,key,ids,shift,p,branch,w,r) in selected.items():
+            state=self.history.get(('area',node));face=key[2]
+            if state is not None and not self.adjacent_targets(state['face'],state['shift'],face,shift):
+                raise ContactResolutionError('Closest target changed to a disconnected patch; reduce step or refine surface')
+            kn=.5*self.kn*self.node_area0[node];energy,fn,_=barrier(d,kn,self.thickness)
+            normal=r/d
+            if state is None:
+                peers=sorted(self.peers[node]);scores=[np.linalg.norm((x[i]-x[node])-((x[i]-x[node])@normal)*normal) for i in peers]
+                peer=peers[int(np.argmax(scores))]
+                state=dict(peer=peer,anchor_ids=ids[1:].copy(),anchor_shift=np.asarray(shift).copy(),bary=-w[1:].copy(),plastic=np.zeros(2),spring=np.zeros(2),coordinate=np.zeros(2),energy=0.)
+            support=np.r_[ids,state['peer'],state['anchor_ids']]
+            images=np.zeros((8,3));images[1:4]=shift;images[5:8]=state['anchor_shift']
+            z=x[support]+images@H.T;local=np.zeros((8,3));local[:4]=fn*w[:,None]*normal
+            kt=.5*kn;spring=np.zeros(2);plastic=state['plastic'];coordinate=state['coordinate'];diss=correction=0.
+            if self.mu:
+                T=frame(z,branch);coordinate=T.T@(z[0]-state['bary']@z[5:8]);trial=coordinate-plastic
+                spring=trial*min(1.,self.mu*fn/(kt*max(np.linalg.norm(trial),1e-300)))
+                plastic=coordinate-spring;diss=float(kt*spring@(plastic-state['plastic']))
+                du=coordinate-state['coordinate']
+                correction=float(.5*kt*(state['spring']+spring)@du-.5*kt*(spring@spring-state['spring']@state['spring'])-diss)
+                if np.linalg.norm(spring)>1e-20:local+=friction_force(z,branch,state['bary'],plastic,kt)
+            tang=.5*kt*float(spring@spring)
+            np.add.at(force,support,local)
+            extra+=np.einsum('aij,ai->j',affine_basis(self.L*images),local)
+            hist[('area',node)]=dict(state,plastic=plastic,spring=spring,coordinate=coordinate,energy=tang,face=face,shift=np.asarray(shift).copy())
+            report['normal_energy']+=energy;report['tangent_energy']+=tang;report['friction_increment']+=diss;report['algorithmic_increment']+=correction;report['contacts']+=1
+            report['max_coulomb_ratio']=max(report['max_coulomb_ratio'],float(kt*np.linalg.norm(spring)/fn))
+        report['released_history_energy']=sum(v['energy'] for k,v in self.history.items() if k not in hist)
+        return force,extra,hist,report

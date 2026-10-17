@@ -1,0 +1,4 @@
+{
+  "failure": "Floating-distance near-ties on adjacent facets were misclassified as distinct patches during the shear finite-difference test.",
+  "log": "/tmp/area-plane-verification-001.log"
+}

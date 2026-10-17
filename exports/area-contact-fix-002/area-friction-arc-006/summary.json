@@ -1,0 +1,9 @@
+{
+  "scope": "prescribed_arc_slip_not_packing",
+  "checks": {
+    "coulomb_cap": true,
+    "dissipation_refines": true,
+    "finest_relative_error": true,
+    "elastic_energy": true
+  }
+}

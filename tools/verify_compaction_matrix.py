@@ -16,7 +16,7 @@ def main():
           'thickness_half':['--thickness','.01'],'penalty2':['--penalty-scale','2'],
           'damping_half':['--damping-scale','.5'],'mesh2_bulk':['--refinement','2','--refinement-pattern','bulk']}
     def run(name,extra):
-        cmd=[sys.executable,'tools/run_barrier_compaction.py','--output',str(a.output/name),'--time-scale','8','--timestep-method','assembled_mass_bound','--max-steps','180000',*extra]
+        cmd=[sys.executable,'tools/run_barrier_compaction.py','--config','configs/explicit-prototype.json','--contact-backend','area_guarded','--output',str(a.output/name),'--time-scale','8','--timestep-method','assembled_mass_bound','--max-steps','180000',*extra]
         env={**os.environ,'OPENBLAS_NUM_THREADS':'1','OMP_NUM_THREADS':'1','PYTHONPATH':'.'}
         with (a.output/f'{name}.log').open('w') as f:r=subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,env=env)
         summary=a.output/name/'summary.json'

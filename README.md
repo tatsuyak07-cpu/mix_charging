@@ -1,7 +1,11 @@
 # Periodic sphere-packing compression — solid FEM
 
-重要な追加検証：**平面接触のメッシュ位置依存を確認し、物理検証に不合格**。
-同じ間隙でも接触力が約4.5倍異なるため、現行の圧密値を物理予測に採用しません。
+接触積分を修正：**参照面積による `area_guarded` を追加し、平面32ケースの位置依存検査に合格**。
+[実装・検証・適用限界](docs/area-contact-fix.md)・[比較PNG](exports/area-contact-fix-002/area-contact-verification.png)・[結果ZIP](exports/area-contact-fix-002.zip)。
+辺だけの接触・複数パッチは解像不足として停止します。100 mm充填層の40%→10%圧密は未完了です。
+
+従来方式の検証記録：**平面接触のメッシュ位置依存を確認し、物理検証に不合格**。
+同じ間隙でも接触力が約4.5倍異なるため、従来方式の圧密値を物理予測に採用しません。
 [結果・原因・修正に必要な条件](docs/plane-contact-verification.md)・[比較PNG](exports/plane-contact-verification-001/plane-contact-dependence.png)・[検証データZIP](exports/plane-contact-verification-001.zip)。
 
 最新の開発：**周期自己接触を含む陽解法FEMの圧力・空隙率制御**。[実装・検証・適用限界](docs/barrier-compaction.md)。

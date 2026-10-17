@@ -1,0 +1,4 @@
+{
+  "reason": "Bounded development validation: retain the 0.1 MPa transient as a cost/partial-load trial. Coupled 0.1 MPa endpoint is separately verified by manufactured FEM residual; no completed 0.1 MPa explicit solution is claimed.",
+  "state_policy": "Keep last accepted state and all failed checks."
+}

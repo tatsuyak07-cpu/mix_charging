@@ -1,0 +1,41 @@
+...............F                                                         [100%]
+=================================== FAILURES ===================================
+_________ test_area_history_survives_boundary_preserving_reconnection __________
+
+    def test_area_history_survives_boundary_preserving_reconnection():
+        from test_contact_integration import fixture as contact_fixture
+        from tools.verify_explicit_remesh import seed_bipyramid
+        from packing_fem.adaptive_tet import propose
+        from packing_fem.explicit_material import geometry
+        import json
+        from pathlib import Path
+        X,_,t,_,_=contact_fixture();count=len(X);X,t=seed_bipyramid(X,t,0,.04);x=X.copy();x[count-4:count,2]-=.19
+        c=AreaContact(X,t,Periodic(X,3.),100.,.3,.1,thickness=.02);H=np.eye(3)*3
+        r=c.evaluate(x,x*0,H,H*0,0.);c.history=r[2];c.accept_geometry(x,H)
+        x[count-4:count,0]+=.0001;r=c.evaluate(x,x*0,H,H*0,.001);c.history=r[2];c.accept_geometry(x,H)
+        assert r[-1]['tangent_energy']>0
+        cfg=json.loads(Path('configs/explicit-prototype.json').read_text());V0=geometry(X,t)[0]
+        candidate=propose(x,t,np.repeat(np.eye(3)[None],len(t),axis=0),np.full(len(t),.2),V0,cfg,1.,.001)
+        assert candidate is not None
+        c.update_topology(candidate[0]);new=c.evaluate(x,x*0,H,H*0,0.)
+>       np.testing.assert_allclose(new[0],r[0],atol=1e-12)
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=1e-12
+E       
+E       Mismatched elements: 2 / 51 (3.92%)
+E       Mismatch at indices:
+E        [3, 0]: 1.6989787150533336e-06 (ACTUAL), 1.704660918113713e-06 (DESIRED)
+E        [7, 0]: 2.2734494444576604e-05 (ACTUAL), 2.2728812241516237e-05 (DESIRED)
+E       Max absolute difference among violations: 5.68220306e-09
+E       Max relative difference among violations: 0.00333333
+E        ACTUAL: array([[ 0.000000e+00,  0.000000e+00,  0.000000e+00],
+E              [ 3.238856e-05, -3.885933e-17, -7.011218e-03],
+E              [ 0.000000e+00,  0.000000e+00,  0.000000e+00],...
+E        DESIRED: array([[ 0.000000e+00,  0.000000e+00,  0.000000e+00],
+E              [ 3.238856e-05, -3.888059e-17, -7.011218e-03],
+E              [ 0.000000e+00,  0.000000e+00,  0.000000e+00],...
+
+tests/test_area_contact.py:143: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_area_contact.py::test_area_history_survives_boundary_preserving_reconnection
+1 failed, 15 passed in 2.23s

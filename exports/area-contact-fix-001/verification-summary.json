@@ -1,0 +1,17 @@
+{
+  "scope": "restricted_area_contact_correction_not_40_to_10_packing",
+  "source_sha256": {
+    "area_contact.py": "3636359ec3fdf6d1af9ea2b23083e7fdc538c4ad0890cd932e8d613f9b356592",
+    "barrier_contact.py": "f060794376aeddd74524f981483943611818b02613d2f13b102d4351a51ddb18",
+    "explicit_solver.py": "34fdf066d886f0f8e81a8b8301af1911195aa1a89129a33feb6443b829df75ea"
+  },
+  "max_plane_force_gain_error": 1.509903313490213e-14,
+  "max_plane_macro_work_relative": 4.571389001268521e-10,
+  "arc_finest_dissipation_error": 5.5635302862844584e-05,
+  "manufactured_force_residual_relative": 1.296199636857817e-10,
+  "transient_pressure_status": "diagnostics_only",
+  "transient_peak_peeq": 0.0,
+  "transient_kinetic_ratio": 0.03399410195050617,
+  "transient_reference_axial_error": 0.0010872507874828963,
+  "full_0_1_MPa_explicit_solution": false
+}

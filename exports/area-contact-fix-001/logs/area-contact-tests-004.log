@@ -1,0 +1,24 @@
+.......F.....                                                            [100%]
+=================================== FAILURES ===================================
+____ test_sticking_friction_has_no_nodal_force_jump_at_shared_triangle_edge ____
+
+    def test_sticking_friction_has_no_nodal_force_jump_at_shared_triangle_edge():
+        X,t,x,H,upper=fixture(1,.015,.1);x[upper,1]+=.06305;H[1,2]+=.06305
+        c=AreaContact(X,t,Periodic(X,1.),20.,.3,.1,thickness=.02)
+        c.history=c.evaluate(x,x*0,H,H*0,0.)[2]
+        for eps in (1e-6,1e-7,1e-8):
+            forces=[]
+            for slip in (.00005-eps,.00005+eps):
+                y=x.copy();G=H.copy();y[upper,0]+=slip;G[0,2]+=slip
+                r=c.evaluate(y,y*0,G,G*0,.001);forces.append(r[0])
+>               assert r[0][upper,0].sum()==pytest.approx(-10*slip,abs=1e-10)
+E               assert np.float64(-0...0789069652932) == -0.0005001000...0001 ± 1.0e-10
+E                 
+E                 comparison failed
+E                 Obtained: -0.0005000789069652932
+E                 Expected: -0.0005001000000000001 ± 1.0e-10
+
+tests/test_area_contact.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_area_contact.py::test_sticking_friction_has_no_nodal_force_jump_at_shared_triangle_edge
+1 failed, 12 passed in 2.25s

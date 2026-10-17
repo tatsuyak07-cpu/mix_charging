@@ -24,23 +24,30 @@ def fixture(n,gap,phase):
     return X,t,x,H,upper
 
 
-def evaluate(X,t,x,H,kn,thickness,skin=.1):
-    p=Periodic(X,1.);contact=BarrierContact(X,t,p,kn,.3,skin,thickness=thickness,max_candidates=2000000)
+def evaluate(X,t,x,H,kn,thickness,skin=.1,backend="distance_barrier"):
+    p=Periodic(X,1.)
+    if backend=='area_guarded':
+        from packing_fem.area_contact import AreaContact
+        contact_type=AreaContact
+    elif backend=='distance_barrier':contact_type=BarrierContact
+    else:raise ValueError('Unknown contact backend')
+    contact=contact_type(X,t,p,kn,.3,skin,thickness=thickness,max_candidates=2000000)
     f,extra,_,report=contact.evaluate(x,np.zeros_like(x),H,H*0,0.)
     return f,extra,report,contact,p
 
 
-def measure(n,gap,phase,kn=20.,thickness=.02,skin=.1):
+def measure(n,gap,phase,kn=20.,thickness=.02,skin=.1,backend="distance_barrier"):
     start=time.perf_counter();X,t,x,H,upper=fixture(n,gap,phase)
-    f,extra,r,contact,p=evaluate(X,t,x,H,kn,thickness,skin)
+    f,extra,r,contact,p=evaluate(X,t,x,H,kn,thickness,skin,backend)
     # Independent area-spring reference: integrate B(gap) over exactly 1 mm².
     # This is a physical uniform-interface diagnostic, NOT the implemented sum.
     E,traction,_=barrier(gap,kn,thickness);force=float(f[upper,2].sum())
     parts={'pt':0.,'ee':0.}
-    for key,ids,kind,shift,weight,threshold in contact.neighbors:
+    for key,ids,kind,shift,weight,threshold in (contact.neighbors if backend=='distance_barrier' else []):
         points=x[ids].copy();points[1 if kind=='pt' else 2:]+=H@shift
         value=constraint(points,kind,weight,thickness,.3,threshold=threshold)
         if value is not None:parts[kind]+=float(value['force'][upper[ids],2].sum())
+    if backend=='area_guarded':parts['pt']=force
     if abs(sum(parts.values())-force)>1e-10*max(abs(force),1.):raise RuntimeError('Component force decomposition failed')
     eps=1e-7;direction=np.zeros_like(x);direction[upper,2]=1.
     def energy(xnew,Hnew):
@@ -54,7 +61,7 @@ def measure(n,gap,phase,kn=20.,thickness=.02,skin=.1):
         # H = Fbar * L; L=1 mm here.
         derivative=-(energy(x+eps*basis[:,:,k],H+eps*macro)-energy(x-eps*basis[:,:,k],H-eps*macro))/(2*eps)
         work_errors.append(abs(derivative-generalized[-6+k])/max(abs(force),1e-12))
-    return dict(refinement=n,phase_fraction=phase,gap_mm=gap,thickness_mm=thickness,penalty_MPa_mm=kn,skin_mm=skin,
+    return dict(backend=backend,refinement=n,phase_fraction=phase,gap_mm=gap,thickness_mm=thickness,penalty_MPa_mm=kn,skin_mm=skin,
         nodes=len(X),tetrahedra=len(t),contacts=r['contacts'],edge_contacts=r['edge_contacts'],
         point_triangle_force_N=parts['pt'],edge_edge_force_N=parts['ee'],tangent_resultant_N=float(np.linalg.norm(f[upper,:2].sum(axis=0))),
         initial_tangent_energy_Nmm=r['tangent_energy'],initial_friction_increment_Nmm=r['friction_increment'],
@@ -66,13 +73,13 @@ def measure(n,gap,phase,kn=20.,thickness=.02,skin=.1):
 
 
 def main():
-    a=argparse.ArgumentParser(description=__doc__);a.add_argument('--output',type=Path,required=True);a.add_argument('--refinements',type=int,nargs='+',default=[1,2,4]);a.add_argument('--phases',type=float,nargs='+',default=[0.,.25,.5]);a.add_argument('--gaps',type=float,nargs='+',default=[.015,.01]);args=a.parse_args()
+    a=argparse.ArgumentParser(description=__doc__);a.add_argument('--output',type=Path,required=True);a.add_argument('--backend',choices=['distance_barrier','area_guarded'],default='distance_barrier');a.add_argument('--refinements',type=int,nargs='+',default=[1,2,4]);a.add_argument('--phases',type=float,nargs='+',default=[0.,.25,.5]);a.add_argument('--gaps',type=float,nargs='+',default=[.015,.01]);args=a.parse_args()
     args.output.mkdir(parents=True,exist_ok=False);rows=[]
     (args.output/'verification-script.py').write_bytes(Path(__file__).read_bytes())
     for n in args.refinements:
         for gap in args.gaps:
             for phase in args.phases:
-                row=measure(n,gap,phase);rows.append(row)
+                row=measure(n,gap,phase,backend=args.backend);rows.append(row)
                 with (args.output/'plane-contact.csv').open('w') as stream:
                     w=csv.DictWriter(stream,fieldnames=list(row));w.writeheader();w.writerows(rows)
                 print(json.dumps(row),flush=True)
@@ -88,8 +95,9 @@ def main():
         flat_interface_phase_invariance=all(r['phase_force_spread_relative']<tolerances['phase_spread'] for r in groups))
     report=dict(scope='contact_only_same_flat_interface_not_packing_compaction',tolerances=tolerances,checks=checks,phase_groups=groups,
         status='screening_passed_not_general_convergence' if all(checks.values()) else 'verification_failed_do_not_accept_packing_predictions',
+        area_source_sha256=hashlib.sha256(Path('packing_fem/area_contact.py').read_bytes()).hexdigest() if args.backend=='area_guarded' else None,
         source_sha256=hashlib.sha256(Path('packing_fem/barrier_contact.py').read_bytes()).hexdigest(),
-        settings=dict(refinements=args.refinements,phases=args.phases,gaps=args.gaps,friction=.3,skin_mm=.1,thickness_mm=.02,penalty_MPa_mm=20.))
+        settings=dict(backend=args.backend,refinements=args.refinements,phases=args.phases,gaps=args.gaps,friction=.3,skin_mm=.1,thickness_mm=.02,penalty_MPa_mm=20.))
     (args.output/'summary.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2));raise SystemExit(0 if all(checks.values()) else 2)
 if __name__=='__main__':main()

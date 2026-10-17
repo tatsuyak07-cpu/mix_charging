@@ -1,0 +1,61 @@
+{
+  "scope": "contact_only_same_flat_interface_not_packing_compaction",
+  "tolerances": {
+    "balance": 1e-10,
+    "gradient": 1e-05,
+    "macro_work": 1e-05,
+    "phase_spread": 0.02
+  },
+  "checks": {
+    "force_balance": true,
+    "energy_gradient": true,
+    "periodic_macro_work": true,
+    "flat_interface_phase_invariance": true
+  },
+  "phase_groups": [
+    {
+      "refinement": 1,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 0.0
+    },
+    {
+      "refinement": 1,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 1.282178098418645e-16
+    },
+    {
+      "refinement": 2,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 0.0
+    },
+    {
+      "refinement": 2,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 2.56435619683729e-16
+    }
+  ],
+  "status": "screening_passed_not_general_convergence",
+  "area_source_sha256": "efa9e06102e79a2524b3edf528857b91959121acc769af69d08884f0780bca7b",
+  "source_sha256": "3fac0dbd5fbc268383bd8dda3aa06af0553626b4a5e3827f819d1cf3b75daf1b",
+  "settings": {
+    "backend": "area_guarded",
+    "refinements": [
+      1,
+      2
+    ],
+    "phases": [
+      0.0,
+      0.01,
+      0.25,
+      0.5
+    ],
+    "gaps": [
+      0.015,
+      0.01
+    ],
+    "friction": 0.3,
+    "skin_mm": 0.1,
+    "thickness_mm": 0.02,
+    "penalty_MPa_mm": 20.0
+  }
+}

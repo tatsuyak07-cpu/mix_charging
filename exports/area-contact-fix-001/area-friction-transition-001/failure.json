@@ -1,0 +1,13 @@
+{
+  "failure": "Using instantaneous closest-point normal in the friction potential caused a local force jump at a planar triangle edge.",
+  "slip_mm": [
+    4.999e-05,
+    5.001e-05
+  ],
+  "upper_tangential_force_N": [
+    -0.0004998999999998482,
+    -0.00025002890668692515
+  ],
+  "nodal_force_jump_N": 0.0003320985683356957,
+  "correction": "Material-advected lagged normal, updated after trial evaluation with spring-energy-preserving minimal rotation."
+}

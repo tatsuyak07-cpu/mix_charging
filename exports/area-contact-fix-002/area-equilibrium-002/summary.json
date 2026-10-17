@@ -1,0 +1,9 @@
+{
+  "scope": "manufactured_analytic_state_FEM_residual_not_explicit_solution",
+  "checks": {
+    "force_balance": true,
+    "material_volume": true,
+    "contact_force": true,
+    "porosity": true
+  }
+}

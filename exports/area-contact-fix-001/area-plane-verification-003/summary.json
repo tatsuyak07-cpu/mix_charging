@@ -1,0 +1,83 @@
+{
+  "scope": "contact_only_same_flat_interface_not_packing_compaction",
+  "tolerances": {
+    "balance": 1e-10,
+    "gradient": 1e-05,
+    "macro_work": 1e-05,
+    "phase_spread": 0.02
+  },
+  "checks": {
+    "force_balance": true,
+    "energy_gradient": true,
+    "periodic_macro_work": true,
+    "flat_interface_phase_invariance": true
+  },
+  "phase_groups": [
+    {
+      "refinement": 1,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 0.0
+    },
+    {
+      "refinement": 1,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 1.282178098418645e-16
+    },
+    {
+      "refinement": 2,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 0.0
+    },
+    {
+      "refinement": 2,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 2.56435619683729e-16
+    },
+    {
+      "refinement": 4,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 0.0
+    },
+    {
+      "refinement": 4,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 2.5643561968372893e-16
+    },
+    {
+      "refinement": 8,
+      "gap_mm": 0.015,
+      "phase_force_spread_relative": 2.1931074614079796e-16
+    },
+    {
+      "refinement": 8,
+      "gap_mm": 0.01,
+      "phase_force_spread_relative": 1.282178098418645e-16
+    }
+  ],
+  "status": "screening_passed_not_general_convergence",
+  "area_source_sha256": "8f55e6765497bd573ed8d952ff5dc4539fad92a85857df45f78a4121bbabaed6",
+  "source_sha256": "f060794376aeddd74524f981483943611818b02613d2f13b102d4351a51ddb18",
+  "settings": {
+    "backend": "area_guarded",
+    "refinements": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "phases": [
+      0.0,
+      0.01,
+      0.25,
+      0.5
+    ],
+    "gaps": [
+      0.015,
+      0.01
+    ],
+    "friction": 0.3,
+    "skin_mm": 0.1,
+    "thickness_mm": 0.02,
+    "penalty_MPa_mm": 20.0
+  }
+}

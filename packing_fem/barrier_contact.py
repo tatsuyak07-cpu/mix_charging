@@ -231,17 +231,13 @@ class BarrierContact(Contact):
             jobs.append((('ee',i,j,*shift),ids,'ee',shift,.125*self.kn*self.node_area0[ids].sum(),threshold))
         return jobs
 
-    def evaluate(self,x,velocity,H,Hdot,dt):
-        force=np.zeros_like(x);extra=np.zeros(6);hist={};diag=np.zeros(len(x));minimum=self.skin
-        report=dict(contacts=0,edge_contacts=0,normal_energy=0.,tangent_energy=0.,friction_increment=0.,algorithmic_increment=0.,released_history_energy=0.,penetration_mm=0.,max_coulomb_ratio=0.,image_count=0,minimum_separation_mm=self.skin)
-        self.trial_separation=self.skin;self.trial_diagonal=diag
-        if not len(self.faces):return force,extra,hist,report
+    def prepare_geometry(self,x,H):
         inv=np.linalg.inv(H);frac=x[self.nodes]@inv.T;pad=self.skin*np.linalg.norm(inv,axis=1)
         lo=np.ceil(frac.min(axis=0)-frac.max(axis=0)-pad).astype(int);hi=np.floor(frac.max(axis=0)-frac.min(axis=0)+pad).astype(int)
         count=1
         for v in hi-lo+1:count*=int(v)
         if count>729:raise ValueError('Barrier image budget exceeded; no truncation')
-        shifts=list(product(*[range(a,b+1) for a,b in zip(lo,hi)]));self.trial_shifts=shifts;report['image_count']=count
+        shifts=list(product(*[range(a,b+1) for a,b in zip(lo,hi)]));self.trial_shifts=shifts
         if hasattr(self,'accepted_geometry'):
             old,oldH=self.accepted_geometry
             # Include disappearing images too: their motion still belongs to
@@ -260,6 +256,14 @@ class BarrierContact(Contact):
             self.neighbor_builds=getattr(self,'neighbor_builds',0)+1;margin=0.
         minimum=self.skin-margin
         if minimum<=self.L*1e-12:raise ContactResolutionError('Nonlocal surface separation unresolved')
+        return minimum,count
+
+    def evaluate(self,x,velocity,H,Hdot,dt):
+        force=np.zeros_like(x);extra=np.zeros(6);hist={};diag=np.zeros(len(x));minimum=self.skin
+        report=dict(contacts=0,edge_contacts=0,normal_energy=0.,tangent_energy=0.,friction_increment=0.,algorithmic_increment=0.,released_history_energy=0.,penetration_mm=0.,max_coulomb_ratio=0.,image_count=0,minimum_separation_mm=self.skin)
+        self.trial_separation=self.skin;self.trial_diagonal=diag
+        if not len(self.faces):return force,extra,hist,report
+        minimum,report['image_count']=self.prepare_geometry(x,H)
         for key,ids,kind,shift,kn,threshold in self.neighbors:
             points=x[ids].copy();start=1 if kind=='pt' else 2;points[start:]+=H@shift
             value=constraint(points,kind,kn,self.thickness,self.mu,self.history.get(key),threshold,include_inactive=True)

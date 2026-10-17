@@ -62,7 +62,7 @@ def validate(c):
     if not isinstance(c.get('remesh_every',0),int) or c.get('remesh_every',0)<0:raise ValueError('Invalid remesh interval')
     if c.get('unload_s',0)<0 or c.get('recovery_hold_s',0)<0:raise ValueError('Negative unloading time')
     if c.get('recovery_hold_s',0)>0 and c.get('unload_s',0)<=0:raise ValueError('Recovery hold needs an unloading segment')
-    if c.get('contact_backend','legacy') not in ('legacy','tracked_guarded','tracked_edges','distance_barrier'):raise ValueError('Unknown contact backend')
+    if c.get('contact_backend','legacy') not in ('legacy','tracked_guarded','tracked_edges','distance_barrier','area_guarded'):raise ValueError('Unknown contact backend')
     if not np.isfinite(c.get('edge_penalty_scale',1.)) or c.get('edge_penalty_scale',1.)<=0:raise ValueError('Positive edge penalty scale required')
     if c.get('loading_mode','displacement') not in ('displacement','nominal_pressure','porosity_target'):raise ValueError('Unknown loading mode')
     if c.get('loading_mode') in ('nominal_pressure','porosity_target') and (not np.isfinite(c.get('pressure_mpa',0)) or c.get('pressure_mpa',0)<=0):raise ValueError('Positive finite pressure required')
@@ -89,9 +89,10 @@ def solve(directory,X,t,c):
     if c.get('contact_backend')=='tracked_edges':
         from .edge_tracked_contact import EdgeTrackedContact
         contact_type=EdgeTrackedContact;contact_kwargs['edge_penalty_scale']=c.get('edge_penalty_scale',1.)
-    if c.get('contact_backend')=='distance_barrier':
+    if c.get('contact_backend') in ('distance_barrier','area_guarded'):
         from .barrier_contact import BarrierContact
-        contact_type=BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
+        from .area_contact import AreaContact
+        contact_type=AreaContact if c['contact_backend']=='area_guarded' else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     b=np.repeat(np.eye(3)[None],len(t),axis=0);ep=np.full(len(t),float(c.get('initial_peeq',0.)));q=np.zeros(periodic.ndof);v=q.copy();x=X.copy()
     if 'initial_velocity_mm_s' in c:
@@ -185,7 +186,7 @@ def solve(directory,X,t,c):
             try:
                 fc,extra,newhist,cnew=contact.evaluate(xnew,periodic.velocities(vhalf),H,Hdot,dt)
             except ContactResolutionError as exc:
-                if c.get('contact_backend')!='distance_barrier':raise
+                if c.get('contact_backend') not in ('distance_barrier','area_guarded'):raise
                 contact_retries+=1;retry_limit=dt*.5
                 retry_log.append({'accepted_time_s':time,'trial_dt_s':dt,'reason':str(exc)})
                 if contact_retries>c.get('max_contact_retries',10000):raise RuntimeError('Contact retry budget exhausted')
@@ -266,7 +267,7 @@ def solve(directory,X,t,c):
     if unload>0:checks['unload_completed']=failure is None and not periodic.prescribed_active and time>=duration-1e-14
     if 'target_final_porosity' in c:checks['target_porosity_observed']=bool(np.any((h[:,2]>=0)&(h[:,2]<=c['target_final_porosity'])))
     checks={k:bool(value) for k,value in checks.items()}
-    result={'mass_frame':c.get('mass_frame','pinned'),'porosity_goal_equilibrated':goal_reached if goal_control else None,'peak_nominal_pressure_MPa':float(np.max(audits[:,3])) if pressure_control else None,'contact_quadrature_variation_Nmm':algorithmic_variation,'contact_released_history_Nmm':released,'contact_neighbor_builds':getattr(contact,'neighbor_builds',None),'audit_sampling':'every_accepted_step','loading_mode':c.get('loading_mode','displacement'),'contact_retries':contact_retries,'contact_backend':c.get('contact_backend','legacy'),'edge_edge_response_implemented':c.get('contact_backend') in ('tracked_edges','distance_barrier'),'edge_response_scope':('unsigned_distance_barrier_all_closest_features' if c.get('contact_backend')=='distance_barrier' else ('interior_only_handoff_unvalidated' if c.get('contact_backend')=='tracked_edges' else 'none')),'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
+    result={'area_contact_scope':'single_closest_patch_with_edge_collision_guard' if c.get('contact_backend')=='area_guarded' else None,'mass_frame':c.get('mass_frame','pinned'),'porosity_goal_equilibrated':goal_reached if goal_control else None,'peak_nominal_pressure_MPa':float(np.max(audits[:,3])) if pressure_control else None,'contact_quadrature_variation_Nmm':algorithmic_variation,'contact_released_history_Nmm':released,'contact_neighbor_builds':getattr(contact,'neighbor_builds',None),'audit_sampling':'every_accepted_step','loading_mode':c.get('loading_mode','displacement'),'contact_retries':contact_retries,'contact_backend':c.get('contact_backend','legacy'),'edge_edge_response_implemented':c.get('contact_backend') in ('tracked_edges','distance_barrier'),'edge_response_scope':('collision_guard_only_no_edge_spring' if c.get('contact_backend')=='area_guarded' else 'unsigned_distance_barrier_all_closest_features' if c.get('contact_backend')=='distance_barrier' else ('interior_only_handoff_unvalidated' if c.get('contact_backend')=='tracked_edges' else 'none')),'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
             'checks':checks,'failure':failure,'steps':steps,'dt_min_s':dt_min,'dt_max_s':dt_max,'kinetic_internal_ratio_loaded':ke_ratio if np.isfinite(ke_ratio) else None,
             'closed_boundary_volume_relative_error':boundary_error,'material_volume_relative_error':material_volume_error,'final_static_residual_ratio':float(static_ratio),'energy_scale_Nmm':work_scale,'initial_available_energy_Nmm':initial_available_energy,'energy_absolute_residual_Nmm':float(np.max(np.abs(audits[:,7]))),'energy_relative_error':float(np.max(np.abs(audits[:,7]))/work_scale),'remesh_events':remesh_events,
             'initial_porosity':float(h[0,2]),'final_porosity':float(h[-1,2]),'final_axial_compression':float(h[-1,1]),'residual_compression_strain':float(h[-1,1]) if unload>0 and checks.get('unload_completed') and checks['static_equilibrium'] else None,

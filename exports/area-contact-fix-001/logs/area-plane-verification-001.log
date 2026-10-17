@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_plane_contact.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/mix_charging/tools/verify_plane_contact.py", line 82, in main
+    row=measure(n,gap,phase,backend=args.backend);rows.append(row)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/tools/verify_plane_contact.py", line 62, in measure
+    derivative=-(energy(x+eps*basis[:,:,k],H+eps*macro)-energy(x-eps*basis[:,:,k],H-eps*macro))/(2*eps)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/tools/verify_plane_contact.py", line 54, in energy
+    value=contact.evaluate(xnew,np.zeros_like(xnew),Hnew,Hnew*0,0.)[-1]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/area_contact.py", line 79, in evaluate
+    raise SurfaceResolutionError('Multiple distinct closest patches require multi-contact surface integration')
+packing_fem.area_contact.SurfaceResolutionError: Multiple distinct closest patches require multi-contact surface integration
