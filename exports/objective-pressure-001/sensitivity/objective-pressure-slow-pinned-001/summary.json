@@ -1,0 +1,18 @@
+{
+  "mass_frame": "pinned",
+  "ramp_s": 0.016,
+  "scope": "load_operator_and_manufactured_plane_contact_plus_actual_homogeneous_FEM_only",
+  "checks": {
+    "manufactured_force_balance": true,
+    "manufactured_contact_force": true,
+    "manufactured_volume": true,
+    "manufactured_porosity": true,
+    "actual_solver_checks": true,
+    "actual_axial_limit": true,
+    "actual_plastic_limit": true,
+    "actual_stress_limit": true,
+    "no_shear_clamp_needed_for_homogeneous_cube": false
+  },
+  "particle_compaction_completed": false,
+  "layered_contact_transient_revalidated": false
+}

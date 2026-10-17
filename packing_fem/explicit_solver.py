@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 from .explicit_material import geometry,advance,internal_force,constants,response
 from .explicit_periodic import Periodic,deformation
+from .macro_loading import uniaxial_load,diagnostic_cauchy
 from .periodic_contact import Contact
 from .adaptive_tet import propose,quality,closed_surface_volume
 
@@ -64,8 +65,8 @@ def validate(c):
     if c.get('recovery_hold_s',0)>0 and c.get('unload_s',0)<=0:raise ValueError('Recovery hold needs an unloading segment')
     if c.get('contact_backend','legacy') not in ('legacy','tracked_guarded','tracked_edges','distance_barrier','area_guarded'):raise ValueError('Unknown contact backend')
     if not np.isfinite(c.get('edge_penalty_scale',1.)) or c.get('edge_penalty_scale',1.)<=0:raise ValueError('Positive edge penalty scale required')
-    if c.get('loading_mode','displacement') not in ('displacement','nominal_pressure','porosity_target'):raise ValueError('Unknown loading mode')
-    if c.get('loading_mode') in ('nominal_pressure','porosity_target') and (not np.isfinite(c.get('pressure_mpa',0)) or c.get('pressure_mpa',0)<=0):raise ValueError('Positive finite pressure required')
+    if c.get('loading_mode','displacement') not in ('displacement','nominal_pressure','cauchy_pressure','porosity_target'):raise ValueError('Unknown loading mode')
+    if c.get('loading_mode') in ('nominal_pressure','cauchy_pressure','porosity_target') and (not np.isfinite(c.get('pressure_mpa',0)) or c.get('pressure_mpa',0)<=0):raise ValueError('Positive finite pressure required')
     if c.get('timestep_method','element_wave') not in ('element_wave','assembled_mass_bound'):raise ValueError('Unknown timestep method')
     if c.get('loading_mode')=='porosity_target' and (not 0<c.get('target_final_porosity',-1)<1 or c.get('hold_s',0)<=0 or c.get('unload_s',0)>0):raise ValueError('Porosity control needs a physical target, positive equilibration hold and no unloading')
     constants(c)
@@ -76,8 +77,9 @@ def solve(directory,X,t,c):
     np.savez_compressed(directory/'initial-mesh.npz',points=X,tets=t)
     (directory/'config.json').write_text(json.dumps(c,indent=2)+'\n')
     V0,_,D=geometry(X,t);initial_V0=float(V0.sum());periodic=Periodic(X,c['length_mm'],mass_frame=c.get('mass_frame','pinned'))
-    pressure_control=c.get('loading_mode') in ('nominal_pressure','porosity_target')
+    pressure_control=c.get('loading_mode') in ('nominal_pressure','cauchy_pressure','porosity_target')
     goal_control=c.get('loading_mode')=='porosity_target'
+    cauchy_control=c.get('loading_mode')=='cauchy_pressure'
     if goal_control and not c['target_final_porosity']<1-initial_V0/c['length_mm']**3:raise ValueError('Porosity target must be below the actual initial porosity')
     if pressure_control:periodic.prescribed_active=False;periodic.free=np.arange(periodic.ndof)
     mass=lumped_mass(t,V0,c['density_tonne_mm3'],len(X));periodic.mass(mass)
@@ -105,7 +107,7 @@ def solve(directory,X,t,c):
     if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,np.eye(3)*periodic.L)
     f=periodic.force(f_int+fc,extra);a=periodic.acceleration(f,v,0.,c['damping_per_s'])
     release_time=c['ramp_s']+c.get('hold_s',0.);unload=c.get('unload_s',0.)
-    duration=release_time+unload+c.get('recovery_hold_s',0.);release_load=None;external=np.zeros(periodic.ndof)
+    duration=release_time+unload+c.get('recovery_hold_s',0.);release_load=None;external=np.zeros(periodic.ndof);command_pressure=0.
     goal_phase='ramp';goal_load_time=0.;goal_hold_start=0.;goal_pressure=0.;goal_reached=False
     if goal_control:duration=c.get('max_goal_time_s',10*(c['ramp_s']+c['hold_s']))
     retry_limit=float('inf');contact_retries=0;retry_log=[];algorithmic_variation=0.
@@ -152,7 +154,7 @@ def solve(directory,X,t,c):
         dynamic=reaction-external;dynamic[-6:]/=periodic.L
         return [time,-q[periodic.prescribed],1-volume.sum()/vc,nominal,kinetic,internal,W,damp,friction,released,
                 ci['normal_energy'],ci['tangent_energy'],total-W,float(ep.max()),float(J.min()),float(quality(x,t).min()),
-                ci['penetration_mm'],ci['max_coulomb_ratio'],ci['contacts'],len(t),float(np.max(np.abs(dynamic[periodic.free]))),algorithmic,ci.get('edge_contacts',0),ci.get('minimum_separation_mm',float('nan'))]
+                ci['penetration_mm'],ci['max_coulomb_ratio'],ci['contacts'],len(t),float(np.max(np.abs(dynamic[periodic.free]))),algorithmic,ci.get('edge_contacts',0),ci.get('minimum_separation_mm',float('nan')),command_pressure if pressure_control else float('nan')]
     history.append(snapshot());audit_rows=[history[0][0:7]+[history[0][12]]];coulomb_peak=ci['max_coulomb_ratio']
     progress=directory/'progress.jsonl';progress.write_text('')
     def log_progress():
@@ -201,7 +203,9 @@ def solve(directory,X,t,c):
                 if goal_control and goal_phase=='hold':smooth=goal_pressure/c['pressure_mpa']
                 if unload>0 and next_time>release_time:
                     phase=min(1.,(next_time-release_time)/unload);smooth=1-(10*phase**3-15*phase**4+6*phase**5)
-                external[periodic.prescribed]=-c['pressure_mpa']*periodic.L**3*smooth
+                command_pressure=c['pressure_mpa']*smooth
+                if cauchy_control:external[-6:]=uniaxial_load(deformation(qnew[-6:]),command_pressure,periodic.L**3)
+                else:external[periodic.prescribed]=-command_pressure*periodic.L**3
             elif not periodic.prescribed_active:
                 phase=min(1.,max(0.,(next_time-release_time)/unload));smooth=10*phase**3-15*phase**4+6*phase**5
                 external[periodic.prescribed]=release_load*(1-smooth)
@@ -220,7 +224,7 @@ def solve(directory,X,t,c):
             if c.get('remesh_every',0) and steps%c['remesh_every']==0:try_remesh(ap)
             kinetic_now=float(.5*v@(periodic.M@v));internal_now=float(V0@energy)
             residual_now=kinetic_now+internal_now+ci['normal_energy']+ci['tangent_energy']+damp+friction+released+algorithmic-initial_energy-W
-            audit_rows.append([time,-q[periodic.prescribed],0.,-external[periodic.prescribed]/periodic.L**3,kinetic_now,internal_now,W,residual_now]);coulomb_peak=max(coulomb_peak,ci['max_coulomb_ratio'])
+            audit_rows.append([time,-q[periodic.prescribed],0.,command_pressure if pressure_control else -external[periodic.prescribed]/periodic.L**3,kinetic_now,internal_now,W,residual_now]);coulomb_peak=max(coulomb_peak,ci['max_coulomb_ratio'])
             if quality(x,t).min()<c['minimum_quality']:raise RuntimeError('Mesh quality exhausted; local remeshing cannot repair this boundary distortion')
             if goal_control:
                 if goal_phase=='ramp':goal_load_time=min(c['ramp_s'],goal_load_time+dt)
@@ -267,12 +271,12 @@ def solve(directory,X,t,c):
     if unload>0:checks['unload_completed']=failure is None and not periodic.prescribed_active and time>=duration-1e-14
     if 'target_final_porosity' in c:checks['target_porosity_observed']=bool(np.any((h[:,2]>=0)&(h[:,2]<=c['target_final_porosity'])))
     checks={k:bool(value) for k,value in checks.items()}
-    result={'area_contact_scope':'single_closest_patch_with_edge_collision_guard' if c.get('contact_backend')=='area_guarded' else None,'mass_frame':c.get('mass_frame','pinned'),'porosity_goal_equilibrated':goal_reached if goal_control else None,'peak_nominal_pressure_MPa':float(np.max(audits[:,3])) if pressure_control else None,'contact_quadrature_variation_Nmm':algorithmic_variation,'contact_released_history_Nmm':released,'contact_neighbor_builds':getattr(contact,'neighbor_builds',None),'audit_sampling':'every_accepted_step','loading_mode':c.get('loading_mode','displacement'),'contact_retries':contact_retries,'contact_backend':c.get('contact_backend','legacy'),'edge_edge_response_implemented':c.get('contact_backend') in ('tracked_edges','distance_barrier'),'edge_response_scope':('collision_guard_only_no_edge_spring' if c.get('contact_backend')=='area_guarded' else 'unsigned_distance_barrier_all_closest_features' if c.get('contact_backend')=='distance_barrier' else ('interior_only_handoff_unvalidated' if c.get('contact_backend')=='tracked_edges' else 'none')),'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
+    result={'pressure_measure':'cauchy' if cauchy_control else 'nominal_reference', 'peak_command_pressure_MPa':float(np.max(audits[:,3])) if pressure_control else None, 'final_work_equivalent_cauchy_stress_MPa':diagnostic_cauchy(deformation(q[-6:]),-f[-6:],periodic.L**3), 'final_external_work_equivalent_cauchy_stress_MPa':diagnostic_cauchy(deformation(q[-6:]),external[-6:],periodic.L**3), 'area_contact_scope':'single_closest_patch_with_edge_collision_guard' if c.get('contact_backend')=='area_guarded' else None,'mass_frame':c.get('mass_frame','pinned'),'porosity_goal_equilibrated':goal_reached if goal_control else None,'peak_nominal_pressure_MPa':float(np.max(h[:,3])) if pressure_control else None,'contact_quadrature_variation_Nmm':algorithmic_variation,'contact_released_history_Nmm':released,'contact_neighbor_builds':getattr(contact,'neighbor_builds',None),'audit_sampling':'every_accepted_step','loading_mode':c.get('loading_mode','displacement'),'contact_retries':contact_retries,'contact_backend':c.get('contact_backend','legacy'),'edge_edge_response_implemented':c.get('contact_backend') in ('tracked_edges','distance_barrier'),'edge_response_scope':('collision_guard_only_no_edge_spring' if c.get('contact_backend')=='area_guarded' else 'unsigned_distance_barrier_all_closest_features' if c.get('contact_backend')=='distance_barrier' else ('interior_only_handoff_unvalidated' if c.get('contact_backend')=='tracked_edges' else 'none')),'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
             'checks':checks,'failure':failure,'steps':steps,'dt_min_s':dt_min,'dt_max_s':dt_max,'kinetic_internal_ratio_loaded':ke_ratio if np.isfinite(ke_ratio) else None,
             'closed_boundary_volume_relative_error':boundary_error,'material_volume_relative_error':material_volume_error,'final_static_residual_ratio':float(static_ratio),'energy_scale_Nmm':work_scale,'initial_available_energy_Nmm':initial_available_energy,'energy_absolute_residual_Nmm':float(np.max(np.abs(audits[:,7]))),'energy_relative_error':float(np.max(np.abs(audits[:,7]))/work_scale),'remesh_events':remesh_events,
             'initial_porosity':float(h[0,2]),'final_porosity':float(h[-1,2]),'final_axial_compression':float(h[-1,1]),'residual_compression_strain':float(h[-1,1]) if unload>0 and checks.get('unload_completed') and checks['static_equilibrium'] else None,
             'limitations':['linear-tetra plastic locking not converged','contact quadrature, barrier thickness, mollification and general friction convergence not validated','internal 2-to-3 reconnection only; no surface remeshing','numerical density and damping are not measured material data','uncalibrated Kirchhoff-yield Hencky J2 material','not a verified 40 to 10 percent compaction result']}
-    np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N,contact_algorithmic_Nmm,edge_contacts,minimum_separation_mm')
+    np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N,contact_algorithmic_Nmm,edge_contacts,minimum_separation_mm,command_pressure_MPa')
     np.savez_compressed(directory/'last-state.npz',points=x,reference_points=X,tets=t,elastic_b=b,peeq=ep,reference_volume=V0,generalized_position=q,generalized_velocity=v)
     if retry_log:(directory/'contact-retries.json').write_text(json.dumps(retry_log,indent=2)+'\n')
     (directory/'summary.json').write_text(json.dumps(result,indent=2)+'\n')

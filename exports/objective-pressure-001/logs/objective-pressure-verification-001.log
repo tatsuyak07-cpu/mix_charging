@@ -1,0 +1,22 @@
+{"case": "cube-n1-cfl0.2-P0.02", "refinement": 1, "cfl": 0.2, "cauchy_pressure_MPa": 0.02, "axial_stretch": 0.9980033545662204, "analytic_axial_stretch": 0.9980033545682153, "axial_error": 1.9949597529489438e-12, "peeq": 0.0, "analytic_peeq": 0.0, "peeq_error": 0.0, "shear_norm": 9.56973878915163e-13, "stress_relative_error": 7.525592995993868e-10, "energy_relative_error": 3.1861205804499193e-08, "kinetic_ratio": 5.337396303758078e-05, "solver_checks_passed": true, "failure": null}
+{"case": "cube-n1-cfl0.1-P0.02", "refinement": 1, "cfl": 0.1, "cauchy_pressure_MPa": 0.02, "axial_stretch": 0.9980033545660273, "analytic_axial_stretch": 0.9980033545682153, "axial_error": 2.1880275369312585e-12, "peeq": 0.0, "analytic_peeq": 0.0, "peeq_error": 0.0, "shear_norm": 1.0973310961890155e-12, "stress_relative_error": 8.286831290615915e-10, "energy_relative_error": 1.5941344681921702e-08, "kinetic_ratio": 5.3413884017824544e-05, "solver_checks_passed": true, "failure": null}
+{"case": "cube-n2-cfl0.2-P0.02", "refinement": 2, "cfl": 0.2, "cauchy_pressure_MPa": 0.02, "axial_stretch": 0.9980033545679278, "analytic_axial_stretch": 0.9980033545682153, "axial_error": 2.8754776337791554e-13, "peeq": 0.0, "analytic_peeq": 0.0, "peeq_error": 0.0, "shear_norm": 3.360573415803217e-13, "stress_relative_error": 1.198654043439051e-10, "energy_relative_error": 1.2227011842235246e-08, "kinetic_ratio": 4.006045961129604e-05, "solver_checks_passed": true, "failure": null}
+{"case": "cube-n2-cfl0.1-P0.02", "refinement": 2, "cfl": 0.1, "cauchy_pressure_MPa": 0.02, "axial_stretch": 0.9980033545677888, "analytic_axial_stretch": 0.9980033545682153, "axial_error": 4.2654768606098514e-13, "peeq": 0.0, "analytic_peeq": 0.0, "peeq_error": 0.0, "shear_norm": 3.798683253211166e-13, "stress_relative_error": 1.4897278770192349e-10, "energy_relative_error": 6.107728260593819e-09, "kinetic_ratio": 4.007578071560932e-05, "solver_checks_passed": true, "failure": null}
+{"case": "cube-n1-cfl0.2-P0.1", "refinement": 1, "cfl": 0.2, "cauchy_pressure_MPa": 0.1, "axial_stretch": 0.7723487877145485, "analytic_axial_stretch": 0.7723829595986087, "axial_error": 3.4171884060185675e-05, "peeq": 0.2483654586201261, "analytic_peeq": 0.24830861794023593, "peeq_error": 5.6840679890174384e-05, "shear_norm": 0.0015435419430571472, "stress_relative_error": 1.2927349926680345e-07, "energy_relative_error": 5.860787309296642e-06, "kinetic_ratio": 0.03215592431553473, "solver_checks_passed": false, "failure": null}
+{"case": "cube-n1-cfl0.1-P0.1", "refinement": 1, "cfl": 0.1, "cauchy_pressure_MPa": 0.1, "axial_stretch": 0.7723488184545547, "analytic_axial_stretch": 0.7723829595986087, "axial_error": 3.41411440539785e-05, "peeq": 0.24836545251532818, "analytic_peeq": 0.24830861794023593, "peeq_error": 5.68345750922572e-05, "shear_norm": 0.0015453404340483577, "stress_relative_error": 1.3487572220233168e-07, "energy_relative_error": 2.938908003326911e-06, "kinetic_ratio": 0.03214440542233654, "solver_checks_passed": false, "failure": null}
+{
+  "scope": "load_operator_and_manufactured_plane_contact_plus_actual_homogeneous_FEM_only",
+  "checks": {
+    "manufactured_force_balance": true,
+    "manufactured_contact_force": true,
+    "manufactured_volume": true,
+    "manufactured_porosity": true,
+    "actual_solver_checks": false,
+    "actual_axial_limit": false,
+    "actual_plastic_limit": false,
+    "actual_stress_limit": true,
+    "no_shear_clamp_needed_for_homogeneous_cube": false
+  },
+  "particle_compaction_completed": false,
+  "layered_contact_transient_revalidated": false
+}

@@ -1,0 +1,20 @@
+{"case": "cube-n1-cfl0.2-P0.1", "refinement": 1, "cfl": 0.2, "cauchy_pressure_MPa": 0.1, "axial_stretch": 0.7723484220480394, "analytic_axial_stretch": 0.7723829595986087, "axial_error": 3.4537550569258e-05, "peeq": 0.2483545087918585, "analytic_peeq": 0.24830861794023593, "peeq_error": 4.5890851622570894e-05, "shear_norm": 0.00039293055224088675, "stress_relative_error": 8.092997769162835e-08, "energy_relative_error": 3.4399462094952446e-06, "kinetic_ratio": 0.023973528313321713, "solver_checks_passed": false, "failure": null}
+{"case": "cube-n1-cfl0.1-P0.1", "refinement": 1, "cfl": 0.1, "cauchy_pressure_MPa": 0.1, "axial_stretch": 0.7723487051711566, "analytic_axial_stretch": 0.7723829595986087, "axial_error": 3.425442745208507e-05, "peeq": 0.24835414680158757, "analytic_peeq": 0.24830861794023593, "peeq_error": 4.55288613516458e-05, "shear_norm": 0.00039374409992400377, "stress_relative_error": 6.884246895003027e-08, "energy_relative_error": 1.7271057721876861e-06, "kinetic_ratio": 0.023964054041338622, "solver_checks_passed": false, "failure": null}
+{
+  "mass_frame": "zero_momentum",
+  "ramp_s": 0.004,
+  "scope": "load_operator_and_manufactured_plane_contact_plus_actual_homogeneous_FEM_only",
+  "checks": {
+    "manufactured_force_balance": true,
+    "manufactured_contact_force": true,
+    "manufactured_volume": true,
+    "manufactured_porosity": true,
+    "actual_solver_checks": false,
+    "actual_axial_limit": false,
+    "actual_plastic_limit": false,
+    "actual_stress_limit": true,
+    "no_shear_clamp_needed_for_homogeneous_cube": false
+  },
+  "particle_compaction_completed": false,
+  "layered_contact_transient_revalidated": false
+}

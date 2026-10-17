@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+大変形の圧力指定を改善：**一軸Cauchy真応力の追従荷重 `cauchy_pressure` を追加**。
+[式・検証・適用限界](docs/objective-pressure.md)・[比較PNG](exports/objective-pressure-001/pressure-verification.png)・[結果ZIP](exports/objective-pressure-001.zip)。
+従来の公称荷重方式は保持しています。今回の実荷重試験は空隙のない検証立方体です。
+接触過渡と球充填層の40%→10%圧密の完了を意味しません。
+
 接触積分を修正：**参照面積による `area_guarded` を追加し、平面32ケースの位置依存検査に合格**。
 [実装・検証・適用限界](docs/area-contact-fix.md)・[比較PNG](exports/area-contact-fix-002/area-contact-verification.png)・[結果ZIP](exports/area-contact-fix-002.zip)。
 辺だけの接触・複数パッチは解像不足として停止します。100 mm充填層の40%→10%圧密は未完了です。
