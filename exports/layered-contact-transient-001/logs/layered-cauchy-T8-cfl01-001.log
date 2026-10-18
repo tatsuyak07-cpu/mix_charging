@@ -1,0 +1,39 @@
+{
+  "scope": "1mm_layered_plane_pore_20percent_not_particle_packing",
+  "elapsed_s": 1541.0574556749998,
+  "solver_checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": true,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": true
+  },
+  "independent_checks": {
+    "independent_volume": true,
+    "endpoint_uniaxial_stress": true,
+    "positive_plane_gap": true,
+    "plane_planarity": true,
+    "active_contact_observed": true,
+    "diagonal_branch_axial": false,
+    "diagonal_branch_porosity": true,
+    "diagonal_branch_macro_shear": false
+  },
+  "solver_and_endpoint_checks_passed": true,
+  "diagonal_branch_checks_passed": false,
+  "failure": null,
+  "pressure_mpa": 0.02,
+  "ramp_s": 0.008,
+  "hold_s": 0.002,
+  "cfl": 0.1,
+  "refinement": 1,
+  "mass_frame": "pinned",
+  "particle_compaction_completed": false
+}

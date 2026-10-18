@@ -1,0 +1,66 @@
+{
+  "reference_assumptions": "homogeneous_diagonal_equilibrium_branch_not_a_uniqueness_claim",
+  "reference": {
+    "material_axial_stretch": 0.9980033545682153,
+    "material_peeq": 0.0,
+    "gap_mm": 0.01729545138760891,
+    "cell_height_mm": 0.8156981350421812,
+    "axial_compression": 0.18430186495781875,
+    "porosity": 0.02120324988448641
+  },
+  "checks": {
+    "independent_volume": true,
+    "endpoint_uniaxial_stress": true,
+    "positive_plane_gap": true,
+    "plane_planarity": true,
+    "active_contact_observed": true,
+    "diagonal_branch_axial": false,
+    "diagonal_branch_porosity": true,
+    "diagonal_branch_macro_shear": false
+  },
+  "independent_geometric_porosity": 0.021204668002971605,
+  "independent_material_porosity": 0.021204668002815952,
+  "independent_boundary_porosity": 0.021204668002971827,
+  "current_gap_mm": 0.017296673048288927,
+  "plane_planarity_error_mm": 3.398963299047976e-17,
+  "cell_F": [
+    [
+      1.0004435844287487,
+      -0.0002162101922631581,
+      0.02074224947848624
+    ],
+    [
+      -0.0002162101922631581,
+      1.000443560674896,
+      0.020743388859138328
+    ],
+    [
+      0.02074224947848624,
+      0.020743388859138328,
+      0.8169122617319966
+    ]
+  ],
+  "macro_shear_norm": 0.029335572972696906,
+  "work_equivalent_cauchy_MPa": [
+    [
+      2.8081426830221248e-09,
+      2.812143604857152e-09,
+      -3.14330350427243e-10
+    ],
+    [
+      2.812143604857152e-09,
+      2.808333872580409e-09,
+      -3.1381943914467513e-10
+    ],
+    [
+      -3.14330350427243e-10,
+      -3.1381943914467513e-10,
+      -0.02000000398935805
+    ]
+  ],
+  "stress_relative_error": 1.99467902438355e-07,
+  "peak_peeq": 0.0,
+  "axial_branch_error": 0.001214126689815409,
+  "porosity_branch_error": 1.418118485193437e-06,
+  "scope": "actual_layered_contact_transient_not_particle_packing"
+}

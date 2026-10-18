@@ -1,0 +1,11 @@
+{
+  "scope": "kinematic_zero_stiffness_mechanism_not_a_transient_solution",
+  "checks": {
+    "periodic_kinematics": true,
+    "rigid_solid_motion": true,
+    "zero_internal_energy": true,
+    "zero_resisting_force": true,
+    "positive_external_closing_force": true
+  },
+  "conclusion": "No static balance at positive axial pressure while gap exceeds barrier thickness: the unbonded layered fixture has a pore-closing mechanism. This does not establish instability of a connected sintered particle network."
+}

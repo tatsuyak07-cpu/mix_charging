@@ -1,0 +1,63 @@
+{
+  "rows": [
+    {
+      "closure_mm": 0.0,
+      "gap_mm": 0.2,
+      "periodic_representation_error_mm": 0.0,
+      "cell_F_error": 0.0,
+      "solid_deformation_error": 0.0,
+      "internal_energy_Nmm": 0.0,
+      "contact_energy_Nmm": 0.0,
+      "contacts": 0,
+      "generalized_internal_force_norm_Nmm": 0.0,
+      "constant_pressure_virtual_work_Nmm": 0.0,
+      "external_closing_direction_force_N": 0.020000000000000004
+    },
+    {
+      "closure_mm": 0.05,
+      "gap_mm": 0.15000000000000002,
+      "periodic_representation_error_mm": 1.1102230246251565e-16,
+      "cell_F_error": 1.1102230246251565e-16,
+      "solid_deformation_error": 0.0,
+      "internal_energy_Nmm": 0.0,
+      "contact_energy_Nmm": 0.0,
+      "contacts": 0,
+      "generalized_internal_force_norm_Nmm": 0.0,
+      "constant_pressure_virtual_work_Nmm": 0.0010000000000000009,
+      "external_closing_direction_force_N": 0.019999999999999997
+    },
+    {
+      "closure_mm": 0.1,
+      "gap_mm": 0.1,
+      "periodic_representation_error_mm": 2.220446049250313e-16,
+      "cell_F_error": 2.220446049250313e-16,
+      "solid_deformation_error": 0.0,
+      "internal_energy_Nmm": 0.0,
+      "contact_energy_Nmm": 0.0,
+      "contacts": 0,
+      "generalized_internal_force_norm_Nmm": 0.0,
+      "constant_pressure_virtual_work_Nmm": 0.002,
+      "external_closing_direction_force_N": 0.020000000000000007
+    },
+    {
+      "closure_mm": 0.17,
+      "gap_mm": 0.03,
+      "periodic_representation_error_mm": 3.3306690738754696e-16,
+      "cell_F_error": 2.220446049250313e-16,
+      "solid_deformation_error": 0.0,
+      "internal_energy_Nmm": 0.0,
+      "contact_energy_Nmm": 0.0,
+      "contacts": 0,
+      "generalized_internal_force_norm_Nmm": 0.0,
+      "constant_pressure_virtual_work_Nmm": 0.0034000000000000015,
+      "external_closing_direction_force_N": 0.020000000000000004
+    }
+  ],
+  "checks": {
+    "periodic_kinematics": true,
+    "rigid_solid_motion": true,
+    "zero_internal_energy": true,
+    "zero_resisting_force": true,
+    "positive_external_closing_force": true
+  }
+}

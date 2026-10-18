@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+接触過渡を追加検証：**層状セルに接触前の無剛性モードを確認**。
+[検証条件・判定](docs/layered-contact-transient.md)・[比較PNG](exports/layered-contact-transient-001/layered-contact-verification.png)・[全データZIP](exports/layered-contact-transient-001.zip)。
+接触後の終点の釣合いと、全過程の準静的性を分けて評価します。球充填体の圧密完了を意味しません。
+
 大変形の圧力指定を改善：**一軸Cauchy真応力の追従荷重 `cauchy_pressure` を追加**。
 [式・検証・適用限界](docs/objective-pressure.md)・[比較PNG](exports/objective-pressure-001/pressure-verification.png)・[結果ZIP](exports/objective-pressure-001.zip)。
 従来の公称荷重方式は保持しています。今回の実荷重試験は空隙のない検証立方体です。

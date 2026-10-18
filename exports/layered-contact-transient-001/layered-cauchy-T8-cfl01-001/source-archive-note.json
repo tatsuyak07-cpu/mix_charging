@@ -1,0 +1,4 @@
+{
+  "note": "Absolute __file__ in the initial archival loop did not archive the driver; exact unchanged driver bytes added before any code edit.",
+  "driver_sha256": "188f7483a7b728384b5bc21495ac9fcbed6016b8a61fb690ed70cea16a44c848"
+}

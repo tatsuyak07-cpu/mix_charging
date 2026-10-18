@@ -1,0 +1,241 @@
+{
+  "scope": "periodic_mesh_topology_only_not_a_stiffness_or_compaction_solution",
+  "models": {
+    "layered_1mm": {
+      "nodes": 16,
+      "tetrahedra": 12,
+      "length_mm": 1.0,
+      "initial_porosity": 0.20000000000000007,
+      "periodic_components": 1,
+      "components": [
+        {
+          "periodic_nodes": 3,
+          "winding_rank": 2,
+          "winding_vectors": [
+            [
+              -1,
+              -1,
+              0
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "winds_x": true,
+          "winds_y": true,
+          "winds_z": false,
+          "reference_solid_volume_mm3": 0.7999999999999999
+        }
+      ]
+    },
+    "connected_4mm": {
+      "nodes": 100,
+      "tetrahedra": 264,
+      "length_mm": 4.0,
+      "initial_porosity": 0.0024999999999999467,
+      "periodic_components": 1,
+      "components": [
+        {
+          "periodic_nodes": 48,
+          "winding_rank": 3,
+          "winding_vectors": [
+            [
+              -1,
+              -1,
+              -1
+            ],
+            [
+              -1,
+              -1,
+              0
+            ],
+            [
+              -1,
+              0,
+              -1
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              -1
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1
+            ]
+          ],
+          "winds_x": true,
+          "winds_y": true,
+          "winds_z": true,
+          "reference_solid_volume_mm3": 63.84
+        }
+      ]
+    },
+    "prepared_packing": {
+      "nodes": 14320,
+      "tetrahedra": 56382,
+      "length_mm": 25.0,
+      "initial_porosity": 0.39859199999999995,
+      "periodic_components": 1,
+      "components": [
+        {
+          "periodic_nodes": 12982,
+          "winding_rank": 3,
+          "winding_vectors": [
+            [
+              -1,
+              -1,
+              -1
+            ],
+            [
+              -1,
+              -1,
+              0
+            ],
+            [
+              -1,
+              0,
+              -1
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              -1
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              -1
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1
+            ]
+          ],
+          "winds_x": true,
+          "winds_y": true,
+          "winds_z": true,
+          "reference_solid_volume_mm3": 9397.0
+        }
+      ],
+      "source": "exports/explicit-fem-prototype-002/prepared-40percent-model",
+      "mesh_sha256": "1249e95256ae192824c735c4e5caaf7c9db080cd1ca4634351b0436c429fb6a6"
+    }
+  },
+  "checks": {
+    "layered_no_axial_winding": true,
+    "connected_fixture_spans_3D": true,
+    "prepared_packing_spans_3D": true
+  },
+  "initial_packing_stiffness_verified": false,
+  "particle_compaction_completed": false
+}

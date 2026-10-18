@@ -1,0 +1,72 @@
+{
+  "connected_initial_stiffness_checks": {
+    "micro_stiffness_positive": true,
+    "relaxed_macro_stiffness_positive": true,
+    "tangent_matches_finite_FEM_forces": true,
+    "symmetry": true
+  },
+  "periodic_connectivity_checks": {
+    "layered_no_axial_winding": true,
+    "connected_fixture_spans_3D": true,
+    "prepared_packing_spans_3D": true
+  },
+  "prepared_packing_stiffness_verified": false,
+  "mechanism_checks": {
+    "periodic_kinematics": true,
+    "rigid_solid_motion": true,
+    "zero_internal_energy": true,
+    "zero_resisting_force": true,
+    "positive_external_closing_force": true
+  },
+  "initial_fixture_has_unstiffened_closing_mode": true,
+  "scope": "actual_1mm_20percent_layered_pore_contact_transients_not_particle_packing",
+  "cases": 4,
+  "solver_and_endpoint_pass_count": 2,
+  "diagonal_branch_pass_count": 0,
+  "sampled_contact_window_exceedance_count": 4,
+  "contact_window_diagnostic": "contacts>0 and command>1percent of observed peak; max KE/internal-change from output snapshots; lower bound on full-step maximum",
+  "all_step_contact_window_audit_available": false,
+  "quasistatic_contact_path_validated": false,
+  "mesh_convergence_verified": false,
+  "particle_compaction_completed": false,
+  "comparisons": [
+    {
+      "kind": "CFL_halving_same_rate",
+      "ramp_ms": 4.0,
+      "coarse": "layered-cauchy-T4-cfl02-001",
+      "fine": "layered-cauchy-T4-cfl01-001",
+      "endpoint_porosity_difference": 1.453216436075877e-10,
+      "endpoint_axial_difference": 1.2064647147980168e-07,
+      "max_sampled_porosity_trace_difference": 0.003436150896209522,
+      "comparison_is_mesh_convergence": false
+    },
+    {
+      "kind": "CFL_halving_same_rate",
+      "ramp_ms": 8.0,
+      "coarse": "layered-cauchy-T8-cfl02-001",
+      "fine": "layered-cauchy-T8-cfl01-001",
+      "endpoint_porosity_difference": 8.836403830869699e-10,
+      "endpoint_axial_difference": 7.565901679884579e-07,
+      "max_sampled_porosity_trace_difference": 0.002410460309636358,
+      "comparison_is_mesh_convergence": false
+    },
+    {
+      "kind": "rate_halving_same_CFL",
+      "cfl": 0.1,
+      "fast": "layered-cauchy-T4-cfl01-001",
+      "slow": "layered-cauchy-T8-cfl01-001",
+      "endpoint_porosity_difference": 6.996793122659994e-08,
+      "endpoint_axial_difference": 5.958888244994576e-05,
+      "comparison_is_rate_convergence": false
+    },
+    {
+      "kind": "rate_halving_same_CFL",
+      "cfl": 0.2,
+      "fast": "layered-cauchy-T4-cfl02-001",
+      "slow": "layered-cauchy-T8-cfl02-001",
+      "endpoint_porosity_difference": 6.893896919990539e-08,
+      "endpoint_axial_difference": 5.87116458104775e-05,
+      "comparison_is_rate_convergence": false
+    }
+  ]
+}
