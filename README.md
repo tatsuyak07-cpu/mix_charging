@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+連結多孔質セルで真応力圧縮を検証：**全採用ステップの監査CSVを追加**。
+[条件・判定・適用限界](docs/connected-pressure-verification.md)・[比較PNG](exports/connected-pressure-verification-001/connected-pressure-verification.png)・[全データZIP](exports/connected-pressure-verification-001.zip)。
+4 mm角・初期空隙率0.25%の検証用形状です。球充填層の40%→10%圧密は未完了です。
+
 接触過渡を追加検証：**層状セルに接触前の無剛性モードを確認**。
 [検証条件・判定](docs/layered-contact-transient.md)・[比較PNG](exports/layered-contact-transient-001/layered-contact-verification.png)・[全データZIP](exports/layered-contact-transient-001.zip)。
 接触後の終点の釣合いと、全過程の準静的性を分けて評価します。球充填体の圧密完了を意味しません。

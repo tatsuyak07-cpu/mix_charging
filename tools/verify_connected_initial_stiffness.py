@@ -12,8 +12,8 @@ from tools.run_barrier_compaction import fixture
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
-    X,t=fixture();c=json.loads(Path('configs/explicit-area-cauchy-pressure.json').read_text());V,g,D=geometry(X,t);periodic=Periodic(X,4.)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--refinement',type=int,default=1);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    X,t=fixture(a.refinement);c=json.loads(Path('configs/explicit-area-cauchy-pressure.json').read_text());V,g,D=geometry(X,t);periodic=Periodic(X,4.)
     E,nu=c['young_mpa'],c['poisson'];mu=E/(2*(1+nu));lam=E*nu/((1+nu)*(1-2*nu));K=np.zeros((3*len(X),3*len(X)))
     for ids,grad,volume in zip(t,g,V):
         for i in range(4):
@@ -30,6 +30,6 @@ def main():
         derivative=(forces[0]-forces[1])/(2*eps);expected=reduced@q
         errors.append(float(np.linalg.norm(derivative-expected)/np.linalg.norm(expected)))
     checks=dict(micro_stiffness_positive=bool(microeig.min()>1e-10*microeig.max()),relaxed_macro_stiffness_positive=bool(eig.min()>1e-10*eig.max()),tangent_matches_finite_FEM_forces=bool(max(errors)<1e-6),symmetry=bool(np.max(abs(macro-macro.T))<1e-10))
-    summary=dict(scope='initial_elastic_tangent_existing_connected_4mm_fixture_not_particle_packing',nodes=len(X),tetrahedra=len(t),initial_porosity=float(1-V.sum()/4**3),units='N mm for macro stiffness, N/mm for micro stiffness',macro_stiffness=macro.tolist(),macro_eigenvalues=eig.tolist(),micro_min_eigenvalue=float(microeig.min()),six_force_gradient_relative_errors=errors,checks=checks,pressure_trajectory_computed=False,mesh_convergence_verified=False)
+    summary=dict(refinement=a.refinement,scope='initial_elastic_tangent_existing_connected_4mm_fixture_not_particle_packing',nodes=len(X),tetrahedra=len(t),initial_porosity=float(1-V.sum()/4**3),units='N mm for macro stiffness, N/mm for micro stiffness',macro_stiffness=macro.tolist(),macro_eigenvalues=eig.tolist(),micro_min_eigenvalue=float(microeig.min()),six_force_gradient_relative_errors=errors,checks=checks,pressure_trajectory_computed=False,mesh_convergence_verified=False)
     (a.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');(a.output/'verification-script.py').write_bytes(Path(__file__).read_bytes());np.savez_compressed(a.output/'initial-mesh.npz',points=X,tets=t);print(json.dumps(summary,indent=2));raise SystemExit(0 if all(checks.values()) else 2)
 if __name__=='__main__':main()

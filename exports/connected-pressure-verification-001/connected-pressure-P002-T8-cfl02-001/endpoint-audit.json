@@ -1,0 +1,48 @@
+{
+  "checks": {
+    "geometry_vs_material_volume": true,
+    "geometry_vs_boundary_volume": true,
+    "endpoint_uniaxial_stress": true
+  },
+  "geometric_porosity": 0.0024657815481938794,
+  "material_porosity": 0.002465781547668744,
+  "boundary_porosity": 0.0024657815481937684,
+  "stress_relative_error": 5.519420337440906e-09,
+  "work_equivalent_cauchy_stress_MPa": [
+    [
+      -5.424258333543588e-11,
+      -5.3578380415325795e-11,
+      2.2024312479617323e-11
+    ],
+    [
+      -5.3578380415325795e-11,
+      -5.4235724689756844e-11,
+      2.2025004735421055e-11
+    ],
+    [
+      2.2024312479617323e-11,
+      2.2025004735421055e-11,
+      -0.019999999889611594
+    ]
+  ],
+  "macro_F": [
+    [
+      1.0006613897742405,
+      -4.896743737147094e-09,
+      -1.930254918460278e-06
+    ],
+    [
+      -4.896743737147094e-09,
+      1.0006613897744039,
+      -1.930254905345826e-06
+    ],
+    [
+      -1.930254918460278e-06,
+      -1.930254905345826e-06,
+      0.9979642187889032
+    ]
+  ],
+  "macro_shear_norm": 2.7297970671738486e-06,
+  "peak_peeq": 0.0,
+  "scope": "independent_volume_plus_comparison_of_solver_stress_not_independent_reassembly_of_friction"
+}

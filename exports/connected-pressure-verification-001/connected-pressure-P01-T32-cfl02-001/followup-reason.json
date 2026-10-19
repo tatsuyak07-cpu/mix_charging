@@ -1,0 +1,5 @@
+{
+  "trigger": "P01-T16-cfl02 reached 0.1 MPa with peak PEEQ 0.2582, but loaded KE ratio 1.2563% exceeded unchanged 1% tolerance.",
+  "purpose": "Independent loading-rate sensitivity: double ramp duration, preserve density, damping, material, contact, hold and tolerances. T16 CFL halving continues independently.",
+  "not_a_material_or_geometry_change": true
+}

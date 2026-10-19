@@ -1,0 +1,30 @@
+{
+  "pressure_mpa": 0.02,
+  "ramp_s": 0.004,
+  "cfl": 0.1,
+  "elapsed_s": 316.4681557730073,
+  "solver_checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": true,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": true
+  },
+  "endpoint_checks": {
+    "geometry_vs_material_volume": true,
+    "geometry_vs_boundary_volume": true,
+    "endpoint_uniaxial_stress": true
+  },
+  "solver_and_endpoint_checks_passed": true,
+  "failure": null,
+  "particle_compaction_completed": false,
+  "scope": "connected_4mm_fixture_initial_porosity_0.25percent_not_particle_packing"
+}
