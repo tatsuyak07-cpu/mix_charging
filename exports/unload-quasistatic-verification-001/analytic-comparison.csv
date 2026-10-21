@@ -1,0 +1,7 @@
+case,negative_control,cfl,ramp_s,unload_s,max_axial_error_over_analytic_peak,unload_max_axial_error_over_analytic_peak,peak_KE_over_analytic_reference,unload_peak_KE_over_analytic_reference,original_energy_balance_passed,original_peak_pressure_reached,supplementary_pass
+baseline,False,0.2,0.008,0.008,8.579730906598067e-05,8.577249470952587e-05,3.339837838774625e-06,3.3398342224502705e-06,True,True,True
+half-cfl,False,0.1,0.008,0.008,8.57980272664055e-05,8.577313671376468e-05,3.3398382430015044e-06,3.339834516189467e-06,True,True,True
+slow-unload,False,0.2,0.008,0.016,8.579730906598067e-05,4.277827642878318e-05,3.339837838774625e-06,8.349335608881293e-07,True,True,True
+rapid-negative-control,True,0.2,2e-06,2e-06,0.9331927710986664,0.9113469154274273,0.1033494448382714,0.1033494448382714,False,False,False
+resolved-rapid,True,0.02,2e-06,2e-06,0.9826722555588024,0.9293037564090568,0.21545587905045824,0.21545587905045824,True,True,False
+resolved-rapid-half-cfl,True,0.01,2e-06,2e-06,0.9826616089953948,0.929303092232052,0.21556064355566917,0.21556064355566917,True,True,False

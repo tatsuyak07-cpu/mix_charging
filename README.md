@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+除荷判定を追加検証：**有限変形弾性解と刻み・速度比較で、ゼロ荷重近傍の瞬間KE比の分母の影響を確認**。
+[検証報告](docs/unload-quasistatic-verification.md)・[比較PNG](exports/unload-quasistatic-verification-001/unload-sensitivity.png)・[CSV・全計算ZIP](exports/unload-quasistatic-verification-001.zip)。
+関連テスト24件合格。急速荷重を棄却できることも確認しました。補助検査と既存の総合判定を区別し、塑性・接触後の除荷と球充填体の圧密は未検証です。
+
 連結セルの追加検証：**初期剛性を3段階で細分化し、弾性圧縮・除荷の対照試験を実施**。
 [結果・判定](docs/connected-refinement-unloading.md)・[比較PNG](exports/connected-refinement-unloading-002/refinement-unloading.png)・[全データZIP](exports/connected-refinement-unloading-002.zip)。
 形状は復元しましたが、除荷終盤の既存KE比判定は不合格のため診断データとして保持しています。塑性除荷・球充填体の40%→10%圧密は未完了です。

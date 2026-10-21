@@ -1,0 +1,437 @@
+{
+  "benchmark_expectations_met": true,
+  "analytic_peak_energy_Nmm": 1.9972836939671523e-05,
+  "analytic_peak_compression": 0.0019966454317846445,
+  "cases": [
+    {
+      "name": "baseline",
+      "config": {
+        "model_type": "experimental_explicit_tet_hencky_j2",
+        "length_mm": 1.0,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "density_tonne_mm3": 1e-09,
+        "density_basis": "numerical_trial_not_measured",
+        "compression_fraction": 0.005,
+        "ramp_s": 0.008,
+        "hold_s": 0.002,
+        "damping_per_s": 6000.0,
+        "contact_penalty_mpa_mm": 20.0,
+        "friction": 0.3,
+        "contact_skin_mm": 0.1,
+        "max_penetration_mm": 0.02,
+        "cfl": 0.2,
+        "max_steps": 200000,
+        "output_every": 100,
+        "remesh_every": 100,
+        "remesh_quality": 0.35,
+        "minimum_quality": 0.03,
+        "remesh_energy_tolerance": 0.001,
+        "energy_tolerance": 0.02,
+        "kinetic_tolerance": 0.01,
+        "force_tolerance": 0.02,
+        "max_peeq": 5.0,
+        "contact_backend": "area_guarded",
+        "loading_mode": "cauchy_pressure",
+        "pressure_mpa": 0.02,
+        "timestep_method": "assembled_mass_bound",
+        "barrier_thickness_mm": 0.02,
+        "contact_candidate_budget": 1000000,
+        "usage_scope": "experimental_spatial_uniaxial_Cauchy_pressure_not_validated_particle_compaction",
+        "unload_s": 0.008,
+        "recovery_hold_s": 0.002
+      },
+      "elapsed_s": 24.789824452018365,
+      "metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 1.9972836939671523e-05,
+        "rows": 25138,
+        "peak_kinetic_over_reference": 3.339837838774625e-06,
+        "late_instantaneous_ratio": 0.017725538308793896,
+        "loading": {
+          "peak_kinetic_Nmm": 6.670603655879054e-11,
+          "peak_kinetic_over_reference": 3.339837838774625e-06
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 6.670596433053388e-11,
+          "peak_kinetic_over_reference": 3.3398342224502705e-06
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 1.173864987823945e-19,
+          "peak_kinetic_over_reference": 5.877307221651261e-15
+        }
+      },
+      "max_axial_error_over_peak": 8.579730906598067e-05,
+      "unload_max_axial_error_over_peak": 8.577249470952587e-05,
+      "final_F": [
+        [
+          1.000000000000057,
+          -1.5223312129785953e-13,
+          9.266856158418182e-14
+        ],
+        [
+          -1.5223312129785953e-13,
+          0.9999999999998942,
+          6.479771966741475e-14
+        ],
+        [
+          9.266856158418182e-14,
+          6.479771966741475e-14,
+          1.0000000000002531
+        ]
+      ],
+      "peak_final_peeq": 0.0,
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      },
+      "supplementary_checks": {
+        "path_completed": true,
+        "peak_KE_small": true,
+        "tracks_quasistatic_solution": true,
+        "returns_to_identity": true,
+        "elastic": true
+      },
+      "supplementary_pass": true,
+      "negative_control": false,
+      "failure": null
+    },
+    {
+      "name": "half-cfl",
+      "config": {
+        "model_type": "experimental_explicit_tet_hencky_j2",
+        "length_mm": 1.0,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "density_tonne_mm3": 1e-09,
+        "density_basis": "numerical_trial_not_measured",
+        "compression_fraction": 0.005,
+        "ramp_s": 0.008,
+        "hold_s": 0.002,
+        "damping_per_s": 6000.0,
+        "contact_penalty_mpa_mm": 20.0,
+        "friction": 0.3,
+        "contact_skin_mm": 0.1,
+        "max_penetration_mm": 0.02,
+        "cfl": 0.1,
+        "max_steps": 200000,
+        "output_every": 100,
+        "remesh_every": 100,
+        "remesh_quality": 0.35,
+        "minimum_quality": 0.03,
+        "remesh_energy_tolerance": 0.001,
+        "energy_tolerance": 0.02,
+        "kinetic_tolerance": 0.01,
+        "force_tolerance": 0.02,
+        "max_peeq": 5.0,
+        "contact_backend": "area_guarded",
+        "loading_mode": "cauchy_pressure",
+        "pressure_mpa": 0.02,
+        "timestep_method": "assembled_mass_bound",
+        "barrier_thickness_mm": 0.02,
+        "contact_candidate_budget": 1000000,
+        "usage_scope": "experimental_spatial_uniaxial_Cauchy_pressure_not_validated_particle_compaction",
+        "unload_s": 0.008,
+        "recovery_hold_s": 0.002
+      },
+      "elapsed_s": 51.530226259026676,
+      "metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 1.9972836939671523e-05,
+        "rows": 50275,
+        "peak_kinetic_over_reference": 3.3398382430015044e-06,
+        "late_instantaneous_ratio": 0.0178039755701871,
+        "loading": {
+          "peak_kinetic_Nmm": 6.670604463234808e-11,
+          "peak_kinetic_over_reference": 3.3398382430015044e-06
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 6.670597019733895e-11,
+          "peak_kinetic_over_reference": 3.339834516189467e-06
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 1.1788322146042392e-19,
+          "peak_kinetic_over_reference": 5.902177132697437e-15
+        }
+      },
+      "max_axial_error_over_peak": 8.57980272664055e-05,
+      "unload_max_axial_error_over_peak": 8.577313671376468e-05,
+      "final_F": [
+        [
+          1.000000000000295,
+          -1.2220254716118122e-13,
+          1.4562470848211874e-13
+        ],
+        [
+          -1.2220254716118122e-13,
+          0.9999999999999918,
+          1.0064113361852913e-13
+        ],
+        [
+          1.4562470848211874e-13,
+          1.0064113361852913e-13,
+          1.000000000000355
+        ]
+      ],
+      "peak_final_peeq": 0.0,
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      },
+      "supplementary_checks": {
+        "path_completed": true,
+        "peak_KE_small": true,
+        "tracks_quasistatic_solution": true,
+        "returns_to_identity": true,
+        "elastic": true
+      },
+      "supplementary_pass": true,
+      "negative_control": false,
+      "failure": null
+    },
+    {
+      "name": "slow-unload",
+      "config": {
+        "model_type": "experimental_explicit_tet_hencky_j2",
+        "length_mm": 1.0,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "density_tonne_mm3": 1e-09,
+        "density_basis": "numerical_trial_not_measured",
+        "compression_fraction": 0.005,
+        "ramp_s": 0.008,
+        "hold_s": 0.002,
+        "damping_per_s": 6000.0,
+        "contact_penalty_mpa_mm": 20.0,
+        "friction": 0.3,
+        "contact_skin_mm": 0.1,
+        "max_penetration_mm": 0.02,
+        "cfl": 0.2,
+        "max_steps": 200000,
+        "output_every": 100,
+        "remesh_every": 100,
+        "remesh_quality": 0.35,
+        "minimum_quality": 0.03,
+        "remesh_energy_tolerance": 0.001,
+        "energy_tolerance": 0.02,
+        "kinetic_tolerance": 0.01,
+        "force_tolerance": 0.02,
+        "max_peeq": 5.0,
+        "contact_backend": "area_guarded",
+        "loading_mode": "cauchy_pressure",
+        "pressure_mpa": 0.02,
+        "timestep_method": "assembled_mass_bound",
+        "barrier_thickness_mm": 0.02,
+        "contact_candidate_budget": 1000000,
+        "usage_scope": "experimental_spatial_uniaxial_Cauchy_pressure_not_validated_particle_compaction",
+        "unload_s": 0.016,
+        "recovery_hold_s": 0.002
+      },
+      "elapsed_s": 35.62108423997415,
+      "metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 1.9972836939671523e-05,
+        "rows": 35193,
+        "peak_kinetic_over_reference": 3.339837838774625e-06,
+        "late_instantaneous_ratio": 0.004423347756022205,
+        "loading": {
+          "peak_kinetic_Nmm": 6.670603655879054e-11,
+          "peak_kinetic_over_reference": 3.339837838774625e-06
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 1.6675991867077912e-11,
+          "peak_kinetic_over_reference": 8.349335608881293e-07
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 1.8349526524433467e-21,
+          "peak_kinetic_over_reference": 9.187240941213655e-17
+        }
+      },
+      "max_axial_error_over_peak": 8.579730906598067e-05,
+      "unload_max_axial_error_over_peak": 4.277827642878318e-05,
+      "final_F": [
+        [
+          1.0000000000001876,
+          -7.603311609932512e-14,
+          2.1329483775304536e-13
+        ],
+        [
+          -7.603311609932512e-14,
+          1.0000000000000815,
+          -3.6986659280102657e-14
+        ],
+        [
+          2.1329483775304536e-13,
+          -3.6986659280102657e-14,
+          0.9999999999999837
+        ]
+      ],
+      "peak_final_peeq": 0.0,
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      },
+      "supplementary_checks": {
+        "path_completed": true,
+        "peak_KE_small": true,
+        "tracks_quasistatic_solution": true,
+        "returns_to_identity": true,
+        "elastic": true
+      },
+      "supplementary_pass": true,
+      "negative_control": false,
+      "failure": null
+    },
+    {
+      "name": "rapid-negative-control",
+      "config": {
+        "model_type": "experimental_explicit_tet_hencky_j2",
+        "length_mm": 1.0,
+        "young_mpa": 10.0,
+        "poisson": 0.33,
+        "yield_mpa": 0.05,
+        "hardening_mpa": 0.2,
+        "density_tonne_mm3": 1e-09,
+        "density_basis": "numerical_trial_not_measured",
+        "compression_fraction": 0.005,
+        "ramp_s": 2e-06,
+        "hold_s": 0.0,
+        "damping_per_s": 6000.0,
+        "contact_penalty_mpa_mm": 20.0,
+        "friction": 0.3,
+        "contact_skin_mm": 0.1,
+        "max_penetration_mm": 0.02,
+        "cfl": 0.2,
+        "max_steps": 200000,
+        "output_every": 100,
+        "remesh_every": 100,
+        "remesh_quality": 0.35,
+        "minimum_quality": 0.03,
+        "remesh_energy_tolerance": 0.001,
+        "energy_tolerance": 0.02,
+        "kinetic_tolerance": 0.01,
+        "force_tolerance": 0.02,
+        "max_peeq": 5.0,
+        "contact_backend": "area_guarded",
+        "loading_mode": "cauchy_pressure",
+        "pressure_mpa": 0.02,
+        "timestep_method": "assembled_mass_bound",
+        "barrier_thickness_mm": 0.02,
+        "contact_candidate_budget": 1000000,
+        "usage_scope": "experimental_spatial_uniaxial_Cauchy_pressure_not_validated_particle_compaction",
+        "unload_s": 2e-06,
+        "recovery_hold_s": 1e-05
+      },
+      "elapsed_s": 0.025065950001589954,
+      "metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 1.9972836939671523e-05,
+        "rows": 19,
+        "peak_kinetic_over_reference": 0.1033494448382714,
+        "late_instantaneous_ratio": 124.84850224852896,
+        "loading": {
+          "peak_kinetic_Nmm": 2.629456135571631e-07,
+          "peak_kinetic_over_reference": 0.013165160980956147
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 2.0641816095603713e-06,
+          "peak_kinetic_over_reference": 0.1033494448382714
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 1.4616404820596908e-06,
+          "peak_kinetic_over_reference": 0.07318141566341398
+        }
+      },
+      "max_axial_error_over_peak": 0.9331927710986664,
+      "unload_max_axial_error_over_peak": 0.9113469154274273,
+      "final_F": [
+        [
+          1.0003223219866977,
+          -9.217128489717896e-05,
+          -6.581914517367064e-05
+        ],
+        [
+          -9.217128489717896e-05,
+          1.000322321986698,
+          -6.581914517383125e-05
+        ],
+        [
+          -6.581914517367064e-05,
+          -6.581914517383125e-05,
+          0.9997709993085622
+        ]
+      ],
+      "peak_final_peeq": 0.0,
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": false,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": false,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": false,
+        "unload_completed": true
+      },
+      "supplementary_checks": {
+        "path_completed": true,
+        "peak_KE_small": false,
+        "tracks_quasistatic_solution": false,
+        "returns_to_identity": false,
+        "elastic": true
+      },
+      "supplementary_pass": false,
+      "negative_control": true,
+      "failure": null
+    }
+  ],
+  "solver_acceptance_changed": false,
+  "particle_compaction_verified": false
+}

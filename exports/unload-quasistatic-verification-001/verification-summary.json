@@ -1,0 +1,138 @@
+{
+  "scope": "elastic_controls_and_connected_4mm_0.25percent_fixture_not_particle_packing",
+  "connected_reference": "initial relaxed linear tangent, fixed scale only; not exact finite pressure trajectory",
+  "reference_energy_Nmm": 0.0013051194376228234,
+  "reference_axial_compression": 0.0020392491212856616,
+  "comparison_sampling": "union of accepted times, or accepted unloading phases, with linear interpolation",
+  "comparisons": {
+    "CFL_halving_max_axial_difference_over_linear_peak": 3.650325611783745e-08,
+    "CFL_halving_max_porosity_difference": 1.1756593962242157e-12,
+    "slow_unload_phase_axial_difference_over_linear_peak": 0.0005142787134924219,
+    "slow_unload_phase_porosity_difference": 1.628033524355213e-08,
+    "slow_to_baseline_unload_peak_KE_ratio": 0.2498150069962108
+  },
+  "resolved_negative_comparison": {
+    "CFL_halving_axial_difference_over_analytic_peak": 4.284948838441759e-05,
+    "energy_balance_both_passed": true,
+    "peak_pressure_both_reached": true,
+    "both_reject_quasistatic": true
+  },
+  "supplementary_checks": {
+    "CFL_axial_difference_below_0_1percent": true,
+    "rate_phase_difference_below_1percent": true,
+    "slow_unload_KE_reduced_at_least_twofold": true,
+    "all_cycle_KE_below_1percent": true,
+    "analytical_controls_expectations_met": true,
+    "resolved_negative_controls": true
+  },
+  "connected_cases": [
+    {
+      "case": "baseline",
+      "cfl": 0.2,
+      "unload_ms": 8.0,
+      "steps": 56400,
+      "final_axial_compression": 1.534947562099558e-11,
+      "final_porosity": 0.0024999999998193134,
+      "original_solver_all_passed": false,
+      "original_late_KE_ratio": 0.24453325914694954,
+      "peak_cycle_KE_over_linear_reference": 3.9910687547752885e-05,
+      "unload_peak_KE_over_linear_reference": 3.990963331695688e-05,
+      "recovery_peak_KE_over_linear_reference": 4.8209486992446466e-11,
+      "energy_relative_error": 4.249766862348256e-08,
+      "static_residual_ratio": 0.0037235705444104215,
+      "peak_contacts": 0,
+      "cycle_metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 0.0013051194376228234,
+        "rows": 56401,
+        "peak_kinetic_over_reference": 3.9910687547752885e-05,
+        "late_instantaneous_ratio": 0.24453325914694954,
+        "loading": {
+          "peak_kinetic_Nmm": 5.208821408746347e-08,
+          "peak_kinetic_over_reference": 3.9910687547752885e-05
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 5.208683819035986e-08,
+          "peak_kinetic_over_reference": 3.990963331695688e-05
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 6.291913855166655e-14,
+          "peak_kinetic_over_reference": 4.8209486992446466e-11
+        }
+      }
+    },
+    {
+      "case": "half-cfl",
+      "cfl": 0.1,
+      "unload_ms": 8.0,
+      "steps": 112799,
+      "final_axial_compression": 1.5865158304590506e-11,
+      "final_porosity": 0.0024999999998382982,
+      "original_solver_all_passed": false,
+      "original_late_KE_ratio": 0.24474521331179472,
+      "peak_cycle_KE_over_linear_reference": 3.991071040561898e-05,
+      "unload_peak_KE_over_linear_reference": 3.990965616263326e-05,
+      "recovery_peak_KE_over_linear_reference": 4.82641825626282e-11,
+      "energy_relative_error": 2.1223075214138745e-08,
+      "static_residual_ratio": 0.0037285938020477608,
+      "peak_contacts": 0,
+      "cycle_metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 0.0013051194376228234,
+        "rows": 112800,
+        "peak_kinetic_over_reference": 3.991071040561898e-05,
+        "late_instantaneous_ratio": 0.24478848591257796,
+        "loading": {
+          "peak_kinetic_Nmm": 5.208824391970881e-08,
+          "peak_kinetic_over_reference": 3.991071040561898e-05
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 5.208686800669617e-08,
+          "peak_kinetic_over_reference": 3.990965616263326e-05
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 6.299052280346259e-14,
+          "peak_kinetic_over_reference": 4.82641825626282e-11
+        }
+      }
+    },
+    {
+      "case": "slow-unload",
+      "cfl": 0.2,
+      "unload_ms": 16.0,
+      "steps": 78960,
+      "final_axial_compression": 2.57600385431119e-12,
+      "final_porosity": 0.0025000000000098277,
+      "original_solver_all_passed": false,
+      "original_late_KE_ratio": 0.057124040835156445,
+      "peak_cycle_KE_over_linear_reference": 3.9910687547752885e-05,
+      "unload_peak_KE_over_linear_reference": 9.97002532629179e-06,
+      "recovery_peak_KE_over_linear_reference": 7.62291820293836e-13,
+      "energy_relative_error": 4.249766862348256e-08,
+      "static_residual_ratio": 0.0004687828264237864,
+      "peak_contacts": 0,
+      "cycle_metrics": {
+        "normalization": "fixed reference energy; no near-zero pressure exclusion",
+        "reference_energy_Nmm": 0.0013051194376228234,
+        "rows": 78961,
+        "peak_kinetic_over_reference": 3.9910687547752885e-05,
+        "late_instantaneous_ratio": 0.05713414039449075,
+        "loading": {
+          "peak_kinetic_Nmm": 5.208821408746347e-08,
+          "peak_kinetic_over_reference": 3.9910687547752885e-05
+        },
+        "unloading": {
+          "peak_kinetic_Nmm": 1.3012073846935247e-08,
+          "peak_kinetic_over_reference": 9.97002532629179e-06
+        },
+        "recovery": {
+          "peak_kinetic_Nmm": 9.948818718063696e-16,
+          "peak_kinetic_over_reference": 7.62291820293836e-13
+        }
+      }
+    }
+  ],
+  "solver_acceptance_changed": false,
+  "plastic_contact_unloading_verified": false,
+  "particle_compaction_verified": false
+}
