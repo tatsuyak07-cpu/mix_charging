@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+連結セルの追加検証：**初期剛性を3段階で細分化し、弾性圧縮・除荷の対照試験を実施**。
+[結果・判定](docs/connected-refinement-unloading.md)・[比較PNG](exports/connected-refinement-unloading-002/refinement-unloading.png)・[全データZIP](exports/connected-refinement-unloading-002.zip)。
+形状は復元しましたが、除荷終盤の既存KE比判定は不合格のため診断データとして保持しています。塑性除荷・球充填体の40%→10%圧密は未完了です。
+
 連結多孔質セルで真応力圧縮を検証：**全採用ステップの監査CSVを追加**。
 [条件・判定・適用限界](docs/connected-pressure-verification.md)・[比較PNG](exports/connected-pressure-verification-001/connected-pressure-verification.png)・[全データZIP](exports/connected-pressure-verification-001.zip)。
 4 mm角・初期空隙率0.25%の検証用形状です。球充填層の40%→10%圧密は未完了です。

@@ -1,0 +1,110 @@
+{
+  "scope": "connected_4mm_initial_porosity_0.25percent_elastic_control_not_particle_packing",
+  "initial_elastic_levels": [
+    {
+      "level": 1,
+      "nodes": 100,
+      "tetrahedra": 264,
+      "porosity": 0.0024999999999999467,
+      "axial_compliance_per_Nmm": 0.001593163376004423,
+      "relative_change_from_previous": null,
+      "checks": {
+        "micro_stiffness_positive": true,
+        "relaxed_macro_stiffness_positive": true,
+        "tangent_matches_finite_FEM_forces": true,
+        "symmetry": true
+      }
+    },
+    {
+      "level": 2,
+      "nodes": 558,
+      "tetrahedra": 2112,
+      "porosity": 0.0024999999999999467,
+      "axial_compliance_per_Nmm": 0.0016395051743025488,
+      "relative_change_from_previous": 0.028265722502425032,
+      "checks": {
+        "micro_stiffness_positive": true,
+        "relaxed_macro_stiffness_positive": true,
+        "tangent_matches_finite_FEM_forces": true,
+        "symmetry": true
+      }
+    },
+    {
+      "level": 3,
+      "nodes": 1640,
+      "tetrahedra": 7128,
+      "porosity": 0.0024999999999999467,
+      "axial_compliance_per_Nmm": 0.0016634749963036594,
+      "relative_change_from_previous": 0.0144094874009967,
+      "checks": {
+        "micro_stiffness_positive": true,
+        "relaxed_macro_stiffness_positive": true,
+        "tangent_matches_finite_FEM_forces": true,
+        "symmetry": true
+      }
+    }
+  ],
+  "solver_checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": false,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": true,
+    "unload_completed": true
+  },
+  "solver_and_endpoint_checks_passed": false,
+  "additional_diagnostic_checks": {
+    "macro_return_absolute_1e_6": true,
+    "nodal_return_absolute_1e_5mm": true,
+    "accepted_step_count": true,
+    "final_command_zero": true,
+    "no_plasticity_entire_sampled_history": true,
+    "axial_return_absolute_1e_6": true,
+    "porosity_return_absolute_1e_8": true,
+    "cycle_peak_KE_below_1percent": true
+  },
+  "diagnostic_tolerances": {
+    "macro_F_absolute": 1e-06,
+    "nodal_position_mm": 1e-05,
+    "axial_return_absolute": 1e-06,
+    "porosity_return_absolute": 1e-08,
+    "plastic_strain": 1e-10,
+    "cycle_peak_KE_fraction": 0.01
+  },
+  "whole_pressure_window_KE_ratio": 0.008378676066382772,
+  "cycle_peak_KE_over_energy_scale": 3.99036325653172e-05,
+  "recovery_peak_KE_over_energy_scale": 4.820096503742982e-11,
+  "maximum_nodal_return_error_mm": 1.9055830318352901e-10,
+  "final_macro_F": [
+    [
+      1.000000000006819,
+      7.029743807854549e-12,
+      -3.074986774590697e-12
+    ],
+    [
+      7.029743807854549e-12,
+      1.000000000007215,
+      -3.039904156888296e-12
+    ],
+    [
+      -3.074986774590697e-12,
+      -3.039904156888296e-12,
+      0.9999999999846505
+    ]
+  ],
+  "final_axial_compression": 1.534947562099558e-11,
+  "porosity_return_difference": -1.8063328610651297e-13,
+  "peak_sampled_peeq": 0.0,
+  "plastic_unloading_verified": false,
+  "pressure_path_mesh_convergence_verified": false,
+  "particle_40_to_10_completed": false,
+  "failure": null
+}
