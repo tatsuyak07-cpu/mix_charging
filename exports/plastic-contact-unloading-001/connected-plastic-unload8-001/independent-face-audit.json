@@ -1,0 +1,4 @@
+{
+  "performed": false,
+  "reason": "Active friction history is not in last-state.npz; full force reconstruction would reset history and is not performed."
+}

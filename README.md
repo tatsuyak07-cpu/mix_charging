@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+塑性・接触後の除荷を検証：**0.1 MPaから除荷後、残留圧縮約22.0712%、空隙率約0.22173%**。
+[検証報告](docs/plastic-contact-unloading.md)・[比較PNG](exports/plastic-contact-unloading-001/plastic-unloading.png)・[実メッシュ](exports/plastic-contact-unloading-001/residual-mesh.png)・[CSV・全結果ZIP](exports/plastic-contact-unloading-001.zip)。
+4 mm角・初期空隙率0.25%の検証用セルで、除荷8/16 msの両条件が既存検査に合格しました。関連テスト27件合格。独立な全接触反力監査、接触一周期の刻み・メッシュ収束、球充填体の40%→10%圧密は未完了です。
+
 除荷判定を追加検証：**有限変形弾性解と刻み・速度比較で、ゼロ荷重近傍の瞬間KE比の分母の影響を確認**。
 [検証報告](docs/unload-quasistatic-verification.md)・[比較PNG](exports/unload-quasistatic-verification-001/unload-sensitivity.png)・[CSV・全計算ZIP](exports/unload-quasistatic-verification-001.zip)。
 関連テスト24件合格。急速荷重を棄却できることも確認しました。補助検査と既存の総合判定を区別し、塑性・接触後の除荷と球充填体の圧密は未検証です。

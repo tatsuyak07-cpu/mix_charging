@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" compressor="vtkZLibDataCompressor">
+<!--This file was created by meshio v5.3.5-->
+<UnstructuredGrid>
+<Piece NumberOfPoints="8" NumberOfCells="6">
+<Points>
+<DataArray type="Float64" Name="Points" NumberOfComponents="3" format="binary">
+AQAAAACAAADAAAAAhwAAAA==eJxjYMAOWNbePaK3g93+mul6ML1guYLrnm8v7FXFNmywr1LZ78P+602x7Ce4/InQj//SJWT3r54QHrsYKB6767aq9PcX9prcEHUwfTBzn0yBqIufyPEfpE98N0T9itY/UhdkPtmfaYTQuYXHgOrF7VP4o7r/A/la3BD6ytlpbFVA9QCmNlGN
+</DataArray>
+</Points>
+<Cells>
+<DataArray type="Int64" Name="connectivity" format="binary">
+AQAAAACAAADAAAAALQAAAA==eJxjYIAAFijNBqXZGVABTJwJhzxMnBmHPEycEYc8TJwVhzxMnAVNHgAgWABV
+</DataArray>
+<DataArray type="Int64" Name="offsets" format="binary">
+AQAAAACAAAAwAAAAGAAAAA==eJxjYYAADijNA6UFoLQIlJaA0gAHMABV
+</DataArray>
+<DataArray type="Int64" Name="types" format="binary">
+AQAAAACAAAAwAAAADgAAAA==eJzjYoAALiJpAAbAAD0=
+</DataArray>
+</Cells>
+<CellData>
+<DataArray type="Float64" Name="peeq" format="binary">
+AQAAAACAAAAwAAAAIwAAAA==eJybMrHFZeqJ8/YsMyD0s2kQ2nMHhGaaAqG/boLQAGu3Ga4=
+</DataArray>
+<DataArray type="Float64" Name="cauchy_stress_MPa" NumberOfComponents="9" format="binary">
+AQAAAACAAACwAQAAVwEAAA==eJzTljxodNkobe/fv8cu7pzUvTegvfDu4kUT9/6B8l9KxL74Lle8d0/RMdbb8RPh8jC+oqlbyJwnE/d+D22vvPYq01Z9S1nbhwPde63Y/xdo7Zu4VwPKf3BwW4Z1ZKMta0zcvmt3JsLlWaD8LM3zu1X3NO+tS3N6YHuja+8851MX+mp79p7bN817Ve5EOL9U5Yn8y3mde53/nje215sEl3eB8jkuvK3XOTN3718pJTZDz/q9x7r7q18c795rwzLz+d3NE+F8B/5fRbtZmvdufiE4Lf/dRLj8Jij/hvO56xmcM/YeORe+5Z5k9d4f+zeF+Rv07L388mMM1++JcL6DT7Vu/smOvezq5xW7nCfC5WH832m6eyYsn7FXxGzX/LJ31XtZtz/sys3s3qv7Ym5nrvokOL8uIjplm3DR3gOyD2Ta903aqweVh/Evxu9v2qE0ZS8A2Kbw6Q==
+</DataArray>
+</CellData>
+</Piece>
+</UnstructuredGrid>
+</VTKFile>

@@ -1,0 +1,208 @@
+{
+  "scope": "connected_4mm_initial_porosity_0.25percent_not_particle_packing",
+  "analytic_controls": [
+    {
+      "case": "unload8",
+      "root": "results/plastic-cycle-analytic-002",
+      "reference_checks": {
+        "path_error": true,
+        "residual_error": true,
+        "peeq_error": true,
+        "unloaded_stress": true,
+        "isochoric_residual_volume": true,
+        "path_completed": true
+      },
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      }
+    },
+    {
+      "case": "unload16",
+      "root": "results/plastic-cycle-analytic-002",
+      "reference_checks": {
+        "path_error": true,
+        "residual_error": true,
+        "peeq_error": true,
+        "unloaded_stress": true,
+        "isochoric_residual_volume": true,
+        "path_completed": true
+      },
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      }
+    },
+    {
+      "case": "unload8-half-cfl",
+      "root": "results/plastic-cycle-analytic-002",
+      "reference_checks": {
+        "path_error": true,
+        "residual_error": true,
+        "peeq_error": true,
+        "unloaded_stress": true,
+        "isochoric_residual_volume": true,
+        "path_completed": true
+      },
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      }
+    },
+    {
+      "case": "load64-unload8",
+      "root": "results/plastic-cycle-slow-loading-001",
+      "reference_checks": {
+        "path_error": true,
+        "residual_error": true,
+        "peeq_error": true,
+        "unloaded_stress": true,
+        "isochoric_residual_volume": true,
+        "path_completed": true
+      },
+      "solver_checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": true,
+        "path_completed": true,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": true,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": true,
+        "unload_completed": true
+      }
+    }
+  ],
+  "connected_cases": [
+    {
+      "case": "connected-plastic-unload8-001",
+      "pressure_mpa": 0.1,
+      "ramp_ms": 32.0,
+      "unload_ms": 8.0,
+      "cfl": 0.2,
+      "steps": 142355,
+      "final_time_ms": 44.00000000000001,
+      "solver_endpoint_pass": true,
+      "residual_eligible_under_prototype_checks": true,
+      "final_command_pressure_MPa": 0.0,
+      "initial_porosity": 0.0024999999999999467,
+      "minimum_porosity": 0.0021269420270884076,
+      "residual_porosity": 0.0022172997859826182,
+      "maximum_compression": 0.2285249480086559,
+      "last_axial_compression": 0.22071236817793713,
+      "reported_residual_compression": 0.22071236817793713,
+      "final_peak_peeq": 0.25817637847907926,
+      "peak_contacts": 2,
+      "final_contacts": 2,
+      "maximum_sampled_Coulomb_ratio": 0.3,
+      "friction_work_Nmm": 3.6662578217865163e-07,
+      "late_kinetic_ratio": 0.005030039085577531,
+      "whole_loaded_kinetic_ratio": 0.005030039085577531,
+      "energy_relative_error": 1.9307445938727037e-07,
+      "static_residual_ratio": 0.002100833064223806,
+      "maximum_final_work_equivalent_stress_MPa": 4.2299374671597483e-11,
+      "loaded_prefix_max_axial_difference": 1.7486012637846216e-15,
+      "maximum_coordinate_return_difference_mm": 0.8828494727117486,
+      "independent_contact_free_force_audit_performed": false,
+      "failure": null
+    },
+    {
+      "case": "connected-plastic-unload16-001",
+      "pressure_mpa": 0.1,
+      "ramp_ms": 32.0,
+      "unload_ms": 16.0,
+      "cfl": 0.2,
+      "steps": 171150,
+      "final_time_ms": 52.00000000000001,
+      "solver_endpoint_pass": true,
+      "residual_eligible_under_prototype_checks": true,
+      "final_command_pressure_MPa": 0.0,
+      "initial_porosity": 0.0024999999999999467,
+      "minimum_porosity": 0.0021269420270884076,
+      "residual_porosity": 0.0022172997840287367,
+      "maximum_compression": 0.2285249480086559,
+      "last_axial_compression": 0.2207123682391538,
+      "reported_residual_compression": 0.2207123682391538,
+      "final_peak_peeq": 0.25817637847907926,
+      "peak_contacts": 2,
+      "final_contacts": 2,
+      "maximum_sampled_Coulomb_ratio": 0.3,
+      "friction_work_Nmm": 3.666257821786465e-07,
+      "late_kinetic_ratio": 0.005030039085577531,
+      "whole_loaded_kinetic_ratio": 0.005030039085577531,
+      "energy_relative_error": 1.9307445938727037e-07,
+      "static_residual_ratio": 0.00030558709154992174,
+      "maximum_final_work_equivalent_stress_MPa": 6.147260077476999e-12,
+      "loaded_prefix_max_axial_difference": 1.7486012637846216e-15,
+      "maximum_coordinate_return_difference_mm": 0.8828494729566154,
+      "independent_contact_free_force_audit_performed": false,
+      "failure": null
+    }
+  ],
+  "rate_comparison": {
+    "both_cycles_completed": true,
+    "both_endpoint_states_passed_native_checks": true,
+    "residual_axial_absolute_difference": 6.121667062153335e-11,
+    "residual_porosity_absolute_difference": 1.953881501037813e-12,
+    "unloading_phase_max_axial_difference": 2.8689924485292284e-06
+  },
+  "additional_rate_checks": {
+    "residual_axial_difference_below_1e_4": true,
+    "residual_porosity_difference_below_1e_7": true
+  },
+  "independent_endpoint_audits": [
+    {
+      "performed": false,
+      "reason": "Active friction history is not in last-state.npz; full force reconstruction would reset history and is not performed."
+    },
+    {
+      "performed": false,
+      "reason": "Active friction history is not in last-state.npz; full force reconstruction would reset history and is not performed."
+    }
+  ],
+  "solver_acceptance_changed": false,
+  "contact_cycle_CFL_sensitivity_verified": false,
+  "mesh_convergence_verified": false,
+  "particle_40_to_10_completed": false
+}

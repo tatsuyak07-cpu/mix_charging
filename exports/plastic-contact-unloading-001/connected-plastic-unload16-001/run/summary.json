@@ -1,0 +1,117 @@
+{
+  "whole_path_audit": {
+    "sampling": "every_accepted_step_including_initial",
+    "rows": 171151,
+    "pressure_window": "command > 1 percent of observed peak",
+    "energy_floor_Nmm": 1.2408354987941697e-08,
+    "normalization_note": "Ratios near first loading/contact can be singular as internal energy approaches zero; peaks alone do not establish convergence.",
+    "loaded": {
+      "steps": 148513,
+      "peak_kinetic_Nmm": 0.0002288436387131507,
+      "peak_kinetic_time_s": 0.016715050618329615,
+      "peak_kinetic_over_energy_scale": 0.00018442705655627876,
+      "peak_kinetic_internal_ratio": 0.005030039085577531,
+      "peak_kinetic_internal_contact_ratio": 0.005030039085577531
+    },
+    "contact": {
+      "steps": 110946,
+      "peak_kinetic_Nmm": 0.0002288436387131507,
+      "peak_kinetic_time_s": 0.016715050618329615,
+      "peak_kinetic_over_energy_scale": 0.00018442705655627876,
+      "peak_kinetic_internal_ratio": 0.0042710647432132876,
+      "peak_kinetic_internal_contact_ratio": 0.004271064743192851
+    }
+  },
+  "accepted_step_audit_file": "accepted-step-audit.csv.gz",
+  "pressure_measure": "cauchy",
+  "peak_command_pressure_MPa": 0.10000000000000009,
+  "final_work_equivalent_cauchy_stress_MPa": [
+    [
+      5.957818551694006e-12,
+      5.478870010055291e-12,
+      -9.666158806181356e-13
+    ],
+    [
+      5.478870010055291e-12,
+      5.949121924483635e-12,
+      -9.689602192219888e-13
+    ],
+    [
+      -9.666158806181356e-13,
+      -9.689602192219888e-13,
+      -6.147260077476999e-12
+    ]
+  ],
+  "final_external_work_equivalent_cauchy_stress_MPa": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "area_contact_scope": "single_closest_patch_with_edge_collision_guard",
+  "mass_frame": "pinned",
+  "porosity_goal_equilibrated": null,
+  "peak_nominal_pressure_MPa": 0.12913433025248125,
+  "contact_quadrature_variation_Nmm": 1.4317701059716591e-09,
+  "contact_released_history_Nmm": 0.0,
+  "contact_neighbor_builds": 98,
+  "audit_sampling": "every_accepted_step",
+  "loading_mode": "cauchy_pressure",
+  "contact_retries": 0,
+  "contact_backend": "area_guarded",
+  "edge_edge_response_implemented": false,
+  "edge_response_scope": "collision_guard_only_no_edge_spring",
+  "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": true,
+    "path_completed": true,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": true,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": true,
+    "unload_completed": true
+  },
+  "failure": null,
+  "steps": 171150,
+  "dt_min_s": 3.302779944674983e-08,
+  "dt_max_s": 3.555477714620642e-07,
+  "kinetic_internal_ratio_loaded": 0.005030039085577531,
+  "closed_boundary_volume_relative_error": 1.11300519857043e-16,
+  "material_volume_relative_error": 1.746844856265193e-11,
+  "final_static_residual_ratio": 0.00030558709154992174,
+  "energy_scale_Nmm": 1.2408354987941697,
+  "initial_available_energy_Nmm": 0.0,
+  "energy_absolute_residual_Nmm": 2.3957364311821827e-07,
+  "energy_relative_error": 1.9307445938727037e-07,
+  "remesh_events": [],
+  "initial_porosity": 0.0024999999999999467,
+  "final_porosity": 0.0022172997840287367,
+  "final_axial_compression": 0.2207123682391538,
+  "residual_compression_strain": 0.2207123682391538,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "contact quadrature, barrier thickness, mollification and general friction convergence not validated",
+    "internal 2-to-3 reconnection only; no surface remeshing",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

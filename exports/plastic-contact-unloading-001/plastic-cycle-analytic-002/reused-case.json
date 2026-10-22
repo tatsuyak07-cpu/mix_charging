@@ -1,0 +1,4 @@
+{
+  "source": "results/plastic-cycle-analytic-001/unload8",
+  "reason": "Completed FEM cycle retained after driver-only list-to-array postprocessing error; config and solver sources matched byte-for-byte."
+}

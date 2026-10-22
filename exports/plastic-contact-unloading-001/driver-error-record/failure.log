@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_plastic_cycle_reference.py", line 47, in <module>
+    (a.output/'reused-case.json').write_text(json.dumps(dict(source=str(a.reuse_unload8),reason='Completed FEM cycle retained after driver-only list-to-array postprocessing error; config and solver sources matched byte-for-byte.'),indent=2)+'\n')
+                ^^^^^^
+  File "/workspace/mix_charging/tools/verify_plastic_cycle_reference.py", line 39, in main
+    previous=json.loads((a.reuse_unload8/'config.json').read_text())
+                                                                     
+TypeError: bad operand type for abs(): 'list'
