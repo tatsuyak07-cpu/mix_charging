@@ -1,0 +1,6 @@
+{
+  "preliminary_preflight": "Partial first material filter: initial EE guard and current material-witness guard both failed; retained as diagnostics, not a pressure solution.",
+  "debug_failure": "First edge-inspection script multiplied a tuple shift by 4, repeating it. Corrected to a NumPy vector; both script and failure log retained. No solver or contact tolerance was changed for this correction.",
+  "final_tests": "Full suite 179 tests passed; two more regression tests were subsequently added and the final focused set of 8 tests passed. No core changes after full suite started.",
+  "remaining_scope": "Fine-mesh pressure cycle and 40 to 10 percent particle compaction remain unverified."
+}

@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+局所材料近傍の候補判定を追加：**角部の点対面候補を区別し、未解決の辺接近では停止を維持**。
+[検証報告](docs/local-material-neighborhood.md)・[候補画像](exports/local-material-neighborhood-001/local-material-candidates.png)・[停止理由CSV](exports/local-material-neighborhood-001/error-comparison.csv)・[全データZIP](exports/local-material-neighborhood-001.zip)。
+全体179件・追加を含む重点8件のテストに合格。周期接触と保存済み空隙壁接触で反力の一致を確認しました。
+細分化4・6の事前検査は引き続き不合格です。細分化した圧力一周期・メッシュ収束・40%→10%圧密は未完了です。
+
 メッシュ細分化の事前検査：**細分化4・6で初期形状の接触候補が解決できず、不合格**。
 [検証報告](docs/contact-mesh-preflight.md)・[実メッシュと候補の画像](exports/contact-mesh-preflight-002/mesh-preflight.png)・[CSV](exports/contact-mesh-preflight-002/mesh-comparison.csv)・[診断データZIP](exports/contact-mesh-preflight-002.zip)。
 同じ変形形状でも粗い3段階の法線接触エネルギーは1、1/4、1/9と変化しました。形状・体積・周期性の移送検査と関連テスト4件は合格。

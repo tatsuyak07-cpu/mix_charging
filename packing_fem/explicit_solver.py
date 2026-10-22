@@ -73,6 +73,8 @@ def validate(c):
 
 
 def solve(directory,X,t,c):
+    c=dict(c)
+    if c.get('contact_backend')=='area_guarded':c.setdefault('local_material_filter',True)
     validate(c);directory=Path(directory);directory.mkdir(parents=True,exist_ok=False)
     np.savez_compressed(directory/'initial-mesh.npz',points=X,tets=t)
     (directory/'config.json').write_text(json.dumps(c,indent=2)+'\n')
@@ -95,6 +97,7 @@ def solve(directory,X,t,c):
         from .barrier_contact import BarrierContact
         from .area_contact import AreaContact
         contact_type=AreaContact if c['contact_backend']=='area_guarded' else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
+    if c.get('contact_backend')=='area_guarded':contact_kwargs['local_material_filter']=c.get('local_material_filter',True)
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     if c.get('save_contact_audit',False):
         if c.get('contact_backend')!='area_guarded':raise ValueError('Contact audit capture requires area_guarded')

@@ -1,0 +1,519 @@
+{
+  "scope": "Fixed-geometry mesh/contact preflight; never a refined pressure solution.\n\nInterpolate an archived accepted shape, reset tangential history for a normal\ncontact probe, and test unloaded and mapped geometries before any cycle solve.\n",
+  "levels": [
+    {
+      "refinement": 1,
+      "nodes": 100,
+      "tetrahedra": 264,
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity": 0.002217299709510012,
+      "volume_relative_difference": 0.0,
+      "interpolation_shared_face_error_mm": 4.440892098500626e-16,
+      "periodic_displacement_error_mm": 1.1709383462843448e-15,
+      "minimum_volume_mm3": 0.006641588340618786,
+      "initial": {
+        "resolved": true,
+        "report": {
+          "penetration_mm": 0.0,
+          "image_count": 1,
+          "minimum_separation_mm": 0.040000000000000036,
+          "contacts": 0,
+          "edge_contacts": 0,
+          "normal_energy": 0.0,
+          "tangent_energy": 0.0,
+          "friction_increment": 0.0,
+          "algorithmic_increment": 0.0,
+          "released_history_energy": 0,
+          "max_coulomb_ratio": 0.0,
+          "edge_guard_pairs": 0,
+          "integration": "two_pass_reference_nodal_area",
+          "local_material_pairs": 0
+        },
+        "total_normal_force_N": 0,
+        "contact_resultant_N": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "unwrapped_moment_Nmm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "active_source_nodes": []
+      },
+      "mapped": {
+        "resolved": true,
+        "report": {
+          "penetration_mm": 0.0,
+          "image_count": 1,
+          "minimum_separation_mm": 0.017441050584720025,
+          "contacts": 2,
+          "edge_contacts": 0,
+          "normal_energy": 1.5463583004994278e-05,
+          "tangent_energy": 4.930124476879674e-31,
+          "friction_increment": 0.0,
+          "algorithmic_increment": -8.758115402030107e-47,
+          "released_history_energy": 0,
+          "max_coulomb_ratio": 2.4646918339627196e-13,
+          "edge_guard_pairs": 26,
+          "integration": "two_pass_reference_nodal_area",
+          "local_material_pairs": 0
+        },
+        "total_normal_force_N": 0.017833045737073994,
+        "contact_resultant_N": [
+          -8.867376166568457e-22,
+          4.817499887508833e-21,
+          -3.2932640989247197e-18
+        ],
+        "unwrapped_moment_Nmm": [
+          -9.761950392278296e-18,
+          1.4881311211826168e-18,
+          -2.271337384659038e-20
+        ],
+        "active_source_nodes": [
+          49,
+          50
+        ]
+      },
+      "geometry_checks": {
+        "positive_elements": true,
+        "same_initial_porosity": true,
+        "same_mapped_volume": true,
+        "continuous_transfer": true,
+        "periodic_transfer": true
+      }
+    },
+    {
+      "refinement": 2,
+      "nodes": 558,
+      "tetrahedra": 2112,
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity": 0.0022172997095102343,
+      "volume_relative_difference": 2.2260103971415967e-16,
+      "interpolation_shared_face_error_mm": 8.881784197001252e-16,
+      "periodic_displacement_error_mm": 1.575562597055935e-15,
+      "minimum_volume_mm3": 0.0008301985425773418,
+      "initial": {
+        "resolved": true,
+        "report": {
+          "penetration_mm": 0.0,
+          "image_count": 1,
+          "minimum_separation_mm": 0.039936153191543616,
+          "contacts": 0,
+          "edge_contacts": 0,
+          "normal_energy": 0.0,
+          "tangent_energy": 0.0,
+          "friction_increment": 0.0,
+          "algorithmic_increment": 0.0,
+          "released_history_energy": 0,
+          "max_coulomb_ratio": 0.0,
+          "edge_guard_pairs": 0,
+          "integration": "two_pass_reference_nodal_area",
+          "local_material_pairs": 0
+        },
+        "total_normal_force_N": 0,
+        "contact_resultant_N": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "unwrapped_moment_Nmm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "active_source_nodes": []
+      },
+      "mapped": {
+        "resolved": true,
+        "report": {
+          "penetration_mm": 0.0,
+          "image_count": 1,
+          "minimum_separation_mm": 0.017441050584720025,
+          "contacts": 2,
+          "edge_contacts": 0,
+          "normal_energy": 3.8658957512485695e-06,
+          "tangent_energy": 1.2326607206537736e-31,
+          "friction_increment": 0.0,
+          "algorithmic_increment": 8.156630584998156e-56,
+          "released_history_energy": 0,
+          "max_coulomb_ratio": 2.51636441691178e-13,
+          "edge_guard_pairs": 36,
+          "integration": "two_pass_reference_nodal_area",
+          "local_material_pairs": 0
+        },
+        "total_normal_force_N": 0.004458261434268499,
+        "contact_resultant_N": [
+          1.3234889800848443e-21,
+          2.9513804255892027e-21,
+          6.098637220230962e-20
+        ],
+        "unwrapped_moment_Nmm": [
+          9.174306411745497e-19,
+          7.632760691504928e-19,
+          2.877229795363382e-21
+        ],
+        "active_source_nodes": [
+          278,
+          279
+        ]
+      },
+      "geometry_checks": {
+        "positive_elements": true,
+        "same_initial_porosity": true,
+        "same_mapped_volume": true,
+        "continuous_transfer": true,
+        "periodic_transfer": true
+      }
+    },
+    {
+      "refinement": 3,
+      "nodes": 1640,
+      "tetrahedra": 7128,
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity": 0.0022172997095101232,
+      "volume_relative_difference": 1.1130051985707984e-16,
+      "interpolation_shared_face_error_mm": 1.7763568394002505e-15,
+      "periodic_displacement_error_mm": 1.6427831317500363e-15,
+      "minimum_volume_mm3": 0.00024598475335624396,
+      "initial": {
+        "resolved": true,
+        "report": {
+          "penetration_mm": 0.0,
+          "image_count": 1,
+          "minimum_separation_mm": 0.026624102127695674,
+          "contacts": 0,
+          "edge_contacts": 0,
+          "normal_energy": 0.0,
+          "tangent_energy": 0.0,
+          "friction_increment": 0.0,
+          "algorithmic_increment": 0.0,
+          "released_history_energy": 0,
+          "max_coulomb_ratio": 0.0,
+          "edge_guard_pairs": 0,
+          "integration": "two_pass_reference_nodal_area",
+          "local_material_pairs": 0
+        },
+        "total_normal_force_N": 0,
+        "contact_resultant_N": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "unwrapped_moment_Nmm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "active_source_nodes": []
+      },
+      "mapped": {
+        "resolved": true,
+        "report": {
+          "penetration_mm": 0.0,
+          "image_count": 1,
+          "minimum_separation_mm": 0.017441050584720025,
+          "contacts": 2,
+          "edge_contacts": 0,
+          "normal_energy": 1.718175889443808e-06,
+          "tangent_energy": 5.477693384680681e-32,
+          "friction_increment": 0.0,
+          "algorithmic_increment": 0.0,
+          "released_history_energy": 0,
+          "max_coulomb_ratio": 2.4646417372861565e-13,
+          "edge_guard_pairs": 36,
+          "integration": "two_pass_reference_nodal_area",
+          "local_material_pairs": 0
+        },
+        "total_normal_force_N": 0.0019814495263415543,
+        "contact_resultant_N": [
+          3.1267427154504446e-22,
+          8.205631676526035e-22,
+          1.7957098481791167e-19
+        ],
+        "unwrapped_moment_Nmm": [
+          -4.7425743313497466e-20,
+          -1.6526996147445179e-19,
+          4.879901295830454e-21
+        ],
+        "active_source_nodes": [
+          819,
+          820
+        ]
+      },
+      "geometry_checks": {
+        "positive_elements": true,
+        "same_initial_porosity": true,
+        "same_mapped_volume": true,
+        "continuous_transfer": true,
+        "periodic_transfer": true
+      }
+    },
+    {
+      "refinement": 4,
+      "nodes": 3610,
+      "tetrahedra": 16896,
+      "initial_porosity": 0.0025000000000000577,
+      "mapped_porosity": 0.0022172997095101232,
+      "volume_relative_difference": 1.1130051985707984e-16,
+      "interpolation_shared_face_error_mm": 1.7763568394002505e-15,
+      "periodic_displacement_error_mm": 1.7642137750684128e-15,
+      "minimum_volume_mm3": 0.00010377481782216464,
+      "initial": {
+        "resolved": false,
+        "error_type": "SurfaceResolutionError",
+        "error": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+        "diagnostic": null,
+        "failure_feature": {
+          "kind": "ee",
+          "ids": [
+            942,
+            956,
+            944,
+            1175
+          ],
+          "shift": [
+            0,
+            0,
+            0
+          ],
+          "points": [
+            [
+              1.0,
+              1.0,
+              2.0
+            ],
+            [
+              1.0,
+              1.25,
+              2.01
+            ],
+            [
+              1.0,
+              1.0,
+              2.02
+            ],
+            [
+              1.25,
+              1.25,
+              2.02
+            ]
+          ],
+          "distance_mm": 0.019968076595771815
+        }
+      },
+      "mapped": {
+        "resolved": false,
+        "error_type": "ContactResolutionError",
+        "error": "Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment",
+        "diagnostic": null,
+        "failure_feature": {
+          "kind": "pt",
+          "ids": [
+            942,
+            953,
+            940,
+            1174
+          ],
+          "shift": [
+            0,
+            0,
+            0
+          ],
+          "points": [
+            [
+              1.125590165494613,
+              1.1255858914048114,
+              1.569202882548048
+            ],
+            [
+              1.1246753362499649,
+              1.4085485154087087,
+              1.554577931324237
+            ],
+            [
+              1.125555719643025,
+              1.1255511934119953,
+              1.5536401660303667
+            ],
+            [
+              1.4089833099886888,
+              1.4089882297626821,
+              1.5567044622882784
+            ]
+          ],
+          "reference_points": [
+            [
+              1.0,
+              1.0,
+              2.0
+            ],
+            [
+              1.0,
+              1.25,
+              1.98
+            ],
+            [
+              1.0,
+              1.0,
+              1.98
+            ],
+            [
+              1.25,
+              1.25,
+              1.98
+            ]
+          ]
+        }
+      },
+      "geometry_checks": {
+        "positive_elements": true,
+        "same_initial_porosity": true,
+        "same_mapped_volume": true,
+        "continuous_transfer": true,
+        "periodic_transfer": true
+      }
+    },
+    {
+      "refinement": 6,
+      "nodes": 11270,
+      "tetrahedra": 57024,
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity": 0.0022172997095101232,
+      "volume_relative_difference": 1.1130051985707984e-16,
+      "interpolation_shared_face_error_mm": 1.7763568394002505e-15,
+      "periodic_displacement_error_mm": 2.005340338229189e-15,
+      "minimum_volume_mm3": 3.074809416952852e-05,
+      "initial": {
+        "resolved": false,
+        "error_type": "SurfaceResolutionError",
+        "error": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+        "diagnostic": null,
+        "failure_feature": {
+          "kind": "ee",
+          "ids": [
+            2973,
+            2993,
+            2976,
+            3465
+          ],
+          "shift": [
+            0,
+            0,
+            0
+          ],
+          "points": [
+            [
+              1.0,
+              1.0,
+              2.0
+            ],
+            [
+              1.0,
+              1.1666666666666665,
+              2.006666666666667
+            ],
+            [
+              1.0,
+              1.0,
+              2.02
+            ],
+            [
+              1.1666666666666665,
+              1.1666666666666665,
+              2.02
+            ]
+          ],
+          "distance_mm": 0.01996807659577181
+        }
+      },
+      "mapped": {
+        "resolved": false,
+        "error_type": "ContactResolutionError",
+        "error": "Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment",
+        "diagnostic": null,
+        "failure_feature": {
+          "kind": "pt",
+          "ids": [
+            2972,
+            2989,
+            2970,
+            3464
+          ],
+          "shift": [
+            0,
+            0,
+            0
+          ],
+          "points": [
+            [
+              1.1255786835440835,
+              1.125574325407206,
+              1.5640153103754875
+            ],
+            [
+              1.124968797380985,
+              1.3142160747431375,
+              1.554265342892947
+            ],
+            [
+              1.125555719643025,
+              1.1255511934119953,
+              1.5536401660303667
+            ],
+            [
+              1.314507446540134,
+              1.3145092176457864,
+              1.555683030202308
+            ]
+          ],
+          "reference_points": [
+            [
+              1.0,
+              1.0,
+              1.9933333333333334
+            ],
+            [
+              1.0,
+              1.1666666666666665,
+              1.98
+            ],
+            [
+              1.0,
+              1.0,
+              1.98
+            ],
+            [
+              1.1666666666666665,
+              1.1666666666666665,
+              1.98
+            ]
+          ]
+        }
+      },
+      "geometry_checks": {
+        "positive_elements": true,
+        "same_initial_porosity": true,
+        "same_mapped_volume": true,
+        "continuous_transfer": true,
+        "periodic_transfer": true
+      }
+    }
+  ],
+  "checks": {
+    "geometry_preserved": true,
+    "all_initial_geometries_resolved": false,
+    "all_mapped_geometries_resolved": false
+  },
+  "preflight_passed": false,
+  "normal_energy_ratios_to_level1": {
+    "1": 1.0,
+    "2": 0.25,
+    "3": 0.11111111111111106
+  },
+  "pressure_trajectory_computed": false,
+  "mesh_convergence_verified": false,
+  "particle_compaction_verified": false,
+  "decision": "Contact guard still fails at refined levels; retain diagnostics before refined pressure-cycle claims."
+}

@@ -19,6 +19,7 @@ def test_tetra_prolongation_preserves_affine_shape_and_rejects_void():
 
 def test_initial_refinement_four_rejects_coplanar_corner_candidates():
     X,t=fixture(4);c=json.loads(Path('configs/explicit-area-cauchy-pressure.json').read_text())
+    c['local_material_filter']=False
     result=probe(X,t,X,np.eye(3)*4,c)
     assert not result['resolved']
     assert result['error_type']=='SurfaceResolutionError'

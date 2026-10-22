@@ -1,0 +1,11 @@
+refinement,state,before,after
+1,initial,resolved,resolved
+1,mapped,resolved,resolved
+2,initial,resolved,resolved
+2,mapped,resolved,resolved
+3,initial,resolved,resolved
+3,mapped,resolved,resolved
+4,initial,Multiple distinct closest patches require multi-contact surface integration,Edge-only approach requires surface refinement; no artificial edge spring applied
+4,mapped,Multiple distinct active patches require multi-contact surface integration,Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment
+6,initial,Multiple distinct active patches require multi-contact surface integration,Edge-only approach requires surface refinement; no artificial edge spring applied
+6,mapped,Multiple distinct active patches require multi-contact surface integration,Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment

@@ -1,0 +1,5 @@
+Edge-only approach requires surface refinement; no artificial edge spring applied
+distance 0.019968076595771916 ids [ 942  956  944 1175] points [[1.   1.   2.  ]
+ [1.   1.25 2.01]
+ [1.   1.   2.02]
+ [1.25 1.25 2.02]] weights [ 0.99362041  0.00637959 -0.99681021 -0.00318979] endpoints (array([1.       , 1.0015949, 2.0000638]), array([1.00079745, 1.00079745, 2.02      ]))

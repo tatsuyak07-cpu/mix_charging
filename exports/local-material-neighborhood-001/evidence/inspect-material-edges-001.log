@@ -1,0 +1,6 @@
+Edge-only approach requires surface refinement; no artificial edge spring applied
+Traceback (most recent call last):
+  File "/tmp/inspect_material_edges.py", line 11, in <module>
+    p=X[ids].copy();p[1 if kind=='pt' else 2:]+=4*shift
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: operands could not be broadcast together with shapes (3,3) (12,) (3,3) 

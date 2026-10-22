@@ -1,0 +1,10 @@
+1 True True
+2 True True
+3 True True
+4 False False
+6 False False
+{
+  "geometry_preserved": true,
+  "all_initial_geometries_resolved": false,
+  "all_mapped_geometries_resolved": false
+}

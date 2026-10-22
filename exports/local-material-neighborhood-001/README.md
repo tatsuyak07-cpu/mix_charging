@@ -1,0 +1,1 @@
+Conservative material-neighbour screening; unresolved refined geometry guards remain FAILED. No refined-cycle or packing result. Units mm, N, MPa. See summary.json and preflight/summary.json. Failed preliminary trials retained under evidence/.
