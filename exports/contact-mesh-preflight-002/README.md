@@ -1,0 +1,1 @@
+FAILED mesh/contact preflight; diagnostic geometry probes only. Tangential history reset, plastic history not transferred. No refined pressure solution. See plan.json and summary.json. Mesh units mm, force N, energy N mm. Contact law/settings unchanged.

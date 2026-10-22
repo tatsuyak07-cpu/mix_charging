@@ -1,0 +1,5 @@
+{
+  "preliminary_probe_001": "Setup TypeError: Contact.__init__() got an unexpected keyword argument candidate_budget. No FEM calculation; corrected keyword to max_candidates for probe-002.",
+  "formal_export_001": "Geometry/contact diagnostics and PNG completed; source-copy export failed with SameFileError because __file__ was absolute. Fixed path relativization in formal-002. No force or material changes.",
+  "scientific_results": "Refinements 4 and 6 reject initial/mapped contact candidates. These failed resolution checks remain in final evidence."
+}

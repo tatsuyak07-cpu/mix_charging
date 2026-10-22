@@ -1,0 +1,16 @@
+[
+  {
+    "n": 4,
+    "nodes": 3610,
+    "tets": 16896,
+    "error": "Multiple distinct active patches require multi-contact surface integration",
+    "type": "SurfaceResolutionError"
+  },
+  {
+    "n": 6,
+    "nodes": 11270,
+    "tets": 57024,
+    "error": "Multiple distinct active patches require multi-contact surface integration",
+    "type": "SurfaceResolutionError"
+  }
+]

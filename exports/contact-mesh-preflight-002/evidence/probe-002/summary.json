@@ -1,0 +1,65 @@
+[
+  {
+    "n": 1,
+    "nodes": 100,
+    "tets": 264,
+    "report": {
+      "penetration_mm": 0.0,
+      "image_count": 1,
+      "minimum_separation_mm": 0.017441050584720025,
+      "contacts": 2,
+      "edge_contacts": 0,
+      "normal_energy": 1.5463583004994278e-05,
+      "tangent_energy": 4.930124476879674e-31,
+      "friction_increment": 0.0,
+      "algorithmic_increment": -8.758115402030107e-47,
+      "released_history_energy": 0,
+      "max_coulomb_ratio": 2.4646918339627196e-13,
+      "edge_guard_pairs": 26,
+      "integration": "two_pass_reference_nodal_area"
+    },
+    "error": null
+  },
+  {
+    "n": 2,
+    "nodes": 558,
+    "tets": 2112,
+    "report": {
+      "penetration_mm": 0.0,
+      "image_count": 1,
+      "minimum_separation_mm": 0.017441050584720025,
+      "contacts": 2,
+      "edge_contacts": 0,
+      "normal_energy": 3.8658957512485695e-06,
+      "tangent_energy": 1.2326607206537736e-31,
+      "friction_increment": 0.0,
+      "algorithmic_increment": 8.156630584998156e-56,
+      "released_history_energy": 0,
+      "max_coulomb_ratio": 2.51636441691178e-13,
+      "edge_guard_pairs": 36,
+      "integration": "two_pass_reference_nodal_area"
+    },
+    "error": null
+  },
+  {
+    "n": 3,
+    "nodes": 1640,
+    "tets": 7128,
+    "report": {
+      "penetration_mm": 0.0,
+      "image_count": 1,
+      "minimum_separation_mm": 0.017441050584720025,
+      "contacts": 2,
+      "edge_contacts": 0,
+      "normal_energy": 1.718175889443808e-06,
+      "tangent_energy": 5.477693384680681e-32,
+      "friction_increment": 0.0,
+      "algorithmic_increment": 0.0,
+      "released_history_energy": 0,
+      "max_coulomb_ratio": 2.4646417372861565e-13,
+      "edge_guard_pairs": 36,
+      "integration": "two_pass_reference_nodal_area"
+    },
+    "error": null
+  }
+]
