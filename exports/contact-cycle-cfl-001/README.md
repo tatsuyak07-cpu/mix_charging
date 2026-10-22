@@ -1,0 +1,1 @@
+Full-cycle CFL comparison. Units mm, N, MPa, s. See summary.json for all checks and tolerances. This is a 4 mm verification coupon, initial porosity 0.25%, not the requested particle packing. One halving does not establish mesh or general contact convergence. Source snapshots require the repository environment; captured history is not a restart checkpoint.

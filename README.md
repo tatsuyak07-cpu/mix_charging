@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+接触・塑性・除荷一周期のCFL半減を検証：**0.2→0.1で全比較項目が合格**。
+[検証報告](docs/contact-cycle-cfl.md)・[比較PNG](exports/contact-cycle-cfl-001/cfl-comparison.png)・[差分CSV](exports/contact-cycle-cfl-001/path-differences.csv)・[全結果ZIP](exports/contact-cycle-cfl-001.zip)。
+残留ひずみ差5.61e-9、全過程の最大空隙率差1.14e-8。細刻み終点の独立反力監査と関連テスト4件も合格しました。
+4 mm・初期空隙率0.25%の検証セルでの一回の刻み半減です。メッシュ収束・球充填体の40%→10%圧密は未完了です。
+
 接触反力を独立監査：**摩擦履歴と反力評価時の状態を保存し、エネルギーの数値微分・材料面力積分で終点反力を照合**。
 [検証報告](docs/contact-reaction-audit.md)・[比較PNG](exports/contact-reaction-audit-001/contact-audit.png)・[監査CSV](exports/contact-reaction-audit-001/reaction-audit.csv)・[全結果ZIP](exports/contact-reaction-audit-001.zip)。
 4 mm検証セルの同条件再計算で全ステップ数値・最終8配列が前回と完全一致。独立反力監査と全テスト169件に合格しました。接触探索・接触一周期のCFL感度・メッシュ収束・球充填体の40%→10%圧密は未完了です。

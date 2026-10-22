@@ -1,0 +1,42 @@
+{
+  "tolerances": {
+    "residual_strain_absolute": 0.0001,
+    "porosity_absolute": 1e-07,
+    "path_strain_relative_to_peak": 0.001,
+    "peak_peeq_relative": 0.001
+  },
+  "metrics": {
+    "residual_strain_absolute": 5.609830794339743e-09,
+    "porosity_absolute": 1.1356936995433192e-08,
+    "path_strain_relative_to_peak": 3.819114482283863e-06,
+    "peak_peeq_relative": 2.1909238685130328e-07
+  },
+  "checks": {
+    "residual_strain_absolute": true,
+    "porosity_absolute": true,
+    "path_strain_relative_to_peak": true,
+    "peak_peeq_relative": true,
+    "only_cfl_changed": true,
+    "cfl_halved": true,
+    "both_native_checks": true,
+    "both_endpoint_checks": true,
+    "same_end_time": true,
+    "fine_independent_force_audit": true,
+    "coarse_independent_force_audit": true
+  },
+  "all_checks_passed": true,
+  "config_differences": [
+    "cfl"
+  ],
+  "coarse_steps": 142355,
+  "fine_steps": 284709,
+  "residual_strain": [
+    0.22071236817793713,
+    0.22071236256810634
+  ],
+  "final_porosity": [
+    0.0022172997859826182,
+    0.002217299709510012
+  ],
+  "scope": "One CFL halving on the 4 mm, 0.25% pore coupon; not mesh convergence or 40% to 10% particle compaction."
+}

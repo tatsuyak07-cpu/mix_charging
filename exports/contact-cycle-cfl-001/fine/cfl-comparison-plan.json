@@ -1,0 +1,13 @@
+{
+  "coarse": "exports/contact-reaction-audit-001/simulation",
+  "fine": "results/connected-contact-cfl01-001",
+  "only_changed_solver_setting": "cfl: 0.2 -> 0.1",
+  "tolerances_declared_before_fine_run_completion": {
+    "residual_strain_absolute": 0.0001,
+    "porosity_absolute_over_full_path": 0.0000001,
+    "path_strain_relative_to_peak": 0.001,
+    "peak_peeq_relative": 0.001
+  },
+  "require": ["both original solver checks", "both endpoint volume and stress checks", "fine independent contact and bulk force audit"],
+  "scope": "One timestep halving; same 4 mm coupon, not mesh convergence or 40% to 10% packing compaction. No physical, contact or solver acceptance tolerances changed."
+}
