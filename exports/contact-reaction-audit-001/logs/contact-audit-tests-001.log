@@ -1,0 +1,55 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_saved_sticking_and_sliding_witnesses_reproduce_force_and_images _____
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-8/test_saved_sticking_and_slidin0')
+
+    def test_saved_sticking_and_sliding_witnesses_reproduce_force_and_images(tmp_path):
+        for slip in (.0001,.03):
+            X,t,x,H,upper=fixture(1,.015,.25);p=Periodic(X,1.)
+            c=AreaContact(X,t,p,20.,.3,.1,thickness=.02);c.capture_audit=True
+            c.history=c.evaluate(x,x*0,H,H*0,0.)[2];c.accept_geometry(x,H)
+            x=x.copy();H=H.copy();x[upper,0]+=slip;H[0,2]+=slip
+>           f,e,h,r=c.evaluate(x,x*0,H,H*0,.001);c.history=h;c.accept_geometry(x,H)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_contact_audit.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packing_fem/area_contact.py:97: in evaluate
+    minimum,report['image_count']=self.guard.prepare_geometry(x,H)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <packing_fem.barrier_contact.BarrierContact object at 0x7ff113ad8950>
+x = array([[0.    , 0.    , 0.    ],
+       [0.    , 0.    , 0.4   ],
+       [0.28  , 0.0925, 0.415 ],
+       [0.28  , 0.0... , 1.    , 0.    ],
+       [1.    , 1.    , 0.4   ],
+       [1.28  , 1.0925, 0.415 ],
+       [1.28  , 1.0925, 0.815 ]])
+H = array([[1.    , 0.    , 0.28  ],
+       [0.    , 1.    , 0.0925],
+       [0.    , 0.    , 0.815 ]])
+
+    def prepare_geometry(self,x,H):
+        inv=np.linalg.inv(H);frac=x[self.nodes]@inv.T;pad=self.skin*np.linalg.norm(inv,axis=1)
+        lo=np.ceil(frac.min(axis=0)-frac.max(axis=0)-pad).astype(int);hi=np.floor(frac.max(axis=0)-frac.min(axis=0)+pad).astype(int)
+        count=1
+        for v in hi-lo+1:count*=int(v)
+        if count>729:raise ValueError('Barrier image budget exceeded; no truncation')
+        shifts=list(product(*[range(a,b+1) for a,b in zip(lo,hi)]));self.trial_shifts=shifts
+        if hasattr(self,'accepted_geometry'):
+            old,oldH=self.accepted_geometry
+            # Include disappearing images too: their motion still belongs to
+            # the accepted-to-trial linear collision certificate.
+            certificate_shifts=set(shifts).union(self.accepted_shifts)
+            bound=2*float(np.max(np.linalg.norm(x-old,axis=1)))+max(np.linalg.norm((H-oldH)@s) for s in certificate_shifts)
+>           if bound>=.5*self.minimum_separation:raise ContactResolutionError('Linear-step separation certificate requires a smaller timestep')
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           packing_fem.barrier_contact.ContactResolutionError: Linear-step separation certificate requires a smaller timestep
+
+packing_fem/barrier_contact.py:247: ContactResolutionError
+=========================== short test summary info ============================
+FAILED tests/test_contact_audit.py::test_saved_sticking_and_sliding_witnesses_reproduce_force_and_images
+1 failed, 1 passed in 0.85s

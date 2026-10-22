@@ -14,8 +14,9 @@ from packing_fem.adaptive_tet import closed_surface_volume
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--pressure',type=float,default=.02);p.add_argument('--ramp-seconds',type=float,default=.004);p.add_argument('--cfl',type=float,default=.2);p.add_argument('--max-steps',type=int,default=200000);p.add_argument('--unload-seconds',type=float,default=0.);p.add_argument('--recovery-seconds',type=float,default=0.);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--pressure',type=float,default=.02);p.add_argument('--ramp-seconds',type=float,default=.004);p.add_argument('--cfl',type=float,default=.2);p.add_argument('--max-steps',type=int,default=200000);p.add_argument('--unload-seconds',type=float,default=0.);p.add_argument('--recovery-seconds',type=float,default=0.);p.add_argument('--save-contact-audit',action='store_true');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     c=json.loads(Path('configs/explicit-area-cauchy-pressure.json').read_text());c.update(pressure_mpa=a.pressure,ramp_s=a.ramp_seconds,hold_s=.002,unload_s=a.unload_seconds,recovery_hold_s=a.recovery_seconds,cfl=a.cfl,max_steps=a.max_steps,output_every=200,mass_frame='pinned',usage_scope='connected_4mm_fixture_initial_porosity_0.25percent_not_particle_packing')
+    if a.save_contact_audit:c['save_contact_audit']=True
     hashes={}
     for path in [Path(__file__),Path('tools/run_barrier_compaction.py'),*Path('packing_fem').glob('*.py')]:
         relative=path.resolve().relative_to(Path.cwd());target=a.output/'source'/relative;target.parent.mkdir(parents=True,exist_ok=True);data=path.read_bytes();target.write_bytes(data);hashes[str(relative)]=hashlib.sha256(data).hexdigest()

@@ -96,6 +96,9 @@ def solve(directory,X,t,c):
         from .area_contact import AreaContact
         contact_type=AreaContact if c['contact_backend']=='area_guarded' else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
+    if c.get('save_contact_audit',False):
+        if c.get('contact_backend')!='area_guarded':raise ValueError('Contact audit capture requires area_guarded')
+        contact.capture_audit=True
     b=np.repeat(np.eye(3)[None],len(t),axis=0);ep=np.full(len(t),float(c.get('initial_peeq',0.)));q=np.zeros(periodic.ndof);v=q.copy();x=X.copy()
     if 'initial_velocity_mm_s' in c:
         initial_velocity=np.asarray(c['initial_velocity_mm_s'],float)
@@ -281,6 +284,9 @@ def solve(directory,X,t,c):
     np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N,contact_algorithmic_Nmm,edge_contacts,minimum_separation_mm,command_pressure_MPa')
     np.savetxt(directory/'accepted-step-audit.csv.gz',audits,delimiter=',',comments='',header='time_s,axial_compression,porosity,command_pressure_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,energy_residual_Nmm,normal_contact_Nmm,tangent_contact_Nmm,contacts')
     np.savez_compressed(directory/'last-state.npz',points=x,reference_points=X,tets=t,elastic_b=b,peeq=ep,reference_volume=V0,generalized_position=q,generalized_velocity=v)
+    if c.get('save_contact_audit',False):
+        from .contact_audit import save_capture
+        save_capture(directory/'contact-audit.json',contact,f,external,time,steps)
     if retry_log:(directory/'contact-retries.json').write_text(json.dumps(retry_log,indent=2)+'\n')
     (directory/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
     import meshio
