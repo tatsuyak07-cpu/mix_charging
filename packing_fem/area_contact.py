@@ -57,13 +57,15 @@ def transported_spring(old_normal,new_normal,spring_world):
 
 
 class AreaContact:
-    def __init__(self,X,t,periodic,kn,mu,skin,local_material_filter=True,**kwargs):
+    def __init__(self,X,t,periodic,kn,mu,skin,local_material_filter=True,edge_stationarity_filter=False,**kwargs):
         # Share the complete PT/EE distance search and non-crossing certificate.
         # No legacy constraint-sum forces or energies enter this backend.
         self.guard=BarrierContact(X,t,periodic,kn,0.,skin,**kwargs)
         if not np.isfinite(mu) or mu<0:raise ValueError("Nonnegative finite friction required")
         from .material_neighborhood import MaterialNeighborhood
         self.material_neighborhood=MaterialNeighborhood(X,t,periodic.L,skin) if local_material_filter else None
+        from .surface_stationarity import SurfaceStationarity
+        self.surface_stationarity=SurfaceStationarity(X,self.guard.faces,periodic.classes,periodic.L) if edge_stationarity_filter else None
         self.capture_audit=False;self.accepted_audit=None;self.history={};self.mu=mu;self.kn=kn;self.vertex_keys={}
         self.peers={int(node):set() for node in self.guard.nodes}
         for face in self.guard.faces:
@@ -94,7 +96,7 @@ class AreaContact:
         records=[]
         if self.capture_audit:self.trial_audit=dict(records=records,points=x.copy(),cell=H.copy(),force=force,extra=extra)
         self.guard.trial_separation=self.skin;self.guard.trial_diagonal=np.zeros(len(x))
-        report=dict(penetration_mm=0.,image_count=0,minimum_separation_mm=self.skin,contacts=0,edge_contacts=0,normal_energy=0.,tangent_energy=0.,friction_increment=0.,algorithmic_increment=0.,released_history_energy=0.,max_coulomb_ratio=0.,edge_guard_pairs=0,integration='two_pass_reference_nodal_area',local_material_pairs=0)
+        report=dict(penetration_mm=0.,image_count=0,minimum_separation_mm=self.skin,contacts=0,edge_contacts=0,normal_energy=0.,tangent_energy=0.,friction_increment=0.,algorithmic_increment=0.,released_history_energy=0.,max_coulomb_ratio=0.,edge_guard_pairs=0,integration='two_pass_reference_nodal_area',local_material_pairs=0,nonstationary_edge_pairs=0)
         if not len(self.faces):return force,extra,hist,report
         minimum,report['image_count']=self.guard.prepare_geometry(x,H)
         for key,ids,kind,shift,_,_ in self.guard.neighbors:
@@ -134,6 +136,8 @@ class AreaContact:
                         ep=x[ids].copy();ep[2:]+=H@shift;_,ew=feature(ep,'ee')
                         if self.material_neighborhood.local(('ee_material',*map(int,ids),*map(int,shift)),ids,'ee',shift,ep,ew,x,H):
                             report['local_material_pairs']+=1;continue
+                    if self.surface_stationarity is not None and self.surface_stationarity.classify(ids,shift,x,H)['dominated']:
+                        report['nonstationary_edge_pairs']+=1;continue
                     report['edge_guard_pairs']+=1
                     if not any(int(i) in selected for i in ids):
                         error=SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied')

@@ -1,0 +1,17 @@
+{
+  "scope": "Verify opt-in surface stationarity screening; retain failed mapped preflight.",
+  "opt_in_setting": "edge_stationarity_filter=true; production default remains false",
+  "descent_cosine_tolerance": 1e-10,
+  "tolerance_sensitivity": [
+    1e-12,
+    1e-10,
+    1e-08
+  ],
+  "acceptance": {
+    "corner_direction_descent": true,
+    "true_edge_guard_retained": true,
+    "plane_force_relative": 1e-10,
+    "energy_gradient_relative": 1e-05
+  },
+  "mesh_convergence_claim": false
+}

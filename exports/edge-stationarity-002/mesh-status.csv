@@ -1,0 +1,6 @@
+refinement,nodes,tetrahedra,initial_resolved,initial_contacts,screened_initial_EE,mapped_resolved,mapped_failure
+1,100,264,True,0,0,True,
+2,558,2112,True,0,0,True,
+3,1640,7128,True,0,0,True,
+4,3610,16896,True,0,34,False,Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment
+6,11270,57024,True,0,110,False,Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment

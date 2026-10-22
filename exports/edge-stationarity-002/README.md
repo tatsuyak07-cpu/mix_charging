@@ -1,0 +1,1 @@
+Experimental EE stationarity screening, explicitly opt-in. All initial mesh levels evaluated with zero contact; mapped n4/n6 still FAIL. No refined pressure-cycle or packing solution. See summary.json, mesh-status.csv and preflight/. Units mm, N, MPa.

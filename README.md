@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+辺候補の表面最短条件を検証：**試験機能で初期形状の全5段階が評価可能、変形後の4・6は引き続き停止**。
+[検証報告](docs/edge-stationarity.md)・[候補画像](exports/edge-stationarity-002/edge-stationarity.png)・[CSV](exports/edge-stationarity-002/mesh-status.csv)・[全データZIP](exports/edge-stationarity-002.zip)。
+全体テスト189件に合格。真の辺接近の停止ガードと周期平面接触の反力を維持しました。試験機能の通常設定は無効です。
+細分化した圧力一周期・メッシュ収束・40%→10%圧密は未完了です。
+
 局所材料近傍の候補判定を追加：**角部の点対面候補を区別し、未解決の辺接近では停止を維持**。
 [検証報告](docs/local-material-neighborhood.md)・[候補画像](exports/local-material-neighborhood-001/local-material-candidates.png)・[停止理由CSV](exports/local-material-neighborhood-001/error-comparison.csv)・[全データZIP](exports/local-material-neighborhood-001.zip)。
 全体179件・追加を含む重点8件のテストに合格。周期接触と保存済み空隙壁接触で反力の一致を確認しました。

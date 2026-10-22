@@ -55,7 +55,7 @@ def patch_diagnostic(contact,x,H):
 
 
 def probe(X,t,x,H,c):
-    contact=AreaContact(X,t,Periodic(X,c['length_mm']),c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],local_material_filter=c.get('local_material_filter',True))
+    contact=AreaContact(X,t,Periodic(X,c['length_mm']),c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False))
     contact.capture_audit=True
     try:
         f,extra,_,r=contact.evaluate(x,x*0,H,H*0,0.)
@@ -67,8 +67,8 @@ def probe(X,t,x,H,c):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,default=Path('exports/contact-cycle-cfl-001/fine/run'));p.add_argument('--output',type=Path,required=True);p.add_argument('--evidence',type=Path);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
-    c=json.loads((a.source/'config.json').read_text());c.setdefault('local_material_filter',True)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,default=Path('exports/contact-cycle-cfl-001/fine/run'));p.add_argument('--output',type=Path,required=True);p.add_argument('--evidence',type=Path);p.add_argument('--edge-stationarity-filter',action='store_true');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    c=json.loads((a.source/'config.json').read_text());c.setdefault('local_material_filter',True);c['edge_stationarity_filter']=a.edge_stationarity_filter
     with np.load(a.source/'last-state.npz') as z:X=z['reference_points'];x=z['points'];t=z['tets'];F=deformation(z['generalized_position'][-6:])
     plan=dict(scope=__doc__,levels=[1,2,3,4,6],solver_config=c,shape_source=str(a.source),reset_tangent_history=True,plastic_history_transferred=False,pressure_trajectory_computed=False,force_or_material_changes=False,gate='All mesh levels must resolve initial and mapped geometry before claiming a refined-cycle comparison. No failed guard is bypassed.',geometry_tolerance=1e-10)
     (a.output/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');rows=[];meshes={};baseV=geometry(x,t)[0].sum()

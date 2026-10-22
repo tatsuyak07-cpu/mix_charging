@@ -1,0 +1,5 @@
+{
+  "scientific_failure_retained": "Opt-in initial n1,n2,n3,n4,n6 geometries pass, but mapped n4/n6 still stop at current material bridge certification. No refined pressure cycle was run.",
+  "production_default": "edge_stationarity_filter remains false; explicit true was used only for the experimental preflight.",
+  "scope": "Stationarity is a necessary local closest-surface condition. Passing it is not general contact or mesh convergence validation."
+}
