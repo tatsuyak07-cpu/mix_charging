@@ -3,7 +3,7 @@
 Velocity Verlet with a reduced consistent constraint mass. No global stiffness
 iterations. Material points use finite-strain Hencky J2; optional distance
 barriers cover point-face and edge-edge contact. Remeshing is boundary-preserving
-internal 2-to-3 reconnection only.
+internal 2-to-3 reconnection and opt-in audited surface edge bisection.
 """
 import json
 from pathlib import Path
@@ -60,7 +60,14 @@ def validate(c):
     if c.get('initial_peeq',0)<0:raise ValueError('Negative initial plastic history')
     for key in ('max_steps','output_every'):
         if not isinstance(c[key],int) or c[key]<1:raise ValueError(f'Positive integer {key} required')
+    for name in ('multiple_patches','certified_local_filter','local_material_filter','edge_stationarity_filter'):
+        if name in c and not isinstance(c[name],bool):raise ValueError(f'Boolean {name} required')
+    for name in ('surface_remesh_every','surface_remesh_max_events'):
+        if name in c and (not isinstance(c[name],int) or c[name]<0):raise ValueError(f'Nonnegative integer {name} required')
+    if any(not isinstance(k,int) or k<1 for k in c.get('surface_remesh_steps',[])):raise ValueError('Positive surface remesh steps required')
     if not isinstance(c.get('remesh_every',0),int) or c.get('remesh_every',0)<0:raise ValueError('Invalid remesh interval')
+    if c.get('certified_local_filter',False) and (c.get('initial_remesh',False) or c.get('remesh_every',0)):
+        raise ValueError('Canonical certificate cannot follow internal reconnection')
     if c.get('unload_s',0)<0 or c.get('recovery_hold_s',0)<0:raise ValueError('Negative unloading time')
     if c.get('recovery_hold_s',0)>0 and c.get('unload_s',0)<=0:raise ValueError('Recovery hold needs an unloading segment')
     if c.get('contact_backend','legacy') not in ('legacy','tracked_guarded','tracked_edges','distance_barrier','area_guarded'):raise ValueError('Unknown contact backend')
@@ -74,7 +81,7 @@ def validate(c):
 
 def solve(directory,X,t,c):
     c=dict(c)
-    if c.get('contact_backend')=='area_guarded':c.setdefault('local_material_filter',True);c.setdefault('edge_stationarity_filter',False)
+    if c.get('contact_backend')=='area_guarded':c.setdefault('local_material_filter',True);c.setdefault('edge_stationarity_filter',False);c.setdefault('multiple_patches',False);c.setdefault('certified_local_filter',False)
     validate(c);directory=Path(directory);directory.mkdir(parents=True,exist_ok=False)
     np.savez_compressed(directory/'initial-mesh.npz',points=X,tets=t)
     (directory/'config.json').write_text(json.dumps(c,indent=2)+'\n')
@@ -97,7 +104,7 @@ def solve(directory,X,t,c):
         from .barrier_contact import BarrierContact
         from .area_contact import AreaContact
         contact_type=AreaContact if c['contact_backend']=='area_guarded' else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
-    if c.get('contact_backend')=='area_guarded':contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False))
+    if c.get('contact_backend')=='area_guarded':contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False),multiple_patches=c.get('multiple_patches',False),certified_local_filter=c.get('certified_local_filter',False))
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     if c.get('save_contact_audit',False):
         if c.get('contact_backend')!='area_guarded':raise ValueError('Contact audit capture requires area_guarded')
@@ -146,6 +153,63 @@ def solve(directory,X,t,c):
                 event.update(time_s=time,kinetic_energy_scaled_error=error,accepted=False,reason='momentum projection energy error')
                 periodic.mass(mass)
             remesh_events.append(event)
+
+    def try_surface_remesh(ap):
+        nonlocal X,x,t,b,ep,V0,mass,periodic,contact,q,v,f_int,volume,energy,J,D,sigma,f,a,fc,extra,ci,external
+        from .surface_remesh import bisect,transfer_contact,audit
+        from .adaptive_tet import boundary
+        from scipy.sparse.linalg import lsqr
+        if c.get('contact_backend')!='area_guarded':raise ValueError('Surface refinement requires area_guarded')
+        if sum(e.get('accepted',False) and e.get('operation')=='periodic_edge_bisection' for e in remesh_events)>=c.get('surface_remesh_max_events',1):return
+        faces=boundary(t);edges=np.unique(np.sort(np.concatenate([faces[:,[i,j]] for i,j in ((0,1),(1,2),(2,0))]),axis=1),axis=0)
+        lengths=np.linalg.norm(x[edges[:,1]]-x[edges[:,0]],axis=1)
+        ordered=np.argsort(-lengths,kind='stable')
+        # Caller may prescribe one edge for reproducible verification. Otherwise
+        # refine the longest current boundary edge (a numerical choice).
+        choices=[np.asarray(c['surface_remesh_edge'],int)] if 'surface_remesh_edge' in c else edges[ordered]
+        event=dict(operation='periodic_edge_bisection',time_s=time,accepted=False)
+        try:
+            oldnv=periodic.velocities(v)
+            proposal=None
+            for edge in choices:
+                try:proposal=bisect(X,x,t,b,ep,V0,oldnv,edge,periodic.L);break
+                except ValueError as exc:event['proposal_rejection']=str(exc)
+            if proposal is None:raise ValueError('No conforming periodic surface edge available')
+            p=proposal;event.update(p['report'])
+            np.savez_compressed(directory/f'surface-remesh-attempt-{len(remesh_events)+1:04d}.npz',reference_points=p['X'],points=p['x'],tets=p['t'],elastic_b=p['b'],peeq=p['ep'],reference_volume=p['V0'],parents=p['parents'],supports=p['supports'])
+            p2=Periodic(p['X'],periodic.L,mass_frame=c.get('mass_frame','pinned'))
+            p2.prescribed_active=periodic.prescribed_active
+            p2.free=np.delete(np.arange(p2.ndof),p2.prescribed) if p2.prescribed_active else np.arange(p2.ndof)
+            m2=lumped_mass(p['t'],p['V0'],c['density_tonne_mm3'],len(p['X']));p2.mass(m2)
+            q2=lsqr(p2.A,(p['x']-p['X']).ravel(),atol=1e-13,btol=1e-13,iter_lim=10*p2.ndof)[0]
+            if np.max(abs(p2.positions(q2)-p['x']))>periodic.L*1e-10:raise ValueError('Periodic displacement transfer failed')
+            if np.max(abs(q2[-6:]-q[-6:]))>1e-10:raise ValueError('Remesh changes macroscopic cell')
+            v2=p2.remap_velocity(p2.force(m2[:,None]*p['velocity']),v[periodic.prescribed])
+            p['velocity']=p2.velocities(v2)
+            remesh_contact_kwargs=dict(contact_kwargs)
+            if contact.extension is not None:
+                from .refined_extension import refine_extension
+                remesh_contact_kwargs['geometry_extension']=refine_extension(contact.extension,p)
+            newcontact=contact_type(p['X'],p['t'],p2,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**remesh_contact_kwargs)
+            H=deformation(q[-6:])*periodic.L
+            evaluated=transfer_contact(contact,newcontact,p,H)
+            audit_report=audit((X,x,t,b,ep,V0,oldnv),p,c,ci,evaluated[-1],c['remesh_energy_tolerance'],old_response=(fc,extra),new_response=evaluated)
+            event.update(audit_report)
+            if quality(p['x'],p['t']).min()<c['minimum_quality']:event.update(accepted=False,reason='Refined mesh below minimum quality')
+            if not event['accepted']:return
+            external2=np.zeros(p2.ndof);external2[-6:]=external[-6:]
+            fc2,extra2,_,ci2=evaluated
+            newcontact.capture_audit=c.get('save_contact_audit',False)
+            if newcontact.capture_audit:
+                fc2,extra2,hist2,ci2=newcontact.evaluate(p['x'],p2.velocities(v2),H,H*0,0.);newcontact.history=hist2
+            newcontact.accept_geometry(p['x'],H)
+            fi2,vol2,en2,J2,D2,sigma2=internal_force(p['x'],p['t'],p['b'],p['ep'],c)
+            f2=p2.force(fi2+fc2,extra2);a2=p2.acceleration(f2+external2,v2,ap if p2.prescribed_active else 0.,c['damping_per_s'])
+            # Commit only after every potentially failing calculation completes.
+            X,x,t,b,ep,V0,mass,periodic,contact,q,v=p['X'],p['x'],p['t'],p['b'],p['ep'],p['V0'],m2,p2,newcontact,q2,v2
+            fc,extra,ci,external,f_int,volume,energy,J,D,sigma,f,a=fc2,extra2,ci2,external2,fi2,vol2,en2,J2,D2,sigma2,f2,a2
+        except ValueError as exc:event.update(accepted=False,reason=str(exc))
+        finally:remesh_events.append(event)
 
     if c.get('initial_remesh',False):try_remesh(0.)
     initial_energy=float(V0@energy)+ci['normal_energy']+ci['tangent_energy']+float(.5*v@(periodic.M@v));dt_min=float('inf');dt_max=0.
@@ -228,6 +292,8 @@ def solve(directory,X,t,c):
             if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,H)
             time=next_time;steps+=1
             if c.get('remesh_every',0) and steps%c['remesh_every']==0:try_remesh(ap)
+            if steps in c.get('surface_remesh_steps',[]) or (c.get('surface_remesh_every',0) and steps%c['surface_remesh_every']==0 and quality(x,t).min()<c.get('surface_remesh_quality',.35)):
+                try_surface_remesh(ap)
             kinetic_now=float(.5*v@(periodic.M@v));internal_now=float(V0@energy)
             residual_now=kinetic_now+internal_now+ci['normal_energy']+ci['tangent_energy']+damp+friction+released+algorithmic-initial_energy-W
             audit_rows.append([time,-q[periodic.prescribed],1-volume.sum()/(np.linalg.det(deformation(q[-6:]))*periodic.L**3),command_pressure if pressure_control else -external[periodic.prescribed]/periodic.L**3,kinetic_now,internal_now,W,residual_now,ci['normal_energy'],ci['tangent_energy'],ci['contacts']]);coulomb_peak=max(coulomb_peak,ci['max_coulomb_ratio'])
@@ -283,7 +349,7 @@ def solve(directory,X,t,c):
             'checks':checks,'failure':failure,'steps':steps,'dt_min_s':dt_min,'dt_max_s':dt_max,'kinetic_internal_ratio_loaded':ke_ratio if np.isfinite(ke_ratio) else None,
             'closed_boundary_volume_relative_error':boundary_error,'material_volume_relative_error':material_volume_error,'final_static_residual_ratio':float(static_ratio),'energy_scale_Nmm':work_scale,'initial_available_energy_Nmm':initial_available_energy,'energy_absolute_residual_Nmm':float(np.max(np.abs(audits[:,7]))),'energy_relative_error':float(np.max(np.abs(audits[:,7]))/work_scale),'remesh_events':remesh_events,
             'initial_porosity':float(h[0,2]),'final_porosity':float(h[-1,2]),'final_axial_compression':float(h[-1,1]),'residual_compression_strain':float(h[-1,1]) if unload>0 and checks.get('unload_completed') and checks['static_equilibrium'] else None,
-            'limitations':['linear-tetra plastic locking not converged','contact quadrature, barrier thickness, mollification and general friction convergence not validated','internal 2-to-3 reconnection only; no surface remeshing','numerical density and damping are not measured material data','uncalibrated Kirchhoff-yield Hencky J2 material','not a verified 40 to 10 percent compaction result']}
+            'limitations':['linear-tetra plastic locking not converged','contact quadrature, barrier thickness, mollification and general friction convergence not validated','surface edge bisection is experimental; no coarsening or general distortion repair','numerical density and damping are not measured material data','uncalibrated Kirchhoff-yield Hencky J2 material','not a verified 40 to 10 percent compaction result']}
     np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N,contact_algorithmic_Nmm,edge_contacts,minimum_separation_mm,command_pressure_MPa')
     np.savetxt(directory/'accepted-step-audit.csv.gz',audits,delimiter=',',comments='',header='time_s,axial_compression,porosity,command_pressure_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,energy_residual_Nmm,normal_contact_Nmm,tangent_contact_Nmm,contacts')
     np.savez_compressed(directory/'last-state.npz',points=x,reference_points=X,tets=t,elastic_b=b,peeq=ep,reference_volume=V0,generalized_position=q,generalized_velocity=v)

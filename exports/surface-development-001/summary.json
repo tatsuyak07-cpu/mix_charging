@@ -1,0 +1,203 @@
+{
+  "checks": {
+    "pressure_native_checks": true,
+    "refinement_committed": true,
+    "elastic_analytic_limit": true,
+    "one_timestep_halving": true,
+    "contact_transfer_accepted": false,
+    "uniform_reaction_preserved": true,
+    "sliding_coulomb_bound": true,
+    "sliding_work_positive": true,
+    "mapped_preflight_all_levels": true
+  },
+  "passed": false,
+  "analytic_stretch": 0.9990014973385374,
+  "pressure_runs": {
+    "baseline": {
+      "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+      "compression": 0.0009984978065811275,
+      "remesh_events": []
+    },
+    "refined-cfl02": {
+      "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+      "compression": 0.0009984979433224537,
+      "remesh_events": [
+        {
+          "operation": "periodic_edge_bisection",
+          "time_s": 5.809153865977774e-06,
+          "accepted": true,
+          "periodic_edges": 2,
+          "new_nodes": 2,
+          "reference_volume_error": 0.0,
+          "current_volume_error": 0.0,
+          "minimum_quality_before": 0.755952629569279,
+          "minimum_quality_after": 0.5602591948059344,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 2.0679515313825687e-16,
+            "linear_momentum": 7.483791652681831e-20,
+            "angular_momentum": 4.102777558437614e-06,
+            "kinetic_energy": 6.710616892155162e-09,
+            "material_energy": 0.0,
+            "contact_energy": 0.0,
+            "normal_energy": 0.0,
+            "tangent_energy": 0.0,
+            "contact_macro_force": 0.0
+          },
+          "tolerance": 0.001
+        }
+      ]
+    },
+    "refined-cfl01": {
+      "status": "prototype_checks_passed_not_mesh_or_contact_validated",
+      "compression": 0.0009984979292718453,
+      "remesh_events": [
+        {
+          "operation": "periodic_edge_bisection",
+          "time_s": 2.904576933741762e-06,
+          "accepted": true,
+          "periodic_edges": 2,
+          "new_nodes": 2,
+          "reference_volume_error": 0.0,
+          "current_volume_error": 2.220446049250313e-16,
+          "minimum_quality_before": 0.7559526299237934,
+          "minimum_quality_after": 0.5602591948121618,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 2.0679515313825687e-16,
+            "linear_momentum": 2.583161893165104e-20,
+            "angular_momentum": 2.835744231238599e-07,
+            "kinetic_energy": 3.0957135385453004e-11,
+            "material_energy": 1.5046327690525278e-25,
+            "contact_energy": 0.0,
+            "normal_energy": 0.0,
+            "tangent_energy": 0.0,
+            "contact_macro_force": 0.0
+          },
+          "tolerance": 0.001
+        }
+      ]
+    }
+  },
+  "contact_transfer": {
+    "accepted": false,
+    "checks": {
+      "mass": true,
+      "linear_momentum": true,
+      "angular_momentum": true,
+      "kinetic_energy": true,
+      "material_energy": true,
+      "contact_energy": true,
+      "normal_energy": true,
+      "tangent_energy": true,
+      "contact_macro_force": false,
+      "coulomb": true
+    },
+    "scaled_errors": {
+      "mass": 0.0,
+      "linear_momentum": 0.0,
+      "angular_momentum": 0.0,
+      "kinetic_energy": 0.0,
+      "material_energy": 1.708072696317945e-16,
+      "contact_energy": 0.0,
+      "normal_energy": 0.0,
+      "tangent_energy": 6.617444900425317e-16,
+      "contact_macro_force": 7.900294343276964e-06
+    },
+    "tolerance": 1e-07
+  },
+  "sliding_report": {
+    "penetration_mm": 0.0,
+    "image_count": 9,
+    "minimum_separation_mm": 0.014999999999999958,
+    "contacts": 20,
+    "edge_contacts": 0,
+    "normal_energy": 0.00011012829336045,
+    "tangent_energy": 1.8019103278336788e-05,
+    "friction_increment": 0.00015569748263149686,
+    "algorithmic_increment": -7.374792789588828e-05,
+    "released_history_energy": 0,
+    "max_coulomb_ratio": 0.30000000000000004,
+    "edge_guard_pairs": 262,
+    "integration": "two_pass_reference_nodal_area",
+    "local_material_pairs": 0,
+    "nonstationary_edge_pairs": 0
+  },
+  "mapped_preflight": [
+    {
+      "refinement": 1,
+      "nodes": 100,
+      "elements": 264,
+      "contacts": 2,
+      "normal_energy_Nmm": 1.5463583004994278e-05,
+      "certificate_margin": 0.5424282811377867,
+      "force_resultant_N": 3.293267741905479e-18
+    },
+    {
+      "refinement": 2,
+      "nodes": 558,
+      "elements": 2112,
+      "contacts": 2,
+      "normal_energy_Nmm": 3.8658957512485695e-06,
+      "certificate_margin": 0.5410663487574392,
+      "force_resultant_N": 6.107208743686105e-20
+    },
+    {
+      "refinement": 3,
+      "nodes": 1640,
+      "elements": 7128,
+      "contacts": 2,
+      "normal_energy_Nmm": 1.718175889443808e-06,
+      "certificate_margin": 0.5403295809215498,
+      "force_resultant_N": 1.7957313183654969e-19
+    },
+    {
+      "refinement": 4,
+      "nodes": 3610,
+      "elements": 16896,
+      "contacts": 2,
+      "normal_energy_Nmm": 9.664739378121424e-07,
+      "certificate_margin": 0.5397646910037077,
+      "force_resultant_N": 2.880164972487193e-20
+    },
+    {
+      "refinement": 6,
+      "nodes": 11270,
+      "elements": 57024,
+      "contacts": 14,
+      "normal_energy_Nmm": 4.339718295933361e-07,
+      "certificate_margin": 0.5388155586403525,
+      "force_resultant_N": 8.969361362548565e-20
+    }
+  ],
+  "packing_compaction_verified": false,
+  "general_surface_remeshing_verified": false,
+  "limitations": [
+    "No arbitrary surface regeneration/coarsening",
+    "No general edge-edge force integration",
+    "No 40 to 10 percent packing result",
+    "General split/merge and connected equal-minimum contact remain fail-stop"
+  ]
+}

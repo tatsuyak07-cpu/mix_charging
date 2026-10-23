@@ -1,0 +1,63 @@
+.........F                                                               [100%]
+=================================== FAILURES ===================================
+_________ test_active_sticking_surface_transfer_and_conservative_audit _________
+
+    def test_active_sticking_surface_transfer_and_conservative_audit():
+        X,t,x,H,upper,c,V0,b,ep,edge=plane_state();velocity=X*0
+        old=AreaContact(X,t,Periodic(X,1.),20.,.3,.1,thickness=.02)
+        old.history=old.evaluate(x,x*0,H,H*0,0.)[2]
+        x=x.copy();H=H.copy();x[upper,0]+=.0001;H[0,2]+=.0001
+        before=old.evaluate(x,x*0,H,H*0,.001);old.history=before[2]
+        p=bisect(X,x,t,b,ep,V0,velocity,edge,1.)
+        new=AreaContact(p['X'],p['t'],Periodic(p['X'],1.),20.,.3,.1,thickness=.02)
+>       after=transfer_contact(old,new,p,H)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_surface_development.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+old = <packing_fem.area_contact.AreaContact object at 0x7fd4018fd4f0>
+new = <packing_fem.area_contact.AreaContact object at 0x7fd3fc22c3e0>
+proposal = {'X': array([[0.  , 0.  , 0.  ],
+       [0.  , 0.  , 0.4 ],
+       [0.  , 0.  , 0.6 ],
+       [0.  , 0.  , 1.  ],
+    ...        [0., 1., 0.],
+        [0., 0., 1.]],
+
+       [[1., 0., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]]]), ...}
+H = array([[1.00e+00, 0.00e+00, 1.00e-04],
+       [0.00e+00, 1.00e+00, 0.00e+00],
+       [0.00e+00, 0.00e+00, 8.15e-01]])
+
+    def transfer_contact(old,new,proposal,H):
+        """Interpolate elastic slip, not plastic offsets, then audit externally.
+    
+    New active quadrature nodes require matching histories at both edge endpoints.
+    Unknown patch creation, loss, split, or ambiguous interpolation is rejected.
+    Old anchor nodes survive bisection and remain material points.
+    """
+        x=proposal['x'];new.capture_audit=False
+        baseline=new.evaluate(x,x*0,H,H*0,0.);fresh=baseline[2];mapped={}
+        for key,state in fresh.items():
+            node=key[1];sources=proposal['supports'][node];states=[]
+            for source in sources:
+                matches=[]
+                for oldkey,value in old.history.items():
+                    if oldkey[1]!=source:continue
+                    # Reference target facets must overlap in area, not just at a vertex.
+                    oldtri=old.X[old.faces[value['face']]]+old.L*np.asarray(value['shift'])
+                    newtri=new.X[new.faces[state['face']]]+new.L*np.asarray(state['shift'])
+                    D=np.column_stack((oldtri[1]-oldtri[0],oldtri[2]-oldtri[0]));w=np.linalg.lstsq(D,(newtri-oldtri[0]).T,rcond=None)[0].T
+                    projected=oldtri[0]+w@D.T
+                    if np.max(abs(projected-newtri))<old.L*1e-9 and np.all(w>=-1e-9) and np.all(w.sum(1)<=1+1e-9):matches.append(value)
+>               if len(matches)!=1:raise ValueError('Remesh contact history lacks a unique parent patch')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               ValueError: Remesh contact history lacks a unique parent patch
+
+packing_fem/surface_remesh.py:68: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_surface_development.py::test_active_sticking_surface_transfer_and_conservative_audit
+1 failed, 9 passed in 46.10s

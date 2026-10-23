@@ -35,6 +35,7 @@ class StructuredExtension:
             if self.material_mask[index]:raise ValueError('Duplicate physical tetrahedron')
             self.material_mask[index]=True
         self.lengths=np.array([v[-1]-v[0] for v in self.axes]);self.grid=np.arange(len(self.reference)).reshape(shape)
+        self.pairs=[(np.take(self.grid,0,axis=k).ravel(),np.take(self.grid,-1,axis=k).ravel()) for k in range(3)]
         V,g,D=geometry(self.reference,self.tets);self.invD=np.linalg.inv(D);self.reference_volume=V
         blocks=np.einsum('n,nai,nbi->nab',V,g,g);rows=np.repeat(self.tets,4,axis=1).ravel();cols=np.tile(self.tets,(1,4)).ravel()
         matrix=coo_matrix((blocks.ravel(),(rows,cols)),shape=(len(self.reference),len(self.reference))).tocsr()
@@ -50,8 +51,7 @@ class StructuredExtension:
             residual=float(np.linalg.norm(self.Kgg@u[self.ghost]-rhs)/max(np.linalg.norm(rhs),1e-30))
         y=self.reference@A.T+u;y[self.ids]=x
         periodic_error=0.
-        for axis in range(3):
-            lo=np.take(self.grid,0,axis=axis).ravel();hi=np.take(self.grid,-1,axis=axis).ravel()
+        for axis,(lo,hi) in enumerate(self.pairs):
             periodic_error=max(periodic_error,float(np.max(abs(y[hi]-y[lo]-H[:,axis]))))
         D=(y[self.tets][:,1:]-y[self.tets][:,:1]).swapaxes(1,2);F=D@self.invD
         normalized=np.linalg.inv(A)@F;symmetric=(normalized+normalized.swapaxes(1,2))/2

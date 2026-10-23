@@ -1,0 +1,50 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_unrepresentable_certificate_remesh_is_rejected_without_changing_trajectory _
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-23/test_unrepresentable_certifica0')
+
+    def test_unrepresentable_certificate_remesh_is_rejected_without_changing_trajectory(tmp_path):
+        from packing_fem import sintered
+        from packing_fem.explicit_material import hex_to_tet
+        from packing_fem.explicit_solver import solve
+        c=config();c.update(contact_backend='area_guarded',loading_mode='nominal_pressure',pressure_mpa=.01,yield_mpa=1e6,ramp_s=.0006,hold_s=.0003,damping_per_s=20000.,certified_local_filter=True)
+        X,h,_=sintered.mesh(np.ones((2,2,2),bool),.5);t=hex_to_tet(X,h)
+>       base=solve(tmp_path/'base',X,t,c)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_surface_development.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packing_fem/explicit_solver.py:85: in solve
+    validate(c);directory=Path(directory);directory.mkdir(parents=True,exist_ok=False)
+    ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+c = {'model_type': 'experimental_explicit_tet_hencky_j2', 'length_mm': 1.0, 'young_mpa': 10.0, 'poisson': 0.33, ...}
+
+    def validate(c):
+        for k in ['length_mm','young_mpa','density_tonne_mm3','ramp_s','contact_penalty_mpa_mm','contact_skin_mm','cfl']:
+            if not np.isfinite(c[k]) or c[k]<=0:raise ValueError(f'Positive finite {k} required')
+        if not 0<c['cfl']<=.3 or not 0<=c['compression_fraction']<.9:raise ValueError('Prototype CFL/compression bounds exceeded')
+        for key in ('hold_s','damping_per_s','friction','compression_fraction','minimum_quality','remesh_quality','remesh_energy_tolerance','energy_tolerance','kinetic_tolerance','max_penetration_mm'):
+            if not np.isfinite(c[key]):raise ValueError(f'Finite {key} required')
+        if not 0<c['minimum_quality']<1 or not 0<c['remesh_quality']<=1 or c['remesh_energy_tolerance']<=0:raise ValueError('Invalid remesh accuracy/quality settings')
+        if c['energy_tolerance']<=0 or c['kinetic_tolerance']<=0 or c['max_penetration_mm']<=0:raise ValueError('Invalid audit tolerances')
+        if c.get('hold_s',0)<0 or c.get('damping_per_s',0)<0 or c['friction']<0:raise ValueError('Negative numerical/contact setting')
+        if c.get('initial_peeq',0)<0:raise ValueError('Negative initial plastic history')
+        for key in ('max_steps','output_every'):
+            if not isinstance(c[key],int) or c[key]<1:raise ValueError(f'Positive integer {key} required')
+        for name in ('multiple_patches','certified_local_filter','local_material_filter','edge_stationarity_filter'):
+            if name in c and not isinstance(c[name],bool):raise ValueError(f'Boolean {name} required')
+        for name in ('surface_remesh_every','surface_remesh_max_events'):
+            if name in c and (not isinstance(c[name],int) or c[name]<0):raise ValueError(f'Nonnegative integer {name} required')
+        if any(not isinstance(k,int) or k<1 for k in c.get('surface_remesh_steps',[])):raise ValueError('Positive surface remesh steps required')
+        if not isinstance(c.get('remesh_every',0),int) or c.get('remesh_every',0)<0:raise ValueError('Invalid remesh interval')
+        if c.get('certified_local_filter',False) and (c.get('initial_remesh',False) or c.get('remesh_every',0)):
+>           raise ValueError('Canonical certificate cannot follow internal reconnection')
+E           ValueError: Canonical certificate cannot follow internal reconnection
+
+packing_fem/explicit_solver.py:70: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_surface_development.py::test_unrepresentable_certificate_remesh_is_rejected_without_changing_trajectory
+1 failed, 1 passed, 13 deselected in 0.79s

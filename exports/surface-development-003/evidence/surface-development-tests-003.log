@@ -1,0 +1,83 @@
+F.F                                                                      [100%]
+=================================== FAILURES ===================================
+__ test_pressure_solver_commits_surface_refinement_and_matches_analytic_limit __
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-20/test_pressure_solver_commits_s0')
+
+    def test_pressure_solver_commits_surface_refinement_and_matches_analytic_limit(tmp_path):
+        from scipy.optimize import brentq
+        from packing_fem import sintered
+        from packing_fem.explicit_material import hex_to_tet
+        from packing_fem.explicit_solver import solve
+        c=config();c.update(contact_backend='area_guarded',loading_mode='nominal_pressure',pressure_mpa=.01,yield_mpa=1e6,ramp_s=.0006,hold_s=.0003,damping_per_s=20000.,surface_remesh_steps=[10],surface_remesh_max_events=1)
+        X,h,_=sintered.mesh(np.ones((2,2,2),bool),.5);t=hex_to_tet(X,h)
+>       r=solve(tmp_path/'surface-pressure',X,t,c)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_surface_development.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packing_fem/explicit_solver.py:345: in solve
+    (directory/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.encoder.JSONEncoder object at 0x7fb7cd7d3770>, o = np.True_
+
+    def default(self, o):
+        """Implement this method in a subclass such that it returns
+        a serializable object for ``o``, or calls the base implementation
+        (to raise a ``TypeError``).
+    
+        For example, to support arbitrary iterators, you could
+        implement default like this::
+    
+            def default(self, o):
+                try:
+                    iterable = iter(o)
+                except TypeError:
+                    pass
+                else:
+                    return list(iterable)
+                # Let the base class default method raise the TypeError
+                return super().default(o)
+    
+        """
+>       raise TypeError(f'Object of type {o.__class__.__name__} '
+                        f'is not JSON serializable')
+E       TypeError: Object of type bool is not JSON serializable
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py:180: TypeError
+____________ test_rejected_remesh_momentum_and_energy_are_explicit _____________
+
+    def test_rejected_remesh_momentum_and_energy_are_explicit():
+        X,t,x,H,upper,c,V0,b,ep,edge=plane_state();velocity=X.copy()
+        p=bisect(X,x,t,b,ep,V0,velocity,edge,1.)
+        empty=dict(normal_energy=0.,tangent_energy=0.,max_coulomb_ratio=0.)
+        r=audit((X,x,t,b,ep,V0,velocity),p,c,empty,empty,1e-10)
+>       assert not r['accepted'] and not r['checks']['kinetic_energy']
+E       assert (not True)
+
+tests/test_surface_development.py:128: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_surface_development.py::test_pressure_solver_commits_surface_refinement_and_matches_analytic_limit
+FAILED tests/test_surface_development.py::test_rejected_remesh_momentum_and_energy_are_explicit
+2 failed, 1 passed, 10 deselected in 4.03s

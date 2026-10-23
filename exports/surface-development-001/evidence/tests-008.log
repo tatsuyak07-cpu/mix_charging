@@ -1,0 +1,22 @@
+F..                                                                      [100%]
+=================================== FAILURES ===================================
+_________ test_active_sticking_surface_transfer_and_conservative_audit _________
+
+    def test_active_sticking_surface_transfer_and_conservative_audit():
+        X,t,x,H,upper,c,V0,b,ep,edge=plane_state();velocity=X*0
+        old=AreaContact(X,t,Periodic(X,1.),20.,.3,.1,thickness=.02)
+        old.history=old.evaluate(x,x*0,H,H*0,0.)[2]
+        x=x.copy();H=H.copy();x[upper,0]+=.0001;H[0,2]+=.0001
+        before=old.evaluate(x,x*0,H,H*0,.001);old.history=before[2]
+        p=bisect(X,x,t,b,ep,V0,velocity,edge,1.)
+        new=AreaContact(p['X'],p['t'],Periodic(p['X'],1.),20.,.3,.1,thickness=.02)
+        after=transfer_contact(old,new,p,H)
+        r=audit((X,x,t,b,ep,V0,velocity),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert r['accepted'],r
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_surface_development.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_surface_development.py::test_active_sticking_surface_transfer_and_conservative_audit
+1 failed, 2 passed, 13 deselected in 3.84s

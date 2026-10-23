@@ -1,0 +1,18 @@
+{
+  "source": "exports/surface-development-003",
+  "scope": "Plot the actual refined contact surface, from saved material mesh arrays.",
+  "meshes": [
+    {
+      "file": "contact-before.npz",
+      "total_nodes": 36,
+      "total_tetrahedra": 48,
+      "shown_contact_triangles": 8
+    },
+    {
+      "file": "contact-after.npz",
+      "total_nodes": 38,
+      "total_tetrahedra": 51,
+      "shown_contact_triangles": 10
+    }
+  ]
+}

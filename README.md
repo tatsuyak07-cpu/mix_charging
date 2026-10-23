@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+工程1〜3の試験実装：**参照材料近傍の幾何条件、別パッチの複数接触、周期表面の辺分割と状態・摩擦履歴の移行を追加**。
+[開発・検証報告](docs/surface-development.md)・[分割前後の画像](exports/surface-bisection-view-001/surface-bisection.png)・[判定結果](exports/surface-development-003/summary.json)・[全データZIP](exports/surface-development-003.zip)。
+全体224テスト・診断10項目に合格。小さな圧力対照で分割後の継続と解析解を検証し、接触専用試験で摩擦履歴・エネルギー・巨視的接触力の移行を確認。
+通常設定は維持しています。一般の表面再生成、真の辺接触の力積分、接触積分のメッシュ収束は未完了で、40%→10%圧密の結果ではありません。
+
 変形写像の非重複条件を検証：**保存形状を補間した5段階すべてで、形状だけの十分条件が合格**。
 [検証報告](docs/structured-extension.md)・[画像](exports/structured-extension-001/geometry-extension.png)・[CSV](exports/structured-extension-001/geometry-certificate.csv)・[全データZIP](exports/structured-extension-001.zip)。
 空隙内の補助写像を用い、材料節点・物理体積・接触力を保持しました。関連17テストと診断10項目が合格。

@@ -1,0 +1,19 @@
+{
+  "scope": "Staged contact/surface-bisection validation, not particle compaction.",
+  "pressure_fixture": "1 mm fully dense cube, elastic analytical control; NOT the requested porous packing",
+  "contact_fixture": "periodic planar slabs, prescribed sticking/sliding",
+  "coupon_fixture": "archived same mapped endpoint, not independent mesh-pressure solutions",
+  "pressure_cfl": [
+    0.2,
+    0.1
+  ],
+  "surface_refinement": "conforming periodic edge bisection, exact parent material-state subdivision",
+  "remesh_tolerance": 0.001,
+  "production_defaults_changed": false,
+  "limitations": [
+    "No arbitrary surface regeneration/coarsening",
+    "No general edge-edge force integration",
+    "No 40 to 10 percent packing result",
+    "General split/merge and connected equal-minimum contact remain fail-stop"
+  ]
+}

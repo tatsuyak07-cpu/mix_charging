@@ -1,0 +1,9 @@
+baseline prototype_checks_passed_not_mesh_or_contact_validated
+refined-cfl02 prototype_checks_passed_not_mesh_or_contact_validated
+refined-cfl01 prototype_checks_passed_not_mesh_or_contact_validated
+mapped preflight 1 2
+mapped preflight 2 2
+mapped preflight 3 2
+mapped preflight 4 2
+mapped preflight 6 14
+{"pressure_native_checks": true, "refinement_committed": true, "elastic_analytic_limit": true, "one_timestep_halving": true, "contact_transfer_accepted": true, "uniform_reaction_preserved": true, "sliding_coulomb_bound": true, "sliding_work_positive": true, "mapped_preflight_all_levels": true}
