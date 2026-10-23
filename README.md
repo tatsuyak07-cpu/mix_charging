@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+点対面の源・相手を分けて検証：**源側の距離減少だけで正常な積分点を除外する案を反例で棄却**。
+[検証報告](docs/point-stationarity.md)・[診断画像](exports/point-stationarity-001/point-stationarity.png)・[積分点CSV](exports/point-stationarity-001/wave-quadrature.csv)・[全データZIP](exports/point-stationarity-001.zip)。
+全体テスト197件と診断7項目が合格しました。追加は診断専用で、接触力・停止ガードは維持しています。
+変形後の細分化4・6、圧力一周期のメッシュ収束、40%→10%圧密は未解決です。
+
 辺候補の表面最短条件を検証：**試験機能で初期形状の全5段階が評価可能、変形後の4・6は引き続き停止**。
 [検証報告](docs/edge-stationarity.md)・[候補画像](exports/edge-stationarity-002/edge-stationarity.png)・[CSV](exports/edge-stationarity-002/mesh-status.csv)・[全データZIP](exports/edge-stationarity-002.zip)。
 全体テスト189件に合格。真の辺接近の停止ガードと周期平面接触の反力を維持しました。試験機能の通常設定は無効です。

@@ -23,7 +23,7 @@ class SurfaceStationarity:
             lift=np.rint(delta).astype(int)
             if not np.allclose(delta,lift,atol=1e-10,rtol=0):continue
             if anchor!=first and not np.any(lift):continue
-            if len(ids)==2 and not any(np.linalg.norm(self.X[j]+self.L*lift-self.X[ids[1]])<self.L*1e-10 for j in face):continue
+            if any(not any(np.linalg.norm(self.X[j]+self.L*lift-self.X[node])<self.L*1e-10 for j in face) for node in ids[1:]):continue
             rows.append((face,np.asarray(image)+lift))
         self.cache[key]=rows;return rows
 
@@ -44,4 +44,31 @@ class SurfaceStationarity:
                         result['witness']=dict(side=side,face=face.tolist(),image=lift.tolist(),vertex=int(face[k]),point=q.tolist(),direction=v[k].tolist(),toward=toward.tolist(),descent_cosine=score)
         result.update(certified=complete,maximum_descent_cosine=max(scores) if scores else None)
         result['dominated']=complete and result['witness'] is not None
+        return result
+
+
+    def classify_point(self,ids,shift,x,H,tolerance=1e-10):
+        """Diagnostic PT derivatives; source motion NEVER authorizes exclusion.
+
+        The source is an integration node, not an unknown closest-surface point.
+        A valid distributed pressure may have a source distance-decreasing
+        direction. Keep the two sides separate and leave the force law alone.
+        """
+        points=x[ids].copy();points[1:]+=H@shift
+        _,w=feature(points,'pt');a=points[0];b=-w[1:]@points[1:];distance=float(np.linalg.norm(a-b))
+        result=dict(distance_mm=distance,source_is_quadrature_node=True,candidate_exclusion_authorized=False)
+        for name,part,weights,q,toward,image in (
+            ('source',ids[:1],np.ones(1),a,b-a,np.zeros(3,int)),
+            ('target',ids[1:],-w[1:],b,a-b,np.asarray(shift))):
+            side=dict(complete_star=False,has_descent=False,maximum_descent_cosine=None,witness=None)
+            if distance>self.L*1e-12:
+                star=self.star(part[weights>1e-12],image);scores=[]
+                for face,lift in star:
+                    v=x[face]+H@lift-q;length=np.linalg.norm(v,axis=1)
+                    for k in np.flatnonzero(length>self.L*1e-12):
+                        score=float(toward@v[k]/(distance*length[k]));scores.append(score)
+                        if score>tolerance and (side['witness'] is None or score>side['witness']['descent_cosine']):
+                            side['witness']=dict(face=face.tolist(),image=lift.tolist(),vertex=int(face[k]),point=q.tolist(),direction=v[k].tolist(),toward=toward.tolist(),descent_cosine=score)
+                side.update(complete_star=bool(star),has_descent=bool(star) and side['witness'] is not None,maximum_descent_cosine=max(scores) if scores else None)
+            result[name]=side
         return result

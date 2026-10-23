@@ -1,0 +1,1 @@
+PT source/target diagnostics only; no candidate exclusion authorized. Valid wavy quadrature points falsify source-only pruning. Symmetric closest-patch limitation retained. No refined pressure-cycle or packing solution. Units mm, N, MPa. See plan.json and summary.json.

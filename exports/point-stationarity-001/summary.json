@@ -1,0 +1,3957 @@
+{
+  "scope": "Diagnose PT source versus target stationarity; falsify naive source pruning.\n\nPrescribed geometry/contact probes only. PT diagnostics never authorize removal\nof integration nodes; no material/contact force or solver gate is changed.\n",
+  "checks": {
+    "stopped_source_and_target_distinguished": true,
+    "no_diagnostic_authorizes_exclusion": true,
+    "valid_counterexample_in_every_wave_case": true,
+    "manual_area_traction": true,
+    "positive_volume_and_periodicity": true,
+    "diagnostic_does_not_change_force": true,
+    "symmetric_limitation_retained": true
+  },
+  "diagnostic_checks_passed": true,
+  "stopped_candidates": [
+    {
+      "refinement": 4,
+      "feature": {
+        "kind": "pt",
+        "ids": [
+          942,
+          953,
+          940,
+          1174
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            1.125590165494613,
+            1.1255858914048114,
+            1.569202882548048
+          ],
+          [
+            1.1246753362499649,
+            1.4085485154087087,
+            1.554577931324237
+          ],
+          [
+            1.125555719643025,
+            1.1255511934119953,
+            1.5536401660303667
+          ],
+          [
+            1.4089833099886888,
+            1.4089882297626821,
+            1.5567044622882784
+          ]
+        ],
+        "reference_points": [
+          [
+            1.0,
+            1.0,
+            2.0
+          ],
+          [
+            1.0,
+            1.25,
+            1.98
+          ],
+          [
+            1.0,
+            1.0,
+            1.98
+          ],
+          [
+            1.25,
+            1.25,
+            1.98
+          ]
+        ]
+      },
+      "diagnostic": {
+        "distance_mm": 0.015561888012899363,
+        "source_is_quadrature_node": true,
+        "candidate_exclusion_authorized": false,
+        "source": {
+          "complete_star": true,
+          "has_descent": true,
+          "maximum_descent_cosine": 0.9999418288432752,
+          "witness": {
+            "face": [
+              942,
+              941,
+              955
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 941,
+            "point": [
+              1.125590165494613,
+              1.1255858914048114,
+              1.569202882548048
+            ],
+            "direction": [
+              -1.7222925793980437e-05,
+              -1.7348996407928752e-05,
+              -0.007781358258840632
+            ],
+            "toward": [
+              8.424442896037831e-05,
+              8.39962434127095e-05,
+              -0.015561433289813076
+            ],
+            "descent_cosine": 0.9999418288432752
+          }
+        },
+        "target": {
+          "complete_star": true,
+          "has_descent": false,
+          "maximum_descent_cosine": -9.512381540961423e-15,
+          "witness": null
+        }
+      },
+      "sensitivity": [
+        {
+          "tolerance": 1e-12,
+          "source_descent": true,
+          "target_descent": false
+        },
+        {
+          "tolerance": 1e-10,
+          "source_descent": true,
+          "target_descent": false
+        },
+        {
+          "tolerance": 1e-08,
+          "source_descent": true,
+          "target_descent": false
+        }
+      ]
+    },
+    {
+      "refinement": 6,
+      "feature": {
+        "kind": "pt",
+        "ids": [
+          2972,
+          2989,
+          2970,
+          3464
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            1.1255786835440835,
+            1.125574325407206,
+            1.5640153103754875
+          ],
+          [
+            1.124968797380985,
+            1.3142160747431375,
+            1.554265342892947
+          ],
+          [
+            1.125555719643025,
+            1.1255511934119953,
+            1.5536401660303667
+          ],
+          [
+            1.314507446540134,
+            1.3145092176457864,
+            1.555683030202308
+          ]
+        ],
+        "reference_points": [
+          [
+            1.0,
+            1.0,
+            1.9933333333333334
+          ],
+          [
+            1.0,
+            1.1666666666666665,
+            1.98
+          ],
+          [
+            1.0,
+            1.0,
+            1.98
+          ],
+          [
+            1.1666666666666665,
+            1.1666666666666665,
+            1.98
+          ]
+        ]
+      },
+      "diagnostic": {
+        "distance_mm": 0.010374592008599649,
+        "source_is_quadrature_node": true,
+        "candidate_exclusion_authorized": false,
+        "source": {
+          "complete_star": true,
+          "has_descent": true,
+          "maximum_descent_cosine": 0.9999418288432754,
+          "witness": {
+            "face": [
+              2972,
+              2971,
+              2991
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 2971,
+            "point": [
+              1.1255786835440835,
+              1.125574325407206,
+              1.5640153103754875
+            ],
+            "direction": [
+              -1.1481950529246276e-05,
+              -1.156599760521182e-05,
+              -0.005187572172560273
+            ],
+            "toward": [
+              5.616295264010418e-05,
+              5.5997495608473e-05,
+              -0.010374288859875458
+            ],
+            "descent_cosine": 0.9999418288432754
+          }
+        },
+        "target": {
+          "complete_star": true,
+          "has_descent": false,
+          "maximum_descent_cosine": 1.0935058289864244e-12,
+          "witness": null
+        }
+      },
+      "sensitivity": [
+        {
+          "tolerance": 1e-12,
+          "source_descent": true,
+          "target_descent": true
+        },
+        {
+          "tolerance": 1e-10,
+          "source_descent": true,
+          "target_descent": false
+        },
+        {
+          "tolerance": 1e-08,
+          "source_descent": true,
+          "target_descent": false
+        }
+      ]
+    }
+  ],
+  "wave_controls": [
+    {
+      "case": 0,
+      "amplitude_mm": 0.001,
+      "phase_rad": 0.23,
+      "reference_upper_area_mm2": 1.0,
+      "upper_source_nodes": 25,
+      "source_only_descent_nodes": 20,
+      "upper_source_normal_force_sum_N": 0.03206926041962862,
+      "hypothetical_discarded_upper_source_force_N": 0.021144759522525865,
+      "hypothetical_discarded_fraction": 0.6593466530205293,
+      "total_upper_reaction_N": 0.06413947836709763,
+      "maximum_manual_force_relative_error": 0.0,
+      "diagnostic_leaves_force_unchanged": true,
+      "minimum_tet_volume_mm3": 0.004156524308385361,
+      "periodic_displacement_error_mm": 1.1102230246251565e-16,
+      "records": [
+        {
+          "case": 0,
+          "node": 2,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0004418902169848974,
+          "manual_area_traction_N": 0.0004418902169848974,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  0.0,
+                  0.0,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 6,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0006628353254773462,
+          "manual_area_traction_N": 0.0006628353254773462,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  2,
+                  6,
+                  26
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 26,
+                "point": [
+                  0.0,
+                  0.25,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 10,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0006628353254773462,
+          "manual_area_traction_N": 0.0006628353254773462,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  6,
+                  10,
+                  30
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 30,
+                "point": [
+                  0.0,
+                  0.5,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 14,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0006628353254773462,
+          "manual_area_traction_N": 0.0006628353254773462,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  10,
+                  14,
+                  34
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 34,
+                "point": [
+                  0.0,
+                  0.75,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 18,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0002209451084924487,
+          "manual_area_traction_N": 0.0002209451084924487,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  0.0,
+                  1.0,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 22,
+          "gap_mm": 0.014772022476464752,
+          "normal_force_N": 0.0010726064999662637,
+          "manual_area_traction_N": 0.0010726064999662637,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014772022476464752,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.002982742217434644,
+              "witness": {
+                "face": [
+                  22,
+                  46,
+                  42
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.25,
+                  0.0,
+                  0.4147720224764648
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0007456888714701959
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014772022476464752
+                ],
+                "descent_cosine": 0.002982742217434644
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 26,
+          "gap_mm": 0.014772022476464752,
+          "normal_force_N": 0.002145212999932527,
+          "manual_area_traction_N": 0.002145212999932527,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014772022476464752,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.002982742217434644,
+              "witness": {
+                "face": [
+                  22,
+                  26,
+                  46
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 46,
+                "point": [
+                  0.25,
+                  0.25,
+                  0.4147720224764648
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0007456888714701959
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014772022476464752
+                ],
+                "descent_cosine": 0.002982742217434644
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 30,
+          "gap_mm": 0.014772022476464752,
+          "normal_force_N": 0.002145212999932527,
+          "manual_area_traction_N": 0.002145212999932527,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014772022476464752,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.002982742217434644,
+              "witness": {
+                "face": [
+                  26,
+                  30,
+                  50
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 50,
+                "point": [
+                  0.25,
+                  0.5,
+                  0.4147720224764648
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0007456888714701959
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014772022476464752
+                ],
+                "descent_cosine": 0.002982742217434644
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 34,
+          "gap_mm": 0.014772022476464752,
+          "normal_force_N": 0.002145212999932527,
+          "manual_area_traction_N": 0.002145212999932527,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014772022476464752,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.002982742217434644,
+              "witness": {
+                "face": [
+                  30,
+                  34,
+                  54
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 54,
+                "point": [
+                  0.25,
+                  0.75,
+                  0.4147720224764648
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0007456888714701959
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014772022476464752
+                ],
+                "descent_cosine": 0.002982742217434644
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 38,
+          "gap_mm": 0.014772022476464752,
+          "normal_force_N": 0.0010726064999662637,
+          "manual_area_traction_N": 0.0010726064999662637,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014772022476464752,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.002982742217434644,
+              "witness": {
+                "face": [
+                  22,
+                  46,
+                  42
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.25,
+                  1.0,
+                  0.4147720224764648
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0007456888714701959
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014772022476464752
+                ],
+                "descent_cosine": 0.002982742217434644
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 42,
+          "gap_mm": 0.014026333604994556,
+          "normal_force_N": 0.0013655626121378442,
+          "manual_area_traction_N": 0.0013655626121378442,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.014026333604994556,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 46,
+          "gap_mm": 0.014026333604994556,
+          "normal_force_N": 0.002731125224275688,
+          "manual_area_traction_N": 0.002731125224275688,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.014026333604994556,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 50,
+          "gap_mm": 0.014026333604994556,
+          "normal_force_N": 0.002731125224275688,
+          "manual_area_traction_N": 0.002731125224275688,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.014026333604994556,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 54,
+          "gap_mm": 0.014026333604994556,
+          "normal_force_N": 0.002731125224275688,
+          "manual_area_traction_N": 0.002731125224275688,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.014026333604994556,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 58,
+          "gap_mm": 0.014026333604994556,
+          "normal_force_N": 0.0013655626121378442,
+          "manual_area_traction_N": 0.0013655626121378442,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.014026333604994556,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 62,
+          "gap_mm": 0.015227977523535163,
+          "normal_force_N": 0.0009076531148721237,
+          "manual_area_traction_N": 0.0009076531148721237,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015227977523535163,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557721,
+              "witness": {
+                "face": [
+                  42,
+                  66,
+                  62
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.75,
+                  0.0,
+                  0.4152279775235352
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015227977523535163
+                ],
+                "descent_cosine": 0.004806520151557721
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 66,
+          "gap_mm": 0.015227977523535163,
+          "normal_force_N": 0.001815306229744247,
+          "manual_area_traction_N": 0.001815306229744247,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015227977523535163,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557721,
+              "witness": {
+                "face": [
+                  42,
+                  46,
+                  66
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 46,
+                "point": [
+                  0.75,
+                  0.25,
+                  0.4152279775235352
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015227977523535163
+                ],
+                "descent_cosine": 0.004806520151557721
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 70,
+          "gap_mm": 0.015227977523535163,
+          "normal_force_N": 0.001815306229744247,
+          "manual_area_traction_N": 0.001815306229744247,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015227977523535163,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557721,
+              "witness": {
+                "face": [
+                  46,
+                  50,
+                  70
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 50,
+                "point": [
+                  0.75,
+                  0.5,
+                  0.4152279775235352
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015227977523535163
+                ],
+                "descent_cosine": 0.004806520151557721
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 74,
+          "gap_mm": 0.015227977523535163,
+          "normal_force_N": 0.001815306229744247,
+          "manual_area_traction_N": 0.001815306229744247,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015227977523535163,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557721,
+              "witness": {
+                "face": [
+                  50,
+                  54,
+                  74
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 54,
+                "point": [
+                  0.75,
+                  0.75,
+                  0.4152279775235352
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015227977523535163
+                ],
+                "descent_cosine": 0.004806520151557721
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 78,
+          "gap_mm": 0.015227977523535163,
+          "normal_force_N": 0.0009076531148721237,
+          "manual_area_traction_N": 0.0009076531148721237,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015227977523535163,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557721,
+              "witness": {
+                "face": [
+                  42,
+                  66,
+                  62
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.75,
+                  1.0,
+                  0.4152279775235352
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015227977523535163
+                ],
+                "descent_cosine": 0.004806520151557721
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 82,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0002209451084924487,
+          "manual_area_traction_N": 0.0002209451084924487,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  1.0,
+                  0.0,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 86,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0006628353254773462,
+          "manual_area_traction_N": 0.0006628353254773462,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  2,
+                  6,
+                  26
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 26,
+                "point": [
+                  1.0,
+                  0.25,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 90,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0006628353254773462,
+          "manual_area_traction_N": 0.0006628353254773462,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  6,
+                  10,
+                  30
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 30,
+                "point": [
+                  1.0,
+                  0.5,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 94,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0006628353254773462,
+          "manual_area_traction_N": 0.0006628353254773462,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  10,
+                  14,
+                  34
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 34,
+                "point": [
+                  1.0,
+                  0.75,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 0,
+          "node": 98,
+          "gap_mm": 0.01597366639500536,
+          "normal_force_N": 0.0004418902169848974,
+          "manual_area_traction_N": 0.0004418902169848974,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01597366639500536,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004806520151557722,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  1,
+                  1,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  1.0,
+                  1.0,
+                  0.4159736663950054
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.001201643918540607
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01597366639500536
+                ],
+                "descent_cosine": 0.004806520151557722
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": 1,
+      "amplitude_mm": 0.002,
+      "phase_rad": 0.23,
+      "reference_upper_area_mm2": 1.0,
+      "upper_source_nodes": 25,
+      "source_only_descent_nodes": 20,
+      "upper_source_normal_force_sum_N": 0.03336656858171294,
+      "hypothetical_discarded_upper_source_force_N": 0.019060472026210966,
+      "hypothetical_discarded_fraction": 0.5712445971042209,
+      "total_upper_reaction_N": 0.066736774501292,
+      "maximum_manual_force_relative_error": 0.0,
+      "diagnostic_leaves_force_unchanged": true,
+      "minimum_tet_volume_mm3": 0.004146381950104052,
+      "periodic_displacement_error_mm": 1.1102230246251565e-16,
+      "records": [
+        {
+          "case": 1,
+          "node": 2,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.00026262243669512923,
+          "manual_area_traction_N": 0.00026262243669512923,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  0.0,
+                  0.0,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 6,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.0003939336550426938,
+          "manual_area_traction_N": 0.0003939336550426938,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  2,
+                  6,
+                  26
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 26,
+                "point": [
+                  0.0,
+                  0.25,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 10,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.0003939336550426938,
+          "manual_area_traction_N": 0.0003939336550426938,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  6,
+                  10,
+                  30
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 30,
+                "point": [
+                  0.0,
+                  0.5,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 14,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.0003939336550426938,
+          "manual_area_traction_N": 0.0003939336550426938,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  10,
+                  14,
+                  34
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 34,
+                "point": [
+                  0.0,
+                  0.75,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 18,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.00013131121834756461,
+          "manual_area_traction_N": 0.00013131121834756461,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  0.0,
+                  1.0,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 22,
+          "gap_mm": 0.014544044952929602,
+          "normal_force_N": 0.001159193802223617,
+          "manual_area_traction_N": 0.001159193802223617,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014544044952929602,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.005965404826317233,
+              "witness": {
+                "face": [
+                  22,
+                  46,
+                  42
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.25,
+                  0.0,
+                  0.4145440449529296
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0014913777429403918
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014544044952929602
+                ],
+                "descent_cosine": 0.005965404826317233
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 26,
+          "gap_mm": 0.014544044952929602,
+          "normal_force_N": 0.0023183876044472335,
+          "manual_area_traction_N": 0.0023183876044472335,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014544044952929602,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.005965404826317233,
+              "witness": {
+                "face": [
+                  22,
+                  26,
+                  46
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 46,
+                "point": [
+                  0.25,
+                  0.25,
+                  0.4145440449529296
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0014913777429403918
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014544044952929602
+                ],
+                "descent_cosine": 0.005965404826317233
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 30,
+          "gap_mm": 0.014544044952929602,
+          "normal_force_N": 0.0023183876044472335,
+          "manual_area_traction_N": 0.0023183876044472335,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014544044952929602,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.005965404826317233,
+              "witness": {
+                "face": [
+                  26,
+                  30,
+                  50
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 50,
+                "point": [
+                  0.25,
+                  0.5,
+                  0.4145440449529296
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0014913777429403918
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014544044952929602
+                ],
+                "descent_cosine": 0.005965404826317233
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 34,
+          "gap_mm": 0.014544044952929602,
+          "normal_force_N": 0.0023183876044472335,
+          "manual_area_traction_N": 0.0023183876044472335,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014544044952929602,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.005965404826317233,
+              "witness": {
+                "face": [
+                  30,
+                  34,
+                  54
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 54,
+                "point": [
+                  0.25,
+                  0.75,
+                  0.4145440449529296
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0014913777429403918
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014544044952929602
+                ],
+                "descent_cosine": 0.005965404826317233
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 38,
+          "gap_mm": 0.014544044952929602,
+          "normal_force_N": 0.001159193802223617,
+          "manual_area_traction_N": 0.001159193802223617,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014544044952929602,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.005965404826317233,
+              "witness": {
+                "face": [
+                  22,
+                  46,
+                  42
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.25,
+                  1.0,
+                  0.4145440449529296
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0014913777429403918
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014544044952929602
+                ],
+                "descent_cosine": 0.005965404826317233
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 42,
+          "gap_mm": 0.01305266720998921,
+          "normal_force_N": 0.0017882620694377473,
+          "manual_area_traction_N": 0.0017882620694377473,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.01305266720998921,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 46,
+          "gap_mm": 0.01305266720998921,
+          "normal_force_N": 0.0035765241388754938,
+          "manual_area_traction_N": 0.0035765241388754938,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.01305266720998921,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 50,
+          "gap_mm": 0.01305266720998921,
+          "normal_force_N": 0.0035765241388754938,
+          "manual_area_traction_N": 0.0035765241388754938,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.01305266720998921,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 54,
+          "gap_mm": 0.01305266720998921,
+          "normal_force_N": 0.0035765241388754938,
+          "manual_area_traction_N": 0.0035765241388754938,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.01305266720998921,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 58,
+          "gap_mm": 0.01305266720998921,
+          "normal_force_N": 0.0017882620694377473,
+          "manual_area_traction_N": 0.0017882620694377473,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.01305266720998921,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 62,
+          "gap_mm": 0.015455955047070313,
+          "normal_force_N": 0.0008294315460100602,
+          "manual_area_traction_N": 0.0008294315460100602,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015455955047070313,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574407,
+              "witness": {
+                "face": [
+                  42,
+                  66,
+                  62
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.75,
+                  0.0,
+                  0.41545595504707034
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015455955047070313
+                ],
+                "descent_cosine": 0.009612707190574407
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 66,
+          "gap_mm": 0.015455955047070313,
+          "normal_force_N": 0.00165886309202012,
+          "manual_area_traction_N": 0.00165886309202012,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015455955047070313,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574407,
+              "witness": {
+                "face": [
+                  42,
+                  46,
+                  66
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 46,
+                "point": [
+                  0.75,
+                  0.25,
+                  0.41545595504707034
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015455955047070313
+                ],
+                "descent_cosine": 0.009612707190574407
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 70,
+          "gap_mm": 0.015455955047070313,
+          "normal_force_N": 0.00165886309202012,
+          "manual_area_traction_N": 0.00165886309202012,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015455955047070313,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574407,
+              "witness": {
+                "face": [
+                  46,
+                  50,
+                  70
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 50,
+                "point": [
+                  0.75,
+                  0.5,
+                  0.41545595504707034
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015455955047070313
+                ],
+                "descent_cosine": 0.009612707190574407
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 74,
+          "gap_mm": 0.015455955047070313,
+          "normal_force_N": 0.00165886309202012,
+          "manual_area_traction_N": 0.00165886309202012,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015455955047070313,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574407,
+              "witness": {
+                "face": [
+                  50,
+                  54,
+                  74
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 54,
+                "point": [
+                  0.75,
+                  0.75,
+                  0.41545595504707034
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015455955047070313
+                ],
+                "descent_cosine": 0.009612707190574407
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 78,
+          "gap_mm": 0.015455955047070313,
+          "normal_force_N": 0.0008294315460100602,
+          "manual_area_traction_N": 0.0008294315460100602,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015455955047070313,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574407,
+              "witness": {
+                "face": [
+                  42,
+                  66,
+                  62
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.75,
+                  1.0,
+                  0.41545595504707034
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015455955047070313
+                ],
+                "descent_cosine": 0.009612707190574407
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 82,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.00013131121834756461,
+          "manual_area_traction_N": 0.00013131121834756461,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  1.0,
+                  0.0,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 86,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.0003939336550426938,
+          "manual_area_traction_N": 0.0003939336550426938,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  2,
+                  6,
+                  26
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 26,
+                "point": [
+                  1.0,
+                  0.25,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 90,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.0003939336550426938,
+          "manual_area_traction_N": 0.0003939336550426938,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  6,
+                  10,
+                  30
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 30,
+                "point": [
+                  1.0,
+                  0.5,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 94,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.0003939336550426938,
+          "manual_area_traction_N": 0.0003939336550426938,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  10,
+                  14,
+                  34
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 34,
+                "point": [
+                  1.0,
+                  0.75,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 1,
+          "node": 98,
+          "gap_mm": 0.016947332790010705,
+          "normal_force_N": 0.00026262243669512923,
+          "manual_area_traction_N": 0.00026262243669512923,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.016947332790010705,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.009612707190574405,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  1,
+                  1,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  1.0,
+                  1.0,
+                  0.4169473327900107
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002403287837081103
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.016947332790010705
+                ],
+                "descent_cosine": 0.009612707190574405
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "amplitude_mm": 0.002,
+      "phase_rad": 0.37,
+      "reference_upper_area_mm2": 1.0,
+      "upper_source_nodes": 25,
+      "source_only_descent_nodes": 20,
+      "upper_source_normal_force_sum_N": 0.033365001910095775,
+      "hypothetical_discarded_upper_source_force_N": 0.019359489893614516,
+      "hypothetical_discarded_fraction": 0.5802334417896919,
+      "total_upper_reaction_N": 0.06673385204884966,
+      "maximum_manual_force_relative_error": 0.0,
+      "diagnostic_leaves_force_unchanged": true,
+      "minimum_tet_volume_mm3": 0.004147243180299875,
+      "periodic_displacement_error_mm": 1.1102230246251565e-16,
+      "records": [
+        {
+          "case": 2,
+          "node": 2,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.00027625811211321144,
+          "manual_area_traction_N": 0.00027625811211321144,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  0.0,
+                  0.0,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 6,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.0004143871681698172,
+          "manual_area_traction_N": 0.0004143871681698172,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  2,
+                  6,
+                  26
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 26,
+                "point": [
+                  0.0,
+                  0.25,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 10,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.0004143871681698172,
+          "manual_area_traction_N": 0.0004143871681698172,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  6,
+                  10,
+                  30
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 30,
+                "point": [
+                  0.0,
+                  0.5,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 14,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.0004143871681698172,
+          "manual_area_traction_N": 0.0004143871681698172,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  10,
+                  14,
+                  34
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 34,
+                "point": [
+                  0.0,
+                  0.75,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 18,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.00013812905605660572,
+          "manual_area_traction_N": 0.00013812905605660572,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  0.0,
+                  1.0,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 22,
+          "gap_mm": 0.014276769136070011,
+          "normal_force_N": 0.0012640757703293506,
+          "manual_area_traction_N": 0.0012640757703293506,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014276769136070011,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004565647722603473,
+              "witness": {
+                "face": [
+                  22,
+                  46,
+                  42
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.25,
+                  0.0,
+                  0.41427676913607003
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0011414238272821065
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014276769136070011
+                ],
+                "descent_cosine": 0.004565647722603473
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 26,
+          "gap_mm": 0.014276769136070011,
+          "normal_force_N": 0.0025281515406587007,
+          "manual_area_traction_N": 0.0025281515406587007,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014276769136070011,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004565647722603473,
+              "witness": {
+                "face": [
+                  22,
+                  26,
+                  46
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 46,
+                "point": [
+                  0.25,
+                  0.25,
+                  0.41427676913607003
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0011414238272821065
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014276769136070011
+                ],
+                "descent_cosine": 0.004565647722603473
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 30,
+          "gap_mm": 0.014276769136070011,
+          "normal_force_N": 0.0025281515406587007,
+          "manual_area_traction_N": 0.0025281515406587007,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014276769136070011,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004565647722603473,
+              "witness": {
+                "face": [
+                  26,
+                  30,
+                  50
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 50,
+                "point": [
+                  0.25,
+                  0.5,
+                  0.41427676913607003
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0011414238272821065
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014276769136070011
+                ],
+                "descent_cosine": 0.004565647722603473
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 34,
+          "gap_mm": 0.014276769136070011,
+          "normal_force_N": 0.0025281515406587007,
+          "manual_area_traction_N": 0.0025281515406587007,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014276769136070011,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004565647722603473,
+              "witness": {
+                "face": [
+                  30,
+                  34,
+                  54
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 54,
+                "point": [
+                  0.25,
+                  0.75,
+                  0.41427676913607003
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0011414238272821065
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014276769136070011
+                ],
+                "descent_cosine": 0.004565647722603473
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 38,
+          "gap_mm": 0.014276769136070011,
+          "normal_force_N": 0.0012640757703293506,
+          "manual_area_traction_N": 0.0012640757703293506,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.014276769136070011,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.004565647722603473,
+              "witness": {
+                "face": [
+                  22,
+                  46,
+                  42
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.25,
+                  1.0,
+                  0.41427676913607003
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.0011414238272821065
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.014276769136070011
+                ],
+                "descent_cosine": 0.004565647722603473
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 42,
+          "gap_mm": 0.013135345308787905,
+          "normal_force_N": 0.0017506890020601578,
+          "manual_area_traction_N": 0.0017506890020601578,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.013135345308787905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 46,
+          "gap_mm": 0.013135345308787905,
+          "normal_force_N": 0.0035013780041203146,
+          "manual_area_traction_N": 0.0035013780041203146,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.013135345308787905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 50,
+          "gap_mm": 0.013135345308787905,
+          "normal_force_N": 0.0035013780041203146,
+          "manual_area_traction_N": 0.0035013780041203146,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.013135345308787905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 54,
+          "gap_mm": 0.013135345308787905,
+          "normal_force_N": 0.0035013780041203146,
+          "manual_area_traction_N": 0.0035013780041203146,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.013135345308787905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 58,
+          "gap_mm": 0.013135345308787905,
+          "normal_force_N": 0.0017506890020601578,
+          "manual_area_traction_N": 0.0017506890020601578,
+          "relative_error": 0.0,
+          "source_only_descent": false,
+          "diagnostic": {
+            "distance_mm": 0.013135345308787905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 62,
+          "gap_mm": 0.015723230863929905,
+          "normal_force_N": 0.0007414732982026468,
+          "manual_area_traction_N": 0.0007414732982026468,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015723230863929905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  42,
+                  66,
+                  62
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.75,
+                  0.0,
+                  0.4157232308639299
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015723230863929905
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 66,
+          "gap_mm": 0.015723230863929905,
+          "normal_force_N": 0.0014829465964052934,
+          "manual_area_traction_N": 0.0014829465964052934,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015723230863929905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  42,
+                  46,
+                  66
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 46,
+                "point": [
+                  0.75,
+                  0.25,
+                  0.4157232308639299
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015723230863929905
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 70,
+          "gap_mm": 0.015723230863929905,
+          "normal_force_N": 0.0014829465964052934,
+          "manual_area_traction_N": 0.0014829465964052934,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015723230863929905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  46,
+                  50,
+                  70
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 50,
+                "point": [
+                  0.75,
+                  0.5,
+                  0.4157232308639299
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015723230863929905
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 74,
+          "gap_mm": 0.015723230863929905,
+          "normal_force_N": 0.0014829465964052934,
+          "manual_area_traction_N": 0.0014829465964052934,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015723230863929905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  50,
+                  54,
+                  74
+                ],
+                "image": [
+                  0,
+                  0,
+                  0
+                ],
+                "vertex": 54,
+                "point": [
+                  0.75,
+                  0.75,
+                  0.4157232308639299
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015723230863929905
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 78,
+          "gap_mm": 0.015723230863929905,
+          "normal_force_N": 0.0007414732982026468,
+          "manual_area_traction_N": 0.0007414732982026468,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.015723230863929905,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  42,
+                  66,
+                  62
+                ],
+                "image": [
+                  0,
+                  1,
+                  0
+                ],
+                "vertex": 42,
+                "point": [
+                  0.75,
+                  1.0,
+                  0.4157232308639299
+                ],
+                "direction": [
+                  -0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.015723230863929905
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 82,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.00013812905605660572,
+          "manual_area_traction_N": 0.00013812905605660572,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  1.0,
+                  0.0,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 86,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.0004143871681698172,
+          "manual_area_traction_N": 0.0004143871681698172,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  2,
+                  6,
+                  26
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 26,
+                "point": [
+                  1.0,
+                  0.25,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 90,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.0004143871681698172,
+          "manual_area_traction_N": 0.0004143871681698172,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  6,
+                  10,
+                  30
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 30,
+                "point": [
+                  1.0,
+                  0.5,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 94,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.0004143871681698172,
+          "manual_area_traction_N": 0.0004143871681698172,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  10,
+                  14,
+                  34
+                ],
+                "image": [
+                  1,
+                  0,
+                  0
+                ],
+                "vertex": 34,
+                "point": [
+                  1.0,
+                  0.75,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        },
+        {
+          "case": 2,
+          "node": 98,
+          "gap_mm": 0.01686465469121201,
+          "normal_force_N": 0.00027625811211321144,
+          "manual_area_traction_N": 0.00027625811211321144,
+          "relative_error": 0.0,
+          "source_only_descent": true,
+          "diagnostic": {
+            "distance_mm": 0.01686465469121201,
+            "source_is_quadrature_node": true,
+            "candidate_exclusion_authorized": false,
+            "source": {
+              "complete_star": true,
+              "has_descent": true,
+              "maximum_descent_cosine": 0.010350987658351239,
+              "witness": {
+                "face": [
+                  2,
+                  26,
+                  22
+                ],
+                "image": [
+                  1,
+                  1,
+                  0
+                ],
+                "vertex": 22,
+                "point": [
+                  1.0,
+                  1.0,
+                  0.41686465469121203
+                ],
+                "direction": [
+                  0.25,
+                  0.0,
+                  -0.002587885555142
+                ],
+                "toward": [
+                  0.0,
+                  0.0,
+                  -0.01686465469121201
+                ],
+                "descent_cosine": 0.010350987658351239
+              }
+            },
+            "target": {
+              "complete_star": true,
+              "has_descent": false,
+              "maximum_descent_cosine": 0.0,
+              "witness": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "symmetric_control": {
+    "resolved": false,
+    "scope": "separate symmetric test; unresolved geometry not replaced by asymmetric results",
+    "error_type": "SurfaceResolutionError",
+    "error": "Multiple distinct closest patches require multi-contact surface integration"
+  },
+  "source_only_pruning_supported": false,
+  "pressure_cycle_mesh_convergence_verified": false,
+  "particle_compaction_verified": false,
+  "test_result": "197 passed in 149.65s (0:02:29)"
+}

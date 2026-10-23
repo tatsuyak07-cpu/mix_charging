@@ -1,0 +1,5 @@
+{
+  "scope": "PT source/target diagnostics only, no production force or gate changes.",
+  "symmetric_probe": "Initial phase=0 wave has unresolved distinct equal closest targets. It is retained and repeated as a separate control. Asymmetric phase .23/.37 controls are distinct prescribed test geometries, not replacements for that unresolved solution.",
+  "model": "No refined pressure cycle or particle packing compaction calculation was performed."
+}

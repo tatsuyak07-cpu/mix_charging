@@ -1,0 +1,98 @@
+[
+  {
+    "refinement": 4,
+    "diagnostic": {
+      "distance_mm": 0.015561888012899363,
+      "source_is_quadrature_node": true,
+      "candidate_exclusion_authorized": false,
+      "source": {
+        "complete_star": true,
+        "has_descent": true,
+        "maximum_descent_cosine": 0.9999418288432752,
+        "witness": {
+          "face": [
+            942,
+            941,
+            955
+          ],
+          "image": [
+            0,
+            0,
+            0
+          ],
+          "vertex": 941,
+          "point": [
+            1.125590165494613,
+            1.1255858914048114,
+            1.569202882548048
+          ],
+          "direction": [
+            -1.7222925793980437e-05,
+            -1.7348996407928752e-05,
+            -0.007781358258840632
+          ],
+          "toward": [
+            8.424442896037831e-05,
+            8.39962434127095e-05,
+            -0.015561433289813076
+          ],
+          "descent_cosine": 0.9999418288432752
+        }
+      },
+      "target": {
+        "complete_star": true,
+        "has_descent": false,
+        "maximum_descent_cosine": -9.512381540961423e-15,
+        "witness": null
+      }
+    }
+  },
+  {
+    "refinement": 6,
+    "diagnostic": {
+      "distance_mm": 0.010374592008599649,
+      "source_is_quadrature_node": true,
+      "candidate_exclusion_authorized": false,
+      "source": {
+        "complete_star": true,
+        "has_descent": true,
+        "maximum_descent_cosine": 0.9999418288432754,
+        "witness": {
+          "face": [
+            2972,
+            2971,
+            2991
+          ],
+          "image": [
+            0,
+            0,
+            0
+          ],
+          "vertex": 2971,
+          "point": [
+            1.1255786835440835,
+            1.125574325407206,
+            1.5640153103754875
+          ],
+          "direction": [
+            -1.1481950529246276e-05,
+            -1.156599760521182e-05,
+            -0.005187572172560273
+          ],
+          "toward": [
+            5.616295264010418e-05,
+            5.5997495608473e-05,
+            -0.010374288859875458
+          ],
+          "descent_cosine": 0.9999418288432754
+        }
+      },
+      "target": {
+        "complete_star": true,
+        "has_descent": false,
+        "maximum_descent_cosine": 1.0935058289864244e-12,
+        "witness": null
+      }
+    }
+  }
+]
