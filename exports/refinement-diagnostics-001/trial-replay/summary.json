@@ -1,0 +1,51 @@
+{
+  "scope": "Replay a saved failed contact trial for geometry diagnostics, not restart.",
+  "source": "exports/packing-rve-replay-001/validation/corrected-run/calculation",
+  "accepted_time_s": 0.002144313940151109,
+  "trial_time_s": 0.0021443360898293286,
+  "trial_dt_s": 2.2149678219554973e-08,
+  "replayed_error": {
+    "type": "SurfaceResolutionError",
+    "message": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        401,
+        3806,
+        3793,
+        3795
+      ],
+      "shift": [
+        0,
+        0,
+        0
+      ],
+      "points": [
+        [
+          0.43840281104259493,
+          12.25448514578454,
+          5.840283147135548
+        ],
+        [
+          0.43792977382235465,
+          12.230056514106439,
+          5.841834792017154
+        ],
+        [
+          0.3278609586054236,
+          12.134279249670527,
+          5.821330791322211
+        ],
+        [
+          0.5175250895025685,
+          12.326708443179964,
+          5.820294372686849
+        ]
+      ],
+      "distance_mm": 0.019999387861179146
+    }
+  },
+  "ambiguous_sources": [],
+  "contact_force_changed": false,
+  "trial_is_solution": false
+}

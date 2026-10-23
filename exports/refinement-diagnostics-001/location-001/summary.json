@@ -1,0 +1,40 @@
+{
+  "scope": "Compare insertion locations on one saved trial, without state transfer.",
+  "geometry_error_mm": 4.361899730298546e-12,
+  "target_incident_faces": 2,
+  "rows": [
+    {
+      "location": "midpoint",
+      "fraction": 0.5,
+      "target_incident_triangle_gap_mm": 0.020234327993146447,
+      "inside_target_star_barrier": false,
+      "minimum_quality": 0.05237193192122445,
+      "reference_volume_error_mm3": 0.0,
+      "trial_volume_error_mm3": 0.0
+    },
+    {
+      "location": "closest_parameter",
+      "fraction": 0.23165789209867782,
+      "target_incident_triangle_gap_mm": 0.01999938786117965,
+      "inside_target_star_barrier": true,
+      "minimum_quality": 0.031293834226999794,
+      "reference_volume_error_mm3": 0.0,
+      "trial_volume_error_mm3": 0.0
+    }
+  ],
+  "checks": {
+    "failed_trial_geometry_reproduced": true,
+    "same_guard_reproduced": true,
+    "complete_target_edge_star": true,
+    "midpoint_misses_target_star": true,
+    "closest_insertion_enters_target_star": true,
+    "trial_geometries_above_quality_floor": true,
+    "volumes_preserved": true
+  },
+  "passed": true,
+  "state_and_friction_transfer_verified": false,
+  "force_or_energy_verified": false,
+  "contact_guard_after_insertion_verified": false,
+  "time_advanced": false,
+  "physical_solution_verified": false
+}

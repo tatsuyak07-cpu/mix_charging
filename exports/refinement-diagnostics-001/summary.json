@@ -1,0 +1,62 @@
+{
+  "scope": "Stopped-trial geometry diagnostics only; no pressure integration or physical solution",
+  "geometric_chain_checks": {
+    "actual_guard_gaps_reproduced": true,
+    "independent_scalar_minimum": true,
+    "vectorized_minimum": true,
+    "all_guards_inside_barrier": true,
+    "all_first_midpoints_outside_barrier": true,
+    "active_interval_roots": true,
+    "ordering_rigid_motion_noise_stability": true,
+    "cap_stop_reproduced": true
+  },
+  "location_checks": {
+    "failed_trial_geometry_reproduced": true,
+    "same_guard_reproduced": true,
+    "complete_target_edge_star": true,
+    "midpoint_misses_target_star": true,
+    "closest_insertion_enters_target_star": true,
+    "target_insertion_enters_source_star": true,
+    "trial_geometries_above_quality_floor": true,
+    "volumes_preserved": true
+  },
+  "geometric_checks_passed": true,
+  "related_tests_passed": 31,
+  "source_pressure_run_commit": "690756f98ee9a15866bc0485e517bdaaa32a0361",
+  "last_active_interval_length_mm": 0.00045399268902697335,
+  "location_comparison": [
+    {
+      "location": "midpoint",
+      "fraction": 0.5,
+      "side": 0,
+      "opposite_incident_triangle_gap_mm": 0.020234327993146447,
+      "inside_opposite_star_barrier": false,
+      "minimum_quality": 0.05237193192122445,
+      "reference_volume_error_mm3": 0.0,
+      "trial_volume_error_mm3": 0.0
+    },
+    {
+      "location": "closest_parameter",
+      "fraction": 0.23165789209867782,
+      "side": 0,
+      "opposite_incident_triangle_gap_mm": 0.01999938786117965,
+      "inside_opposite_star_barrier": true,
+      "minimum_quality": 0.031293834226999794,
+      "reference_volume_error_mm3": 0.0,
+      "trial_volume_error_mm3": 0.0
+    },
+    {
+      "location": "target_closest_parameter",
+      "fraction": 0.5885708790180821,
+      "side": 1,
+      "opposite_incident_triangle_gap_mm": 0.019999387861179496,
+      "inside_opposite_star_barrier": true,
+      "minimum_quality": 0.08344347589276513,
+      "reference_volume_error_mm3": 0.0,
+      "trial_volume_error_mm3": 0.0
+    }
+  ],
+  "state_friction_energy_transfer_verified": false,
+  "large_deformation_compaction_verified": false,
+  "next_verification": "Select either contacting edge using geometric quality, then audit material/friction/energy transfer before integration"
+}

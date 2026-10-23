@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+表面分割の集中を検証：**最後の停止候補では中点分割が接触範囲を外れることを確認**。
+[検証報告](docs/refinement-diagnostics.md)・[分割位置の比較図](exports/refinement-diagnostics-001/insertion-comparison.png)・[全データZIP](exports/refinement-diagnostics-001.zip)。
+関連31テスト・幾何診断16項目に合格。相手側の辺を最短位置で分割する案は品質を保ちますが、状態・摩擦履歴の移行と圧縮計算への組み込みは未検証です。
+
 周期変位移行修正後の全履歴を再検証：**移行エラーは解消したが、表面分割16回の上限で停止**。
 [検証報告](docs/packing-rve-replay.md)・[比較図](exports/packing-rve-replay-001/replay-comparison.png)・[停止時メッシュ](exports/packing-rve-replay-001/stopped-mesh.png)・[全データZIP](exports/packing-rve-replay-001.zip)。
 関連35テスト合格。約0.05674 MPa・空隙率34.27%は未平衡の途中状態であり、0.1 MPaの準静的解ではありません。
