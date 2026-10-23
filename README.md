@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+周期変位移行修正後の全履歴を再検証：**移行エラーは解消したが、表面分割16回の上限で停止**。
+[検証報告](docs/packing-rve-replay.md)・[比較図](exports/packing-rve-replay-001/replay-comparison.png)・[停止時メッシュ](exports/packing-rve-replay-001/stopped-mesh.png)・[全データZIP](exports/packing-rve-replay-001.zip)。
+関連35テスト合格。約0.05674 MPa・空隙率34.27%は未平衡の途中状態であり、0.1 MPaの準静的解ではありません。
+
 工程4の小周期セルを実装：**10 mm球・2 mmネックのBCC焼結セルで低荷重の周期圧縮を検証**。
 [開発・検証報告](docs/packing-rve-development.md)・[比較図](exports/packing-rve-001/packing-rve-validation.png)・[実メッシュ](exports/packing-rve-001/actual-packing-mesh.png)・[全データZIP](exports/packing-rve-001.zip)。
 初期空隙率39.84375%。0.001 MPaの対照を独立な線形FEM解・力の再積分・刻み半減と比較しました。

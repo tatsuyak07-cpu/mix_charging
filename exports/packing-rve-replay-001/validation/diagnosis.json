@@ -1,0 +1,30 @@
+{
+  "accepted_remeshes": 16,
+  "configured_cap": 16,
+  "all_remesh_audits_pass": true,
+  "no_periodic_transfer_failure": true,
+  "identical_initial_history_rows": 38,
+  "steps": 5006,
+  "cap_reached": true,
+  "next_proposal": {
+    "scope": "Geometry-only diagnostic; NOT accepted, no integration, no contact-history/energy audit",
+    "edge": [
+      401,
+      3806
+    ],
+    "operation": "periodic_edge_bisection",
+    "periodic_edges": 1,
+    "new_nodes": 1,
+    "reference_volume_error": 0.0,
+    "current_volume_error": 0.0,
+    "minimum_quality_before": 0.08344293069332229,
+    "minimum_quality_after": 0.052371591498829285,
+    "position_error_mm": 1.7763568394002505e-15
+  },
+  "physical_solution_accepted": false,
+  "accepted_remesh_times_s": [
+    0.002019788150903511,
+    0.002144291790489114,
+    0.002144313940151109
+  ]
+}

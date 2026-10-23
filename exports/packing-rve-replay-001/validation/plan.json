@@ -1,0 +1,8 @@
+{
+  "purpose": "Fresh full-path replay after exact periodic displacement transfer fix",
+  "baseline_commit": "02b247a3bdade7e68e09c46b6e55d81a46493277",
+  "baseline_run": "results/packing-rve-development-001/native-pressure01-clarke-001",
+  "configuration": "Identical JSON to baseline; no physical or numerical threshold changes",
+  "checks": ["identical configuration", "complete fresh integration, no restart", "remesh transfer conservation", "mesh quality floor retained", "pressure/path completion and quasi-static checks reported separately"],
+  "interpretation": "Rapid loading diagnostic, not validated quasi-static compaction; BCC small cell is not the 100 mm random specimen"
+}

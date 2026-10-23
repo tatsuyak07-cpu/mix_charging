@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "initial_porosity_within_declared_tolerance": true,
+    "face_connected": true,
+    "three_axis_winding": true,
+    "neck_has_declared_minimum_cells": true
+  },
+  "passed": true,
+  "mesh_convergence_verified": false
+}
