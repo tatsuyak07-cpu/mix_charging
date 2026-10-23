@@ -1,0 +1,1 @@
+Geometry-only harmonic extension and numerical strong-monotonicity condition on a canonical tensor grid. Missing void nodes have NO material stiffness, mass or constitutive state. Contact forces/guards are unchanged. Positive geometric condition does NOT authorize force exclusion. No refined pressure-cycle or 40-to-10-percent packing result. Units mm, N, MPa.

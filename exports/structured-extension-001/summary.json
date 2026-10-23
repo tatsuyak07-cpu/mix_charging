@@ -1,0 +1,1149 @@
+{
+  "scope": "Verify geometry-only periodic injectivity conditions and preserve contact.\n\nCanonical tensor-grid diagnostics, not a pressure solve, contact replacement,\nmaterial model for voids, or a certificate for arbitrary packing/remeshed grids.\n",
+  "checks": {
+    "all_initial_and_mapped_geometry_conditions": true,
+    "margin_sensitivity": true,
+    "physical_field_and_volume_preserved": true,
+    "overlap_rejected_with_material_positive_J": true,
+    "positive_J_shear_conservatively_uncertified": true,
+    "periodic_mismatch_rejected": true,
+    "reference_local_chord_failure_is_distinct": true,
+    "valid_contact_forces_kept": true,
+    "same_body_pore_still_nonlocal_contact": true,
+    "no_contact_exclusion_authorized": true
+  },
+  "geometry_checks_passed": true,
+  "levels": [
+    {
+      "refinement": 1,
+      "initial": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 1.0,
+        "minimum_extension_J": 1.0,
+        "minimum_material_J": 1.0,
+        "minimum_void_extension_J": 1.0,
+        "ghost_nodes": 0,
+        "physical_nodes": 100,
+        "extension_nodes": 100,
+        "physical_tetrahedra": 264,
+        "extension_tetrahedra": 288,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.0,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": 1.0,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "mapped": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.5424282811377867,
+        "minimum_extension_J": 0.5603816192381449,
+        "minimum_material_J": 0.9962382510928166,
+        "minimum_void_extension_J": 0.5603816192381449,
+        "ghost_nodes": 0,
+        "physical_nodes": 100,
+        "extension_nodes": 100,
+        "physical_tetrahedra": 264,
+        "extension_tetrahedra": 288,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 8.881784197001252e-16,
+        "macro_A": [
+          [
+            1.132635843366895,
+            -0.0017610173324568634,
+            0.0005163944505401115
+          ],
+          [
+            -0.0017610173324568634,
+            1.1326358181173108,
+            0.0005153841887798196
+          ],
+          [
+            0.0005163944505401115,
+            0.0005153841887798196,
+            0.7792876374318937
+          ]
+        ],
+        "sigma_min_A": 0.779286123492166,
+        "distance_lower_bound_factor": 0.4227068324803846,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity_from_physical": 0.002217299709509679,
+      "mapped_porosity_from_void_extension": 0.002217299709510168,
+      "volume_fraction_error": 4.887583393564654e-16,
+      "same_physical_positions": true
+    },
+    {
+      "refinement": 2,
+      "initial": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 1.0,
+        "minimum_extension_J": 1.0,
+        "minimum_material_J": 1.0,
+        "minimum_void_extension_J": 1.0,
+        "ghost_nodes": 9,
+        "physical_nodes": 558,
+        "extension_nodes": 567,
+        "physical_tetrahedra": 2112,
+        "extension_tetrahedra": 2304,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.0,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": 1.0,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "mapped": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.5410663487574392,
+        "minimum_extension_J": 0.5573940474308019,
+        "minimum_material_J": 0.9962382510928085,
+        "minimum_void_extension_J": 0.5573940474308019,
+        "ghost_nodes": 9,
+        "physical_nodes": 558,
+        "extension_nodes": 567,
+        "physical_tetrahedra": 2112,
+        "extension_tetrahedra": 2304,
+        "harmonic_relative_residual": 1.127314584176847e-16,
+        "periodic_error_mm": 1.2797922444018894e-15,
+        "macro_A": [
+          [
+            1.132635843366895,
+            -0.0017610173324568634,
+            0.0005163944505401115
+          ],
+          [
+            -0.0017610173324568634,
+            1.1326358181173108,
+            0.0005153841887798196
+          ],
+          [
+            0.0005163944505401115,
+            0.0005153841887798196,
+            0.7792876374318937
+          ]
+        ],
+        "sigma_min_A": 0.779286123492166,
+        "distance_lower_bound_factor": 0.4216454974752451,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity_from_physical": 0.002217299709509901,
+      "mapped_porosity_from_void_extension": 0.0022172997095101688,
+      "volume_fraction_error": 2.675810961694225e-16,
+      "same_physical_positions": true
+    },
+    {
+      "refinement": 3,
+      "initial": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.999999999999996,
+        "minimum_extension_J": 0.9999999999999998,
+        "minimum_material_J": 0.9999999999999998,
+        "minimum_void_extension_J": 0.9999999999999998,
+        "ghost_nodes": 50,
+        "physical_nodes": 1640,
+        "extension_nodes": 1690,
+        "physical_tetrahedra": 7128,
+        "extension_tetrahedra": 7776,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.0,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": 0.999999999999996,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "mapped": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.5403295809215498,
+        "minimum_extension_J": 0.5561558342361757,
+        "minimum_material_J": 0.996238251092783,
+        "minimum_void_extension_J": 0.5561558342361757,
+        "ghost_nodes": 50,
+        "physical_nodes": 1640,
+        "extension_nodes": 1690,
+        "physical_tetrahedra": 7128,
+        "extension_tetrahedra": 7776,
+        "harmonic_relative_residual": 3.5687333484650725e-16,
+        "periodic_error_mm": 1.7763568394002505e-15,
+        "macro_A": [
+          [
+            1.132635843366895,
+            -0.0017610173324568634,
+            0.0005163944505401115
+          ],
+          [
+            -0.0017610173324568634,
+            1.1326358181173108,
+            0.0005153841887798196
+          ],
+          [
+            0.0005163944505401115,
+            0.0005153841887798196,
+            0.7792876374318937
+          ]
+        ],
+        "sigma_min_A": 0.779286123492166,
+        "distance_lower_bound_factor": 0.4210713445245012,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity_from_physical": 0.002217299709510012,
+      "mapped_porosity_from_void_extension": 0.002217299709510165,
+      "volume_fraction_error": 1.5265566588595902e-16,
+      "same_physical_positions": true
+    },
+    {
+      "refinement": 4,
+      "initial": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 1.0,
+        "minimum_extension_J": 1.0,
+        "minimum_material_J": 1.0,
+        "minimum_void_extension_J": 1.0,
+        "ghost_nodes": 147,
+        "physical_nodes": 3610,
+        "extension_nodes": 3757,
+        "physical_tetrahedra": 16896,
+        "extension_tetrahedra": 18432,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.0,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": 1.0,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "mapped": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.5397646910037077,
+        "minimum_extension_J": 0.5553599883868674,
+        "minimum_material_J": 0.9962382510927799,
+        "minimum_void_extension_J": 0.5553599883868674,
+        "ghost_nodes": 147,
+        "physical_nodes": 3610,
+        "extension_nodes": 3757,
+        "physical_tetrahedra": 16896,
+        "extension_tetrahedra": 18432,
+        "harmonic_relative_residual": 4.3948906484863977e-16,
+        "periodic_error_mm": 1.7763568394002505e-15,
+        "macro_A": [
+          [
+            1.132635843366895,
+            -0.0017610173324568634,
+            0.0005163944505401115
+          ],
+          [
+            -0.0017610173324568634,
+            1.1326358181173108,
+            0.0005153841887798196
+          ],
+          [
+            0.0005163944505401115,
+            0.0005153841887798196,
+            0.7792876374318937
+          ]
+        ],
+        "sigma_min_A": 0.779286123492166,
+        "distance_lower_bound_factor": 0.4206311336502262,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "initial_porosity": 0.0025000000000000577,
+      "mapped_porosity_from_physical": 0.002217299709509235,
+      "mapped_porosity_from_void_extension": 0.002217299709510168,
+      "volume_fraction_error": 9.32847549206528e-16,
+      "same_physical_positions": true
+    },
+    {
+      "refinement": 6,
+      "initial": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.9999999999999963,
+        "minimum_extension_J": 0.9999999999999998,
+        "minimum_material_J": 0.9999999999999998,
+        "minimum_void_extension_J": 1.0,
+        "ghost_nodes": 605,
+        "physical_nodes": 11270,
+        "extension_nodes": 11875,
+        "physical_tetrahedra": 57024,
+        "extension_tetrahedra": 62208,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.0,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": 0.9999999999999963,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "mapped": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.5388155586403525,
+        "minimum_extension_J": 0.5542134034903784,
+        "minimum_material_J": 0.9962382510927432,
+        "minimum_void_extension_J": 0.5542134034903784,
+        "ghost_nodes": 605,
+        "physical_nodes": 11270,
+        "extension_nodes": 11875,
+        "physical_tetrahedra": 57024,
+        "extension_tetrahedra": 62208,
+        "harmonic_relative_residual": 7.6396465800821875e-16,
+        "periodic_error_mm": 1.7763568394002505e-15,
+        "macro_A": [
+          [
+            1.132635843366895,
+            -0.0017610173324568634,
+            0.0005163944505401115
+          ],
+          [
+            -0.0017610173324568634,
+            1.1326358181173108,
+            0.0005153841887798196
+          ],
+          [
+            0.0005163944505401115,
+            0.0005153841887798196,
+            0.7792876374318937
+          ]
+        ],
+        "sigma_min_A": 0.779286123492166,
+        "distance_lower_bound_factor": 0.4198914879701061,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "initial_porosity": 0.0024999999999999467,
+      "mapped_porosity_from_physical": 0.002217299709509235,
+      "mapped_porosity_from_void_extension": 0.002217299709510166,
+      "volume_fraction_error": 9.311128257305512e-16,
+      "same_physical_positions": true
+    }
+  ],
+  "stopped_local_pairs": [
+    {
+      "refinement": 4,
+      "reference_material_neighbour": true,
+      "current_full_material_chord_covered": false,
+      "geometry_certificate_passed": true,
+      "candidate_exclusion_authorized": false,
+      "old_guard_remains": "Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment",
+      "feature": {
+        "kind": "pt",
+        "ids": [
+          942,
+          953,
+          940,
+          1174
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            1.125590165494613,
+            1.1255858914048114,
+            1.569202882548048
+          ],
+          [
+            1.1246753362499649,
+            1.4085485154087087,
+            1.554577931324237
+          ],
+          [
+            1.125555719643025,
+            1.1255511934119953,
+            1.5536401660303667
+          ],
+          [
+            1.4089833099886888,
+            1.4089882297626821,
+            1.5567044622882784
+          ]
+        ],
+        "reference_points": [
+          [
+            1.0,
+            1.0,
+            2.0
+          ],
+          [
+            1.0,
+            1.25,
+            1.98
+          ],
+          [
+            1.0,
+            1.0,
+            1.98
+          ],
+          [
+            1.25,
+            1.25,
+            1.98
+          ]
+        ]
+      }
+    },
+    {
+      "refinement": 6,
+      "reference_material_neighbour": true,
+      "current_full_material_chord_covered": false,
+      "geometry_certificate_passed": true,
+      "candidate_exclusion_authorized": false,
+      "old_guard_remains": "Current local material bridge not certified; local folding or insufficient witness needs refined contact treatment",
+      "feature": {
+        "kind": "pt",
+        "ids": [
+          2972,
+          2989,
+          2970,
+          3464
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            1.1255786835440835,
+            1.125574325407206,
+            1.5640153103754875
+          ],
+          [
+            1.124968797380985,
+            1.3142160747431375,
+            1.554265342892947
+          ],
+          [
+            1.125555719643025,
+            1.1255511934119953,
+            1.5536401660303667
+          ],
+          [
+            1.314507446540134,
+            1.3145092176457864,
+            1.555683030202308
+          ]
+        ],
+        "reference_points": [
+          [
+            1.0,
+            1.0,
+            1.9933333333333334
+          ],
+          [
+            1.0,
+            1.1666666666666665,
+            1.98
+          ],
+          [
+            1.0,
+            1.0,
+            1.98
+          ],
+          [
+            1.1666666666666665,
+            1.1666666666666665,
+            1.98
+          ]
+        ]
+      }
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "overlapping_slabs",
+      "result": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": false,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": false,
+          "strong_monotonicity_margin": false
+        },
+        "normalized_margin": -0.031446540880503526,
+        "minimum_extension_J": -0.0250000000000003,
+        "minimum_material_J": 0.9999999999999999,
+        "minimum_void_extension_J": -0.0250000000000003,
+        "ghost_nodes": 0,
+        "physical_nodes": 36,
+        "extension_nodes": 36,
+        "physical_tetrahedra": 48,
+        "extension_tetrahedra": 72,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 1.1102230246251565e-16,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.795
+          ]
+        ],
+        "sigma_min_A": 0.795,
+        "distance_lower_bound_factor": null,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      }
+    },
+    {
+      "name": "large_invertible_shear_uncertified",
+      "result": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": false,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": false
+        },
+        "normalized_margin": -1.0,
+        "minimum_extension_J": 1.0,
+        "minimum_material_J": 1.0,
+        "minimum_void_extension_J": null,
+        "ghost_nodes": 0,
+        "physical_nodes": 27,
+        "extension_nodes": 27,
+        "physical_tetrahedra": 48,
+        "extension_tetrahedra": 48,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.0,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": null,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      }
+    },
+    {
+      "name": "periodic_boundary_mismatch",
+      "result": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": false,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": false,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 1.0,
+        "minimum_extension_J": 1.0,
+        "minimum_material_J": 1.0,
+        "minimum_void_extension_J": 1.0,
+        "ghost_nodes": 0,
+        "physical_nodes": 100,
+        "extension_nodes": 100,
+        "physical_tetrahedra": 264,
+        "extension_tetrahedra": 288,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 0.001000000000000334,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sigma_min_A": 1.0,
+        "distance_lower_bound_factor": 1.0,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      }
+    }
+  ],
+  "contact_controls": [
+    {
+      "name": "same_body_pore",
+      "certificate": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.5424282811377867,
+        "minimum_extension_J": 0.5603816192381449,
+        "minimum_material_J": 0.9962382510928166,
+        "minimum_void_extension_J": 0.5603816192381449,
+        "ghost_nodes": 0,
+        "physical_nodes": 100,
+        "extension_nodes": 100,
+        "physical_tetrahedra": 264,
+        "extension_tetrahedra": 288,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 8.881784197001252e-16,
+        "macro_A": [
+          [
+            1.132635843366895,
+            -0.0017610173324568634,
+            0.0005163944505401115
+          ],
+          [
+            -0.0017610173324568634,
+            1.1326358181173108,
+            0.0005153841887798196
+          ],
+          [
+            0.0005163944505401115,
+            0.0005153841887798196,
+            0.7792876374318937
+          ]
+        ],
+        "sigma_min_A": 0.779286123492166,
+        "distance_lower_bound_factor": 0.4227068324803846,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "relations": [
+        {
+          "same_raw_material_component": true,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.009008786917132706
+        },
+        {
+          "same_raw_material_component": true,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.008824258819941288
+        }
+      ],
+      "normal_force_sum_N": 0.017833045737073994,
+      "force_arrays_preserved": true,
+      "energy_preserved": true,
+      "contacts": 2
+    },
+    {
+      "name": "wavy_interface",
+      "certificate": {
+        "scope": "Geometry-only injectivity certificate for a canonical tensor-grid P1 map.\n\nMissing nodes in voids receive a harmonic GEOMETRIC extension, not material,\nmass or constitutive stiffness. Physical tetrahedra must be a subset of the\ncanonical full-box subdivision. This adapter is not a general packing/remesh\ncertificate and never authorizes contact-force removal.\n",
+        "certificate_passed": true,
+        "checks": {
+          "physical_positions_preserved": true,
+          "harmonic_residual_small": true,
+          "periodic_boundary_matches": true,
+          "all_extension_jacobians_positive": true,
+          "strong_monotonicity_margin": true
+        },
+        "normalized_margin": 0.08003990462635269,
+        "minimum_extension_J": 0.06526333604994608,
+        "minimum_material_J": 0.995131668024973,
+        "minimum_void_extension_J": 0.06526333604994608,
+        "ghost_nodes": 0,
+        "physical_nodes": 100,
+        "extension_nodes": 100,
+        "physical_tetrahedra": 192,
+        "extension_tetrahedra": 288,
+        "harmonic_relative_residual": 0.0,
+        "periodic_error_mm": 1.1102230246251565e-16,
+        "macro_A": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.8150000000000001
+          ]
+        ],
+        "sigma_min_A": 0.8150000000000001,
+        "distance_lower_bound_factor": 0.06523252227047745,
+        "candidate_exclusion_authorized": false,
+        "physical_void_filled": false,
+        "contact_force_computed": false
+      },
+      "relations": [
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00026275014215375076
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00026262243669512923
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003941252132306262
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003939336550426938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003941252132306262
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003939336550426938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003941252132306262
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003939336550426938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00013137507107687538
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00013131121834756461
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0011592936081745856
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.001159193802223617
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0023185872163491708
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0023183876044472335
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0023185872163491708
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0023183876044472335
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0023185872163491708
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0023183876044472335
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0011592936081745856
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.001159193802223617
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0017882620694377473
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0017882620694377473
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0035765241388754938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0035765241388754938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0035765241388754938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0035765241388754938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0035765241388754938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0035765241388754938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0017882620694377473
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0017882620694377473
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0008296720199022248
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0008294315460100602
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0016593440398044491
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00165886309202012
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0016593440398044491
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00165886309202012
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0016593440398044491
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00165886309202012
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0008296720199022248
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0008294315460100602
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00013137507107687508
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00013131121834756461
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00039412521323062527
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003939336550426938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00039412521323062527
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003939336550426938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00039412521323062527
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.0003939336550426938
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00026275014215375016
+        },
+        {
+          "same_raw_material_component": false,
+          "reference_material_neighbour": false,
+          "normal_force_N": 0.00026262243669512923
+        }
+      ],
+      "normal_force_sum_N": 0.0667373918676744,
+      "force_arrays_preserved": true,
+      "energy_preserved": true,
+      "contacts": 50
+    }
+  ],
+  "test_result": "17 passed in 4.92s",
+  "geometric_void_extension_is_material": false,
+  "production_contact_modified": false,
+  "refined_pressure_cycle_verified": false,
+  "mesh_convergence_verified": false,
+  "particle_compaction_verified": false
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "Verify geometry-only periodic injectivity conditions and preserve contact.\n\nCanonical tensor-grid diagnostics, not a pressure solve, contact replacement,\nmaterial model for voids, or a certificate for arbitrary packing/remeshed grids.\n",
+  "source": "exports/edge-stationarity-002/preflight",
+  "levels": [
+    1,
+    2,
+    3,
+    4,
+    6
+  ],
+  "condition": "min eig sym(A^-1 F) > 1e-10 on EVERY canonical background tet, plus exact material-node matching and periodic-boundary tolerance",
+  "macro_frame": "A=H/columnwise_reference_lengths",
+  "geometric_extension": "reference P1 Laplacian for missing void-node displacement; never material stiffness",
+  "margin_tolerance": 1e-10,
+  "margin_sensitivity": [
+    1e-12,
+    1e-10,
+    1e-08
+  ],
+  "contact_exclusion_authorized": false,
+  "pressure_integration": false
+}

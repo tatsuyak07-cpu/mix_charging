@@ -1,0 +1,5 @@
+{
+  "scope": "New geometry-only numerical certificate. Existing contact solver and current local-material guard are not changed or bypassed.",
+  "test_scope": "17 related tests: 9 new structured-extension tests plus 8 material-neighbour regression tests. Prior full solver suite not repeated because no existing production force code is modified.",
+  "limits": "Only canonical tensor-grid tetrahedra and a complete periodic box boundary. Not a general packing/remeshing certificate or a pressure result."
+}

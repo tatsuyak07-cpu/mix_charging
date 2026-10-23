@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+変形写像の非重複条件を検証：**保存形状を補間した5段階すべてで、形状だけの十分条件が合格**。
+[検証報告](docs/structured-extension.md)・[画像](exports/structured-extension-001/geometry-extension.png)・[CSV](exports/structured-extension-001/geometry-certificate.csv)・[全データZIP](exports/structured-extension-001.zip)。
+空隙内の補助写像を用い、材料節点・物理体積・接触力を保持しました。関連17テストと診断10項目が合格。
+接触力の削除や停止ガード解除には接続していません。細分化した圧力一周期・メッシュ収束・40%→10%圧密は未完了です。
+
 点対面の源・相手を分けて検証：**源側の距離減少だけで正常な積分点を除外する案を反例で棄却**。
 [検証報告](docs/point-stationarity.md)・[診断画像](exports/point-stationarity-001/point-stationarity.png)・[積分点CSV](exports/point-stationarity-001/wave-quadrature.csv)・[全データZIP](exports/point-stationarity-001.zip)。
 全体テスト197件と診断7項目が合格しました。追加は診断専用で、接触力・停止ガードは維持しています。
