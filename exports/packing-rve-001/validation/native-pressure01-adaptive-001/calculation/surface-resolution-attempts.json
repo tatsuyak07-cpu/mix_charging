@@ -1,0 +1,98 @@
+[
+  {
+    "accepted_time_s": 0.002019788150903511,
+    "trial_time_s": 0.0020201261572279873,
+    "trial_dt_s": 3.380063244763979e-07,
+    "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        1725,
+        1740,
+        1726,
+        1903
+      ],
+      "shift": [
+        0,
+        0,
+        1
+      ],
+      "points": [
+        [
+          5.457519676121811,
+          6.2135609701701275,
+          11.279444997695087
+        ],
+        [
+          5.458103912786917,
+          6.970780820271718,
+          11.261424039950336
+        ],
+        [
+          5.188277191603808,
+          6.701047355074308,
+          11.293286630794505
+        ],
+        [
+          5.945597327877195,
+          6.701559135828876,
+          11.275858326733587
+        ]
+      ],
+      "distance_mm": 0.019232290745395845
+    },
+    "repaired": true
+  },
+  {
+    "accepted_time_s": 0.002019788150903511,
+    "trial_time_s": 0.002020122736163431,
+    "trial_dt_s": 3.345852599201951e-07,
+    "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        1887,
+        2064,
+        2050,
+        2065
+      ],
+      "shift": [
+        0,
+        0,
+        1
+      ],
+      "points": [
+        [
+          6.2135597904405255,
+          5.457518491874337,
+          11.279445448850511
+        ],
+        [
+          6.97077962841252,
+          5.458102720682379,
+          11.261424599964295
+        ],
+        [
+          6.701048246824205,
+          5.1882780894335925,
+          11.293297393334107
+        ],
+        [
+          6.70156002490037,
+          5.945598210833576,
+          11.275869184889753
+        ]
+      ],
+      "distance_mm": 0.019242657813546237
+    },
+    "repaired": true
+  },
+  {
+    "accepted_time_s": 0.002020753304625801,
+    "trial_time_s": 0.0020209784687018548,
+    "trial_dt_s": 2.2516407605381957e-07,
+    "reason": "Multiple distinct closest patches require multi-contact surface integration",
+    "feature": null,
+    "repaired": false
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "baseline_invariance_requested": false,
+  "scope": "independent energy-gradient and force assembly on recorded active features, not independent collision search or general restart",
+  "checks": {
+    "contact_resultant_small": true,
+    "contact_moment_small": true,
+    "geometry_exact": true,
+    "record_sum_matches_saved_force": true,
+    "committed_history_preserved": true,
+    "friction_coordinate_matches": true,
+    "constitutive_Coulomb_bound": true,
+    "potential_energy_matches": true,
+    "contact_force_finite_difference": true,
+    "full_force_reassembly": true,
+    "unloaded_equilibrium": true,
+    "original_solver_passed": true
+  },
+  "all_checks_passed": true,
+  "records": 0,
+  "committed_history_entries": 0,
+  "saved_force_sum_error_N": 0.0,
+  "potential_energy_error_Nmm": 0.0,
+  "constitutive_Coulomb_ratio": 0.0,
+  "total_contact_resultant_N": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "total_unwrapped_contact_moment_Nmm": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "finite_difference_tests": [
+    {
+      "step_mm": 1.2099999999999998e-06,
+      "contact_force_max_error_N": 0.0,
+      "contact_force_relative_error": 0.0,
+      "total_generalized_force_max_error_N": 5.724157373993883e-15,
+      "free_static_residual_N": 5.406698691532036e-08,
+      "free_static_residual_over_peak": 3.692847955421102e-07
+    },
+    {
+      "step_mm": 6.049999999999999e-07,
+      "contact_force_max_error_N": 0.0,
+      "contact_force_relative_error": 0.0,
+      "total_generalized_force_max_error_N": 5.724157373993883e-15,
+      "free_static_residual_N": 5.406698691532036e-08,
+      "free_static_residual_over_peak": 3.692847955421102e-07
+    }
+  ],
+  "original_static_residual_ratio": 3.692019366716754e-07,
+  "original_energy_relative_error": 1.6134529042739505e-06,
+  "baseline_state_max_absolute_differences": null,
+  "full_step_baseline_max_absolute_difference": null,
+  "full_step_baseline_bitwise_identical": null,
+  "residual_compression": null,
+  "final_porosity": 0.3983223827539387,
+  "history_is_restart_checkpoint": false,
+  "contact_cycle_CFL_sensitivity_verified": false,
+  "mesh_convergence_verified": false,
+  "particle_compaction_verified": false
+}

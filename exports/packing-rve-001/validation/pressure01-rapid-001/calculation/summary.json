@@ -1,0 +1,109 @@
+{
+  "whole_path_audit": {
+    "sampling": "every_accepted_step_including_initial",
+    "rows": 3723,
+    "pressure_window": "command > 1 percent of observed peak",
+    "energy_floor_Nmm": 8.125984930367227e-08,
+    "normalization_note": "Ratios near first loading/contact can be singular as internal energy approaches zero; peaks alone do not establish convergence.",
+    "loaded": {
+      "steps": 3176,
+      "peak_kinetic_Nmm": 0.563200798418076,
+      "peak_kinetic_time_s": 0.002019788150903322,
+      "peak_kinetic_over_energy_scale": 0.06930861960048258,
+      "peak_kinetic_internal_ratio": 0.43072099743279857,
+      "peak_kinetic_internal_contact_ratio": 0.43072099743279857
+    },
+    "contact": null
+  },
+  "accepted_step_audit_file": "accepted-step-audit.csv.gz",
+  "pressure_measure": "cauchy",
+  "peak_command_pressure_MPa": 0.050927509040493035,
+  "final_work_equivalent_cauchy_stress_MPa": [
+    [
+      -0.006167539420431759,
+      -0.0020655679626614847,
+      0.00154237381154291
+    ],
+    [
+      -0.0020655679626614847,
+      -0.006167539420431953,
+      0.0015423738115429005
+    ],
+    [
+      0.00154237381154291,
+      0.0015423738115429005,
+      -0.03494340416197219
+    ]
+  ],
+  "final_external_work_equivalent_cauchy_stress_MPa": [
+    [
+      -6.886621723794292e-25,
+      -6.131024535134332e-25,
+      -1.6507616682923649e-21
+    ],
+    [
+      -6.131024535134332e-25,
+      -5.375427346476033e-25,
+      -1.2881199667659006e-21
+    ],
+    [
+      -1.6507616682923649e-21,
+      -1.2881199667659006e-21,
+      -0.05092750904049304
+    ]
+  ],
+  "area_contact_scope": "single_closest_patch_with_edge_collision_guard",
+  "mass_frame": "pinned",
+  "porosity_goal_equilibrated": null,
+  "peak_nominal_pressure_MPa": 0.05414860138977915,
+  "contact_quadrature_variation_Nmm": 0.0,
+  "contact_released_history_Nmm": 0.0,
+  "contact_neighbor_builds": 184,
+  "audit_sampling": "every_accepted_step",
+  "loading_mode": "cauchy_pressure",
+  "contact_retries": 0,
+  "contact_backend": "area_guarded",
+  "edge_edge_response_implemented": false,
+  "edge_response_scope": "collision_guard_only_no_edge_spring",
+  "status": "diagnostics_only",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": false,
+    "path_completed": false,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": false,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": false
+  },
+  "failure": "SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied')",
+  "steps": 3722,
+  "dt_min_s": 3.3800632447628864e-07,
+  "dt_max_s": 6.099541833314957e-07,
+  "kinetic_internal_ratio_loaded": 0.10565460205209438,
+  "closed_boundary_volume_relative_error": 4.2771847456172126e-16,
+  "material_volume_relative_error": 3.0764658966720746e-13,
+  "final_static_residual_ratio": 0.3616996540768659,
+  "energy_scale_Nmm": 8.125984930367226,
+  "initial_available_energy_Nmm": 0.0,
+  "energy_absolute_residual_Nmm": 0.0007631269352650349,
+  "energy_relative_error": 9.391193089876282e-05,
+  "remesh_events": [],
+  "initial_porosity": 0.3984375,
+  "final_porosity": 0.3548392024314082,
+  "final_axial_compression": 0.12511009291156233,
+  "residual_compression_strain": null,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "contact quadrature, barrier thickness, mollification and general friction convergence not validated",
+    "surface edge bisection is experimental; no coarsening or general distortion repair",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

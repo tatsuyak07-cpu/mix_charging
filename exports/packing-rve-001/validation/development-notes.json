@@ -1,0 +1,7 @@
+{
+  "numpy_low_load_prefix": "Intentionally interrupted with SIGINT after benchmarking and before replacing the continuation with the independently verified native path. The interrupted prefix is diagnostics only.",
+  "rapid_clarke_attempt": "Ended at an unrepaired edge guard after a periodic transfer proposal was rejected by the former least-squares position map. A later attempted SIGINT found no running process. No large-load physical solution was accepted.",
+  "initial_timestep_microbenchmark": "First console-only call omitted material yield/hardening keys and raised KeyError; the corrected benchmark is timestep-benchmark-002.log.",
+  "linear_reference_export_failures": "001 and 002 failed JSON serialization of NumPy booleans. Fixed native Python bool conversion; 003 is the completed independent reference and serialization is regression-tested.",
+  "large_load_recomputation": "After exact periodic transfer replacement only the saved proposal was re-audited. The full large-deformation path has not been recomputed with that fix."
+}

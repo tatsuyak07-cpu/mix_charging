@@ -1,0 +1,1002 @@
+{
+  "whole_path_audit": {
+    "sampling": "every_accepted_step_including_initial",
+    "rows": 5008,
+    "pressure_window": "command > 1 percent of observed peak",
+    "energy_floor_Nmm": 1.1358509630925878e-07,
+    "normalization_note": "Ratios near first loading/contact can be singular as internal energy approaches zero; peaks alone do not establish convergence.",
+    "loaded": {
+      "steps": 4440,
+      "peak_kinetic_Nmm": 0.6239697804122818,
+      "peak_kinetic_time_s": 0.0021443228978987074,
+      "peak_kinetic_over_energy_scale": 0.05493412434263345,
+      "peak_kinetic_internal_ratio": 0.39864480655693735,
+      "peak_kinetic_internal_contact_ratio": 0.39864480655693735
+    },
+    "contact": {
+      "steps": 1285,
+      "peak_kinetic_Nmm": 0.6239697804122818,
+      "peak_kinetic_time_s": 0.0021443228978987074,
+      "peak_kinetic_over_energy_scale": 0.05493412434263345,
+      "peak_kinetic_internal_ratio": 0.10327796300704638,
+      "peak_kinetic_internal_contact_ratio": 0.10327796261090902
+    }
+  },
+  "accepted_step_audit_file": "accepted-step-audit.csv.gz",
+  "pressure_measure": "cauchy",
+  "peak_command_pressure_MPa": 0.05674168724676454,
+  "final_work_equivalent_cauchy_stress_MPa": [
+    [
+      -0.007548189721727245,
+      -0.0024363248917524385,
+      0.0017512938172963754
+    ],
+    [
+      -0.0024363248917524385,
+      -0.007553254421436257,
+      0.0017344046156980623
+    ],
+    [
+      0.0017512938172963754,
+      0.0017344046156980623,
+      -0.04114291563537586
+    ]
+  ],
+  "final_external_work_equivalent_cauchy_stress_MPa": [
+    [
+      -4.0683263520180275e-26,
+      6.3393695982356205e-28,
+      -3.07133350954106e-22
+    ],
+    [
+      6.3393695982356205e-28,
+      4.196445781975025e-26,
+      3.1674768058541043e-22
+    ],
+    [
+      -3.07133350954106e-22,
+      3.1674768058541043e-22,
+      -0.05674168724676454
+    ]
+  ],
+  "area_contact_scope": "single_closest_patch_with_edge_collision_guard",
+  "mass_frame": "pinned",
+  "porosity_goal_equilibrated": null,
+  "peak_nominal_pressure_MPa": 0.061414592951994355,
+  "contact_quadrature_variation_Nmm": 6.416461483963726e-06,
+  "contact_released_history_Nmm": 6.457979455572599e-12,
+  "contact_neighbor_builds": 1,
+  "audit_sampling": "every_accepted_step",
+  "loading_mode": "cauchy_pressure",
+  "contact_retries": 10,
+  "contact_backend": "area_guarded",
+  "edge_edge_response_implemented": false,
+  "edge_response_scope": "collision_guard_only_no_edge_spring",
+  "status": "diagnostics_only",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": false,
+    "path_completed": false,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": false,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": false
+  },
+  "failure": "SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied')",
+  "failure_feature": {
+    "kind": "ee",
+    "ids": [
+      401,
+      3800,
+      3793,
+      3795
+    ],
+    "shift": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0.43840047967511214,
+        12.254489412328653,
+        5.840281476444258
+      ],
+      [
+        0.4381640133274071,
+        12.242275001628515,
+        5.8410572764298765
+      ],
+      [
+        0.32786115194665594,
+        12.13428617781311,
+        5.821342887812575
+      ],
+      [
+        0.5175256627094568,
+        12.32671111617495,
+        5.820300874660525
+      ]
+    ],
+    "distance_mm": 0.01998909387734348
+  },
+  "surface_resolution_attempts": [
+    {
+      "accepted_time_s": 0.002019788150903511,
+      "trial_time_s": 0.0020201261572279873,
+      "trial_dt_s": 3.380063244763979e-07,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          1725,
+          1740,
+          1726,
+          1903
+        ],
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "points": [
+          [
+            5.457519676121811,
+            6.2135609701701275,
+            11.279444997695087
+          ],
+          [
+            5.458103912786917,
+            6.970780820271718,
+            11.261424039950336
+          ],
+          [
+            5.188277191603808,
+            6.701047355074308,
+            11.293286630794505
+          ],
+          [
+            5.945597327877195,
+            6.701559135828876,
+            11.275858326733587
+          ]
+        ],
+        "distance_mm": 0.019232290745395845
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002019788150903511,
+      "trial_time_s": 0.002020122736163431,
+      "trial_dt_s": 3.345852599201951e-07,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          1887,
+          2064,
+          2050,
+          2065
+        ],
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "points": [
+          [
+            6.2135597904405255,
+            5.457518491874337,
+            11.279445448850511
+          ],
+          [
+            6.97077962841252,
+            5.458102720682379,
+            11.261424599964295
+          ],
+          [
+            6.701048246824205,
+            5.1882780894335925,
+            11.293297393334107
+          ],
+          [
+            6.70156002490037,
+            5.945598210833576,
+            11.275869184889753
+          ]
+        ],
+        "distance_mm": 0.019242657813546237
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.00214436478658455,
+      "trial_dt_s": 7.510980170745348e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          175,
+          400,
+          385,
+          401
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            -0.05146530505424453,
+            11.749449608715818,
+            5.823427887284284
+          ],
+          [
+            0.7071925957810358,
+            12.519161618736936,
+            5.819268636123421
+          ],
+          [
+            0.42324597115589807,
+            11.472784947724813,
+            5.889890982902707
+          ],
+          [
+            0.4383827762696953,
+            12.254503559671782,
+            5.840235762266791
+          ]
+        ],
+        "distance_mm": 0.019937697769557006
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.00214436478658455,
+      "trial_dt_s": 7.510980170745348e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          385,
+          401,
+          400,
+          3793
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.42324597112223233,
+            11.472784947750027,
+            5.889890982937441
+          ],
+          [
+            0.4383827764330779,
+            12.254503559529496,
+            5.840235762228013
+          ],
+          [
+            0.7071927029343058,
+            12.519161539194057,
+            5.819268557773378
+          ],
+          [
+            0.32786291550430036,
+            12.134306180746714,
+            5.82134879647528
+          ]
+        ],
+        "distance_mm": 0.019937291453042655
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.002144364786584551,
+      "trial_dt_s": 7.510980170890085e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          400,
+          3793,
+          401,
+          3794
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.7071927029820636,
+            12.519161539223084,
+            5.819268557730369
+          ],
+          [
+            0.3278629154905941,
+            12.13430618074579,
+            5.821348796511201
+          ],
+          [
+            0.43838275145869426,
+            12.254503644469372,
+            5.840235812833728
+          ],
+          [
+            0.4308145268390104,
+            11.863643807082413,
+            5.865063070695933
+          ]
+        ],
+        "distance_mm": 0.019937343060697072
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.0021443647865845425,
+      "trial_dt_s": 7.510980170046893e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          401,
+          3794,
+          3793,
+          3795
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.43838275142290145,
+            12.254503644468022,
+            5.840235812856953
+          ],
+          [
+            0.4308145268576431,
+            11.863643807078384,
+            5.865063070653596
+          ],
+          [
+            0.3278629155034774,
+            12.134306180749183,
+            5.82134879646816
+          ],
+          [
+            0.5175273809848625,
+            12.326734177909453,
+            5.820308990427395
+          ]
+        ],
+        "distance_mm": 0.019937132307886685
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.0021443647865845516,
+      "trial_dt_s": 7.510980170939418e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          401,
+          3796,
+          3793,
+          3795
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.4383827360328942,
+            12.254503696758844,
+            5.840235844018765
+          ],
+          [
+            0.4345987392533285,
+            12.05907338624991,
+            5.852649239231626
+          ],
+          [
+            0.32786291550318175,
+            12.134306180745895,
+            5.821348796475453
+          ],
+          [
+            0.5175273809847811,
+            12.326734177907333,
+            5.82030899043594
+          ]
+        ],
+        "distance_mm": 0.019937159928501872
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.0021443647865845477,
+      "trial_dt_s": 7.510980170542292e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          401,
+          3797,
+          3793,
+          3795
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.43838272738271383,
+            12.2545037260555,
+            5.8402358614986225
+          ],
+          [
+            0.4364908454540566,
+            12.156788175838646,
+            5.8464423235144025
+          ],
+          [
+            0.3278629155051333,
+            12.134306180747425,
+            5.821348796473588
+          ],
+          [
+            0.5175273809870016,
+            12.326734177908769,
+            5.820308990433472
+          ]
+        ],
+        "distance_mm": 0.0199371642153471
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.002144289676782842,
+      "trial_time_s": 0.0021443335952627085,
+      "trial_dt_s": 4.391847986644054e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          401,
+          3798,
+          3793,
+          3795
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.43840069640814605,
+            12.254489236051606,
+            5.840282028231419
+          ],
+          [
+            0.43745471254501,
+            12.205632010001858,
+            5.843385477086073
+          ],
+          [
+            0.3278611289306626,
+            12.134285936237976,
+            5.821342817255813
+          ],
+          [
+            0.5175256402159085,
+            12.326710837461935,
+            5.820300777337233
+          ]
+        ],
+        "distance_mm": 0.01998975345219269
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.0021443118264427375,
+      "trial_time_s": 0.0021443339761187314,
+      "trial_dt_s": 2.2149675994005696e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          401,
+          3799,
+          3793,
+          3795
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.4384004758924147,
+            12.25448941516041,
+            5.8402814662385
+          ],
+          [
+            0.4379275232644661,
+            12.23006066213985,
+            5.8418331069063925
+          ],
+          [
+            0.3278611523716953,
+            12.134286182163928,
+            5.821342889066846
+          ],
+          [
+            0.5175256631179694,
+            12.326711121195778,
+            5.820300876405421
+          ]
+        ],
+        "distance_mm": 0.019989092999406904
+      },
+      "repaired": true
+    },
+    {
+      "accepted_time_s": 0.0021443228978987074,
+      "trial_time_s": 0.00214433396936923,
+      "trial_dt_s": 1.1071470522366077e-08,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          401,
+          3800,
+          3793,
+          3795
+        ],
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "points": [
+          [
+            0.43840047967511214,
+            12.254489412328653,
+            5.840281476444258
+          ],
+          [
+            0.4381640133274071,
+            12.242275001628515,
+            5.8410572764298765
+          ],
+          [
+            0.32786115194665594,
+            12.13428617781311,
+            5.821342887812575
+          ],
+          [
+            0.5175256627094568,
+            12.32671111617495,
+            5.820300874660525
+          ]
+        ],
+        "distance_mm": 0.01998909387734348
+      },
+      "repaired": false
+    }
+  ],
+  "steps": 5007,
+  "dt_min_s": 1.1071455969854129e-08,
+  "dt_max_s": 6.099541833314957e-07,
+  "kinetic_internal_ratio_loaded": 0.10565460205209075,
+  "closed_boundary_volume_relative_error": 0.0,
+  "material_volume_relative_error": 1.2257733644625206e-12,
+  "final_static_residual_ratio": 0.3318140474778219,
+  "energy_scale_Nmm": 11.358509630925878,
+  "initial_available_energy_Nmm": 0.0,
+  "energy_absolute_residual_Nmm": 0.0007812871856511805,
+  "energy_relative_error": 6.878430454678362e-05,
+  "remesh_events": [
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002019788150903511,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.5027409837645279,
+      "minimum_quality_after": 0.5027409837645279,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 1.9470415253187723e-15,
+        "angular_momentum": 2.637567364806335e-09,
+        "kinetic_energy": 4.273961224407164e-10,
+        "material_energy": 0.0,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 0.0,
+        "contact_macro_force": 0.0
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002019788150903511,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.5027409837645279,
+      "minimum_quality_after": 0.5027409837645279,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 1.98702552362252e-16,
+        "linear_momentum": 2.6106733696582754e-15,
+        "angular_momentum": 2.637568146493026e-09,
+        "kinetic_energy": 4.273964279430553e-10,
+        "material_energy": 1.6293458075895985e-16,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 0.0,
+        "contact_macro_force": 0.0
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.4485703744443747,
+      "minimum_quality_after": 0.4485703744443747,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 1.2887532556419284e-15,
+        "angular_momentum": 8.005698566978269e-08,
+        "kinetic_energy": 1.3999634082963256e-07,
+        "material_energy": 2.300844586054987e-16,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 2.8338373391775453e-16,
+        "contact_macro_force": 1.5436931904452382e-05
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.4485703744443747,
+      "minimum_quality_after": 0.4485703744443747,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 1.9870255236225203e-16,
+        "linear_momentum": 1.548632003635736e-15,
+        "angular_momentum": 6.543177479509102e-09,
+        "kinetic_energy": 1.6196866272026216e-08,
+        "material_energy": 1.1504222930274932e-16,
+        "contact_energy": 3.853044286946395e-11,
+        "normal_energy": 4.6491655037338485e-11,
+        "tangent_energy": 8.538918670409781e-12,
+        "contact_macro_force": 3.531226670030632e-11
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.4485703744443747,
+      "minimum_quality_after": 0.33448630446678745,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 1.0464585459698078e-15,
+        "angular_momentum": 1.0007123828839481e-08,
+        "kinetic_energy": 1.7499542454508672e-08,
+        "material_energy": 0.0,
+        "contact_energy": 1.628726227775183e-10,
+        "normal_energy": 6.01862871586101e-11,
+        "tangent_energy": 1.4816725612609667e-09,
+        "contact_macro_force": 5.718028046547828e-10
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.33448630446678745,
+      "minimum_quality_after": 0.33448630446678745,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 1.98702552362252e-16,
+        "linear_momentum": 1.5121247275262073e-15,
+        "angular_momentum": 8.178968132582447e-10,
+        "kinetic_energy": 2.024607644080876e-09,
+        "material_energy": 1.1504222930274932e-16,
+        "contact_energy": 2.0818541410712396e-10,
+        "normal_energy": 1.5682423437721885e-10,
+        "tangent_energy": 5.118494012674157e-10,
+        "contact_macro_force": 9.423265575271657e-10
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.33448630446678745,
+      "minimum_quality_after": 0.21424117274004809,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 1.9870255236225203e-16,
+        "linear_momentum": 1.5163336921063535e-15,
+        "angular_momentum": 1.0223682069207791e-10,
+        "kinetic_energy": 2.530747277938187e-10,
+        "material_energy": 1.1504222930274932e-16,
+        "contact_energy": 1.308157404052036e-10,
+        "normal_energy": 1.4186844378237406e-10,
+        "tangent_energy": 6.546830218381991e-11,
+        "contact_macro_force": 1.736668770761212e-10
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.21424117274004809,
+      "minimum_quality_after": 0.1333759377474784,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 1.98702552362252e-16,
+        "linear_momentum": 9.010441449752296e-16,
+        "angular_momentum": 1.2780956255348402e-11,
+        "kinetic_energy": 3.163356443917954e-11,
+        "material_energy": 0.0,
+        "contact_energy": 2.579771890283253e-10,
+        "normal_energy": 2.6861889865750485e-10,
+        "tangent_energy": 1.9505940056735425e-10,
+        "contact_macro_force": 2.1835009508688802e-10
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.002144289676782842,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.1333759377474784,
+      "minimum_quality_after": 0.08344265724748764,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 1.6195478282419837e-15,
+        "angular_momentum": 1.5974207229309451e-12,
+        "kinetic_energy": 3.954461590052705e-12,
+        "material_energy": 0.0,
+        "contact_energy": 1.8712108867770163e-10,
+        "normal_energy": 1.9362291439523637e-10,
+        "tangent_energy": 1.4868025184609068e-10,
+        "contact_macro_force": 4.19764982255048e-10
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.0021443118264427375,
+      "accepted": true,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.08344299294782673,
+      "minimum_quality_after": 0.052371628704995885,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 9.292286176631833e-16,
+        "angular_momentum": 5.068578753915979e-13,
+        "kinetic_energy": 1.9222038670592182e-12,
+        "material_energy": 0.0,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 1.4167571752973197e-16,
+        "contact_macro_force": 4.554775592453579e-06
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.0021443228978987074,
+      "accepted": false,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.05237186485678589,
+      "minimum_quality_after": 0.03292924009205402,
+      "reason": "Periodic displacement transfer failed"
+    }
+  ],
+  "initial_porosity": 0.3984375,
+  "final_porosity": 0.342711367297554,
+  "final_axial_compression": 0.15670547396831513,
+  "residual_compression_strain": null,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "contact quadrature, barrier thickness, mollification and general friction convergence not validated",
+    "surface edge bisection is experimental; no coarsening or general distortion repair",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

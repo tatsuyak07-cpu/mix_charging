@@ -1,0 +1,1 @@
+{"nodes": 24891, "tets": 118848, "porosity": 0.3955078125, "strain": [0.00019096658134656758, 0.0001909665813465846, -0.0008428869409840735, 6.39062803233449e-07, -4.513760792179356e-06, -4.513760792134978e-06], "checks": {"equilibrium": true, "positive_macro_stiffness": true, "symmetric_macro_stiffness": true, "elastic_work_identity": true}, "wall_s": 35.811367638991214}

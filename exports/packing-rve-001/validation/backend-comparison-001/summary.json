@@ -1,0 +1,45 @@
+{
+  "scope": "NumPy/native agreement on a stopped plastic RVE path, not a physical solution.",
+  "checks": {
+    "points": true,
+    "reference_points": true,
+    "tets": true,
+    "elastic_b": true,
+    "peeq": true,
+    "reference_volume": true,
+    "generalized_position": true,
+    "generalized_velocity": true,
+    "same_step_count": true,
+    "same_audit_shape": true,
+    "same_stop_reason": true,
+    "audit_times": true,
+    "audit_compression": true,
+    "audit_porosity": true,
+    "audit_mechanical_energies": true
+  },
+  "passed": true,
+  "absolute_state_differences": {
+    "points": 2.2648549702353193e-12,
+    "reference_points": 0.0,
+    "tets": 0.0,
+    "elastic_b": 7.856253625079801e-13,
+    "peeq": 7.655542866302767e-13,
+    "reference_volume": 2.7755575615628914e-17,
+    "generalized_position": 1.0074441281204827e-12,
+    "generalized_velocity": 4.903085937257856e-09
+  },
+  "predeclared_state_tolerances": {
+    "points": 1e-07,
+    "reference_points": 1e-12,
+    "tets": 0.0,
+    "elastic_b": 1e-08,
+    "peeq": 1e-08,
+    "reference_volume": 1e-12,
+    "generalized_position": 1e-08,
+    "generalized_velocity": 1e-05
+  },
+  "steps": 3722,
+  "numpy_status": "diagnostics_only",
+  "native_status": "diagnostics_only",
+  "physical_equilibrium_verified": false
+}

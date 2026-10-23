@@ -1,0 +1,16 @@
+{
+  "scope": "Export small-cell validation, failed compaction attempts and actual meshes.",
+  "geometry": "2 periodic BCC spheres, 8 diagonal necks, fixed L=12.1 mm; not a statistical random RVE or the 100 mm specimen",
+  "material": "E10 MPa, nu0.33, trial Kirchhoff-yield Hencky J2 y0.05/H0.2 MPa, mu0.3",
+  "low_control": "0.001 MPa Cauchy pressure, 8 ms quintic ramp + 2 ms hold; no plasticity/contact expected",
+  "requested_load": "0.1 MPa; rapid 4 ms + 2 ms hold diagnostic, not a quasi-static acceptance result",
+  "limits": {
+    "final_compression_absolute": 1e-07,
+    "final_porosity_absolute": 1e-07,
+    "path_porosity_absolute": 1e-07,
+    "path_compression_over_peak": 0.001,
+    "linear_axial_relative": 0.01,
+    "mean_stress_relative": 0.02
+  },
+  "mesh_convergence_verified": false
+}

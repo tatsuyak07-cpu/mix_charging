@@ -1,0 +1,1 @@
+{"library": "/workspace/environment/mix_charging/native/element-a0cdacad3ca39dc241d1f99227ca085138325debf35b9850ab19ee1f8ebcad9c.so", "source_sha256": "a0cdacad3ca39dc241d1f99227ca085138325debf35b9850ab19ee1f8ebcad9c", "flags": ["-O3", "-std=c++17", "-fPIC", "-shared"], "fast_math": false}

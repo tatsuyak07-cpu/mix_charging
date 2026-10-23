@@ -45,6 +45,21 @@ class Periodic:
         self.A=coo_matrix((data,(rows,cols)),shape=(3*len(X),self.ndof)).tocsr()
 
     def positions(self,q):return self.X+np.asarray(self.A@q).reshape(-1,3)
+    def remap_positions(self,x,macro,tolerance=1e-10):
+        """Exact class-wise reconstruction at fixed macro strain, no least squares.
+
+        Reject incompatible periodic displacements or a changed pinned gauge;
+        do not average inconsistent boundary data into an apparently valid map.
+        """
+        x=np.asarray(x,float);macro=np.asarray(macro,float)
+        if x.shape!=self.X.shape or macro.shape!=(6,) or not np.all(np.isfinite(x)) or not np.all(np.isfinite(macro)):raise ValueError('Invalid position transfer data')
+        affine=np.asarray(self.A[:,self.nmicro:]@macro).reshape(-1,3)
+        micro=x-self.X-affine
+        _,representatives=np.unique(self.classes,return_index=True)
+        q=np.zeros(self.ndof);q[-6:]=macro;q[:self.nmicro]=micro[representatives[1:]].ravel()
+        if np.max(abs(self.positions(q)-x))>self.L*tolerance:raise ValueError('Periodic displacement transfer failed')
+        return q
+
     def velocities(self,v):
         velocity=np.asarray(self.A@v).reshape(-1,3)
         if self.mass_frame=='zero_momentum':velocity-=np.sum(self.nodal_mass[:,None]*velocity,axis=0)/self.total_mass

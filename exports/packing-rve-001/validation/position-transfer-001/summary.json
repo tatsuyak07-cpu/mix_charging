@@ -1,0 +1,13 @@
+{
+  "scope": "Audit exact periodic reconstruction on a saved rejected remesh proposal.",
+  "source_proposal": "results/packing-rve-development-001/native-pressure01-clarke-001/calculation/surface-remesh-attempt-0011.npz",
+  "old_least_squares_error_mm": 1.8635049059412268e-09,
+  "exact_class_reconstruction_error_mm": 1.7763568394002505e-15,
+  "unchanged_tolerance_mm": 1.21e-09,
+  "checks": {
+    "old_failure_reproduced": true,
+    "exact_transfer_passes": true,
+    "macro_preserved": true
+  },
+  "physical_solution_verified": false
+}

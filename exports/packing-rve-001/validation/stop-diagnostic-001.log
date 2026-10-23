@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/mix_charging/tools/diagnose_rve_stop.py", line 45, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/mix_charging/tools/diagnose_rve_stop.py", line 38, in main
+    ids=r[2];ref=X[ids].copy();ref[1:]+=contact.L*r[3]
+                                        ~~~~~~~~~^~~~~
+TypeError: can't multiply sequence by non-int of type 'float'

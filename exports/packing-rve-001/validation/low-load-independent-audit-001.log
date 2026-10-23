@@ -1,0 +1,3 @@
+usage: audit_contact_capture.py [-h] --input INPUT --output OUTPUT
+                                [--force-only]
+audit_contact_capture.py: error: the following arguments are required: --input

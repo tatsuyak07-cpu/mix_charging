@@ -1,0 +1,139 @@
+{
+  "geometry": {
+    "scope": "Small BCC sintered-sphere RVE for development, not a random packing RVE.\n\nContinuous geometry is two periodic 10 mm spheres joined to all eight BCC\nneighbors by 2 mm cylinders. A fixed cell and voxel phase are held across mesh\nlevels. Actual discretized porosity and neck resolution are always reported.\n",
+    "cell_length_mm": 12.1,
+    "diameter_mm": 10.0,
+    "neck_diameter_mm": 2.0,
+    "centers": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        6.05,
+        6.05,
+        6.05
+      ]
+    ],
+    "periodic_bonds": 8,
+    "grid_n": 32,
+    "voxel_mm": 0.378125,
+    "cells_across_neck": 5.289256198347108,
+    "nodes": 24891,
+    "tetrahedra": 118848,
+    "initial_porosity": 0.3955078125,
+    "mesh_solid_volume_mm3": 1070.8947841796871,
+    "sphere_voxel_volume_mm3": 1060.5145439453124,
+    "added_neck_volume_mm3": 10.380240234374924,
+    "periodic_components": 1,
+    "winding_rank": 3,
+    "phase_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "statistical_isotropy_verified": false,
+    "mesh_convergence_verified": false,
+    "requested_100mm_model": false
+  },
+  "reference": {
+    "scope": "Independent small-strain sparse periodic stiffness reference (not compaction).",
+    "pressure_mpa": 0.001,
+    "macro_stiffness_Nmm": [
+      [
+        2424.062592571916,
+        710.3900142042512,
+        710.3900142042203,
+        -37.27053138215702,
+        -37.27053138205777,
+        -12.928291734615494
+      ],
+      [
+        710.3900142042057,
+        2424.0625925718414,
+        710.3900142042266,
+        -37.27053138219503,
+        -12.928291734520581,
+        -37.27053138221955
+      ],
+      [
+        710.3900142042212,
+        710.3900142042157,
+        2424.062592571843,
+        -12.92829173450765,
+        -37.27053138206486,
+        -37.27053138194061
+      ],
+      [
+        -37.27053138209237,
+        -37.270531382183954,
+        -12.928291734603352,
+        4858.164324651174,
+        -25.820103518605986,
+        -25.820103518860687
+      ],
+      [
+        -37.27053138185823,
+        -12.92829173454685,
+        -37.270531382158964,
+        -25.82010351835701,
+        4858.164324651201,
+        -25.82010351869888
+      ],
+      [
+        -12.928291734633564,
+        -37.27053138212899,
+        -37.2705313819809,
+        -25.820103518875417,
+        -25.820103518689535,
+        4858.164324650668
+      ]
+    ],
+    "macro_eigenvalues_Nmm": [
+      1713.4856851753857,
+      1713.4856851754323,
+      3836.951629772977,
+      4814.41510882099,
+      4884.171321361836,
+      4884.1713213620305
+    ],
+    "macro_strain": [
+      0.00019096658134656758,
+      0.0001909665813465846,
+      -0.0008428869409840735,
+      6.39062803233449e-07,
+      -4.513760792179356e-06,
+      -4.513760792134978e-06
+    ],
+    "volume_average_stress_mpa": [
+      [
+        -8.412231659115287e-18,
+        -2.4273600189431782e-17,
+        -2.6134873069357178e-17
+      ],
+      [
+        -2.4273600189431782e-17,
+        3.054869389511649e-18,
+        3.641263728825169e-17
+      ],
+      [
+        -2.6134873069357178e-17,
+        3.641263728825169e-17,
+        -0.0010000000000001353
+      ]
+    ],
+    "relative_equilibrium_residual": 2.9521865534956786e-14,
+    "elastic_energy_Nmm": 0.0007466128160283625,
+    "half_load_work_Nmm": 0.0007466128160283431,
+    "initial_porosity": 0.3955078125000002,
+    "material_strain_peak": 0.003414080631017325,
+    "checks": {
+      "equilibrium": true,
+      "positive_macro_stiffness": true,
+      "symmetric_macro_stiffness": true,
+      "elastic_work_identity": true
+    }
+  },
+  "wall_s": 35.810759709973354
+}

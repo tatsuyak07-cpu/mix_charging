@@ -1,5 +1,11 @@
 # Periodic sphere-packing compression — solid FEM
 
+工程4の小周期セルを実装：**10 mm球・2 mmネックのBCC焼結セルで低荷重の周期圧縮を検証**。
+[開発・検証報告](docs/packing-rve-development.md)・[比較図](exports/packing-rve-001/packing-rve-validation.png)・[実メッシュ](exports/packing-rve-001/actual-packing-mesh.png)・[全データZIP](exports/packing-rve-001.zip)。
+初期空隙率39.84375%。0.001 MPaの対照を独立な線形FEM解・力の再積分・刻み半減と比較しました。
+接触停止からの辺分割・再試行、等距離最短点の劣勾配、周期変位の直接移行、検証付きC++要素カーネルを追加。
+**0.1 MPaまでの準静的大変形、表面の品質回復、メッシュ収束、40%→10%圧密は未完了**です。大荷重の保存状態を平衡解として扱っていません。
+
 工程1〜3の試験実装：**参照材料近傍の幾何条件、別パッチの複数接触、周期表面の辺分割と状態・摩擦履歴の移行を追加**。
 [開発・検証報告](docs/surface-development.md)・[分割前後の画像](exports/surface-bisection-view-001/surface-bisection.png)・[判定結果](exports/surface-development-003/summary.json)・[全データZIP](exports/surface-development-003.zip)。
 全体224テスト・診断10項目に合格。小さな圧力対照で分割後の継続と解析解を検証し、接触専用試験で摩擦履歴・エネルギー・巨視的接触力の移行を確認。

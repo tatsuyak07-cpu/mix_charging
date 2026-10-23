@@ -1,0 +1,38 @@
+{
+  "scope": "Small BCC sintered-sphere RVE for development, not a random packing RVE.\n\nContinuous geometry is two periodic 10 mm spheres joined to all eight BCC\nneighbors by 2 mm cylinders. A fixed cell and voxel phase are held across mesh\nlevels. Actual discretized porosity and neck resolution are always reported.\n",
+  "cell_length_mm": 12.1,
+  "diameter_mm": 10.0,
+  "neck_diameter_mm": 2.0,
+  "centers": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      6.05,
+      6.05,
+      6.05
+    ]
+  ],
+  "periodic_bonds": 8,
+  "grid_n": 16,
+  "voxel_mm": 0.75625,
+  "cells_across_neck": 2.644628099173554,
+  "nodes": 3791,
+  "tetrahedra": 14784,
+  "initial_porosity": 0.3984375,
+  "mesh_solid_volume_mm3": 1065.7046640625,
+  "sphere_voxel_volume_mm3": 1044.94418359375,
+  "added_neck_volume_mm3": 20.760480468749847,
+  "periodic_components": 1,
+  "winding_rank": 3,
+  "phase_mm": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "statistical_isotropy_verified": false,
+  "mesh_convergence_verified": false,
+  "requested_100mm_model": false
+}

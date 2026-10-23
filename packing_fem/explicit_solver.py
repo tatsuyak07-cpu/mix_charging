@@ -27,11 +27,22 @@ def profile(time,c):
 
 
 def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
-    v,_,_=geometry(x,t);p=x[t];faces=np.array([[1,2,3],[0,3,2],[0,1,3],[0,2,1]])
+    geometry_fn=geometry
+    if c.get('element_backend','numpy')=='native':
+        from .native_kernel import load
+        geometry_fn=load(c).geometry
+    v,_,_=geometry_fn(x,t);p=x[t];faces=np.array([[1,2,3],[0,3,2],[0,1,3],[0,2,1]])
     triangles=p[:,faces];areas=np.linalg.norm(np.cross(triangles[:,:,1]-triangles[:,:,0],triangles[:,:,2]-triangles[:,:,0]),axis=2)/2
     height=3*v/areas.max(axis=1);G,K=constants(c);rho=c['density_tonne_mm3']*V0/v
     wave=np.sqrt((K+4*G/3)/rho)*np.maximum(1.,V0/v)
     bulk=float(np.min(height/wave));contact_bound=float('inf')
+    if c.get('timestep_method')=='triangle_mass_bound':
+        from .explicit_timestep import triangle_frequency_bound
+        if c.get('element_backend','numpy')=='native':
+            from .native_kernel import load
+            bound=load(c).bound(x,t,mass,c,stress,elastic_b)
+        else:bound=triangle_frequency_bound(x,t,mass,c,stress,elastic_b)
+        bulk=2/np.sqrt(bound)
     if c.get('timestep_method')=='assembled_mass_bound':
         from .explicit_timestep import assembled_frequency_bound
         bulk=2/np.sqrt(assembled_frequency_bound(x,t,mass,c,stress,elastic_b))
@@ -43,12 +54,20 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
         nodes=contact.nodes
         diagonal=2*c['contact_penalty_mpa_mm']*nodeA[nodes]
         if hasattr(contact,'edge_stiffness_diagonal'):diagonal+=contact.edge_stiffness_diagonal()[nodes]
-        contact_bound=float(np.sqrt(np.min(mass[nodes]/diagonal)))
+        if c.get('active_contact_timestep',False):
+            if c.get('contact_backend')!='area_guarded':raise ValueError('Active contact timestep requires area_guarded')
+            # Outside the compactly supported barrier the contact Hessian is
+            # zero. Keep the accepted active-support bound plus motion guards.
+            diagonal=contact.edge_stiffness_diagonal()[nodes]
+        active=diagonal>0
+        if np.any(active):contact_bound=float(np.sqrt(np.min(mass[nodes[active]]/diagonal[active])))
     motion=c['contact_skin_mm']*.1/max(float(np.max(np.linalg.norm(velocity,axis=1))),1e-30)
     return min(c['cfl']*bulk,c['cfl']*contact_bound,motion,c.get('maximum_dt_s',float('inf')))
 
 
 def validate(c):
+    if c.get('closest_tie_rule','stop') not in ('stop','clarke'):raise ValueError('Unknown closest tie rule')
+    if c.get('element_backend','numpy') not in ('numpy','native'):raise ValueError('Unknown element backend')
     for k in ['length_mm','young_mpa','density_tonne_mm3','ramp_s','contact_penalty_mpa_mm','contact_skin_mm','cfl']:
         if not np.isfinite(c[k]) or c[k]<=0:raise ValueError(f'Positive finite {k} required')
     if not 0<c['cfl']<=.3 or not 0<=c['compression_fraction']<.9:raise ValueError('Prototype CFL/compression bounds exceeded')
@@ -60,7 +79,7 @@ def validate(c):
     if c.get('initial_peeq',0)<0:raise ValueError('Negative initial plastic history')
     for key in ('max_steps','output_every'):
         if not isinstance(c[key],int) or c[key]<1:raise ValueError(f'Positive integer {key} required')
-    for name in ('multiple_patches','certified_local_filter','local_material_filter','edge_stationarity_filter'):
+    for name in ('multiple_patches','certified_local_filter','local_material_filter','edge_stationarity_filter','active_contact_timestep','surface_remesh_on_edge_guard'):
         if name in c and not isinstance(c[name],bool):raise ValueError(f'Boolean {name} required')
     for name in ('surface_remesh_every','surface_remesh_max_events'):
         if name in c and (not isinstance(c[name],int) or c[name]<0):raise ValueError(f'Nonnegative integer {name} required')
@@ -74,18 +93,23 @@ def validate(c):
     if not np.isfinite(c.get('edge_penalty_scale',1.)) or c.get('edge_penalty_scale',1.)<=0:raise ValueError('Positive edge penalty scale required')
     if c.get('loading_mode','displacement') not in ('displacement','nominal_pressure','cauchy_pressure','porosity_target'):raise ValueError('Unknown loading mode')
     if c.get('loading_mode') in ('nominal_pressure','cauchy_pressure','porosity_target') and (not np.isfinite(c.get('pressure_mpa',0)) or c.get('pressure_mpa',0)<=0):raise ValueError('Positive finite pressure required')
-    if c.get('timestep_method','element_wave') not in ('element_wave','assembled_mass_bound'):raise ValueError('Unknown timestep method')
+    if c.get('timestep_method','element_wave') not in ('element_wave','assembled_mass_bound','triangle_mass_bound'):raise ValueError('Unknown timestep method')
     if c.get('loading_mode')=='porosity_target' and (not 0<c.get('target_final_porosity',-1)<1 or c.get('hold_s',0)<=0 or c.get('unload_s',0)>0):raise ValueError('Porosity control needs a physical target, positive equilibration hold and no unloading')
     constants(c)
 
 
 def solve(directory,X,t,c):
+    geometry_fn,advance_fn,internal_fn,quality_fn=geometry,advance,internal_force,quality
     c=dict(c)
     if c.get('contact_backend')=='area_guarded':c.setdefault('local_material_filter',True);c.setdefault('edge_stationarity_filter',False);c.setdefault('multiple_patches',False);c.setdefault('certified_local_filter',False)
     validate(c);directory=Path(directory);directory.mkdir(parents=True,exist_ok=False)
+    if c.get('element_backend','numpy')=='native':
+        from .native_kernel import load
+        kernel=load(c);geometry_fn,advance_fn,internal_fn,quality_fn=kernel.geometry,kernel.advance,kernel.internal_force,kernel.quality
+        (directory/'native-kernel.json').write_text(json.dumps(kernel.identity(),indent=2)+'\n')
     np.savez_compressed(directory/'initial-mesh.npz',points=X,tets=t)
     (directory/'config.json').write_text(json.dumps(c,indent=2)+'\n')
-    V0,_,D=geometry(X,t);initial_V0=float(V0.sum());periodic=Periodic(X,c['length_mm'],mass_frame=c.get('mass_frame','pinned'))
+    V0,_,D=geometry_fn(X,t);initial_V0=float(V0.sum());periodic=Periodic(X,c['length_mm'],mass_frame=c.get('mass_frame','pinned'))
     pressure_control=c.get('loading_mode') in ('nominal_pressure','cauchy_pressure','porosity_target')
     goal_control=c.get('loading_mode')=='porosity_target'
     cauchy_control=c.get('loading_mode')=='cauchy_pressure'
@@ -104,7 +128,7 @@ def solve(directory,X,t,c):
         from .barrier_contact import BarrierContact
         from .area_contact import AreaContact
         contact_type=AreaContact if c['contact_backend']=='area_guarded' else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
-    if c.get('contact_backend')=='area_guarded':contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False),multiple_patches=c.get('multiple_patches',False),certified_local_filter=c.get('certified_local_filter',False))
+    if c.get('contact_backend')=='area_guarded':contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False),multiple_patches=c.get('multiple_patches',False),certified_local_filter=c.get('certified_local_filter',False),closest_tie_rule=c.get('closest_tie_rule','stop'))
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     if c.get('save_contact_audit',False):
         if c.get('contact_backend')!='area_guarded':raise ValueError('Contact audit capture requires area_guarded')
@@ -114,7 +138,7 @@ def solve(directory,X,t,c):
         initial_velocity=np.asarray(c['initial_velocity_mm_s'],float)
         if initial_velocity.shape!=X.shape or not np.all(np.isfinite(initial_velocity)):raise ValueError('Invalid manufactured initial velocity')
         v=periodic.remap_velocity(periodic.force(mass[:,None]*initial_velocity),0.)
-    f_int,volume,energy,J,D,sigma=internal_force(x,t,b,ep,c)
+    f_int,volume,energy,J,D,sigma=internal_fn(x,t,b,ep,c)
     fc,extra,hist,ci=contact.evaluate(x,periodic.velocities(v),np.eye(3)*periodic.L,np.zeros((3,3)),0.)
     contact.history=hist
     if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,np.eye(3)*periodic.L)
@@ -147,18 +171,17 @@ def solve(directory,X,t,c):
                 event.update(time_s=time,kinetic_energy_scaled_error=error,accepted=True)
                 t,b,ep,V0,mass,v=t2,b2,ep2,V02,mass2,v2
                 contact.update_topology(t)
-                f_int,volume,energy,J,D,sigma=internal_force(x,t,b,ep,c)
+                f_int,volume,energy,J,D,sigma=internal_fn(x,t,b,ep,c)
                 f=periodic.force(f_int+fc,extra);a=periodic.acceleration(f+external,v,ap if periodic.prescribed_active else 0.,c['damping_per_s'])
             else:
                 event.update(time_s=time,kinetic_energy_scaled_error=error,accepted=False,reason='momentum projection energy error')
                 periodic.mass(mass)
             remesh_events.append(event)
 
-    def try_surface_remesh(ap):
+    def try_surface_remesh(ap,requested_edge=None):
         nonlocal X,x,t,b,ep,V0,mass,periodic,contact,q,v,f_int,volume,energy,J,D,sigma,f,a,fc,extra,ci,external
         from .surface_remesh import bisect,transfer_contact,audit
         from .adaptive_tet import boundary
-        from scipy.sparse.linalg import lsqr
         if c.get('contact_backend')!='area_guarded':raise ValueError('Surface refinement requires area_guarded')
         if sum(e.get('accepted',False) and e.get('operation')=='periodic_edge_bisection' for e in remesh_events)>=c.get('surface_remesh_max_events',1):return
         faces=boundary(t);edges=np.unique(np.sort(np.concatenate([faces[:,[i,j]] for i,j in ((0,1),(1,2),(2,0))]),axis=1),axis=0)
@@ -166,7 +189,7 @@ def solve(directory,X,t,c):
         ordered=np.argsort(-lengths,kind='stable')
         # Caller may prescribe one edge for reproducible verification. Otherwise
         # refine the longest current boundary edge (a numerical choice).
-        choices=[np.asarray(c['surface_remesh_edge'],int)] if 'surface_remesh_edge' in c else edges[ordered]
+        choices=[np.asarray(requested_edge,int)] if requested_edge is not None else ([np.asarray(c['surface_remesh_edge'],int)] if 'surface_remesh_edge' in c else edges[ordered])
         event=dict(operation='periodic_edge_bisection',time_s=time,accepted=False)
         try:
             oldnv=periodic.velocities(v)
@@ -181,7 +204,7 @@ def solve(directory,X,t,c):
             p2.prescribed_active=periodic.prescribed_active
             p2.free=np.delete(np.arange(p2.ndof),p2.prescribed) if p2.prescribed_active else np.arange(p2.ndof)
             m2=lumped_mass(p['t'],p['V0'],c['density_tonne_mm3'],len(p['X']));p2.mass(m2)
-            q2=lsqr(p2.A,(p['x']-p['X']).ravel(),atol=1e-13,btol=1e-13,iter_lim=10*p2.ndof)[0]
+            q2=p2.remap_positions(p['x'],q[-6:])
             if np.max(abs(p2.positions(q2)-p['x']))>periodic.L*1e-10:raise ValueError('Periodic displacement transfer failed')
             if np.max(abs(q2[-6:]-q[-6:]))>1e-10:raise ValueError('Remesh changes macroscopic cell')
             v2=p2.remap_velocity(p2.force(m2[:,None]*p['velocity']),v[periodic.prescribed])
@@ -195,7 +218,7 @@ def solve(directory,X,t,c):
             evaluated=transfer_contact(contact,newcontact,p,H)
             audit_report=audit((X,x,t,b,ep,V0,oldnv),p,c,ci,evaluated[-1],c['remesh_energy_tolerance'],old_response=(fc,extra),new_response=evaluated)
             event.update(audit_report)
-            if quality(p['x'],p['t']).min()<c['minimum_quality']:event.update(accepted=False,reason='Refined mesh below minimum quality')
+            if quality_fn(p['x'],p['t']).min()<c['minimum_quality']:event.update(accepted=False,reason='Refined mesh below minimum quality')
             if not event['accepted']:return
             external2=np.zeros(p2.ndof);external2[-6:]=external[-6:]
             fc2,extra2,_,ci2=evaluated
@@ -203,13 +226,14 @@ def solve(directory,X,t,c):
             if newcontact.capture_audit:
                 fc2,extra2,hist2,ci2=newcontact.evaluate(p['x'],p2.velocities(v2),H,H*0,0.);newcontact.history=hist2
             newcontact.accept_geometry(p['x'],H)
-            fi2,vol2,en2,J2,D2,sigma2=internal_force(p['x'],p['t'],p['b'],p['ep'],c)
+            fi2,vol2,en2,J2,D2,sigma2=internal_fn(p['x'],p['t'],p['b'],p['ep'],c)
             f2=p2.force(fi2+fc2,extra2);a2=p2.acceleration(f2+external2,v2,ap if p2.prescribed_active else 0.,c['damping_per_s'])
             # Commit only after every potentially failing calculation completes.
             X,x,t,b,ep,V0,mass,periodic,contact,q,v=p['X'],p['x'],p['t'],p['b'],p['ep'],p['V0'],m2,p2,newcontact,q2,v2
             fc,extra,ci,external,f_int,volume,energy,J,D,sigma,f,a=fc2,extra2,ci2,external2,fi2,vol2,en2,J2,D2,sigma2,f2,a2
         except ValueError as exc:event.update(accepted=False,reason=str(exc))
         finally:remesh_events.append(event)
+        return event['accepted']
 
     if c.get('initial_remesh',False):try_remesh(0.)
     initial_energy=float(V0@energy)+ci['normal_energy']+ci['tangent_energy']+float(.5*v@(periodic.M@v));dt_min=float('inf');dt_max=0.
@@ -223,7 +247,7 @@ def solve(directory,X,t,c):
         nominal=float(-(external[periodic.prescribed] if pressure_control else reaction[periodic.prescribed])/periodic.L**3)
         dynamic=reaction-external;dynamic[-6:]/=periodic.L
         return [time,-q[periodic.prescribed],1-volume.sum()/vc,nominal,kinetic,internal,W,damp,friction,released,
-                ci['normal_energy'],ci['tangent_energy'],total-W,float(ep.max()),float(J.min()),float(quality(x,t).min()),
+                ci['normal_energy'],ci['tangent_energy'],total-W,float(ep.max()),float(J.min()),float(quality_fn(x,t).min()),
                 ci['penetration_mm'],ci['max_coulomb_ratio'],ci['contacts'],len(t),float(np.max(np.abs(dynamic[periodic.free]))),algorithmic,ci.get('edge_contacts',0),ci.get('minimum_separation_mm',float('nan')),command_pressure if pressure_control else float('nan')]
     history.append(snapshot());audit_rows=[history[0][0:7]+[history[0][12],ci['normal_energy'],ci['tangent_energy'],ci['contacts']]];coulomb_peak=ci['max_coulomb_ratio']
     progress=directory/'progress.jsonl';progress.write_text('')
@@ -231,6 +255,8 @@ def solve(directory,X,t,c):
         row=history[-1]
         with progress.open('a') as stream:stream.write(json.dumps({'step':steps,'time_s':time,'axial_compression':row[1],'porosity':row[2],'contacts':int(row[18]),'edge_contacts':int(row[22]),'elements':len(t),'min_quality':row[15],'nominal_pressure_MPa':row[3],'kinetic_Nmm':row[4],'internal_Nmm':row[5],'energy_residual_Nmm':row[12]})+'\n')
     log_progress()
+    from .area_contact import SurfaceResolutionError
+    resolution_attempts=[];failure_feature=None
     try:
         while time<duration-1e-14:
             if unload>0 and periodic.prescribed_active and time>=release_time-1e-14:
@@ -246,10 +272,10 @@ def solve(directory,X,t,c):
             xnew=periodic.positions(qnew)
             if np.linalg.det(deformation(qnew[-6:]))<=0:raise ValueError('Inverted macroscopic cell')
             if np.max(np.linalg.norm(xnew-x,axis=1))>.25*c['contact_skin_mm']:raise RuntimeError('Contact motion-resolution limit exceeded')
-            volnew,_,Dnew=geometry(xnew,t)
-            bnew,epnew=advance(b,ep,Dnew@np.linalg.inv(D),c)
+            volnew,_,Dnew=geometry_fn(xnew,t)
+            bnew,epnew=advance_fn(b,ep,Dnew@np.linalg.inv(D),c)
             if epnew.max()>c.get('max_peeq',5.):raise RuntimeError('Trial material strain range exceeded')
-            fnew_int,volnew,enew,Jnew,Dnew,snew=internal_force(xnew,t,bnew,epnew,c)
+            fnew_int,volnew,enew,Jnew,Dnew,snew=internal_fn(xnew,t,bnew,epnew,c)
             if np.max(np.abs(volnew-V0*Jnew)/V0)>1e-8:raise RuntimeError('Material/geometric volume consistency lost')
             if volnew.sum()>np.linalg.det(deformation(qnew[-6:]))*periodic.L**3*(1+1e-7):raise RuntimeError('Nonphysical negative pore volume; no overlap correction permitted')
             vhalf=v+.5*dt*a
@@ -257,6 +283,20 @@ def solve(directory,X,t,c):
             H=deformation(qnew[-6:])*periodic.L;Hdot=(deformation(vhalf[-6:])-np.eye(3))*periodic.L
             try:
                 fc,extra,newhist,cnew=contact.evaluate(xnew,periodic.velocities(vhalf),H,Hdot,dt)
+            except SurfaceResolutionError as exc:
+                feature=getattr(exc,'feature',None)
+                attempt=dict(accepted_time_s=time,trial_time_s=next_time,trial_dt_s=dt,reason=str(exc),feature=feature,repaired=False)
+                resolution_attempts.append(attempt)
+                if c.get('surface_remesh_on_edge_guard',False) and feature is not None and feature['kind']=='ee':
+                    # Refine the accepted state, discard the failed trial, and
+                    # recompute its step with the new mass/kinematics/history.
+                    repaired=try_surface_remesh(profile(time,c)[2],feature['ids'][:2])
+                    attempt['repaired']=bool(repaired)
+                    if repaired:
+                        contact_retries+=1
+                        if contact_retries>c.get('max_contact_retries',10000):raise RuntimeError('Contact retry budget exhausted')
+                        continue
+                raise
             except ContactResolutionError as exc:
                 if c.get('contact_backend') not in ('distance_barrier','area_guarded'):raise
                 contact_retries+=1;retry_limit=dt*.5
@@ -292,12 +332,12 @@ def solve(directory,X,t,c):
             if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,H)
             time=next_time;steps+=1
             if c.get('remesh_every',0) and steps%c['remesh_every']==0:try_remesh(ap)
-            if steps in c.get('surface_remesh_steps',[]) or (c.get('surface_remesh_every',0) and steps%c['surface_remesh_every']==0 and quality(x,t).min()<c.get('surface_remesh_quality',.35)):
+            if steps in c.get('surface_remesh_steps',[]) or (c.get('surface_remesh_every',0) and steps%c['surface_remesh_every']==0 and quality_fn(x,t).min()<c.get('surface_remesh_quality',.35)):
                 try_surface_remesh(ap)
             kinetic_now=float(.5*v@(periodic.M@v));internal_now=float(V0@energy)
             residual_now=kinetic_now+internal_now+ci['normal_energy']+ci['tangent_energy']+damp+friction+released+algorithmic-initial_energy-W
             audit_rows.append([time,-q[periodic.prescribed],1-volume.sum()/(np.linalg.det(deformation(q[-6:]))*periodic.L**3),command_pressure if pressure_control else -external[periodic.prescribed]/periodic.L**3,kinetic_now,internal_now,W,residual_now,ci['normal_energy'],ci['tangent_energy'],ci['contacts']]);coulomb_peak=max(coulomb_peak,ci['max_coulomb_ratio'])
-            if quality(x,t).min()<c['minimum_quality']:raise RuntimeError('Mesh quality exhausted; local remeshing cannot repair this boundary distortion')
+            if quality_fn(x,t).min()<c['minimum_quality']:raise RuntimeError('Mesh quality exhausted; local remeshing cannot repair this boundary distortion')
             if goal_control:
                 if goal_phase=='ramp':goal_load_time=min(c['ramp_s'],goal_load_time+dt)
                 phi=1-volume.sum()/(np.linalg.det(deformation(q[-6:]))*periodic.L**3)
@@ -316,7 +356,7 @@ def solve(directory,X,t,c):
                 history.append(snapshot());log_progress()
         if not history or history[-1][0]!=time:history.append(snapshot())
     except (ValueError,RuntimeError,np.linalg.LinAlgError,KeyboardInterrupt) as exc:
-        failure=repr(exc)
+        failure=repr(exc);failure_feature=getattr(exc,'feature',None)
         if history[-1][0]!=time:history.append(snapshot())
     if goal_control and not goal_reached and failure is None:failure='Porosity control time budget exhausted'
     h=np.array(history);audits=np.array(audit_rows);internal_change=np.abs(audits[:,5]-h[0,5])
@@ -346,7 +386,7 @@ def solve(directory,X,t,c):
     if 'target_final_porosity' in c:checks['target_porosity_observed']=bool(np.any((h[:,2]>=0)&(h[:,2]<=c['target_final_porosity'])))
     checks={k:bool(value) for k,value in checks.items()}
     result={'whole_path_audit':whole_path,'accepted_step_audit_file':'accepted-step-audit.csv.gz','pressure_measure':'cauchy' if cauchy_control else 'nominal_reference', 'peak_command_pressure_MPa':float(np.max(audits[:,3])) if pressure_control else None, 'final_work_equivalent_cauchy_stress_MPa':diagnostic_cauchy(deformation(q[-6:]),-f[-6:],periodic.L**3), 'final_external_work_equivalent_cauchy_stress_MPa':diagnostic_cauchy(deformation(q[-6:]),external[-6:],periodic.L**3), 'area_contact_scope':'single_closest_patch_with_edge_collision_guard' if c.get('contact_backend')=='area_guarded' else None,'mass_frame':c.get('mass_frame','pinned'),'porosity_goal_equilibrated':goal_reached if goal_control else None,'peak_nominal_pressure_MPa':float(np.max(h[:,3])) if pressure_control else None,'contact_quadrature_variation_Nmm':algorithmic_variation,'contact_released_history_Nmm':released,'contact_neighbor_builds':getattr(contact,'neighbor_builds',None),'audit_sampling':'every_accepted_step','loading_mode':c.get('loading_mode','displacement'),'contact_retries':contact_retries,'contact_backend':c.get('contact_backend','legacy'),'edge_edge_response_implemented':c.get('contact_backend') in ('tracked_edges','distance_barrier'),'edge_response_scope':('collision_guard_only_no_edge_spring' if c.get('contact_backend')=='area_guarded' else 'unsigned_distance_barrier_all_closest_features' if c.get('contact_backend')=='distance_barrier' else ('interior_only_handoff_unvalidated' if c.get('contact_backend')=='tracked_edges' else 'none')),'status':'prototype_checks_passed_not_mesh_or_contact_validated' if all(checks.values()) else 'diagnostics_only',
-            'checks':checks,'failure':failure,'steps':steps,'dt_min_s':dt_min,'dt_max_s':dt_max,'kinetic_internal_ratio_loaded':ke_ratio if np.isfinite(ke_ratio) else None,
+            'checks':checks,'failure':failure,'failure_feature':failure_feature,'surface_resolution_attempts':resolution_attempts,'steps':steps,'dt_min_s':dt_min,'dt_max_s':dt_max,'kinetic_internal_ratio_loaded':ke_ratio if np.isfinite(ke_ratio) else None,
             'closed_boundary_volume_relative_error':boundary_error,'material_volume_relative_error':material_volume_error,'final_static_residual_ratio':float(static_ratio),'energy_scale_Nmm':work_scale,'initial_available_energy_Nmm':initial_available_energy,'energy_absolute_residual_Nmm':float(np.max(np.abs(audits[:,7]))),'energy_relative_error':float(np.max(np.abs(audits[:,7]))/work_scale),'remesh_events':remesh_events,
             'initial_porosity':float(h[0,2]),'final_porosity':float(h[-1,2]),'final_axial_compression':float(h[-1,1]),'residual_compression_strain':float(h[-1,1]) if unload>0 and checks.get('unload_completed') and checks['static_equilibrium'] else None,
             'limitations':['linear-tetra plastic locking not converged','contact quadrature, barrier thickness, mollification and general friction convergence not validated','surface edge bisection is experimental; no coarsening or general distortion repair','numerical density and damping are not measured material data','uncalibrated Kirchhoff-yield Hencky J2 material','not a verified 40 to 10 percent compaction result']}
@@ -356,6 +396,7 @@ def solve(directory,X,t,c):
     if c.get('save_contact_audit',False):
         from .contact_audit import save_capture
         save_capture(directory/'contact-audit.json',contact,f,external,time,steps)
+    if resolution_attempts:(directory/'surface-resolution-attempts.json').write_text(json.dumps(resolution_attempts,indent=2)+'\n')
     if retry_log:(directory/'contact-retries.json').write_text(json.dumps(retry_log,indent=2)+'\n')
     (directory/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
     import meshio

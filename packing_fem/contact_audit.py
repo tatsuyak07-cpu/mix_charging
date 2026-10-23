@@ -19,12 +19,16 @@ def save_capture(path,contact,total_force,external,time,steps):
 
 
 def potential(z,record):
-    ids=record['branch'];a=z[ids[0]]
-    if len(ids)==1:closest=a
-    else:
-        edges=(z[ids[1:]]-a).T;closest=a+edges@np.linalg.lstsq(edges,z[0]-a,rcond=None)[0]
-    d=np.linalg.norm(z[0]-closest);delta=record['thickness'];s=(d/delta)**2
-    normal=0. if d>=delta else -record['kn']*delta**2/8*(1-s)**2*np.log(s)
+    branches=record.get('normal_branches',[dict(indices=[0,1,2,3],branch=record['branch'])])
+    energies=[]
+    for witness in branches:
+        points=z[np.asarray(witness['indices'])];ids=witness['branch'];a=points[ids[0]]
+        if len(ids)==1:closest=a
+        else:
+            edges=(points[ids[1:]]-a).T;closest=a+edges@np.linalg.lstsq(edges,points[0]-a,rcond=None)[0]
+        d=np.linalg.norm(points[0]-closest);delta=record['thickness'];s=(d/delta)**2
+        energies.append(0. if d>=delta else -record['kn']*delta**2/8*(1-s)**2*np.log(s))
+    normal=max(energies)
     edge=z[4]-z[0];edge/=np.linalg.norm(edge);aux=np.cross(edge,z[8]-z[0]);aux/=np.linalg.norm(aux)
     director=np.asarray(record['director']);n=director[0]*edge+director[1]*np.cross(aux,edge)+director[2]*aux
     tangent=z[4]-z[0];tangent-=np.dot(tangent,n)*n;tangent/=np.linalg.norm(tangent)

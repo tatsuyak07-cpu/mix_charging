@@ -1,0 +1,36 @@
+{
+  "scope": "Replay one rejected large-cell remesh transaction without advancing time.",
+  "source_proposal": "results/packing-rve-development-001/native-pressure01-clarke-001/calculation/surface-remesh-attempt-0011.npz",
+  "geometry_transfer_error_mm": 1.7763568394002505e-15,
+  "minimum_quality": 0.03292924009205402,
+  "time_advanced": false,
+  "physical_solution_verified": false,
+  "transaction_audit": {
+    "accepted": true,
+    "checks": {
+      "mass": true,
+      "linear_momentum": true,
+      "angular_momentum": true,
+      "kinetic_energy": true,
+      "material_energy": true,
+      "contact_energy": true,
+      "normal_energy": true,
+      "tangent_energy": true,
+      "contact_macro_force": true,
+      "coulomb": true
+    },
+    "scaled_errors": {
+      "mass": 0.0,
+      "linear_momentum": 1.301277234889672e-15,
+      "angular_momentum": 1.0317736171373125e-13,
+      "kinetic_energy": 5.414291145417554e-13,
+      "material_energy": 1.150324777270421e-16,
+      "contact_energy": 0.0,
+      "normal_energy": 0.0,
+      "tangent_energy": 0.0,
+      "contact_macro_force": 1.0106052920846914e-05
+    },
+    "tolerance": 0.001
+  },
+  "accepted": true
+}

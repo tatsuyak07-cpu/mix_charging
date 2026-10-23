@@ -58,10 +58,12 @@ def transported_spring(old_normal,new_normal,spring_world):
 
 
 class AreaContact:
-    def __init__(self,X,t,periodic,kn,mu,skin,local_material_filter=True,edge_stationarity_filter=False,multiple_patches=False,certified_local_filter=False,geometry_extension=None,**kwargs):
+    def __init__(self,X,t,periodic,kn,mu,skin,local_material_filter=True,edge_stationarity_filter=False,multiple_patches=False,certified_local_filter=False,geometry_extension=None,closest_tie_rule="stop",**kwargs):
         # Share the complete PT/EE distance search and non-crossing certificate.
         # No legacy constraint-sum forces or energies enter this backend.
         self.guard=BarrierContact(X,t,periodic,kn,0.,skin,**kwargs)
+        if closest_tie_rule not in ("stop","clarke"):raise ValueError("Unknown closest tie rule")
+        self.closest_tie_rule=closest_tie_rule
         self.multiple_patches=multiple_patches
         self.extension=None
         if certified_local_filter:
@@ -127,7 +129,7 @@ class AreaContact:
                 report['local_material_pairs']+=1;continue
             node=int(ids[0]);candidate=(d,key,ids,shift,p,branch,w,r)
             selected.setdefault(node,[]).append(candidate)
-        resolved={}
+        resolved={};patch_branches={}
         used_history=set()
         for node,candidates in selected.items():
             # Connected target facets describe one patch, not additive springs.
@@ -145,9 +147,11 @@ class AreaContact:
                 current=min(members,key=lambda v:(v[0],v[1]));d=current[0]
                 tie_tol=64*np.finfo(float).eps*max(self.L,d)
                 projection_tol=max(self.L*1e-10,4*np.sqrt(2*d*tie_tol))
-                for other in members:
-                    if abs(other[0]-d)<=tie_tol and np.linalg.norm(other[-1]-current[-1])>projection_tol:
-                        raise SurfaceResolutionError('Multiple distinct closest patches require multi-contact surface integration')
+                branches=[current]
+                for other in sorted(members,key=lambda v:v[1]):
+                    if abs(other[0]-d)<=tie_tol and all(np.linalg.norm(other[-1]-b[-1])>projection_tol for b in branches):
+                        if self.closest_tie_rule=='stop':raise SurfaceResolutionError('Multiple distinct closest patches require multi-contact surface integration')
+                        branches.append(other)
                 if self.multiple_patches:
                     matches=[k for k,v in self.history.items() if k[1]==node and self.adjacent_targets(v['face'],v['shift'],current[1][2],current[3])]
                     if len(matches)>1 or any(k in used_history for k in matches):
@@ -155,7 +159,7 @@ class AreaContact:
                     history_key=matches[0] if matches else ('area_patch',node,current[1][2],*map(int,current[3]))
                 else:history_key=('area',node)
                 if history_key in resolved:raise ContactResolutionError('Ambiguous patch history identity')
-                resolved[history_key]=current;used_history.add(history_key)
+                resolved[history_key]=current;patch_branches[history_key]=branches;used_history.add(history_key)
         selected_nodes=set(selected)
         selected=resolved
         from .barrier_contact import segment_distances
@@ -182,7 +186,12 @@ class AreaContact:
             if state is not None and not self.adjacent_targets(state['face'],state['shift'],face,shift):
                 raise ContactResolutionError('Closest target changed to a disconnected patch; reduce step or refine surface')
             kn=.5*self.kn*self.node_area0[node];energy,fn,curvature=barrier(d,kn,self.thickness)
-            normal=r/d
+            branches=patch_branches[history_key]
+            mean_normal=sum(b[-1]/b[0] for b in branches)/len(branches);normal_length=float(np.linalg.norm(mean_normal))
+            if normal_length<1e-8:raise SurfaceResolutionError('Opposed closest normals have no unique friction plane')
+            normal=mean_normal/normal_length if len(branches)>1 else r/d
+            effective_fn=fn*normal_length if len(branches)>1 else fn
+            new_state=state is None
             if state is None:
                 peers=sorted(self.peers[node]);scores=[np.linalg.norm((x[i]-x[node])-((x[i]-x[node])@normal)*normal) for i in peers]
                 peer=peers[int(np.argmax(scores))]
@@ -190,24 +199,34 @@ class AreaContact:
                 state=dict(peer=peer,second=second,anchor_ids=ids[1:].copy(),anchor_shift=np.asarray(shift).copy(),bary=-w[1:].copy(),plastic=np.zeros(2),spring=np.zeros(2),coordinate=np.zeros(2),energy=0.)
             support=np.r_[ids,state['peer'],state['anchor_ids'],state['second']]
             images=np.zeros((9,3));images[1:4]=shift;images[5:8]=state['anchor_shift']
+            normal_branches=[dict(indices=[0,1,2,3],branch=list(branch))]
+            for candidate in branches[1:]:
+                offset=len(support);support=np.r_[support,candidate[2][1:]];images=np.r_[images,np.tile(candidate[3],(3,1))]
+                normal_branches.append(dict(indices=[0,offset,offset+1,offset+2],branch=list(candidate[5])))
             z=x[support]+images@H.T
             if 'director' not in state:state=dict(state,director=material_basis(z).T@normal)
-            local=np.zeros((9,3));local[:4]=fn*w[:,None]*normal
+            local=np.zeros_like(z)
+            for candidate,witness in zip(branches,normal_branches):
+                _,_,bc_ids,_,_,_,bc_weights,bc_offset=candidate
+                local[np.asarray(witness['indices'])]+=fn/len(branches)*bc_weights[:,None]*(bc_offset/candidate[0])
+            if new_state and len(branches)>1 and self.mu:
+                coordinate=frame(z,state['director']).T@(z[0]-state['bary']@z[5:8])
+                state=dict(state,plastic=coordinate.copy(),coordinate=coordinate.copy())
             kt=.5*kn;spring=np.zeros(2);plastic=state['plastic'];coordinate=state['coordinate'];diss=correction=0.
             if self.mu:
                 T=frame(z,state['director']);coordinate=T.T@(z[0]-state['bary']@z[5:8]);trial=coordinate-plastic
-                spring=trial*min(1.,self.mu*fn/(kt*max(np.linalg.norm(trial),1e-300)))
+                spring=trial*min(1.,self.mu*effective_fn/(kt*max(np.linalg.norm(trial),1e-300)))
                 plastic=coordinate-spring;diss=float(kt*spring@(plastic-state['plastic']))
                 du=coordinate-state['coordinate']
                 correction=float(.5*kt*(state['spring']+spring)@du-.5*kt*(spring@spring-state['spring']@state['spring'])-diss)
                 if np.linalg.norm(spring)>1e-20:local+=friction_force(z,state['director'],state['bary'],plastic,kt)
             if self.capture_audit:
-                records.append(dict(support=support.copy(),images=images.copy(),z=z.copy(),branch=list(branch),kn=float(kn),thickness=float(self.thickness),kt=float(kt),director=state['director'].copy(),bary=state['bary'].copy(),plastic=np.array(plastic,copy=True),spring=spring.copy(),local_force=local.copy(),normal_force=float(fn),mu=float(self.mu)))
+                records.append(dict(support=support.copy(),images=images.copy(),z=z.copy(),branch=list(branch),kn=float(kn),thickness=float(self.thickness),kt=float(kt),director=state['director'].copy(),bary=state['bary'].copy(),plastic=np.array(plastic,copy=True),spring=spring.copy(),local_force=local.copy(),normal_force=float(effective_fn),mu=float(self.mu),**({'normal_branches':normal_branches,'normal_subgradient':'uniform_Clarke','tie_multiplicity':len(branches)} if len(branches)>1 else {})))
             flowing=self.mu and np.linalg.norm(plastic-state['plastic'])>0
             tang=.5*kt*float(spring@spring)
             # Normal energy depends only on the current point/triangle.
-            np.add.at(self.guard.trial_diagonal,support[:4],4*(curvature+fn/d))
-            np.add.at(self.guard.trial_diagonal,support,4*kt)
+            for witness in normal_branches:np.add.at(self.guard.trial_diagonal,support[witness['indices']],4*(curvature+fn/d)/len(branches))
+            np.add.at(self.guard.trial_diagonal,support[:9],4*kt)
             np.add.at(force,support,local)
             extra+=np.einsum('aij,ai->j',affine_basis(self.L*images),local)
             # Update the lagged director only in returned trial history. The
@@ -227,7 +246,8 @@ class AreaContact:
                 coordinate=Tnew.T@(z[0]-bary@anchor);plastic=coordinate-spring
                 if abs(.5*kt*(spring@spring)-tang)>1e-10*max(tang,1e-16):raise ContactResolutionError('Friction transport energy mismatch')
             hist[history_key]=dict(state,anchor_ids=anchor_ids,anchor_shift=anchor_shift,bary=bary,director=director,plastic=plastic,spring=spring,coordinate=coordinate,energy=tang,face=face,shift=np.asarray(shift).copy())
+            report['closest_tie_branches']=report.get('closest_tie_branches',0)+max(0,len(branches)-1)
             report['normal_energy']+=energy;report['tangent_energy']+=tang;report['friction_increment']+=diss;report['algorithmic_increment']+=correction;report['contacts']+=1
-            report['max_coulomb_ratio']=max(report['max_coulomb_ratio'],float(kt*np.linalg.norm(spring)/fn))
+            report['max_coulomb_ratio']=max(report['max_coulomb_ratio'],float(kt*np.linalg.norm(spring)/effective_fn))
         report['released_history_energy']=sum(v['energy'] for k,v in self.history.items() if k not in hist)
         return force,extra,hist,report
