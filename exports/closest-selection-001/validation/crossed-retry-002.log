@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "real_edge_guard_triggered": true,
+    "guard_repaired": true,
+    "time_advanced_after_repair": true,
+    "path_completed": true,
+    "transfer_audits_pass": true,
+    "contacts_after_repair": true,
+    "no_edge_spring": true,
+    "coulomb_bound": true
+  },
+  "passed": true,
+  "failure": null
+}

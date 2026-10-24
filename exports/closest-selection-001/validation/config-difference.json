@@ -1,0 +1,6 @@
+{
+  "surface_remesh_strategy": [
+    null,
+    "closest_quality"
+  ]
+}

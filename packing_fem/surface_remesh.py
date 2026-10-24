@@ -11,6 +11,28 @@ from .adaptive_tet import boundary,quality
 from .area_contact import frame
 
 
+def closest_edge_candidates(X,x,t,b,ep,V0,velocity,feature,L):
+    """Rank the two trial closest-point insertions by accepted-state quality.
+
+    Geometry alone does not authorize a commit. Callers must audit each
+    candidate's state, contact history and energy before accepting it.
+    """
+    from .contact_tracking import closest_segments
+    ids=np.asarray(feature['ids'],int);points=np.asarray(feature['points'],float)
+    if feature['kind']!='ee' or ids.shape!=(4,) or points.shape!=(4,3) or not np.all(np.isfinite(points)):
+        raise ValueError('A finite EE feature is required')
+    hit=closest_segments(*points);candidates=[]
+    for side,key in enumerate(('s','t')):
+        edge=ids[2*side:2*side+2];fraction=float(hit[key])
+        row=dict(side=side,edge=edge.tolist(),fraction=fraction,geometrically_valid=False)
+        try:
+            p=bisect(X,x,t,b,ep,V0,velocity,edge,L,fraction=fraction)
+            row.update(geometrically_valid=True,minimum_quality=p['report']['minimum_quality_after'])
+        except ValueError as exc:row['reason']=str(exc)
+        candidates.append(row)
+    return sorted(candidates,key=lambda r:(not r['geometrically_valid'],-r.get('minimum_quality',0.),tuple(r['edge']),r['fraction']))
+
+
 def bisect(X,x,t,b,ep,V0,velocity,edge,L,fraction=.5):
     """Split all incident tets/copies at (1-fraction)*edge[0]+fraction*edge[1].
 

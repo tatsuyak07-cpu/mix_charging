@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+分割候補の自動選択と棄却試行の再実行を接続：**前回の停止区間を4回の監査付き分割で通過**。
+[検証報告](docs/closest-selection.md)・[比較画像](exports/closest-selection-001/selection-comparison.png)・[停止時メッシュ](exports/closest-selection-001/stopped-mesh.png)・[全データZIP](exports/closest-selection-001.zip)。
+全体267テスト合格。再計算は約0.05872 MPaで幾何チェックによる刻み下限に達して停止しました。空隙率約33.87%は未平衡の途中状態で、0.1 MPaの圧密解ではありません。
+
 非中点分割の状態・摩擦履歴を検証：**保存状態の両分割案が移行監査に合格**。
 [検証報告](docs/weighted-surface-transfer.md)・[比較画像](exports/weighted-transfer-001/weighted-transfer.png)・[全データZIP](exports/weighted-transfer-001.zip)。
 追加接触節点への重み付き摩擦履歴の補間と、その後の滑りも確認しました。圧縮ソルバーへの自動選択・再試行の組み込みは未完了です。

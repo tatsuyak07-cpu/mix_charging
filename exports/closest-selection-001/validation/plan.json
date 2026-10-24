@@ -1,0 +1,17 @@
+{
+  "scope": "Fresh rapid-path integration with audited closest-point candidate selection; NOT quasi-static acceptance",
+  "baseline_commit": "f06a1ac37b2372716f220380b948644e7c207ba2",
+  "configuration_change": {
+    "surface_remesh_strategy": "closest_quality"
+  },
+  "unchanged": [
+    "material",
+    "friction",
+    "load",
+    "time_step",
+    "quality_floor",
+    "transfer_tolerance",
+    "remesh_cap"
+  ],
+  "max_surface_events": 16
+}

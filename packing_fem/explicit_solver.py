@@ -66,6 +66,7 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
 
 
 def validate(c):
+    if c.get('surface_remesh_strategy','midpoint') not in ('midpoint','closest_quality'):raise ValueError('Unknown surface remesh strategy')
     if c.get('closest_tie_rule','stop') not in ('stop','clarke'):raise ValueError('Unknown closest tie rule')
     if c.get('element_backend','numpy') not in ('numpy','native'):raise ValueError('Unknown element backend')
     for k in ['length_mm','young_mpa','density_tonne_mm3','ramp_s','contact_penalty_mpa_mm','contact_skin_mm','cfl']:
@@ -178,7 +179,7 @@ def solve(directory,X,t,c):
                 periodic.mass(mass)
             remesh_events.append(event)
 
-    def try_surface_remesh(ap,requested_edge=None):
+    def try_surface_remesh(ap,requested_edge=None,fraction=.5,candidate_context=None):
         nonlocal X,x,t,b,ep,V0,mass,periodic,contact,q,v,f_int,volume,energy,J,D,sigma,f,a,fc,extra,ci,external
         from .surface_remesh import bisect,transfer_contact,audit
         from .adaptive_tet import boundary
@@ -191,15 +192,16 @@ def solve(directory,X,t,c):
         # refine the longest current boundary edge (a numerical choice).
         choices=[np.asarray(requested_edge,int)] if requested_edge is not None else ([np.asarray(c['surface_remesh_edge'],int)] if 'surface_remesh_edge' in c else edges[ordered])
         event=dict(operation='periodic_edge_bisection',time_s=time,accepted=False)
+        if candidate_context is not None:event['candidate_selection']=candidate_context
         try:
             oldnv=periodic.velocities(v)
             proposal=None
             for edge in choices:
-                try:proposal=bisect(X,x,t,b,ep,V0,oldnv,edge,periodic.L);break
+                try:proposal=bisect(X,x,t,b,ep,V0,oldnv,edge,periodic.L,fraction=fraction);break
                 except ValueError as exc:event['proposal_rejection']=str(exc)
             if proposal is None:raise ValueError('No conforming periodic surface edge available')
             p=proposal;event.update(p['report'])
-            np.savez_compressed(directory/f'surface-remesh-attempt-{len(remesh_events)+1:04d}.npz',reference_points=p['X'],points=p['x'],tets=p['t'],elastic_b=p['b'],peeq=p['ep'],reference_volume=p['V0'],parents=p['parents'],supports=p['supports'])
+            np.savez_compressed(directory/f'surface-remesh-attempt-{len(remesh_events)+1:04d}.npz',reference_points=p['X'],points=p['x'],tets=p['t'],elastic_b=p['b'],peeq=p['ep'],reference_volume=p['V0'],parents=p['parents'],supports=p['supports'],weights=p['weights'])
             p2=Periodic(p['X'],periodic.L,mass_frame=c.get('mass_frame','pinned'))
             p2.prescribed_active=periodic.prescribed_active
             p2.free=np.delete(np.arange(p2.ndof),p2.prescribed) if p2.prescribed_active else np.arange(p2.ndof)
@@ -211,6 +213,7 @@ def solve(directory,X,t,c):
             p['velocity']=p2.velocities(v2)
             remesh_contact_kwargs=dict(contact_kwargs)
             if contact.extension is not None:
+                if fraction!=.5:raise ValueError('Non-midpoint geometry extension is not implemented')
                 from .refined_extension import refine_extension
                 remesh_contact_kwargs['geometry_extension']=refine_extension(contact.extension,p)
             newcontact=contact_type(p['X'],p['t'],p2,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**remesh_contact_kwargs)
@@ -290,7 +293,20 @@ def solve(directory,X,t,c):
                 if c.get('surface_remesh_on_edge_guard',False) and feature is not None and feature['kind']=='ee':
                     # Refine the accepted state, discard the failed trial, and
                     # recompute its step with the new mass/kinematics/history.
-                    repaired=try_surface_remesh(profile(time,c)[2],feature['ids'][:2])
+                    if c.get('surface_remesh_strategy','midpoint')=='closest_quality':
+                        from .surface_remesh import closest_edge_candidates
+                        candidates=closest_edge_candidates(X,x,t,b,ep,V0,periodic.velocities(v),feature,periodic.L)
+                        attempt['candidate_selection']=candidates;attempt['candidate_event_indices']=[]
+                        repaired=False
+                        for candidate in candidates:
+                            if not candidate['geometrically_valid'] or candidate['minimum_quality']<c['minimum_quality']:continue
+                            if sum(e.get('accepted',False) and e.get('operation')=='periodic_edge_bisection' for e in remesh_events)>=c.get('surface_remesh_max_events',1):
+                                attempt['repair_stop']='surface remesh cap reached';break
+                            index=len(remesh_events)
+                            repaired=try_surface_remesh(profile(time,c)[2],candidate['edge'],candidate['fraction'],dict(candidate=candidate,ranking=candidates))
+                            attempt['candidate_event_indices'].append(index)
+                            if repaired:break
+                    else:repaired=try_surface_remesh(profile(time,c)[2],feature['ids'][:2])
                     attempt['repaired']=bool(repaired)
                     if repaired:
                         contact_retries+=1

@@ -1,0 +1,84 @@
+{
+  "model_type": "experimental_explicit_tet_hencky_j2",
+  "length_mm": 5.0,
+  "young_mpa": 10.0,
+  "poisson": 0.33,
+  "yield_mpa": 1000000.0,
+  "hardening_mpa": 0.2,
+  "density_tonne_mm3": 1e-09,
+  "density_basis": "numerical_trial_not_measured",
+  "compression_fraction": 0.0,
+  "ramp_s": 2e-05,
+  "hold_s": 1e-05,
+  "damping_per_s": 0.0,
+  "contact_penalty_mpa_mm": 20.0,
+  "friction": 0.3,
+  "contact_skin_mm": 0.1,
+  "max_penetration_mm": 0.02,
+  "cfl": 0.2,
+  "max_steps": 2000,
+  "output_every": 1,
+  "remesh_every": 0,
+  "remesh_quality": 0.35,
+  "minimum_quality": 0.03,
+  "remesh_energy_tolerance": 0.001,
+  "energy_tolerance": 0.02,
+  "kinetic_tolerance": 0.01,
+  "force_tolerance": 0.02,
+  "max_peeq": 5.0,
+  "contact_backend": "area_guarded",
+  "loading_mode": "cauchy_pressure",
+  "pressure_mpa": 1e-12,
+  "initial_velocity_mm_s": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0
+    ]
+  ],
+  "surface_remesh_on_edge_guard": true,
+  "surface_remesh_max_events": 16,
+  "surface_remesh_strategy": "closest_quality",
+  "multiple_patches": true,
+  "edge_stationarity_filter": true,
+  "closest_tie_rule": "clarke",
+  "active_contact_timestep": true,
+  "save_contact_audit": true,
+  "local_material_filter": true,
+  "certified_local_filter": false
+}

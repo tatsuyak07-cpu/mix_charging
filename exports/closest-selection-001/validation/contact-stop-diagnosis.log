@@ -1,0 +1,17 @@
+{
+  "scope": "Replay the last rejected contact evaluation with committed friction history.",
+  "last_rejection": {
+    "accepted_time_s": 0.0021871882033175955,
+    "trial_dt_s": 1.5316289682766652e-14,
+    "reason": "Linear-step separation certificate requires a smaller timestep"
+  },
+  "replayed_error": null,
+  "same_accepted_time": true,
+  "rejection_reproduced": false,
+  "retry_reason_counts": {
+    "Linear-step separation certificate requires a smaller timestep": 6240
+  },
+  "solver_failure": "RuntimeError('Stable timestep below budget')",
+  "time_advanced": false,
+  "physical_solution_verified": false
+}

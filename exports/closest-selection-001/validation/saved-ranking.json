@@ -1,0 +1,22 @@
+[
+  {
+    "side": 1,
+    "edge": [
+      3793,
+      3795
+    ],
+    "fraction": 0.5885708790066141,
+    "geometrically_valid": true,
+    "minimum_quality": 0.08344293069332229
+  },
+  {
+    "side": 0,
+    "edge": [
+      401,
+      3806
+    ],
+    "fraction": 0.23165789216992685,
+    "geometrically_valid": true,
+    "minimum_quality": 0.0312936314291567
+  }
+]
