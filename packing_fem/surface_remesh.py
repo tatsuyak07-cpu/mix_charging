@@ -11,13 +11,18 @@ from .adaptive_tet import boundary,quality
 from .area_contact import frame
 
 
-def bisect(X,x,t,b,ep,V0,velocity,edge,L):
-    """Split every incident tet and every periodic copy of a selected edge."""
+def bisect(X,x,t,b,ep,V0,velocity,edge,L,fraction=.5):
+    """Split all incident tets/copies at (1-fraction)*edge[0]+fraction*edge[1].
+
+    The default retains midpoint splitting. Off-centre proposals require the
+    same external momentum, energy, friction and quality audits as midpoints.
+    """
     if len(np.unique(X,axis=0))!=len(X):raise ValueError('Coincident distinct nodes require explicit body correspondence')
-    edge=np.sort(np.asarray(edge,int))
+    if not np.isfinite(fraction) or not 0<fraction<1:raise ValueError("Interior split fraction required")
+    edge=np.asarray(edge,int)
     if edge.shape!=(2,) or edge[0]==edge[1]:raise ValueError('Two distinct edge nodes required')
     edges=np.unique(np.sort(np.concatenate([t[:,[i,j]] for i in range(4) for j in range(i+1,4)]),axis=1),axis=0)
-    if not np.any(np.all(edges==edge,axis=1)):raise ValueError('Selected edge not in mesh')
+    if not np.any(np.all(edges==np.sort(edge),axis=1)):raise ValueError('Selected edge not in mesh')
     # Match translated endpoint pairs, never identify distinct coincident bodies.
     a,bpoint=X[edge];matches=[]
     for pair in edges:
@@ -29,20 +34,25 @@ def bisect(X,x,t,b,ep,V0,velocity,edge,L):
     incident=[np.flatnonzero(np.sum(np.isin(t,pair),axis=1)==2) for pair in matches]
     flat=np.concatenate(incident)
     if len(np.unique(flat))!=len(flat):raise ValueError('Periodic edge images share a tetrahedron; refine a different edge')
-    supports=[(int(i),int(i)) for i in range(len(X))];rows=[];parents=[];removed=set(map(int,flat))
+    supports=[(int(i),int(i)) for i in range(len(X))];weights=[(.5,.5)]*len(X);rows=[];parents=[];removed=set(map(int,flat))
     for pair,owners in zip(matches,incident):
         midpoint=len(supports);supports.append(tuple(map(int,pair)))
+        f=fraction if (X[pair[1]]-X[pair[0]])@(bpoint-a)>0 else 1-fraction
+        weights.append((1-f,f))
         for owner in owners:
             rest=[int(i) for i in t[owner] if i not in pair]
             rows.extend([[int(pair[0]),midpoint,*rest],[midpoint,int(pair[1]),*rest]]);parents.extend([int(owner)]*2)
     keep=[i for i in range(len(t)) if i not in removed];parents=np.r_[keep,parents].astype(int)
-    supports=np.asarray(supports);interpolate=lambda value:(value[supports[:,0]]+value[supports[:,1]])/2
+    supports=np.asarray(supports);weights=np.asarray(weights)
+    def interpolate(value):
+        shape=(len(weights),)+(1,)*(value.ndim-1)
+        return weights[:,0].reshape(shape)*value[supports[:,0]]+weights[:,1].reshape(shape)*value[supports[:,1]]
     X2=interpolate(X);x2=interpolate(x);t2=oriented(X2,np.r_[t[keep],np.asarray(rows,int)])
     ref=geometry(X2,t2)[0];refold=geometry(X,t)[0];fractions=ref/refold[parents]
     V2=V0[parents]*fractions
     geometry(x2,t2)
-    return dict(X=X2,x=x2,t=t2,b=b[parents].copy(),ep=ep[parents].copy(),V0=V2,velocity=interpolate(velocity),supports=supports,parents=parents,
-                report=dict(operation='periodic_edge_bisection',periodic_edges=len(matches),new_nodes=len(X2)-len(X),reference_volume_error=float(abs(V2.sum()-V0.sum())),current_volume_error=float(abs(geometry(x2,t2)[0].sum()-geometry(x,t)[0].sum())),minimum_quality_before=float(quality(x,t).min()),minimum_quality_after=float(quality(x2,t2).min())))
+    return dict(X=X2,x=x2,t=t2,b=b[parents].copy(),ep=ep[parents].copy(),V0=V2,velocity=interpolate(velocity),supports=supports,weights=weights,parents=parents,
+                report=dict(operation='periodic_edge_bisection',fraction=float(fraction),periodic_edges=len(matches),new_nodes=len(X2)-len(X),reference_volume_error=float(abs(V2.sum()-V0.sum())),current_volume_error=float(abs(geometry(x2,t2)[0].sum()-geometry(x,t)[0].sum())),minimum_quality_before=float(quality(x,t).min()),minimum_quality_after=float(quality(x2,t2).min())))
 
 
 def transfer_contact(old,new,proposal,H):
@@ -56,6 +66,7 @@ Old anchor nodes survive bisection and remain material points.
     baseline=new.evaluate(x,x*0,H,H*0,0.);fresh=baseline[2];mapped={};covered=set()
     for key,state in fresh.items():
         node=key[1];sources=proposal['supports'][node];states=[]
+        weights=proposal['weights'][node] if 'weights' in proposal else np.array([.5,.5])
         for source in sources:
             matches=[]
             for oldkey,value in old.history.items():
@@ -81,8 +92,8 @@ Old anchor nodes survive bisection and remain material points.
                 z=old.X if reference else x
                 cell=np.eye(3)*old.L if reference else H
                 return value['bary']@(z[value['anchor_ids']]+cell@value['anchor_shift'])
-            reference_anchor=sum(anchor(v,True) for v in states)/2
-            current_anchor=sum(anchor(v,False) for v in states)/2
+            reference_anchor=sum(w*anchor(v,True) for w,v in zip(weights,states))
+            current_anchor=sum(w*anchor(v,False) for w,v in zip(weights,states))
             represented=None
             # An interpolated material anchor must have one exact retained
             # surface representation in BOTH configurations. No nearest-point
@@ -103,7 +114,7 @@ Old anchor nodes survive bisection and remain material points.
             def world(value,source):
                 z=np.zeros((9,3));z[0]=x[source];z[4]=x[value['peer']];z[8]=x[value['second']]
                 return frame(z,value['director'])@value['spring']
-            world_spring=sum(world(value,int(source)) for source,value in zip(sources,states))/2
+            world_spring=sum(w*world(value,int(source)) for w,source,value in zip(weights,sources,states))
             state=deepcopy(state);z=np.zeros((9,3));z[0]=x[node];z[4]=x[state['peer']];z[8]=x[state['second']]
             T=frame(z,state['director']);spring=T.T@world_spring
             if abs(np.linalg.norm(T@spring)-np.linalg.norm(world_spring))>1e-9:raise ValueError('Remesh friction normal mismatch')

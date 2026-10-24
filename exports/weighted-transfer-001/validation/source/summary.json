@@ -1,0 +1,47 @@
+{
+  "scope": "Replay one rejected large-cell remesh transaction without advancing time.",
+  "source_proposal": "fresh_weighted_proposal",
+  "edge": [
+    401,
+    3806
+  ],
+  "fraction": 0.23165789209867782,
+  "geometry_transfer_error_mm": 1.7763568394002505e-15,
+  "minimum_quality": 0.031293631422728736,
+  "time_advanced": false,
+  "physical_solution_verified": false,
+  "transaction_audit": {
+    "accepted": true,
+    "checks": {
+      "mass": true,
+      "linear_momentum": true,
+      "angular_momentum": true,
+      "kinetic_energy": true,
+      "material_energy": true,
+      "contact_energy": true,
+      "normal_energy": true,
+      "tangent_energy": true,
+      "contact_macro_force": true,
+      "coulomb": true
+    },
+    "scaled_errors": {
+      "mass": 0.0,
+      "linear_momentum": 9.887955058875368e-16,
+      "angular_momentum": 2.5095064417336297e-13,
+      "kinetic_energy": 7.732084889512784e-13,
+      "material_energy": 0.0,
+      "contact_energy": 0.0,
+      "normal_energy": 0.0,
+      "tangent_energy": 1.4166516198344027e-16,
+      "contact_macro_force": 1.4209692500128007e-16
+    },
+    "tolerance": 0.001
+  },
+  "accepted": true,
+  "old_active_histories": 12,
+  "new_active_histories": 12,
+  "normal_energy_before": 0.0022601098272712235,
+  "normal_energy_after": 0.0022601098272712235,
+  "tangent_energy_before": 0.0003826636546719371,
+  "tangent_energy_after": 0.00038266365467193704
+}

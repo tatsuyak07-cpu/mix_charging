@@ -1,0 +1,34 @@
+......F                                                                  [100%]
+=================================== FAILURES ===================================
+_________ test_weighted_periodic_copy_with_reversed_endpoint_numbering _________
+
+    def test_weighted_periodic_copy_with_reversed_endpoint_numbering():
+        X=np.array([[1.,1,1],[2.,1,1],[1.,2,1],[1.,1,2]])
+        X=np.r_[X,(X+[5,0,0])[[1,0,2,3]]];t=np.arange(8).reshape(2,4)
+>       b=np.repeat(np.eye(3)[None],2,axis=0);V=geometry(X,t)[0]
+                                                ^^^^^^^^^^^^^
+
+tests/test_weighted_surface_transfer.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = array([[1., 1., 1.],
+       [2., 1., 1.],
+       [1., 2., 1.],
+       [1., 1., 2.],
+       [7., 1., 1.],
+       [6., 1., 1.],
+       [6., 2., 1.],
+       [6., 1., 2.]])
+t = array([[0, 1, 2, 3],
+       [4, 5, 6, 7]])
+
+    def geometry(x,t):
+        a=x[t];D=(a[:,1:]-a[:,:1]).swapaxes(1,2);det=np.linalg.det(D)
+>       if not np.all(np.isfinite(det)) or np.any(det<=0):raise ValueError('Nonpositive tetrahedron Jacobian')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: Nonpositive tetrahedron Jacobian
+
+packing_fem/explicit_material.py:19: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_weighted_surface_transfer.py::test_weighted_periodic_copy_with_reversed_endpoint_numbering
+1 failed, 6 passed in 1.25s

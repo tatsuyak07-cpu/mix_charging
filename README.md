@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+非中点分割の状態・摩擦履歴を検証：**保存状態の両分割案が移行監査に合格**。
+[検証報告](docs/weighted-surface-transfer.md)・[比較画像](exports/weighted-transfer-001/weighted-transfer.png)・[全データZIP](exports/weighted-transfer-001.zip)。
+追加接触節点への重み付き摩擦履歴の補間と、その後の滑りも確認しました。圧縮ソルバーへの自動選択・再試行の組み込みは未完了です。
+
 表面分割の集中を検証：**最後の停止候補では中点分割が接触範囲を外れることを確認**。
 [検証報告](docs/refinement-diagnostics.md)・[分割位置の比較図](exports/refinement-diagnostics-001/insertion-comparison.png)・[全データZIP](exports/refinement-diagnostics-001.zip)。
 関連31テスト・幾何診断16項目に合格。相手側の辺を最短位置で分割する案は品質を保ちますが、状態・摩擦履歴の移行と圧縮計算への組み込みは未検証です。
