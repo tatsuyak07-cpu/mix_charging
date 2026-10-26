@@ -1,0 +1,12 @@
+{
+  "scope": "Replay one rejected large-cell remesh transaction without advancing time.",
+  "source_proposal": "results/stage4-001/resolved-rapid-run/calculation/surface-remesh-attempt-0003.npz",
+  "edge": null,
+  "fraction": 0.5,
+  "geometry_transfer_error_mm": 1.7763568394002505e-15,
+  "minimum_quality": 0.4387133350598845,
+  "time_advanced": false,
+  "physical_solution_verified": false,
+  "accepted": false,
+  "rejection": "Remesh contact history lacks a unique parent patch"
+}

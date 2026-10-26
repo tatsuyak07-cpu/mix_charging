@@ -17,7 +17,7 @@ def main():
     for f in Path('packing_fem').glob('*.py'):shutil.copy2(f,code/f.name)
     for name in ('tools/verify_near_edge.py','tools/export_near_edge.py','tests/test_near_edge.py'):shutil.copy2(name,code/Path(name).name)
     result=dict(scope=__doc__,whole_suite_passed=int(count.group(1)),diagnostic=diagnostic,
-                roundoff_screening_corrected=True,endpoint_contact_coverage_fixed=False,
+                roundoff_screening_corrected=True,endpoint_contact_coverage_fixed=diagnostic['checks'].get('endpoint_guard_rejects_unresolved_pair',False),
                 pressure_integration_performed=False,physical_compaction_verified=False)
     (a.output/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
     rows=[dict(case=i,kind=r['kind'],legacy_screened=r['legacy']['dominated'],legacy_cosine=r['legacy']['maximum_descent_cosine'],corrected_screened=r['corrected']['dominated'],corrected_cosine=r['corrected']['maximum_descent_cosine']) for i,r in enumerate(diagnostic['variants'],1)]

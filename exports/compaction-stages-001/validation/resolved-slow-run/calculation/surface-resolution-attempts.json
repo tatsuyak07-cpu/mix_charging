@@ -1,0 +1,209 @@
+[
+  {
+    "accepted_time_s": 0.003687687151180629,
+    "trial_time_s": 0.0036880428759073908,
+    "trial_dt_s": 3.557247267616106e-07,
+    "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        1725,
+        1740,
+        1726,
+        1903
+      ],
+      "shift": [
+        0,
+        0,
+        1
+      ],
+      "points": [
+        [
+          5.527243915457274,
+          6.283115944521658,
+          11.203161798253069
+        ],
+        [
+          5.527696841125874,
+          7.040418280719034,
+          11.180658256543204
+        ],
+        [
+          5.17963866123917,
+          6.692509373863465,
+          11.2207889897044
+        ],
+        [
+          5.937015139714532,
+          6.692811184777144,
+          11.198982851728749
+        ]
+      ],
+      "distance_mm": 0.019764516148382205
+    },
+    "repaired": true,
+    "candidate_selection": [
+      {
+        "side": 1,
+        "edge": [
+          1726,
+          1903
+        ],
+        "fraction": 0.4600329946127236,
+        "geometrically_valid": true,
+        "minimum_quality": 0.517056950504741
+      },
+      {
+        "side": 0,
+        "edge": [
+          1725,
+          1740
+        ],
+        "fraction": 0.5400033563421375,
+        "geometrically_valid": true,
+        "minimum_quality": 0.5170318812440085
+      }
+    ],
+    "candidate_event_indices": [
+      0
+    ]
+  },
+  {
+    "accepted_time_s": 0.003687687151180629,
+    "trial_time_s": 0.003688019222284159,
+    "trial_dt_s": 3.3207110352992823e-07,
+    "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        1887,
+        2064,
+        2050,
+        2065
+      ],
+      "shift": [
+        0,
+        0,
+        1
+      ],
+      "points": [
+        [
+          6.283109581230191,
+          5.527237533506904,
+          11.203165578669822
+        ],
+        [
+          7.0404118641082665,
+          5.52769047105909,
+          11.18066255137872
+        ],
+        [
+          6.6925130032705,
+          5.179642324579056,
+          11.220832725920468
+        ],
+        [
+          6.692814822500578,
+          5.937018745818229,
+          11.199027046107238
+        ]
+      ],
+      "distance_mm": 0.019804956244673374
+    },
+    "repaired": true,
+    "candidate_selection": [
+      {
+        "side": 1,
+        "edge": [
+          2050,
+          2065
+        ],
+        "fraction": 0.4600213012200061,
+        "geometrically_valid": true,
+        "minimum_quality": 0.5170487201119548
+      },
+      {
+        "side": 0,
+        "edge": [
+          1887,
+          2064
+        ],
+        "fraction": 0.5400150230121095,
+        "geometrically_valid": true,
+        "minimum_quality": 0.5170236692959471
+      }
+    ],
+    "candidate_event_indices": [
+      1
+    ]
+  },
+  {
+    "accepted_time_s": 0.003688019221246038,
+    "trial_time_s": 0.003688351295744172,
+    "trial_dt_s": 3.320744981344211e-07,
+    "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        1725,
+        1740,
+        1903,
+        3791
+      ],
+      "shift": [
+        0,
+        0,
+        1
+      ],
+      "points": [
+        [
+          5.527327134855482,
+          6.283198923345023,
+          11.203112493816885
+        ],
+        [
+          5.527779916374022,
+          7.040501954962982,
+          11.180602225843906
+        ],
+        [
+          5.9369689705696596,
+          6.692762646122108,
+          11.198409077131169
+        ],
+        [
+          5.528002781915637,
+          6.692609388309815,
+          11.210165257579039
+        ]
+      ],
+      "distance_mm": 0.0192181581899273
+    },
+    "repaired": false,
+    "candidate_selection": [
+      {
+        "side": 0,
+        "edge": [
+          1725,
+          1740
+        ],
+        "fraction": 0.5398632579292927,
+        "geometrically_valid": true,
+        "minimum_quality": 0.5170513783748373
+      },
+      {
+        "side": 1,
+        "edge": [
+          1903,
+          3791
+        ],
+        "fraction": 0.9997052200895942,
+        "geometrically_valid": true,
+        "minimum_quality": 0.002774383047551713
+      }
+    ],
+    "candidate_event_indices": [
+      2
+    ]
+  }
+]

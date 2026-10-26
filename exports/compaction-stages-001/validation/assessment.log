@@ -1,0 +1,29 @@
+{
+  "stages": {
+    "stage1_pair_guard_implemented": true,
+    "stage2_manufactured_retry_passed": true,
+    "stage2_general_new_history_transfer_complete": false,
+    "stage3_pressure_and_hold_passed": false,
+    "stage4_quasistatic_verified": false
+  },
+  "comparisons": {
+    "rate": {
+      "scope": "Common stopped loading prefix only; not final equilibrium or a convergence acceptance",
+      "maximum_common_pressure_MPa": 0.04271755039878636,
+      "porosity_max_absolute_difference": 0.01197937800368254,
+      "compression_max_difference_over_peak": 0.3301525517975704
+    },
+    "timestep": {
+      "scope": "Common stopped loading prefix only; not final equilibrium or a convergence acceptance",
+      "maximum_common_pressure_MPa": 0.04271690352788399,
+      "porosity_max_absolute_difference": 9.690366790660043e-07,
+      "compression_max_difference_over_peak": 4.394706467732022e-05
+    },
+    "edge_resolution": {
+      "scope": "Common stopped loading prefix only; not final equilibrium or a convergence acceptance",
+      "maximum_common_pressure_MPa": 0.05094228834963767,
+      "porosity_max_absolute_difference": 3.3308411584442865e-11,
+      "compression_max_difference_over_peak": 9.566633112054672e-13
+    }
+  }
+}

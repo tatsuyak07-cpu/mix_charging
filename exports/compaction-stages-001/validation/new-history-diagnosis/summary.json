@@ -1,0 +1,32 @@
+{
+  "scope": "Inspect missing history at newly active quadrature nodes; never commit it.",
+  "new_active_nodes": [
+    {
+      "new_node": 3793,
+      "supports": [
+        1725,
+        1740
+      ],
+      "weights": [
+        0.3567766510847612,
+        0.6432233489152388
+      ],
+      "endpoint_history_counts": [
+        0,
+        0
+      ],
+      "target_face": [
+        3791,
+        1903,
+        1711
+      ]
+    }
+  ],
+  "old_normal_energy_Nmm": 6.482924853867045e-08,
+  "proposal_normal_energy_Nmm": 9.719467656073469e-08,
+  "normal_quadrature_relative_change": 0.49924114117655344,
+  "fresh_friction_history_not_transferred": true,
+  "time_advanced": false,
+  "proposal_accepted": false,
+  "interpretation": "Fresh histories are used only to identify geometry and normal quadrature; their zero slip is NOT adopted as transferred material history."
+}

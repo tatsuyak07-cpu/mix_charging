@@ -1,0 +1,65 @@
+"""Replay the last rejected contact evaluation with committed friction history."""
+import argparse,json
+from collections import Counter
+from pathlib import Path
+import numpy as np
+from packing_fem.area_contact import AreaContact
+from packing_fem.explicit_periodic import Periodic,deformation
+from packing_fem.explicit_solver import lumped_mass
+from packing_fem.contact_audit import plain
+from packing_fem.barrier_contact import feature,relative
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    c=json.loads((a.source/'config.json').read_text());s=json.loads((a.source/'summary.json').read_text())
+    retries=json.loads((a.source/'contact-retries.json').read_text());last=retries[-1]
+    capture=json.loads((a.source/'contact-audit.json').read_text());audit=np.loadtxt(a.source/'accepted-step-audit.csv.gz',delimiter=',',skiprows=1)
+    with np.load(a.source/'last-state.npz') as z:d={k:z[k] for k in z.files}
+    X=d['reference_points'];t=d['tets'];q=d['generalized_position'];v=d['generalized_velocity']
+    periodic=Periodic(X,c['length_mm']);periodic.prescribed_active=False;periodic.free=np.arange(periodic.ndof)
+    periodic.mass(lumped_mass(t,d['reference_volume'],c['density_tonne_mm3'],len(X)))
+    lastdt=audit[-1,0]-audit[-2,0];dt=last['trial_dt_s']
+    f=np.array(capture['solver_internal_generalized_force']);external=np.array(capture['external_generalized_force'])
+    acceleration=periodic.acceleration(f+external,v,0.,c['damping_per_s'])/(1-.5*lastdt*c['damping_per_s'])
+    trialq=q+dt*v+.5*dt*dt*acceleration;x=periodic.positions(trialq);vhalf=v+.5*dt*acceleration
+    H=deformation(trialq[-6:])*periodic.L;Hdot=(deformation(vhalf[-6:])-np.eye(3))*periodic.L
+    contact=AreaContact(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],multiple_patches=c['multiple_patches'],edge_stationarity_filter=c['edge_stationarity_filter'],local_material_filter=c.get('local_material_filter',True),closest_tie_rule=c['closest_tie_rule'],edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.))
+    contact.history={tuple(item['key']):{k:np.array(v) if isinstance(v,list) else v for k,v in item['state'].items()} for item in capture['committed_history']}
+    # The certificate depends on the accepted separation and periodic images,
+    # not just the force/history. Restore them from the accepted geometry/log.
+    H0=deformation(q[-6:])*periodic.L
+    contact.guard.prepare_geometry(d['points'],H0)
+    contact.guard.accepted_geometry=(d['points'].copy(),H0.copy())
+    contact.guard.accepted_shifts=tuple(contact.guard.trial_shifts)
+    history=np.loadtxt(a.source/'history.csv',delimiter=',',skiprows=1)
+    contact.guard.minimum_separation=float(history[-1,23])
+    replayed=None
+    try:contact.evaluate(x,periodic.velocities(vhalf),H,Hdot,dt)
+    except ValueError as exc:replayed=str(exc)
+    shifts=set(contact.guard.accepted_shifts).union(contact.guard.trial_shifts)
+    bound=2*float(np.max(np.linalg.norm(x-d['points'],axis=1)))+max(np.linalg.norm((H-H0)@shift) for shift in shifts)
+    closest=None
+    for key,ids,kind,shift,_,_ in contact.guard.neighbors:
+        points=d['points'][ids].copy();points[1 if kind=='pt' else 2:]+=H0@shift
+        branch,w=feature(points,kind);gap=float(np.linalg.norm(relative(points,kind,branch)))
+        if closest is None or gap<closest['distance_mm']:
+            local=contact.material_neighborhood is not None and contact.material_neighborhood.local(key,ids,kind,shift,points,w,d['points'],H0)
+            closest=dict(kind=kind,ids=ids.tolist(),shift=list(shift),distance_mm=gap,force_local_material_exclusion=bool(local))
+            if kind=='ee':
+                closest['surface_stationarity']=contact.surface_stationarity.classify(ids,shift,d['points'],H0) if contact.surface_stationarity is not None else None
+                closest['endpoints_with_committed_contact_history']=[int(i) for i in ids if any(k[1]==i for k in contact.history)]
+    result=plain(dict(scope=__doc__,last_rejection=last,replayed_error=replayed,
+                      same_accepted_time=abs(last['accepted_time_s']-audit[-1,0])<1e-18,
+                      rejection_reproduced=replayed==last['reason'],retry_reason_counts=dict(Counter(r['reason'] for r in retries)),
+                      accepted_minimum_separation_mm=float(history[-1,23]),closest_cached_candidate=closest,
+                      linear_motion_bound_mm=float(bound),certificate_limit_mm=float(history[-1,23]/2),
+                      certificate_inequality_reproduced=bool(bound>=history[-1,23]/2),
+                      solver_failure=s['failure'],time_advanced=False,physical_solution_verified=False))
+    (a.output/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
+    np.savez_compressed(a.output/'trial-geometry.npz',reference_points=X,trial_points=x,tets=t,cell=H)
+    (a.output/'diagnose_last_contact_retry.py').write_bytes(Path(__file__).read_bytes())
+    print(json.dumps(result,indent=2))
+
+
+if __name__=='__main__':main()

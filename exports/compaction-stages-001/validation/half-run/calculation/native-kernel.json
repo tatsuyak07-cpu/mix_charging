@@ -1,0 +1,5 @@
+{
+  "library": "/workspace/environment/mix_charging/native/element-a0cdacad3ca39dc241d1f99227ca085138325debf35b9850ab19ee1f8ebcad9c.so",
+  "library_sha256": "fa9233c424b2e8e357e281cc08b66c1e51433698193190ff8b7770e67f4a3ef4",
+  "backend": "optional_native_CPU_C++17_no_fast_math"
+}

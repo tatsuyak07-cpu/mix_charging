@@ -1,0 +1,8 @@
+case,ramp_s,hold_s,cfl,edge_resolution,steps,pressure_MPa,porosity,compression,failure,path_completed,all_solver_checks
+rapid-run,0.004,0.002,0.2,0.0,3722,0.050927509040501896,0.35483920243143086,0.12511009291174938,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False
+slow-run,0.008,0.004,0.2,0.0,6705,0.042709862009388644,0.3584469159063801,0.12497074208994703,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False
+half-run,0.008,0.004,0.1,0.0,13411,0.04271305936980675,0.3584405954851173,0.12498516786151494,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False
+resolved-rapid-run,0.004,0.002,0.2,0.001,3723,0.05094228834963767,0.3548081015474568,0.12519065733838058,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False
+resolved-slow-run,0.008,0.004,0.2,0.001,6706,0.04271755039878636,0.35842965405801963,0.12501864247755876,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False
+resolved-half-run,0.008,0.004,0.1,0.001,13412,0.04271690352788399,0.35843196432138846,0.1250091183017294,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False
+resolution-half-run,0.004,0.002,0.2,0.0005,3723,0.05094228852749601,0.35480810113987127,0.1251906583080352,SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied'),False,False

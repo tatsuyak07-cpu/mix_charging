@@ -1,0 +1,21 @@
+{
+  "rapid-run": [
+    "area_contact.py",
+    "explicit_solver.py",
+    "edge_coverage.py"
+  ],
+  "slow-run": [
+    "area_contact.py",
+    "explicit_solver.py",
+    "edge_coverage.py"
+  ],
+  "half-run": [
+    "area_contact.py",
+    "explicit_solver.py",
+    "edge_coverage.py"
+  ],
+  "resolved-rapid-run": [],
+  "resolved-slow-run": [],
+  "resolved-half-run": [],
+  "resolution-half-run": []
+}

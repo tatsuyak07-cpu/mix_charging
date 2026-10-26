@@ -1,0 +1,71 @@
+[
+  {
+    "accepted_time_s": 4.9230805019585e-07,
+    "trial_time_s": 6.564107335944666e-07,
+    "trial_dt_s": 1.6410268339861666e-07,
+    "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+    "feature": {
+      "kind": "ee",
+      "ids": [
+        304,
+        305,
+        308,
+        309
+      ],
+      "shift": [
+        0,
+        0,
+        0
+      ],
+      "points": [
+        [
+          1.0,
+          2.0,
+          2.0
+        ],
+        [
+          3.0,
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          1.0,
+          2.0199998435892663
+        ],
+        [
+          2.0,
+          3.0,
+          2.0199998435892663
+        ]
+      ],
+      "distance_mm": 0.01999984358926632
+    },
+    "repaired": true,
+    "candidate_selection": [
+      {
+        "side": 0,
+        "edge": [
+          304,
+          305
+        ],
+        "fraction": 0.5,
+        "geometrically_valid": true,
+        "minimum_quality": 0.05008908813251207
+      },
+      {
+        "side": 1,
+        "edge": [
+          308,
+          309
+        ],
+        "fraction": 0.5,
+        "geometrically_valid": true,
+        "minimum_quality": 0.05008908813251207
+      }
+    ],
+    "candidate_event_indices": [
+      0
+    ]
+  }
+]

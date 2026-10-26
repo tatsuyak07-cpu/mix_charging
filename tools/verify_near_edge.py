@@ -98,13 +98,13 @@ def main():
                 corrected_pair_not_screened=not corrected['dominated'],
                 all_33_variants_not_screened=len(variants)==33 and all(not r['corrected']['dominated'] for r in variants),
                 endpoint_contact_is_not_at_EE_closest_point=bool(endpoint_contacts) and all(r['point_triangle_gap_mm']>1e-3 for r in endpoint_contacts),
-                existing_endpoint_guard_gap_reproduced=error is None)
+                endpoint_guard_rejects_unresolved_pair=error is not None and 'Edge-only' in error)
     checks['exact_local_star_convex_hulls_separated']=separation['strict_separation']
     result=plain(dict(scope=__doc__,checks=checks,passed=all(checks.values()),legacy=original,corrected=corrected,
                       decimal_distance_mm=reference['distance'],decimal_s=reference['s'],decimal_t=reference['t'],derivatives=derivatives,variants=variants,
                       exact_local_star_projection=separation,
                       endpoint_contacts=endpoint_contacts,accepted_geometry_evaluation_error=error,accepted_geometry_report=report,
-                      coverage_limitation='The existing guard accepts any endpoint having any selected point contact. This test shows that endpoint contact alone does not establish resolution of this near-zero EE pair.',
+                      coverage_limitation='The corrected guard rejects this near-zero pair despite another endpoint contact; general quadrature/history convergence remains unverified.',
                       time_advanced=False,physical_solution_verified=False))
     (a.output/'summary.json').write_text(json.dumps(result,indent=2)+'\n');(a.output/'verify_near_edge.py').write_bytes(Path(__file__).read_bytes())
     print(json.dumps(dict(checks=checks,passed=result['passed'],endpoint_contacts=endpoint_contacts),indent=2))

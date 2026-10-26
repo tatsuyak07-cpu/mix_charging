@@ -1,0 +1,550 @@
+{
+  "whole_path_audit": {
+    "sampling": "every_accepted_step_including_initial",
+    "rows": 13413,
+    "pressure_window": "command > 1 percent of observed peak",
+    "energy_floor_Nmm": 6.785394030425016e-08,
+    "normalization_note": "Ratios near first loading/contact can be singular as internal energy approaches zero; peaks alone do not establish convergence.",
+    "loaded": {
+      "steps": 11356,
+      "peak_kinetic_Nmm": 0.21742853522242367,
+      "peak_kinetic_time_s": 0.0036879912825078325,
+      "peak_kinetic_over_energy_scale": 0.03204361224233939,
+      "peak_kinetic_internal_ratio": 0.11812895820698235,
+      "peak_kinetic_internal_contact_ratio": 0.11812895820698235
+    },
+    "contact": {
+      "steps": 1,
+      "peak_kinetic_Nmm": 0.21742853522242367,
+      "peak_kinetic_time_s": 0.0036879912825078325,
+      "peak_kinetic_over_energy_scale": 0.03204361224233939,
+      "peak_kinetic_internal_ratio": 0.04262575080070832,
+      "peak_kinetic_internal_contact_ratio": 0.04262575079979819
+    }
+  },
+  "accepted_step_audit_file": "accepted-step-audit.csv.gz",
+  "pressure_measure": "cauchy",
+  "peak_command_pressure_MPa": 0.04271690352788399,
+  "final_work_equivalent_cauchy_stress_MPa": [
+    [
+      -0.004412098900820835,
+      -0.0021748758093607036,
+      0.0014341483632867242
+    ],
+    [
+      -0.0021748758093607036,
+      -0.004412098900723146,
+      0.0014341483634775932
+    ],
+    [
+      0.0014341483632867242,
+      0.0014341483634775932,
+      -0.032216785765507586
+    ]
+  ],
+  "final_external_work_equivalent_cauchy_stress_MPa": [
+    [
+      2.357019209645688e-25,
+      4.7965439196609394e-26,
+      -7.616064475732337e-22
+    ],
+    [
+      4.7965439196609394e-26,
+      -1.39771042580687e-25,
+      4.525237418685589e-22
+    ],
+    [
+      -7.616064475732337e-22,
+      4.525237418685589e-22,
+      -0.04271690352788399
+    ]
+  ],
+  "area_contact_scope": "single_closest_patch_with_edge_collision_guard",
+  "mass_frame": "pinned",
+  "porosity_goal_equilibrated": null,
+  "peak_nominal_pressure_MPa": 0.04568188788321238,
+  "contact_quadrature_variation_Nmm": 0.0,
+  "contact_released_history_Nmm": 0.0,
+  "contact_neighbor_builds": 1,
+  "audit_sampling": "every_accepted_step",
+  "loading_mode": "cauchy_pressure",
+  "contact_retries": 2,
+  "contact_backend": "area_guarded",
+  "edge_edge_response_implemented": false,
+  "edge_response_scope": "collision_guard_only_no_edge_spring",
+  "status": "diagnostics_only",
+  "checks": {
+    "closed_boundary_volume": true,
+    "material_volume_consistency": true,
+    "static_equilibrium": false,
+    "path_completed": false,
+    "positive_J": true,
+    "physical_porosity": true,
+    "energy_balance": true,
+    "low_kinetic_energy": false,
+    "coulomb_bound": true,
+    "reference_volume_conserved": true,
+    "penetration_bound": true,
+    "contact_numerical_energy_small": true,
+    "requested_pressure_reached": false
+  },
+  "failure": "SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied')",
+  "failure_feature": {
+    "kind": "ee",
+    "ids": [
+      1725,
+      1740,
+      1903,
+      3791
+    ],
+    "shift": [
+      0,
+      0,
+      1
+    ],
+    "points": [
+      [
+        5.527252090297118,
+        6.283124086135259,
+        11.203166427657779
+      ],
+      [
+        5.527704993948602,
+        7.0404265234590735,
+        11.180661833196533
+      ],
+      [
+        5.937005018331907,
+        6.692800516353252,
+        11.198857775106646
+      ],
+      [
+        5.528001861664061,
+        6.692640006468323,
+        11.210628675804628
+      ]
+    ],
+    "distance_mm": 0.019629496216155205
+  },
+  "surface_resolution_attempts": [
+    {
+      "accepted_time_s": 0.00368782524977496,
+      "trial_time_s": 0.0036880030984739534,
+      "trial_dt_s": 1.778486989933755e-07,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          1725,
+          1740,
+          1726,
+          1903
+        ],
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "points": [
+          [
+            5.5272104783884615,
+            6.283082599356277,
+            11.203191075675488
+          ],
+          [
+            5.527663463997646,
+            7.040384688703644,
+            11.180689834042552
+          ],
+          [
+            5.179652075921861,
+            6.6925227175317605,
+            11.220949421981471
+          ],
+          [
+            5.937028313110839,
+            6.692824514701828,
+            11.199145289030149
+          ]
+        ],
+        "distance_mm": 0.01989797161961065
+      },
+      "repaired": true,
+      "candidate_selection": [
+        {
+          "side": 1,
+          "edge": [
+            1726,
+            1903
+          ],
+          "fraction": 0.4599763550007298,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5170170899122047
+        },
+        {
+          "side": 0,
+          "edge": [
+            1725,
+            1740
+          ],
+          "fraction": 0.5400600032515629,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5169920261001731
+        }
+      ],
+      "candidate_event_indices": [
+        0
+      ]
+    },
+    {
+      "accepted_time_s": 0.00368782524977496,
+      "trial_time_s": 0.003687991282767317,
+      "trial_dt_s": 1.6603299235721202e-07,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          1887,
+          2064,
+          2050,
+          2065
+        ],
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "points": [
+          [
+            6.28307942090708,
+            5.5272072902965785,
+            11.203192964045611
+          ],
+          [
+            7.040381483619889,
+            5.527660282396253,
+            11.180691979103978
+          ],
+          [
+            6.69252453051056,
+            5.17965390549584,
+            11.220971268472887
+          ],
+          [
+            6.692826331944135,
+            5.937030114435973,
+            11.199167365173565
+          ]
+        ],
+        "distance_mm": 0.01991817210675465
+      },
+      "repaired": true,
+      "candidate_selection": [
+        {
+          "side": 1,
+          "edge": [
+            2050,
+            2065
+          ],
+          "fraction": 0.45997051416145934,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5170129785170583
+        },
+        {
+          "side": 0,
+          "edge": [
+            1887,
+            2064
+          ],
+          "fraction": 0.5400658310201746,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5169879237235872
+        }
+      ],
+      "candidate_event_indices": [
+        1
+      ]
+    },
+    {
+      "accepted_time_s": 0.0036879912825078325,
+      "trial_time_s": 0.0036881573157360116,
+      "trial_dt_s": 1.6603322817900572e-07,
+      "reason": "Edge-only approach requires surface refinement; no artificial edge spring applied",
+      "feature": {
+        "kind": "ee",
+        "ids": [
+          1725,
+          1740,
+          1903,
+          3791
+        ],
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "points": [
+          [
+            5.527252090297118,
+            6.283124086135259,
+            11.203166427657779
+          ],
+          [
+            5.527704993948602,
+            7.0404265234590735,
+            11.180661833196533
+          ],
+          [
+            5.937005018331907,
+            6.692800516353252,
+            11.198857775106646
+          ],
+          [
+            5.528001861664061,
+            6.692640006468323,
+            11.210628675804628
+          ]
+        ],
+        "distance_mm": 0.019629496216155205
+      },
+      "repaired": false,
+      "candidate_selection": [
+        {
+          "side": 0,
+          "edge": [
+            1725,
+            1740
+          ],
+          "fraction": 0.5399869764435254,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5170136129616302
+        },
+        {
+          "side": 1,
+          "edge": [
+            1903,
+            3791
+          ],
+          "fraction": 0.9998557306192829,
+          "geometrically_valid": true,
+          "minimum_quality": 0.0017231067785441285
+        }
+      ],
+      "candidate_event_indices": [
+        2
+      ]
+    }
+  ],
+  "steps": 13412,
+  "dt_min_s": 1.660327328725594e-07,
+  "dt_max_s": 3.0497709166574784e-07,
+  "kinetic_internal_ratio_loaded": null,
+  "closed_boundary_volume_relative_error": 4.2758613294355885e-16,
+  "material_volume_relative_error": 3.3540794024919222e-12,
+  "final_static_residual_ratio": 0.3012669111322592,
+  "energy_scale_Nmm": 6.7853940304250155,
+  "initial_available_energy_Nmm": 0.0,
+  "energy_absolute_residual_Nmm": 0.00015118037278227803,
+  "energy_relative_error": 2.2280264359652607e-05,
+  "remesh_events": [
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.00368782524977496,
+      "accepted": true,
+      "candidate_selection": {
+        "candidate": {
+          "side": 1,
+          "edge": [
+            1726,
+            1903
+          ],
+          "fraction": 0.4599763550007298,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5170170899122047
+        },
+        "ranking": [
+          {
+            "side": 1,
+            "edge": [
+              1726,
+              1903
+            ],
+            "fraction": 0.4599763550007298,
+            "geometrically_valid": true,
+            "minimum_quality": 0.5170170899122047
+          },
+          {
+            "side": 0,
+            "edge": [
+              1725,
+              1740
+            ],
+            "fraction": 0.5400600032515629,
+            "geometrically_valid": true,
+            "minimum_quality": 0.5169920261001731
+          }
+        ]
+      },
+      "fraction": 0.4599763550007298,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.5273268492151952,
+      "minimum_quality_after": 0.5170170899122047,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 1.98702552362252e-16,
+        "linear_momentum": 2.4069994632417233e-15,
+        "angular_momentum": 1.6524707520755085e-09,
+        "kinetic_energy": 1.6951145340185295e-10,
+        "material_energy": 0.0,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 0.0,
+        "contact_macro_force": 0.0
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.00368782524977496,
+      "accepted": true,
+      "candidate_selection": {
+        "candidate": {
+          "side": 1,
+          "edge": [
+            2050,
+            2065
+          ],
+          "fraction": 0.45997051416145934,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5170129785170583
+        },
+        "ranking": [
+          {
+            "side": 1,
+            "edge": [
+              2050,
+              2065
+            ],
+            "fraction": 0.45997051416145934,
+            "geometrically_valid": true,
+            "minimum_quality": 0.5170129785170583
+          },
+          {
+            "side": 0,
+            "edge": [
+              1887,
+              2064
+            ],
+            "fraction": 0.5400658310201746,
+            "geometrically_valid": true,
+            "minimum_quality": 0.5169879237235872
+          }
+        ]
+      },
+      "fraction": 0.45997051416145934,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.5170170899122047,
+      "minimum_quality_after": 0.5170129785170583,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 1.0328601894344328e-15,
+        "angular_momentum": 1.6524663202891421e-09,
+        "kinetic_energy": 1.6951185073386372e-10,
+        "material_energy": 1.741729362233714e-16,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 0.0,
+        "contact_macro_force": 0.0
+      },
+      "tolerance": 0.001
+    },
+    {
+      "operation": "periodic_edge_bisection",
+      "time_s": 0.0036879912825078325,
+      "accepted": false,
+      "candidate_selection": {
+        "candidate": {
+          "side": 0,
+          "edge": [
+            1725,
+            1740
+          ],
+          "fraction": 0.5399869764435254,
+          "geometrically_valid": true,
+          "minimum_quality": 0.5170136129616302
+        },
+        "ranking": [
+          {
+            "side": 0,
+            "edge": [
+              1725,
+              1740
+            ],
+            "fraction": 0.5399869764435254,
+            "geometrically_valid": true,
+            "minimum_quality": 0.5170136129616302
+          },
+          {
+            "side": 1,
+            "edge": [
+              1903,
+              3791
+            ],
+            "fraction": 0.9998557306192829,
+            "geometrically_valid": true,
+            "minimum_quality": 0.0017231067785441285
+          }
+        ]
+      },
+      "fraction": 0.5399869764435254,
+      "periodic_edges": 1,
+      "new_nodes": 1,
+      "reference_volume_error": 0.0,
+      "current_volume_error": 0.0,
+      "minimum_quality_before": 0.5170136129616302,
+      "minimum_quality_after": 0.5170136129616302,
+      "reason": "Remesh contact history lacks a unique parent patch"
+    }
+  ],
+  "initial_porosity": 0.3984375,
+  "final_porosity": 0.35843196432138846,
+  "final_axial_compression": 0.1250091183017294,
+  "residual_compression_strain": null,
+  "limitations": [
+    "linear-tetra plastic locking not converged",
+    "contact quadrature, barrier thickness, mollification and general friction convergence not validated",
+    "surface edge bisection is experimental; no coarsening or general distortion repair",
+    "numerical density and damping are not measured material data",
+    "uncalibrated Kirchhoff-yield Hencky J2 material",
+    "not a verified 40 to 10 percent compaction result"
+  ]
+}

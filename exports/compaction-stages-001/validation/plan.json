@@ -1,0 +1,12 @@
+{
+  "goal": "Verify stages 1-4; do not accept rapid/transient/unconverged states as pressure solutions",
+  "stages": [
+    "pair-specific coverage",
+    "audited refinement/retry",
+    "0.1 MPa pressure/hold",
+    "rate and timestep sensitivity"
+  ],
+  "physical_parameters_unchanged": true,
+  "thresholds_unchanged": true,
+  "blocked_stages_must_be_reported": true
+}

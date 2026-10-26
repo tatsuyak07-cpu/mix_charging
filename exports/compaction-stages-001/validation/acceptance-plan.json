@@ -1,0 +1,14 @@
+{
+  "scope": "Acceptance criteria written before inspecting pressure-run outcomes",
+  "required_pressure_mpa": 0.1,
+  "rate_final_porosity_absolute_tolerance": 0.001,
+  "rate_final_compression_relative_tolerance": 0.01,
+  "timestep_final_porosity_absolute_tolerance": 0.001,
+  "timestep_final_compression_relative_tolerance": 0.01,
+  "whole_loaded_kinetic_internal_contact_ratio_limit": 0.01,
+  "physical_parameters_unchanged": true,
+  "rule": "Stages 3 and 4 cannot pass unless all runs complete 0.1 MPa and hold with all solver checks passing; prefix agreement alone is diagnostic. Tolerances are developer numerical choices, not measured material accuracy.",
+  "edge_resolution_relative_tolerance": 0.001,
+  "edge_resolution_sensitivity": 0.0005,
+  "edge_resolution_meaning": "Endpoint must lie within tolerance times EE separation of the source closest point and have matching opposing feature and gap; linear motion certificate remains unchanged."
+}

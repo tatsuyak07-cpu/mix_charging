@@ -103,11 +103,21 @@ def test_historical_corner_point_candidates_are_local_across_radius_sensitivity(
             assert c.local(('corner',*ids),ids,'pt',np.zeros(3),points,w,X,np.eye(3)*4)
 
 
-def test_refined_edge_approach_still_stops_after_point_filter():
+def test_reference_corner_with_verified_surface_descent_is_not_false_edge_collision():
     from tools.run_barrier_compaction import fixture as pore_fixture
     from packing_fem.area_contact import SurfaceResolutionError
     X,t=pore_fixture(4);c=AreaContact(X,t,Periodic(X,4.),20.,.3,.1,thickness=.02,max_candidates=1000000,local_material_filter=True)
-    with pytest.raises(SurfaceResolutionError,match='Edge-only') as hit:
-        c.evaluate(X,X*0,np.eye(3)*4,np.zeros((3,3)),0.)
-    assert hit.value.feature['kind']=='ee'
-    assert hit.value.feature['distance_mm']==pytest.approx(.019968076595771916)
+    import importlib.util
+    from pathlib import Path
+    archive=Path('exports/near-edge-001/source/area_contact.py')
+    spec=importlib.util.spec_from_file_location('packing_fem._corner_legacy',archive)
+    old=importlib.util.module_from_spec(spec);spec.loader.exec_module(old)
+    legacy=old.AreaContact(X,t,Periodic(X,4.),20.,.3,.1,thickness=.02,max_candidates=1000000,local_material_filter=True)
+    with pytest.raises(old.SurfaceResolutionError,match='Edge-only') as hit:legacy.evaluate(X,X*0,np.eye(3)*4,np.zeros((3,3)),0.)
+    f=hit.value.feature;ids=np.array(f['ids']);shift=np.array(f['shift'])
+    result=c.edge_coverage.star.classify(ids,shift,X,np.eye(3)*4)
+    assert result['dominated'];w=result['witness']
+    toward=np.array(w['toward']);direction=np.array(w['direction'])
+    assert np.linalg.norm(toward-1e-4*direction)<np.linalg.norm(toward)
+    report=c.evaluate(X,X*0,np.eye(3)*4,np.zeros((3,3)),0.)[-1]
+    assert report['edge_coverage_counts']['surface_descent']>0

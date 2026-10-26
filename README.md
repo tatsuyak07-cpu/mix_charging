@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+工程1〜4を比較検証：**辺対の接触確認を修正し、7条件を計算。0.1 MPa載荷・保持と準静的条件は未合格**。
+[検証報告](docs/compaction-stages-1-4.md)・[比較図](exports/compaction-stages-001/stage4-comparison.png)・[条件別CSV](exports/compaction-stages-001/case-outcomes.csv)・[全データZIP](exports/compaction-stages-001.zip)。
+全体284テスト合格。実充填セルでは新しい接触点の履歴不足と接触積分の変化で停止し、載荷速度による空隙率差も残っています。停止時の値を平衡圧密の結果として扱っていません。
+
 ほぼゼロ離隔の辺対を検証：**丸め誤差による誤った除外判定を修正し、端点接触だけでは不十分な確認条件も特定**。
 [検証報告](docs/near-edge.md)・[判定比較図](exports/near-edge-001/near-edge-checks.png)・[局所形状図](exports/near-edge-001/near-edge-geometry.png)・[全データZIP](exports/near-edge-001.zip)。
 33条件の座標感度と局所三角形の非交差を確認しました。辺対ごとの接触確認条件は未修正で、今回の圧縮再計算は行っていません。

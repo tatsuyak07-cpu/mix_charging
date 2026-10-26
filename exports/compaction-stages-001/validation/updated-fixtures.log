@@ -1,0 +1,17 @@
+............F                                                            [100%]
+=================================== FAILURES ===================================
+_ test_reference_corner_with_verified_surface_descent_is_not_false_edge_collision _
+
+    def test_reference_corner_with_verified_surface_descent_is_not_false_edge_collision():
+        from tools.run_barrier_compaction import fixture as pore_fixture
+        from packing_fem.area_contact import SurfaceResolutionError
+        X,t=pore_fixture(4);c=AreaContact(X,t,Periodic(X,4.),20.,.3,.1,thickness=.02,max_candidates=1000000,local_material_filter=True)
+        import importlib.util
+>       archive=Path('exports/near-edge-001/source/area_contact.py')
+                ^^^^
+E       NameError: name 'Path' is not defined
+
+tests/test_material_neighborhood.py:111: NameError
+=========================== short test summary info ============================
+FAILED tests/test_material_neighborhood.py::test_reference_corner_with_verified_surface_descent_is_not_false_edge_collision
+1 failed, 12 passed in 6.15s

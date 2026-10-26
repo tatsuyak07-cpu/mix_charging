@@ -10,7 +10,19 @@ from packing_fem.contact_audit import energy_difference_force,potential
 SOURCE=Path('results/packing-rve-development-001/stop-diagnostic-002')
 
 
-def saved():
+def tie_fixture():
+    # Clean concave L-wall fixture: two active source vertices have two
+    # equidistant target feet, with no unresolved interior EE approach.
+    from packing_fem import sintered
+    from packing_fem.explicit_material import hex_to_tet,oriented
+    mask=np.ones((2,2,1),bool);mask[1,1]=False
+    X,h,_=sintered.mesh(mask,1.);X+=1.
+    p=np.array([[2.015,2.015,1.45],[2.015,2.015,1.55],[2.115,2.015,1.5],[2.015,2.115,1.5]])
+    t=np.r_[hex_to_tet(X,h),oriented(p,np.arange(4).reshape(1,4))+len(X)];X=np.r_[X,p]
+    return X,t,X.copy(),X.copy(),np.eye(3)*12.1
+
+
+def archived_trial():
     # This regression fixture is archived with the development outcome.
     source=SOURCE if SOURCE.exists() else Path('exports/packing-rve-contact-fixture-001')
     with np.load(source/'trial-geometry.npz') as z:return [z[k] for k in ('reference_points','tets','accepted_points','trial_points','cell')]
@@ -20,8 +32,13 @@ def contact(X,t,mu=0.,rule='clarke'):
     return AreaContact(X,t,Periodic(X,12.1),20.,mu,.1,thickness=.02,multiple_patches=True,edge_stationarity_filter=True,closest_tie_rule=rule)
 
 
-def test_stopped_trial_is_resolved_only_with_explicit_tie_option():
-    X,t,old,x,H=saved()
+def test_archived_trial_still_rejects_unresolved_edges_after_tie_resolution():
+    X,t,old,x,H=archived_trial()
+    with pytest.raises(SurfaceResolutionError,match='Edge-only'):contact(X,t).evaluate(x,x*0,H,H*0,0.)
+
+
+def test_clean_concave_tie_is_resolved_only_with_explicit_tie_option():
+    X,t,old,x,H=tie_fixture()
     with pytest.raises(SurfaceResolutionError,match='Multiple distinct closest'):contact(X,t,rule='stop').evaluate(x,x*0,H,H*0,0.)
     c=contact(X,t);c.capture_audit=True;f,_,h,r=c.evaluate(x,x*0,H,H*0,0.)
     assert r['closest_tie_branches']>=2 and r['contacts']>0
@@ -42,7 +59,7 @@ def test_stopped_trial_is_resolved_only_with_explicit_tie_option():
 
 
 def test_tie_friction_has_no_initial_spring_and_is_objective():
-    X,t,old,x,H=saved();c=contact(X,t,.3);c.capture_audit=True
+    X,t,old,x,H=tie_fixture();c=contact(X,t,.3);c.capture_audit=True
     f,_,history,r=c.evaluate(x,x*0,H,H*0,0.)
     for rec in c.trial_audit['records']:
         if 'normal_branches' in rec:assert np.linalg.norm(rec['spring'])<1e-14
@@ -54,7 +71,7 @@ def test_tie_friction_has_no_initial_spring_and_is_objective():
 
 
 def test_symmetric_contact_uses_one_max_potential_with_no_normal_energy_gain():
-    X,t,old,x,H=saved();c=contact(X,t);c.capture_audit=True;c.evaluate(x,x*0,H,H*0,0.)
+    X,t,old,x,H=tie_fixture();c=contact(X,t);c.capture_audit=True;c.evaluate(x,x*0,H,H*0,0.)
     for rec in c.trial_audit['records']:
         if 'normal_branches' not in rec:continue
         from packing_fem.barrier_contact import barrier
@@ -67,7 +84,7 @@ def test_symmetric_contact_uses_one_max_potential_with_no_normal_energy_gain():
 
 
 def test_tied_contact_preserves_nonzero_friction_history_and_full_potential_gradient():
-    X,t,old,x,H=saved();c=contact(X,t,.3);c.capture_audit=True
+    X,t,old,x,H=tie_fixture();c=contact(X,t,.3);c.capture_audit=True
     c.history=c.evaluate(x,x*0,H,H*0,0.)[2]
     y=x.copy();G=H.copy();slip=1e-5;y[:,:2]+=slip*X[:,2,None]/12.1;G[:2,2]+=slip
     f,_,hist,r=c.evaluate(y,y*0,G,G*0,.001)
