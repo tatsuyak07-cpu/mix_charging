@@ -14,7 +14,8 @@ def plain(value):
 def save_capture(path,contact,total_force,external,time,steps):
     if contact.accepted_audit is None:raise ValueError('No accepted audit capture')
     history=[dict(key=list(k),state=plain(v)) for k,v in contact.accepted_history.items()]
-    data=dict(schema=1,scope='accepted force-evaluation witnesses plus committed friction history; not a restart checkpoint',time_s=float(time),steps=int(steps),accepted=plain(contact.accepted_audit),committed_history=history,solver_internal_generalized_force=plain(total_force),external_generalized_force=plain(external))
+    applied=[dict(key=list(k),state=plain(v)) for k,v in (contact.accepted_force_history or {}).items()]
+    data=dict(schema=1,scope='accepted force-evaluation witnesses plus committed friction history; not a restart checkpoint',time_s=float(time),steps=int(steps),accepted=plain(contact.accepted_audit),committed_history=history,applied_force_history=applied,solver_internal_generalized_force=plain(total_force),external_generalized_force=plain(external))
     path.write_text(json.dumps(data,indent=2,allow_nan=False)+'\n')
 
 

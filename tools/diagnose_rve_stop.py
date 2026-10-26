@@ -17,13 +17,15 @@ def main():
     f=np.array(capture['solver_internal_generalized_force']);external=np.array(capture['external_generalized_force'])
     acceleration=pbc.acceleration(f+external,v,0.,c['damping_per_s'])/(1-.5*lastdt*c['damping_per_s'])
     trialq=q+dt*v+.5*dt*dt*acceleration;y=pbc.positions(trialq);H=deformation(trialq[-6:])*pbc.L
-    contact=AreaContact(X,t,pbc,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],multiple_patches=c.get('multiple_patches',False),edge_stationarity_filter=c.get('edge_stationarity_filter',False),closest_tie_rule=c.get('closest_tie_rule','stop'))
+    contact=AreaContact(X,t,pbc,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],multiple_patches=c.get('multiple_patches',False),edge_stationarity_filter=c.get('edge_stationarity_filter',False),closest_tie_rule=c.get('closest_tie_rule','stop'),edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.),quadrature_mode=c.get('contact_quadrature_mode','nodal'))
+    if (a.source/'contact-quadrature.npz').exists():
+        with np.load(a.source/'contact-quadrature.npz') as saved:contact.quadrature_weights=saved['area_weights'].copy()
     error=None
     try:contact.evaluate(y,y*0,H,H*0,0.)
     except ValueError as exc:error=dict(type=type(exc).__name__,message=str(exc),feature=getattr(exc,'feature',None))
     selected={}
     for key,ids,kind,shift,_,_ in contact.guard.neighbors:
-        if kind!='pt':continue
+        if kind!='pt' or contact.integration_area0[int(ids[0])]<=0:continue
         z=y[ids].copy();z[1:]+=H@shift;branch,w=feature(z,'pt');r=relative(z,'pt',branch);d=float(np.linalg.norm(r))
         if d>=contact.thickness:continue
         if contact.material_neighborhood.local(key,ids,'pt',shift,z,w,y,H):continue

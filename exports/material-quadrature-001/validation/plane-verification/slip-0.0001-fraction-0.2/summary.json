@@ -1,0 +1,48 @@
+{
+  "slip_mm": 0.0001,
+  "fraction": 0.2,
+  "checks": {
+    "transfer": true,
+    "same_material_histories": true,
+    "plastic_preserved": true,
+    "reference_areas_identical": true,
+    "no_new_quadrature": true,
+    "same_force_work": true,
+    "analytic_normal_energy": true,
+    "analytic_tangent_energy": true,
+    "coulomb": true
+  },
+  "passed": true,
+  "audit": {
+    "accepted": true,
+    "checks": {
+      "mass": true,
+      "linear_momentum": true,
+      "angular_momentum": true,
+      "kinetic_energy": true,
+      "material_energy": true,
+      "contact_energy": true,
+      "normal_energy": true,
+      "tangent_energy": true,
+      "contact_macro_force": true,
+      "coulomb": true
+    },
+    "scaled_errors": {
+      "mass": 0.0,
+      "linear_momentum": 0.0,
+      "angular_momentum": 0.0,
+      "kinetic_energy": 0.0,
+      "material_energy": 1.708072696317945e-16,
+      "contact_energy": 0.0,
+      "normal_energy": 0.0,
+      "tangent_energy": 1.720535674110647e-14,
+      "contact_macro_force": 1.3170057839167475e-15
+    },
+    "tolerance": 1e-07
+  },
+  "normal_before": 0.00011012829336045,
+  "normal_after": 0.00011012829336045,
+  "tangent_before": 4.9999999999989847e-08,
+  "tangent_after": 4.9999999999988986e-08,
+  "maximum_plastic_offset_error_mm": 0.0
+}

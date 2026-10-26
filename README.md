@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+摩擦履歴・接触積分を保持する `material` モードを実装：**過去の拒否提案で面積・法線エネルギーを保持し、10項目の移行監査に合格**。
+[検証報告](docs/material-quadrature.md)・[比較図](exports/material-quadrature-001/energy-conservation.png)・[新設定](configs/packing-rve-material-quadrature.json)・[全データZIP](exports/material-quadrature-001.zip)。
+全体300テスト合格。固着・滑りの履歴と力評価状態を分けて移行します。積分点の適応追加は未実装で、0.1 MPaの完走は未達成です。
+
 工程1〜4を比較検証：**辺対の接触確認を修正し、7条件を計算。0.1 MPa載荷・保持と準静的条件は未合格**。
 [検証報告](docs/compaction-stages-1-4.md)・[比較図](exports/compaction-stages-001/stage4-comparison.png)・[条件別CSV](exports/compaction-stages-001/case-outcomes.csv)・[全データZIP](exports/compaction-stages-001.zip)。
 全体284テスト合格。実充填セルでは新しい接触点の履歴不足と接触積分の変化で停止し、載荷速度による空隙率差も残っています。停止時の値を平衡圧密の結果として扱っていません。

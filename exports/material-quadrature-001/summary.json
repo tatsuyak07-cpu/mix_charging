@@ -1,0 +1,577 @@
+{
+  "scope": "Export persistent quadrature/force-history conservation verification.",
+  "whole_suite_passed": 300,
+  "saved_proposal_transfer": {
+    "scope": "Replay one rejected large-cell remesh transaction without advancing time.",
+    "source_proposal": "exports/compaction-stages-001/validation/resolved-rapid-run/calculation/surface-remesh-attempt-0003.npz",
+    "edge": null,
+    "fraction": null,
+    "geometry_transfer_error_mm": 1.7763568394002505e-15,
+    "minimum_quality": 0.4387133350598845,
+    "time_advanced": false,
+    "physical_solution_verified": false,
+    "quadrature_mode": "material",
+    "force_evaluation_state_source": "legacy_committed_history_fallback",
+    "quadrature_area_before": 905.9118749999999,
+    "quadrature_area_after": 905.9118749999999,
+    "transaction_audit": {
+      "accepted": true,
+      "checks": {
+        "mass": true,
+        "linear_momentum": true,
+        "angular_momentum": true,
+        "kinetic_energy": true,
+        "material_energy": true,
+        "contact_energy": true,
+        "normal_energy": true,
+        "tangent_energy": true,
+        "contact_macro_force": true,
+        "coulomb": true
+      },
+      "scaled_errors": {
+        "mass": 0.0,
+        "linear_momentum": 9.47410158568869e-16,
+        "angular_momentum": 2.4366115692714178e-09,
+        "kinetic_energy": 3.974096941814181e-10,
+        "material_energy": 0.0,
+        "contact_energy": 0.0,
+        "normal_energy": 0.0,
+        "tangent_energy": 1.374790947416496e-23,
+        "contact_macro_force": 3.0588242040502294e-12
+      },
+      "tolerance": 0.001
+    },
+    "accepted": true,
+    "old_active_histories": 2,
+    "new_active_histories": 2,
+    "normal_energy_before": 6.482924853867045e-08,
+    "normal_energy_after": 6.482924853867045e-08,
+    "tangent_energy_before": 2.561350325371149e-36,
+    "tangent_energy_after": 7.501429043161192e-31
+  },
+  "plane_verification": {
+    "scope": "Prescribed sticking/sliding tests of persistent material contact integration.",
+    "passed": true,
+    "cases": [
+      {
+        "slip_mm": 0.0001,
+        "fraction": 0.2,
+        "checks": {
+          "transfer": true,
+          "same_material_histories": true,
+          "plastic_preserved": true,
+          "reference_areas_identical": true,
+          "no_new_quadrature": true,
+          "same_force_work": true,
+          "analytic_normal_energy": true,
+          "analytic_tangent_energy": true,
+          "coulomb": true
+        },
+        "passed": true,
+        "audit": {
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 1.708072696317945e-16,
+            "contact_energy": 0.0,
+            "normal_energy": 0.0,
+            "tangent_energy": 1.720535674110647e-14,
+            "contact_macro_force": 1.3170057839167475e-15
+          },
+          "tolerance": 1e-07
+        },
+        "normal_before": 0.00011012829336045,
+        "normal_after": 0.00011012829336045,
+        "tangent_before": 4.9999999999989847e-08,
+        "tangent_after": 4.9999999999988986e-08,
+        "maximum_plastic_offset_error_mm": 0.0
+      },
+      {
+        "slip_mm": 0.0001,
+        "fraction": 0.5,
+        "checks": {
+          "transfer": true,
+          "same_material_histories": true,
+          "plastic_preserved": true,
+          "reference_areas_identical": true,
+          "no_new_quadrature": true,
+          "same_force_work": true,
+          "analytic_normal_energy": true,
+          "analytic_tangent_energy": true,
+          "coulomb": true
+        },
+        "passed": true,
+        "audit": {
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 1.708072696317945e-16,
+            "contact_energy": 0.0,
+            "normal_energy": 0.0,
+            "tangent_energy": 1.720535674110647e-14,
+            "contact_macro_force": 1.4063971967674315e-15
+          },
+          "tolerance": 1e-07
+        },
+        "normal_before": 0.00011012829336045,
+        "normal_after": 0.00011012829336045,
+        "tangent_before": 4.9999999999989847e-08,
+        "tangent_after": 4.9999999999988986e-08,
+        "maximum_plastic_offset_error_mm": 0.0
+      },
+      {
+        "slip_mm": 0.0001,
+        "fraction": 0.8,
+        "checks": {
+          "transfer": true,
+          "same_material_histories": true,
+          "plastic_preserved": true,
+          "reference_areas_identical": true,
+          "no_new_quadrature": true,
+          "same_force_work": true,
+          "analytic_normal_energy": true,
+          "analytic_tangent_energy": true,
+          "coulomb": true
+        },
+        "passed": true,
+        "audit": {
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 1.230054191503176e-16,
+            "normal_energy": 0.0,
+            "tangent_energy": 2.6019793348473325e-13,
+            "contact_macro_force": 3.58957175737556e-15
+          },
+          "tolerance": 1e-07
+        },
+        "normal_before": 0.00011012829336045,
+        "normal_after": 0.00011012829336045,
+        "tangent_before": 4.9999999999989847e-08,
+        "tangent_after": 5.0000000000002856e-08,
+        "maximum_plastic_offset_error_mm": 0.0
+      },
+      {
+        "slip_mm": 0.01,
+        "fraction": 0.2,
+        "checks": {
+          "transfer": true,
+          "same_material_histories": true,
+          "plastic_preserved": true,
+          "reference_areas_identical": true,
+          "no_new_quadrature": true,
+          "same_force_work": true,
+          "analytic_normal_energy": true,
+          "analytic_tangent_energy": true,
+          "coulomb": true
+        },
+        "passed": true,
+        "audit": {
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 1.708072696317945e-16,
+            "contact_energy": 2.1151467000566156e-16,
+            "normal_energy": 0.0,
+            "tangent_energy": 1.3162099221460002e-15,
+            "contact_macro_force": 9.21664172754379e-16
+          },
+          "tolerance": 1e-07
+        },
+        "normal_before": 0.00011012829336045,
+        "normal_after": 0.00011012829336045,
+        "tangent_before": 1.8019103278336795e-05,
+        "tangent_after": 1.801910327833677e-05,
+        "maximum_plastic_offset_error_mm": 0.0
+      },
+      {
+        "slip_mm": 0.01,
+        "fraction": 0.5,
+        "checks": {
+          "transfer": true,
+          "same_material_histories": true,
+          "plastic_preserved": true,
+          "reference_areas_identical": true,
+          "no_new_quadrature": true,
+          "same_force_work": true,
+          "analytic_normal_energy": true,
+          "analytic_tangent_energy": true,
+          "coulomb": true
+        },
+        "passed": true,
+        "audit": {
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 1.708072696317945e-16,
+            "contact_energy": 2.1151467000566156e-16,
+            "normal_energy": 0.0,
+            "tangent_energy": 1.3162099221460002e-15,
+            "contact_macro_force": 8.641422496041338e-16
+          },
+          "tolerance": 1e-07
+        },
+        "normal_before": 0.00011012829336045,
+        "normal_after": 0.00011012829336045,
+        "tangent_before": 1.8019103278336795e-05,
+        "tangent_after": 1.801910327833677e-05,
+        "maximum_plastic_offset_error_mm": 0.0
+      },
+      {
+        "slip_mm": 0.01,
+        "fraction": 0.8,
+        "checks": {
+          "transfer": true,
+          "same_material_histories": true,
+          "plastic_preserved": true,
+          "reference_areas_identical": true,
+          "no_new_quadrature": true,
+          "same_force_work": true,
+          "analytic_normal_energy": true,
+          "analytic_tangent_energy": true,
+          "coulomb": true
+        },
+        "passed": true,
+        "audit": {
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 2.1151467000566156e-16,
+            "normal_energy": 0.0,
+            "tangent_energy": 1.3162099221460002e-15,
+            "contact_macro_force": 2.095320918491664e-15
+          },
+          "tolerance": 1e-07
+        },
+        "normal_before": 0.00011012829336045,
+        "normal_after": 0.00011012829336045,
+        "tangent_before": 1.8019103278336795e-05,
+        "tangent_after": 1.801910327833677e-05,
+        "maximum_plastic_offset_error_mm": 0.0
+      }
+    ],
+    "pressure_solution_verified": false
+  },
+  "legacy_nodal_quadrature_change": {
+    "scope": "Inspect missing history at newly active quadrature nodes; never commit it.",
+    "new_active_nodes": [
+      {
+        "new_node": 3793,
+        "supports": [
+          1725,
+          1740
+        ],
+        "weights": [
+          0.3567766510847612,
+          0.6432233489152388
+        ],
+        "endpoint_history_counts": [
+          0,
+          0
+        ],
+        "target_face": [
+          3791,
+          1903,
+          1711
+        ]
+      }
+    ],
+    "old_normal_energy_Nmm": 6.482924853867045e-08,
+    "proposal_normal_energy_Nmm": 9.719467656073469e-08,
+    "normal_quadrature_relative_change": 0.49924114117655344,
+    "fresh_friction_history_not_transferred": true,
+    "time_advanced": false,
+    "proposal_accepted": false,
+    "interpretation": "Fresh histories are used only to identify geometry and normal quadrature; their zero slip is NOT adopted as transferred material history."
+  },
+  "pressure_diagnostic": {
+    "whole_path_audit": {
+      "sampling": "every_accepted_step_including_initial",
+      "rows": 3723,
+      "pressure_window": "command > 1 percent of observed peak",
+      "energy_floor_Nmm": 8.125984930372861e-08,
+      "normalization_note": "Ratios near first loading/contact can be singular as internal energy approaches zero; peaks alone do not establish convergence.",
+      "loaded": {
+        "steps": 3176,
+        "peak_kinetic_Nmm": 0.5632007984182115,
+        "peak_kinetic_time_s": 0.002019788150903511,
+        "peak_kinetic_over_energy_scale": 0.06930861960045119,
+        "peak_kinetic_internal_ratio": 0.4307209974533203,
+        "peak_kinetic_internal_contact_ratio": 0.4307209974533203
+      },
+      "contact": null
+    },
+    "accepted_step_audit_file": "accepted-step-audit.csv.gz",
+    "pressure_measure": "cauchy",
+    "peak_command_pressure_MPa": 0.050927509040501896,
+    "final_work_equivalent_cauchy_stress_MPa": [
+      [
+        -0.0061675394204235325,
+        -0.0020655679626604357,
+        0.0015423738115444186
+      ],
+      [
+        -0.0020655679626604357,
+        -0.0061675394204233685,
+        0.0015423738115444118
+      ],
+      [
+        0.0015423738115444186,
+        0.0015423738115444118,
+        -0.034943404161969845
+      ]
+    ],
+    "final_external_work_equivalent_cauchy_stress_MPa": [
+      [
+        -1.3078342524554863e-24,
+        -5.87226500862323e-25,
+        -3.1366674209554896e-21
+      ],
+      [
+        -5.87226500862323e-25,
+        1.3338125071309133e-25,
+        3.218211108447954e-22
+      ],
+      [
+        -3.1366674209554896e-21,
+        3.218211108447954e-22,
+        -0.050927509040501896
+      ]
+    ],
+    "area_contact_scope": "single_closest_patch_with_edge_collision_guard",
+    "mass_frame": "pinned",
+    "porosity_goal_equilibrated": null,
+    "peak_nominal_pressure_MPa": 0.05414860138976955,
+    "contact_quadrature_variation_Nmm": 0.0,
+    "contact_released_history_Nmm": 0.0,
+    "contact_neighbor_builds": 184,
+    "audit_sampling": "every_accepted_step",
+    "loading_mode": "cauchy_pressure",
+    "contact_retries": 0,
+    "contact_backend": "area_guarded",
+    "edge_edge_response_implemented": false,
+    "edge_response_scope": "collision_guard_only_no_edge_spring",
+    "status": "diagnostics_only",
+    "checks": {
+      "closed_boundary_volume": true,
+      "material_volume_consistency": true,
+      "static_equilibrium": false,
+      "path_completed": false,
+      "positive_J": true,
+      "physical_porosity": true,
+      "energy_balance": true,
+      "low_kinetic_energy": false,
+      "coulomb_bound": true,
+      "reference_volume_conserved": true,
+      "penetration_bound": true,
+      "contact_numerical_energy_small": true,
+      "requested_pressure_reached": false
+    },
+    "failure": "SurfaceResolutionError('Material contact integration unresolved; integration refinement required')",
+    "failure_feature": {
+      "kind": "ee",
+      "ids": [
+        1725,
+        1740,
+        1726,
+        1903
+      ],
+      "shift": [
+        0,
+        0,
+        1
+      ],
+      "points": [
+        [
+          5.457519676121811,
+          6.2135609701701275,
+          11.279444997695087
+        ],
+        [
+          5.458103912786917,
+          6.970780820271718,
+          11.261424039950336
+        ],
+        [
+          5.188277191603808,
+          6.701047355074308,
+          11.293286630794505
+        ],
+        [
+          5.945597327877195,
+          6.701559135828876,
+          11.275858326733587
+        ]
+      ],
+      "distance_mm": 0.019232290745395845,
+      "requires_quadrature_refinement": true
+    },
+    "surface_resolution_attempts": [
+      {
+        "accepted_time_s": 0.002019788150903511,
+        "trial_time_s": 0.0020201261572279873,
+        "trial_dt_s": 3.380063244763979e-07,
+        "reason": "Material contact integration unresolved; integration refinement required",
+        "feature": {
+          "kind": "ee",
+          "ids": [
+            1725,
+            1740,
+            1726,
+            1903
+          ],
+          "shift": [
+            0,
+            0,
+            1
+          ],
+          "points": [
+            [
+              5.457519676121811,
+              6.2135609701701275,
+              11.279444997695087
+            ],
+            [
+              5.458103912786917,
+              6.970780820271718,
+              11.261424039950336
+            ],
+            [
+              5.188277191603808,
+              6.701047355074308,
+              11.293286630794505
+            ],
+            [
+              5.945597327877195,
+              6.701559135828876,
+              11.275858326733587
+            ]
+          ],
+          "distance_mm": 0.019232290745395845,
+          "requires_quadrature_refinement": true
+        },
+        "repaired": false,
+        "repair_stop": "Material quadrature refinement is required; geometry-only splitting cannot add material integration history"
+      }
+    ],
+    "steps": 3722,
+    "dt_min_s": 3.380063244763979e-07,
+    "dt_max_s": 6.099541833314957e-07,
+    "kinetic_internal_ratio_loaded": 0.10565460205209075,
+    "closed_boundary_volume_relative_error": 6.415777118429669e-16,
+    "material_volume_relative_error": 9.24864966684145e-13,
+    "final_static_residual_ratio": 0.36169965407692045,
+    "energy_scale_Nmm": 8.12598493037286,
+    "initial_available_energy_Nmm": 0.0,
+    "energy_absolute_residual_Nmm": 0.0007631269323713497,
+    "energy_relative_error": 9.3911930542595e-05,
+    "remesh_events": [],
+    "initial_porosity": 0.3984375,
+    "final_porosity": 0.35483920243143086,
+    "final_axial_compression": 0.12511009291174938,
+    "residual_compression_strain": null,
+    "limitations": [
+      "linear-tetra plastic locking not converged",
+      "contact quadrature, barrier thickness, mollification and general friction convergence not validated",
+      "surface edge bisection is experimental; no coarsening or general distortion repair",
+      "numerical density and damping are not measured material data",
+      "uncalibrated Kirchhoff-yield Hencky J2 material",
+      "not a verified 40 to 10 percent compaction result"
+    ]
+  },
+  "general_node_deletion_or_ALE_supported": false,
+  "adaptive_integration_creation_implemented": false,
+  "pressure_equilibrium_verified": false
+}

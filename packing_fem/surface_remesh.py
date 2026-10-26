@@ -84,6 +84,9 @@ New active quadrature nodes require matching histories at both edge endpoints.
 Unknown patch creation, loss, split, or ambiguous interpolation is rejected.
 Old anchor nodes survive bisection and remain material points.
 """
+    if old.quadrature_mode=='material' or new.quadrature_mode=='material':
+        from .material_quadrature import transfer
+        return transfer(old,new,proposal,H)
     x=proposal['x'];new.capture_audit=False
     baseline=new.evaluate(x,x*0,H,H*0,0.);fresh=baseline[2];mapped={};covered=set()
     for key,state in fresh.items():

@@ -24,7 +24,9 @@ def main():
     acceleration=periodic.acceleration(f+external,v,0.,c['damping_per_s'])/(1-.5*lastdt*c['damping_per_s'])
     trialq=q+dt*v+.5*dt*dt*acceleration;x=periodic.positions(trialq);vhalf=v+.5*dt*acceleration
     H=deformation(trialq[-6:])*periodic.L;Hdot=(deformation(vhalf[-6:])-np.eye(3))*periodic.L
-    contact=AreaContact(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],multiple_patches=c['multiple_patches'],edge_stationarity_filter=c['edge_stationarity_filter'],local_material_filter=c.get('local_material_filter',True),closest_tie_rule=c['closest_tie_rule'],edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.))
+    contact=AreaContact(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],thickness=c['barrier_thickness_mm'],max_candidates=c['contact_candidate_budget'],multiple_patches=c['multiple_patches'],edge_stationarity_filter=c['edge_stationarity_filter'],local_material_filter=c.get('local_material_filter',True),closest_tie_rule=c['closest_tie_rule'],edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.),quadrature_mode=c.get('contact_quadrature_mode','nodal'))
+    if (a.source/'contact-quadrature.npz').exists():
+        with np.load(a.source/'contact-quadrature.npz') as saved:contact.quadrature_weights=saved['area_weights'].copy()
     contact.history={tuple(item['key']):{k:np.array(v) if isinstance(v,list) else v for k,v in item['state'].items()} for item in capture['committed_history']}
     # The certificate depends on the accepted separation and periodic images,
     # not just the force/history. Restore them from the accepted geometry/log.

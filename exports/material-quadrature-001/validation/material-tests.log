@@ -1,0 +1,112 @@
+FFFFFF...                                                                [100%]
+=================================== FAILURES ===================================
+_ test_material_weights_and_stick_slip_history_survive_refinement[0.0001-0.2] __
+
+fraction = 0.2, slip = 0.0001
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_material_weights_and_stick_slip_history_survive_refinement(fraction,slip):
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(slip)
+        states={k:{n:np.copy(v) if isinstance(v,np.ndarray) else v for n,v in s.items()} for k,s in old.history.items()}
+        p=bisect(X,x,t,b,ep,V,x*0,edge,1.,fraction=fraction);new=contact(p['X'],p['t'])
+        after=transfer_contact(old,new,p,H)
+        report=audit((X,x,t,b,ep,V,x*0),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert report['accepted'],report
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_material_quadrature.py:35: AssertionError
+_ test_material_weights_and_stick_slip_history_survive_refinement[0.0001-0.5] __
+
+fraction = 0.5, slip = 0.0001
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_material_weights_and_stick_slip_history_survive_refinement(fraction,slip):
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(slip)
+        states={k:{n:np.copy(v) if isinstance(v,np.ndarray) else v for n,v in s.items()} for k,s in old.history.items()}
+        p=bisect(X,x,t,b,ep,V,x*0,edge,1.,fraction=fraction);new=contact(p['X'],p['t'])
+        after=transfer_contact(old,new,p,H)
+        report=audit((X,x,t,b,ep,V,x*0),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert report['accepted'],report
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_material_quadrature.py:35: AssertionError
+_ test_material_weights_and_stick_slip_history_survive_refinement[0.0001-0.8] __
+
+fraction = 0.8, slip = 0.0001
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_material_weights_and_stick_slip_history_survive_refinement(fraction,slip):
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(slip)
+        states={k:{n:np.copy(v) if isinstance(v,np.ndarray) else v for n,v in s.items()} for k,s in old.history.items()}
+        p=bisect(X,x,t,b,ep,V,x*0,edge,1.,fraction=fraction);new=contact(p['X'],p['t'])
+        after=transfer_contact(old,new,p,H)
+        report=audit((X,x,t,b,ep,V,x*0),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert report['accepted'],report
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_material_quadrature.py:35: AssertionError
+__ test_material_weights_and_stick_slip_history_survive_refinement[0.01-0.2] ___
+
+fraction = 0.2, slip = 0.01
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_material_weights_and_stick_slip_history_survive_refinement(fraction,slip):
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(slip)
+        states={k:{n:np.copy(v) if isinstance(v,np.ndarray) else v for n,v in s.items()} for k,s in old.history.items()}
+        p=bisect(X,x,t,b,ep,V,x*0,edge,1.,fraction=fraction);new=contact(p['X'],p['t'])
+        after=transfer_contact(old,new,p,H)
+        report=audit((X,x,t,b,ep,V,x*0),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert report['accepted'],report
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_material_quadrature.py:35: AssertionError
+__ test_material_weights_and_stick_slip_history_survive_refinement[0.01-0.5] ___
+
+fraction = 0.5, slip = 0.01
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_material_weights_and_stick_slip_history_survive_refinement(fraction,slip):
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(slip)
+        states={k:{n:np.copy(v) if isinstance(v,np.ndarray) else v for n,v in s.items()} for k,s in old.history.items()}
+        p=bisect(X,x,t,b,ep,V,x*0,edge,1.,fraction=fraction);new=contact(p['X'],p['t'])
+        after=transfer_contact(old,new,p,H)
+        report=audit((X,x,t,b,ep,V,x*0),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert report['accepted'],report
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_material_quadrature.py:35: AssertionError
+__ test_material_weights_and_stick_slip_history_survive_refinement[0.01-0.8] ___
+
+fraction = 0.8, slip = 0.01
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_material_weights_and_stick_slip_history_survive_refinement(fraction,slip):
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(slip)
+        states={k:{n:np.copy(v) if isinstance(v,np.ndarray) else v for n,v in s.items()} for k,s in old.history.items()}
+        p=bisect(X,x,t,b,ep,V,x*0,edge,1.,fraction=fraction);new=contact(p['X'],p['t'])
+        after=transfer_contact(old,new,p,H)
+        report=audit((X,x,t,b,ep,V,x*0),p,c,before[-1],after[-1],1e-7,old_response=before,new_response=after)
+>       assert report['accepted'],report
+E       AssertionError: {'accepted': False, 'checks': {'mass': True, 'linear_momentum': True, 'angular_momentum': True, 'kinetic_energy': True...ss': np.float64(0.0), 'linear_momentum': 0.0, 'angular_momentum': 0.0, 'kinetic_energy': 0.0, ...}, 'tolerance': 1e-07}
+E       assert False
+
+tests/test_material_quadrature.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_material_quadrature.py::test_material_weights_and_stick_slip_history_survive_refinement[0.0001-0.2]
+FAILED tests/test_material_quadrature.py::test_material_weights_and_stick_slip_history_survive_refinement[0.0001-0.5]
+FAILED tests/test_material_quadrature.py::test_material_weights_and_stick_slip_history_survive_refinement[0.0001-0.8]
+FAILED tests/test_material_quadrature.py::test_material_weights_and_stick_slip_history_survive_refinement[0.01-0.2]
+FAILED tests/test_material_quadrature.py::test_material_weights_and_stick_slip_history_survive_refinement[0.01-0.5]
+FAILED tests/test_material_quadrature.py::test_material_weights_and_stick_slip_history_survive_refinement[0.01-0.8]
+6 failed, 3 passed in 6.62s

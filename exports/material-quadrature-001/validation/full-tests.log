@@ -1,0 +1,32 @@
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+..................................F..................................... [ 72%]
+........................................................................ [ 96%]
+............                                                             [100%]
+=================================== FAILURES ===================================
+___________ test_force_and_committed_histories_roundtrip_separately ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-45/test_force_and_committed_histo0')
+
+    def test_force_and_committed_histories_roundtrip_separately(tmp_path):
+        from packing_fem.contact_audit import save_capture
+        X,t,x,H,upper,c,V,b,ep,old,before,edge=plane(.01)
+        old.accept_geometry(x,H);old.capture_audit=True
+        response=old.replay_force_state(x,x*0,H);old.accept_geometry(x,H)
+>       count=Periodic(X,1.).ndof
+                                  
+
+tests/test_material_quadrature.py:143: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <packing_fem.area_contact.AreaContact object at 0x7f4e34241730>
+name = 'ndof'
+
+>   def __getattr__(self,name):return getattr(self.guard,name)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'BarrierContact' object has no attribute 'ndof'
+
+packing_fem/area_contact.py:91: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_material_quadrature.py::test_force_and_committed_histories_roundtrip_separately
+1 failed, 299 passed in 366.96s (0:06:06)

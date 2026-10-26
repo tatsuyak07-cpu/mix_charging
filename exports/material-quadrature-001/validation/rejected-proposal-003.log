@@ -1,0 +1,48 @@
+{
+  "scope": "Replay one rejected large-cell remesh transaction without advancing time.",
+  "source_proposal": "exports/compaction-stages-001/validation/resolved-rapid-run/calculation/surface-remesh-attempt-0003.npz",
+  "edge": null,
+  "fraction": null,
+  "geometry_transfer_error_mm": 1.7763568394002505e-15,
+  "minimum_quality": 0.4387133350598845,
+  "time_advanced": false,
+  "physical_solution_verified": false,
+  "quadrature_mode": "material",
+  "force_evaluation_state_source": "legacy_committed_history_fallback",
+  "quadrature_area_before": 905.9118749999999,
+  "quadrature_area_after": 905.9118749999999,
+  "transaction_audit": {
+    "accepted": true,
+    "checks": {
+      "mass": true,
+      "linear_momentum": true,
+      "angular_momentum": true,
+      "kinetic_energy": true,
+      "material_energy": true,
+      "contact_energy": true,
+      "normal_energy": true,
+      "tangent_energy": true,
+      "contact_macro_force": true,
+      "coulomb": true
+    },
+    "scaled_errors": {
+      "mass": 0.0,
+      "linear_momentum": 9.47410158568869e-16,
+      "angular_momentum": 2.4366115692714178e-09,
+      "kinetic_energy": 3.974096941814181e-10,
+      "material_energy": 0.0,
+      "contact_energy": 0.0,
+      "normal_energy": 0.0,
+      "tangent_energy": 1.374790947416496e-23,
+      "contact_macro_force": 3.0588242040502294e-12
+    },
+    "tolerance": 0.001
+  },
+  "accepted": true,
+  "old_active_histories": 2,
+  "new_active_histories": 2,
+  "normal_energy_before": 6.482924853867045e-08,
+  "normal_energy_after": 6.482924853867045e-08,
+  "tangent_energy_before": 2.561350325371149e-36,
+  "tangent_energy_after": 7.501429043161192e-31
+}

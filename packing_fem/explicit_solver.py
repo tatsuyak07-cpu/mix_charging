@@ -50,7 +50,7 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
         f=x[contact.faces];A=np.linalg.norm(np.cross(f[:,1]-f[:,0],f[:,2]-f[:,0]),axis=1)/2
         nodeA=np.zeros(len(x))
         for k in range(3):np.add.at(nodeA,contact.faces[:,k],A/3)
-        nodeA=np.maximum(nodeA,contact.node_area0)
+        nodeA=np.maximum(nodeA,getattr(contact,'integration_area0',contact.node_area0))
         nodes=contact.nodes
         diagonal=2*c['contact_penalty_mpa_mm']*nodeA[nodes]
         if hasattr(contact,'edge_stiffness_diagonal'):diagonal+=contact.edge_stiffness_diagonal()[nodes]
@@ -129,7 +129,7 @@ def solve(directory,X,t,c):
         from .barrier_contact import BarrierContact
         from .area_contact import AreaContact
         contact_type=AreaContact if c['contact_backend']=='area_guarded' else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
-    if c.get('contact_backend')=='area_guarded':contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False),multiple_patches=c.get('multiple_patches',False),certified_local_filter=c.get('certified_local_filter',False),closest_tie_rule=c.get('closest_tie_rule','stop'),edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.))
+    if c.get('contact_backend')=='area_guarded':contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False),multiple_patches=c.get('multiple_patches',False),certified_local_filter=c.get('certified_local_filter',False),closest_tie_rule=c.get('closest_tie_rule','stop'),edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.),quadrature_mode=c.get('contact_quadrature_mode','nodal'))
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     if c.get('save_contact_audit',False):
         if c.get('contact_backend')!='area_guarded':raise ValueError('Contact audit capture requires area_guarded')
@@ -219,6 +219,8 @@ def solve(directory,X,t,c):
             newcontact=contact_type(p['X'],p['t'],p2,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**remesh_contact_kwargs)
             H=deformation(q[-6:])*periodic.L
             evaluated=transfer_contact(contact,newcontact,p,H)
+            if newcontact.quadrature_mode=='material':
+                event['material_quadrature']=dict(area_before=float(contact.integration_area0.sum()),area_after=float(newcontact.integration_area0.sum()),points_before=int(np.count_nonzero(contact.integration_area0)),points_after=int(np.count_nonzero(newcontact.integration_area0)),new_geometry_nodes=int(len(p['X'])-len(X)))
             audit_report=audit((X,x,t,b,ep,V0,oldnv),p,c,ci,evaluated[-1],c['remesh_energy_tolerance'],old_response=(fc,extra),new_response=evaluated)
             event.update(audit_report)
             if quality_fn(p['x'],p['t']).min()<c['minimum_quality']:event.update(accepted=False,reason='Refined mesh below minimum quality')
@@ -227,7 +229,9 @@ def solve(directory,X,t,c):
             fc2,extra2,_,ci2=evaluated
             newcontact.capture_audit=c.get('save_contact_audit',False)
             if newcontact.capture_audit:
-                fc2,extra2,hist2,ci2=newcontact.evaluate(p['x'],p2.velocities(v2),H,H*0,0.);newcontact.history=hist2
+                if newcontact.quadrature_mode=='material':fc2,extra2,hist2,ci2=newcontact.replay_force_state(p['x'],p2.velocities(v2),H)
+                else:fc2,extra2,hist2,ci2=newcontact.evaluate(p['x'],p2.velocities(v2),H,H*0,0.)
+                newcontact.history=hist2
             newcontact.accept_geometry(p['x'],H)
             fi2,vol2,en2,J2,D2,sigma2=internal_fn(p['x'],p['t'],p['b'],p['ep'],c)
             f2=p2.force(fi2+fc2,extra2);a2=p2.acceleration(f2+external2,v2,ap if p2.prescribed_active else 0.,c['damping_per_s'])
@@ -290,6 +294,9 @@ def solve(directory,X,t,c):
                 feature=getattr(exc,'feature',None)
                 attempt=dict(accepted_time_s=time,trial_time_s=next_time,trial_dt_s=dt,reason=str(exc),feature=feature,repaired=False)
                 resolution_attempts.append(attempt)
+                if feature is not None and feature.get('requires_quadrature_refinement',False):
+                    attempt['repair_stop']='Material quadrature refinement is required; geometry-only splitting cannot add material integration history'
+                    raise
                 if c.get('surface_remesh_on_edge_guard',False) and feature is not None and feature['kind']=='ee':
                     # Refine the accepted state, discard the failed trial, and
                     # recompute its step with the new mass/kinematics/history.
@@ -409,6 +416,8 @@ def solve(directory,X,t,c):
     np.savetxt(directory/'history.csv',h,delimiter=',',comments='',header='time_s,axial_compression,porosity,nominal_compression_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,damping_Nmm,friction_Nmm,released_contact_history_Nmm,normal_contact_Nmm,tangent_contact_Nmm,energy_residual_Nmm,peak_peeq,min_elastic_J,min_quality,penetration_mm,coulomb_ratio,contacts,elements,free_dynamic_residual_N,contact_algorithmic_Nmm,edge_contacts,minimum_separation_mm,command_pressure_MPa')
     np.savetxt(directory/'accepted-step-audit.csv.gz',audits,delimiter=',',comments='',header='time_s,axial_compression,porosity,command_pressure_MPa,kinetic_Nmm,internal_Nmm,external_work_Nmm,energy_residual_Nmm,normal_contact_Nmm,tangent_contact_Nmm,contacts')
     np.savez_compressed(directory/'last-state.npz',points=x,reference_points=X,tets=t,elastic_b=b,peeq=ep,reference_volume=V0,generalized_position=q,generalized_velocity=v)
+    if c.get('contact_backend')=='area_guarded':
+        np.savez_compressed(directory/'contact-quadrature.npz',reference_points=X,area_weights=contact.integration_area0,mode=np.array(contact.quadrature_mode))
     if c.get('save_contact_audit',False):
         from .contact_audit import save_capture
         save_capture(directory/'contact-audit.json',contact,f,external,time,steps)

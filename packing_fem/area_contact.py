@@ -7,6 +7,7 @@ experimental. An unresolved edge-only approach stops for surface refinement. Thi
 research backend is not general validated self-contact or surface remeshing.
 """
 import numpy as np
+from copy import deepcopy
 from .barrier_contact import BarrierContact,ContactResolutionError,barrier,feature,relative
 from .explicit_periodic import affine_basis
 
@@ -58,7 +59,7 @@ def transported_spring(old_normal,new_normal,spring_world):
 
 
 class AreaContact:
-    def __init__(self,X,t,periodic,kn,mu,skin,local_material_filter=True,edge_stationarity_filter=False,multiple_patches=False,certified_local_filter=False,geometry_extension=None,closest_tie_rule="stop",edge_quadrature_relative_tolerance=0.,**kwargs):
+    def __init__(self,X,t,periodic,kn,mu,skin,local_material_filter=True,edge_stationarity_filter=False,multiple_patches=False,certified_local_filter=False,geometry_extension=None,closest_tie_rule="stop",edge_quadrature_relative_tolerance=0.,quadrature_mode='nodal',**kwargs):
         # Share the complete PT/EE distance search and non-crossing certificate.
         # No legacy constraint-sum forces or energies enter this backend.
         self.guard=BarrierContact(X,t,periodic,kn,0.,skin,**kwargs)
@@ -66,6 +67,9 @@ class AreaContact:
         self.closest_tie_rule=closest_tie_rule
         if not np.isfinite(edge_quadrature_relative_tolerance) or not 0<=edge_quadrature_relative_tolerance<=.01:raise ValueError('Invalid edge quadrature relative tolerance')
         self.edge_quadrature_relative_tolerance=float(edge_quadrature_relative_tolerance)
+        if quadrature_mode not in ('nodal','material'):raise ValueError('Unknown contact quadrature mode')
+        self.quadrature_mode=quadrature_mode
+        self.quadrature_weights=self.guard.node_area0.copy()
         self.multiple_patches=multiple_patches
         self.extension=None
         if certified_local_filter:
@@ -79,17 +83,32 @@ class AreaContact:
         from .edge_coverage import EdgeCoverage
         self.edge_coverage=EdgeCoverage(self)
         self.capture_audit=False;self.accepted_audit=None;self.history={};self.mu=mu;self.kn=kn;self.vertex_keys={}
+        self.accepted_force_history=None;self.trial_force_history={}
         self.peers={int(node):set() for node in self.guard.nodes}
         for face in self.guard.faces:
             for node in face:self.peers[int(node)].update(int(k) for k in face if k!=node)
 
     def __getattr__(self,name):return getattr(self.guard,name)
+    @property
+    def integration_area0(self):
+        return self.quadrature_weights if self.quadrature_mode=='material' else self.node_area0
     def update_topology(self,t):self.guard.update_topology(t)
     def accept_geometry(self,x,H):
         self.guard.accept_geometry(x,H)
+        self.accepted_force_history=deepcopy(self.trial_force_history)
         if self.capture_audit:
             self.accepted_audit=self.trial_audit
             self.accepted_history=self.history
+
+    def replay_force_state(self,x,velocity,H):
+        """Re-evaluate the applied lagged potential without advancing history."""
+        if self.accepted_force_history is None:raise ValueError('No accepted force-evaluation state')
+        committed=self.history
+        try:
+            self.history=self.accepted_force_history
+            response=self.evaluate(x,velocity,H,H*0,0.)
+        finally:self.history=committed
+        return response[0],response[1],committed,response[-1]
 
     def edge_stiffness_diagonal(self):return self.guard.edge_stiffness_diagonal()
 
@@ -104,6 +123,7 @@ class AreaContact:
         return bool(self.target_vertices(a,sa).intersection(self.target_vertices(b,sb)))
 
     def evaluate(self,x,velocity,H,Hdot,dt):
+        self.trial_force_history={}
         force=np.zeros_like(x);extra=np.zeros(6);hist={};selected={};edges=[]
         records=[]
         if self.capture_audit:self.trial_audit=dict(records=records,points=x.copy(),cell=H.copy(),force=force,extra=extra)
@@ -129,6 +149,7 @@ class AreaContact:
             p=x[ids].copy();p[1:]+=H@shift
             branch,w=feature(p,'pt');r=relative(p,'pt',branch);d=float(np.linalg.norm(r))
             minimum=min(minimum,d)
+            if self.integration_area0[int(ids[0])]<=0:continue
             if d>=self.thickness:continue
             if is_local(key,ids,'pt',shift,p,w):
                 report['local_material_pairs']+=1;continue
@@ -186,8 +207,10 @@ class AreaContact:
                     ep=x[ids].copy();ep[2:]+=H@shift
                     coverage=self.edge_coverage.resolved(ids,shift,ep,distance,point_candidates,x,H,self.guard.trial_shifts)
                     if coverage is None:
-                        error=SurfaceResolutionError('Edge-only approach requires surface refinement; no artificial edge spring applied')
+                        message='Material contact integration unresolved; integration refinement required' if self.quadrature_mode=='material' else 'Edge-only approach requires surface refinement; no artificial edge spring applied'
+                        error=SurfaceResolutionError(message)
                         error.feature=dict(kind='ee',ids=ids.tolist(),shift=np.asarray(shift).tolist(),points=(x[ids]+np.r_[np.zeros((2,3)),np.repeat((H@shift)[None],2,axis=0)]).tolist(),distance_mm=float(distance))
+                        if self.quadrature_mode=='material':error.feature['requires_quadrature_refinement']=True
                         raise error
                     report['edge_coverage_counts'][coverage]+=1
         if minimum<=self.L*1e-12:raise ContactResolutionError('Nonlocal surface separation unresolved')
@@ -196,7 +219,7 @@ class AreaContact:
             node=int(ids[0]);state=self.history.get(history_key);face=key[2]
             if state is not None and not self.adjacent_targets(state['face'],state['shift'],face,shift):
                 raise ContactResolutionError('Closest target changed to a disconnected patch; reduce step or refine surface')
-            kn=.5*self.kn*self.node_area0[node];energy,fn,curvature=barrier(d,kn,self.thickness)
+            kn=.5*self.kn*self.integration_area0[node];energy,fn,curvature=barrier(d,kn,self.thickness)
             branches=patch_branches[history_key]
             mean_normal=sum(b[-1]/b[0] for b in branches)/len(branches);normal_length=float(np.linalg.norm(mean_normal))
             if normal_length<1e-8:raise SurfaceResolutionError('Opposed closest normals have no unique friction plane')
@@ -235,6 +258,7 @@ class AreaContact:
                 records.append(dict(support=support.copy(),images=images.copy(),z=z.copy(),branch=list(branch),kn=float(kn),thickness=float(self.thickness),kt=float(kt),director=state['director'].copy(),bary=state['bary'].copy(),plastic=np.array(plastic,copy=True),spring=spring.copy(),local_force=local.copy(),normal_force=float(effective_fn),mu=float(self.mu),**({'normal_branches':normal_branches,'normal_subgradient':'uniform_Clarke','tie_multiplicity':len(branches)} if len(branches)>1 else {})))
             flowing=self.mu and np.linalg.norm(plastic-state['plastic'])>0
             tang=.5*kt*float(spring@spring)
+            self.trial_force_history[history_key]=deepcopy(dict(state,plastic=np.array(plastic,copy=True),spring=spring.copy(),coordinate=np.array(coordinate,copy=True),energy=tang,face=face,shift=np.asarray(shift).copy()))
             # Normal energy depends only on the current point/triangle.
             for witness in normal_branches:np.add.at(self.guard.trial_diagonal,support[witness['indices']],4*(curvature+fn/d)/len(branches))
             np.add.at(self.guard.trial_diagonal,support[:9],4*kt)
