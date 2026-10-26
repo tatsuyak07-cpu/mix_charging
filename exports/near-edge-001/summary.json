@@ -1,0 +1,1894 @@
+{
+  "scope": "Export near-zero edge classification evidence and its remaining limitation.",
+  "whole_suite_passed": 272,
+  "diagnostic": {
+    "scope": "High-precision and rigid-motion checks of the saved near-zero EE pair.",
+    "checks": {
+      "legacy_false_tangent_witness_reproduced": true,
+      "high_precision_tangent_derivatives_zero": true,
+      "high_precision_offedge_derivatives_negative": true,
+      "reference_precision_agreement": true,
+      "corrected_pair_not_screened": true,
+      "all_33_variants_not_screened": true,
+      "endpoint_contact_is_not_at_EE_closest_point": true,
+      "existing_endpoint_guard_gap_reproduced": true,
+      "exact_local_star_convex_hulls_separated": true
+    },
+    "passed": true,
+    "legacy": {
+      "distance_mm": 2.986300383565996e-10,
+      "dominated": true,
+      "certified": true,
+      "maximum_descent_cosine": 2.8628944699246223e-06,
+      "witness": {
+        "side": 1,
+        "face": [
+          385,
+          401,
+          402
+        ],
+        "image": [
+          0,
+          0,
+          0
+        ],
+        "vertex": 385,
+        "point": [
+          0.41092595704514046,
+          11.765134226954636,
+          5.826833491212568
+        ],
+        "direction": [
+          -0.009695363815357294,
+          -0.2894001175773919,
+          0.010265910427621705
+        ],
+        "toward": [
+          1.0206058220774139e-11,
+          -1.092281820547214e-11,
+          -2.9825564240582025e-10
+        ],
+        "descent_cosine": 2.8628944699246223e-06
+      }
+    },
+    "corrected": {
+      "distance_mm": 2.986300383565996e-10,
+      "dominated": false,
+      "certified": true,
+      "maximum_descent_cosine": -0.0201414983793306,
+      "witness": null
+    },
+    "decimal_distance_mm": "2.9863032316261167798799870875310173258005894149279546263944426308461389706055052E-10",
+    "decimal_s": "0.58990219167778842909575822096808606843207827550321349803834348446102090105106037",
+    "decimal_t": "0.35786602153311174110742502174992992644921471437829821598371851420921875960826841",
+    "derivatives": [
+      {
+        "side": 0,
+        "face": [
+          175,
+          384,
+          3793
+        ],
+        "vertex": 175,
+        "on_original_edge": true,
+        "cosine": 5.35262404731581e-71
+      },
+      {
+        "side": 0,
+        "face": [
+          175,
+          384,
+          3793
+        ],
+        "vertex": 384,
+        "on_original_edge": true,
+        "cosine": -5.352624064026168e-71
+      },
+      {
+        "side": 0,
+        "face": [
+          175,
+          384,
+          3793
+        ],
+        "vertex": 3793,
+        "on_original_edge": false,
+        "cosine": -0.02014436514637644
+      },
+      {
+        "side": 0,
+        "face": [
+          175,
+          174,
+          384
+        ],
+        "vertex": 175,
+        "on_original_edge": true,
+        "cosine": 5.35262404731581e-71
+      },
+      {
+        "side": 0,
+        "face": [
+          175,
+          174,
+          384
+        ],
+        "vertex": 174,
+        "on_original_edge": false,
+        "cosine": -0.8127075576061844
+      },
+      {
+        "side": 0,
+        "face": [
+          175,
+          174,
+          384
+        ],
+        "vertex": 384,
+        "on_original_edge": true,
+        "cosine": -5.352624064026168e-71
+      },
+      {
+        "side": 1,
+        "face": [
+          385,
+          401,
+          402
+        ],
+        "vertex": 385,
+        "on_original_edge": true,
+        "cosine": 7.671124893134352e-70
+      },
+      {
+        "side": 1,
+        "face": [
+          385,
+          401,
+          402
+        ],
+        "vertex": 401,
+        "on_original_edge": true,
+        "cosine": -7.671124889997843e-70
+      },
+      {
+        "side": 1,
+        "face": [
+          385,
+          401,
+          402
+        ],
+        "vertex": 402,
+        "on_original_edge": false,
+        "cosine": -0.820467019426193
+      },
+      {
+        "side": 1,
+        "face": [
+          176,
+          401,
+          385
+        ],
+        "vertex": 176,
+        "on_original_edge": false,
+        "cosine": -0.09427823007152296
+      },
+      {
+        "side": 1,
+        "face": [
+          176,
+          401,
+          385
+        ],
+        "vertex": 401,
+        "on_original_edge": true,
+        "cosine": -7.671124889997843e-70
+      },
+      {
+        "side": 1,
+        "face": [
+          176,
+          401,
+          385
+        ],
+        "vertex": 385,
+        "on_original_edge": true,
+        "cosine": 7.671124893134352e-70
+      }
+    ],
+    "variants": [
+      {
+        "kind": "rigid_motion",
+        "angle": 0.0,
+        "translation": [
+          0.0,
+          0,
+          0
+        ],
+        "legacy": {
+          "distance_mm": 2.986300383565996e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 2.8628944699246223e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.41092595704514046,
+              11.765134226954636,
+              5.826833491212568
+            ],
+            "direction": [
+              -0.009695363815357294,
+              -0.2894001175773919,
+              0.010265910427621705
+            ],
+            "toward": [
+              1.0206058220774139e-11,
+              -1.092281820547214e-11,
+              -2.9825564240582025e-10
+            ],
+            "descent_cosine": 2.8628944699246223e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986300383565996e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.0201414983793306,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 0.0,
+        "translation": [
+          0.31,
+          -0.27,
+          0.19
+        ],
+        "legacy": {
+          "distance_mm": 2.9863004215094743e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 2.8504542784625884e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.7209259570451404,
+              11.495134226954637,
+              6.0168334912125685
+            ],
+            "direction": [
+              -0.009695363815357294,
+              -0.2894001175773919,
+              0.010265910427621705
+            ],
+            "toward": [
+              1.0206169243076602e-11,
+              -1.092281820547214e-11,
+              -2.9825564240582025e-10
+            ],
+            "descent_cosine": 2.8504542784625884e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9863004215094743e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014151742342848,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 0.0,
+        "translation": [
+          100.0,
+          -50.0,
+          23.0
+        ],
+        "legacy": {
+          "distance_mm": 2.986285940943424e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 3.8490368403772474e-05,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 175,
+            "point": [
+              100.41092595705535,
+              -38.234865773056285,
+              28.826833490914314
+            ],
+            "direction": [
+              -0.46023430964366696,
+              -0.0021001257999841982,
+              -0.0156720966207331
+            ],
+            "toward": [
+              -1.021760454023024e-11,
+              1.092104184863274e-11,
+              2.9825386604898085e-10
+            ],
+            "descent_cosine": 3.8490368403772474e-05
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986285940943424e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020149207762422603,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 0.37,
+        "translation": [
+          0.0,
+          0,
+          0
+        ],
+        "legacy": {
+          "distance_mm": 2.9863000905465775e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.3425239917238074e-06,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 384,
+            "point": [
+              -3.8713365888199793,
+              11.117553531971321,
+              5.8268334909143125
+            ],
+            "direction": [
+              0.2977731399683141,
+              0.11706120472820736,
+              0.010895183246727669
+            ],
+            "toward": [
+              -1.3464784842653899e-11,
+              6.4925842480079154e-12,
+              2.9825564240582025e-10
+            ],
+            "descent_cosine": 1.3425239917238074e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9863000905465775e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020143220949675023,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 0.37,
+        "translation": [
+          0.31,
+          -0.27,
+          0.19
+        ],
+        "legacy": {
+          "distance_mm": 2.9863000905465775e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.3425239917238074e-06,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 384,
+            "point": [
+              -3.5613365888199793,
+              10.847553531971322,
+              6.016833490914313
+            ],
+            "direction": [
+              0.2977731399683141,
+              0.11706120472820736,
+              0.010895183246727669
+            ],
+            "toward": [
+              -1.3464784842653899e-11,
+              6.4925842480079154e-12,
+              2.9825564240582025e-10
+            ],
+            "descent_cosine": 1.3425239917238074e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9863000905465775e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020143220949675023,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 0.37,
+        "translation": [
+          100.0,
+          -50.0,
+          23.0
+        ],
+        "legacy": {
+          "distance_mm": 2.9863134708524367e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 2.3774370078201668e-05,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              96.12866341116656,
+              -38.88244646802219,
+              28.82683349121257
+            ],
+            "direction": [
+              -0.17156114340390616,
+              0.4904324505791209,
+              -0.018420552689615732
+            ],
+            "toward": [
+              1.3457679415296298e-11,
+              -6.487255177489715e-12,
+              -2.9825741876265965e-10
+            ],
+            "descent_cosine": 2.3774370078201668e-05
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9863134708524367e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020167809924585264,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 1.19,
+        "translation": [
+          0.0,
+          0,
+          0
+        ],
+        "legacy": {
+          "distance_mm": 2.9863086243935174e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 3.1480521676886617e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              -10.769660823121763,
+              4.754119190275857,
+              5.826833491212569
+            ],
+            "direction": [
+              -0.47562029138031825,
+              0.20914720398417153,
+              -0.018420552689614844
+            ],
+            "toward": [
+              1.3931966691416164e-11,
+              5.416112003331364e-12,
+              -2.9825653058423995e-10
+            ],
+            "descent_cosine": 3.1480521676886617e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9863086243935174e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020147504577893487,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 1.19,
+        "translation": [
+          0.31,
+          -0.27,
+          0.19
+        ],
+        "legacy": {
+          "distance_mm": 2.9862997537426125e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 3.0426836901346723e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              -10.459660823121762,
+              4.484119190275856,
+              6.0168334912125685
+            ],
+            "direction": [
+              -0.47562029138031825,
+              0.20914720398417241,
+              -0.018420552689613956
+            ],
+            "toward": [
+              1.3931966691416164e-11,
+              5.416112003331364e-12,
+              -2.9825564240582025e-10
+            ],
+            "descent_cosine": 3.0426836901346723e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9862997537426125e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020147401118991243,
+          "witness": null
+        }
+      },
+      {
+        "kind": "rigid_motion",
+        "angle": 1.19,
+        "translation": [
+          100.0,
+          -50.0,
+          23.0
+        ],
+        "legacy": {
+          "distance_mm": 2.986285835278939e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 2.676976694049634e-05,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              89.23033917687823,
+              -45.24588080972414,
+              28.826833491212568
+            ],
+            "direction": [
+              0.26506671059998155,
+              -0.11655928562336726,
+              0.010265910427619929
+            ],
+            "toward": [
+              1.3940848475613166e-11,
+              5.4143356464919634e-12,
+              -2.9825386604898085e-10
+            ],
+            "descent_cosine": 2.676976694049634e-05
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986285835278939e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02011771859504103,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 175,
+        "axis": 0,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.986167172061876e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 4.493522610887602e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451405,
+              11.765134226954638,
+              5.826833491212569
+            ],
+            "direction": [
+              -0.00969536381535735,
+              -0.2894001175773937,
+              0.010265910427620817
+            ],
+            "toward": [
+              1.0205614131564289e-11,
+              -1.092281820547214e-11,
+              -2.9824231972952475e-10
+            ],
+            "descent_cosine": 4.493522610887602e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986167172061876e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020139869979279263,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 175,
+        "axis": 0,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.986442522642797e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.1083759839282283e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451404,
+              11.765134226954634,
+              5.826833491212568
+            ],
+            "direction": [
+              -0.009695363815357239,
+              -0.28940011757739015,
+              0.010265910427621705
+            ],
+            "toward": [
+              1.0206668843437683e-11,
+              -1.092281820547214e-11,
+              -2.9826985326053546e-10
+            ],
+            "descent_cosine": 1.1083759839282283e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986442522642797e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020143258665783058,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 175,
+        "axis": 1,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.9864520240681875e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 6.950202951183763e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.41092595704512674,
+              11.765134226954228,
+              5.826833491212583
+            ],
+            "direction": [
+              -0.009695363815343583,
+              -0.28940011757698336,
+              0.010265910427606606
+            ],
+            "toward": [
+              1.0206613332286452e-11,
+              -1.092459456231154e-11,
+              -2.9827074143895516e-10
+            ],
+            "descent_cosine": 6.950202951183763e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9864520240681875e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020137417182885614,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 175,
+        "axis": 1,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.986158244498775e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 4.617579984622214e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451542,
+              11.765134226955047,
+              5.826833491212554
+            ],
+            "direction": [
+              -0.00969536381537106,
+              -0.28940011757780226,
+              0.010265910427635916
+            ],
+            "toward": [
+              1.0205447598110595e-11,
+              -1.092281820547214e-11,
+              -2.9824143155110505e-10
+            ],
+            "descent_cosine": 4.617579984622214e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986158244498775e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020139737925253476,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 175,
+        "axis": 2,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.9903902491033143e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 5.594140017485352e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.41092595704514095,
+              11.76513422695465,
+              5.826833491212567
+            ],
+            "direction": [
+              0.017396797026909383,
+              0.5192827418278831,
+              -0.018420552689613068
+            ],
+            "toward": [
+              1.0220158053186879e-11,
+              -1.0935252703347942e-11,
+              -2.986642044788823e-10
+            ],
+            "descent_cosine": 5.594140017485352e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9903902491033143e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020149954595948757,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 175,
+        "axis": 2,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.9822099063606053e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 5.381236293689606e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.41092595704513996,
+              11.765134226954622,
+              5.826833491212569
+            ],
+            "direction": [
+              -0.009695363815356794,
+              -0.2894001175773777,
+              0.010265910427620817
+            ],
+            "toward": [
+              1.0192069410663862e-11,
+              -1.0908607350756938e-11,
+              -2.978470803327582e-10
+            ],
+            "descent_cosine": 5.381236293689606e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9822099063606053e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02013898190639466,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 384,
+        "axis": 0,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.986094850627113e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 6.528014175556977e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.4109259570451405,
+              11.765134226954636,
+              5.826833491212568
+            ],
+            "direction": [
+              0.017396797026909827,
+              0.5192827418278974,
+              -0.018420552689613956
+            ],
+            "toward": [
+              1.0205447598110595e-11,
+              -1.091926549179334e-11,
+              -2.9823521430216715e-10
+            ],
+            "descent_cosine": 6.528014175556977e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986094850627113e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020150885774037067,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 384,
+        "axis": 0,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.9865135447551516e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 2.4672845988735734e-07,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451404,
+              11.765134226954634,
+              5.826833491212569
+            ],
+            "direction": [
+              -0.009695363815357239,
+              -0.28940011757739015,
+              0.010265910427620817
+            ],
+            "toward": [
+              1.0206835376891377e-11,
+              -1.092281820547214e-11,
+              -2.9827695868789306e-10
+            ],
+            "descent_cosine": 2.4672845988735734e-07
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9865135447551516e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014411494277338,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 384,
+        "axis": 1,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.986523046165592e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 6.0884192411588964e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.41092595704512075,
+              11.765134226954048,
+              5.826833491212589
+            ],
+            "direction": [
+              -0.009695363815337588,
+              -0.28940011757680395,
+              0.010265910427600389
+            ],
+            "toward": [
+              1.0206779865740145e-11,
+              -1.092459456231154e-11,
+              -2.9827784686631276e-10
+            ],
+            "descent_cosine": 6.0884192411588964e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986523046165592e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02013827359615893,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 384,
+        "axis": 1,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.986086572675916e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 5.254187276951466e-07,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 384,
+            "point": [
+              0.41092595705536555,
+              11.765134226944305,
+              5.826833490914313
+            ],
+            "direction": [
+              0.3199531792935428,
+              0.0014599996408968252,
+              0.01089518324672678
+            ],
+            "toward": [
+              -1.0205281064656901e-11,
+              1.092104184863274e-11,
+              2.9823432612374745e-10
+            ],
+            "descent_cosine": 5.254187276951466e-07
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986086572675916e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020144817595061135,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 384,
+        "axis": 2,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.992196326263433e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 2.0247224828079317e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451412,
+              11.765134226954657,
+              5.826833491212567
+            ],
+            "direction": [
+              -0.009695363815358016,
+              -0.28940011757741324,
+              0.010265910427622593
+            ],
+            "toward": [
+              1.0226264279822317e-11,
+              -1.0944134487544943e-11,
+              -2.9884450469808144e-10
+            ],
+            "descent_cosine": 2.0247224828079317e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.992196326263433e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014233907793579,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 384,
+        "axis": 2,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.980422201139917e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 3.4869569686441474e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451398,
+              11.765134226954615,
+              5.82683349121257
+            ],
+            "direction": [
+              -0.009695363815356628,
+              -0.2894001175773706,
+              0.010265910427619929
+            ],
+            "toward": [
+              1.0185907672877192e-11,
+              -1.0901501923399337e-11,
+              -2.9766855647039847e-10
+            ],
+            "descent_cosine": 3.4869569686441474e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.980422201139917e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020140871262002442,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 385,
+        "axis": 0,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.986531323998319e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 4.0123528212233334e-08,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 384,
+            "point": [
+              0.4109259570547052,
+              11.765134226943712,
+              5.82683349091429
+            ],
+            "direction": [
+              0.31995317929420314,
+              0.0014599996404900395,
+              0.010895183246749873
+            ],
+            "toward": [
+              -1.0206946399193839e-11,
+              1.092281820547214e-11,
+              2.9827873504473246e-10
+            ],
+            "descent_cosine": 4.0123528212233334e-08
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986531323998319e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020144340907314786,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 385,
+        "axis": 0,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.9860770903514613e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 6.311061047758321e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.41092595704578266,
+              11.765134226954636,
+              5.826833491212568
+            ],
+            "direction": [
+              0.017396797026267674,
+              0.5192827418278974,
+              -0.018420552689613956
+            ],
+            "toward": [
+              1.0205392086959364e-11,
+              -1.091926549179334e-11,
+              -2.9823343794532775e-10
+            ],
+            "descent_cosine": 6.311061047758321e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9860770903514613e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020150669338166387,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 385,
+        "axis": 1,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.986068793432667e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 6.945513273932897e-07,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 384,
+            "point": [
+              0.4109259570553671,
+              11.765134226943713,
+              5.826833490914313
+            ],
+            "direction": [
+              0.3199531792935412,
+              0.0014599996404882631,
+              0.01089518324672678
+            ],
+            "toward": [
+              -1.0205170042354439e-11,
+              1.092104184863274e-11,
+              2.9823254976690805e-10
+            ],
+            "descent_cosine": 6.945513273932897e-07
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986068793432667e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020144591599675125,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 385,
+        "axis": 1,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.98654017567646e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 3.2709499394807186e-07,
+          "witness": {
+            "side": 0,
+            "face": [
+              175,
+              384,
+              3793
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 384,
+            "point": [
+              0.41092595705532586,
+              11.765134226943713,
+              5.826833490914312
+            ],
+            "direction": [
+              0.31995317929358247,
+              0.0014599996404882631,
+              0.010895183246728557
+            ],
+            "toward": [
+              -1.0206890888042608e-11,
+              1.092281820547214e-11,
+              2.9827962322315216e-10
+            ],
+            "descent_cosine": 3.2709499394807186e-07
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.98654017567646e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020144434846027202,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 385,
+        "axis": 2,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.97988807465665e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.8910450247801161e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.4109259570451397,
+              11.765134226954611,
+              5.826833491211927
+            ],
+            "direction": [
+              0.01739679702691066,
+              0.5192827418279222,
+              -0.01842055268897269
+            ],
+            "toward": [
+              1.0184186827189023e-11,
+              -1.0897949209720537e-11,
+              -2.9761526576521646e-10
+            ],
+            "descent_cosine": 1.8910450247801161e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.97988807465665e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014625036799378,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 385,
+        "axis": 2,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.992712080726756e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.6554940081441664e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.41092595704514123,
+              11.76513422695466,
+              5.826833491213209
+            ],
+            "direction": [
+              -0.009695363815358071,
+              -0.289400117577415,
+              0.010265910427980529
+            ],
+            "toward": [
+              1.0228040636661717e-11,
+              -1.0945910844384343e-11,
+              -2.9889601904642404e-10
+            ],
+            "descent_cosine": 1.6554940081441664e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.992712080726756e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020142708767895305,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 401,
+        "axis": 0,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.9864342068866095e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 7.185869820649939e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.41092595704478263,
+              11.765134226954636,
+              5.826833491212569
+            ],
+            "direction": [
+              -0.00969536381499947,
+              -0.2894001175773919,
+              0.010265910427620817
+            ],
+            "toward": [
+              1.0206391287681527e-11,
+              -1.092459456231154e-11,
+              -2.9826896508211576e-10
+            ],
+            "descent_cosine": 7.185869820649939e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9864342068866095e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020137172127873335,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 401,
+        "axis": 0,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.986175374036757e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.547185231344924e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.4109259570454984,
+              11.765134226954636,
+              5.826833491212568
+            ],
+            "direction": [
+              0.017396797027551925,
+              0.5192827418278974,
+              -0.018420552689613956
+            ],
+            "toward": [
+              1.0205558620413058e-11,
+              -1.092104184863274e-11,
+              -2.9824320790794445e-10
+            ],
+            "descent_cosine": 1.547185231344924e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.986175374036757e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014589991910924,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 401,
+        "axis": 1,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.9861665033862786e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.4418073014992595e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.41092595704515245,
+              11.765134226954634,
+              5.826833491212556
+            ],
+            "direction": [
+              0.017396797026897892,
+              0.519282741826899,
+              -0.01842055268960152
+            ],
+            "toward": [
+              1.0205558620413058e-11,
+              -1.092104184863274e-11,
+              -2.9824231972952475e-10
+            ],
+            "descent_cosine": 1.4418073014992595e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9861665033862786e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.020145796450820423,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 401,
+        "axis": 1,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.9864335761065167e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.238631654664452e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451285,
+              11.765134226954636,
+              5.8268334912125805
+            ],
+            "direction": [
+              -0.00969536381534536,
+              -0.2894001175773919,
+              0.01026591042760927
+            ],
+            "toward": [
+              1.0206446798832758e-11,
+              -1.092281820547214e-11,
+              -2.9826896508211576e-10
+            ],
+            "descent_cosine": 1.238631654664452e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9864335761065167e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014311711246882,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 401,
+        "axis": 2,
+        "delta_mm": -1e-12,
+        "legacy": {
+          "distance_mm": 2.9827338817573784e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 1.0437153362095884e-06,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 401,
+            "point": [
+              0.41092595704514,
+              11.765134226954622,
+              5.826833491212211
+            ],
+            "direction": [
+              0.017396797026910327,
+              0.5192827418279116,
+              -0.018420552690256997
+            ],
+            "toward": [
+              1.0193845767503262e-11,
+              -1.0908607350756938e-11,
+              -2.978994828595205e-10
+            ],
+            "descent_cosine": 1.0437153362095884e-06
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.9827338817573784e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014539984482319,
+          "witness": null
+        }
+      },
+      {
+        "kind": "coordinate_noise",
+        "node": 401,
+        "axis": 2,
+        "delta_mm": 1e-12,
+        "legacy": {
+          "distance_mm": 2.989875106325544e-10,
+          "dominated": true,
+          "certified": true,
+          "maximum_descent_cosine": 7.207323750354815e-07,
+          "witness": {
+            "side": 1,
+            "face": [
+              385,
+              401,
+              402
+            ],
+            "image": [
+              0,
+              0,
+              0
+            ],
+            "vertex": 385,
+            "point": [
+              0.4109259570451409,
+              11.765134226954649,
+              5.826833491212926
+            ],
+            "direction": [
+              -0.009695363815357738,
+              -0.28940011757740436,
+              0.010265910427263769
+            ],
+            "toward": [
+              1.0218270674045016e-11,
+              -1.0935252703347942e-11,
+              -2.986126901305397e-10
+            ],
+            "descent_cosine": 7.207323750354815e-07
+          }
+        },
+        "corrected": {
+          "distance_mm": 2.989875106325544e-10,
+          "dominated": false,
+          "certified": true,
+          "maximum_descent_cosine": -0.02014363821682298,
+          "witness": null
+        }
+      }
+    ],
+    "exact_local_star_projection": {
+      "strict_separation": true,
+      "maximum_first": 7.360982816458004e-81,
+      "minimum_second": 8.918006991220589e-20,
+      "projection_gap": 8.918006991220589e-20
+    },
+    "endpoint_contacts": [
+      {
+        "node": 401,
+        "target_face": [
+          3793,
+          400,
+          191
+        ],
+        "target_shift": [
+          0,
+          0,
+          0
+        ],
+        "point_triangle_gap_mm": 0.0135798882943923,
+        "source_distance_to_EE_closest_point_mm": 0.5199005013158624
+      }
+    ],
+    "accepted_geometry_evaluation_error": null,
+    "accepted_geometry_report": {
+      "penetration_mm": 0.0,
+      "image_count": 27,
+      "minimum_separation_mm": 2.986303203641615e-10,
+      "contacts": 18,
+      "edge_contacts": 0,
+      "normal_energy": 0.003043494171930977,
+      "tangent_energy": 0.0007202016509107599,
+      "friction_increment": 2.5653290653076273e-21,
+      "algorithmic_increment": -2.0625562556937568e-22,
+      "released_history_energy": 0,
+      "max_coulomb_ratio": 0.3000000000000001,
+      "edge_guard_pairs": 4,
+      "integration": "two_pass_reference_nodal_area",
+      "local_material_pairs": 0,
+      "nonstationary_edge_pairs": 107,
+      "closest_tie_branches": 0
+    },
+    "coverage_limitation": "The existing guard accepts any endpoint having any selected point contact. This test shows that endpoint contact alone does not establish resolution of this near-zero EE pair.",
+    "time_advanced": false,
+    "physical_solution_verified": false
+  },
+  "roundoff_screening_corrected": true,
+  "endpoint_contact_coverage_fixed": false,
+  "pressure_integration_performed": false,
+  "physical_compaction_verified": false
+}

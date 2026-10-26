@@ -39,6 +39,13 @@ class SurfaceStationarity:
             for face,lift in star:
                 vertices=x[face]+H@lift;v=vertices-q;length=np.linalg.norm(v,axis=1)
                 for k in np.flatnonzero(length>self.L*1e-12):
+                    # The pair already minimizes distance over each original
+                    # segment. Motion toward either of its endpoints cannot
+                    # be a descent witness, including an endpoint minimizer.
+                    # Near zero separation, subtracting world coordinates can
+                    # manufacture a positive cosine along this exact tangent.
+                    ref=self.X[face[k]]+self.L*lift
+                    if np.any(np.linalg.norm(self.X[part]+self.L*image-ref,axis=1)<self.L*1e-10):continue
                     score=float(toward@v[k]/(distance*length[k]));scores.append(score)
                     if score>tolerance and (result['witness'] is None or score>result['witness']['descent_cosine']):
                         result['witness']=dict(side=side,face=face.tolist(),image=lift.tolist(),vertex=int(face[k]),point=q.tolist(),direction=v[k].tolist(),toward=toward.tolist(),descent_cosine=score)

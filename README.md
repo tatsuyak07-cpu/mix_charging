@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+ほぼゼロ離隔の辺対を検証：**丸め誤差による誤った除外判定を修正し、端点接触だけでは不十分な確認条件も特定**。
+[検証報告](docs/near-edge.md)・[判定比較図](exports/near-edge-001/near-edge-checks.png)・[局所形状図](exports/near-edge-001/near-edge-geometry.png)・[全データZIP](exports/near-edge-001.zip)。
+33条件の座標感度と局所三角形の非交差を確認しました。辺対ごとの接触確認条件は未修正で、今回の圧縮再計算は行っていません。
+
 分割候補の自動選択と棄却試行の再実行を接続：**前回の停止区間を4回の監査付き分割で通過**。
 [検証報告](docs/closest-selection.md)・[比較画像](exports/closest-selection-001/selection-comparison.png)・[停止時メッシュ](exports/closest-selection-001/stopped-mesh.png)・[全データZIP](exports/closest-selection-001.zip)。
 全体267テスト合格。再計算は約0.05872 MPaで幾何チェックによる刻み下限に達して停止しました。空隙率約33.87%は未平衡の途中状態で、0.1 MPaの圧密解ではありません。

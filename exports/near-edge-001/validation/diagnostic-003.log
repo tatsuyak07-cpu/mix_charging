@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "legacy_false_tangent_witness_reproduced": true,
+    "high_precision_tangent_derivatives_zero": true,
+    "high_precision_offedge_derivatives_negative": true,
+    "reference_precision_agreement": true,
+    "corrected_pair_not_screened": true,
+    "all_33_variants_not_screened": true,
+    "endpoint_contact_is_not_at_EE_closest_point": true,
+    "existing_endpoint_guard_gap_reproduced": true,
+    "exact_local_star_convex_hulls_separated": true
+  },
+  "passed": true,
+  "endpoint_contacts": [
+    {
+      "node": 401,
+      "target_face": [
+        3793,
+        400,
+        191
+      ],
+      "target_shift": [
+        0,
+        0,
+        0
+      ],
+      "point_triangle_gap_mm": 0.0135798882943923,
+      "source_distance_to_EE_closest_point_mm": 0.5199005013158624
+    }
+  ]
+}
