@@ -81,3 +81,5 @@ $PY -m tools.run_packing_rve --config configs/packing-rve-material-quadrature.js
 ```
 
 `LIBRARY_PATH` は既存の `tools.build_native_kernel` を計算外で実行して得たライブラリを指定する。ZIPには入力状態、拒否提案、新旧の履歴と重み、力評価状態、比較CSV、圧縮停止結果、ソース、失敗を含むテストログを保存した。
+
+次段階の[履歴再生・狭い接触領域の積分検証](integration-replay.md)では、規定された平面運動の12条件と既知形状の帯の18条件を確認した。圧縮ソルバーへの適応積分の接続は未実装である。

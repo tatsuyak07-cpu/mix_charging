@@ -1,0 +1,29 @@
+{
+  "name": "n4-phase0.125-sub8",
+  "n": 4,
+  "phase_mm": 0.125,
+  "subdivisions": 8,
+  "insertion_step": 24,
+  "checks": {
+    "analytic_force_and_energy": true,
+    "replay_matches_uninterrupted": true,
+    "cold_initialization_detected": true,
+    "action_reaction": true,
+    "coulomb": true,
+    "nonnegative_dissipation": true,
+    "starts_inactive": true,
+    "nonzero_history": true
+  },
+  "passed": true,
+  "analytic_absolute_errors": {
+    "force_x_N": 4.961309141293668e-16,
+    "force_z_N": 1.2628786905111156e-15,
+    "normal_energy_Nmm": 2.5343225781848666e-18,
+    "tangent_energy_Nmm": 5.55653613398821e-19,
+    "friction_increment_Nmm": 1.7550522667109103e-18
+  },
+  "replay_maximum_absolute_error": 0.0,
+  "cold_force_error_N": 0.018983731602789135,
+  "final_force_x_N": -0.01898373160278937,
+  "total_friction_work_Nmm": 0.0010537515213979286
+}

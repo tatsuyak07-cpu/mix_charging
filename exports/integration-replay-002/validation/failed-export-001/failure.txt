@@ -1,0 +1,1 @@
+Initial export failed at JSON encoding of the NumPy boolean in closed-form-check.json. TypeError: Object of type bool is not JSON serializable. Preserved original partial export and source; retry uses a new exclusive export directory.

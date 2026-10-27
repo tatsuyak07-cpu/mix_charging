@@ -1,0 +1,1 @@
+{"passed": true, "checks": {"adaptive_reference_agreement": true, "exact_width_scaling": true, "uniform_rule_negative_control": true}, "cases": 18, "maximum_adaptive_relative_error": 1.6788723642702358e-12, "width_scaling_relative_error": 1.36106560632884e-12}

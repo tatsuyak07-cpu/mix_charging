@@ -1,0 +1,371 @@
+{
+  "scope": "Contact-only history replay prerequisite; no adaptive packing solver claim.\n\nRefined surface points are evaluated on a fully prescribed, archived motion\nfrom a known inactive interface. No coarse-point history is interpolated.\n",
+  "checks": {
+    "all_cases": true,
+    "mesh_phase_step_endpoint_invariance": true
+  },
+  "passed": true,
+  "cases": [
+    {
+      "name": "n1-phase0.0-sub8",
+      "n": 1,
+      "phase_mm": 0.0,
+      "subdivisions": 8,
+      "insertion_step": 24,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 9.427137889761461e-16,
+        "force_z_N": 1.2628786905111156e-15,
+        "normal_energy_Nmm": 2.6156377411212794e-18,
+        "tangent_energy_Nmm": 7.352245982167327e-19,
+        "friction_increment_Nmm": 3.5101045334218206e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789163,
+      "final_force_x_N": -0.01898373160278916,
+      "total_friction_work_Nmm": 0.0010537515213979286
+    },
+    {
+      "name": "n1-phase0.0-sub16",
+      "n": 1,
+      "phase_mm": 0.0,
+      "subdivisions": 16,
+      "insertion_step": 48,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 8.396061623727746e-16,
+        "force_z_N": 1.2628786905111156e-15,
+        "normal_energy_Nmm": 2.7511630126819675e-18,
+        "tangent_energy_Nmm": 9.656175598699024e-19,
+        "friction_increment_Nmm": 3.3237572850258745e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789163,
+      "final_force_x_N": -0.018983731602789156,
+      "total_friction_work_Nmm": 0.001053751521397927
+    },
+    {
+      "name": "n1-phase0.125-sub8",
+      "n": 1,
+      "phase_mm": 0.125,
+      "subdivisions": 8,
+      "insertion_step": 24,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 9.08995101411847e-16,
+        "force_z_N": 1.2628786905111156e-15,
+        "normal_energy_Nmm": 2.6156377411212794e-18,
+        "tangent_energy_Nmm": 1.6432439176733427e-18,
+        "friction_increment_Nmm": 3.4762232155316486e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.0189837316027891,
+      "final_force_x_N": -0.01898373160278915,
+      "total_friction_work_Nmm": 0.0010537515213979267
+    },
+    {
+      "name": "n1-phase0.125-sub16",
+      "n": 1,
+      "phase_mm": 0.125,
+      "subdivisions": 16,
+      "insertion_step": 48,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 1.1030672902867522e-15,
+        "force_z_N": 1.2628786905111156e-15,
+        "normal_energy_Nmm": 2.7511630126819675e-18,
+        "tangent_energy_Nmm": 1.6432439176733427e-18,
+        "friction_increment_Nmm": 3.2898759671357025e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789117,
+      "final_force_x_N": -0.01898373160278917,
+      "total_friction_work_Nmm": 0.0010537515213979267
+    },
+    {
+      "name": "n2-phase0.0-sub8",
+      "n": 2,
+      "phase_mm": 0.0,
+      "subdivisions": 8,
+      "insertion_step": 24,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 4.639301096065473e-16,
+        "force_z_N": 1.2698175844150228e-15,
+        "normal_energy_Nmm": 2.6156377411212794e-18,
+        "tangent_energy_Nmm": 5.488773498207866e-19,
+        "friction_increment_Nmm": 1.8566962203814263e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789152,
+      "final_force_x_N": -0.018983731602789294,
+      "total_friction_work_Nmm": 0.001053751521397927
+    },
+    {
+      "name": "n2-phase0.0-sub16",
+      "n": 2,
+      "phase_mm": 0.0,
+      "subdivisions": 16,
+      "insertion_step": 48,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 5.721334864206007e-16,
+        "force_z_N": 1.2698175844150228e-15,
+        "normal_energy_Nmm": 2.72405795836983e-18,
+        "tangent_energy_Nmm": 5.488773498207866e-19,
+        "friction_increment_Nmm": 1.7143946852427039e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.01898373160278916,
+      "final_force_x_N": -0.01898373160278916,
+      "total_friction_work_Nmm": 0.0010537515213979278
+    },
+    {
+      "name": "n2-phase0.125-sub8",
+      "n": 2,
+      "phase_mm": 0.125,
+      "subdivisions": 8,
+      "insertion_step": 24,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 5.80265002714242e-16,
+        "force_z_N": 1.2698175844150228e-15,
+        "normal_energy_Nmm": 2.6156377411212794e-18,
+        "tangent_energy_Nmm": 7.386127300057499e-19,
+        "friction_increment_Nmm": 1.7618285302889447e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.01898373160278916,
+      "final_force_x_N": -0.01898373160278916,
+      "total_friction_work_Nmm": 0.0010537515213979267
+    },
+    {
+      "name": "n2-phase0.125-sub16",
+      "n": 2,
+      "phase_mm": 0.125,
+      "subdivisions": 16,
+      "insertion_step": 48,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 7.901665433074356e-16,
+        "force_z_N": 1.2698175844150228e-15,
+        "normal_energy_Nmm": 2.72405795836983e-18,
+        "tangent_energy_Nmm": 7.352245982167327e-19,
+        "friction_increment_Nmm": 1.819426770702237e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.01898373160278915,
+      "final_force_x_N": -0.018983731602789156,
+      "total_friction_work_Nmm": 0.0010537515213979278
+    },
+    {
+      "name": "n4-phase0.0-sub8",
+      "n": 4,
+      "phase_mm": 0.0,
+      "subdivisions": 8,
+      "insertion_step": 24,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 3.365363543395006e-16,
+        "force_z_N": 1.2698175844150228e-15,
+        "normal_energy_Nmm": 2.5343225781848666e-18,
+        "tangent_energy_Nmm": 5.55653613398821e-19,
+        "friction_increment_Nmm": 1.5382118322138094e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789156,
+      "final_force_x_N": -0.018983731602789163,
+      "total_friction_work_Nmm": 0.0010537515213979282
+    },
+    {
+      "name": "n4-phase0.0-sub16",
+      "n": 4,
+      "phase_mm": 0.0,
+      "subdivisions": 16,
+      "insertion_step": 48,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 3.7990444123892075e-16,
+        "force_z_N": 1.2698175844150228e-15,
+        "normal_energy_Nmm": 2.72405795836983e-18,
+        "tangent_energy_Nmm": 5.590417451878382e-19,
+        "friction_increment_Nmm": 1.1993986533120893e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789156,
+      "final_force_x_N": -0.018983731602789156,
+      "total_friction_work_Nmm": 0.001053751521397928
+    },
+    {
+      "name": "n4-phase0.125-sub8",
+      "n": 4,
+      "phase_mm": 0.125,
+      "subdivisions": 8,
+      "insertion_step": 24,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 4.961309141293668e-16,
+        "force_z_N": 1.2628786905111156e-15,
+        "normal_energy_Nmm": 2.5343225781848666e-18,
+        "tangent_energy_Nmm": 5.55653613398821e-19,
+        "friction_increment_Nmm": 1.7550522667109103e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789135,
+      "final_force_x_N": -0.01898373160278937,
+      "total_friction_work_Nmm": 0.0010537515213979286
+    },
+    {
+      "name": "n4-phase0.125-sub16",
+      "n": 4,
+      "phase_mm": 0.125,
+      "subdivisions": 16,
+      "insertion_step": 48,
+      "checks": {
+        "analytic_force_and_energy": true,
+        "replay_matches_uninterrupted": true,
+        "cold_initialization_detected": true,
+        "action_reaction": true,
+        "coulomb": true,
+        "nonnegative_dissipation": true,
+        "starts_inactive": true,
+        "nonzero_history": true
+      },
+      "passed": true,
+      "analytic_absolute_errors": {
+        "force_x_N": 7.138387103644561e-16,
+        "force_z_N": 1.2628786905111156e-15,
+        "normal_energy_Nmm": 2.72405795836983e-18,
+        "tangent_energy_Nmm": 5.55653613398821e-19,
+        "friction_increment_Nmm": 1.5246593050577406e-18
+      },
+      "replay_maximum_absolute_error": 0.0,
+      "cold_force_error_N": 0.018983731602789235,
+      "final_force_x_N": -0.018983731602789225,
+      "total_friction_work_Nmm": 0.001053751521397928
+    }
+  ],
+  "sensitivity": {
+    "final_force_x_N_range": 2.220446049250313e-16,
+    "total_friction_work_Nmm_range": 1.951563910473908e-18
+  },
+  "units": "mm N MPa",
+  "friction": 0.3,
+  "limits": [
+    "Prescribed flat fixed-normal motion only; not a bulk FEM solve.",
+    "No adaptive integration or replay of a coupled bulk trajectory implemented.",
+    "No general curved-normal, patch-change, or nonuniform-slip verification.",
+    "Quadrature change conservation and narrow contact integration remain unverified.",
+    "No 0.1 MPa equilibrium or porosity prediction."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "base_commit": "4c954ad418d9009df468058d118aefa0f6f06a51",
+  "production_contact_law_modified": false,
+  "verification_directory": "plane-verification-004",
+  "archived_failed_attempts": [
+    "verification.log",
+    "verification-002.log",
+    "verification-003.log"
+  ],
+  "tests": "17 passed; full suite not rerun for verification-only changes"
+}

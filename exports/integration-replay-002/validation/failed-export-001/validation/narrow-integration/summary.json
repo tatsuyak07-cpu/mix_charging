@@ -1,0 +1,274 @@
+{
+  "scope": "Manufactured 1-D strip integration; not a surface/volume FEM algorithm.\n\nThe known quadratic separation supplies an exact interval lower bound. This\nbound is a verification fixture, not a bound for arbitrary moving FE surfaces.\n",
+  "passed": true,
+  "checks": {
+    "adaptive_reference_agreement": true,
+    "exact_width_scaling": true,
+    "uniform_rule_negative_control": true
+  },
+  "cases": [
+    {
+      "name": "w0.02-c0.37-g0.005",
+      "width_mm": 0.02,
+      "center_mm": 0.37,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947920298e-05,
+      "reference_force_N": 0.00511444564825116,
+      "adaptive_maximum_relative_error": 1.487608652243698e-16,
+      "uniform_missed_resolutions": [
+        16,
+        32
+      ]
+    },
+    {
+      "name": "w0.02-c0.37-g0.0005",
+      "width_mm": 0.02,
+      "center_mm": 0.37,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992806825e-05,
+      "reference_force_N": 0.018583307688794796,
+      "adaptive_maximum_relative_error": 1.2928764106276797e-12,
+      "uniform_missed_resolutions": [
+        16,
+        32
+      ]
+    },
+    {
+      "name": "w0.02-c0.501-g0.005",
+      "width_mm": 0.02,
+      "center_mm": 0.501,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947920298e-05,
+      "reference_force_N": 0.005114445648251163,
+      "adaptive_maximum_relative_error": 5.08771701358283e-16,
+      "uniform_missed_resolutions": [
+        16,
+        32
+      ]
+    },
+    {
+      "name": "w0.02-c0.501-g0.0005",
+      "width_mm": 0.02,
+      "center_mm": 0.501,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992806822e-05,
+      "reference_force_N": 0.018583307688794605,
+      "adaptive_maximum_relative_error": 1.298290622311188e-12,
+      "uniform_missed_resolutions": [
+        16,
+        32
+      ]
+    },
+    {
+      "name": "w0.02-c0.529-g0.005",
+      "width_mm": 0.02,
+      "center_mm": 0.529,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947920298e-05,
+      "reference_force_N": 0.005114445648251166,
+      "adaptive_maximum_relative_error": 8.479528355971378e-16,
+      "uniform_missed_resolutions": [
+        32
+      ]
+    },
+    {
+      "name": "w0.02-c0.529-g0.0005",
+      "width_mm": 0.02,
+      "center_mm": 0.529,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992806821e-05,
+      "reference_force_N": 0.018583307688794695,
+      "adaptive_maximum_relative_error": 1.2822346842153e-12,
+      "uniform_missed_resolutions": [
+        32
+      ]
+    },
+    {
+      "name": "w0.002-c0.37-g0.005",
+      "width_mm": 0.002,
+      "center_mm": 0.37,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.277569294792031e-06,
+      "reference_force_N": 0.0005114445648251158,
+      "adaptive_maximum_relative_error": 1.3016575707132352e-15,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.002-c0.37-g0.0005",
+      "width_mm": 0.002,
+      "center_mm": 0.37,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992807002e-06,
+      "reference_force_N": 0.0018583307688793999,
+      "adaptive_maximum_relative_error": 1.4623038969302146e-12,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.002-c0.501-g0.005",
+      "width_mm": 0.002,
+      "center_mm": 0.501,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947917643e-06,
+      "reference_force_N": 0.0005114445648250618,
+      "adaptive_maximum_relative_error": 3.904972712140163e-15,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.002-c0.501-g0.0005",
+      "width_mm": 0.002,
+      "center_mm": 0.501,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992807385e-06,
+      "reference_force_N": 0.0018583307688791642,
+      "adaptive_maximum_relative_error": 1.6788723642702358e-12,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.002-c0.529-g0.005",
+      "width_mm": 0.002,
+      "center_mm": 0.529,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947917643e-06,
+      "reference_force_N": 0.0005114445648250618,
+      "adaptive_maximum_relative_error": 3.904972712140163e-15,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.002-c0.529-g0.0005",
+      "width_mm": 0.002,
+      "center_mm": 0.529,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992807385e-06,
+      "reference_force_N": 0.0018583307688791642,
+      "adaptive_maximum_relative_error": 1.6788723642702358e-12,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.0002-c0.37-g0.005",
+      "width_mm": 0.0002,
+      "center_mm": 0.37,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.277569294792106e-07,
+      "reference_force_N": 5.114445648251021e-05,
+      "adaptive_maximum_relative_error": 3.056570902656871e-14,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.0002-c0.37-g0.0005",
+      "width_mm": 0.0002,
+      "center_mm": 0.37,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992806461e-07,
+      "reference_force_N": 0.00018583307688805492,
+      "adaptive_maximum_relative_error": 7.712917937043361e-13,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.0002-c0.501-g0.005",
+      "width_mm": 0.0002,
+      "center_mm": 0.501,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947918732e-07,
+      "reference_force_N": 5.114445648251452e-05,
+      "adaptive_maximum_relative_error": 7.844811252066916e-14,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.0002-c0.501-g0.0005",
+      "width_mm": 0.0002,
+      "center_mm": 0.501,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992803656e-07,
+      "reference_force_N": 0.00018583307688769401,
+      "adaptive_maximum_relative_error": 9.941612832637983e-13,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.0002-c0.529-g0.005",
+      "width_mm": 0.0002,
+      "center_mm": 0.529,
+      "minimum_gap_mm": 0.005,
+      "reference_energy_Nmm": 2.2775692947918732e-07,
+      "reference_force_N": 5.114445648251452e-05,
+      "adaptive_maximum_relative_error": 7.844811252066916e-14,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "w0.0002-c0.529-g0.0005",
+      "width_mm": 0.0002,
+      "center_mm": 0.529,
+      "minimum_gap_mm": 0.0005,
+      "reference_energy_Nmm": 5.620148992803656e-07,
+      "reference_force_N": 0.00018583307688769401,
+      "adaptive_maximum_relative_error": 9.941612832637983e-13,
+      "uniform_missed_resolutions": [
+        16,
+        32,
+        64,
+        128
+      ]
+    }
+  ],
+  "width_scaling_relative_error": 1.36106560632884e-12,
+  "limits": [
+    "Exact separation bounds are provided by a manufactured quadratic gap.",
+    "No general triangle search, friction history transfer, contact force distribution, or pressure solver coupling.",
+    "A posteriori order comparison alone does not guarantee detection of an unsampled contact patch.",
+    "Reference shares the existing barrier law; it verifies integration, not the law."
+  ]
+}

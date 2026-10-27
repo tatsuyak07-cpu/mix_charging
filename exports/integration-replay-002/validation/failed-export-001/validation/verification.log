@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/mix_charging/tools/verify_integration_replay.py", line 166, in <module>
+    main()
+  File "/workspace/mix_charging/tools/verify_integration_replay.py", line 95, in main
+    direct = [step(uninterrupted, X, upper, phase, *point) for point in points]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/tools/verify_integration_replay.py", line 46, in step
+    response = c.evaluate(x, x*0, H, H*0, 1.)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/area_contact.py", line 134, in evaluate
+    minimum,report['image_count']=self.guard.prepare_geometry(x,H)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/barrier_contact.py", line 247, in prepare_geometry
+    if bound>=.5*self.minimum_separation:raise ContactResolutionError('Linear-step separation certificate requires a smaller timestep')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packing_fem.barrier_contact.ContactResolutionError: Linear-step separation certificate requires a smaller timestep

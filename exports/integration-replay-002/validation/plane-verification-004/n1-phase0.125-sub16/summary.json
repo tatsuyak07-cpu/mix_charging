@@ -1,0 +1,29 @@
+{
+  "name": "n1-phase0.125-sub16",
+  "n": 1,
+  "phase_mm": 0.125,
+  "subdivisions": 16,
+  "insertion_step": 48,
+  "checks": {
+    "analytic_force_and_energy": true,
+    "replay_matches_uninterrupted": true,
+    "cold_initialization_detected": true,
+    "action_reaction": true,
+    "coulomb": true,
+    "nonnegative_dissipation": true,
+    "starts_inactive": true,
+    "nonzero_history": true
+  },
+  "passed": true,
+  "analytic_absolute_errors": {
+    "force_x_N": 1.1030672902867522e-15,
+    "force_z_N": 1.2628786905111156e-15,
+    "normal_energy_Nmm": 2.7511630126819675e-18,
+    "tangent_energy_Nmm": 1.6432439176733427e-18,
+    "friction_increment_Nmm": 3.2898759671357025e-18
+  },
+  "replay_maximum_absolute_error": 0.0,
+  "cold_force_error_N": 0.018983731602789117,
+  "final_force_x_N": -0.01898373160278917,
+  "total_friction_work_Nmm": 0.0010537515213979267
+}

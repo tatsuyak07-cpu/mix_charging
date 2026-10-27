@@ -1,0 +1,8 @@
+{
+  "scope": "Closed-form constant-normal flat-interface cycle only",
+  "expected_final_force_x_N": -0.018983731602788875,
+  "expected_friction_work_Nmm": 0.0010537515213979143,
+  "maximum_final_force_error_N": 4.961309141293668e-16,
+  "maximum_work_error_Nmm": 1.431146867680866e-17,
+  "passed": true
+}

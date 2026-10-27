@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+追加する接触積分点の前提を検証：**接触前からの摩擦履歴再生12条件、狭い帯の積分18条件に合格**。
+[検証報告](docs/integration-replay.md)・[履歴比較図](exports/integration-replay-002/history-replay.png)・[積分比較図](exports/integration-replay-002/narrow-integration.png)・[全データZIP](exports/integration-replay-002.zip)。
+関連17テスト合格。規定運動の平面接触・既知形状の帯での単体検証です。2次元面積分、圧縮ソルバーの巻き戻し・接続、0.1 MPaの平衡到達は未完了です。
+
 摩擦履歴・接触積分を保持する `material` モードを実装：**過去の拒否提案で面積・法線エネルギーを保持し、10項目の移行監査に合格**。
 [検証報告](docs/material-quadrature.md)・[比較図](exports/material-quadrature-001/energy-conservation.png)・[新設定](configs/packing-rve-material-quadrature.json)・[全データZIP](exports/material-quadrature-001.zip)。
 全体300テスト合格。固着・滑りの履歴と力評価状態を分けて移行します。積分点の適応追加は未実装で、0.1 MPaの完走は未達成です。
