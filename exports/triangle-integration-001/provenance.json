@@ -1,0 +1,15 @@
+{
+  "base_commit": "618da1a02902b60ca9254a78d0de97976b3102ab",
+  "pressure_solver_modified": false,
+  "friction_history_coupled": false,
+  "physical_solution_verified": false,
+  "tests": "30 passed; full suite not rerun",
+  "attempts": {
+    "verification": "Interrupted for excessive low-order work; completed case kept",
+    "verification_002": "Interrupted before batch acceleration; completed cases kept",
+    "verification_003": "Failed maximum depth; log and source kept",
+    "verification_004": "Failed maximum depth with local budget distribution; log and source kept",
+    "verification_005": "24 cases passed",
+    "partition_verification": "12 cases passed"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "case": "edge-f0.8-tol0.001",
+  "kind": "edge",
+  "fraction": 0.8,
+  "tolerance": 0.001,
+  "energy_Nmm": 2.8731206058383968e-06,
+  "source_normal_force_N": 0.0007554588394338362,
+  "partition_force_relative_error": 5.082887042205468e-06,
+  "partition_energy_relative_error": 3.1065137471008196e-07,
+  "independent_relative_error": 7.920513291114459e-06,
+  "quadrature_points": 12480,
+  "checks": {
+    "partition_force": true,
+    "partition_energy": true,
+    "independent_reference": true,
+    "action_reaction": true
+  },
+  "passed": true
+}

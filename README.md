@@ -1,5 +1,9 @@
 # Periodic sphere-packing compression — solid FEM
 
+三角形面の接触積分を検証：**狭い辺・頂点接触24条件、分割位置12条件、関連30テストに合格**。
+[検証報告](docs/triangle-integration.md)・[誤差比較図](exports/triangle-integration-001/integration-errors.png)・[積分点分布](exports/triangle-integration-001/quadrature-points.png)・[全データZIP](exports/triangle-integration-001.zip)。
+摩擦なしの有限三角形対の単体検証です。周期パッチ探索・摩擦履歴との接続・0.1 MPaの圧縮完走は未完了です。
+
 追加する接触積分点の前提を検証：**接触前からの摩擦履歴再生12条件、狭い帯の積分18条件に合格**。
 [検証報告](docs/integration-replay.md)・[履歴比較図](exports/integration-replay-002/history-replay.png)・[積分比較図](exports/integration-replay-002/narrow-integration.png)・[全データZIP](exports/integration-replay-002.zip)。
 関連17テスト合格。規定運動の平面接触・既知形状の帯での単体検証です。2次元面積分、圧縮ソルバーの巻き戻し・接続、0.1 MPaの平衡到達は未完了です。

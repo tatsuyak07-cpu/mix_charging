@@ -1,0 +1,19 @@
+{
+  "case": "corner-f0.8-tol0.0005",
+  "kind": "corner",
+  "fraction": 0.8,
+  "tolerance": 0.0005,
+  "energy_Nmm": 1.1272969712361436e-09,
+  "source_normal_force_N": 2.947956949295143e-07,
+  "partition_force_relative_error": 2.860413415299624e-10,
+  "partition_energy_relative_error": 0.0,
+  "independent_relative_error": 3.870768720634555e-06,
+  "quadrature_points": 3456,
+  "checks": {
+    "partition_force": true,
+    "partition_energy": true,
+    "independent_reference": true,
+    "action_reaction": true
+  },
+  "passed": true
+}

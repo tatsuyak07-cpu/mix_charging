@@ -1,0 +1,1 @@
+Triangle contact integration unresolved at maximum depth: {'bound': np.float64(0.019999974518955115), 'minimum_sample': np.float64(0.019999974796386544), 'area': 8.881784198571348e-16, 'energy': 1.2221851134243557e-36, 'force_z': 2.398109716960256e-28, 'maximum_local_error_ratio': 1.6868915664934212}
