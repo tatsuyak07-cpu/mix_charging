@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/mix_charging/tools/verify_onset_budget.py", line 158, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/mix_charging/tools/verify_onset_budget.py", line 140, in main
+    analytic=manufactured(a.output)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/tools/verify_onset_budget.py", line 64, in manufactured
+    rows.append(dict(family='affine_plane',depth_fraction=depth,active_width=width,method=name,tolerance=tol,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dict() got multiple values for keyword argument 'active_width'

@@ -124,18 +124,23 @@ def feature_children(B,source,targets,selected,distances):
     return children
 
 
-def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,force_error_norm='component'):
+def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,force_error_norm='component',normalized_floor=False):
     """Adaptive reference-area rule, including points on inactive subdomains."""
     source=np.asarray(source);targets=np.asarray(targets)
     if vertex_map is None:vertex_map=np.arange(3*len(targets)).reshape(-1,3)
     size=10+3*(int(np.max(vertex_map))+1)
     if force_error_norm not in ('component','resultant'):raise ValueError('Unknown surface force error norm')
+    if normalized_floor and force_error_norm!='resultant':raise ValueError('Normalized floor requires the resultant norm')
     if groups is None:groups=[list(range(len(targets)))]
     absolute=np.r_[1e-18,np.full(size-1,1e-16)];inactive=[];cells=0;evaluations=0
     def budget(value,relative):
         if force_error_norm=='component':return absolute+relative*abs(value)
         scale=max(float(np.linalg.norm(value[1:10].reshape(3,3).sum(0))),
                   float(np.linalg.norm(value[10:].reshape(-1,3),axis=1).sum()))
+        if normalized_floor:
+            # The caller divides error by max(signal, floor), then compares
+            # with tolerance. The absolute allowance must include tolerance.
+            return relative*np.r_[max(abs(value[0]),1e-18),np.full(size-1,max(scale,1e-16))]
         return absolute+relative*np.r_[abs(value[0]),np.full(size-1,scale)]
     def area(B):return reference_area*abs(float(np.linalg.det(B)))
     def rule(B,order):
@@ -193,7 +198,10 @@ def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,
         else:
             nodes,w=RULES[4];points.extend(nodes@B);weights.extend(area(B)*w)
     return dict(value=total,bary=np.asarray(points).reshape(-1,3),weights=np.asarray(weights),cells=cells,evaluations=evaluations,
-                compressed_cells=compressed,area_error=abs(sum(weights)-reference_area))
+                compressed_cells=compressed,area_error=abs(sum(weights)-reference_area),
+                energy_allowance=float(budget(total,tolerance)[0]),
+                energy_error_estimate=float(sum(leaf['error'][0] for leaf in leaves)),
+                compression_energy_difference=float(compression_error[0]))
 
 
 def components(faces,shifts,X,L):

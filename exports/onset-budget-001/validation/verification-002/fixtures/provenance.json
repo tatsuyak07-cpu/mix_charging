@@ -1,0 +1,8 @@
+{
+  "run": "results/pressure-stages-001/rve-run-009/attempt-001",
+  "source_sha256": {
+    "last-state.npz": "fe7ac435ad81c2816c1be7553a87095c1929a9799bc77242607bfd3040fd98f2",
+    "config.json": "378a957524a09b38a72782441d8ecffe7342c142a85a68d491cc270175b420ce"
+  },
+  "scope": "Geometry-only controls: accepted onset pose and two manufactured affine increments; no equilibrium or friction transfer claim."
+}

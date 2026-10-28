@@ -88,3 +88,12 @@ C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全�
 - [事後集計と中断の記録](pressure-stages-001/calculation-summary.json) / [SHA256一覧](pressure-stages-001/manifest.json)
 
 フォルダー内の `validation-part-*.zip` はそれぞれ独立したZIPです。すべて同じ場所へ展開すると、元の試行・ソース・失敗記録を含む `validation/` が復元されます。収録先とファイルのSHA256は `validation-manifest.json` に記録しています。不完全な最後のチェックポイントも保存し、使用可能な状態と明確に区別しています。
+
+## 接触開始時の積分誤差床と固定積分点
+
+[検証報告](../docs/onset-budget.md) / [CSV・PNG・形状・全記録](onset-budget-001/) / [ZIP](onset-budget-001.zip)。
+誤差配分の見直し案は平面9形状×2許容値と実セル12姿勢の細分化比較に合格しました。
+初期積分点の固定利用は8条件中5条件で不合格です。圧縮ソルバーは変更しておらず、0.1 MPaの平衡結果ではありません。
+
+- [独立平面CSV](onset-budget-001/manufactured.csv) / [実セルCSV](onset-budget-001/rve.csv) / [旧方式との比較CSV](onset-budget-001/legacy-comparison.csv)
+- [積分誤差PNG](onset-budget-001/integration-errors.png) / [固定積分点の誤差PNG](onset-budget-001/frozen-rule-errors.png)
