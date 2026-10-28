@@ -219,6 +219,10 @@ python -m pytest -q
 CSV・PNG・計算記録は [exports](exports/README.md) に収録しています。
 クラウドの環境構築には `bash tools/setup_cloud.sh` を使用します（uvが必要）。
 
+最新の[工程1〜5の実装・検証報告](docs/pressure-stages.md)では、埋め込み材料積分、摩擦履歴の再生、完全状態の保存・再開、段階圧力制御を追加しました。
+小さなBCCセルで0.001・0.01 MPaの平衡保持に合格しましたが、接触開始直後の再積分要求が続き、0.03 MPaの保持と0.1 MPaへの到達は未確認です。
+[段階CSV・メッシュ画像・全試行](exports/pressure-stages-001/)を収録しています。
+
 周期C3D8Iの内部モード・仕事・圧縮分割数の追加検証は
 [検証報告](docs/periodic-incompatible-verification.md)に記載しています。
 25 mm角・1%圧縮の実験用モデルです。100 mm角・0.1 MPaやメッシュ収束は未検証です。

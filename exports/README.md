@@ -75,3 +75,16 @@ C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全�
 中間記録のtracked-solver-verification-002とtracked-node-impact-001、および最初のZIPも、仕事積分補正の修正前の記録として保持しています。
 
 - [edge-pair-verification-001](edge-pair-verification-001)、[edge-solver-verification-001](edge-solver-verification-001): 内部の辺―辺反力・摩擦・モーメントと結合検証。[ZIP一式](edge-contact-development-001.zip)。元のスリットは辺から節点―面への切替えで停止し、一般圧密は未検証。
+
+## 工程1〜5：埋め込み積分・履歴再生・段階圧縮
+
+[全記録](pressure-stages-001/) / [計算・検証報告](../docs/pressure-stages.md)。
+0.001・0.01 MPaで平衡保持に合格しました。接触開始直後に再積分要求が続いたため中断し、0.03 MPa保持と0.1 MPa到達は未確認です。
+小さなBCC周期セルの研究用試験で、100 mm充填層やメッシュ収束を保証しません。
+
+- [平衡段階CSV](pressure-stages-001/stages.csv) / [過渡履歴CSV](pressure-stages-001/history.csv)
+- [圧力・空隙率PNG](pressure-stages-001/pressure-porosity.png)
+- [初期メッシュPNG](pressure-stages-001/initial-mesh.png) / [0.01 MPaの平衡メッシュPNG](pressure-stages-001/stage-0.01-MPa.png)
+- [事後集計と中断の記録](pressure-stages-001/calculation-summary.json) / [SHA256一覧](pressure-stages-001/manifest.json)
+
+フォルダー内の `validation-part-*.zip` はそれぞれ独立したZIPです。すべて同じ場所へ展開すると、元の試行・ソース・失敗記録を含む `validation/` が復元されます。収録先とファイルのSHA256は `validation-manifest.json` に記録しています。不完全な最後のチェックポイントも保存し、使用可能な状態と明確に区別しています。

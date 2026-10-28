@@ -123,13 +123,13 @@ class AreaContact:
         return bool(self.target_vertices(a,sa).intersection(self.target_vertices(b,sb)))
 
     def evaluate(self,x,velocity,H,Hdot,dt):
-        self.trial_force_history={}
+        self.trial_force_history={};self.trial_patch_branches={}
         force=np.zeros_like(x);extra=np.zeros(6);hist={};selected={};edges=[]
         records=[]
         if self.capture_audit:self.trial_audit=dict(records=records,points=x.copy(),cell=H.copy(),force=force,extra=extra)
         self.guard.trial_separation=self.skin;self.guard.trial_diagonal=np.zeros(len(x))
         report=dict(penetration_mm=0.,image_count=0,minimum_separation_mm=self.skin,contacts=0,edge_contacts=0,normal_energy=0.,tangent_energy=0.,friction_increment=0.,algorithmic_increment=0.,released_history_energy=0.,max_coulomb_ratio=0.,edge_guard_pairs=0,integration='two_pass_reference_nodal_area',local_material_pairs=0,nonstationary_edge_pairs=0)
-        report['edge_coverage_counts']={name:0 for name in ('closest_endpoint','resolved_endpoint_neighborhood','connected_coplanar_patch','surface_descent')}
+        report['edge_coverage_counts']={name:0 for name in ('closest_endpoint','resolved_endpoint_neighborhood','connected_coplanar_patch','surface_descent','material_surface_integral')}
         if not len(self.faces):return force,extra,hist,report
         minimum,report['image_count']=self.guard.prepare_geometry(x,H)
         certified=False
@@ -156,7 +156,8 @@ class AreaContact:
             node=int(ids[0]);candidate=(d,key,ids,shift,p,branch,w,r)
             selected.setdefault(node,[]).append(candidate)
         resolved={};patch_branches={}
-        used_history=set()
+        used_history=set();history_by_node={}
+        for oldkey,oldstate in self.history.items():history_by_node.setdefault(oldkey[1],[]).append((oldkey,oldstate))
         for node,candidates in selected.items():
             # Connected target facets describe one patch, not additive springs.
             groups=[]
@@ -179,13 +180,14 @@ class AreaContact:
                         if self.closest_tie_rule=='stop':raise SurfaceResolutionError('Multiple distinct closest patches require multi-contact surface integration')
                         branches.append(other)
                 if self.multiple_patches:
-                    matches=[k for k,v in self.history.items() if k[1]==node and self.adjacent_targets(v['face'],v['shift'],current[1][2],current[3])]
+                    matches=[k for k,v in history_by_node.get(node,[]) if self.adjacent_targets(v['face'],v['shift'],current[1][2],current[3])]
                     if len(matches)>1 or any(k in used_history for k in matches):
                         raise ContactResolutionError('Contact patch split or merge requires history projection')
                     history_key=matches[0] if matches else ('area_patch',node,current[1][2],*map(int,current[3]))
                 else:history_key=('area',node)
                 if history_key in resolved:raise ContactResolutionError('Ambiguous patch history identity')
                 resolved[history_key]=current;patch_branches[history_key]=branches;used_history.add(history_key)
+        self.trial_patch_branches=patch_branches
         point_candidates={}
         for branches in patch_branches.values():
             for candidate in branches:point_candidates.setdefault(int(candidate[2][0]),[]).append(candidate)

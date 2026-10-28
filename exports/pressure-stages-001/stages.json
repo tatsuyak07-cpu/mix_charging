@@ -1,0 +1,36 @@
+[
+  {
+    "pressure_MPa": 0.001,
+    "time_s": 0.010000007594589884,
+    "porosity": 0.3983223827539376,
+    "force_ratio": 3.692975370692329e-07,
+    "kinetic_ratio": 3.690074277445838e-12,
+    "checks": {
+      "force": true,
+      "kinetic": true,
+      "energy": true
+    },
+    "passed": true,
+    "checkpoint": "rve-run-006/attempt-000/checkpoint-00016396",
+    "checkpoint_state_sha256": "00dc823263e3f8015330d2f5b1cbee6e58ba918677146a846dcf718adb2eb1db",
+    "axial_compression": 0.0004720915299571538,
+    "mesh_image": "stage-0.001-MPa.png"
+  },
+  {
+    "pressure_MPa": 0.010000000000000002,
+    "time_s": 0.020000445596679104,
+    "porosity": 0.3962565896920195,
+    "force_ratio": 0.0063680586181216635,
+    "kinetic_ratio": 2.0046192228771903e-05,
+    "checks": {
+      "force": true,
+      "kinetic": true,
+      "energy": true
+    },
+    "passed": true,
+    "checkpoint": "rve-run-009/attempt-000/checkpoint-00033113",
+    "checkpoint_state_sha256": "a6b982271efe78cb4c64824ea36b00d171793a1e7c2cbbbb2f151227a1f8e036",
+    "axial_compression": 0.011060042135335827,
+    "mesh_image": "stage-0.01-MPa.png"
+  }
+]
