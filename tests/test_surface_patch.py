@@ -100,4 +100,3 @@ def test_resultant_error_budget_matches_finer_component_rule():
     assert abs(applied[0]-exact[0])/abs(exact[0])<.001
     assert abs(applied[1:]-exact[1:]).max()/force_scale<.001
     np.testing.assert_allclose(applied[1:].reshape(-1,3).sum(0),0,atol=1e-14)
-
