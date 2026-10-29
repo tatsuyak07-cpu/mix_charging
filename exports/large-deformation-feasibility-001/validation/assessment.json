@@ -1,0 +1,66 @@
+{
+  "review_date_jst": "2026-10-29",
+  "base_commit": "0d219447b1b0f974675f10c483fe4e7c138fc7f2",
+  "new_FEM_simulation_performed": false,
+  "solver_or_material_modified": false,
+  "current_implementation": "Not demonstrated or sufficient as-is for general large compaction; active-contact quadrature/history and general distortion-repair remeshing remain open.",
+  "finite_strain_explicit_FEM_strategy": "Conditionally suitable; requires integrated contact/history/remeshing development and end-to-end capability gates.",
+  "pressure_0_1_MPa_equilibrated": false,
+  "porosity_0_1_reached": false,
+  "representative_100mm_pack_verified": false,
+  "equilibrated_stages": [
+    {
+      "pressure_MPa": "0.001",
+      "time_s": "0.010000007594589884",
+      "porosity": "0.3983223827539376",
+      "force_ratio": "3.692975370692329e-07",
+      "kinetic_ratio": "3.690074277445838e-12",
+      "passed": "True",
+      "axial_compression": "0.0004720915299571538",
+      "checkpoint": "rve-run-006/attempt-000/checkpoint-00016396",
+      "mesh_image": "stage-0.001-MPa.png"
+    },
+    {
+      "pressure_MPa": "0.010000000000000002",
+      "time_s": "0.020000445596679104",
+      "porosity": "0.3962565896920195",
+      "force_ratio": "0.0063680586181216635",
+      "kinetic_ratio": "2.0046192228771903e-05",
+      "passed": "True",
+      "axial_compression": "0.011060042135335827",
+      "checkpoint": "rve-run-009/attempt-000/checkpoint-00033113",
+      "mesh_image": "stage-0.01-MPa.png"
+    }
+  ],
+  "kinematic_estimate": {
+    "phi_initial": 0.4,
+    "phi_target": 0.1,
+    "solid_volume_ratio_assumption": 1.0,
+    "cell_volume_ratio": 0.6666666666666666,
+    "cell_volume_reduction_fraction": 0.33333333333333337,
+    "axial_compression_only_if_fixed_lateral_area": 0.33333333333333337,
+    "relation": "J_macro = ((1-phi_initial)/(1-phi_target)) * (V_solid/V_solid_initial)",
+    "limitation": "The current transverse-stress-free problem does not prescribe fixed lateral area. J2 plasticity is isochoric, elastic solid volume can change."
+  },
+  "geometric_scaling_estimate": {
+    "rve_length_mm": 12.1,
+    "target_length_mm": 100,
+    "volume_ratio": 564.4739300537776,
+    "coarse_elements_per_rve": 14784,
+    "fine_elements_per_rve": 118848,
+    "equivalent_coarse_elements_100mm": 8345182.581915048,
+    "equivalent_fine_elements_100mm": 67086597.639031366,
+    "mesh_width_n16_mm": 0.75625,
+    "mesh_width_n32_mm": 0.378125,
+    "cells_across_neck_n16": 2.644628099173554,
+    "initial_quadrature_points_previous": 15726,
+    "initial_quadrature_points_normalized": 15236,
+    "quadrature_point_reduction_fraction": 0.031158590868625158,
+    "ideal_element_work_factor_when_halving_h": 16,
+    "limits": [
+      "Geometric scaling estimate, not a benchmark, particle count or exact 100 mm mesh.",
+      "12.1 mm does not divide 100 mm; periodic geometry must be rebuilt.",
+      "The 16-fold work estimate assumes 3-D refinement, CFL timestep proportional to h, fixed duration and linear element cost; excludes contact/replay/IO."
+    ]
+  }
+}

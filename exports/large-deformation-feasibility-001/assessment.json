@@ -1,0 +1,117 @@
+{
+  "review_date_jst": "2026-10-29",
+  "base_commit": "0d219447b1b0f974675f10c483fe4e7c138fc7f2",
+  "new_FEM_simulation_performed": false,
+  "solver_or_material_modified": false,
+  "current_implementation": "Not demonstrated or sufficient as-is for general large compaction; active-contact quadrature/history and general distortion-repair remeshing remain open.",
+  "finite_strain_explicit_FEM_strategy": "Conditionally suitable; requires integrated contact/history/remeshing development and end-to-end capability gates.",
+  "pressure_0_1_MPa_equilibrated": false,
+  "porosity_0_1_reached": false,
+  "representative_100mm_pack_verified": false,
+  "equilibrated_stages": [
+    {
+      "pressure_MPa": "0.001",
+      "time_s": "0.010000007594589884",
+      "porosity": "0.3983223827539376",
+      "force_ratio": "3.692975370692329e-07",
+      "kinetic_ratio": "3.690074277445838e-12",
+      "passed": "True",
+      "axial_compression": "0.0004720915299571538",
+      "checkpoint": "rve-run-006/attempt-000/checkpoint-00016396",
+      "mesh_image": "stage-0.001-MPa.png"
+    },
+    {
+      "pressure_MPa": "0.010000000000000002",
+      "time_s": "0.020000445596679104",
+      "porosity": "0.3962565896920195",
+      "force_ratio": "0.0063680586181216635",
+      "kinetic_ratio": "2.0046192228771903e-05",
+      "passed": "True",
+      "axial_compression": "0.011060042135335827",
+      "checkpoint": "rve-run-009/attempt-000/checkpoint-00033113",
+      "mesh_image": "stage-0.01-MPa.png"
+    }
+  ],
+  "kinematic_estimate": {
+    "phi_initial": 0.4,
+    "phi_target": 0.1,
+    "solid_volume_ratio_assumption": 1.0,
+    "cell_volume_ratio": 0.6666666666666666,
+    "cell_volume_reduction_fraction": 0.33333333333333337,
+    "axial_compression_only_if_fixed_lateral_area": 0.33333333333333337,
+    "relation": "J_macro = ((1-phi_initial)/(1-phi_target)) * (V_solid/V_solid_initial)",
+    "limitation": "The current transverse-stress-free problem does not prescribe fixed lateral area. J2 plasticity is isochoric, elastic solid volume can change."
+  },
+  "geometric_scaling_estimate": {
+    "rve_length_mm": 12.1,
+    "target_length_mm": 100,
+    "volume_ratio": 564.4739300537776,
+    "coarse_elements_per_rve": 14784,
+    "fine_elements_per_rve": 118848,
+    "equivalent_coarse_elements_100mm": 8345182.581915048,
+    "equivalent_fine_elements_100mm": 67086597.639031366,
+    "mesh_width_n16_mm": 0.75625,
+    "mesh_width_n32_mm": 0.378125,
+    "cells_across_neck_n16": 2.644628099173554,
+    "initial_quadrature_points_previous": 15726,
+    "initial_quadrature_points_normalized": 15236,
+    "quadrature_point_reduction_fraction": 0.031158590868625158,
+    "ideal_element_work_factor_when_halving_h": 16,
+    "limits": [
+      "Geometric scaling estimate, not a benchmark, particle count or exact 100 mm mesh.",
+      "12.1 mm does not divide 100 mm; periodic geometry must be rebuilt.",
+      "The 16-fold work estimate assumes 3-D refinement, CFL timestep proportional to h, fixed duration and linear element cost; excludes contact/replay/IO."
+    ]
+  },
+  "proposed_development_gates": [
+    {
+      "stage": 1,
+      "name": "接触継続と履歴場",
+      "status": "未完成",
+      "required": "階層積分・材料座標の履歴、生成消失と分裂合流、周期接触を一貫して扱う",
+      "gate": "短い完全再生対照と力・摩擦仕事・残留すべりを比較",
+      "fallback": "接触離散化・既存エンジンを比較"
+    },
+    {
+      "stage": 2,
+      "name": "活性接触中の再メッシュ",
+      "status": "一般の表面更新は未対応",
+      "required": "品質回復・塑性状態・質量・速度・周期性・接触履歴の移行",
+      "gate": "接触中の圧縮曲げすべりで複数回の更新監査を通す",
+      "fallback": "別の再メッシュ/ALE/エンジンを比較"
+    },
+    {
+      "stage": 3,
+      "name": "少数粒子の通し実証",
+      "status": "0.001/0.01 MPa保持まで合格",
+      "required": "圧密・保持・除荷、0.1 MPa圧力ケースとphi30/20/10%変形ケースを分ける",
+      "gate": "完走・平衡・体積・仕事・永久変形を監査",
+      "fallback": "破綻する機構の担当層を再設計"
+    },
+    {
+      "stage": 4,
+      "name": "数値収束",
+      "status": "大変形経路は未確認",
+      "required": "同じ連続形状のメッシュ、CFL、載荷時間、接触厚さと積分精度の感度",
+      "gate": "完走した全経路・保持・除荷で比較",
+      "fallback": "要素定式化・載荷方法・接触表現を比較"
+    },
+    {
+      "stage": 5,
+      "name": "性能と代表性",
+      "status": "100 mmモデルは未検証",
+      "required": "活性接触と再メッシュの実測性能、サイズ・配置・方向性の確認",
+      "gate": "実測値から必要RVEと100 mm仕様の費用を見積る",
+      "fallback": "並列化・既存エンジン・多尺度化を比較"
+    },
+    {
+      "stage": 6,
+      "name": "100 mmと円柱比較",
+      "status": "未着手",
+      "required": "仕様の周期充填形状、剛体なし/ありを同じ精度で評価",
+      "gate": "局所変形・空隙差まで空間収束を確認",
+      "fallback": "小セル反復を最終仕様の代替とはしない"
+    }
+  ],
+  "decision": "Maintain finite-strain FEM as a conditional first choice; do not plan completion by extending the present replay/bisection scheme alone. Demonstrate integrated active contact/history and distortion-repair remeshing before full compaction or scale-up."
+}

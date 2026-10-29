@@ -97,3 +97,10 @@ C3D8Iの部品反力・残留変形差は最細分で2%基準内。充填層全�
 
 - [独立平面CSV](onset-budget-001/manufactured.csv) / [実セルCSV](onset-budget-001/rve.csv) / [旧方式との比較CSV](onset-budget-001/legacy-comparison.csv)
 - [積分誤差PNG](onset-budget-001/integration-errors.png) / [固定積分点の誤差PNG](onset-budget-001/frozen-rule-errors.png)
+
+## 大変形への到達可能性の検討
+
+[検討書](../docs/large-deformation-feasibility.md) / [判定・概算JSON](large-deformation-feasibility-001/assessment.json) /
+[開発工程CSV](large-deformation-feasibility-001/development-gates.csv) / [根拠資料・全記録ZIP](large-deformation-feasibility-001.zip)。
+有限変形FEMを第一候補としつつ、現行コードの接触・摩擦履歴・活性再メッシュの統合が未完成であることを評価しました。
+空隙率40%→10%の体積変化、100 mm化の幾何的規模、段階的な継続判断を記録しています。新しいFEM計算・到達の合格結果ではありません。

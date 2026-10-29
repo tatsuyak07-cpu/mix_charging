@@ -1,0 +1,119 @@
+{
+  "scope": "Postmortem assessment of interrupted RVE runner; not an original solver result",
+  "attempts": [
+    {
+      "attempt": 0,
+      "steps": 47948,
+      "pressure_MPa": 0.029995122766547463,
+      "porosity": 0.3660137329294255,
+      "checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": false,
+        "path_completed": false,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": false
+      },
+      "failure": "SurfaceResolutionError('Embedded material quadrature requires inactive-checkpoint replay')",
+      "stage_records": [
+        {
+          "pressure_MPa": 0.001,
+          "time_s": 0.010000007594589884,
+          "porosity": 0.3983223827539376,
+          "force_ratio": 3.692975370692329e-07,
+          "kinetic_ratio": 3.690074277445838e-12,
+          "checks": {
+            "force": true,
+            "kinetic": true,
+            "energy": true
+          },
+          "passed": true
+        },
+        {
+          "pressure_MPa": 0.010000000000000002,
+          "time_s": 0.020000445596679104,
+          "porosity": 0.3962565896920195,
+          "force_ratio": 0.0063680586181216635,
+          "kinetic_ratio": 2.0046192228771903e-05,
+          "checks": {
+            "force": true,
+            "kinetic": true,
+            "energy": true
+          },
+          "passed": true
+        }
+      ],
+      "rules": 0
+    },
+    {
+      "attempt": 1,
+      "steps": 47949,
+      "pressure_MPa": 0.02999514987164776,
+      "porosity": 0.36601222744899564,
+      "checks": {
+        "closed_boundary_volume": true,
+        "material_volume_consistency": true,
+        "static_equilibrium": false,
+        "path_completed": false,
+        "positive_J": true,
+        "physical_porosity": true,
+        "energy_balance": true,
+        "low_kinetic_energy": false,
+        "coulomb_bound": true,
+        "reference_volume_conserved": true,
+        "penetration_bound": true,
+        "contact_numerical_energy_small": true,
+        "requested_pressure_reached": false
+      },
+      "failure": "SurfaceResolutionError('Embedded material quadrature requires inactive-checkpoint replay')",
+      "stage_records": [
+        {
+          "pressure_MPa": 0.001,
+          "time_s": 0.010000007594589884,
+          "porosity": 0.3983223827539376,
+          "force_ratio": 3.692975370692329e-07,
+          "kinetic_ratio": 3.690074277445838e-12,
+          "checks": {
+            "force": true,
+            "kinetic": true,
+            "energy": true
+          },
+          "passed": true
+        },
+        {
+          "pressure_MPa": 0.010000000000000002,
+          "time_s": 0.020000445596679104,
+          "porosity": 0.3962565896920195,
+          "force_ratio": 0.0063680586181216635,
+          "kinetic_ratio": 2.0046192228771903e-05,
+          "checks": {
+            "force": true,
+            "kinetic": true,
+            "energy": true
+          },
+          "passed": true
+        }
+      ],
+      "rules": 4
+    }
+  ],
+  "stop": "Engineering stop after repeated onset quadrature requests; interrupted during checkpoint serialization",
+  "reached_0_1_MPa": false,
+  "all_solver_checks": false,
+  "interrupted_attempt": "attempt-002",
+  "interrupted_checkpoint": "attempt-002/checkpoint-00047950",
+  "interrupted_checkpoint_rejected": "FileNotFoundError(2, 'No such file or directory')",
+  "last_complete_attempt": "attempt-001",
+  "last_valid_inactive_checkpoint": "attempt-000/checkpoint-00047948",
+  "last_valid_active_checkpoint": "attempt-001/checkpoint-00047949",
+  "normalization_alternative_adopted": false,
+  "mesh_convergence_verified": false,
+  "representative_100mm_pack_verified": false
+}
