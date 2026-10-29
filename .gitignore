@@ -3,3 +3,6 @@ __pycache__/
 *.egg-info/
 results/
 .venv/
+# Full raw porosity-cycle diagnostics are preserved in the downloadable ZIP.
+exports/porosity-cycle-development-001/*/
+!exports/porosity-cycle-development-001/test-logs/

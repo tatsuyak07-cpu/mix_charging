@@ -14,8 +14,11 @@ from . import surface_patch
 
 
 class EmbeddedContact:
-    def __init__(self,X,t,periodic,kn,mu,skin,quadrature_rules=None,quadrature_tolerance=.001,**kwargs):
+    def __init__(self,X,t,periodic,kn,mu,skin,quadrature_rules=None,quadrature_tolerance=.001,error_budget='component',**kwargs):
         self.X=np.array(X,copy=True);self.periodic=periodic;self.rules=deepcopy(quadrature_rules or {});self.quadrature_tolerance=quadrature_tolerance
+        if error_budget not in ('component','normalized'):raise ValueError('Unknown embedded error budget')
+        self.error_budget=error_budget
+        self.retain_partition=bool(kwargs.pop('retain_partition',False))
         kwargs.pop('quadrature_mode',None)
         # Discover the same physical/cell-cut faces as the existing backend.
         base=AreaContact(X,t,periodic,kn,mu,skin,quadrature_mode='material',**kwargs)
@@ -30,6 +33,7 @@ class EmbeddedContact:
                 node=N+len(added);added.append((bary@tri,float(w)));virtual_faces.append(face);nodes.append(node)
                 rows.extend([node]*3);cols.extend(ids);values.extend(bary)
             self.face_points[face]=(np.asarray(nodes),B,weights)
+            if 'partition' in rule:surface_patch.validate_partition(rule['partition'])
         if np.min(areas)<-1e-10:raise ValueError('Negative residual nodal integration area')
         self.P=csr_matrix((values,(rows,cols)),shape=(N+len(added),N));augX=self.P@X
         self.inner=AreaContact(augX,t,Periodic(augX,periodic.L),kn,mu,skin,quadrature_mode='material',**kwargs)
@@ -161,7 +165,7 @@ class EmbeddedContact:
         tri=self.X[self.faces[face]];A=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
         size=10+3*len(unique)
         if groups:
-            try:reference=surface_patch.integrate(source,targets,A,kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True)
+            try:reference=surface_patch.integrate(source,targets,A,initial_partition=(self.rules.get(str(face),{}).get('partition') if self.retain_partition else None),compress_rule=(not self.retain_partition or 'partition' not in self.rules.get(str(face),{})),kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True,error_budget=self.error_budget)
             except surface_patch.IntegrationRefinement as exc:raise SurfaceResolutionError(str(exc)) from exc
         else:reference=dict(value=np.zeros(size),bary=np.array([[2/3,1/6,1/6],[1/6,2/3,1/6],[1/6,1/6,2/3]]),weights=np.full(3,A/3))
         current=np.zeros(size)
@@ -179,7 +183,7 @@ class EmbeddedContact:
         energy_error=abs(current[0]-exact[0])/max(abs(exact[0]),1e-18)
         force_error=float(np.max(abs(current[1:]-exact[1:])))/force_scale
         if max(energy_error,force_error)>self.quadrature_tolerance:
-            self._requests[str(face)]=dict(bary=reference['bary'].tolist(),weights=reference['weights'].tolist(),normal_energy_relative_error=float(energy_error),normal_force_relative_error=force_error)
+            self._requests[str(face)]=dict(bary=reference['bary'].tolist(),weights=reference['weights'].tolist(),**(dict(partition=reference.get('partition',np.eye(3)[None]).tolist()) if self.retain_partition else {}),normal_energy_relative_error=float(energy_error),normal_force_relative_error=force_error)
         self._certificates[key]=dict(energy_error=float(energy_error),force_error=force_error)
 
 

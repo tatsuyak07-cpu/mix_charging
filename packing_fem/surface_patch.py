@@ -121,13 +121,52 @@ def feature_children(B,source,targets,selected,distances):
     return children
 
 
-def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False):
+def validate_partition(partition):
+    """Validate a nonoverlapping cover of the reference triangle.
+
+    Area alone cannot detect balanced holes and overlaps. A bounding-box
+    sweep and convex polygon clipping check every potentially overlapping pair.
+    """
+    cells=np.asarray(partition,float)
+    if cells.ndim!=3 or cells.shape[1:]!=(3,3) or not len(cells) or not np.isfinite(cells).all():
+        raise ValueError('Invalid material integration partition')
+    det=np.linalg.det(cells)
+    if np.min(cells)<-1e-12 or np.max(abs(cells.sum(2)-1))>1e-12 or np.any(abs(det)<1e-25) or abs(abs(det).sum()-1)>1e-10:
+        raise ValueError('Partition does not cover the reference triangle')
+    xy=cells[:,:,1:];low=xy.min(1);high=xy.max(1);order=np.argsort(low[:,0]);active=[]
+    def cross(a,b):return a[0]*b[1]-a[1]*b[0]
+    for index in order:
+        active=[j for j in active if high[j,0]>low[index,0]+1e-14]
+        for j in active:
+            if min(high[index,1],high[j,1])-max(low[index,1],low[j,1])<=1e-14:continue
+            clip=xy[j] if det[j]>0 else xy[j,::-1];poly=list(xy[index])
+            for a,b in zip(clip,np.roll(clip,-1,axis=0)):
+                new=[]
+                for u,v in zip(poly,poly[1:]+poly[:1]):
+                    du=cross(b-a,u-a);dv=cross(b-a,v-a)
+                    if du>=0:new.append(u)
+                    if du*dv<0:new.append(u+(v-u)*du/(du-dv))
+                poly=new
+                if not poly:break
+            if len(poly)>2:
+                area=abs(sum(cross(u-poly[0],v-poly[0]) for u,v in zip(poly[1:],poly[2:])))/2
+                if area>1e-13:raise ValueError('Overlapping material integration partition')
+        active.append(index)
+    return cells
+
+
+def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,error_budget='component',initial_partition=None):
     """Adaptive reference-area rule, including points on inactive subdomains."""
     source=np.asarray(source);targets=np.asarray(targets)
     if vertex_map is None:vertex_map=np.arange(3*len(targets)).reshape(-1,3)
     size=10+3*(int(np.max(vertex_map))+1)
+    if error_budget not in ('component','normalized'):raise ValueError('Unknown patch error budget')
     if groups is None:groups=[list(range(len(targets)))]
     absolute=np.r_[1e-18,np.full(size-1,1e-16)];inactive=[];cells=0;evaluations=0
+    def allowance(value,relative):
+        if error_budget=='component':return absolute+relative*abs(value)
+        scale=max(float(np.linalg.norm(value[1:10].reshape(3,3).sum(0))),float(np.linalg.norm(value[10:].reshape(-1,3),axis=1).sum()),1e-16)
+        return relative*np.r_[max(abs(value[0]),1e-18),np.full(size-1,scale)]
     def area(B):return reference_area*abs(float(np.linalg.det(B)))
     def rule(B,order):
         nonlocal evaluations
@@ -153,10 +192,14 @@ def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,
             E,F,_=barrier(bound,kn,thickness);error=(len(targets) if pointwise else len(groups))*area(B)*np.r_[E,np.full(size-1,F)]+abs(fine)
         else:error=np.full(size,np.inf)
         return dict(value=fine,error=error,children=children,samples=samples,depth=depth)
-    first=build(np.eye(3),0);leaves=[] if first is None else [first]
+    seeds=validate_partition(initial_partition) if initial_partition is not None else np.eye(3)[None]
+    leaves=[]
+    for B in seeds:
+        leaf=build(B,0)
+        if leaf is not None:leaves.append(leaf)
     while leaves:
         total=sum((leaf['value'] for leaf in leaves),np.zeros(size));errors=np.array([leaf['error'] for leaf in leaves])
-        budget=absolute+tolerance*abs(total)
+        budget=allowance(total,tolerance)
         if np.all(errors.sum(0)<=budget):break
         k=int(np.argmax(np.max(errors/budget,axis=1)));leaf=leaves.pop(k)
         if cells>=max_cells or leaf['depth']>=max_depth:raise IntegrationRefinement('Surface patch quadrature subdivision limit')
@@ -164,22 +207,28 @@ def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,
             new=build(child,leaf['depth']+1)
             if new is not None:leaves.append(new)
     else:total=np.zeros(size)
-    points=[];weights=[];compressed=0
+    points=[];weights=[];partition=[];compressed=0;compression_error=np.zeros(size)
+    compression_budget=allowance(total,.1*tolerance)
     degree2=np.array([[2/3,1/6,1/6],[1/6,2/3,1/6],[1/6,1/6,2/3]])
     for leaf in leaves:
         for bary,w,B,value in leaf['samples']:
+            partition.append(B)
             low_bary=degree2@B;low_weights=np.full(3,area(B)/3)
             low_values,_,_=grouped_field(low_bary,source,targets,groups,kn,thickness,vertex_map,pointwise)
             low=low_weights@low_values
-            if compress_rule and np.all(abs(low-value)<=.1*tolerance*abs(value)+absolute*area(B)/reference_area):
+            error=abs(low-value)
+            permitted=(np.all(compression_error+error<=compression_budget) if error_budget=='normalized' else np.all(error<=.1*tolerance*abs(value)+absolute*area(B)/reference_area))
+            if compress_rule and permitted:
                 points.extend(low_bary);weights.extend(low_weights);compressed+=1
+                compression_error+=error
             else:points.extend(bary);weights.extend(w)
     for B in inactive:
+        partition.append(B)
         if compress_rule:points.extend(degree2@B);weights.extend(np.full(3,area(B)/3))
         else:
             nodes,w=RULES[4];points.extend(nodes@B);weights.extend(area(B)*w)
     return dict(value=total,bary=np.asarray(points).reshape(-1,3),weights=np.asarray(weights),cells=cells,evaluations=evaluations,
-                compressed_cells=compressed,area_error=abs(sum(weights)-reference_area))
+                partition=np.asarray(partition),compressed_cells=compressed,area_error=abs(sum(weights)-reference_area))
 
 
 def components(faces,shifts,X,L):

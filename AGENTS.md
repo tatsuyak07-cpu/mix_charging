@@ -23,3 +23,9 @@
 - Use the existing isolated checkout; create no worktree unless requested.
 - The user now authorizes creation of the no-cylinder compression program.
   The earlier design-only restriction no longer applies.
+- Current development scope (2026-10-29): the sole arrival target is loaded
+  porosity 40% to 10%, including hold, zero-load recovery and convergence
+  assessment on a small packing. A pressure of 0.1 MPa, a 100 mm cell and a
+  rigid inclusion are not completion gates for this scope. Preserve the
+  material and existing transverse-stress-free periodic conditions unless
+  the user changes them. Report loaded and recovered porosity separately.

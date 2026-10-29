@@ -1,5 +1,11 @@
 # Periodic sphere-packing compression — solid FEM
 
+現在の到達目標を**載荷・平衡状態の空隙率40%→10%**に限定し、圧密・保持・除荷の制御と内部再接続を追加しました。
+実充填層は空隙率37.61%までの保持が合格。接触開始付近で積分則の往復が生じ、**10%到達・除荷完走・収束確認は未達成**です。
+[今回の開発報告](docs/porosity-cycle-development.md)・[平衡保持CSV](exports/porosity-cycle-development-001/equilibrated-holds.csv)・[実メッシュ画像](exports/porosity-cycle-development-001/last-equilibrated-mesh.png)・[データZIP](exports/porosity-cycle-development-001.zip)。
+以下は過去の各工程の記録です。過去の0.1 MPa目標は今回の完了条件に含みません。
+
+
 三角形面の接触積分を検証：**狭い辺・頂点接触24条件、分割位置12条件、関連30テストに合格**。
 [検証報告](docs/triangle-integration.md)・[誤差比較図](exports/triangle-integration-001/integration-errors.png)・[積分点分布](exports/triangle-integration-001/quadrature-points.png)・[全データZIP](exports/triangle-integration-001.zip)。
 摩擦なしの有限三角形対の単体検証です。周期パッチ探索・摩擦履歴との接続・0.1 MPaの圧縮完走は未完了です。
