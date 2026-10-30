@@ -1,0 +1,345 @@
+{
+  "contact_passage": {
+    "passed": true,
+    "checks": {
+      "closed_boundary_volume": true,
+      "material_volume_consistency": true,
+      "positive_J": true,
+      "physical_porosity": true,
+      "energy_balance": true,
+      "low_kinetic_energy": true,
+      "coulomb_bound": true,
+      "reference_volume_conserved": true,
+      "penetration_bound": true,
+      "contact_numerical_energy_small": true,
+      "volume_remesh_energy_small": true,
+      "reached_planned_step": true,
+      "continuous_accepted_steps": true,
+      "actual_contact": true,
+      "planned_stop": true
+    },
+    "start_step": 90206,
+    "end_step": 90250,
+    "accepted_contact_steps": 44,
+    "final_transient_porosity": 0.36941921385324683,
+    "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+    "replays": 2,
+    "full_compaction_completed": false,
+    "scope": "Audit a deliberately bounded contact-onset prefix, not a compaction solution.",
+    "limits": [
+      "No static-equilibrium acceptance for the ramp endpoint.",
+      "No loaded 10% target, unloading or spatial convergence result."
+    ]
+  },
+  "normal_budget_sensitivity": {
+    "passed": true,
+    "checks": {
+      "three_levels": true,
+      "identical_other_settings": true,
+      "descending_budgets": true,
+      "all_prefixes_passed": true,
+      "all_ledgers_passed": true,
+      "monotone_compression": true,
+      "response_sensitivity": true
+    },
+    "cases": [
+      {
+        "run": "results/contact-atlas-development-001/global-cycle-0-v7",
+        "passage": {
+          "passed": true,
+          "checks": {
+            "closed_boundary_volume": true,
+            "material_volume_consistency": true,
+            "positive_J": true,
+            "physical_porosity": true,
+            "energy_balance": true,
+            "low_kinetic_energy": true,
+            "coulomb_bound": true,
+            "reference_volume_conserved": true,
+            "penetration_bound": true,
+            "contact_numerical_energy_small": true,
+            "volume_remesh_energy_small": true,
+            "reached_planned_step": true,
+            "continuous_accepted_steps": true,
+            "actual_contact": true,
+            "planned_stop": true
+          },
+          "start_step": 90206,
+          "end_step": 90250,
+          "accepted_contact_steps": 44,
+          "final_transient_porosity": 0.3694192138509014,
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "replays": 1,
+          "full_compaction_completed": false,
+          "scope": "Audit a deliberately bounded contact-onset prefix, not a compaction solution.",
+          "limits": [
+            "No static-equilibrium acceptance for the ramp endpoint.",
+            "No loaded 10% target, unloading or spatial convergence result."
+          ]
+        },
+        "force_budget_N": 1e-06,
+        "energy_budget_Nmm": 1e-06,
+        "global_normal_ledger_passed": true,
+        "max_normal_force_excess_N": 4.204107490230409e-07,
+        "max_normal_energy_excess_Nmm": 1.4530052226703565e-11
+      },
+      {
+        "run": "results/contact-atlas-development-001/global-cycle-1-v7",
+        "passage": {
+          "passed": true,
+          "checks": {
+            "closed_boundary_volume": true,
+            "material_volume_consistency": true,
+            "positive_J": true,
+            "physical_porosity": true,
+            "energy_balance": true,
+            "low_kinetic_energy": true,
+            "coulomb_bound": true,
+            "reference_volume_conserved": true,
+            "penetration_bound": true,
+            "contact_numerical_energy_small": true,
+            "volume_remesh_energy_small": true,
+            "reached_planned_step": true,
+            "continuous_accepted_steps": true,
+            "actual_contact": true,
+            "planned_stop": true
+          },
+          "start_step": 90206,
+          "end_step": 90250,
+          "accepted_contact_steps": 44,
+          "final_transient_porosity": 0.369419213853059,
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "replays": 2,
+          "full_compaction_completed": false,
+          "scope": "Audit a deliberately bounded contact-onset prefix, not a compaction solution.",
+          "limits": [
+            "No static-equilibrium acceptance for the ramp endpoint.",
+            "No loaded 10% target, unloading or spatial convergence result."
+          ]
+        },
+        "force_budget_N": 5e-07,
+        "energy_budget_Nmm": 5e-07,
+        "global_normal_ledger_passed": true,
+        "max_normal_force_excess_N": 3.071927579989312e-08,
+        "max_normal_energy_excess_Nmm": 1.840495359313063e-12
+      },
+      {
+        "run": "results/contact-atlas-development-001/global-cycle-2-v7",
+        "passage": {
+          "passed": true,
+          "checks": {
+            "closed_boundary_volume": true,
+            "material_volume_consistency": true,
+            "positive_J": true,
+            "physical_porosity": true,
+            "energy_balance": true,
+            "low_kinetic_energy": true,
+            "coulomb_bound": true,
+            "reference_volume_conserved": true,
+            "penetration_bound": true,
+            "contact_numerical_energy_small": true,
+            "volume_remesh_energy_small": true,
+            "reached_planned_step": true,
+            "continuous_accepted_steps": true,
+            "actual_contact": true,
+            "planned_stop": true
+          },
+          "start_step": 90206,
+          "end_step": 90250,
+          "accepted_contact_steps": 44,
+          "final_transient_porosity": 0.36941921385324683,
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "replays": 2,
+          "full_compaction_completed": false,
+          "scope": "Audit a deliberately bounded contact-onset prefix, not a compaction solution.",
+          "limits": [
+            "No static-equilibrium acceptance for the ramp endpoint.",
+            "No loaded 10% target, unloading or spatial convergence result."
+          ]
+        },
+        "force_budget_N": 2.5e-07,
+        "energy_budget_Nmm": 2.5e-07,
+        "global_normal_ledger_passed": true,
+        "max_normal_force_excess_N": 1.30193027611022e-08,
+        "max_normal_energy_excess_Nmm": 5.39951792514188e-13
+      }
+    ],
+    "comparisons": [
+      {
+        "quantity": "porosity",
+        "error": 2.3454571618231057e-12,
+        "criterion": 1e-06,
+        "passed": true,
+        "normalization": "absolute"
+      },
+      {
+        "quantity": "nominal_pressure_MPa",
+        "error": 4.356456538132641e-08,
+        "criterion": 0.0001,
+        "passed": true,
+        "normalization": "maximum absolute finest-level value"
+      },
+      {
+        "quantity": "internal_Nmm",
+        "error": 1.030467547178808e-14,
+        "criterion": 0.0001,
+        "passed": true,
+        "normalization": "maximum absolute finest-level value"
+      }
+    ],
+    "scope": "44-step contact-onset prefix; optional absolute NORMAL integration error budgets only.",
+    "config_comparison_exclusions": [
+      "contact_absolute_energy_budget_Nmm",
+      "contact_absolute_force_budget_N",
+      "embedded_quadrature_rules",
+      "stop_request_file"
+    ],
+    "limitations": [
+      "No static endpoint, loaded 10% target, unloading, timestep or spatial convergence established.",
+      "Developer-defined response sensitivity criteria; no rigorous tangential/friction integration error bound.",
+      "Measured normal excess is limited to half the global budget; reference uncertainty adds at most one eighth, in addition to the relative criterion."
+    ]
+  },
+  "normal_fixture_source": "exports/porosity-cycle-development-001.zip",
+  "coupled_source": "results/contact-atlas-development-001/global-cycle-2-v7",
+  "normal_controls": {
+    "scope": "Recheck every retained RVE pose against a finer independent quadrature.",
+    "passed": true,
+    "cases": [
+      {
+        "face": 1521,
+        "extra_macro_compression": 0.0,
+        "points": 27,
+        "energy_error": 4.239999921963693e-08,
+        "force_error": 5.5759133811855e-07,
+        "passed": true
+      },
+      {
+        "face": 1521,
+        "extra_macro_compression": 1e-05,
+        "points": 27,
+        "energy_error": 6.545407238696242e-08,
+        "force_error": 1.8281103552125624e-06,
+        "passed": true
+      },
+      {
+        "face": 1521,
+        "extra_macro_compression": 0.0001,
+        "points": 27,
+        "energy_error": 8.29796283612011e-08,
+        "force_error": 2.3454247956483934e-06,
+        "passed": true
+      },
+      {
+        "face": 1522,
+        "extra_macro_compression": 0.0,
+        "points": 27,
+        "energy_error": 1.2418154505730819e-11,
+        "force_error": 1.1953846543687057e-06,
+        "passed": true
+      },
+      {
+        "face": 1522,
+        "extra_macro_compression": 1e-05,
+        "points": 27,
+        "energy_error": 7.215414082771035e-10,
+        "force_error": 1.7143457630840641e-07,
+        "passed": true
+      },
+      {
+        "face": 1522,
+        "extra_macro_compression": 0.0001,
+        "points": 27,
+        "energy_error": 2.8772638209844493e-09,
+        "force_error": 7.467738572054189e-07,
+        "passed": true
+      },
+      {
+        "face": 1652,
+        "extra_macro_compression": 0.0,
+        "points": 27,
+        "energy_error": 9.959120242711205e-09,
+        "force_error": 6.778799331646616e-07,
+        "passed": true
+      },
+      {
+        "face": 1652,
+        "extra_macro_compression": 1e-05,
+        "points": 27,
+        "energy_error": 2.635538211934894e-07,
+        "force_error": 1.196436392411604e-06,
+        "passed": true
+      },
+      {
+        "face": 1652,
+        "extra_macro_compression": 0.0001,
+        "points": 27,
+        "energy_error": 3.038479587546139e-07,
+        "force_error": 2.1835795497967515e-07,
+        "passed": true
+      },
+      {
+        "face": 1653,
+        "extra_macro_compression": 0.0,
+        "points": 26,
+        "energy_error": 1.2377967269102195e-11,
+        "force_error": 4.7525109932329145e-07,
+        "passed": true
+      },
+      {
+        "face": 1653,
+        "extra_macro_compression": 1e-05,
+        "points": 26,
+        "energy_error": 5.5897001083042605e-08,
+        "force_error": 1.7074954203698771e-06,
+        "passed": true
+      },
+      {
+        "face": 1653,
+        "extra_macro_compression": 0.0001,
+        "points": 26,
+        "energy_error": 4.905519270848242e-08,
+        "force_error": 8.283655848720877e-08,
+        "passed": true
+      }
+    ],
+    "wall_s": 238.1951587349995,
+    "limitations": [
+      "Normal cubature on retained geometry only; full coupled replay and tangential-history sensitivity are separate checks.",
+      "No certification of unseen poses; every coupled step still audits its applied normal rule."
+    ]
+  },
+  "search": {
+    "scope": "Pair-equivalence benchmark at the previously rejected large-quadrature pose.\n\nThe physical candidate cap stays 1,000,000 for AABB. A larger legacy cap is\nused ONLY to enumerate an independent comparison, never to advance the solver.\n",
+    "passed": true,
+    "points": 52741,
+    "virtual_points": 48950,
+    "physical_candidate_cap": 1000000,
+    "aabb_counts": {
+      "method": "aabb",
+      "point_triangle_broad_candidates": 406213,
+      "edge_edge_broad_candidates": 83468,
+      "max_query_candidates": 37,
+      "max_edge_batch": 1024
+    },
+    "legacy_counts": {
+      "point_triangle_broad_candidates": 1307081,
+      "edge_edge_broad_candidates": 262012
+    },
+    "aabb_jobs": 98320,
+    "legacy_jobs": 98320,
+    "pair_identical": true,
+    "aabb_wall_s": 104.12647341400043,
+    "legacy_wall_s": 265.1216673079998,
+    "pair_sha256": "a7322a36631dc641977e88e873cf56ff9ad9748d2e37918ff0744c1f7833738a",
+    "missing": [],
+    "extra": []
+  },
+  "coupled_completed": false,
+  "goal_porosity": 0.1,
+  "limitations": [
+    "Contact-onset diagnostic; no loaded 10% equilibrium, unloading or spatial convergence claim.",
+    "Positive normal cubature requires full inactive coupled replay for new histories.",
+    "Raw forces on periodic representatives must be compared through complete generalized forces, including image work."
+  ]
+}

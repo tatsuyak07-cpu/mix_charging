@@ -1,0 +1,9 @@
+{
+  "source": "results/contact-atlas-development-001/saved-poses-004/rules.json",
+  "source_sha256": "c3ad81fb5037a621d8f719a282b7c6d61e078fa934abe7e01061ef855801503d",
+  "scope": "Only initial material point support for a certified contact-free restart. External saved/synthetic geometry controls are not observed history of the new trajectory. Actual coupled counterexamples are retained by the adaptive atlas.",
+  "checkpoint": "results/porosity-cycle-development-001/rve-cycle/attempt-002/checkpoint-00090206",
+  "removed_fields": [
+    "external verification geometry atlas"
+  ]
+}

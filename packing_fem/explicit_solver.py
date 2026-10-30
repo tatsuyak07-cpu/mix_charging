@@ -128,7 +128,7 @@ def solve(directory,X,t,c):
         old_implementation=metadata.get('implementation_sha256',{})
         differences=[name for name in set(old_implementation)|set(implementation) if old_implementation.get(name)!=implementation.get(name)]
         if differences:
-            compatible={'area_contact.py','embedded_contact.py','surface_patch.py'}
+            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py'}
             if c.get('allow_solver_update_at_inactive_checkpoint'):compatible.add('explicit_solver.py')
             if not c.get('allow_contact_operator_update') or not restart.get('contact_free_prefix',False) or not set(differences)<=compatible:raise ValueError('Checkpoint implementation mismatch')
             operator_update=sorted(differences)
@@ -144,6 +144,12 @@ def solve(directory,X,t,c):
             if result.get('contact_backend') in ('area_guarded','embedded_area'):
                 for key,value in dict(local_material_filter=True,edge_stationarity_filter=False,multiple_patches=False,certified_local_filter=False).items():result.setdefault(key,value)
             result.pop('embedded_quadrature_rules',None)
+            # Both methods are audited contact operators, mutable only before
+            # any contact under the existing explicit operator-update opt-in.
+            if c.get('allow_contact_operator_update') and restart.get('contact_free_prefix',False):
+                result.pop('surface_rule_strategy',None);result.pop('contact_search_method',None);result.pop('atlas_lookahead_steps',None);result.pop('atlas_max_matrix_entries',None);result.pop('atlas_max_candidate_points',None);result.pop('contact_absolute_energy_budget_Nmm',None);result.pop('contact_absolute_force_budget_N',None)
+            else:
+                result.setdefault('surface_rule_strategy','single_pose');result.setdefault('contact_search_method','aabb');result.setdefault('atlas_lookahead_steps',[]);result.setdefault('atlas_max_matrix_entries',12000000);result.setdefault('atlas_max_candidate_points',80000);result.setdefault('contact_absolute_energy_budget_Nmm',0.);result.setdefault('contact_absolute_force_budget_N',0.)
             if c.get('extend_stage_hold_budget') and 'pressure_stages' in result:result['pressure_stages']=[{k:v for k,v in stage.items() if k!='max_hold_s'} for stage in result['pressure_stages']]
             return result
         changed_rules=c.get('embedded_quadrature_rules',{})!=restart.get('runtime_rules',metadata['config'].get('embedded_quadrature_rules',{}))
@@ -179,12 +185,12 @@ def solve(directory,X,t,c):
     if c.get('contact_backend') in ('distance_barrier','area_guarded','embedded_area'):
         from .barrier_contact import BarrierContact
         from .area_contact import AreaContact
-        contact_type=AreaContact if c['contact_backend'] in ('area_guarded','embedded_area') else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000)}
+        contact_type=AreaContact if c['contact_backend'] in ('area_guarded','embedded_area') else BarrierContact;contact_kwargs={'thickness':c.get('barrier_thickness_mm',.02),'max_candidates':c.get('contact_candidate_budget',500000),'search_method':c.get('contact_search_method','aabb')}
     if c.get('contact_backend') in ('area_guarded','embedded_area'):contact_kwargs.update(local_material_filter=c.get('local_material_filter',True),edge_stationarity_filter=c.get('edge_stationarity_filter',False),multiple_patches=c.get('multiple_patches',False),certified_local_filter=c.get('certified_local_filter',False),closest_tie_rule=c.get('closest_tie_rule','stop'),edge_quadrature_relative_tolerance=c.get('edge_quadrature_relative_tolerance',0.),quadrature_mode=c.get('contact_quadrature_mode','nodal'))
     if c.get('contact_backend')=='embedded_area':
         from .embedded_contact import EmbeddedContact
         contact_type=EmbeddedContact
-        contact_kwargs.update(quadrature_rules=(restart.get('runtime_rules',c.get('embedded_quadrature_rules',{})) if restart is not None and not changed_rules else c.get('embedded_quadrature_rules',{})),quadrature_tolerance=c.get('surface_quadrature_tolerance',.001),error_budget=c.get('surface_error_budget','component'),retain_partition=c.get('retain_surface_partition',False))
+        contact_kwargs.update(quadrature_rules=(restart.get('runtime_rules',c.get('embedded_quadrature_rules',{})) if restart is not None and not changed_rules else c.get('embedded_quadrature_rules',{})),quadrature_tolerance=c.get('surface_quadrature_tolerance',.001),error_budget=c.get('surface_error_budget','component'),retain_partition=c.get('retain_surface_partition',False),rule_strategy=c.get('surface_rule_strategy','single_pose'),lookahead_steps=c.get('atlas_lookahead_steps',[]),atlas_max_entries=c.get('atlas_max_matrix_entries',12000000),atlas_max_points=c.get('atlas_max_candidate_points',80000),absolute_energy_budget=c.get('contact_absolute_energy_budget_Nmm',0.),absolute_force_budget=c.get('contact_absolute_force_budget_N',0.))
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     if c.get('save_contact_audit',False):
         if c.get('contact_backend') not in ('area_guarded','embedded_area'):raise ValueError('Contact audit capture requires area_guarded')
@@ -380,10 +386,22 @@ def solve(directory,X,t,c):
             for saved,recomputed in ((f_int,check_force),(volume,check_volume),(energy,check_energy),(J,check_J),(D,check_D),(sigma,check_sigma),(x,periodic.positions(q))):
                 if not np.allclose(saved,recomputed,rtol=1e-10,atol=1e-12):raise ValueError('Checkpoint physical-state consistency failed')
             if 'explicit_solver.py' in operator_update:
-                if periodic.prescribed_active or not pressure_control:raise ValueError('Solver update requires free pressure control')
+                prescribed_acceleration=0.
+                if periodic.prescribed_active:
+                    if cycle is None or cycle.state['phase'] not in ('ramp','hold'):
+                        raise ValueError('Solver update requires free pressure control or prescribed precontact cycle')
+                    qp_now,vp_now,prescribed_acceleration=cycle.displacement(time)
+                    if not np.allclose([q[periodic.prescribed],v[periodic.prescribed],a[periodic.prescribed]],
+                                       [qp_now,vp_now,prescribed_acceleration],rtol=1e-10,atol=1e-10):
+                        raise ValueError('Checkpoint prescribed cycle kinematics inconsistent')
+                elif not pressure_control:raise ValueError('Solver update requires free pressure control')
                 if len(audit_rows)>1:
                     old_dt=audit_rows[-1][0]-audit_rows[-2][0]
-                    expected_a=periodic.acceleration(f+external,v,0.,c['damping_per_s'])/(1-.5*old_dt*c['damping_per_s'])
+                    # The final velocity overwrites the prescribed component;
+                    # reconstruct only the free half-step components used by
+                    # the saved acceleration, including mass cross-coupling.
+                    saved_half=v.copy();saved_half[periodic.free]-=.5*old_dt*a[periodic.free]
+                    expected_a=periodic.acceleration(f+external,saved_half,prescribed_acceleration,c['damping_per_s'])
                     if not np.allclose(a,expected_a,rtol=1e-8,atol=1e-8):raise ValueError('Checkpoint acceleration consistency failed')
             H=deformation(q[-6:])*periodic.L
             from .embedded_contact import initialize_inactive_geometry
@@ -495,6 +513,9 @@ def solve(directory,X,t,c):
             contact.history=newhist
             if hasattr(contact,'accept_geometry'):contact.accept_geometry(x,H)
             time=next_time;steps+=1
+            integration_audit=getattr(contact,'last_integration_audit',None)
+            if integration_audit is not None:
+                with (directory/'contact-integration-budget.jsonl').open('a') as stream:stream.write(json.dumps(dict(step=steps,time_s=time,**integration_audit))+'\n')
             if (c.get('remesh_every',0) and steps%c['remesh_every']==0) or (c.get('volume_reconnections',False) and quality_fn(x,t).min()<c['minimum_quality']):
                 for repair in range(c.get('maximum_reconnections_per_step',1)):
                     if not try_remesh(ap):break

@@ -1,0 +1,20 @@
+.....F                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_dual_enrichment_adds_support_without_relaxing_moment_or_response_error __
+
+    def test_dual_enrichment_adds_support_without_relaxing_moment_or_response_error():
+        from packing_fem.contact_atlas import enrich_minimax,minimax_fit
+        B=np.array([[2/3,1/6,1/6],[1/6,2/3,1/6],[1/6,1/6,2/3]])
+        def columns(points):
+            return np.array([np.ones(len(points)),points[:,0],points[:,1],points[:,0]**2,points[:,0]*points[:,1],points[:,1]**2,points[:,0]**3/.1])
+        rhs=np.array([1,1/3,1/3,1/6,1/12,1/6,1.]);matrix=columns(B)
+        original=minimax_fit(matrix,rhs);assert original.success and original.x[-1]>.001
+        points,expanded,result,rounds=enrich_minimax(B,matrix,rhs,columns,1e-8)
+>       assert result.success and rounds>0 and len(points)>len(B)
+E       assert (True and 0 > 0)
+E        +  where True =         message: Optimization terminated successfully. (HiGHS Status 7: Optimal)\n        success: True\n         status...4e-02]\n                 marginals: [-1.000e+00 -0.000e+00]\n mip_node_count: 0\n mip_dual_bound: 0.0\n        mip_gap: 0.0.success
+
+tests/test_contact_atlas.py:87: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_contact_atlas.py::test_dual_enrichment_adds_support_without_relaxing_moment_or_response_error
+1 failed, 5 passed in 6.83s

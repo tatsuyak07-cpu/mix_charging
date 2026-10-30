@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_contact_atlas.py", line 34, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/mix_charging/tools/verify_contact_atlas.py", line 18, in main
+    poses.append(pose);rule=build(poses,f['reference_area_mm2'],10.,.02,previous_bary=previous);previous=rule['bary']
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/contact_atlas.py", line 85, in build
+    raise patch.IntegrationRefinement(last_error)
+packing_fem.surface_patch.IntegrationRefinement: Positive contact cubature failed independent applied-rule audit: moment=5.391871393811698e-10, responses=[{'energy_error': 1.8807909613156598e-19, 'force_error': 2.5753071877662045e-05}]

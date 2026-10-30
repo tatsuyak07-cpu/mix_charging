@@ -1,0 +1,19 @@
+{"face": 1521, "poses": 1, "points": 13, "candidates": 4846}
+{"face": 1521, "poses": 2, "points": 19, "candidates": 2129}
+{"face": 1521, "poses": 3, "points": 26, "candidates": 2591}
+{"face": 1522, "poses": 1, "points": 12, "candidates": 2911}
+{"face": 1522, "poses": 2, "points": 19, "candidates": 11250}
+{"face": 1522, "poses": 3, "points": 27, "candidates": 11499}
+{"face": 1652, "poses": 1, "points": 12, "candidates": 3718}
+{"face": 1652, "poses": 2, "points": 20, "candidates": 2497}
+{"face": 1652, "poses": 3, "points": 27, "candidates": 5772}
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_contact_atlas.py", line 32, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/mix_charging/tools/verify_contact_atlas.py", line 17, in main
+    poses.append(pose);rule=build(poses,f['reference_area_mm2'],10.,.02,previous_bary=previous);previous=rule['bary']
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/contact_atlas.py", line 56, in build
+    raise patch.IntegrationRefinement(last_error)
+packing_fem.surface_patch.IntegrationRefinement: Positive contact cubature rejected: (HiGHS Status 4: Solve error)

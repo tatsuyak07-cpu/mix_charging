@@ -166,10 +166,12 @@ def constraint(points,kind,kn,thickness,mu,old=None,threshold=None,include_inact
 
 
 class BarrierContact(Contact):
-    def __init__(self,*args,thickness=.02,max_candidates=500000,**kwargs):
+    def __init__(self,*args,thickness=.02,max_candidates=500000,search_method='aabb',**kwargs):
         super().__init__(*args,**kwargs)
         if not 0<thickness<=self.skin:raise ValueError('Barrier thickness must lie in (0, contact skin]')
         if not isinstance(max_candidates,int) or max_candidates<1:raise ValueError('Positive integer candidate budget required')
+        if search_method not in ('aabb','center_sphere'):raise ValueError('Unknown contact search method')
+        self.search_method=search_method
         self.max_candidates=max_candidates;self.search_counts={};self.neighbor_builds=0
         self.thickness=thickness;f=self.faces
         self.edges=np.unique(np.sort(np.concatenate([f[:,[0,1]],f[:,[1,2]],f[:,[2,0]]]),axis=1),axis=0)
@@ -197,6 +199,52 @@ class BarrierContact(Contact):
         return self.local_edges[key]
 
     def build_neighbors(self,x,H,shifts):
+        if self.search_method=='aabb':return self._aabb_neighbors(x,H,shifts)
+        return self._center_neighbors(x,H,shifts)
+
+    def _aabb_neighbors(self,x,H,shifts):
+        from .aabb_search import AABBTree
+        tri=x[self.faces];nf=len(tri);offsets=np.asarray([H@shift for shift in shifts])
+        low=(tri.min(1)[None]+offsets[:,None]).reshape(-1,3);high=(tri.max(1)[None]+offsets[:,None]).reshape(-1,3)
+        tree=AABBTree(low,high);jobs=[];count=0
+        self.search_counts=dict(method='aabb',point_triangle_broad_candidates=0,edge_edge_broad_candidates=0,max_query_candidates=0)
+        def account(indices,kind):
+            nonlocal count
+            count+=len(indices);self.search_counts[kind]+=len(indices)
+            self.search_counts['max_query_candidates']=max(self.search_counts['max_query_candidates'],len(indices))
+            if count>self.max_candidates:raise ValueError('Contact AABB candidate budget exceeded: '+str(self.search_counts))
+        for node in self.nodes:
+            indices=tree.query(x[node],x[node],self.skin,self.max_candidates-count);account(indices,'point_triangle_broad_candidates')
+            for index in indices:
+                image,face=divmod(index,nf);shift=shifts[image]
+                if self.adjacent(node,face,shift):continue
+                ids=np.r_[node,self.faces[face]];points=x[ids].copy();points[1:]+=H@shift
+                closest,_=closest_triangle(points[0],points[1:])
+                if np.linalg.norm(points[0]-closest)>=self.skin:continue
+                jobs.append((('pt',int(node),face,*shift),ids,'pt',shift,.5*self.kn*self.node_area0[node],None))
+        edges=x[self.edges];ne=len(edges);low0=edges.min(1);high0=edges.max(1)
+        tree=AABBTree((low0[None]+offsets[:,None]).reshape(-1,3),(high0[None]+offsets[:,None]).reshape(-1,3))
+        pending=[]
+        def flush():
+            if not pending:return
+            distances=segment_distances(np.array([item[-1] for item in pending]))
+            for (i,j,shift,ids,points),distance in zip(pending,distances):
+                if distance>=self.skin:continue
+                ref=self.X[ids];u=ref[1]-ref[0];v=ref[3]-ref[2];threshold=1e-3*float(u@u)*float(v@v)
+                jobs.append((('ee',i,j,*shift),ids,'ee',shift,.125*self.kn*self.node_area0[ids].sum(),threshold))
+            pending.clear()
+        for i in range(ne):
+            indices=tree.query(low0[i],high0[i],self.skin,self.max_candidates-count);account(indices,'edge_edge_broad_candidates')
+            for index in indices:
+                image,j=divmod(index,ne);shift=shifts[image]
+                if (i,j,*shift)>(j,i,*(-np.asarray(shift))) or self.local_edge(i,j,shift):continue
+                ids=np.r_[self.edges[i],self.edges[j]];points=x[ids].copy();points[2:]+=H@shift
+                pending.append((i,j,shift,ids,points))
+                if len(pending)>=1024:flush()
+        flush();self.search_counts['max_edge_batch']=1024
+        return jobs
+
+    def _center_neighbors(self,x,H,shifts):
         tri=x[self.faces];centers=tri.mean(axis=1);radius=float(np.max(np.linalg.norm(tri-centers[:,None],axis=2)))
         tree=cKDTree(np.concatenate([centers+H@s for s in shifts]));nf=len(self.faces)
         jobs=[]

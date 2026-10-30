@@ -155,18 +155,19 @@ def validate_partition(partition):
     return cells
 
 
-def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,error_budget='component',initial_partition=None):
+def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,error_budget='component',initial_partition=None,absolute_energy_budget=0.,absolute_force_budget=0.):
     """Adaptive reference-area rule, including points on inactive subdomains."""
     source=np.asarray(source);targets=np.asarray(targets)
     if vertex_map is None:vertex_map=np.arange(3*len(targets)).reshape(-1,3)
     size=10+3*(int(np.max(vertex_map))+1)
     if error_budget not in ('component','normalized'):raise ValueError('Unknown patch error budget')
+    if min(absolute_energy_budget,absolute_force_budget)<0 or not np.isfinite([absolute_energy_budget,absolute_force_budget]).all():raise ValueError('Nonnegative finite absolute surface budgets required')
     if groups is None:groups=[list(range(len(targets)))]
     absolute=np.r_[1e-18,np.full(size-1,1e-16)];inactive=[];cells=0;evaluations=0
     def allowance(value,relative):
         if error_budget=='component':return absolute+relative*abs(value)
         scale=max(float(np.linalg.norm(value[1:10].reshape(3,3).sum(0))),float(np.linalg.norm(value[10:].reshape(-1,3),axis=1).sum()),1e-16)
-        return relative*np.r_[max(abs(value[0]),1e-18),np.full(size-1,scale)]
+        return np.maximum(relative*np.r_[max(abs(value[0]),1e-18),np.full(size-1,scale)],(relative/tolerance)*np.r_[absolute_energy_budget,np.full(size-1,absolute_force_budget/(size-1))])
     def area(B):return reference_area*abs(float(np.linalg.det(B)))
     def rule(B,order):
         nonlocal evaluations

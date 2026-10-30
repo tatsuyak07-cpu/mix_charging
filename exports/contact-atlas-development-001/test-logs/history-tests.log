@@ -1,0 +1,26 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_atlas_full_friction_path_matches_analytic_limit_and_tolerance_refinement _
+
+    def test_atlas_full_friction_path_matches_analytic_limit_and_tolerance_refinement():
+        results=[];E,F,_=barrier(.015,20.,.02);spring=min(.01,.3*F/10.)
+        for tolerance in (.001,.0005,.00025):
+            forward,last,dissipation,requests,rules=trajectory(tolerance)
+            assert requests>0 and any(r.get('atlas') for r in rules.values())
+            assert forward[-1]['normal_energy']==pytest.approx(E,rel=.001)
+            assert forward[-1]['tangent_energy']==pytest.approx(5*spring**2,rel=.002)
+            assert dissipation>0
+            results.append((forward[-1]['tangent_energy'],dissipation,last[0]))
+        for a,b in zip(results,results[1:]):
+            assert abs(a[0]-b[0])/max(a[0],b[0])<.002
+            assert abs(a[1]-b[1])/max(a[1],b[1])<.002
+>           assert np.max(abs(a[2]-b[2]))/F<.002
+E           assert (np.float64(0.0027229342121433235) / np.float64(0.06327910534262958)) < 0.002
+E            +  where np.float64(0.0027229342121433235) = <function max at 0x7f3994799ef0>(array([[0.00000000e+00, 0.00000000e+00, 0.00000000e+00],\n       [6.75147130e-04, 3.97582864e-18, 1.35283881e-03],\n    ...04],\n       [4.02888088e-04, 1.08294560e-17, 1.34735866e-03],\n       [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]]))
+E            +    where <function max at 0x7f3994799ef0> = np.max
+E            +    and   array([[0.00000000e+00, 0.00000000e+00, 0.00000000e+00],\n       [6.75147130e-04, 3.97582864e-18, 1.35283881e-03],\n    ...04],\n       [4.02888088e-04, 1.08294560e-17, 1.34735866e-03],\n       [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]]) = abs((array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00],\n       [-7.07334781e-03,  4.10767319e-18, -2.27719264e-02]...      [ 6.17591245e-03, -1.03586957e-17,  2.06761253e-02],\n       [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00]]) - array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00],\n       [-6.39820068e-03,  1.31844542e-19, -2.14190876e-02]...      [ 6.57880054e-03,  4.70760351e-19,  2.20234840e-02],\n       [ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00]])))
+
+tests/test_atlas_history.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_atlas_history.py::test_atlas_full_friction_path_matches_analytic_limit_and_tolerance_refinement
+1 failed in 600.80s (0:10:00)

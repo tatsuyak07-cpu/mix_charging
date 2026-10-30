@@ -1,0 +1,5 @@
+......................
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/workspace/mix_charging/packing_fem/surface_patch.py:18: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+22 passed in 147.54s (0:02:27)

@@ -1,0 +1,19 @@
+{"face": 1521, "poses": 1, "points": 12, "candidates": 4846}
+{"face": 1521, "poses": 2, "points": 18, "candidates": 2128}
+{"face": 1521, "poses": 3, "points": 24, "candidates": 2590}
+{"face": 1522, "poses": 1, "points": 12, "candidates": 2911}
+{"face": 1522, "poses": 2, "points": 18, "candidates": 8351}
+{"face": 1522, "poses": 3, "points": 24, "candidates": 22730}
+{"face": 1652, "poses": 1, "points": 12, "candidates": 3718}
+{"face": 1652, "poses": 2, "points": 18, "candidates": 2497}
+{"face": 1652, "poses": 3, "points": 25, "candidates": 5771}
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_contact_atlas.py", line 32, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/mix_charging/tools/verify_contact_atlas.py", line 17, in main
+    poses.append(pose);rule=build(poses,f['reference_area_mm2'],10.,.02,previous_bary=previous);previous=rule['bary']
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/contact_atlas.py", line 64, in build
+    raise patch.IntegrationRefinement(last_error)
+packing_fem.surface_patch.IntegrationRefinement: Positive contact cubature failed independent applied-rule audit

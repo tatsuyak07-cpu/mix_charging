@@ -1,0 +1,5 @@
+{"pose": 0, "points": 76, "pooled_points": 7798, "max_density_difference": 8.401053096241687e-26, "integral_normalized_difference": 2.887105298199373e-21}
+{"pose": 1, "points": 703, "pooled_points": 7798, "max_density_difference": 0.0, "integral_normalized_difference": 0.0}
+{"pose": 2, "points": 620, "pooled_points": 7798, "max_density_difference": 0.0, "integral_normalized_difference": 0.0}
+{"pose": 3, "points": 2336, "pooled_points": 7798, "max_density_difference": 0.0, "integral_normalized_difference": 0.0}
+{"pose": 4, "points": 4069, "pooled_points": 7798, "max_density_difference": 0.0, "integral_normalized_difference": 0.0}

@@ -1,0 +1,6 @@
+(99, 21221) 521129.97387895273
+True Optimization terminated successfully. (HiGHS Status 7: Optimal) 1.9211986064910889
+points 26 residual 6.97080934641825e-12
+{'energy_error': 2.4074124304840445e-17, 'force_error': 1.465224932177141e-13, 'physical_energy_relative_error': 2.1578401714276687e-16}
+{'energy_error': 1.4973077539392487e-16, 'force_error': 6.970808462269774e-12, 'physical_energy_relative_error': 1.4973077539392487e-16}
+{'energy_error': 0.0, 'force_error': 7.266393453753154e-16, 'physical_energy_relative_error': 0.0}

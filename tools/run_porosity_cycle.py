@@ -12,6 +12,7 @@ def main():
     p.add_argument('--output',type=Path,required=True);p.add_argument('--max-replays',type=int,default=32)
     p.add_argument('--resume',type=Path);p.add_argument('--replay-checkpoint',type=Path)
     p.add_argument('--prepared-mesh',type=Path)
+    p.add_argument('--rules',type=Path,help='Certified normal cubature seed; changes require an inactive replay checkpoint')
     p.add_argument('--allow-contact-operator-update',action='store_true',help='Only at a certified contact-free checkpoint; changes are audited by solver')
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);start=time.perf_counter()
     original=json.loads(a.config.read_text())
@@ -36,9 +37,10 @@ def main():
     source=a.output/'source';source.mkdir()
     for file in Path('packing_fem').glob('*.py'):(source/file.name).write_bytes(file.read_bytes())
     (source/Path(__file__).name).write_bytes(Path(__file__).read_bytes())
-    rules={};inactive=str(a.replay_checkpoint) if a.replay_checkpoint else None;resume=str(a.resume) if a.resume else None
+    rules=json.loads(a.rules.read_text()) if a.rules else {};inactive=str(a.replay_checkpoint) if a.replay_checkpoint else None;resume=str(a.resume) if a.resume else None
     if resume:
-        state,metadata=load(resume);rules=state.get('runtime_rules',{})
+        state,metadata=load(resume)
+        if not a.rules:rules=state.get('runtime_rules',{})
         if state.get('contact_free_prefix'):inactive=resume
     attempts=[];seen=set();result=None;stop=None
     for attempt in range(a.max_replays+1):
@@ -63,7 +65,7 @@ def main():
         if attempt==a.max_replays:stop='Quadrature replay budget exhausted';break
         if not feature.get('rules'):stop='Contact feature has no certified refinement rule';break
         updated=dict(rules)
-        for face,rule in feature['rules'].items():updated[str(face)]={k:rule[k] for k in ('bary','weights','partition') if k in rule}
+        for face,rule in feature['rules'].items():updated[str(face)]={k:rule[k] for k in ('bary','weights','partition','atlas','atlas_controls') if k in rule}
         digest=hashlib.sha256(json.dumps(updated,sort_keys=True,separators=(',',':')).encode()).hexdigest()
         if digest in seen:stop='Repeated quadrature rule without verified progress';break
         seen.add(digest);rules=updated

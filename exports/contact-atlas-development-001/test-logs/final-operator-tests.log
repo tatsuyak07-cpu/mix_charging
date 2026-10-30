@@ -1,0 +1,16 @@
+....F...                                                                 [100%]
+=================================== FAILURES ===================================
+___________ test_periodic_force_comparison_includes_image_macro_work ___________
+
+    def test_periodic_force_comparison_includes_image_macro_work():
+        from test_explicit_backend import contact_fixture
+        from packing_fem.explicit_periodic import affine_basis
+        X,_,_,p=contact_fixture(True)
+>       pair=next((i,j) for i in range(len(X)) for j in range(i+1,len(X)) if p.classes[i]==p.classes[j] and np.linalg.norm(X[i]-X[j])>.5)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/test_aabb_search.py:55: StopIteration
+=========================== short test summary info ============================
+FAILED tests/test_aabb_search.py::test_periodic_force_comparison_includes_image_macro_work
+1 failed, 7 passed in 8.69s
