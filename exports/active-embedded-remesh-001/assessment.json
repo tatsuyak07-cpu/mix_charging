@@ -1,0 +1,2571 @@
+{
+  "stage3_completed": false,
+  "full_compaction_completed": false,
+  "status": "Partial, not qualified for packing large-deformation remeshing.",
+  "checks": {
+    "planar_transfer_and_continuation": true,
+    "solver_initial_transfer": true,
+    "solver_restart": true,
+    "rejected_solver_trajectory_unchanged": true,
+    "solver_three_step_continuation": false,
+    "packing_eligible": false
+  },
+  "baseline_matrix": {
+    "passed": false,
+    "cases": [
+      {
+        "fraction": 0.2,
+        "slip_mm": 0.0001,
+        "passed": false,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": false,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 363,
+          "active_histories": 347,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 1.517348010530882e-14,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 7.503330568169405e-15,
+            "normal_energy": 6.8914308719544036e-15,
+            "tangent_energy": 1.2465942703422103e-12,
+            "contact_macro_force": 1.4762048167116922e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.3991449077346723e-14,
+            "energy_error": 6.8914308719544036e-15,
+            "dissipation_error": 0.0,
+            "coulomb": 1.1223416869160823e-13
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.849843173653476e-14,
+            "energy_error": 5.307626277150537e-13,
+            "dissipation_error": 2.0514973485882325e-08,
+            "coulomb": 0.03871736154832152
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.147804302034293e-06,
+            "energy_error": 2.3953992969000024e-13,
+            "dissipation_error": 8.214013281988154e-08,
+            "coulomb": 0.07743472309657276
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 3.0656867133841875e-07,
+            "energy_error": 1.4518996883843466e-13,
+            "dissipation_error": 2.3698924108395865e-07,
+            "coulomb": 0.11615208464480892
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 2.2878828523247793e-06,
+            "energy_error": 1.2347419056185213e-13,
+            "dissipation_error": 5.111693886674728e-07,
+            "coulomb": 0.15486944619305779
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 4.795891680151225e-06,
+            "energy_error": 6.502503658388473e-14,
+            "dissipation_error": 5.403444077963861e-07,
+            "coulomb": 0.19358680774130904
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 1.5063368384305897e-06,
+            "energy_error": 7.024309507518823e-14,
+            "dissipation_error": 1.6026517487324237e-06,
+            "coulomb": 0.23230416928954278
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 5.279289295019402e-06,
+            "energy_error": 6.520013234566236e-14,
+            "dissipation_error": 1.4748532703125763e-06,
+            "coulomb": 0.27102153083779396
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.1143823463736222e-05,
+            "energy_error": 9.589529432778057e-15,
+            "dissipation_error": 1.339069618935812e-12,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 1.1465385874522967e-14,
+            "energy_error": 9.96558941053406e-15,
+            "dissipation_error": 6.574456193932065e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 8.801136022267877e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 4.552947502723283e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 9.053184918672386e-15,
+            "energy_error": 9.965589410534057e-15,
+            "dissipation_error": 1.9668733211768165e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 8.792871514918332e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 1.6390611009804011e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 7.386928988494074e-15,
+            "energy_error": 9.965589410534057e-15,
+            "dissipation_error": 8.377423405012624e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 8.26320305049652e-15,
+            "energy_error": 9.96558941053406e-15,
+            "dissipation_error": 4.917183302940955e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 7.73417976909568e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 9.105895005448764e-16,
+            "coulomb": 0.3000000000000001
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 6.8193010531397185e-15,
+            "energy_error": 1.0153619399412058e-14,
+            "dissipation_error": 2.5496506015249614e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 6.3972722397100916e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 3.7698405322557086e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 6.9880883386994995e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 4.5529475027231266e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 7.296259197550764e-15,
+            "energy_error": 9.965589410534057e-15,
+            "dissipation_error": 3.860899482310083e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 5.839928861585706e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 8.996624265380848e-14,
+            "coulomb": 0.3000000000000001
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.365736551901659e-22
+        },
+        "analytic": {
+          "normal_energy_error": 1.9566741225728063e-14,
+          "tangent_energy_error": 2.3690452743518713e-13
+        }
+      },
+      {
+        "fraction": 0.2,
+        "slip_mm": 0.01,
+        "passed": false,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": false,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 357,
+          "active_histories": 341,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 2.0882023470979433e-14,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 2.517024573067371e-14,
+            "normal_energy": 1.2306126557061373e-14,
+            "tangent_energy": 1.0435664382728997e-13,
+            "contact_macro_force": 2.1911830150302602e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.7390001181747783e-14,
+            "energy_error": 7.123764974467266e-14,
+            "dissipation_error": 7.919090477914065e-07,
+            "coulomb": 0.28419699528650966
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.1666526443104146e-06,
+            "energy_error": 7.540202102523846e-14,
+            "dissipation_error": 2.229694081806863e-08,
+            "coulomb": 0.24547963373827456
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.8352756875224093e-07,
+            "energy_error": 7.738803140505605e-14,
+            "dissipation_error": 1.1111717842763676e-06,
+            "coulomb": 0.20676227219004
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.5202805803735127e-06,
+            "energy_error": 1.0202486345312452e-13,
+            "dissipation_error": 1.3928902246057186e-07,
+            "coulomb": 0.16804491064179042
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 1.7823869434208867e-06,
+            "energy_error": 1.7491204941703495e-13,
+            "dissipation_error": 1.3860894333501682e-08,
+            "coulomb": 0.1293275490935395
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 1.2182051064121437e-06,
+            "energy_error": 1.9722900294024505e-13,
+            "dissipation_error": 7.530510684955279e-22,
+            "coulomb": 0.09061018754531887
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 6.996197753778771e-07,
+            "energy_error": 3.6566608627371616e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.05189282599706678
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.7786237821145527e-07,
+            "energy_error": 1.289010546010831e-12,
+            "dissipation_error": 0.0,
+            "coulomb": 0.013175464448831973
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 3.4473207979685457e-07,
+            "energy_error": 8.185160720632303e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.025541897099601467
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 8.658096712735322e-07,
+            "energy_error": 2.8341944531392343e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.06425925864785353
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 1.3830502649246639e-06,
+            "energy_error": 1.645721428213158e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.10297662019610561
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 1.8942184971249294e-06,
+            "energy_error": 1.3760049954934706e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.14169398174435435
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 2.3972104264399477e-06,
+            "energy_error": 1.1581362681784957e-13,
+            "dissipation_error": 1.1157408424506915e-07,
+            "coulomb": 0.18041134329257155
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 8.021643776547083e-07,
+            "energy_error": 9.938485179570095e-14,
+            "dissipation_error": 3.728170095470294e-07,
+            "coulomb": 0.21912870484082358
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 1.7457883177261666e-05,
+            "energy_error": 7.546981871938126e-14,
+            "dissipation_error": 9.140469518090286e-08,
+            "coulomb": 0.25784606638907887
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 1.5279552910640423e-05,
+            "energy_error": 6.157216465857875e-14,
+            "dissipation_error": 1.3727921340751016e-06,
+            "coulomb": 0.2965634279373274
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 8.080693394189104e-06,
+            "energy_error": 1.6922698999019994e-14,
+            "dissipation_error": 2.971878579737934e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 1.3998344586045018e-14,
+            "energy_error": 1.6734669010141997e-14,
+            "dissipation_error": 1.3112488807842673e-14,
+            "coulomb": 0.3000000000000001
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 1.2984125996659926e-14,
+            "energy_error": 1.6734669010141997e-14,
+            "dissipation_error": 1.5115785709040615e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 1.065549413245264e-14,
+            "energy_error": 1.6546639021263997e-14,
+            "dissipation_error": 3.1688514618954224e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 1.2395453442841427e-14,
+            "energy_error": 1.6734669010141994e-14,
+            "dissipation_error": 3.3509693620058573e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 5.0044427059458174e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.4489191848552734e-14,
+          "tangent_energy_error": 3.046085819823692e-14
+        }
+      },
+      {
+        "fraction": 0.5,
+        "slip_mm": 0.0001,
+        "passed": false,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": false,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 9.431480191839454e-15,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 3.097720492815727e-16,
+            "contact_energy": 4.305189670261123e-15,
+            "normal_energy": 4.061021763830263e-15,
+            "tangent_energy": 6.093343264312204e-13,
+            "contact_macro_force": 9.41356906764663e-15
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 9.239322845658222e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 0.0,
+            "coulomb": 7.362025704855323e-14
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 9.235884202043711e-15,
+            "energy_error": 2.5541518276216576e-13,
+            "dissipation_error": 1.7171724398450695e-08,
+            "coulomb": 0.038717361548278394
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 4.85527894251281e-07,
+            "energy_error": 1.7586252570023897e-13,
+            "dissipation_error": 2.607318335861394e-08,
+            "coulomb": 0.07743472309651293
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.9547925426329265e-06,
+            "energy_error": 7.00863024522455e-14,
+            "dissipation_error": 6.70526311203592e-07,
+            "coulomb": 0.11615208464476501
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 3.2225475789819243e-06,
+            "energy_error": 8.025822386520394e-14,
+            "dissipation_error": 2.5871267773239677e-07,
+            "coulomb": 0.15486944619300805
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 3.1940894150884665e-06,
+            "energy_error": 6.46863645183429e-14,
+            "dissipation_error": 1.5219351494197862e-07,
+            "coulomb": 0.19358680774125162
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 5.638727589892689e-06,
+            "energy_error": 6.114912294491774e-14,
+            "dissipation_error": 4.945091534950625e-07,
+            "coulomb": 0.23230416928949058
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.4121962362408458e-05,
+            "energy_error": 4.365874586396788e-14,
+            "dissipation_error": 3.642278690906873e-08,
+            "coulomb": 0.2710215308377416
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.0921391116389197e-05,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 8.025729508474187e-13,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 5.876498663649267e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 4.1704999124941296e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 4.488884235624713e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 5.991678913583772e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 4.768700576735476e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 1.2748253007627485e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 4.453415001016977e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 6.35591471380136e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 3.88469577342471e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 4.4072531826371235e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 3.4804628719528792e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 3.678781582200154e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 3.406129373844357e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.2963339919724565e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 3.175798509866226e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 6.53803261391004e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 2.518865056678945e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 2.3675327014167003e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 2.2701778196456935e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 1.2566135107515627e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 2.340834557260416e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 2.6042859715583097e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 2.943507725678233e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 2.0761440612417227e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.7296960214249913e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.20279665371404e-14,
+          "tangent_energy_error": 2.5953618899463796e-13
+        }
+      },
+      {
+        "fraction": 0.5,
+        "slip_mm": 0.01,
+        "passed": false,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": false,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 7.608932493144893e-15,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 3.097720492815727e-16,
+            "contact_energy": 2.115146700056619e-16,
+            "normal_energy": 4.061021763830263e-15,
+            "tangent_energy": 2.3315718620872057e-14,
+            "contact_macro_force": 8.151947401966536e-15
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 9.571052336693248e-15,
+            "energy_error": 3.6875959867830733e-14,
+            "dissipation_error": 1.3204256572445227e-08,
+            "coulomb": 0.28419699528648
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 2.50426351171271e-07,
+            "energy_error": 4.268568788020963e-14,
+            "dissipation_error": 1.834988411611946e-06,
+            "coulomb": 0.24547963373822815
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.9221463948099076e-06,
+            "energy_error": 4.294936781303642e-14,
+            "dissipation_error": 8.641971060894636e-07,
+            "coulomb": 0.2067622721899848
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.1016661632415693e-06,
+            "energy_error": 7.625646915953064e-14,
+            "dissipation_error": 3.310329848332356e-07,
+            "coulomb": 0.16804491064176105
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 9.131314889067563e-07,
+            "energy_error": 8.498980275361463e-14,
+            "dissipation_error": 5.152292149361123e-08,
+            "coulomb": 0.12932754909350677
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 4.511473812321338e-07,
+            "energy_error": 1.199348149819525e-13,
+            "dissipation_error": 1.5762666161411832e-08,
+            "coulomb": 0.09061018754525843
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 2.0748159637763648e-07,
+            "energy_error": 1.62212775113908e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.05189282599700715
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 5.274746582510299e-08,
+            "energy_error": 1.0169284086031742e-12,
+            "dissipation_error": 0.0,
+            "coulomb": 0.013175464448786062
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.0223490625716658e-07,
+            "energy_error": 5.169681851530511e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.025541897099559695
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 2.5676743143207377e-07,
+            "energy_error": 1.5022639374298703e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.06425925864781094
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 4.1016204392678725e-07,
+            "energy_error": 8.876921643089164e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.1029766201960447
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 5.617558168071457e-07,
+            "energy_error": 5.647309935562748e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.14169398174431364
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 7.109247984804464e-07,
+            "energy_error": 6.850031574972675e-14,
+            "dissipation_error": 1.238539763008405e-07,
+            "coulomb": 0.18041134329251227
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 5.114487722030203e-07,
+            "energy_error": 5.4626425632388404e-14,
+            "dissipation_error": 4.3181473560841296e-08,
+            "coulomb": 0.2191287048407636
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 2.9326535753629415e-06,
+            "energy_error": 3.576225811154491e-14,
+            "dissipation_error": 4.614798880226415e-08,
+            "coulomb": 0.25784606638903246
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 3.28476715117267e-06,
+            "energy_error": 3.271021247486967e-14,
+            "dissipation_error": 1.3848207776727569e-07,
+            "coulomb": 0.2965634279372839
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 9.638668231189356e-06,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 2.0025705022853105e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 5.916483202584811e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.5512990521239593e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 5.2382689602675446e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 2.6042859715575423e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 3.776901005595478e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 2.4403798614596028e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 4.291110770261463e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.04136893182047e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.771055052052643e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.20279665371404e-14,
+          "tangent_energy_error": 2.782843835394484e-14
+        }
+      },
+      {
+        "fraction": 0.8,
+        "slip_mm": 0.0001,
+        "passed": false,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": false,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 1.4245143410951093e-14,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 1.4760650298038084e-15,
+            "normal_energy": 2.092041514700431e-15,
+            "tangent_energy": 1.4081922748105651e-12,
+            "contact_macro_force": 1.5731334985108413e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.3599228760815627e-14,
+            "energy_error": 2.9773682484474732e-15,
+            "dissipation_error": 0.0,
+            "coulomb": 7.587052014807395e-14
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.4426400381831917e-14,
+            "energy_error": 5.699215852932096e-13,
+            "dissipation_error": 1.2607075194778054e-08,
+            "coulomb": 0.038717361548286984
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 8.986351200413791e-07,
+            "energy_error": 2.8187393788263646e-13,
+            "dissipation_error": 3.219471690198803e-08,
+            "coulomb": 0.07743472309652154
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 5.025076114592538e-06,
+            "energy_error": 1.8579925817877266e-13,
+            "dissipation_error": 1.1057610944116334e-07,
+            "coulomb": 0.11615208464477365
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 2.0609361891741795e-06,
+            "energy_error": 1.2417975736506493e-13,
+            "dissipation_error": 7.46153794478313e-07,
+            "coulomb": 0.15486944619300824
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 7.167773126599494e-06,
+            "energy_error": 9.448950628595867e-14,
+            "dissipation_error": 4.042413870099601e-07,
+            "coulomb": 0.19358680774126036
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 9.468603360109082e-06,
+            "energy_error": 7.573083687793818e-14,
+            "dissipation_error": 1.7464041035290158e-06,
+            "coulomb": 0.2323041692894949
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 6.859135285905306e-06,
+            "energy_error": 6.93471372298392e-14,
+            "dissipation_error": 2.594653235211783e-07,
+            "coulomb": 0.27102153083774705
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 2.6141763815980735e-07,
+            "energy_error": 3.384539799803988e-15,
+            "dissipation_error": 9.118995323343143e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 5.813778766457511e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 3.077792511840763e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 4.059569779155538e-15,
+            "energy_error": 3.00847982204799e-15,
+            "dissipation_error": 2.5314388115140516e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 5.753983131077801e-15,
+            "energy_error": 3.196509810925989e-15,
+            "dissipation_error": 6.210220393715838e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 4.692719146882369e-15,
+            "energy_error": 3.1965098109259886e-15,
+            "dissipation_error": 6.738362304029877e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 4.516473165119836e-15,
+            "energy_error": 3.5725697886819874e-15,
+            "dissipation_error": 1.3840960408282153e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 4.371331783047562e-15,
+            "energy_error": 3.572569788681987e-15,
+            "dissipation_error": 8.37742340501052e-15,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 3.059714144321871e-15,
+            "energy_error": 3.5725697886819874e-15,
+            "dissipation_error": 7.648951804576883e-15,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 2.7379644812958192e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 5.099301203049837e-15,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 2.713507338183927e-15,
+            "energy_error": 3.196509810925989e-15,
+            "dissipation_error": 3.569510842135877e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 2.442688790195459e-15,
+            "energy_error": 3.196509810925989e-15,
+            "dissipation_error": 5.609231323354778e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 2.452926220559958e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 7.102598104249793e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 3.014369395353926e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 1.620849310969448e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.1093105620102206e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.5719804504258903e-14,
+          "tangent_energy_error": 2.064642808932357e-13
+        }
+      },
+      {
+        "fraction": 0.8,
+        "slip_mm": 0.01,
+        "passed": false,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": false,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 9.004520561431885e-15,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 9.518160150254748e-15,
+            "normal_energy": 2.092041514700431e-15,
+            "tangent_energy": 5.49047567523758e-14,
+            "contact_macro_force": 1.0495178657593117e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.2366910459431157e-14,
+            "energy_error": 6.8513857254435e-14,
+            "dissipation_error": 1.2844479163699722e-06,
+            "coulomb": 0.2841969952865092
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 8.760788999647756e-07,
+            "energy_error": 9.168998087426537e-14,
+            "dissipation_error": 1.3928746848860537e-06,
+            "coulomb": 0.24547963373825812
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.1363469553101756e-06,
+            "energy_error": 1.6209922690726556e-13,
+            "dissipation_error": 7.634099575739612e-07,
+            "coulomb": 0.20676227219003582
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 3.9134582247814936e-07,
+            "energy_error": 1.2974086894332652e-13,
+            "dissipation_error": 2.9447789738072005e-07,
+            "coulomb": 0.16804491064180527
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 4.693249680734232e-07,
+            "energy_error": 1.632765407067202e-13,
+            "dissipation_error": 3.084869110966706e-08,
+            "coulomb": 0.12932754909353603
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 2.0506684234815423e-07,
+            "energy_error": 2.101113675999555e-13,
+            "dissipation_error": 8.339749606285084e-08,
+            "coulomb": 0.09061018754531701
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 1.5388288252361806e-07,
+            "energy_error": 4.120125934491188e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.05189282599704815
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 3.912121467542771e-08,
+            "energy_error": 1.4864557359976844e-12,
+            "dissipation_error": 0.0,
+            "coulomb": 0.013175464448814608
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 7.582456649796342e-08,
+            "energy_error": 8.716111973122449e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.025541897099548176
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 1.9043670959963826e-07,
+            "energy_error": 3.0506331619420473e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.06425925864779969
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 3.0420489666447835e-07,
+            "energy_error": 1.9449435060701208e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.10297662019605101
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 4.1663745464498063e-07,
+            "energy_error": 1.6077975674755127e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.14169398174429904
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 5.272716170040186e-07,
+            "energy_error": 6.356101404481287e-14,
+            "dissipation_error": 1.1929847449393307e-09,
+            "coulomb": 0.1804113432925336
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 4.67916146467033e-06,
+            "energy_error": 9.762270903336613e-14,
+            "dissipation_error": 1.360676964384425e-07,
+            "coulomb": 0.21912870484076838
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 5.908296525895474e-06,
+            "energy_error": 7.941512121567321e-14,
+            "dissipation_error": 1.6415693143617207e-07,
+            "coulomb": 0.25784606638902025
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 2.714220656666911e-05,
+            "energy_error": 1.0428785389046761e-13,
+            "dissipation_error": 2.3833806816630413e-07,
+            "coulomb": 0.2965634279372723
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 2.2101519906252202e-05,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 2.626125389224528e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 5.720113832771523e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 5.827772803485751e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 4.855906790980676e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 6.738362304030274e-15,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 3.1930847460486085e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 1.6390611009803352e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 5.426512981224169e-15,
+            "energy_error": 3.196509810925989e-15,
+            "dissipation_error": 3.2052750419186015e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.0679515313825692e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.5719804504258903e-14,
+          "tangent_energy_error": 3.384539799804102e-14
+        }
+      }
+    ],
+    "reused_completed_cases": [
+      [
+        0.2,
+        0.0001
+      ],
+      [
+        0.2,
+        0.01
+      ],
+      [
+        0.5,
+        0.0001
+      ]
+    ],
+    "scope": "Prescribed plane-contact nested refinement, not packing compaction.",
+    "full_compaction_completed": false
+  },
+  "corrected_matrix": {
+    "passed": true,
+    "cases": [
+      {
+        "fraction": 0.2,
+        "slip_mm": 0.0001,
+        "passed": true,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": true,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 363,
+          "active_histories": 347,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 1.4155990719734421e-14,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 7.380325149019087e-15,
+            "normal_energy": 6.8914308719544036e-15,
+            "tangent_energy": 1.136215289402991e-12,
+            "contact_macro_force": 1.4181848086100775e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.377358140060231e-14,
+            "energy_error": 6.8914308719544036e-15,
+            "dissipation_error": 0.0,
+            "coulomb": 1.1223866907188113e-13
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.7513764101442224e-14,
+            "energy_error": 5.53869940520219e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.038717361548304734
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.632362819558289e-14,
+            "energy_error": 2.3901075458759673e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.07743472309653929
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.4947622740783308e-14,
+            "energy_error": 1.5663583031274004e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.11615208464480892
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 1.4051813319649221e-14,
+            "energy_error": 1.3441047601161814e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.15486944619304346
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 1.5022929180286522e-14,
+            "energy_error": 8.771606497513726e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.19358680774127804
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 1.517258448336402e-14,
+            "energy_error": 8.858783195866447e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.23230416928951264
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.529235487596488e-14,
+            "energy_error": 7.533725539587197e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2710215308377648
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.1949298509102813e-14,
+            "energy_error": 9.965589410534057e-15,
+            "dissipation_error": 1.3368975676481442e-12,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 1.1342860831130745e-14,
+            "energy_error": 9.589529432778057e-15,
+            "dissipation_error": 6.556244403921172e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 8.702325804619974e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 3.460240102069698e-15,
+            "coulomb": 0.3000000000000001
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 8.988315311764135e-15,
+            "energy_error": 1.0153619399412057e-14,
+            "dissipation_error": 1.9668733211768168e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 8.72838515710093e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 1.2748253007625348e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 7.34971182202049e-15,
+            "energy_error": 1.0153619399412058e-14,
+            "dissipation_error": 8.195305504903654e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 8.204208732929229e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 4.3708296026141834e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 7.691916758812908e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 3.6423580021795063e-16,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 6.792124933860815e-15,
+            "energy_error": 1.0341649388290058e-14,
+            "dissipation_error": 2.5496506015249614e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 6.3650932258193295e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 3.7698405322557086e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 6.961939344521279e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 4.589371082744911e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 7.290482832157725e-15,
+            "energy_error": 9.965589410534057e-15,
+            "dissipation_error": 3.879111272320979e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 5.8398665492759864e-15,
+            "energy_error": 9.777559421656058e-15,
+            "dissipation_error": 9.014836055391741e-14,
+            "coulomb": 0.3000000000000002
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.3698724549644243e-22
+        },
+        "analytic": {
+          "normal_energy_error": 1.9566741225728063e-14,
+          "tangent_energy_error": 1.3393708478458624e-13
+        }
+      },
+      {
+        "fraction": 0.2,
+        "slip_mm": 0.01,
+        "passed": true,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": true,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 357,
+          "active_histories": 341,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 2.0882023470979433e-14,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 2.517024573067371e-14,
+            "normal_energy": 1.2306126557061373e-14,
+            "tangent_energy": 1.0435664382728997e-13,
+            "contact_macro_force": 2.1911830150302602e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.738963116651712e-14,
+            "energy_error": 7.123764974467266e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.28419699528650966
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.812004485252349e-14,
+            "energy_error": 7.498078068431534e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.24547963373827456
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.7718944642996333e-14,
+            "energy_error": 7.719010805107894e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.20676227219004
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.7494385937759956e-14,
+            "energy_error": 1.1445961186224206e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.16804491064179042
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 1.804331610950915e-14,
+            "energy_error": 1.8351220802900771e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.1293275490935395
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 1.8500606241996264e-14,
+            "energy_error": 2.2312255590627326e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.09061018754531891
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 1.855309705166021e-14,
+            "energy_error": 3.745033439978406e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.05189282599706685
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.8330026817714368e-14,
+            "energy_error": 1.4017275686456974e-12,
+            "dissipation_error": 0.0,
+            "coulomb": 0.013175464448831973
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.8466156668393392e-14,
+            "energy_error": 8.801226296040277e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.025541897099601467
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 1.750626478506928e-14,
+            "energy_error": 3.0058085772787086e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.06425925864785353
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 1.876327482082774e-14,
+            "energy_error": 1.8252546749273213e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.10297662019610561
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 1.8661509466714802e-14,
+            "energy_error": 1.4687220242862958e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.14169398174435435
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 1.8302905761593287e-14,
+            "energy_error": 1.26732083218186e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.18041134329257155
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 1.839234869908067e-14,
+            "energy_error": 1.0220428021543714e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.21912870484082358
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 1.7815452727771758e-14,
+            "energy_error": 8.41240306467303e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.25784606638907887
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 1.784028840967832e-14,
+            "energy_error": 6.561283796429799e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2965634279373274
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 1.5418485745005127e-14,
+            "energy_error": 1.6922698999019994e-14,
+            "dissipation_error": 3.297646036696348e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 1.4003753777315326e-14,
+            "energy_error": 1.6734669010141997e-14,
+            "dissipation_error": 1.3476724608060519e-14,
+            "coulomb": 0.3000000000000001
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 1.2988142223806519e-14,
+            "energy_error": 1.6734669010141997e-14,
+            "dissipation_error": 1.5480021509258457e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 1.0660788382230132e-14,
+            "energy_error": 1.6734669010141997e-14,
+            "dissipation_error": 3.1506396718845286e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 1.2400803560168649e-14,
+            "energy_error": 1.6734669010141994e-14,
+            "dissipation_error": 3.332757571994956e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 4.963083675318166e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.4489191848552734e-14,
+          "tangent_energy_error": 3.046085819823692e-14
+        }
+      },
+      {
+        "fraction": 0.5,
+        "slip_mm": 0.0001,
+        "passed": true,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": true,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 9.159490318308666e-15,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 3.097720492815727e-16,
+            "contact_energy": 4.428195089411441e-15,
+            "normal_energy": 4.061021763830263e-15,
+            "tangent_energy": 7.011844616490604e-13,
+            "contact_macro_force": 9.906452188870645e-15
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 9.172751000557173e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 0.0,
+            "coulomb": 5.562595312533501e-14
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 9.21852660563548e-15,
+            "energy_error": 2.5118178194291393e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.038717361548278394
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 9.665815400562903e-15,
+            "energy_error": 1.5046212078466063e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.07743472309651295
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 8.06920015504249e-15,
+            "energy_error": 6.444176802656179e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.11615208464476504
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 9.982578096831411e-15,
+            "energy_error": 7.179142222667794e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.15486944619300808
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 8.695557341891897e-15,
+            "energy_error": 4.933323088048204e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.1935868077412516
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 9.156973902220498e-15,
+            "energy_error": 5.095760245409855e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.23230416928948613
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 8.895956868023251e-15,
+            "energy_error": 3.4212790294455323e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2710215308377382
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 6.945317517573611e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 6.854631855794996e-13,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 5.940704265598052e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 4.188711702505022e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 4.519456129274836e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 6.04631428361645e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 4.8218799934995165e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 1.3112488807845413e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 4.503959562707031e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 6.374126503812251e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 3.922699498386263e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 4.4254649726480205e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 3.5142597410903857e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.6969933722110454e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 3.4404128216693745e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.278122201961559e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 3.194964960359598e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 6.53803261391004e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 2.5507697682816806e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 2.44037986146029e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 2.2933162370809226e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 1.2566135107515627e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 2.3464642903317703e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 2.6042859715583097e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 2.9497345249737572e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 2.0761440612417233e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.7296960214249913e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.20279665371404e-14,
+          "tangent_energy_error": 1.5670109524204556e-13
+        }
+      },
+      {
+        "fraction": 0.5,
+        "slip_mm": 0.01,
+        "passed": true,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": true,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 7.608932493144893e-15,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 3.097720492815727e-16,
+            "contact_energy": 2.115146700056619e-16,
+            "normal_energy": 4.061021763830263e-15,
+            "tangent_energy": 2.3315718620872057e-14,
+            "contact_macro_force": 8.151947401966536e-15
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 9.570833068470824e-15,
+            "energy_error": 3.6875959867830733e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.28419699528648
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 8.767340267607531e-15,
+            "energy_error": 4.240486098626088e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.24547963373822815
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 7.677713554011142e-15,
+            "energy_error": 4.631406483064755e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2067622721899848
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.1006280685867124e-14,
+            "energy_error": 7.430885796292151e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.16804491064175936
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 9.546856752146168e-15,
+            "energy_error": 9.409585304864469e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.12932754909350677
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 9.985241819230528e-15,
+            "energy_error": 1.2830835201076767e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.09061018754525821
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 8.167781579825226e-15,
+            "energy_error": 1.7792345551235004e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.05189282599700715
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.1066820042393328e-14,
+            "energy_error": 1.0590068917151549e-12,
+            "dissipation_error": 0.0,
+            "coulomb": 0.013175464448786062
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.1031590243772546e-14,
+            "energy_error": 5.268981894935143e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.025541897099559695
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 9.388655048126254e-15,
+            "energy_error": 1.5983166188512179e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.06425925864781094
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 9.55377199194325e-15,
+            "energy_error": 1.0033913677469326e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.1029766201960447
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 6.789962622481305e-15,
+            "energy_error": 5.77374224755297e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.14169398174431364
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 1.0780139494743922e-14,
+            "energy_error": 7.278970933557328e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.18041134329251227
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 1.0513748877123835e-14,
+            "energy_error": 5.42739970799214e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2191287048407636
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 9.29126814473559e-15,
+            "energy_error": 3.856215020568725e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.25784606638903246
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 8.58840265008185e-15,
+            "energy_error": 3.521158166412443e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2965634279372839
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 7.175843692946703e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 2.086510583219442e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 5.926206689435515e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.514875472102175e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 5.245399459626264e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 2.5678623915357588e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 3.784993875467445e-15,
+            "energy_error": 4.061021763830263e-15,
+            "dissipation_error": 2.4403798614596028e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 4.299513423497802e-15,
+            "energy_error": 4.13665975531601e-15,
+            "dissipation_error": 3.04136893182047e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.771055052052643e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.20279665371404e-14,
+          "tangent_energy_error": 2.782843835394484e-14
+        }
+      },
+      {
+        "fraction": 0.8,
+        "slip_mm": 0.0001,
+        "passed": true,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": true,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 1.4082554962203627e-14,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 1.4760650298038084e-15,
+            "normal_energy": 2.092041514700431e-15,
+            "tangent_energy": 1.4132215329348887e-12,
+            "contact_macro_force": 1.519940011318204e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.3246969984991054e-14,
+            "energy_error": 2.9126192580212013e-15,
+            "dissipation_error": 0.0,
+            "coulomb": 7.586998648843362e-14
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.4203443701915227e-14,
+            "energy_error": 5.3834747084956e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.038717361548286984
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.4558066826212867e-14,
+            "energy_error": 2.9139908972597966e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.07743472309652152
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.4694217435256604e-14,
+            "energy_error": 2.0226248358701783e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.11615208464477365
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 1.3227512234400002e-14,
+            "energy_error": 1.312354253971704e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.15486944619300824
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 1.388008222023575e-14,
+            "energy_error": 1.0092427553123977e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.19358680774126039
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 1.368248691627159e-14,
+            "energy_error": 9.752501146599846e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.23230416928949496
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.359799023309798e-14,
+            "energy_error": 7.948426028004781e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2710215308377471
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 7.223193598923676e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 1.0483767549186077e-12,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 5.963695953662002e-15,
+            "energy_error": 3.572569788681987e-15,
+            "dissipation_error": 3.059580721829871e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 4.1897798542620025e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 2.4950152314922675e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 5.854521416657113e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 6.192008603704943e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 4.791087981817098e-15,
+            "energy_error": 3.5725697886819874e-15,
+            "dissipation_error": 6.683726933997204e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 4.593458540116578e-15,
+            "energy_error": 3.5725697886819874e-15,
+            "dissipation_error": 1.3476724608064206e-14,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 4.4483848666500925e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 8.013187604792673e-15,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 3.075311897815753e-15,
+            "energy_error": 3.5725697886819874e-15,
+            "dissipation_error": 8.01318760479483e-15,
+            "coulomb": 0.3000000000000002
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 2.792231661338174e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 5.28141910315876e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 2.75112775752505e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 3.569510842135877e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 2.458823424170644e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 5.62744311336567e-14,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 2.4966651685532138e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 6.738362304031855e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 3.0438394589523275e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 1.6390611009803402e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.1093105620102206e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.5719804504258903e-14,
+          "tangent_energy_error": 2.065966297912442e-13
+        }
+      },
+      {
+        "fraction": 0.8,
+        "slip_mm": 0.01,
+        "passed": true,
+        "checks": {
+          "instantaneous_audit": true,
+          "virtual_work": true,
+          "continued_path": true,
+          "separated": true,
+          "analytic": true
+        },
+        "transfer": {
+          "retained_samples": 348,
+          "active_histories": 332,
+          "new_material_samples": 0,
+          "periodic_virtual_work_relative_error": 9.004520561431885e-15,
+          "history_interpolation": false,
+          "accepted": true,
+          "checks": {
+            "mass": true,
+            "linear_momentum": true,
+            "angular_momentum": true,
+            "kinetic_energy": true,
+            "material_energy": true,
+            "contact_energy": true,
+            "normal_energy": true,
+            "tangent_energy": true,
+            "contact_macro_force": true,
+            "coulomb": true
+          },
+          "scaled_errors": {
+            "mass": 0.0,
+            "linear_momentum": 0.0,
+            "angular_momentum": 0.0,
+            "kinetic_energy": 0.0,
+            "material_energy": 0.0,
+            "contact_energy": 9.518160150254748e-15,
+            "normal_energy": 2.092041514700431e-15,
+            "tangent_energy": 5.49047567523758e-14,
+            "contact_macro_force": 1.0495178657593117e-14
+          },
+          "tolerance": 1e-08
+        },
+        "continuation": [
+          {
+            "displacement": -0.0001,
+            "force_error": 1.2367054861894909e-14,
+            "energy_error": 6.8513857254435e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2841969952865092
+          },
+          {
+            "displacement": -0.000345,
+            "force_error": 1.2351576620686537e-14,
+            "energy_error": 9.1549567427291e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.24547963373825812
+          },
+          {
+            "displacement": -0.00059,
+            "force_error": 1.511212437611153e-14,
+            "energy_error": 1.5794283647374503e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.20676227219003582
+          },
+          {
+            "displacement": -0.000835,
+            "force_error": 1.2613791836712479e-14,
+            "energy_error": 1.4217561735244562e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.16804491064180527
+          },
+          {
+            "displacement": -0.00108,
+            "force_error": 1.2841313313270258e-14,
+            "energy_error": 1.5467638209474556e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.12932754909353603
+          },
+          {
+            "displacement": -0.001325,
+            "force_error": 1.3203858637920319e-14,
+            "energy_error": 2.263431470711989e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.09061018754531701
+          },
+          {
+            "displacement": -0.00157,
+            "force_error": 1.1285460601167177e-14,
+            "energy_error": 4.4461225527589406e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.05189282599704815
+          },
+          {
+            "displacement": -0.001815,
+            "force_error": 1.1734182849227262e-14,
+            "energy_error": 1.5683278977089452e-12,
+            "dissipation_error": 0.0,
+            "coulomb": 0.013175464448814608
+          },
+          {
+            "displacement": -0.0020599999999999998,
+            "force_error": 1.104923402684528e-14,
+            "energy_error": 8.531697606799799e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.025541897099548204
+          },
+          {
+            "displacement": -0.0023049999999999998,
+            "force_error": 1.2973180533395305e-14,
+            "energy_error": 3.073685805483171e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.06425925864779969
+          },
+          {
+            "displacement": -0.0025499999999999997,
+            "force_error": 1.3255394845406308e-14,
+            "energy_error": 2.0766012203271757e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.10297662019605101
+          },
+          {
+            "displacement": -0.0027949999999999997,
+            "force_error": 9.860285019201497e-15,
+            "energy_error": 1.6520488766720894e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.141693981744299
+          },
+          {
+            "displacement": -0.0030399999999999997,
+            "force_error": 9.177276713867677e-15,
+            "energy_error": 6.239117943049155e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.18041134329253353
+          },
+          {
+            "displacement": -0.0032849999999999997,
+            "force_error": 1.1608457269315391e-14,
+            "energy_error": 9.691785192843208e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.21912870484076838
+          },
+          {
+            "displacement": -0.0035299999999999997,
+            "force_error": 1.4605357870578997e-14,
+            "energy_error": 8.666938709595077e-14,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2578460663890202
+          },
+          {
+            "displacement": -0.0037749999999999997,
+            "force_error": 1.6066048428717727e-14,
+            "energy_error": 1.05442331977816e-13,
+            "dissipation_error": 0.0,
+            "coulomb": 0.2965634279372723
+          },
+          {
+            "displacement": -0.00402,
+            "force_error": 6.579806872611662e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 2.7600298040479907e-13,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.0042650000000000006,
+            "force_error": 5.712890393081442e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 5.463537003267893e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.00451,
+            "force_error": 4.853455677415273e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 6.9204802041392005e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.004755,
+            "force_error": 3.1867683095534702e-15,
+            "energy_error": 3.3845397998039878e-15,
+            "dissipation_error": 1.8211790010892606e-15,
+            "coulomb": 0.30000000000000016
+          },
+          {
+            "displacement": -0.005,
+            "force_error": 5.425746652170519e-15,
+            "energy_error": 3.196509810925989e-15,
+            "dissipation_error": 3.187063251907701e-14,
+            "coulomb": 0.30000000000000016
+          }
+        ],
+        "separation": {
+          "no_active_histories": true,
+          "release_energy_difference_Nmm": 2.0679515313825692e-23
+        },
+        "analytic": {
+          "normal_energy_error": 2.5719804504258903e-14,
+          "tangent_energy_error": 3.384539799804102e-14
+        }
+      }
+    ],
+    "reused_completed_cases": [],
+    "scope": "Prescribed plane-contact nested refinement, not packing compaction.",
+    "full_compaction_completed": false
+  },
+  "solver": {
+    "passed": false,
+    "checks": {
+      "active_restart_exact": true,
+      "active_transfer_committed": true,
+      "opt_in_required": true,
+      "rejected_trajectory_unchanged": true,
+      "bounded_three_steps": false
+    },
+    "scope": "Bounded dynamic transaction test; not a quasi-static compaction result.",
+    "results": {
+      "enabled": {
+        "failure": "SurfaceResolutionError('Distinct tied closest patch projections require subgradient integration')",
+        "steps": 1,
+        "events": [
+          {
+            "operation": "periodic_edge_bisection",
+            "time_s": 0.0,
+            "accepted": true,
+            "fraction": 0.5,
+            "periodic_edges": 1,
+            "new_nodes": 1,
+            "reference_volume_error": 0.0,
+            "current_volume_error": 0.0,
+            "minimum_quality_before": 0.5486553839604376,
+            "minimum_quality_after": 0.4323280314445252,
+            "retained_embedded_samples": {
+              "retained_samples": 604,
+              "active_histories": 332,
+              "new_material_samples": 0,
+              "periodic_virtual_work_relative_error": 9.194232249724792e-15,
+              "history_interpolation": false
+            },
+            "checks": {
+              "mass": true,
+              "linear_momentum": true,
+              "angular_momentum": true,
+              "kinetic_energy": true,
+              "material_energy": true,
+              "contact_energy": true,
+              "normal_energy": true,
+              "tangent_energy": true,
+              "contact_macro_force": true,
+              "coulomb": true
+            },
+            "scaled_errors": {
+              "mass": 0.0,
+              "linear_momentum": 0.0,
+              "angular_momentum": 0.0,
+              "kinetic_energy": 0.0,
+              "material_energy": 0.0,
+              "contact_energy": 4.061021763830263e-15,
+              "normal_energy": 4.061021763830263e-15,
+              "tangent_energy": 1.3094723910184338e-12,
+              "contact_macro_force": 1.1116793242641696e-14
+            },
+            "tolerance": 0.001
+          }
+        ]
+      },
+      "disabled": {
+        "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+        "steps": 3,
+        "events": [
+          {
+            "operation": "periodic_edge_bisection",
+            "time_s": 0.0,
+            "accepted": false,
+            "reason": "Active embedded remeshing requires explicit retained-sample transfer opt-in"
+          }
+        ]
+      }
+    },
+    "full_compaction_completed": false
+  },
+  "packing_eligibility": {
+    "scope": "Check nested-refinement eligibility at a saved packing state, without advancing it.",
+    "checkpoint": "results/contact-atlas-development-001/global-cycle-2-v7/attempt-002/checkpoint-00090250",
+    "step": 90250,
+    "active_histories": 69,
+    "source_face": 1521,
+    "candidates": [
+      {
+        "edge": [
+          1740,
+          1725
+        ],
+        "eligible": false,
+        "reason": "Splitting atlas/partition metadata requires explicit retained-pose migration"
+      },
+      {
+        "edge": [
+          1725,
+          1917
+        ],
+        "eligible": false,
+        "reason": "Splitting atlas/partition metadata requires explicit retained-pose migration"
+      },
+      {
+        "edge": [
+          1917,
+          1740
+        ],
+        "eligible": false,
+        "reason": "Active embedded split requires a pre-existing partition-aligned quadrature rule"
+      }
+    ],
+    "eligible_candidates": 0,
+    "packing_remesh_completed": false,
+    "interpretation": "Eligibility only; no contact/material transfer or physical trajectory accepted."
+  },
+  "limits": [
+    "Partition-aligned retained-node bisection only; no sample creation/coarsening or pose-atlas split.",
+    "Moving-state momentum/kinetic audit failed; no relaxation of acceptance limits.",
+    "A solver step after initial transfer encounters unresolved tied closest projections.",
+    "No mesh-quality recovery, loaded 10% equilibrium, unloading or spatial convergence result."
+  ]
+}

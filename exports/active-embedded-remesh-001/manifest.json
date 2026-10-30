@@ -1,0 +1,4202 @@
+{
+  "continued-force-errors.png": {
+    "bytes": 75189,
+    "sha256": "65e6c83ea096ea19d4bebd00c83f9333f00067db69f5849eddaffaf49daba600"
+  },
+  "README.md": {
+    "bytes": 9644,
+    "sha256": "f3c2eff559edaa2b62ef2c75d67053042b70bd3e85c04152d34d58440c18ba71"
+  },
+  "assessment.json": {
+    "bytes": 92267,
+    "sha256": "d8ca836432f1df3d7d43cdc568ff9e4e1ded55fb2876eeb0000d289a15c4a9d4"
+  },
+  "comparison.csv": {
+    "bytes": 886,
+    "sha256": "49471c24d4ca7f5f2e5a09dbe513228c3eab548888f1a0423a28f9ac465140c8"
+  },
+  "retained-samples.png": {
+    "bytes": 102068,
+    "sha256": "62974feb2a2543d1244da9173bdc47e42e0c37be50ae5ef6f570a851c009af52"
+  },
+  "diagnostics/prepared-tests-003.log": {
+    "bytes": 110,
+    "sha256": "fd408aac106b4ed8084fdff8ed21c98b9b2a9e0fbb39791e30aeba9287d07b76"
+  },
+  "diagnostics/stick-regression-before-002.log": {
+    "bytes": 2394,
+    "sha256": "4ac7a17266c4c24ed0e081f20c854df92f4c0185b041d3d5ebf686f54c893850"
+  },
+  "diagnostics/regression-tests.log": {
+    "bytes": 111,
+    "sha256": "3c63e503b7b9463b2c09ec2da5b5f042b9e782d158fab2c0c3c79eeadc070656"
+  },
+  "diagnostics/plane-matrix-002.log": {
+    "bytes": 4695,
+    "sha256": "a891ef1b873237e372114bc3f60ecc1a74c2d33456d759f696a309a16478c4ea"
+  },
+  "diagnostics/final-solver-tests.log": {
+    "bytes": 125,
+    "sha256": "5ea2b0d496790e06d66c144fad1f33f4fc15c516ba546b6abc2718b64f49497d"
+  },
+  "diagnostics/stick-regression-before.log": {
+    "bytes": 98,
+    "sha256": "bb0952ddd1b33a08f7af0f9813e8a6eea92af1d0716d49ed132e87fe904b4ce4"
+  },
+  "diagnostics/plane-matrix-004.log": {
+    "bytes": 19792,
+    "sha256": "c996315a9076fa9bf5ba350217676e252463aa7dd08389eef12663dae7cc20e2"
+  },
+  "diagnostics/final-current-tests.log": {
+    "bytes": 126,
+    "sha256": "569573139e5904901994bdaf14fd009994081d99c2f9b4ea1ed74447087297b4"
+  },
+  "diagnostics/small-probe-002.log": {
+    "bytes": 45,
+    "sha256": "1a8b4fa0f186b9fe3d4f253eb250bddce493b036132cc6d767f16dbdd1b47b35"
+  },
+  "diagnostics/solver-transaction.log": {
+    "bytes": 1805,
+    "sha256": "91d341e49af7ce11b4b8eef9c3697d8e0ba6ab9b379b2126161b315f8c4229f8"
+  },
+  "diagnostics/final-friction-three-level-tests.log": {
+    "bytes": 110,
+    "sha256": "7930f7e15a5b3e47ca318d112f16fe7d8d3d14dfc5ac1c77e82400098072f727"
+  },
+  "diagnostics/solver-transaction-002.log": {
+    "bytes": 1788,
+    "sha256": "3faa8803ca58dbad319a00a3bd241d587f78b6c52f904b2f00e548c95e3243ce"
+  },
+  "diagnostics/solver-transaction-stick-corrected.log": {
+    "bytes": 1788,
+    "sha256": "3faa8803ca58dbad319a00a3bd241d587f78b6c52f904b2f00e548c95e3243ce"
+  },
+  "diagnostics/stick-corrected-tests-002.log": {
+    "bytes": 111,
+    "sha256": "5a25b545d750b6f4e6abe8a8b65704da7e6a7cddeb0ebc5bbd153d741e7ac58c"
+  },
+  "diagnostics/plane-matrix-stick-corrected.log": {
+    "bytes": 1146,
+    "sha256": "572036fc626141b35d0d9bdf4aaf03648500e2d01828dde20b41d269988ea860"
+  },
+  "diagnostics/plane-matrix-final.log": {
+    "bytes": 578,
+    "sha256": "3f6c3ad0fd8123f546bcee7c3479bf69b7cbc89a8e7c9db669c1e80a64aeecce"
+  },
+  "diagnostics/prepared-tests.log": {
+    "bytes": 2571,
+    "sha256": "1e39a4c2fbeeb12b13151d6e8501b85fa2dff1bd07c047516635fb57ee79b7a8"
+  },
+  "diagnostics/plane-matrix-003.log": {
+    "bytes": 5242,
+    "sha256": "0e897c67fae01698fc73779b01a81b7108a7941081567f8baec8f68eb2ce5b0b"
+  },
+  "diagnostics/prepared-tests-002.log": {
+    "bytes": 3023,
+    "sha256": "810b02d02b467723432946f3523ed2c1ba175860c88c18637b30df2153629887"
+  },
+  "diagnostics/initial-tests.log": {
+    "bytes": 2017,
+    "sha256": "ff4d59df47c066cae473d5f3b5253273e3f1275ff934f01d0759585746601319"
+  },
+  "diagnostics/source-cohorts.json": {
+    "bytes": 826,
+    "sha256": "831ccc3faa5b11ff377a3fa133307423346e660d97af464e912d9a4b57c41a64"
+  },
+  "diagnostics/moving-rejection-rollback.json": {
+    "bytes": 673,
+    "sha256": "c5ab5ede33409320d09d7b5e1410d2b056edb9b7c215a167bf569d5e79057605"
+  },
+  "diagnostics/small-probe.log": {
+    "bytes": 649,
+    "sha256": "4b2ca3951b6ddb34117d9d01e48806ecccedad50bd46876a03ea1a23c03250ff"
+  },
+  "diagnostics/plane-matrix.log": {
+    "bytes": 3862,
+    "sha256": "c3d351f0a296902561776e53bd46837bd18e040d6f36adfdfe3a979e0b8836cd"
+  },
+  "diagnostics/final-regression-tests.log": {
+    "bytes": 111,
+    "sha256": "c85e05204d6101ccfcd1a0b601bdc63892d785aee38fbe1ee06d821cc3c818bf"
+  },
+  "diagnostics/stick-corrected-tests.log": {
+    "bytes": 2402,
+    "sha256": "68b8117f903dd2ca258927e9b4b2c0d6f9c91c0cd27a142715d851ad6892664c"
+  },
+  "diagnostics/packing-eligibility.log": {
+    "bytes": 842,
+    "sha256": "56e02ddf8129ff998d38170789f8d58abbb044364fc029f377606e1f6892aecd"
+  },
+  "test-logs/prepared-tests-003.log": {
+    "bytes": 110,
+    "sha256": "fd408aac106b4ed8084fdff8ed21c98b9b2a9e0fbb39791e30aeba9287d07b76"
+  },
+  "test-logs/stick-regression-before-002.log": {
+    "bytes": 2394,
+    "sha256": "4ac7a17266c4c24ed0e081f20c854df92f4c0185b041d3d5ebf686f54c893850"
+  },
+  "test-logs/regression-tests.log": {
+    "bytes": 111,
+    "sha256": "3c63e503b7b9463b2c09ec2da5b5f042b9e782d158fab2c0c3c79eeadc070656"
+  },
+  "test-logs/plane-matrix-002.log": {
+    "bytes": 4695,
+    "sha256": "a891ef1b873237e372114bc3f60ecc1a74c2d33456d759f696a309a16478c4ea"
+  },
+  "test-logs/final-solver-tests.log": {
+    "bytes": 125,
+    "sha256": "5ea2b0d496790e06d66c144fad1f33f4fc15c516ba546b6abc2718b64f49497d"
+  },
+  "test-logs/stick-regression-before.log": {
+    "bytes": 98,
+    "sha256": "bb0952ddd1b33a08f7af0f9813e8a6eea92af1d0716d49ed132e87fe904b4ce4"
+  },
+  "test-logs/plane-matrix-004.log": {
+    "bytes": 19792,
+    "sha256": "c996315a9076fa9bf5ba350217676e252463aa7dd08389eef12663dae7cc20e2"
+  },
+  "test-logs/final-current-tests.log": {
+    "bytes": 126,
+    "sha256": "569573139e5904901994bdaf14fd009994081d99c2f9b4ea1ed74447087297b4"
+  },
+  "test-logs/small-probe-002.log": {
+    "bytes": 45,
+    "sha256": "1a8b4fa0f186b9fe3d4f253eb250bddce493b036132cc6d767f16dbdd1b47b35"
+  },
+  "test-logs/solver-transaction.log": {
+    "bytes": 1805,
+    "sha256": "91d341e49af7ce11b4b8eef9c3697d8e0ba6ab9b379b2126161b315f8c4229f8"
+  },
+  "test-logs/final-friction-three-level-tests.log": {
+    "bytes": 110,
+    "sha256": "7930f7e15a5b3e47ca318d112f16fe7d8d3d14dfc5ac1c77e82400098072f727"
+  },
+  "test-logs/solver-transaction-002.log": {
+    "bytes": 1788,
+    "sha256": "3faa8803ca58dbad319a00a3bd241d587f78b6c52f904b2f00e548c95e3243ce"
+  },
+  "test-logs/solver-transaction-stick-corrected.log": {
+    "bytes": 1788,
+    "sha256": "3faa8803ca58dbad319a00a3bd241d587f78b6c52f904b2f00e548c95e3243ce"
+  },
+  "test-logs/stick-corrected-tests-002.log": {
+    "bytes": 111,
+    "sha256": "5a25b545d750b6f4e6abe8a8b65704da7e6a7cddeb0ebc5bbd153d741e7ac58c"
+  },
+  "test-logs/plane-matrix-stick-corrected.log": {
+    "bytes": 1146,
+    "sha256": "572036fc626141b35d0d9bdf4aaf03648500e2d01828dde20b41d269988ea860"
+  },
+  "test-logs/plane-matrix-final.log": {
+    "bytes": 578,
+    "sha256": "3f6c3ad0fd8123f546bcee7c3479bf69b7cbc89a8e7c9db669c1e80a64aeecce"
+  },
+  "test-logs/prepared-tests.log": {
+    "bytes": 2571,
+    "sha256": "1e39a4c2fbeeb12b13151d6e8501b85fa2dff1bd07c047516635fb57ee79b7a8"
+  },
+  "test-logs/plane-matrix-003.log": {
+    "bytes": 5242,
+    "sha256": "0e897c67fae01698fc73779b01a81b7108a7941081567f8baec8f68eb2ce5b0b"
+  },
+  "test-logs/prepared-tests-002.log": {
+    "bytes": 3023,
+    "sha256": "810b02d02b467723432946f3523ed2c1ba175860c88c18637b30df2153629887"
+  },
+  "test-logs/initial-tests.log": {
+    "bytes": 2017,
+    "sha256": "ff4d59df47c066cae473d5f3b5253273e3f1275ff934f01d0759585746601319"
+  },
+  "test-logs/small-probe.log": {
+    "bytes": 649,
+    "sha256": "4b2ca3951b6ddb34117d9d01e48806ecccedad50bd46876a03ea1a23c03250ff"
+  },
+  "test-logs/plane-matrix.log": {
+    "bytes": 3862,
+    "sha256": "c3d351f0a296902561776e53bd46837bd18e040d6f36adfdfe3a979e0b8836cd"
+  },
+  "test-logs/final-regression-tests.log": {
+    "bytes": 111,
+    "sha256": "c85e05204d6101ccfcd1a0b601bdc63892d785aee38fbe1ee06d821cc3c818bf"
+  },
+  "test-logs/stick-corrected-tests.log": {
+    "bytes": 2402,
+    "sha256": "68b8117f903dd2ca258927e9b4b2c0d6f9c91c0cd27a142715d851ad6892664c"
+  },
+  "test-logs/packing-eligibility.log": {
+    "bytes": 842,
+    "sha256": "56e02ddf8129ff998d38170789f8d58abbb044364fc029f377606e1f6892aecd"
+  },
+  "diagnostics/plane-matrix-003/orderly-stop.json": {
+    "bytes": 137,
+    "sha256": "cc2700b16d5711d9a4e02248de18cec2ea323b1a49552d6100981c301319671d"
+  },
+  "diagnostics/plane-matrix-final/comparison.csv": {
+    "bytes": 898,
+    "sha256": "b7bccb268ab2a7f1207e08c7a220521379a5cd33da6efc8188bc36656cf6e325"
+  },
+  "diagnostics/plane-matrix-final/retained-samples.png": {
+    "bytes": 102068,
+    "sha256": "62974feb2a2543d1244da9173bdc47e42e0c37be50ae5ef6f570a851c009af52"
+  },
+  "diagnostics/plane-matrix-final/summary.json": {
+    "bytes": 41941,
+    "sha256": "76bbad0100263a936b12e6e4ca9016550915a22d6a20d3d773d786bc57f21378"
+  },
+  "diagnostics/solver-transaction/summary.json": {
+    "bytes": 2453,
+    "sha256": "aeab3c2ba5f38e98f377b5f33a983bfd72ca464a6a67c4e9a6721817a6ce44f2"
+  },
+  "diagnostics/plane-matrix-004/orderly-stop.json": {
+    "bytes": 174,
+    "sha256": "f3e9b12a358ff577986639a75303bd5729d2f3e5c0f5ac85c5c5ef9f3f60afe0"
+  },
+  "diagnostics/plane-matrix-stick-corrected/comparison.csv": {
+    "bytes": 886,
+    "sha256": "49471c24d4ca7f5f2e5a09dbe513228c3eab548888f1a0423a28f9ac465140c8"
+  },
+  "diagnostics/plane-matrix-stick-corrected/retained-samples.png": {
+    "bytes": 102068,
+    "sha256": "62974feb2a2543d1244da9173bdc47e42e0c37be50ae5ef6f570a851c009af52"
+  },
+  "diagnostics/plane-matrix-stick-corrected/summary.json": {
+    "bytes": 40879,
+    "sha256": "09d3e5b57a5b205d8a1136ad221f1a62caecfa137808ed2621820baf301388f0"
+  },
+  "diagnostics/solver-transaction-002/summary.json": {
+    "bytes": 2440,
+    "sha256": "2064b32b71748e76e2dbf20aad05f81a461ad9498f29941c1f93d9a723b3cfc7"
+  },
+  "diagnostics/plane-matrix-002/orderly-stop.json": {
+    "bytes": 193,
+    "sha256": "9c12d4cba34ad6ce7848e060b770e90a35a9a0e81cb5f89d117c2b3ecf2ab71f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/summary.json": {
+    "bytes": 2440,
+    "sha256": "2064b32b71748e76e2dbf20aad05f81a461ad9498f29941c1f93d9a723b3cfc7"
+  },
+  "diagnostics/packing-eligibility/summary.json": {
+    "bytes": 1022,
+    "sha256": "bd676ae56bdbf87f944582e98cda9ddf2fa177f642f5201f06e3113e9509c156"
+  },
+  "diagnostics/plane-matrix/orderly-stop.json": {
+    "bytes": 174,
+    "sha256": "b1d154a0252bd150eb980213cb8fab4a9b76faabd3f7396ece3bfe38384f5922"
+  },
+  "diagnostics/plane-matrix-003/fraction-0.2-slip-0.0001/failure.json": {
+    "bytes": 1916,
+    "sha256": "7daee8d0cc59ab07b7fb59462c4c300d0f5ea80ac681094ebbe8c8968a7dc4a2"
+  },
+  "diagnostics/plane-matrix-003/fraction-0.2-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 13642,
+    "sha256": "a51f979b60a69fbb2a354d3bbd7ff9ca79b9c0457db4d981714cd721aa05d4eb"
+  },
+  "diagnostics/plane-matrix-003/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/plane-matrix-003/source/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/plane-matrix-003/source/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/plane-matrix-003/source/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "diagnostics/plane-matrix-003/source/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/plane-matrix-003/source/explicit_solver.py": {
+    "bytes": 62236,
+    "sha256": "bb0d1236c4e0b748edf70e3579b16b4374c3fd261d26b1adeb3e6ed0f8a314d2"
+  },
+  "diagnostics/plane-matrix-003/source/area_contact.py": {
+    "bytes": 20540,
+    "sha256": "01d79483d10fd72061089d01deb2def0b2a8c83bf65645120cb27033d7025074"
+  },
+  "diagnostics/plane-matrix-003/source/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/plane-matrix-003/source/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/plane-matrix-003/source/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/plane-matrix-003/source/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/plane-matrix-003/source/verify_embedded_remesh.py": {
+    "bytes": 10625,
+    "sha256": "9e83f00dcfed264f04e2d2d88ef3feb6f9caeb1e34bb31a0d1035a2923c02284"
+  },
+  "diagnostics/plane-matrix-003/source/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/plane-matrix-003/source/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/plane-matrix-003/source/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/plane-matrix-003/source/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/plane-matrix-003/source/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/plane-matrix-003/source/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/plane-matrix-003/source/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/plane-matrix-003/source/embedded_contact.py": {
+    "bytes": 22013,
+    "sha256": "a1c084ff056a9abc2e839bf7a519744539bb88ac102e597fb7698dd8d71e8279"
+  },
+  "diagnostics/plane-matrix-003/source/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/plane-matrix-003/source/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/plane-matrix-003/source/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/plane-matrix-003/source/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/plane-matrix-003/source/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/plane-matrix-003/source/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/plane-matrix-003/source/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/plane-matrix-003/source/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/plane-matrix-003/source/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/plane-matrix-003/source/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/plane-matrix-003/source/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/plane-matrix-003/source/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/plane-matrix-003/source/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/plane-matrix-003/source/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/plane-matrix-003/source/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/plane-matrix-003/source/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/plane-matrix-003/source/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/plane-matrix-003/source/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/plane-matrix-003/source/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/plane-matrix-003/source/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/plane-matrix-003/source/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/plane-matrix-003/source/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/plane-matrix-003/source/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/plane-matrix-003/source/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/plane-matrix-003/source/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/plane-matrix-003/source/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/plane-matrix-003/source/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/plane-matrix-003/source/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.2-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 13642,
+    "sha256": "a51f979b60a69fbb2a354d3bbd7ff9ca79b9c0457db4d981714cd721aa05d4eb"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.2-slip-0.0001/summary.json": {
+    "bytes": 6179,
+    "sha256": "113544e3183b999b888b87fbe70c6606d84ffd35b12baf8d35842172fd9ec123"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.5-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 12004,
+    "sha256": "e9d6acfbf576125429fa67f644b0f7ceb65255c09db3a407ffe292ed7c92b500"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.5-slip-0.01/retained-samples.png": {
+    "bytes": 102068,
+    "sha256": "62974feb2a2543d1244da9173bdc47e42e0c37be50ae5ef6f570a851c009af52"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.5-slip-0.01/summary.json": {
+    "bytes": 6089,
+    "sha256": "a0b85576123385e6afeb3868ed47d1dfb9acc792778a6d4d6cd6bcca2806781c"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.2-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 13417,
+    "sha256": "96e068fb64e2425dfba94174dc273af10275c7237b88debebbe8f5a2e47adf0c"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.2-slip-0.01/summary.json": {
+    "bytes": 6102,
+    "sha256": "af97da35873f1b02dbfc437c68cfda003f338946eb34250bc54ccfe0317e0e79"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.8-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 13251,
+    "sha256": "acb1a9439d0352994a468f7cc131f13b9aaf505443ab0f4a10ec257efe25660a"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.8-slip-0.01/summary.json": {
+    "bytes": 6089,
+    "sha256": "bfd0a362d9a77c67cfefe927d2608806b55781d6f59ca45fd8d8b0c48b2bc0c9"
+  },
+  "diagnostics/plane-matrix-final/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/plane-matrix-final/source/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/plane-matrix-final/source/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/plane-matrix-final/source/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "diagnostics/plane-matrix-final/source/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/plane-matrix-final/source/explicit_solver.py": {
+    "bytes": 62681,
+    "sha256": "9f76d43dc909be8375f80df3bc52188a6097c2bce1261a66b86f3e1c7733afcc"
+  },
+  "diagnostics/plane-matrix-final/source/area_contact.py": {
+    "bytes": 20540,
+    "sha256": "01d79483d10fd72061089d01deb2def0b2a8c83bf65645120cb27033d7025074"
+  },
+  "diagnostics/plane-matrix-final/source/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/plane-matrix-final/source/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/plane-matrix-final/source/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/plane-matrix-final/source/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/plane-matrix-final/source/verify_embedded_remesh.py": {
+    "bytes": 10688,
+    "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+  },
+  "diagnostics/plane-matrix-final/source/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/plane-matrix-final/source/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/plane-matrix-final/source/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/plane-matrix-final/source/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/plane-matrix-final/source/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/plane-matrix-final/source/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/plane-matrix-final/source/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/plane-matrix-final/source/embedded_contact.py": {
+    "bytes": 22013,
+    "sha256": "a1c084ff056a9abc2e839bf7a519744539bb88ac102e597fb7698dd8d71e8279"
+  },
+  "diagnostics/plane-matrix-final/source/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/plane-matrix-final/source/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/plane-matrix-final/source/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/plane-matrix-final/source/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/plane-matrix-final/source/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/plane-matrix-final/source/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/plane-matrix-final/source/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/plane-matrix-final/source/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/plane-matrix-final/source/complete_embedded_remesh_matrix.py": {
+    "bytes": 4553,
+    "sha256": "dc48485b18aea37b993e6823bba77f0cc48f44b133456f65190b65c5a9314d94"
+  },
+  "diagnostics/plane-matrix-final/source/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/plane-matrix-final/source/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/plane-matrix-final/source/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/plane-matrix-final/source/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/plane-matrix-final/source/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/plane-matrix-final/source/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/plane-matrix-final/source/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/plane-matrix-final/source/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/plane-matrix-final/source/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/plane-matrix-final/source/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/plane-matrix-final/source/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/plane-matrix-final/source/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/plane-matrix-final/source/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/plane-matrix-final/source/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/plane-matrix-final/source/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/plane-matrix-final/source/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/plane-matrix-final/source/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/plane-matrix-final/source/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/plane-matrix-final/source/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/plane-matrix-final/source/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.5-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 12036,
+    "sha256": "e49c042c98fccd40621677785f104ad369df2ae82f8e00f53a547d96c5aa037e"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.5-slip-0.0001/summary.json": {
+    "bytes": 6173,
+    "sha256": "3930632532e39fa10ad90c1088ffc61797df18168315f743ed4f93557524ca81"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.8-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 13257,
+    "sha256": "dcb8955849c44bfd4c1749e9a087e62edc5b1935be9f3dc63efce7b7d56ddd03"
+  },
+  "diagnostics/plane-matrix-final/fraction-0.8-slip-0.0001/summary.json": {
+    "bytes": 6177,
+    "sha256": "44b265ccd20999cdeff2b98e25b38ae3065aa32ef56ad02e73091e65bda59df6"
+  },
+  "diagnostics/solver-transaction/disabled/contact-audit.json": {
+    "bytes": 2039031,
+    "sha256": "86b94ad7362d0427fe8789837ad2b81e4073054cc0d9a43e66d55e40a66e8df4"
+  },
+  "diagnostics/solver-transaction/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "2b038a99857f27296d1ca586c5a4650775d44f394a265739913ca7e4b5a0e850"
+  },
+  "diagnostics/solver-transaction/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "543e8d79f09d2d4903a2e2fb42c089ca0256ffe3c912a571d0ed5b56a22dc620"
+  },
+  "diagnostics/solver-transaction/disabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "d48b7de53e29e80b48eb8f189f0d5de1eb4f169516158e3b50d95338cb574301"
+  },
+  "diagnostics/solver-transaction/disabled/last-state.npz": {
+    "bytes": 2522,
+    "sha256": "d527aa86e0b8e458684f6d193f69c9aa7d9f1cafcf4c92fe11e1cd98d51fd691"
+  },
+  "diagnostics/solver-transaction/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction/disabled/config.json": {
+    "bytes": 85399,
+    "sha256": "9802a6279a239f5dcded3597a7cf983020bc1bae2d6e660d640a9030354a0d9e"
+  },
+  "diagnostics/solver-transaction/disabled/last-mesh.vtu": {
+    "bytes": 2127,
+    "sha256": "322cc4c80408affc71768c46b967922d98ede245f184da17cf872da9116a2359"
+  },
+  "diagnostics/solver-transaction/disabled/summary.json": {
+    "bytes": 4264,
+    "sha256": "dd0d33da28a1e87944dbb8f4d4ab81ccb4b0081bd05a7539adfafa4c7bb82a25"
+  },
+  "diagnostics/solver-transaction/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction/baseline/contact-audit.json": {
+    "bytes": 2039031,
+    "sha256": "86b94ad7362d0427fe8789837ad2b81e4073054cc0d9a43e66d55e40a66e8df4"
+  },
+  "diagnostics/solver-transaction/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "f892984c6a976e9827d63d1c5115f64f9c90ce7c875a9cf609e76d6c8c079f00"
+  },
+  "diagnostics/solver-transaction/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "543e8d79f09d2d4903a2e2fb42c089ca0256ffe3c912a571d0ed5b56a22dc620"
+  },
+  "diagnostics/solver-transaction/baseline/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "d48b7de53e29e80b48eb8f189f0d5de1eb4f169516158e3b50d95338cb574301"
+  },
+  "diagnostics/solver-transaction/baseline/last-state.npz": {
+    "bytes": 2522,
+    "sha256": "d527aa86e0b8e458684f6d193f69c9aa7d9f1cafcf4c92fe11e1cd98d51fd691"
+  },
+  "diagnostics/solver-transaction/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction/baseline/config.json": {
+    "bytes": 85390,
+    "sha256": "56e59445026df752da1d69b601d47cfd5cde74b853d3ef7f36ceaafc86845eae"
+  },
+  "diagnostics/solver-transaction/baseline/last-mesh.vtu": {
+    "bytes": 2127,
+    "sha256": "322cc4c80408affc71768c46b967922d98ede245f184da17cf872da9116a2359"
+  },
+  "diagnostics/solver-transaction/baseline/summary.json": {
+    "bytes": 4045,
+    "sha256": "5acc77a6d688418f368240340c81eaba3d4cfeb389b655cb4046b9a404c16424"
+  },
+  "diagnostics/solver-transaction/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction/enabled/contact-audit.json": {
+    "bytes": 2039031,
+    "sha256": "86b94ad7362d0427fe8789837ad2b81e4073054cc0d9a43e66d55e40a66e8df4"
+  },
+  "diagnostics/solver-transaction/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "996f3997eeca08f61640331d902d6c9833f6dd8c4a8a516a554f5c21ac8c02e6"
+  },
+  "diagnostics/solver-transaction/enabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "543e8d79f09d2d4903a2e2fb42c089ca0256ffe3c912a571d0ed5b56a22dc620"
+  },
+  "diagnostics/solver-transaction/enabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "d48b7de53e29e80b48eb8f189f0d5de1eb4f169516158e3b50d95338cb574301"
+  },
+  "diagnostics/solver-transaction/enabled/last-state.npz": {
+    "bytes": 2522,
+    "sha256": "d527aa86e0b8e458684f6d193f69c9aa7d9f1cafcf4c92fe11e1cd98d51fd691"
+  },
+  "diagnostics/solver-transaction/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction/enabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction/enabled/config.json": {
+    "bytes": 85398,
+    "sha256": "8e80c6fe815d2caa8094e1760fb23e4af4c00b5cbbb1cf5f54c85b8480e7c8fe"
+  },
+  "diagnostics/solver-transaction/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/solver-transaction/enabled/last-mesh.vtu": {
+    "bytes": 2127,
+    "sha256": "322cc4c80408affc71768c46b967922d98ede245f184da17cf872da9116a2359"
+  },
+  "diagnostics/solver-transaction/enabled/summary.json": {
+    "bytes": 5471,
+    "sha256": "2ef4da175ccf9ae14eb5fd57e87a24281840245b7401200fa556215ce177f301"
+  },
+  "diagnostics/solver-transaction/enabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 151789,
+    "sha256": "6564a64c361b9e9a872f5913d659136787f416fa239019797bbeb20d7d61dd77"
+  },
+  "diagnostics/solver-transaction/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "da6b5a5855ad8d9f761c6a58229ce0398bbc45547988ce17b01cd7f294cf944a"
+  },
+  "diagnostics/solver-transaction/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063774,
+    "sha256": "4b669fda5244972ae500fb8ff54105b9f97719dab374e1303155cb1eb20f51ad"
+  },
+  "diagnostics/solver-transaction/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 151789,
+    "sha256": "6564a64c361b9e9a872f5913d659136787f416fa239019797bbeb20d7d61dd77"
+  },
+  "diagnostics/solver-transaction/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "8adf620be78c769bfcd113e1b6583ae25043fe00e4b736ef08bc4b9972698ff7"
+  },
+  "diagnostics/solver-transaction/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063582,
+    "sha256": "ffdcd3fe723c5feaa3c083bb97189b8ceb9eff5d6f6ec3798f73997fbb789832"
+  },
+  "diagnostics/solver-transaction/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 151789,
+    "sha256": "6564a64c361b9e9a872f5913d659136787f416fa239019797bbeb20d7d61dd77"
+  },
+  "diagnostics/solver-transaction/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "2180eecabba32ae2a8dd079fc2743c2b2ef46f494465303240a53af6cd793f4c"
+  },
+  "diagnostics/solver-transaction/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1064735,
+    "sha256": "2fd2588843b4ad7c523b055268293e79d017d75ad5037317e2c94c752eefe3cf"
+  },
+  "diagnostics/plane-matrix-004/fraction-0.2-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 13642,
+    "sha256": "a51f979b60a69fbb2a354d3bbd7ff9ca79b9c0457db4d981714cd721aa05d4eb"
+  },
+  "diagnostics/plane-matrix-004/fraction-0.2-slip-0.0001/summary.json": {
+    "bytes": 6179,
+    "sha256": "113544e3183b999b888b87fbe70c6606d84ffd35b12baf8d35842172fd9ec123"
+  },
+  "diagnostics/plane-matrix-004/fraction-0.2-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 13417,
+    "sha256": "96e068fb64e2425dfba94174dc273af10275c7237b88debebbe8f5a2e47adf0c"
+  },
+  "diagnostics/plane-matrix-004/fraction-0.2-slip-0.01/summary.json": {
+    "bytes": 6102,
+    "sha256": "af97da35873f1b02dbfc437c68cfda003f338946eb34250bc54ccfe0317e0e79"
+  },
+  "diagnostics/plane-matrix-004/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/plane-matrix-004/source/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/plane-matrix-004/source/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/plane-matrix-004/source/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "diagnostics/plane-matrix-004/source/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/plane-matrix-004/source/explicit_solver.py": {
+    "bytes": 62681,
+    "sha256": "9f76d43dc909be8375f80df3bc52188a6097c2bce1261a66b86f3e1c7733afcc"
+  },
+  "diagnostics/plane-matrix-004/source/area_contact.py": {
+    "bytes": 20540,
+    "sha256": "01d79483d10fd72061089d01deb2def0b2a8c83bf65645120cb27033d7025074"
+  },
+  "diagnostics/plane-matrix-004/source/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/plane-matrix-004/source/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/plane-matrix-004/source/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/plane-matrix-004/source/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/plane-matrix-004/source/verify_embedded_remesh.py": {
+    "bytes": 10688,
+    "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+  },
+  "diagnostics/plane-matrix-004/source/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/plane-matrix-004/source/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/plane-matrix-004/source/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/plane-matrix-004/source/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/plane-matrix-004/source/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/plane-matrix-004/source/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/plane-matrix-004/source/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/plane-matrix-004/source/embedded_contact.py": {
+    "bytes": 22013,
+    "sha256": "a1c084ff056a9abc2e839bf7a519744539bb88ac102e597fb7698dd8d71e8279"
+  },
+  "diagnostics/plane-matrix-004/source/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/plane-matrix-004/source/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/plane-matrix-004/source/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/plane-matrix-004/source/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/plane-matrix-004/source/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/plane-matrix-004/source/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/plane-matrix-004/source/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/plane-matrix-004/source/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/plane-matrix-004/source/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/plane-matrix-004/source/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/plane-matrix-004/source/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/plane-matrix-004/source/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/plane-matrix-004/source/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/plane-matrix-004/source/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/plane-matrix-004/source/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/plane-matrix-004/source/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/plane-matrix-004/source/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/plane-matrix-004/source/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/plane-matrix-004/source/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/plane-matrix-004/source/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/plane-matrix-004/source/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/plane-matrix-004/source/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/plane-matrix-004/source/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/plane-matrix-004/source/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/plane-matrix-004/source/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/plane-matrix-004/source/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/plane-matrix-004/source/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/plane-matrix-004/source/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "diagnostics/plane-matrix-004/fraction-0.5-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 12036,
+    "sha256": "e49c042c98fccd40621677785f104ad369df2ae82f8e00f53a547d96c5aa037e"
+  },
+  "diagnostics/plane-matrix-004/fraction-0.5-slip-0.0001/summary.json": {
+    "bytes": 6173,
+    "sha256": "3930632532e39fa10ad90c1088ffc61797df18168315f743ed4f93557524ca81"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.2-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 13598,
+    "sha256": "d069db777fe4d3fbb74ce87a20cd8c269eba1d72f8c73506c49aff901cb77e25"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.2-slip-0.0001/summary.json": {
+    "bytes": 6051,
+    "sha256": "3283fe991d8f8311ca6803fc6252eaad391a5c36af056e39560353450898ce8e"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.5-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 12004,
+    "sha256": "e9d6acfbf576125429fa67f644b0f7ceb65255c09db3a407ffe292ed7c92b500"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.5-slip-0.01/retained-samples.png": {
+    "bytes": 102068,
+    "sha256": "62974feb2a2543d1244da9173bdc47e42e0c37be50ae5ef6f570a851c009af52"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.5-slip-0.01/summary.json": {
+    "bytes": 5899,
+    "sha256": "ac7f2d0de44aa78705e992ae5cc725b0b8d205674b7acefbc41d5681d78217b5"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.2-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 13417,
+    "sha256": "96e068fb64e2425dfba94174dc273af10275c7237b88debebbe8f5a2e47adf0c"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.2-slip-0.01/summary.json": {
+    "bytes": 5909,
+    "sha256": "1bf5b881cf4c79bcd825afe45d7e4d7f76c45a01e9fe761ac137aee151393638"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.8-slip-0.01/mesh-and-samples.npz": {
+    "bytes": 13251,
+    "sha256": "acb1a9439d0352994a468f7cc131f13b9aaf505443ab0f4a10ec257efe25660a"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.8-slip-0.01/summary.json": {
+    "bytes": 5902,
+    "sha256": "adcdc22d1b2447fb2d8e92ec6dfbaeba1725d36e1b527bcdcd98ddc95fb6d1f0"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/explicit_solver.py": {
+    "bytes": 62681,
+    "sha256": "9f76d43dc909be8375f80df3bc52188a6097c2bce1261a66b86f3e1c7733afcc"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/area_contact.py": {
+    "bytes": 20830,
+    "sha256": "be8273ee4b9293ec585c8c9bce8085c85383998993e120bee315e0d2ea28d7a3"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/verify_embedded_remesh.py": {
+    "bytes": 10688,
+    "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/embedded_contact.py": {
+    "bytes": 22013,
+    "sha256": "a1c084ff056a9abc2e839bf7a519744539bb88ac102e597fb7698dd8d71e8279"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/complete_embedded_remesh_matrix.py": {
+    "bytes": 4553,
+    "sha256": "dc48485b18aea37b993e6823bba77f0cc48f44b133456f65190b65c5a9314d94"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/plane-matrix-stick-corrected/source/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.5-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 11990,
+    "sha256": "06da5e686a50201f9348349d2a57c4fc5de79ea95ee103a346440d99c2e5efd7"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.5-slip-0.0001/summary.json": {
+    "bytes": 6044,
+    "sha256": "ee9264b7481400f538a320995c929d18539930c4cc2c63635cbc37fc7e3c5b93"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.8-slip-0.0001/mesh-and-samples.npz": {
+    "bytes": 13212,
+    "sha256": "e4f607d9f2d52dcdb32b4025848219b5f3d7f046258f64582b40b425def4a71c"
+  },
+  "diagnostics/plane-matrix-stick-corrected/fraction-0.8-slip-0.0001/summary.json": {
+    "bytes": 6054,
+    "sha256": "4f64da735bbf9062d65c4c0ad96d4f4a35e7a343a6eb0547f1432f2be65656ee"
+  },
+  "diagnostics/solver-transaction-002/disabled/contact-audit.json": {
+    "bytes": 2039031,
+    "sha256": "86b94ad7362d0427fe8789837ad2b81e4073054cc0d9a43e66d55e40a66e8df4"
+  },
+  "diagnostics/solver-transaction-002/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "dc9fc40a49e0d670522fc90d2e32880ca947f9fd9c799bb98bf2baa786739fd7"
+  },
+  "diagnostics/solver-transaction-002/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "543e8d79f09d2d4903a2e2fb42c089ca0256ffe3c912a571d0ed5b56a22dc620"
+  },
+  "diagnostics/solver-transaction-002/disabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "d48b7de53e29e80b48eb8f189f0d5de1eb4f169516158e3b50d95338cb574301"
+  },
+  "diagnostics/solver-transaction-002/disabled/last-state.npz": {
+    "bytes": 2522,
+    "sha256": "d527aa86e0b8e458684f6d193f69c9aa7d9f1cafcf4c92fe11e1cd98d51fd691"
+  },
+  "diagnostics/solver-transaction-002/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-002/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction-002/disabled/config.json": {
+    "bytes": 85399,
+    "sha256": "f5a1309339acf13c518e9326fd3b9f285bfbeea89470642852258ace0fb86f20"
+  },
+  "diagnostics/solver-transaction-002/disabled/last-mesh.vtu": {
+    "bytes": 2127,
+    "sha256": "322cc4c80408affc71768c46b967922d98ede245f184da17cf872da9116a2359"
+  },
+  "diagnostics/solver-transaction-002/disabled/summary.json": {
+    "bytes": 4250,
+    "sha256": "7923c0ace6ca4dfe1869f2c32b703c0483ca4e86862a02f4a2ad33fe2c277de3"
+  },
+  "diagnostics/solver-transaction-002/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction-002/baseline/contact-audit.json": {
+    "bytes": 2039031,
+    "sha256": "86b94ad7362d0427fe8789837ad2b81e4073054cc0d9a43e66d55e40a66e8df4"
+  },
+  "diagnostics/solver-transaction-002/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "2bf6b701b3c0b0de34640640528dea6361d050c02b16a44469369c265cc8569a"
+  },
+  "diagnostics/solver-transaction-002/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "543e8d79f09d2d4903a2e2fb42c089ca0256ffe3c912a571d0ed5b56a22dc620"
+  },
+  "diagnostics/solver-transaction-002/baseline/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "d48b7de53e29e80b48eb8f189f0d5de1eb4f169516158e3b50d95338cb574301"
+  },
+  "diagnostics/solver-transaction-002/baseline/last-state.npz": {
+    "bytes": 2522,
+    "sha256": "d527aa86e0b8e458684f6d193f69c9aa7d9f1cafcf4c92fe11e1cd98d51fd691"
+  },
+  "diagnostics/solver-transaction-002/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-002/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction-002/baseline/config.json": {
+    "bytes": 85390,
+    "sha256": "56e59445026df752da1d69b601d47cfd5cde74b853d3ef7f36ceaafc86845eae"
+  },
+  "diagnostics/solver-transaction-002/baseline/last-mesh.vtu": {
+    "bytes": 2127,
+    "sha256": "322cc4c80408affc71768c46b967922d98ede245f184da17cf872da9116a2359"
+  },
+  "diagnostics/solver-transaction-002/baseline/summary.json": {
+    "bytes": 4049,
+    "sha256": "61479d34d6c0318af3a1405b79eea4a387741776c4f51563af008f05d588fd95"
+  },
+  "diagnostics/solver-transaction-002/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/contact-audit.json": {
+    "bytes": 1966170,
+    "sha256": "c49a24ef290b0009e48c331658fa1763e442e167013dc4d3130354a31c3e01ea"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 363,
+    "sha256": "1bb2d7bf79c88484ef8731d5151d4634cd37f06fe82e3e5f8df1a6e25402bc34"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/history.csv": {
+    "bytes": 1614,
+    "sha256": "b56931aac06a65344e02d121fb26b3a8a74c2a473419a3f69d78e8b907a23b23"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/progress.jsonl": {
+    "bytes": 291,
+    "sha256": "f28fb8c8ac9140baf37e068c0f14fcd78ab53546bd3b8ba7f85812dd06751757"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/last-state.npz": {
+    "bytes": 2508,
+    "sha256": "3b5273c5389d57bd63875c5d227b391d58c3363b11d49cf489f17fac602ea3ad"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/config.json": {
+    "bytes": 85518,
+    "sha256": "837fbe788b663eaaacca8b6176e2b3cf5041dc2947aad4bd08006c583d0f10ee"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2195,
+    "sha256": "fa314348873ece473ff468772a25b78b5bdb4c7edf694897fbffe9fdc8ce8827"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/surface-resolution-attempts.json": {
+    "bytes": 273,
+    "sha256": "29c883f038594ceb41021f3b6ee9da8af73289af85cc81398578cae5a48f83bd"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/summary.json": {
+    "bytes": 5718,
+    "sha256": "06caf3d5fae4288210c3d514cc26659caa169970a81df9fd0b511e406960a79d"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/solver-transaction-002/enabled/contact-audit.json": {
+    "bytes": 1966170,
+    "sha256": "c49a24ef290b0009e48c331658fa1763e442e167013dc4d3130354a31c3e01ea"
+  },
+  "diagnostics/solver-transaction-002/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 363,
+    "sha256": "8abbde8fd0f09a879e605415f0a8d581ce0a46d670f9a03f367069f0fa44778f"
+  },
+  "diagnostics/solver-transaction-002/enabled/history.csv": {
+    "bytes": 1614,
+    "sha256": "b56931aac06a65344e02d121fb26b3a8a74c2a473419a3f69d78e8b907a23b23"
+  },
+  "diagnostics/solver-transaction-002/enabled/progress.jsonl": {
+    "bytes": 677,
+    "sha256": "1e96cf0effff1f37e72458ec0c90dc85ea0f89531e6c7b7b7cac4e157fe6a8ca"
+  },
+  "diagnostics/solver-transaction-002/enabled/last-state.npz": {
+    "bytes": 2508,
+    "sha256": "3b5273c5389d57bd63875c5d227b391d58c3363b11d49cf489f17fac602ea3ad"
+  },
+  "diagnostics/solver-transaction-002/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-002/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/solver-transaction-002/enabled/config.json": {
+    "bytes": 85398,
+    "sha256": "bae8d0575e113b4a0dfddea2b18d71022043a6a435d1d07210743aaec4e9fdd0"
+  },
+  "diagnostics/solver-transaction-002/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2102,
+    "sha256": "24fd7bbead91d2ce2779737eccb6aa0f244b226c118bc912cf0cf4571e525873"
+  },
+  "diagnostics/solver-transaction-002/enabled/last-mesh.vtu": {
+    "bytes": 2195,
+    "sha256": "fa314348873ece473ff468772a25b78b5bdb4c7edf694897fbffe9fdc8ce8827"
+  },
+  "diagnostics/solver-transaction-002/enabled/surface-resolution-attempts.json": {
+    "bytes": 273,
+    "sha256": "29c883f038594ceb41021f3b6ee9da8af73289af85cc81398578cae5a48f83bd"
+  },
+  "diagnostics/solver-transaction-002/enabled/summary.json": {
+    "bytes": 5708,
+    "sha256": "063ab3679f4ec1a9030356b22a8b9f1502d45f7d5049b72c7c15e4d84e3ea36b"
+  },
+  "diagnostics/solver-transaction-002/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/contact-audit.json": {
+    "bytes": 1966170,
+    "sha256": "c49a24ef290b0009e48c331658fa1763e442e167013dc4d3130354a31c3e01ea"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 363,
+    "sha256": "eb8575c2a2a7400df7e84911171fa0c644f3b9012c2432453a1ea65df80a34d0"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/history.csv": {
+    "bytes": 1614,
+    "sha256": "b56931aac06a65344e02d121fb26b3a8a74c2a473419a3f69d78e8b907a23b23"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/progress.jsonl": {
+    "bytes": 309,
+    "sha256": "aa7dee0a054b32e6ed8398ff457d22dd5c9a498540042759004d74a989c647a3"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/last-state.npz": {
+    "bytes": 2508,
+    "sha256": "3b5273c5389d57bd63875c5d227b391d58c3363b11d49cf489f17fac602ea3ad"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/config.json": {
+    "bytes": 85428,
+    "sha256": "8f77a0e815c5bce20be94691885e8f44933cefecdc5ef33bd4a36713da8c1940"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2102,
+    "sha256": "24fd7bbead91d2ce2779737eccb6aa0f244b226c118bc912cf0cf4571e525873"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 2195,
+    "sha256": "fa314348873ece473ff468772a25b78b5bdb4c7edf694897fbffe9fdc8ce8827"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/summary.json": {
+    "bytes": 5500,
+    "sha256": "24f143e4ae95f81e0cba5ca10cb569d878a8080962cba37e83836fc590bd45e1"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/solver-transaction-002/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 151789,
+    "sha256": "6564a64c361b9e9a872f5913d659136787f416fa239019797bbeb20d7d61dd77"
+  },
+  "diagnostics/solver-transaction-002/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "1b87a92b42288c61d69c629d3aa50bd12a27f9ef61f2a571db438ad0a23bcbda"
+  },
+  "diagnostics/solver-transaction-002/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063756,
+    "sha256": "c02592c5622f9b1a8e338496d9fcf02b8cc0bbd647dfc77a34a2cc90f8c662b6"
+  },
+  "diagnostics/solver-transaction-002/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 151789,
+    "sha256": "6564a64c361b9e9a872f5913d659136787f416fa239019797bbeb20d7d61dd77"
+  },
+  "diagnostics/solver-transaction-002/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "3964545e19ee4c272ff4553c6077e2817a27a8d23f7cf360db5fc75d47eafcac"
+  },
+  "diagnostics/solver-transaction-002/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063582,
+    "sha256": "0bcca4bb30ca7335309811f211f825fc41877f6e94123c05b531650258e35f88"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/checkpoint-00000001/arrays.npz": {
+    "bytes": 157734,
+    "sha256": "d4abdbeac1017adfd43efd764f2452bd70e7fd020aaaaf4229cda16070949920"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "69fd5efe9ab7f7f5bc6392b58dac9e9def35be249ad4374909dd256af3deef95"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-resume/checkpoint-00000001/state.json": {
+    "bytes": 782643,
+    "sha256": "21ce4913385c379988818d659e2a4df77e29e95d490c8c163af6cefd4c4dda26"
+  },
+  "diagnostics/solver-transaction-002/enabled/checkpoint-00000001/arrays.npz": {
+    "bytes": 157734,
+    "sha256": "d4abdbeac1017adfd43efd764f2452bd70e7fd020aaaaf4229cda16070949920"
+  },
+  "diagnostics/solver-transaction-002/enabled/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "5a642c6ea862dcb9b4b54c0ed04945b42ba2ec7a114a5139ad3d0323c13b0c84"
+  },
+  "diagnostics/solver-transaction-002/enabled/checkpoint-00000001/state.json": {
+    "bytes": 784626,
+    "sha256": "db89e3369bdb09abddd71fd0f8632d0f448d40cef9c9b8e83a2e86ff35ad7e90"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 150181,
+    "sha256": "fb8e5e125814d319f1378d09f28a8899f4aa7561bfee31ecb04390952bb8dd1e"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "8e9b86dcbad77a4be7c54fa40f540e1dc44790c3af18ff00e5cfc07e6d54d65c"
+  },
+  "diagnostics/solver-transaction-002/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1071953,
+    "sha256": "1843a3955ff59cda92d1d4720936f9c897d9c25bba7b24184d9d7d51213663aa"
+  },
+  "diagnostics/plane-matrix-002/fraction-0.2-slip-0.0001/failure.json": {
+    "bytes": 1090,
+    "sha256": "b77f915e13f14cff3ac7e9b3ff33c74ecc655d4abb118d3fb06b40cf3dc05e88"
+  },
+  "diagnostics/plane-matrix-002/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/plane-matrix-002/source/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/plane-matrix-002/source/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/plane-matrix-002/source/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "diagnostics/plane-matrix-002/source/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/plane-matrix-002/source/explicit_solver.py": {
+    "bytes": 62236,
+    "sha256": "bb0d1236c4e0b748edf70e3579b16b4374c3fd261d26b1adeb3e6ed0f8a314d2"
+  },
+  "diagnostics/plane-matrix-002/source/area_contact.py": {
+    "bytes": 20540,
+    "sha256": "01d79483d10fd72061089d01deb2def0b2a8c83bf65645120cb27033d7025074"
+  },
+  "diagnostics/plane-matrix-002/source/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/plane-matrix-002/source/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/plane-matrix-002/source/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/plane-matrix-002/source/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/plane-matrix-002/source/verify_embedded_remesh.py": {
+    "bytes": 10232,
+    "sha256": "f97ee029282082bd484811371de7f741218fe3fa04afb69a8bddafcd3bdd0654"
+  },
+  "diagnostics/plane-matrix-002/source/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/plane-matrix-002/source/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/plane-matrix-002/source/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/plane-matrix-002/source/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/plane-matrix-002/source/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/plane-matrix-002/source/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/plane-matrix-002/source/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/plane-matrix-002/source/embedded_contact.py": {
+    "bytes": 22013,
+    "sha256": "a1c084ff056a9abc2e839bf7a519744539bb88ac102e597fb7698dd8d71e8279"
+  },
+  "diagnostics/plane-matrix-002/source/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/plane-matrix-002/source/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/plane-matrix-002/source/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/plane-matrix-002/source/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/plane-matrix-002/source/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/plane-matrix-002/source/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/plane-matrix-002/source/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/plane-matrix-002/source/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/plane-matrix-002/source/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/plane-matrix-002/source/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/plane-matrix-002/source/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/plane-matrix-002/source/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/plane-matrix-002/source/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/plane-matrix-002/source/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/plane-matrix-002/source/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/plane-matrix-002/source/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/plane-matrix-002/source/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/plane-matrix-002/source/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/plane-matrix-002/source/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/plane-matrix-002/source/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/plane-matrix-002/source/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/plane-matrix-002/source/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/plane-matrix-002/source/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/plane-matrix-002/source/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/plane-matrix-002/source/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/plane-matrix-002/source/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/plane-matrix-002/source/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/plane-matrix-002/source/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "4a44226c724dbf03343032c2d13b2026692599970a14239a4ea16cd0c0d752f6"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/config.json": {
+    "bytes": 85399,
+    "sha256": "f5a1309339acf13c518e9326fd3b9f285bfbeea89470642852258ace0fb86f20"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/summary.json": {
+    "bytes": 4261,
+    "sha256": "1ff0de55b9f52e8850b82ee0441416dd20828e894b4c96e1781a646e87c81f2c"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "41e217cda68449a23e285934771dec19a6a9ef989de7f27124ad3fd8c99d7758"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/config.json": {
+    "bytes": 85390,
+    "sha256": "56e59445026df752da1d69b601d47cfd5cde74b853d3ef7f36ceaafc86845eae"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/summary.json": {
+    "bytes": 4060,
+    "sha256": "f9bf21398729141e9a9dbd59f39386af274925f22f7e30a341bc0f9d19d9f1bd"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/contact-audit.json": {
+    "bytes": 1978231,
+    "sha256": "88a5a8c7a5b64a7ea034b134e5fd1d85a1747bbf6d63fb5c7be79239f954690c"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 363,
+    "sha256": "b18d5f9e39e4018fb0a844dc41462632b62fc522da6d2bf70407e0281044c12f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/history.csv": {
+    "bytes": 1614,
+    "sha256": "acdf624ca586f97c7cf7d4638373456110b61008a0f8ca245d2b07a80cb39985"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/progress.jsonl": {
+    "bytes": 291,
+    "sha256": "f28fb8c8ac9140baf37e068c0f14fcd78ab53546bd3b8ba7f85812dd06751757"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/last-state.npz": {
+    "bytes": 2508,
+    "sha256": "3b5273c5389d57bd63875c5d227b391d58c3363b11d49cf489f17fac602ea3ad"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/config.json": {
+    "bytes": 85530,
+    "sha256": "3b6550e22e2949a98e5664944bcd9f04d9736c5ed47a8bbeb40079b2d6774773"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2195,
+    "sha256": "fa314348873ece473ff468772a25b78b5bdb4c7edf694897fbffe9fdc8ce8827"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/surface-resolution-attempts.json": {
+    "bytes": 273,
+    "sha256": "29c883f038594ceb41021f3b6ee9da8af73289af85cc81398578cae5a48f83bd"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/summary.json": {
+    "bytes": 5730,
+    "sha256": "6003a0789f0526795972d2eb114d4e457a0d02a8927959325fa59cac4b9d48b6"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/contact-audit.json": {
+    "bytes": 1978231,
+    "sha256": "88a5a8c7a5b64a7ea034b134e5fd1d85a1747bbf6d63fb5c7be79239f954690c"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 363,
+    "sha256": "c71193cefc11d80219182c87dd5674839b95c4c7be6caf050fc9b37fcd2c9ab7"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/history.csv": {
+    "bytes": 1614,
+    "sha256": "acdf624ca586f97c7cf7d4638373456110b61008a0f8ca245d2b07a80cb39985"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/progress.jsonl": {
+    "bytes": 677,
+    "sha256": "1e96cf0effff1f37e72458ec0c90dc85ea0f89531e6c7b7b7cac4e157fe6a8ca"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/last-state.npz": {
+    "bytes": 2508,
+    "sha256": "3b5273c5389d57bd63875c5d227b391d58c3363b11d49cf489f17fac602ea3ad"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/config.json": {
+    "bytes": 85398,
+    "sha256": "bae8d0575e113b4a0dfddea2b18d71022043a6a435d1d07210743aaec4e9fdd0"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2102,
+    "sha256": "24fd7bbead91d2ce2779737eccb6aa0f244b226c118bc912cf0cf4571e525873"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/last-mesh.vtu": {
+    "bytes": 2195,
+    "sha256": "fa314348873ece473ff468772a25b78b5bdb4c7edf694897fbffe9fdc8ce8827"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/surface-resolution-attempts.json": {
+    "bytes": 273,
+    "sha256": "29c883f038594ceb41021f3b6ee9da8af73289af85cc81398578cae5a48f83bd"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/summary.json": {
+    "bytes": 5720,
+    "sha256": "a083d76aee7e295035e20f1d3c2f0ef6d4f6e263286df255d778d6431d2fb9ab"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/contact-audit.json": {
+    "bytes": 1978231,
+    "sha256": "88a5a8c7a5b64a7ea034b134e5fd1d85a1747bbf6d63fb5c7be79239f954690c"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 363,
+    "sha256": "09683e6a527ecca55c74cd3d38bcce3e78daca57cac2c91ee034695960aa31fc"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/history.csv": {
+    "bytes": 1614,
+    "sha256": "acdf624ca586f97c7cf7d4638373456110b61008a0f8ca245d2b07a80cb39985"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/progress.jsonl": {
+    "bytes": 309,
+    "sha256": "aa7dee0a054b32e6ed8398ff457d22dd5c9a498540042759004d74a989c647a3"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/last-state.npz": {
+    "bytes": 2508,
+    "sha256": "3b5273c5389d57bd63875c5d227b391d58c3363b11d49cf489f17fac602ea3ad"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/config.json": {
+    "bytes": 85428,
+    "sha256": "8f77a0e815c5bce20be94691885e8f44933cefecdc5ef33bd4a36713da8c1940"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2102,
+    "sha256": "24fd7bbead91d2ce2779737eccb6aa0f244b226c118bc912cf0cf4571e525873"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 2195,
+    "sha256": "fa314348873ece473ff468772a25b78b5bdb4c7edf694897fbffe9fdc8ce8827"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/summary.json": {
+    "bytes": 5524,
+    "sha256": "616544a96c25adaddd6575026dd41e8e4f0cbfeee7730085ad75ed7ecbbccafa"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "07acb9617b6602f25b53b517282190efe42f2d2cd86f7cb3236232a6228aee6d"
+  },
+  "diagnostics/solver-transaction-stick-corrected/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063591,
+    "sha256": "9903dca74b60ec836940f5f0f850878e4979f0e14300eefe20e3112ea3d57cb9"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "50963e0a3e76f0597b8085f7248fc354e7f7784d41b3b4107686ea117d2f3799"
+  },
+  "diagnostics/solver-transaction-stick-corrected/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063417,
+    "sha256": "9728d72b93d44e79dd195f782bc264cca12574747c478a22c775058fcbedaef3"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/checkpoint-00000001/arrays.npz": {
+    "bytes": 157755,
+    "sha256": "a3c66965a2a68316041199c77afb15e5b8716067dcfb4a6530959a3a31421078"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "cf89fa06bc16d9a9a554e08a955c52350bfdadd8c1f193b3dcac368f75275363"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-resume/checkpoint-00000001/state.json": {
+    "bytes": 782586,
+    "sha256": "cf6def2b74d19f85661a59dc86c918ed5c5ae53457acb844cdafb33e8346dc25"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/checkpoint-00000001/arrays.npz": {
+    "bytes": 157755,
+    "sha256": "a3c66965a2a68316041199c77afb15e5b8716067dcfb4a6530959a3a31421078"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "389b593f04c46aa2ca059c71c81ba84e7494024fb9a37504ad616b869afd6f2c"
+  },
+  "diagnostics/solver-transaction-stick-corrected/enabled/checkpoint-00000001/state.json": {
+    "bytes": 784569,
+    "sha256": "7f85d59cfe1f116d9c619decc4812263463476373c9a81d22f95a4b324d97790"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 150132,
+    "sha256": "ceab09687df69f7cae4f014842bdeb5beb91fb4c9365dd904c4f64d25e08440b"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "da0008f303ab7d3035b7ded2ff812fec061c075cfd8a8f8d2509d823d5143c1b"
+  },
+  "diagnostics/solver-transaction-stick-corrected/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1071915,
+    "sha256": "d2085915fff304d83ae3f90811f86f461762c20fa3168a0a4e03dc429ce8b8fb"
+  },
+  "diagnostics/final-validation-source/tests/test_edge_coverage.py": {
+    "bytes": 3838,
+    "sha256": "91daf2b947fd2a3fb2ef6676fcf6c18b2b447e2ebb48732a69e7180495019389"
+  },
+  "diagnostics/final-validation-source/tests/test_absolute_contact_budget.py": {
+    "bytes": 2925,
+    "sha256": "3ab5939b2c1a88baf2f7bb5716497262d52b10e79e57ef5497252d2752f07bff"
+  },
+  "diagnostics/final-validation-source/tests/test_onset_budget.py": {
+    "bytes": 1050,
+    "sha256": "b19acf8053aedf7134779a2aec32fbcffc9577f9582e6d723a657353f2fb9c7d"
+  },
+  "diagnostics/final-validation-source/tests/test_near_edge.py": {
+    "bytes": 2753,
+    "sha256": "6b11506183d77b9864def6949951fd376b1cf3a0f8c9d1ad8813ebd56d382b4a"
+  },
+  "diagnostics/final-validation-source/tests/test_material_quadrature.py": {
+    "bytes": 9658,
+    "sha256": "1bae245a542fc4f36a8f3e09bf86178d0e83e4fa47b233157592552c62ed1ac1"
+  },
+  "diagnostics/final-validation-source/tests/test_plastic_cycle_reference.py": {
+    "bytes": 2087,
+    "sha256": "08259814791451ed15a23756f2290bf150bb0a7296285adfea049a12c9d6148e"
+  },
+  "diagnostics/final-validation-source/tests/test_continuum.py": {
+    "bytes": 1185,
+    "sha256": "6a49ac5bde894ff5e9f2c95e5ccbe3aedc8f5f031f6265150c74e4df908d4c00"
+  },
+  "diagnostics/final-validation-source/tests/test_explicit_audit.py": {
+    "bytes": 1543,
+    "sha256": "7837e4c5c1cfaeb0eef1837ad92b06034bd48fdc379db6ca52d9f245974a5dc6"
+  },
+  "diagnostics/final-validation-source/tests/test_cycle_operator_restart.py": {
+    "bytes": 1530,
+    "sha256": "b6ef3ecc078b995b0d994d3d0feae628c78009e2bbdfd28a280be2956fd2b755"
+  },
+  "diagnostics/final-validation-source/tests/test_layered_verification.py": {
+    "bytes": 1737,
+    "sha256": "396bd5d2e2b23cb3dbd6c177e8edf621b4c720faa9cefeeb10405f7ce28e1269"
+  },
+  "diagnostics/final-validation-source/tests/test_refinement_diagnostics.py": {
+    "bytes": 2274,
+    "sha256": "3ef31d80717d6d2d93c1685edf1b3fa49bf15a9f7805582a60ed0201105e73eb"
+  },
+  "diagnostics/final-validation-source/tests/test_surface_development.py": {
+    "bytes": 10544,
+    "sha256": "a148c46258053e25fb093b3aa6e8d7a676438f8f387b7b9c33e3d6e8fa466ce0"
+  },
+  "diagnostics/final-validation-source/tests/test_closest_selection.py": {
+    "bytes": 2886,
+    "sha256": "236a8b396fbb899e6a32435c8e0449db6d1f6e4ee8e01e98d2d5292de98689dc"
+  },
+  "diagnostics/final-validation-source/tests/test_packing_rve.py": {
+    "bytes": 7242,
+    "sha256": "b1c33307770433b9601a7d776a0d3315b96d5e5991fe04e576ab425afe565d72"
+  },
+  "diagnostics/final-validation-source/tests/test_surface_patch.py": {
+    "bytes": 5591,
+    "sha256": "d34aefe8e0c4f67c58de050b7b531d1e48a07584c584eb6894be6fc193342ecd"
+  },
+  "diagnostics/final-validation-source/tests/test_porosity_cycle.py": {
+    "bytes": 3684,
+    "sha256": "a6626835452fd6b31b7d787848e16f14c51060c8b0c67d48959a24fa4efc4c24"
+  },
+  "diagnostics/final-validation-source/tests/test_structured_extension.py": {
+    "bytes": 6068,
+    "sha256": "a7dbff4d383e1a890e26e4da94bf5a2e8d0286d2dc7d1ae81fcfd5d76c6d1270"
+  },
+  "diagnostics/final-validation-source/tests/test_cauchy_unloading.py": {
+    "bytes": 1514,
+    "sha256": "fd836b573bb92015738c54285e7ae31aaa9b9a7a12daee1e3e760d02fb70d892"
+  },
+  "diagnostics/final-validation-source/tests/test_aabb_search.py": {
+    "bytes": 3778,
+    "sha256": "194fc802d180d2f225d4d02927be019535da81a1a66a79707b737d762c66ab24"
+  },
+  "diagnostics/final-validation-source/tests/test_friction.py": {
+    "bytes": 2371,
+    "sha256": "1df516ac4877ad0db4e128d239d178e9787f0c3fbaec699566fe77c481b97c45"
+  },
+  "diagnostics/final-validation-source/tests/test_unload_reference.py": {
+    "bytes": 1722,
+    "sha256": "aa2baf653a4e832ace4aa72165453431bd9da8824c72d0936de1f33d58e31e0b"
+  },
+  "diagnostics/final-validation-source/tests/test_checkpoint_solver.py": {
+    "bytes": 9651,
+    "sha256": "dabe6322df7fc46bcc4076f2b9a3ab277a41a536de83bd41ef3886def547c34b"
+  },
+  "diagnostics/final-validation-source/tests/test_atlas_history.py": {
+    "bytes": 3211,
+    "sha256": "19117b6a08f66d8a6364dd7951497923cc2de658f4c383d8436062add529c905"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_integration.py": {
+    "bytes": 7021,
+    "sha256": "c0506c15b3f9718e7d514c26067f6e69ef54c611d07867a85791c01ad489bf5f"
+  },
+  "diagnostics/final-validation-source/tests/test_atlas_controls.py": {
+    "bytes": 1364,
+    "sha256": "209ebbc5795d096eb47d2df21d19c191c43ac2853b6f723accc9a401e3ab6010"
+  },
+  "diagnostics/final-validation-source/tests/test_geometry.py": {
+    "bytes": 2594,
+    "sha256": "5371bdf2817a476ac43c1f4ddf9464129f8a51f652ec35b23d41afba4c3ae641"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_probe.py": {
+    "bytes": 5189,
+    "sha256": "179af7a929274753bce7350a9265a9183fa6547f2c445dbadd9a15d462679033"
+  },
+  "diagnostics/final-validation-source/tests/test_incompatible.py": {
+    "bytes": 4694,
+    "sha256": "1348e8c552ce65b5c5802a3e94481a0394f3f17e3ee96f1db2f23d97b32b4da0"
+  },
+  "diagnostics/final-validation-source/tests/test_porosity_target.py": {
+    "bytes": 1263,
+    "sha256": "d480d9f0ebf67ec7c9c9a686145b4e7b1f5c58b55c8aa31398135025e5e10f7e"
+  },
+  "diagnostics/final-validation-source/tests/test_embedded_surface_remesh.py": {
+    "bytes": 3090,
+    "sha256": "8658993e04af9a87a602195fadc6db63612d63e1ae3cee01fc790ff9370b141a"
+  },
+  "diagnostics/final-validation-source/tests/test_neck_validation.py": {
+    "bytes": 2226,
+    "sha256": "5e3d9892da49e98b4843782b4f9233d1f00b526778b1325e555de92eb4cfff19"
+  },
+  "diagnostics/final-validation-source/tests/test_plane_contact_verification.py": {
+    "bytes": 1525,
+    "sha256": "3eeaf007d9c87b8afe0b548f84730e91cbc1829c9c8a162bb8158d19936e2793"
+  },
+  "diagnostics/final-validation-source/tests/test_explicit_backend.py": {
+    "bytes": 12301,
+    "sha256": "2d30c27decc935f67556983ad7697cb1c8e577264622b62f6ff255a86bd78dd0"
+  },
+  "diagnostics/final-validation-source/tests/test_plastic.py": {
+    "bytes": 3336,
+    "sha256": "abc16abb9a26919166ee9fb54a8d750ba451be01da6a0ccebd56224924e21f4b"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_mesh_preflight.py": {
+    "bytes": 1409,
+    "sha256": "46f68965af73192e559f1bc7d01fe6ea8a5318d627433b108c0fd2cd6fd8f21d"
+  },
+  "diagnostics/final-validation-source/tests/test_triangle_quadrature.py": {
+    "bytes": 4730,
+    "sha256": "c916d7e0e6c3dbe2eca5a4435a53469699de5151dc83e47969c0b4e26fc260a6"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_cfl_audit.py": {
+    "bytes": 1629,
+    "sha256": "79a10624834107fd01e801aa0dbb5fe6ca2230f95f7848be78da4aefe8c220fc"
+  },
+  "diagnostics/final-validation-source/tests/test_model.py": {
+    "bytes": 3055,
+    "sha256": "a2a63cac7b60121b2508e3262b1014765975cb8ec38588da3e1e497d1d3eb069"
+  },
+  "diagnostics/final-validation-source/tests/test_calculix.py": {
+    "bytes": 1556,
+    "sha256": "46504234afa1276198ebaece119173fd0d6760d056ea3f53bad4c46bc80bd6e2"
+  },
+  "diagnostics/final-validation-source/tests/test_barrier_contact.py": {
+    "bytes": 19773,
+    "sha256": "3d3b0195f901e69ead9df864e57f36fae231320c4f29a42bd8f1591709596ff2"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_audit.py": {
+    "bytes": 3378,
+    "sha256": "e944e92ad1b8036294d7ea1ffe3404bcf77d107b2178fe18072378536b97d9a0"
+  },
+  "diagnostics/final-validation-source/tests/test_point_stationarity.py": {
+    "bytes": 5146,
+    "sha256": "f2c403de361ba4c1c1e58987080bf48a3ca5c7dee3c7e77d117bbc25b6bf91d7"
+  },
+  "diagnostics/final-validation-source/tests/test_coulomb_stick_history.py": {
+    "bytes": 1763,
+    "sha256": "f832c888cee21b4dad89f46c46880dd95775dc717ed9b69868acb53acac28e36"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_atlas.py": {
+    "bytes": 4232,
+    "sha256": "11e0634ac4362340a3782a9c5ed1705756b7e8b7d56b8f28467010c749f81a1f"
+  },
+  "diagnostics/final-validation-source/tests/test_area_contact.py": {
+    "bytes": 8476,
+    "sha256": "a98875a0ac71e3c37c52aa92ddc33f309ad6caf2801e29c04b0cdd99d4847dd7"
+  },
+  "diagnostics/final-validation-source/tests/test_surface_partition.py": {
+    "bytes": 2116,
+    "sha256": "ee424f383775358b03eeee52d4232743a371085db923cdb1d9c95cd31d8475ae"
+  },
+  "diagnostics/final-validation-source/tests/test_macro_loading.py": {
+    "bytes": 3679,
+    "sha256": "11ae8224638f4e7138cae9367f439aa085994528c2fb42944500d69b40bd86be"
+  },
+  "diagnostics/final-validation-source/tests/test_edge_contact.py": {
+    "bytes": 3048,
+    "sha256": "93a72e3ecb2377621b7a5f99df835bce2a45b36d020893dc101e1429b6da464a"
+  },
+  "diagnostics/final-validation-source/tests/test_contact_geometry.py": {
+    "bytes": 4301,
+    "sha256": "2d4c8081d367da75a202869790ebde111f5d30307d611fe6d191d59d25726389"
+  },
+  "diagnostics/final-validation-source/tests/test_native_kernel.py": {
+    "bytes": 4210,
+    "sha256": "e6f1c3b78ea9698cc698529af9b282a6e591372e5ef30ad1549c6200ef503c04"
+  },
+  "diagnostics/final-validation-source/tests/test_porosity_convergence.py": {
+    "bytes": 2652,
+    "sha256": "ab2298d9ba7496e75ac11db03f380928ce2aa6d2ad83fe91b7fa88941ba0bea0"
+  },
+  "diagnostics/final-validation-source/tests/test_material_neighborhood.py": {
+    "bytes": 6830,
+    "sha256": "5aa19077fc2d9cdcb1aca29aa51137b6adaa19571c14e4a12d3fb3172b2caa44"
+  },
+  "diagnostics/final-validation-source/tests/test_weighted_surface_transfer.py": {
+    "bytes": 5543,
+    "sha256": "bb4a9af5ab702ec23b9c0ee08c5d98687c8e8aa7177245b0b6b60ef8136506f0"
+  },
+  "diagnostics/final-validation-source/tests/test_embedded_contact.py": {
+    "bytes": 6613,
+    "sha256": "0a9223f0259b3986cf71871415034681c0014c9eef026ccbe68a23db4611a27e"
+  },
+  "diagnostics/final-validation-source/tests/test_closest_tie.py": {
+    "bytes": 5262,
+    "sha256": "994f19cb63ddff2a2923cec88c01ca093d7d90a7a853d117bf6bf514dda055c9"
+  },
+  "diagnostics/final-validation-source/tests/test_reconnection.py": {
+    "bytes": 3759,
+    "sha256": "a773180e973b76e3e94fc72ced11aabce4880a25f6015ed6ca0ae61c57196927"
+  },
+  "diagnostics/final-validation-source/tests/test_surface_stationarity.py": {
+    "bytes": 5833,
+    "sha256": "fb6bdc3e33448f6d040b436126bb60d9bb3b6e1e501e6ced36d002c14e8d947a"
+  },
+  "diagnostics/final-validation-source/tests/test_sintered.py": {
+    "bytes": 3549,
+    "sha256": "bf0dae2a23862d4b71a6d04ae57a7ace6cebf3d5c2ae6a26d2662efdfe38fd71"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_last_contact_retry.py": {
+    "bytes": 5500,
+    "sha256": "00a946485211582934e375a5c453eb29b8e8a6786fa211c9eee977000cd97f44"
+  },
+  "diagnostics/final-validation-source/tools/bootstrap_calculix.py": {
+    "bytes": 2185,
+    "sha256": "84c0fed8673dc431f7068e5f6fd1aec9a07dec42c182876198976239a7d19552"
+  },
+  "diagnostics/final-validation-source/tools/export_compaction_stages.py": {
+    "bytes": 5526,
+    "sha256": "9cb2d801e2be9e9fab02783bcc8bf6a83e9102777b40b0aa4bd704f18e75ec70"
+  },
+  "diagnostics/final-validation-source/tools/run_barrier_compaction.py": {
+    "bytes": 4360,
+    "sha256": "9a1624c2719b528f83d4311b2a6bd248b74d07aec239b5722998ba3815ae4700"
+  },
+  "diagnostics/final-validation-source/tools/verify_explicit_backend.py": {
+    "bytes": 2297,
+    "sha256": "0ca7005036ed83b529f226277ed882b3436a930ccbbeb6f3157c386344df9cfb"
+  },
+  "diagnostics/final-validation-source/tools/export_pressure_ramp.py": {
+    "bytes": 4945,
+    "sha256": "f4a1d3fe59b8117da9646bcbf23eda7f8180b51a25c1a1cd7cb5d083120f04ec"
+  },
+  "diagnostics/final-validation-source/tools/verify_edge_pair.py": {
+    "bytes": 2747,
+    "sha256": "5395f748b6ed085cbb0d1cdc6e48c9f339c09c9867af812e2a201bfe50114d9a"
+  },
+  "diagnostics/final-validation-source/tools/verify_area_friction_path.py": {
+    "bytes": 2909,
+    "sha256": "a9b0f7ef90756281cafce15caf6951e46587c7c7d501601e4cd631c65fb584ff"
+  },
+  "diagnostics/final-validation-source/tools/audit_contact_capture.py": {
+    "bytes": 7977,
+    "sha256": "e6745c2bd53f30f271c6377a6e7048fe6deb64f7f7cda071e4cba432d86ff4af"
+  },
+  "diagnostics/final-validation-source/tools/verify_explicit_impact.py": {
+    "bytes": 1616,
+    "sha256": "0fd2a653b88fb8c986c6f5be14f9fce95a28ca3c1e152eee78661dc00682c757"
+  },
+  "diagnostics/final-validation-source/tools/verify_tracked_node_impact.py": {
+    "bytes": 3116,
+    "sha256": "f4e7d4763d4c2b730c2c7f7930e58fcf442c5b0d509dcb114cb85399009e05f2"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_new_history.py": {
+    "bytes": 2827,
+    "sha256": "aa3fa409b5ebe7d20b7866057dcee6619f0d388346f4aa0d04392ab72f3de5a8"
+  },
+  "diagnostics/final-validation-source/tools/preflight_barrier_model.py": {
+    "bytes": 2195,
+    "sha256": "a3b9591022ed31fe63cd4c04020f9e908542d51322b22bc26b11c7877840d52d"
+  },
+  "diagnostics/final-validation-source/tools/assess_compaction_stages.py": {
+    "bytes": 4980,
+    "sha256": "23c4c6c6f2c6d02a5926470dd94c742ee78afd63da94626b6a12400ddba9af4b"
+  },
+  "diagnostics/final-validation-source/tools/verify_connected_initial_stiffness.py": {
+    "bytes": 3099,
+    "sha256": "afa20ddafdda2f9f9c6f7053bcf4917795e7f7d822375a08174f75a4450cfafb"
+  },
+  "diagnostics/final-validation-source/tools/verify_area_pressure.py": {
+    "bytes": 2596,
+    "sha256": "79c70edfb0470e8bb739ad3c872ad3aebb731e1f81525011586ef1a7feb7436e"
+  },
+  "diagnostics/final-validation-source/tools/verify_embedded_pipeline.py": {
+    "bytes": 3975,
+    "sha256": "fb00e47bae51169e0bf98c43a9de11d54ae38f53c8706ea17c1bd1d7967d0254"
+  },
+  "diagnostics/final-validation-source/tools/verify_periodic_contact_probe.py": {
+    "bytes": 5817,
+    "sha256": "99112fbb59458af79ef80fcec7063484d6266a54f3eb97b3f956bd8f14842613"
+  },
+  "diagnostics/final-validation-source/tools/run_pressure_ramp.py": {
+    "bytes": 2081,
+    "sha256": "8ee6d90dc60bfd7feea1a1e75c102c747704e9baec4e139a9233578e0bcc942c"
+  },
+  "diagnostics/final-validation-source/tools/verify_cauchy_pressure.py": {
+    "bytes": 6487,
+    "sha256": "c7f2698f551ae4b1aed8f2f6849295a97be7854049379320369fe4fe2eae88a9"
+  },
+  "diagnostics/final-validation-source/tools/export_rve_replay.py": {
+    "bytes": 3923,
+    "sha256": "9b30a8fe7f826737e85ff48c07c6f58c722b740a9a4a9eb5d049b3fb78ac6a90"
+  },
+  "diagnostics/final-validation-source/tools/verify_active_remesh_solver.py": {
+    "bytes": 4725,
+    "sha256": "9b543f5f79a0ddfae72d786625c4cc153bb61453b4852ab5fa226e8ba1a4788a"
+  },
+  "diagnostics/final-validation-source/tools/export_triangle_integration.py": {
+    "bytes": 5211,
+    "sha256": "a6367317353421a19fe0c4076c8350522d8ca9edfc7f316a5977ca1de48e11c7"
+  },
+  "diagnostics/final-validation-source/tools/compare_pressure_ramps.py": {
+    "bytes": 2752,
+    "sha256": "4e1b73d557d5b7eb0d6d0839ab3bee2179664cf286fad79406bd5df5b977a6f5"
+  },
+  "diagnostics/final-validation-source/tools/assess_atlas_sensitivity.py": {
+    "bytes": 4583,
+    "sha256": "31d94dd119c678168345231ae4607853b5ec165985a67b18ad85b1400296eac7"
+  },
+  "diagnostics/final-validation-source/tools/summarize_neck_elements.py": {
+    "bytes": 7303,
+    "sha256": "6aef4e5290d5b0b022643cfd17dc46317aae80275ab4005a03a70c506a9ba79a"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_rve_stop.py": {
+    "bytes": 4362,
+    "sha256": "b37da4a60fd09537a44389339295ab8c513eefae52f48a490aa1d53a5a63801e"
+  },
+  "diagnostics/final-validation-source/tools/verify_plastic_cycle_reference.py": {
+    "bytes": 6703,
+    "sha256": "059b15eab63111b1e87ba3de15ee468439649455600c18e0abe5864a20bba03c"
+  },
+  "diagnostics/final-validation-source/tools/verify_periodic_modes.py": {
+    "bytes": 2931,
+    "sha256": "182c4f586cea03f6887b25b8e340138c1786f394a7b36424143daabfc14e4a95"
+  },
+  "diagnostics/final-validation-source/tools/compare_onset_legacy.py": {
+    "bytes": 2414,
+    "sha256": "f0c49f90f1067fd212be08f72a8ca41e68e21acc4fb70b207956a5b5da5def8c"
+  },
+  "diagnostics/final-validation-source/tools/export_weighted_transfer.py": {
+    "bytes": 3748,
+    "sha256": "277b3bfc49c116936432c979043ff65dce58611d4e1c2ff78ccc57beacf5f7b9"
+  },
+  "diagnostics/final-validation-source/tools/summarize_periodic_modes.py": {
+    "bytes": 5018,
+    "sha256": "10a5d29f851e0f33c9d4dd24c6934654c64da58c635cf7e6b2a1a8d90ecfd6b6"
+  },
+  "diagnostics/final-validation-source/tools/verify_area_equilibrium.py": {
+    "bytes": 2705,
+    "sha256": "13998949818e9ce200846599bc47a06cb5052a8f5c4ec23316721f27377dbc8a"
+  },
+  "diagnostics/final-validation-source/tools/export_packing_rve.py": {
+    "bytes": 8527,
+    "sha256": "226e25e0fd6b2fe8e8699cc0faf15e80121121a3b4080d9270d22a48551f19fe"
+  },
+  "diagnostics/final-validation-source/tools/export_plastic_unloading.py": {
+    "bytes": 12281,
+    "sha256": "be9c41472f0100068cf4748d7e6679616f4c2628c3b3415c68d14f04eb9b8b41"
+  },
+  "diagnostics/final-validation-source/tools/run_pressure_stages.py": {
+    "bytes": 5326,
+    "sha256": "44430023e9a13d546b96b29023010f65efd2cd5b07d2e2dc419fd7909f152c80"
+  },
+  "diagnostics/final-validation-source/tools/verify_embedded_remesh.py": {
+    "bytes": 10688,
+    "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+  },
+  "diagnostics/final-validation-source/tools/export_plane_verification.py": {
+    "bytes": 6541,
+    "sha256": "3b385972d4017b9e04e56a4db5b7dc0d4df2d71f8e74e5d7f533b60f931923ef"
+  },
+  "diagnostics/final-validation-source/tools/verify_explicit_remesh.py": {
+    "bytes": 1967,
+    "sha256": "aa2f1f5c2570929c7e5c6aa85897c3a5ddee29ce7c0ec692dd2c1b5862c3e842"
+  },
+  "diagnostics/final-validation-source/tools/export_unload_sensitivity.py": {
+    "bytes": 11123,
+    "sha256": "897770657867e6d066cb09b8297f16cb2317ed880a92132763375cdad636f169"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_atlas_fit.py": {
+    "bytes": 3030,
+    "sha256": "89ce90d2f83488d992ffe05c3dfab36ddb9cae8443e08b53fbb9561fbbf5cc8d"
+  },
+  "diagnostics/final-validation-source/tools/export_material_neighborhood.py": {
+    "bytes": 5489,
+    "sha256": "7fa30d99ce863f6f5a283451b60de262eaa10fa84687636fbbd06d893d69651c"
+  },
+  "diagnostics/final-validation-source/tools/validate_plastic.py": {
+    "bytes": 4379,
+    "sha256": "0dbc09c3de9e0b9d81291e71ba133e3c16058a4f2b7a3e6577e79a0bea3147f4"
+  },
+  "diagnostics/final-validation-source/tools/verify_compaction_matrix.py": {
+    "bytes": 2095,
+    "sha256": "1685e9e25c8762ff29f08c7cdb1fed2dc1273778b50900df5c39a995fdbeeb7d"
+  },
+  "diagnostics/final-validation-source/tools/verify_contact_features.py": {
+    "bytes": 5089,
+    "sha256": "08ef0c1040005bff6de74503c83f7b802f310cd0656661e8c1322a4b7a966c14"
+  },
+  "diagnostics/final-validation-source/tools/verify_contact_search.py": {
+    "bytes": 2694,
+    "sha256": "4386704d93a19263107e3538698b1912ceacdff9d13894a133ded318e4ba52a5"
+  },
+  "diagnostics/final-validation-source/tools/verify_layered_mechanism.py": {
+    "bytes": 3641,
+    "sha256": "b2a5ee6179e8e191b8d295eec6a353c511d9685ba3c4295af1d35b52e911bd60"
+  },
+  "diagnostics/final-validation-source/tools/experimental_surface_budget.py": {
+    "bytes": 13005,
+    "sha256": "685ecee851b48d8569fd2af114aed97ff9df3e6b0c8a0f56ae730b3906afb36c"
+  },
+  "diagnostics/final-validation-source/tools/audit_rve_remesh_proposal.py": {
+    "bytes": 5904,
+    "sha256": "8922909c3304574e61d33868938ff19685cf0ff8c65259b071041393a6cdbe81"
+  },
+  "diagnostics/final-validation-source/tools/export_integration_replay.py": {
+    "bytes": 6826,
+    "sha256": "08eb73176e14013c156633c8bdec469e9c9432fd7a4567ef9bcffbb0a425ca8e"
+  },
+  "diagnostics/final-validation-source/tools/export_mesh_images.py": {
+    "bytes": 4469,
+    "sha256": "702486d6425675c490c6fb50e3d1b6ae68abe6275f7fe1295062f81e0cfa626c"
+  },
+  "diagnostics/final-validation-source/tools/probe_refinement_location.py": {
+    "bytes": 5169,
+    "sha256": "896c0b294ad91c0fa4b05e2cf86ae306cbcd148553720ec256528ad767c76a60"
+  },
+  "diagnostics/final-validation-source/tools/export_closest_selection.py": {
+    "bytes": 4610,
+    "sha256": "86ffc239b0b9870e174f6759f3754835855dbb08459ed603bf38c21e4e406b23"
+  },
+  "diagnostics/final-validation-source/tools/export_area_contact_fix.py": {
+    "bytes": 8386,
+    "sha256": "f0220484deabfaecaa980484e280cf4e2464b30997fbb90317555cc3d6dcff2e"
+  },
+  "diagnostics/final-validation-source/tools/verify_explicit_contact.py": {
+    "bytes": 1769,
+    "sha256": "bf83fcd510932c70b4362ad38296c601f0c661cd8da62e5a6c46c1105384714e"
+  },
+  "diagnostics/final-validation-source/tools/verify_triangle_integration.py": {
+    "bytes": 7771,
+    "sha256": "90fce759f58866454eccd4fa6392b8742d0a2621f67390ba07f0ec5f5685b2a8"
+  },
+  "diagnostics/final-validation-source/tools/export_onset_budget.py": {
+    "bytes": 6598,
+    "sha256": "673c4f3a43c5f4f290b3f30dc6ed8622be9528b75bca697b94e70782ba623274"
+  },
+  "diagnostics/final-validation-source/tools/export_material_quadrature.py": {
+    "bytes": 5116,
+    "sha256": "623d4d347b334fdee9840723351d75b5fbeb43cc7b5d87b071a53f349aee303b"
+  },
+  "diagnostics/final-validation-source/tools/verify_persistent_surface.py": {
+    "bytes": 2690,
+    "sha256": "60c3426df53dd95aaff3cf4c412b7cb39b2b92e97190fd2dd6aa72c21ede3eff"
+  },
+  "diagnostics/final-validation-source/tools/export_deformed_mesh.py": {
+    "bytes": 3977,
+    "sha256": "f08cc38427c145015e1c19d2c6d01011a3536a9a72fab107fbe1b5da44f3cc8d"
+  },
+  "diagnostics/final-validation-source/tools/plot_tracked_solver.py": {
+    "bytes": 2822,
+    "sha256": "6c1d7692234c3e8ae5b5caeaf87b0d80a47fb09eb48ab0e25b8584b7ccdcc057"
+  },
+  "diagnostics/final-validation-source/tools/assess_contact_passage.py": {
+    "bytes": 2275,
+    "sha256": "8bb5da6695b31b81cc0d601578ef900da42289ef88f3524b9eeb9bdaa0c40c07"
+  },
+  "diagnostics/final-validation-source/tools/verify_material_quadrature.py": {
+    "bytes": 4818,
+    "sha256": "47719e443f2952078cb94f0a6fa3c1a6a2c3ddb24b23c0a1a9cc59fd6ea8c447"
+  },
+  "diagnostics/final-validation-source/tools/export_pressure_stages.py": {
+    "bytes": 11031,
+    "sha256": "364a25fb56720a5acbf6dc3a7950fea83bd97dc4b3253633f13ef94cd2b553ad"
+  },
+  "diagnostics/final-validation-source/tools/verify_near_edge.py": {
+    "bytes": 8252,
+    "sha256": "904bbf06195739aaec744434af380ffef3c3dfe26b8bf7ccc567ed9a73d9cc0d"
+  },
+  "diagnostics/final-validation-source/tools/compare_contact_cfl.py": {
+    "bytes": 5407,
+    "sha256": "08233ec8503330da77e8132f89ab494d6e668c48328853babf0e786e27e68b34"
+  },
+  "diagnostics/final-validation-source/tools/verify_edge_solver.py": {
+    "bytes": 2496,
+    "sha256": "2d78658dd602519c659b999fa0f9054d79954fe5cbb06055ed7f51c95415ce6d"
+  },
+  "diagnostics/final-validation-source/tools/plot_periodic_contact_probe.py": {
+    "bytes": 2316,
+    "sha256": "a5e3cea7a3eec0b07b69107b67c4fb679c872ec9426747ae801f363788c31546"
+  },
+  "diagnostics/final-validation-source/tools/verify_periodic_connectivity.py": {
+    "bytes": 3683,
+    "sha256": "2ed8bedf36f92aa36050e04f858e09b6a9f9d11799be3e9bc131abe9a4426f5d"
+  },
+  "diagnostics/final-validation-source/tools/verify_rve_position_transfer.py": {
+    "bytes": 1858,
+    "sha256": "bed661d99f33acaa457a971ccf21764d1206956b963c0cff12dba78f476a5496"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_refinement_chain.py": {
+    "bytes": 8502,
+    "sha256": "7807f64d0f1736f44934af6c7442c843b61183ecddacfd0cb5cbe6f2b2593369"
+  },
+  "diagnostics/final-validation-source/tools/summarize_layered_pressure.py": {
+    "bytes": 10763,
+    "sha256": "651c48916590657c488506b37f1d4274772f0b5ad91df0278ff22fa416f74109"
+  },
+  "diagnostics/final-validation-source/tools/verify_closest_retry.py": {
+    "bytes": 3404,
+    "sha256": "17e51d9c04cefde1ee0f34ab17767e2780ee978195d8a91e00c26241c8770e8f"
+  },
+  "diagnostics/final-validation-source/tools/verify_unload_quasistatic.py": {
+    "bytes": 7353,
+    "sha256": "9dbb8cfd95dd5f9c2f5e46155614db50a53570aaf7664f6e75bc873abe656e94"
+  },
+  "diagnostics/final-validation-source/tools/verify_edge_stationarity.py": {
+    "bytes": 11133,
+    "sha256": "ec374873f84919dcba30ca530cec64f0c0b0d277e474b37452bf73651c79b3da"
+  },
+  "diagnostics/final-validation-source/tools/export_near_edge.py": {
+    "bytes": 5000,
+    "sha256": "ff53347ac2d5b9e4150b123a4c693d0f5def587c027567b094368f0b82b861b5"
+  },
+  "diagnostics/final-validation-source/tools/verify_surface_force_budget.py": {
+    "bytes": 3544,
+    "sha256": "cb9a4c8ab796cc0cafe6b6fd64f2f2e08f33c9a08106160a1d0331bc05f1d5cd"
+  },
+  "diagnostics/final-validation-source/tools/verify_contact_atlas.py": {
+    "bytes": 2740,
+    "sha256": "84bad0505f70bbbd6c53b838d391548bdbb67353d42b9fa64421a97ed33a2c2c"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_explicit_contact.py": {
+    "bytes": 3594,
+    "sha256": "45c6f8f7354fabe1d0e1062b2c20afc204abbf3a7483b3ca2487ebd2942d51e9"
+  },
+  "diagnostics/final-validation-source/tools/verify_point_stationarity.py": {
+    "bytes": 11599,
+    "sha256": "c036786a796200734920b6a2e03466f8f6089719ac46f0fe3e130b8036d2ed23"
+  },
+  "diagnostics/final-validation-source/tools/verify_neck_elements.py": {
+    "bytes": 2552,
+    "sha256": "14ed13264feb2eff109878194183e69d77c794075b1205ba41aaa333473dbd42"
+  },
+  "diagnostics/final-validation-source/tools/assess_porosity_convergence.py": {
+    "bytes": 6263,
+    "sha256": "645e944b7e4b1ee1103915e558c6ec38659e0851e5a0ed489285219bb34aa8a9"
+  },
+  "diagnostics/final-validation-source/tools/export_connected_unloading.py": {
+    "bytes": 6944,
+    "sha256": "8f7b0ff5bba203c4291e04bed6a619d8793d19b1d5796fdfde2336e091bab90f"
+  },
+  "diagnostics/final-validation-source/tools/verify_solver_equivalence.py": {
+    "bytes": 4916,
+    "sha256": "e94188485209faf0dce9a506dd9d42d1b1a6faf267e5370fb734f034a118b85b"
+  },
+  "diagnostics/final-validation-source/tools/verify_onset_budget.py": {
+    "bytes": 11245,
+    "sha256": "f70ec0fb52d01c8608bdae6f6ba5ac157badcc0b60fef42b64e6b3763e5a8b9a"
+  },
+  "diagnostics/final-validation-source/tools/compare_rve_backends.py": {
+    "bytes": 2252,
+    "sha256": "df69d7547d301b9557eba1169fb3146fbb60b2f82612473a689d29f5a4cd62b8"
+  },
+  "diagnostics/final-validation-source/tools/complete_embedded_remesh_matrix.py": {
+    "bytes": 4553,
+    "sha256": "dc48485b18aea37b993e6823bba77f0cc48f44b133456f65190b65c5a9314d94"
+  },
+  "diagnostics/final-validation-source/tools/run_packing_rve.py": {
+    "bytes": 2376,
+    "sha256": "df0d471fb282f58d1c7be96539663d152b474b34b8201eeeff754cd29f5c45f3"
+  },
+  "diagnostics/final-validation-source/tools/verify_triangle_partition.py": {
+    "bytes": 3637,
+    "sha256": "488cbe3ce740c7c30e7f0a00136d0529b0b9bd41f7f93b9f277c65245e0144ac"
+  },
+  "diagnostics/final-validation-source/tools/run_explicit_model.py": {
+    "bytes": 2419,
+    "sha256": "ee70563e5869786236264f256ef7ca6bf5950da29e3a1732ba442cd563ef88b5"
+  },
+  "diagnostics/final-validation-source/tools/export_contact_atlas.py": {
+    "bytes": 7943,
+    "sha256": "a507c94804e19957bc998d708d9496fb4f4883ea405a1d36113d415d95c2872f"
+  },
+  "diagnostics/final-validation-source/tools/verify_atlas_batch_invariance.py": {
+    "bytes": 1811,
+    "sha256": "1c6495d868cbbb2a479abba89042d907091cb6b5af1d824e73abaf8632a2bba9"
+  },
+  "diagnostics/final-validation-source/tools/verify_tracked_solver.py": {
+    "bytes": 4894,
+    "sha256": "81a28d371106ce675c49b5f99693b3cdd3b6d617a405b078e14eddb36d321504"
+  },
+  "diagnostics/final-validation-source/tools/export_objective_pressure.py": {
+    "bytes": 5804,
+    "sha256": "658979d8304fbb564445aa4984816e16c8b6754c8a1c8c976acce1ebe160ff66"
+  },
+  "diagnostics/final-validation-source/tools/run_porosity_target.py": {
+    "bytes": 2021,
+    "sha256": "094ec94f86549a78f040c3a1eb9c2d126cc3225ca983a44b5f1193a09c252fd0"
+  },
+  "diagnostics/final-validation-source/tools/build_periodic_sintered.py": {
+    "bytes": 7776,
+    "sha256": "3e4427764368e6ea4c23b48c317d556099acf1322553006304dbea90e30ef0e6"
+  },
+  "diagnostics/final-validation-source/tools/verify_connected_pressure.py": {
+    "bytes": 4573,
+    "sha256": "c0e9299d8d19f6b41ebe98fd0c6a361be462f6ca392a9002a591bb4e298b6a71"
+  },
+  "diagnostics/final-validation-source/tools/verify_area_sliding.py": {
+    "bytes": 2496,
+    "sha256": "b226dccecd618a9184a16625fce37a1dc420ae67cb568e85daba91cd0901e198"
+  },
+  "diagnostics/final-validation-source/tools/plot_surface_bisection.py": {
+    "bytes": 2073,
+    "sha256": "f870e19258b73a48b13fd1555977950fdf165b44f2f010d57708a989f6d79e08"
+  },
+  "diagnostics/final-validation-source/tools/run_porosity_cycle.py": {
+    "bytes": 6371,
+    "sha256": "3edbf6b1b0ad70001751cc146bcf50691e083d094f1403c96a476523857f77d9"
+  },
+  "diagnostics/final-validation-source/tools/scan_mesh_phase.py": {
+    "bytes": 2166,
+    "sha256": "4768fa30882724066f47d777ee642bb7bb0110c4051eb267a93978678963b47a"
+  },
+  "diagnostics/final-validation-source/tools/verify_layered_pressure.py": {
+    "bytes": 6901,
+    "sha256": "3cbc7bf5e5b0ae53d3ff7e4400bab724cd2f4fadae34cbd9116b698b2950fc45"
+  },
+  "diagnostics/final-validation-source/tools/diagnose_embedded_refinement.py": {
+    "bytes": 2501,
+    "sha256": "4a2fbe5805cfb0a25c9ed7a8c32c0725cbd103f98e7852443ecc7223557e2791"
+  },
+  "diagnostics/final-validation-source/tools/build_native_kernel.py": {
+    "bytes": 778,
+    "sha256": "4ae243419bbee7b2a4f5566e3c9fa159fcc4cccbe1366b404bd38ae781375397"
+  },
+  "diagnostics/final-validation-source/tools/verify_structured_extension.py": {
+    "bytes": 11856,
+    "sha256": "9859440f8aa005d46bb4126a9b00a5c52e76ebebe153b1a8307ca5f321307851"
+  },
+  "diagnostics/final-validation-source/tools/verify_lazy_candidates.py": {
+    "bytes": 2135,
+    "sha256": "e7cbef555e72542a3738eba688a9a26a6fb4ef5c58fbf5cb44e18c1137bf75f4"
+  },
+  "diagnostics/final-validation-source/tools/export_connected_pressure.py": {
+    "bytes": 12416,
+    "sha256": "b490491307b5f6a3e43bde6c3df6c876e9ea6b9dd72bd087688fa132b22c3a20"
+  },
+  "diagnostics/final-validation-source/tools/monitor_pressure_ramp.py": {
+    "bytes": 5117,
+    "sha256": "8fa5dbfa15f518adc13def743ec5828d1ca330684712f9514706726634c0689d"
+  },
+  "diagnostics/final-validation-source/tools/export_barrier_compaction.py": {
+    "bytes": 9185,
+    "sha256": "bae6a3e245ac76c7fd54e719d65042715fafc98c9ac12a9c652c4083a896308c"
+  },
+  "diagnostics/final-validation-source/tools/verify_surface_development.py": {
+    "bytes": 8957,
+    "sha256": "2e6ebe3bf83814be93d57033f6c8cd5856bc75f4ef0a6b8deef01c7008f2442e"
+  },
+  "diagnostics/final-validation-source/tools/plot_contact_features.py": {
+    "bytes": 1484,
+    "sha256": "3d6ea26fbb2f263ec20b05aff55aca683146f8b519bcef973189f8259878afab"
+  },
+  "diagnostics/final-validation-source/tools/export_porosity_cycle.py": {
+    "bytes": 5526,
+    "sha256": "46bae136154f8bbd7048a79ba836afc5d40e5ba74553900e3c3f0c2de8dce412"
+  },
+  "diagnostics/final-validation-source/tools/export_contact_audit.py": {
+    "bytes": 5454,
+    "sha256": "ea26f522d6ccf02bb3cdb8cf996de2a6a0b0dde1f7535e90035a93730b5d5c1c"
+  },
+  "diagnostics/final-validation-source/tools/plot_edge_verification.py": {
+    "bytes": 2930,
+    "sha256": "2cadd78800468e47f309fc11a6c5c91d7bdfedf96c55dad17aed5573c94f5ae1"
+  },
+  "diagnostics/final-validation-source/tools/verify_integration_replay.py": {
+    "bytes": 9459,
+    "sha256": "a1ac56713ab79361b87bdf5fbd9f3413f36ed053ba6977c628d2d49221f577bf"
+  },
+  "diagnostics/final-validation-source/tools/check_modulus_comparison.py": {
+    "bytes": 2981,
+    "sha256": "e564a960f7cc02b5de0369501ab22d98a8f5ac2de69f19ece976ed02c12d19db"
+  },
+  "diagnostics/final-validation-source/tools/plastic_cycle_audit.py": {
+    "bytes": 2140,
+    "sha256": "1c644c9565122a63c6faa471104f0f1b411a299e132066d6220e56f1ad0a5ef5"
+  },
+  "diagnostics/final-validation-source/tools/verify_plane_contact.py": {
+    "bytes": 6876,
+    "sha256": "dbb849ce81a806760cb9c88ef15522960037b293065ea664fcab188d15e8d34e"
+  },
+  "diagnostics/final-validation-source/tools/verify_contact_mesh_preflight.py": {
+    "bytes": 12052,
+    "sha256": "94349b86fef3f6806ef8e142d437e967d449d0a5d4cbecc55dca30e7aaf639ee"
+  },
+  "diagnostics/final-validation-source/tools/summarize_plastic_verification.py": {
+    "bytes": 7012,
+    "sha256": "43d2efb6b3892cf81e72e97563c0172c9efa1cc304eb47862a43861ab62a5387"
+  },
+  "diagnostics/final-validation-source/tools/export_porosity_target.py": {
+    "bytes": 6090,
+    "sha256": "68e9f855f97bf96ebcc8b145e3f2b98e33169f69f7f16cc2bbf2fd829cccc19d"
+  },
+  "diagnostics/final-validation-source/tools/replay_explicit.py": {
+    "bytes": 858,
+    "sha256": "5dce120e57d6694e9aa471cb7e6d46069fa0bef8df290ca4fb4cb1ed419ca125"
+  },
+  "diagnostics/final-validation-source/tools/export_explicit_results.py": {
+    "bytes": 10043,
+    "sha256": "8ea1f3ffdaab74adeb431ec61c76911727f5e85c08adde81a887c78c665cd761"
+  },
+  "diagnostics/final-validation-source/tools/verify_narrow_integration.py": {
+    "bytes": 6224,
+    "sha256": "2676f332692bf9b613a71a664d1483f5d243b962ad6ece9a9cb3d697d5d19d16"
+  },
+  "diagnostics/final-validation-source/tools/recover_pressure_endpoints.py": {
+    "bytes": 2748,
+    "sha256": "6bd1f9c4a166c4a5409f2e537183dceb20f6296316bc557655dececced6b07d2"
+  },
+  "diagnostics/final-validation-source/packing_fem/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/final-validation-source/packing_fem/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/final-validation-source/packing_fem/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/final-validation-source/packing_fem/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "diagnostics/final-validation-source/packing_fem/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/final-validation-source/packing_fem/explicit_solver.py": {
+    "bytes": 62681,
+    "sha256": "9f76d43dc909be8375f80df3bc52188a6097c2bce1261a66b86f3e1c7733afcc"
+  },
+  "diagnostics/final-validation-source/packing_fem/area_contact.py": {
+    "bytes": 20830,
+    "sha256": "be8273ee4b9293ec585c8c9bce8085c85383998993e120bee315e0d2ea28d7a3"
+  },
+  "diagnostics/final-validation-source/packing_fem/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/final-validation-source/packing_fem/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/final-validation-source/packing_fem/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/final-validation-source/packing_fem/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/final-validation-source/packing_fem/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/final-validation-source/packing_fem/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/final-validation-source/packing_fem/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/final-validation-source/packing_fem/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/final-validation-source/packing_fem/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/final-validation-source/packing_fem/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/final-validation-source/packing_fem/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/final-validation-source/packing_fem/embedded_contact.py": {
+    "bytes": 22066,
+    "sha256": "90d62a88c9fabfd87aaff991f1eac580b4f7687ced0fa78593870c70fa9c4b0b"
+  },
+  "diagnostics/final-validation-source/packing_fem/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/final-validation-source/packing_fem/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/final-validation-source/packing_fem/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/final-validation-source/packing_fem/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/final-validation-source/packing_fem/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/final-validation-source/packing_fem/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/final-validation-source/packing_fem/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/final-validation-source/packing_fem/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/final-validation-source/packing_fem/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/final-validation-source/packing_fem/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/final-validation-source/packing_fem/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/final-validation-source/packing_fem/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/final-validation-source/packing_fem/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/final-validation-source/packing_fem/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/final-validation-source/packing_fem/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/final-validation-source/packing_fem/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/final-validation-source/packing_fem/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/final-validation-source/packing_fem/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/final-validation-source/packing_fem/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/final-validation-source/packing_fem/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/final-validation-source/packing_fem/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/final-validation-source/packing_fem/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/final-validation-source/packing_fem/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/final-validation-source/packing_fem/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/final-validation-source/packing_fem/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/final-validation-source/packing_fem/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/final-validation-source/packing_fem/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/final-validation-source/packing_fem/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "diagnostics/plane-matrix/fraction-0.2-slip-0.0001/failure.json": {
+    "bytes": 165,
+    "sha256": "e46a46f9c2ba5ee4f295fbfdb7c8ca55e885f562e73bddad98c79ba87d6cc21e"
+  },
+  "diagnostics/plane-matrix/fraction-0.2-slip-0.01/failure.json": {
+    "bytes": 154,
+    "sha256": "48920c3951f9756fd888e366fb577cbbacdf9dface36e02bcec682982418e7ba"
+  },
+  "diagnostics/plane-matrix/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/plane-matrix/source/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "diagnostics/plane-matrix/source/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "diagnostics/plane-matrix/source/embedded_remesh.py": {
+    "bytes": 8430,
+    "sha256": "9992f5ec090a5b11dd28134ba1a2a3b1423cbbed7e58dc6cef73b6ce6cc138bd"
+  },
+  "diagnostics/plane-matrix/source/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "diagnostics/plane-matrix/source/explicit_solver.py": {
+    "bytes": 62236,
+    "sha256": "bb0d1236c4e0b748edf70e3579b16b4374c3fd261d26b1adeb3e6ed0f8a314d2"
+  },
+  "diagnostics/plane-matrix/source/area_contact.py": {
+    "bytes": 20540,
+    "sha256": "01d79483d10fd72061089d01deb2def0b2a8c83bf65645120cb27033d7025074"
+  },
+  "diagnostics/plane-matrix/source/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "diagnostics/plane-matrix/source/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "diagnostics/plane-matrix/source/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "diagnostics/plane-matrix/source/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "diagnostics/plane-matrix/source/verify_embedded_remesh.py": {
+    "bytes": 10158,
+    "sha256": "47ec1020e7bace14f7ec1c73fe8f97cacdb9bc6cbdf9878fa0e11b31aab7726f"
+  },
+  "diagnostics/plane-matrix/source/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "diagnostics/plane-matrix/source/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "diagnostics/plane-matrix/source/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "diagnostics/plane-matrix/source/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "diagnostics/plane-matrix/source/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "diagnostics/plane-matrix/source/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "diagnostics/plane-matrix/source/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "diagnostics/plane-matrix/source/embedded_contact.py": {
+    "bytes": 22013,
+    "sha256": "a1c084ff056a9abc2e839bf7a519744539bb88ac102e597fb7698dd8d71e8279"
+  },
+  "diagnostics/plane-matrix/source/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "diagnostics/plane-matrix/source/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "diagnostics/plane-matrix/source/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "diagnostics/plane-matrix/source/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "diagnostics/plane-matrix/source/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "diagnostics/plane-matrix/source/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "diagnostics/plane-matrix/source/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "diagnostics/plane-matrix/source/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "diagnostics/plane-matrix/source/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "diagnostics/plane-matrix/source/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "diagnostics/plane-matrix/source/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "diagnostics/plane-matrix/source/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "diagnostics/plane-matrix/source/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "diagnostics/plane-matrix/source/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "diagnostics/plane-matrix/source/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "diagnostics/plane-matrix/source/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "diagnostics/plane-matrix/source/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "diagnostics/plane-matrix/source/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "diagnostics/plane-matrix/source/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "diagnostics/plane-matrix/source/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "diagnostics/plane-matrix/source/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "diagnostics/plane-matrix/source/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "diagnostics/plane-matrix/source/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "diagnostics/plane-matrix/source/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "diagnostics/plane-matrix/source/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "diagnostics/plane-matrix/source/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "diagnostics/plane-matrix/source/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "diagnostics/plane-matrix/source/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  },
+  "implementation/tests/test_edge_coverage.py": {
+    "bytes": 3838,
+    "sha256": "91daf2b947fd2a3fb2ef6676fcf6c18b2b447e2ebb48732a69e7180495019389"
+  },
+  "implementation/tests/test_absolute_contact_budget.py": {
+    "bytes": 2925,
+    "sha256": "3ab5939b2c1a88baf2f7bb5716497262d52b10e79e57ef5497252d2752f07bff"
+  },
+  "implementation/tests/test_onset_budget.py": {
+    "bytes": 1050,
+    "sha256": "b19acf8053aedf7134779a2aec32fbcffc9577f9582e6d723a657353f2fb9c7d"
+  },
+  "implementation/tests/test_near_edge.py": {
+    "bytes": 2753,
+    "sha256": "6b11506183d77b9864def6949951fd376b1cf3a0f8c9d1ad8813ebd56d382b4a"
+  },
+  "implementation/tests/test_material_quadrature.py": {
+    "bytes": 9658,
+    "sha256": "1bae245a542fc4f36a8f3e09bf86178d0e83e4fa47b233157592552c62ed1ac1"
+  },
+  "implementation/tests/test_plastic_cycle_reference.py": {
+    "bytes": 2087,
+    "sha256": "08259814791451ed15a23756f2290bf150bb0a7296285adfea049a12c9d6148e"
+  },
+  "implementation/tests/test_continuum.py": {
+    "bytes": 1185,
+    "sha256": "6a49ac5bde894ff5e9f2c95e5ccbe3aedc8f5f031f6265150c74e4df908d4c00"
+  },
+  "implementation/tests/test_explicit_audit.py": {
+    "bytes": 1543,
+    "sha256": "7837e4c5c1cfaeb0eef1837ad92b06034bd48fdc379db6ca52d9f245974a5dc6"
+  },
+  "implementation/tests/test_cycle_operator_restart.py": {
+    "bytes": 1530,
+    "sha256": "b6ef3ecc078b995b0d994d3d0feae628c78009e2bbdfd28a280be2956fd2b755"
+  },
+  "implementation/tests/test_layered_verification.py": {
+    "bytes": 1737,
+    "sha256": "396bd5d2e2b23cb3dbd6c177e8edf621b4c720faa9cefeeb10405f7ce28e1269"
+  },
+  "implementation/tests/test_refinement_diagnostics.py": {
+    "bytes": 2274,
+    "sha256": "3ef31d80717d6d2d93c1685edf1b3fa49bf15a9f7805582a60ed0201105e73eb"
+  },
+  "implementation/tests/test_surface_development.py": {
+    "bytes": 10544,
+    "sha256": "a148c46258053e25fb093b3aa6e8d7a676438f8f387b7b9c33e3d6e8fa466ce0"
+  },
+  "implementation/tests/test_closest_selection.py": {
+    "bytes": 2886,
+    "sha256": "236a8b396fbb899e6a32435c8e0449db6d1f6e4ee8e01e98d2d5292de98689dc"
+  },
+  "implementation/tests/test_packing_rve.py": {
+    "bytes": 7242,
+    "sha256": "b1c33307770433b9601a7d776a0d3315b96d5e5991fe04e576ab425afe565d72"
+  },
+  "implementation/tests/test_surface_patch.py": {
+    "bytes": 5591,
+    "sha256": "d34aefe8e0c4f67c58de050b7b531d1e48a07584c584eb6894be6fc193342ecd"
+  },
+  "implementation/tests/test_porosity_cycle.py": {
+    "bytes": 3684,
+    "sha256": "a6626835452fd6b31b7d787848e16f14c51060c8b0c67d48959a24fa4efc4c24"
+  },
+  "implementation/tests/test_structured_extension.py": {
+    "bytes": 6068,
+    "sha256": "a7dbff4d383e1a890e26e4da94bf5a2e8d0286d2dc7d1ae81fcfd5d76c6d1270"
+  },
+  "implementation/tests/test_cauchy_unloading.py": {
+    "bytes": 1514,
+    "sha256": "fd836b573bb92015738c54285e7ae31aaa9b9a7a12daee1e3e760d02fb70d892"
+  },
+  "implementation/tests/test_aabb_search.py": {
+    "bytes": 3778,
+    "sha256": "194fc802d180d2f225d4d02927be019535da81a1a66a79707b737d762c66ab24"
+  },
+  "implementation/tests/test_friction.py": {
+    "bytes": 2371,
+    "sha256": "1df516ac4877ad0db4e128d239d178e9787f0c3fbaec699566fe77c481b97c45"
+  },
+  "implementation/tests/test_unload_reference.py": {
+    "bytes": 1722,
+    "sha256": "aa2baf653a4e832ace4aa72165453431bd9da8824c72d0936de1f33d58e31e0b"
+  },
+  "implementation/tests/test_checkpoint_solver.py": {
+    "bytes": 9651,
+    "sha256": "dabe6322df7fc46bcc4076f2b9a3ab277a41a536de83bd41ef3886def547c34b"
+  },
+  "implementation/tests/test_atlas_history.py": {
+    "bytes": 3211,
+    "sha256": "19117b6a08f66d8a6364dd7951497923cc2de658f4c383d8436062add529c905"
+  },
+  "implementation/tests/test_contact_integration.py": {
+    "bytes": 7021,
+    "sha256": "c0506c15b3f9718e7d514c26067f6e69ef54c611d07867a85791c01ad489bf5f"
+  },
+  "implementation/tests/test_atlas_controls.py": {
+    "bytes": 1364,
+    "sha256": "209ebbc5795d096eb47d2df21d19c191c43ac2853b6f723accc9a401e3ab6010"
+  },
+  "implementation/tests/test_geometry.py": {
+    "bytes": 2594,
+    "sha256": "5371bdf2817a476ac43c1f4ddf9464129f8a51f652ec35b23d41afba4c3ae641"
+  },
+  "implementation/tests/test_contact_probe.py": {
+    "bytes": 5189,
+    "sha256": "179af7a929274753bce7350a9265a9183fa6547f2c445dbadd9a15d462679033"
+  },
+  "implementation/tests/test_incompatible.py": {
+    "bytes": 4694,
+    "sha256": "1348e8c552ce65b5c5802a3e94481a0394f3f17e3ee96f1db2f23d97b32b4da0"
+  },
+  "implementation/tests/test_porosity_target.py": {
+    "bytes": 1263,
+    "sha256": "d480d9f0ebf67ec7c9c9a686145b4e7b1f5c58b55c8aa31398135025e5e10f7e"
+  },
+  "implementation/tests/test_embedded_surface_remesh.py": {
+    "bytes": 3090,
+    "sha256": "8658993e04af9a87a602195fadc6db63612d63e1ae3cee01fc790ff9370b141a"
+  },
+  "implementation/tests/test_neck_validation.py": {
+    "bytes": 2226,
+    "sha256": "5e3d9892da49e98b4843782b4f9233d1f00b526778b1325e555de92eb4cfff19"
+  },
+  "implementation/tests/test_plane_contact_verification.py": {
+    "bytes": 1525,
+    "sha256": "3eeaf007d9c87b8afe0b548f84730e91cbc1829c9c8a162bb8158d19936e2793"
+  },
+  "implementation/tests/test_explicit_backend.py": {
+    "bytes": 12301,
+    "sha256": "2d30c27decc935f67556983ad7697cb1c8e577264622b62f6ff255a86bd78dd0"
+  },
+  "implementation/tests/test_plastic.py": {
+    "bytes": 3336,
+    "sha256": "abc16abb9a26919166ee9fb54a8d750ba451be01da6a0ccebd56224924e21f4b"
+  },
+  "implementation/tests/test_contact_mesh_preflight.py": {
+    "bytes": 1409,
+    "sha256": "46f68965af73192e559f1bc7d01fe6ea8a5318d627433b108c0fd2cd6fd8f21d"
+  },
+  "implementation/tests/test_triangle_quadrature.py": {
+    "bytes": 4730,
+    "sha256": "c916d7e0e6c3dbe2eca5a4435a53469699de5151dc83e47969c0b4e26fc260a6"
+  },
+  "implementation/tests/test_contact_cfl_audit.py": {
+    "bytes": 1629,
+    "sha256": "79a10624834107fd01e801aa0dbb5fe6ca2230f95f7848be78da4aefe8c220fc"
+  },
+  "implementation/tests/test_model.py": {
+    "bytes": 3055,
+    "sha256": "a2a63cac7b60121b2508e3262b1014765975cb8ec38588da3e1e497d1d3eb069"
+  },
+  "implementation/tests/test_calculix.py": {
+    "bytes": 1556,
+    "sha256": "46504234afa1276198ebaece119173fd0d6760d056ea3f53bad4c46bc80bd6e2"
+  },
+  "implementation/tests/test_barrier_contact.py": {
+    "bytes": 19773,
+    "sha256": "3d3b0195f901e69ead9df864e57f36fae231320c4f29a42bd8f1591709596ff2"
+  },
+  "implementation/tests/test_contact_audit.py": {
+    "bytes": 3378,
+    "sha256": "e944e92ad1b8036294d7ea1ffe3404bcf77d107b2178fe18072378536b97d9a0"
+  },
+  "implementation/tests/test_point_stationarity.py": {
+    "bytes": 5146,
+    "sha256": "f2c403de361ba4c1c1e58987080bf48a3ca5c7dee3c7e77d117bbc25b6bf91d7"
+  },
+  "implementation/tests/test_coulomb_stick_history.py": {
+    "bytes": 1763,
+    "sha256": "f832c888cee21b4dad89f46c46880dd95775dc717ed9b69868acb53acac28e36"
+  },
+  "implementation/tests/test_contact_atlas.py": {
+    "bytes": 4232,
+    "sha256": "11e0634ac4362340a3782a9c5ed1705756b7e8b7d56b8f28467010c749f81a1f"
+  },
+  "implementation/tests/test_area_contact.py": {
+    "bytes": 8476,
+    "sha256": "a98875a0ac71e3c37c52aa92ddc33f309ad6caf2801e29c04b0cdd99d4847dd7"
+  },
+  "implementation/tests/test_surface_partition.py": {
+    "bytes": 2116,
+    "sha256": "ee424f383775358b03eeee52d4232743a371085db923cdb1d9c95cd31d8475ae"
+  },
+  "implementation/tests/test_macro_loading.py": {
+    "bytes": 3679,
+    "sha256": "11ae8224638f4e7138cae9367f439aa085994528c2fb42944500d69b40bd86be"
+  },
+  "implementation/tests/test_edge_contact.py": {
+    "bytes": 3048,
+    "sha256": "93a72e3ecb2377621b7a5f99df835bce2a45b36d020893dc101e1429b6da464a"
+  },
+  "implementation/tests/test_contact_geometry.py": {
+    "bytes": 4301,
+    "sha256": "2d4c8081d367da75a202869790ebde111f5d30307d611fe6d191d59d25726389"
+  },
+  "implementation/tests/test_native_kernel.py": {
+    "bytes": 4210,
+    "sha256": "e6f1c3b78ea9698cc698529af9b282a6e591372e5ef30ad1549c6200ef503c04"
+  },
+  "implementation/tests/test_porosity_convergence.py": {
+    "bytes": 2652,
+    "sha256": "ab2298d9ba7496e75ac11db03f380928ce2aa6d2ad83fe91b7fa88941ba0bea0"
+  },
+  "implementation/tests/test_material_neighborhood.py": {
+    "bytes": 6830,
+    "sha256": "5aa19077fc2d9cdcb1aca29aa51137b6adaa19571c14e4a12d3fb3172b2caa44"
+  },
+  "implementation/tests/test_weighted_surface_transfer.py": {
+    "bytes": 5543,
+    "sha256": "bb4a9af5ab702ec23b9c0ee08c5d98687c8e8aa7177245b0b6b60ef8136506f0"
+  },
+  "implementation/tests/test_embedded_contact.py": {
+    "bytes": 6613,
+    "sha256": "0a9223f0259b3986cf71871415034681c0014c9eef026ccbe68a23db4611a27e"
+  },
+  "implementation/tests/test_closest_tie.py": {
+    "bytes": 5262,
+    "sha256": "994f19cb63ddff2a2923cec88c01ca093d7d90a7a853d117bf6bf514dda055c9"
+  },
+  "implementation/tests/test_reconnection.py": {
+    "bytes": 3759,
+    "sha256": "a773180e973b76e3e94fc72ced11aabce4880a25f6015ed6ca0ae61c57196927"
+  },
+  "implementation/tests/test_surface_stationarity.py": {
+    "bytes": 5833,
+    "sha256": "fb6bdc3e33448f6d040b436126bb60d9bb3b6e1e501e6ced36d002c14e8d947a"
+  },
+  "implementation/tests/test_sintered.py": {
+    "bytes": 3549,
+    "sha256": "bf0dae2a23862d4b71a6d04ae57a7ace6cebf3d5c2ae6a26d2662efdfe38fd71"
+  },
+  "implementation/tools/diagnose_last_contact_retry.py": {
+    "bytes": 5500,
+    "sha256": "00a946485211582934e375a5c453eb29b8e8a6786fa211c9eee977000cd97f44"
+  },
+  "implementation/tools/bootstrap_calculix.py": {
+    "bytes": 2185,
+    "sha256": "84c0fed8673dc431f7068e5f6fd1aec9a07dec42c182876198976239a7d19552"
+  },
+  "implementation/tools/export_compaction_stages.py": {
+    "bytes": 5526,
+    "sha256": "9cb2d801e2be9e9fab02783bcc8bf6a83e9102777b40b0aa4bd704f18e75ec70"
+  },
+  "implementation/tools/run_barrier_compaction.py": {
+    "bytes": 4360,
+    "sha256": "9a1624c2719b528f83d4311b2a6bd248b74d07aec239b5722998ba3815ae4700"
+  },
+  "implementation/tools/verify_explicit_backend.py": {
+    "bytes": 2297,
+    "sha256": "0ca7005036ed83b529f226277ed882b3436a930ccbbeb6f3157c386344df9cfb"
+  },
+  "implementation/tools/export_pressure_ramp.py": {
+    "bytes": 4945,
+    "sha256": "f4a1d3fe59b8117da9646bcbf23eda7f8180b51a25c1a1cd7cb5d083120f04ec"
+  },
+  "implementation/tools/verify_edge_pair.py": {
+    "bytes": 2747,
+    "sha256": "5395f748b6ed085cbb0d1cdc6e48c9f339c09c9867af812e2a201bfe50114d9a"
+  },
+  "implementation/tools/verify_area_friction_path.py": {
+    "bytes": 2909,
+    "sha256": "a9b0f7ef90756281cafce15caf6951e46587c7c7d501601e4cd631c65fb584ff"
+  },
+  "implementation/tools/audit_contact_capture.py": {
+    "bytes": 7977,
+    "sha256": "e6745c2bd53f30f271c6377a6e7048fe6deb64f7f7cda071e4cba432d86ff4af"
+  },
+  "implementation/tools/verify_explicit_impact.py": {
+    "bytes": 1616,
+    "sha256": "0fd2a653b88fb8c986c6f5be14f9fce95a28ca3c1e152eee78661dc00682c757"
+  },
+  "implementation/tools/verify_tracked_node_impact.py": {
+    "bytes": 3116,
+    "sha256": "f4e7d4763d4c2b730c2c7f7930e58fcf442c5b0d509dcb114cb85399009e05f2"
+  },
+  "implementation/tools/diagnose_new_history.py": {
+    "bytes": 2827,
+    "sha256": "aa3fa409b5ebe7d20b7866057dcee6619f0d388346f4aa0d04392ab72f3de5a8"
+  },
+  "implementation/tools/preflight_barrier_model.py": {
+    "bytes": 2195,
+    "sha256": "a3b9591022ed31fe63cd4c04020f9e908542d51322b22bc26b11c7877840d52d"
+  },
+  "implementation/tools/assess_compaction_stages.py": {
+    "bytes": 4980,
+    "sha256": "23c4c6c6f2c6d02a5926470dd94c742ee78afd63da94626b6a12400ddba9af4b"
+  },
+  "implementation/tools/verify_connected_initial_stiffness.py": {
+    "bytes": 3099,
+    "sha256": "afa20ddafdda2f9f9c6f7053bcf4917795e7f7d822375a08174f75a4450cfafb"
+  },
+  "implementation/tools/verify_area_pressure.py": {
+    "bytes": 2596,
+    "sha256": "79c70edfb0470e8bb739ad3c872ad3aebb731e1f81525011586ef1a7feb7436e"
+  },
+  "implementation/tools/verify_embedded_pipeline.py": {
+    "bytes": 3975,
+    "sha256": "fb00e47bae51169e0bf98c43a9de11d54ae38f53c8706ea17c1bd1d7967d0254"
+  },
+  "implementation/tools/verify_periodic_contact_probe.py": {
+    "bytes": 5817,
+    "sha256": "99112fbb59458af79ef80fcec7063484d6266a54f3eb97b3f956bd8f14842613"
+  },
+  "implementation/tools/run_pressure_ramp.py": {
+    "bytes": 2081,
+    "sha256": "8ee6d90dc60bfd7feea1a1e75c102c747704e9baec4e139a9233578e0bcc942c"
+  },
+  "implementation/tools/verify_cauchy_pressure.py": {
+    "bytes": 6487,
+    "sha256": "c7f2698f551ae4b1aed8f2f6849295a97be7854049379320369fe4fe2eae88a9"
+  },
+  "implementation/tools/export_rve_replay.py": {
+    "bytes": 3923,
+    "sha256": "9b30a8fe7f826737e85ff48c07c6f58c722b740a9a4a9eb5d049b3fb78ac6a90"
+  },
+  "implementation/tools/verify_active_remesh_solver.py": {
+    "bytes": 4725,
+    "sha256": "9b543f5f79a0ddfae72d786625c4cc153bb61453b4852ab5fa226e8ba1a4788a"
+  },
+  "implementation/tools/export_triangle_integration.py": {
+    "bytes": 5211,
+    "sha256": "a6367317353421a19fe0c4076c8350522d8ca9edfc7f316a5977ca1de48e11c7"
+  },
+  "implementation/tools/compare_pressure_ramps.py": {
+    "bytes": 2752,
+    "sha256": "4e1b73d557d5b7eb0d6d0839ab3bee2179664cf286fad79406bd5df5b977a6f5"
+  },
+  "implementation/tools/assess_atlas_sensitivity.py": {
+    "bytes": 4583,
+    "sha256": "31d94dd119c678168345231ae4607853b5ec165985a67b18ad85b1400296eac7"
+  },
+  "implementation/tools/summarize_neck_elements.py": {
+    "bytes": 7303,
+    "sha256": "6aef4e5290d5b0b022643cfd17dc46317aae80275ab4005a03a70c506a9ba79a"
+  },
+  "implementation/tools/diagnose_rve_stop.py": {
+    "bytes": 4362,
+    "sha256": "b37da4a60fd09537a44389339295ab8c513eefae52f48a490aa1d53a5a63801e"
+  },
+  "implementation/tools/verify_plastic_cycle_reference.py": {
+    "bytes": 6703,
+    "sha256": "059b15eab63111b1e87ba3de15ee468439649455600c18e0abe5864a20bba03c"
+  },
+  "implementation/tools/verify_periodic_modes.py": {
+    "bytes": 2931,
+    "sha256": "182c4f586cea03f6887b25b8e340138c1786f394a7b36424143daabfc14e4a95"
+  },
+  "implementation/tools/compare_onset_legacy.py": {
+    "bytes": 2414,
+    "sha256": "f0c49f90f1067fd212be08f72a8ca41e68e21acc4fb70b207956a5b5da5def8c"
+  },
+  "implementation/tools/export_weighted_transfer.py": {
+    "bytes": 3748,
+    "sha256": "277b3bfc49c116936432c979043ff65dce58611d4e1c2ff78ccc57beacf5f7b9"
+  },
+  "implementation/tools/summarize_periodic_modes.py": {
+    "bytes": 5018,
+    "sha256": "10a5d29f851e0f33c9d4dd24c6934654c64da58c635cf7e6b2a1a8d90ecfd6b6"
+  },
+  "implementation/tools/verify_area_equilibrium.py": {
+    "bytes": 2705,
+    "sha256": "13998949818e9ce200846599bc47a06cb5052a8f5c4ec23316721f27377dbc8a"
+  },
+  "implementation/tools/export_packing_rve.py": {
+    "bytes": 8527,
+    "sha256": "226e25e0fd6b2fe8e8699cc0faf15e80121121a3b4080d9270d22a48551f19fe"
+  },
+  "implementation/tools/export_plastic_unloading.py": {
+    "bytes": 12281,
+    "sha256": "be9c41472f0100068cf4748d7e6679616f4c2628c3b3415c68d14f04eb9b8b41"
+  },
+  "implementation/tools/run_pressure_stages.py": {
+    "bytes": 5326,
+    "sha256": "44430023e9a13d546b96b29023010f65efd2cd5b07d2e2dc419fd7909f152c80"
+  },
+  "implementation/tools/verify_embedded_remesh.py": {
+    "bytes": 10688,
+    "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+  },
+  "implementation/tools/export_plane_verification.py": {
+    "bytes": 6541,
+    "sha256": "3b385972d4017b9e04e56a4db5b7dc0d4df2d71f8e74e5d7f533b60f931923ef"
+  },
+  "implementation/tools/verify_explicit_remesh.py": {
+    "bytes": 1967,
+    "sha256": "aa2f1f5c2570929c7e5c6aa85897c3a5ddee29ce7c0ec692dd2c1b5862c3e842"
+  },
+  "implementation/tools/export_unload_sensitivity.py": {
+    "bytes": 11123,
+    "sha256": "897770657867e6d066cb09b8297f16cb2317ed880a92132763375cdad636f169"
+  },
+  "implementation/tools/diagnose_atlas_fit.py": {
+    "bytes": 3030,
+    "sha256": "89ce90d2f83488d992ffe05c3dfab36ddb9cae8443e08b53fbb9561fbbf5cc8d"
+  },
+  "implementation/tools/export_material_neighborhood.py": {
+    "bytes": 5489,
+    "sha256": "7fa30d99ce863f6f5a283451b60de262eaa10fa84687636fbbd06d893d69651c"
+  },
+  "implementation/tools/validate_plastic.py": {
+    "bytes": 4379,
+    "sha256": "0dbc09c3de9e0b9d81291e71ba133e3c16058a4f2b7a3e6577e79a0bea3147f4"
+  },
+  "implementation/tools/verify_compaction_matrix.py": {
+    "bytes": 2095,
+    "sha256": "1685e9e25c8762ff29f08c7cdb1fed2dc1273778b50900df5c39a995fdbeeb7d"
+  },
+  "implementation/tools/verify_contact_features.py": {
+    "bytes": 5089,
+    "sha256": "08ef0c1040005bff6de74503c83f7b802f310cd0656661e8c1322a4b7a966c14"
+  },
+  "implementation/tools/verify_contact_search.py": {
+    "bytes": 2694,
+    "sha256": "4386704d93a19263107e3538698b1912ceacdff9d13894a133ded318e4ba52a5"
+  },
+  "implementation/tools/verify_layered_mechanism.py": {
+    "bytes": 3641,
+    "sha256": "b2a5ee6179e8e191b8d295eec6a353c511d9685ba3c4295af1d35b52e911bd60"
+  },
+  "implementation/tools/experimental_surface_budget.py": {
+    "bytes": 13005,
+    "sha256": "685ecee851b48d8569fd2af114aed97ff9df3e6b0c8a0f56ae730b3906afb36c"
+  },
+  "implementation/tools/audit_rve_remesh_proposal.py": {
+    "bytes": 5904,
+    "sha256": "8922909c3304574e61d33868938ff19685cf0ff8c65259b071041393a6cdbe81"
+  },
+  "implementation/tools/export_integration_replay.py": {
+    "bytes": 6826,
+    "sha256": "08eb73176e14013c156633c8bdec469e9c9432fd7a4567ef9bcffbb0a425ca8e"
+  },
+  "implementation/tools/export_mesh_images.py": {
+    "bytes": 4469,
+    "sha256": "702486d6425675c490c6fb50e3d1b6ae68abe6275f7fe1295062f81e0cfa626c"
+  },
+  "implementation/tools/probe_refinement_location.py": {
+    "bytes": 5169,
+    "sha256": "896c0b294ad91c0fa4b05e2cf86ae306cbcd148553720ec256528ad767c76a60"
+  },
+  "implementation/tools/export_closest_selection.py": {
+    "bytes": 4610,
+    "sha256": "86ffc239b0b9870e174f6759f3754835855dbb08459ed603bf38c21e4e406b23"
+  },
+  "implementation/tools/export_area_contact_fix.py": {
+    "bytes": 8386,
+    "sha256": "f0220484deabfaecaa980484e280cf4e2464b30997fbb90317555cc3d6dcff2e"
+  },
+  "implementation/tools/verify_explicit_contact.py": {
+    "bytes": 1769,
+    "sha256": "bf83fcd510932c70b4362ad38296c601f0c661cd8da62e5a6c46c1105384714e"
+  },
+  "implementation/tools/verify_triangle_integration.py": {
+    "bytes": 7771,
+    "sha256": "90fce759f58866454eccd4fa6392b8742d0a2621f67390ba07f0ec5f5685b2a8"
+  },
+  "implementation/tools/export_onset_budget.py": {
+    "bytes": 6598,
+    "sha256": "673c4f3a43c5f4f290b3f30dc6ed8622be9528b75bca697b94e70782ba623274"
+  },
+  "implementation/tools/export_material_quadrature.py": {
+    "bytes": 5116,
+    "sha256": "623d4d347b334fdee9840723351d75b5fbeb43cc7b5d87b071a53f349aee303b"
+  },
+  "implementation/tools/verify_persistent_surface.py": {
+    "bytes": 2690,
+    "sha256": "60c3426df53dd95aaff3cf4c412b7cb39b2b92e97190fd2dd6aa72c21ede3eff"
+  },
+  "implementation/tools/export_deformed_mesh.py": {
+    "bytes": 3977,
+    "sha256": "f08cc38427c145015e1c19d2c6d01011a3536a9a72fab107fbe1b5da44f3cc8d"
+  },
+  "implementation/tools/plot_tracked_solver.py": {
+    "bytes": 2822,
+    "sha256": "6c1d7692234c3e8ae5b5caeaf87b0d80a47fb09eb48ab0e25b8584b7ccdcc057"
+  },
+  "implementation/tools/assess_contact_passage.py": {
+    "bytes": 2275,
+    "sha256": "8bb5da6695b31b81cc0d601578ef900da42289ef88f3524b9eeb9bdaa0c40c07"
+  },
+  "implementation/tools/verify_material_quadrature.py": {
+    "bytes": 4818,
+    "sha256": "47719e443f2952078cb94f0a6fa3c1a6a2c3ddb24b23c0a1a9cc59fd6ea8c447"
+  },
+  "implementation/tools/export_pressure_stages.py": {
+    "bytes": 11031,
+    "sha256": "364a25fb56720a5acbf6dc3a7950fea83bd97dc4b3253633f13ef94cd2b553ad"
+  },
+  "implementation/tools/verify_near_edge.py": {
+    "bytes": 8252,
+    "sha256": "904bbf06195739aaec744434af380ffef3c3dfe26b8bf7ccc567ed9a73d9cc0d"
+  },
+  "implementation/tools/compare_contact_cfl.py": {
+    "bytes": 5407,
+    "sha256": "08233ec8503330da77e8132f89ab494d6e668c48328853babf0e786e27e68b34"
+  },
+  "implementation/tools/verify_edge_solver.py": {
+    "bytes": 2496,
+    "sha256": "2d78658dd602519c659b999fa0f9054d79954fe5cbb06055ed7f51c95415ce6d"
+  },
+  "implementation/tools/plot_periodic_contact_probe.py": {
+    "bytes": 2316,
+    "sha256": "a5e3cea7a3eec0b07b69107b67c4fb679c872ec9426747ae801f363788c31546"
+  },
+  "implementation/tools/verify_periodic_connectivity.py": {
+    "bytes": 3683,
+    "sha256": "2ed8bedf36f92aa36050e04f858e09b6a9f9d11799be3e9bc131abe9a4426f5d"
+  },
+  "implementation/tools/verify_rve_position_transfer.py": {
+    "bytes": 1858,
+    "sha256": "bed661d99f33acaa457a971ccf21764d1206956b963c0cff12dba78f476a5496"
+  },
+  "implementation/tools/diagnose_refinement_chain.py": {
+    "bytes": 8502,
+    "sha256": "7807f64d0f1736f44934af6c7442c843b61183ecddacfd0cb5cbe6f2b2593369"
+  },
+  "implementation/tools/summarize_layered_pressure.py": {
+    "bytes": 10763,
+    "sha256": "651c48916590657c488506b37f1d4274772f0b5ad91df0278ff22fa416f74109"
+  },
+  "implementation/tools/verify_closest_retry.py": {
+    "bytes": 3404,
+    "sha256": "17e51d9c04cefde1ee0f34ab17767e2780ee978195d8a91e00c26241c8770e8f"
+  },
+  "implementation/tools/verify_unload_quasistatic.py": {
+    "bytes": 7353,
+    "sha256": "9dbb8cfd95dd5f9c2f5e46155614db50a53570aaf7664f6e75bc873abe656e94"
+  },
+  "implementation/tools/verify_edge_stationarity.py": {
+    "bytes": 11133,
+    "sha256": "ec374873f84919dcba30ca530cec64f0c0b0d277e474b37452bf73651c79b3da"
+  },
+  "implementation/tools/export_near_edge.py": {
+    "bytes": 5000,
+    "sha256": "ff53347ac2d5b9e4150b123a4c693d0f5def587c027567b094368f0b82b861b5"
+  },
+  "implementation/tools/verify_surface_force_budget.py": {
+    "bytes": 3544,
+    "sha256": "cb9a4c8ab796cc0cafe6b6fd64f2f2e08f33c9a08106160a1d0331bc05f1d5cd"
+  },
+  "implementation/tools/verify_contact_atlas.py": {
+    "bytes": 2740,
+    "sha256": "84bad0505f70bbbd6c53b838d391548bdbb67353d42b9fa64421a97ed33a2c2c"
+  },
+  "implementation/tools/diagnose_explicit_contact.py": {
+    "bytes": 3594,
+    "sha256": "45c6f8f7354fabe1d0e1062b2c20afc204abbf3a7483b3ca2487ebd2942d51e9"
+  },
+  "implementation/tools/verify_point_stationarity.py": {
+    "bytes": 11599,
+    "sha256": "c036786a796200734920b6a2e03466f8f6089719ac46f0fe3e130b8036d2ed23"
+  },
+  "implementation/tools/verify_neck_elements.py": {
+    "bytes": 2552,
+    "sha256": "14ed13264feb2eff109878194183e69d77c794075b1205ba41aaa333473dbd42"
+  },
+  "implementation/tools/assess_porosity_convergence.py": {
+    "bytes": 6263,
+    "sha256": "645e944b7e4b1ee1103915e558c6ec38659e0851e5a0ed489285219bb34aa8a9"
+  },
+  "implementation/tools/export_connected_unloading.py": {
+    "bytes": 6944,
+    "sha256": "8f7b0ff5bba203c4291e04bed6a619d8793d19b1d5796fdfde2336e091bab90f"
+  },
+  "implementation/tools/verify_solver_equivalence.py": {
+    "bytes": 4916,
+    "sha256": "e94188485209faf0dce9a506dd9d42d1b1a6faf267e5370fb734f034a118b85b"
+  },
+  "implementation/tools/verify_onset_budget.py": {
+    "bytes": 11245,
+    "sha256": "f70ec0fb52d01c8608bdae6f6ba5ac157badcc0b60fef42b64e6b3763e5a8b9a"
+  },
+  "implementation/tools/compare_rve_backends.py": {
+    "bytes": 2252,
+    "sha256": "df69d7547d301b9557eba1169fb3146fbb60b2f82612473a689d29f5a4cd62b8"
+  },
+  "implementation/tools/export_embedded_remesh.py": {
+    "bytes": 4221,
+    "sha256": "232dfe387ff2d4f34edd6c4b3b8e3d82c9808772143435ce75bfdeeca2ee4400"
+  },
+  "implementation/tools/complete_embedded_remesh_matrix.py": {
+    "bytes": 4553,
+    "sha256": "dc48485b18aea37b993e6823bba77f0cc48f44b133456f65190b65c5a9314d94"
+  },
+  "implementation/tools/run_packing_rve.py": {
+    "bytes": 2376,
+    "sha256": "df0d471fb282f58d1c7be96539663d152b474b34b8201eeeff754cd29f5c45f3"
+  },
+  "implementation/tools/verify_triangle_partition.py": {
+    "bytes": 3637,
+    "sha256": "488cbe3ce740c7c30e7f0a00136d0529b0b9bd41f7f93b9f277c65245e0144ac"
+  },
+  "implementation/tools/run_explicit_model.py": {
+    "bytes": 2419,
+    "sha256": "ee70563e5869786236264f256ef7ca6bf5950da29e3a1732ba442cd563ef88b5"
+  },
+  "implementation/tools/export_contact_atlas.py": {
+    "bytes": 7943,
+    "sha256": "a507c94804e19957bc998d708d9496fb4f4883ea405a1d36113d415d95c2872f"
+  },
+  "implementation/tools/verify_atlas_batch_invariance.py": {
+    "bytes": 1811,
+    "sha256": "1c6495d868cbbb2a479abba89042d907091cb6b5af1d824e73abaf8632a2bba9"
+  },
+  "implementation/tools/verify_tracked_solver.py": {
+    "bytes": 4894,
+    "sha256": "81a28d371106ce675c49b5f99693b3cdd3b6d617a405b078e14eddb36d321504"
+  },
+  "implementation/tools/export_objective_pressure.py": {
+    "bytes": 5804,
+    "sha256": "658979d8304fbb564445aa4984816e16c8b6754c8a1c8c976acce1ebe160ff66"
+  },
+  "implementation/tools/run_porosity_target.py": {
+    "bytes": 2021,
+    "sha256": "094ec94f86549a78f040c3a1eb9c2d126cc3225ca983a44b5f1193a09c252fd0"
+  },
+  "implementation/tools/build_periodic_sintered.py": {
+    "bytes": 7776,
+    "sha256": "3e4427764368e6ea4c23b48c317d556099acf1322553006304dbea90e30ef0e6"
+  },
+  "implementation/tools/verify_connected_pressure.py": {
+    "bytes": 4573,
+    "sha256": "c0e9299d8d19f6b41ebe98fd0c6a361be462f6ca392a9002a591bb4e298b6a71"
+  },
+  "implementation/tools/verify_area_sliding.py": {
+    "bytes": 2496,
+    "sha256": "b226dccecd618a9184a16625fce37a1dc420ae67cb568e85daba91cd0901e198"
+  },
+  "implementation/tools/plot_surface_bisection.py": {
+    "bytes": 2073,
+    "sha256": "f870e19258b73a48b13fd1555977950fdf165b44f2f010d57708a989f6d79e08"
+  },
+  "implementation/tools/run_porosity_cycle.py": {
+    "bytes": 6371,
+    "sha256": "3edbf6b1b0ad70001751cc146bcf50691e083d094f1403c96a476523857f77d9"
+  },
+  "implementation/tools/scan_mesh_phase.py": {
+    "bytes": 2166,
+    "sha256": "4768fa30882724066f47d777ee642bb7bb0110c4051eb267a93978678963b47a"
+  },
+  "implementation/tools/verify_layered_pressure.py": {
+    "bytes": 6901,
+    "sha256": "3cbc7bf5e5b0ae53d3ff7e4400bab724cd2f4fadae34cbd9116b698b2950fc45"
+  },
+  "implementation/tools/diagnose_embedded_refinement.py": {
+    "bytes": 2501,
+    "sha256": "4a2fbe5805cfb0a25c9ed7a8c32c0725cbd103f98e7852443ecc7223557e2791"
+  },
+  "implementation/tools/build_native_kernel.py": {
+    "bytes": 778,
+    "sha256": "4ae243419bbee7b2a4f5566e3c9fa159fcc4cccbe1366b404bd38ae781375397"
+  },
+  "implementation/tools/verify_structured_extension.py": {
+    "bytes": 11856,
+    "sha256": "9859440f8aa005d46bb4126a9b00a5c52e76ebebe153b1a8307ca5f321307851"
+  },
+  "implementation/tools/verify_lazy_candidates.py": {
+    "bytes": 2135,
+    "sha256": "e7cbef555e72542a3738eba688a9a26a6fb4ef5c58fbf5cb44e18c1137bf75f4"
+  },
+  "implementation/tools/export_connected_pressure.py": {
+    "bytes": 12416,
+    "sha256": "b490491307b5f6a3e43bde6c3df6c876e9ea6b9dd72bd087688fa132b22c3a20"
+  },
+  "implementation/tools/monitor_pressure_ramp.py": {
+    "bytes": 5117,
+    "sha256": "8fa5dbfa15f518adc13def743ec5828d1ca330684712f9514706726634c0689d"
+  },
+  "implementation/tools/export_barrier_compaction.py": {
+    "bytes": 9185,
+    "sha256": "bae6a3e245ac76c7fd54e719d65042715fafc98c9ac12a9c652c4083a896308c"
+  },
+  "implementation/tools/verify_surface_development.py": {
+    "bytes": 8957,
+    "sha256": "2e6ebe3bf83814be93d57033f6c8cd5856bc75f4ef0a6b8deef01c7008f2442e"
+  },
+  "implementation/tools/plot_contact_features.py": {
+    "bytes": 1484,
+    "sha256": "3d6ea26fbb2f263ec20b05aff55aca683146f8b519bcef973189f8259878afab"
+  },
+  "implementation/tools/export_porosity_cycle.py": {
+    "bytes": 5526,
+    "sha256": "46bae136154f8bbd7048a79ba836afc5d40e5ba74553900e3c3f0c2de8dce412"
+  },
+  "implementation/tools/export_contact_audit.py": {
+    "bytes": 5454,
+    "sha256": "ea26f522d6ccf02bb3cdb8cf996de2a6a0b0dde1f7535e90035a93730b5d5c1c"
+  },
+  "implementation/tools/plot_edge_verification.py": {
+    "bytes": 2930,
+    "sha256": "2cadd78800468e47f309fc11a6c5c91d7bdfedf96c55dad17aed5573c94f5ae1"
+  },
+  "implementation/tools/verify_integration_replay.py": {
+    "bytes": 9459,
+    "sha256": "a1ac56713ab79361b87bdf5fbd9f3413f36ed053ba6977c628d2d49221f577bf"
+  },
+  "implementation/tools/check_modulus_comparison.py": {
+    "bytes": 2981,
+    "sha256": "e564a960f7cc02b5de0369501ab22d98a8f5ac2de69f19ece976ed02c12d19db"
+  },
+  "implementation/tools/plastic_cycle_audit.py": {
+    "bytes": 2140,
+    "sha256": "1c644c9565122a63c6faa471104f0f1b411a299e132066d6220e56f1ad0a5ef5"
+  },
+  "implementation/tools/verify_plane_contact.py": {
+    "bytes": 6876,
+    "sha256": "dbb849ce81a806760cb9c88ef15522960037b293065ea664fcab188d15e8d34e"
+  },
+  "implementation/tools/verify_contact_mesh_preflight.py": {
+    "bytes": 12052,
+    "sha256": "94349b86fef3f6806ef8e142d437e967d449d0a5d4cbecc55dca30e7aaf639ee"
+  },
+  "implementation/tools/summarize_plastic_verification.py": {
+    "bytes": 7012,
+    "sha256": "43d2efb6b3892cf81e72e97563c0172c9efa1cc304eb47862a43861ab62a5387"
+  },
+  "implementation/tools/export_porosity_target.py": {
+    "bytes": 6090,
+    "sha256": "68e9f855f97bf96ebcc8b145e3f2b98e33169f69f7f16cc2bbf2fd829cccc19d"
+  },
+  "implementation/tools/replay_explicit.py": {
+    "bytes": 858,
+    "sha256": "5dce120e57d6694e9aa471cb7e6d46069fa0bef8df290ca4fb4cb1ed419ca125"
+  },
+  "implementation/tools/export_explicit_results.py": {
+    "bytes": 10043,
+    "sha256": "8ea1f3ffdaab74adeb431ec61c76911727f5e85c08adde81a887c78c665cd761"
+  },
+  "implementation/tools/verify_narrow_integration.py": {
+    "bytes": 6224,
+    "sha256": "2676f332692bf9b613a71a664d1483f5d243b962ad6ece9a9cb3d697d5d19d16"
+  },
+  "implementation/tools/recover_pressure_endpoints.py": {
+    "bytes": 2748,
+    "sha256": "6bd1f9c4a166c4a5409f2e537183dceb20f6296316bc557655dececced6b07d2"
+  },
+  "implementation/packing_fem/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "implementation/packing_fem/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "implementation/packing_fem/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "implementation/packing_fem/embedded_remesh.py": {
+    "bytes": 8554,
+    "sha256": "5ffac6902f30438770137abcda90e46d894ed3921eecb1bf2cca69abb132b5b6"
+  },
+  "implementation/packing_fem/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "implementation/packing_fem/explicit_solver.py": {
+    "bytes": 62681,
+    "sha256": "9f76d43dc909be8375f80df3bc52188a6097c2bce1261a66b86f3e1c7733afcc"
+  },
+  "implementation/packing_fem/area_contact.py": {
+    "bytes": 20830,
+    "sha256": "be8273ee4b9293ec585c8c9bce8085c85383998993e120bee315e0d2ea28d7a3"
+  },
+  "implementation/packing_fem/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "implementation/packing_fem/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "implementation/packing_fem/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "implementation/packing_fem/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "implementation/packing_fem/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "implementation/packing_fem/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "implementation/packing_fem/contact_atlas.py": {
+    "bytes": 12279,
+    "sha256": "28bb8abb01782db6c04f9e03e77fce6d64bb2a4f2a7f6066c4e637cdbade7bbe"
+  },
+  "implementation/packing_fem/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "implementation/packing_fem/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "implementation/packing_fem/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "implementation/packing_fem/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "implementation/packing_fem/embedded_contact.py": {
+    "bytes": 22066,
+    "sha256": "90d62a88c9fabfd87aaff991f1eac580b4f7687ced0fa78593870c70fa9c4b0b"
+  },
+  "implementation/packing_fem/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "implementation/packing_fem/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "implementation/packing_fem/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "implementation/packing_fem/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "implementation/packing_fem/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "implementation/packing_fem/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "implementation/packing_fem/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "implementation/packing_fem/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "implementation/packing_fem/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "implementation/packing_fem/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "implementation/packing_fem/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "implementation/packing_fem/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "implementation/packing_fem/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "implementation/packing_fem/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "implementation/packing_fem/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "implementation/packing_fem/surface_patch.py": {
+    "bytes": 14499,
+    "sha256": "94ba220e61b0a1ca9124edf1a479d77445aee9b21c31ac4fc664e6315499af13"
+  },
+  "implementation/packing_fem/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "implementation/packing_fem/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "implementation/packing_fem/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "implementation/packing_fem/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "implementation/packing_fem/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "implementation/packing_fem/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "implementation/packing_fem/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "implementation/packing_fem/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "implementation/packing_fem/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "implementation/packing_fem/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "implementation/packing_fem/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "implementation/packing_fem/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  }
+}

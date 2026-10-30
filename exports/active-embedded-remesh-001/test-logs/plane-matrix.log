@@ -1,0 +1,39 @@
+{"fraction": 0.2, "slip_mm": 0.0001, "passed": false, "error": "ContactResolutionError('Linear-step separation certificate requires a smaller timestep')"}
+{"fraction": 0.2, "slip_mm": 0.01, "passed": false, "error": "ValueError('Retained friction anchor lacks an exact child-face representation')"}
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 140, in <module>
+    
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 119, in main
+    result,old,new,p,state=verify(fraction,slip,args.n,target)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 81, in verify
+    a=old.evaluate(x,x*0,G,G*0,.0001);b=new.evaluate(y,y*0,G,G*0,.0001)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 99, in evaluate
+    try:response=self.inner.evaluate(self.P@x,self.P@velocity,H,Hdot,dt)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/area_contact.py", line 210, in evaluate
+    coverage=self.edge_coverage.resolved(ids,shift,ep,distance,point_candidates,x,H,self.guard.trial_shifts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 184, in resolved
+    self._certify(face,keys,groups,point_candidates);checked=True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 213, in _certify
+    try:reference=surface_patch.integrate(source,targets,A,initial_partition=(self.rules.get(str(face),{}).get('partition') if self.retain_partition else None),compress_rule=(not self.retain_partition or 'partition' not in self.rules.get(str(face),{})),kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True,error_budget=self.error_budget,absolute_energy_budget=reference_energy_budget/8,absolute_force_budget=reference_force_budget/8)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 199, in integrate
+    leaf=build(B,0)
+         ^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 188, in build
+    value,bary,w,distances=rule(child,8);fine+=value;samples.append((bary,w,child,value));minimum=min(minimum,min(distances))
+                           ^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 175, in rule
+    values,gaps,_=grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise);evaluations+=len(bary)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 80, in grouped_field
+    gap_matrix=np.array([density_fast(bary,source,targets[k],kn,thickness)[1] for k in group])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 36, in density_fast
+    take=distance<best;best[take]=distance[take];edge_weights[take]=candidate[take]
+                                                 ~~~~~~~~~~~~^^^^^^
+KeyboardInterrupt

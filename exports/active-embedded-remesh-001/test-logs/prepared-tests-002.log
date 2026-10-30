@@ -1,0 +1,47 @@
+.F
+=================================== FAILURES ===================================
+_ test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work[0.0001-0.5] _
+
+fraction = 0.5, slip = 0.0001
+
+>   ???
+
+tests/test_embedded_surface_remesh.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packing_fem/embedded_remesh.py:120: in transfer
+    new.history=committed;new.inner.accepted_force_history=migrate(applied)
+                                                           ^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+history = {('area', 36): {'peer': 17, 'second': 1, 'anchor_ids': array([ 2,  6, 18]), 'anchor_shift': array([0, 0, 0]), ...}, ('...('area', 39): {'peer': 17, 'second': 1, 'anchor_ids': array([ 2,  6, 18]), 'anchor_shift': array([0, 0, 0]), ...}, ...}
+
+    def migrate(history):
+        mapped={};covered=set()
+        for key,state in fresh.items():
+            node=inverse.get(key[1])
+            if node is None:raise ValueError('Refinement created an active material sample')
+            matches=[]
+            for oldkey,value in history.items():
+                if oldkey[1]!=node:continue
+                # A patch may move to an adjacent parent face, but creation,
+                # merging and disconnected targets are not transfer operations.
+                if old.inner.adjacent_targets(value['face'],value['shift'],parent[state['face']],state['shift']):matches.append((oldkey,value))
+            if len(matches)!=1 or matches[0][0] in covered:raise ValueError('Active material patch correspondence is not one-to-one')
+            oldkey,value=matches[0];kept=deepcopy(value)
+            ref=value['bary']@(old.inner.X[value['anchor_ids']]+old.L*np.asarray(value['anchor_shift']))
+            cur=value['bary']@(xold[value['anchor_ids']]+H@np.asarray(value['anchor_shift']))
+            anchors=[]
+            for j,face in enumerate(new.faces):
+                if parent[j]!=value['face']:continue
+                bary=coordinates(new.X[face]+old.L*np.asarray(value['anchor_shift']),ref[None],old.L*1e-10)
+                if bary is not None and np.max(abs(bary[0]@(proposal['x'][face]+H@np.asarray(value['anchor_shift']))-cur))<old.L*1e-10:
+                    anchors.append((face,bary[0]))
+>           if not anchors:raise ValueError('Retained friction anchor lacks an exact child-face representation')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           ValueError: Retained friction anchor lacks an exact child-face representation
+
+packing_fem/embedded_remesh.py:111: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_embedded_surface_remesh.py::test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work[0.0001-0.5]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed in 137.45s (0:02:17)

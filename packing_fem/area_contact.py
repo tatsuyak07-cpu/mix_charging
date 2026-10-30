@@ -248,17 +248,23 @@ class AreaContact:
             if new_state and len(branches)>1 and self.mu:
                 coordinate=frame(z,state['director']).T@(z[0]-state['bary']@z[5:8])
                 state=dict(state,plastic=coordinate.copy(),coordinate=coordinate.copy())
-            kt=.5*kn;spring=np.zeros(2);plastic=state['plastic'];coordinate=state['coordinate'];diss=correction=0.
+            kt=.5*kn;spring=np.zeros(2);plastic=state['plastic'];coordinate=state['coordinate'];diss=correction=0.;flowing=False
             if self.mu:
                 T=frame(z,state['director']);coordinate=T.T@(z[0]-state['bary']@z[5:8]);trial=coordinate-plastic
-                spring=trial*min(1.,self.mu*effective_fn/(kt*max(np.linalg.norm(trial),1e-300)))
-                plastic=coordinate-spring;diss=float(kt*spring@(plastic-state['plastic']))
+                length=float(np.linalg.norm(trial));limit=self.mu*effective_fn
+                flowing=kt*length>limit
+                if flowing:
+                    spring=trial*(limit/(kt*length));plastic=coordinate-spring
+                else:
+                    # Stick exactly: subtraction roundoff is not plastic flow
+                    # and must never trigger a material-anchor reset.
+                    spring=trial;plastic=np.array(state['plastic'],copy=True)
+                diss=float(kt*spring@(plastic-state['plastic']))
                 du=coordinate-state['coordinate']
                 correction=float(.5*kt*(state['spring']+spring)@du-.5*kt*(spring@spring-state['spring']@state['spring'])-diss)
                 if np.linalg.norm(spring)>1e-20:local+=friction_force(z,state['director'],state['bary'],plastic,kt)
             if self.capture_audit:
                 records.append(dict(support=support.copy(),images=images.copy(),z=z.copy(),branch=list(branch),kn=float(kn),thickness=float(self.thickness),kt=float(kt),director=state['director'].copy(),bary=state['bary'].copy(),plastic=np.array(plastic,copy=True),spring=spring.copy(),local_force=local.copy(),normal_force=float(effective_fn),mu=float(self.mu),**({'normal_branches':normal_branches,'normal_subgradient':'uniform_Clarke','tie_multiplicity':len(branches)} if len(branches)>1 else {})))
-            flowing=self.mu and np.linalg.norm(plastic-state['plastic'])>0
             tang=.5*kt*float(spring@spring)
             self.trial_force_history[history_key]=deepcopy(dict(state,plastic=np.array(plastic,copy=True),spring=spring.copy(),coordinate=np.array(coordinate,copy=True),energy=tang,face=face,shift=np.asarray(shift).copy()))
             # Normal energy depends only on the current point/triangle.

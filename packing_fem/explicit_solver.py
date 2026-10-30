@@ -86,11 +86,11 @@ def validate(c):
     if c.get('initial_peeq',0)<0:raise ValueError('Negative initial plastic history')
     for key in ('max_steps','output_every'):
         if not isinstance(c[key],int) or c[key]<1:raise ValueError(f'Positive integer {key} required')
-    for name in ('multiple_patches','certified_local_filter','local_material_filter','edge_stationarity_filter','active_contact_timestep','surface_remesh_on_edge_guard'):
+    for name in ('multiple_patches','certified_local_filter','local_material_filter','edge_stationarity_filter','active_contact_timestep','surface_remesh_on_edge_guard','active_embedded_surface_remesh'):
         if name in c and not isinstance(c[name],bool):raise ValueError(f'Boolean {name} required')
     for name in ('surface_remesh_every','surface_remesh_max_events'):
         if name in c and (not isinstance(c[name],int) or c[name]<0):raise ValueError(f'Nonnegative integer {name} required')
-    if any(not isinstance(k,int) or k<1 for k in c.get('surface_remesh_steps',[])):raise ValueError('Positive surface remesh steps required')
+    if any(not isinstance(k,int) or k<0 for k in c.get('surface_remesh_steps',[])):raise ValueError('Nonnegative surface remesh steps required')
     if not isinstance(c.get('remesh_every',0),int) or c.get('remesh_every',0)<0:raise ValueError('Invalid remesh interval')
     if c.get('certified_local_filter',False) and (c.get('initial_remesh',False) or c.get('remesh_every',0)):
         raise ValueError('Canonical certificate cannot follow internal reconnection')
@@ -128,7 +128,7 @@ def solve(directory,X,t,c):
         old_implementation=metadata.get('implementation_sha256',{})
         differences=[name for name in set(old_implementation)|set(implementation) if old_implementation.get(name)!=implementation.get(name)]
         if differences:
-            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py'}
+            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py','embedded_remesh.py'}
             if c.get('allow_solver_update_at_inactive_checkpoint'):compatible.add('explicit_solver.py')
             if not c.get('allow_contact_operator_update') or not restart.get('contact_free_prefix',False) or not set(differences)<=compatible:raise ValueError('Checkpoint implementation mismatch')
             operator_update=sorted(differences)
@@ -152,7 +152,12 @@ def solve(directory,X,t,c):
                 result.setdefault('surface_rule_strategy','single_pose');result.setdefault('contact_search_method','aabb');result.setdefault('atlas_lookahead_steps',[]);result.setdefault('atlas_max_matrix_entries',12000000);result.setdefault('atlas_max_candidate_points',80000);result.setdefault('contact_absolute_energy_budget_Nmm',0.);result.setdefault('contact_absolute_force_budget_N',0.)
             if c.get('extend_stage_hold_budget') and 'pressure_stages' in result:result['pressure_stages']=[{k:v for k,v in stage.items() if k!='max_hold_s'} for stage in result['pressure_stages']]
             return result
-        changed_rules=c.get('embedded_quadrature_rules',{})!=restart.get('runtime_rules',metadata['config'].get('embedded_quadrature_rules',{}))
+        requested_rules=c.get('embedded_quadrature_rules',{})
+        original_rules=metadata['config'].get('embedded_quadrature_rules',{})
+        runtime_rules=restart.get('runtime_rules',original_rules)
+        # A normal continuation uses the checkpoint's migrated runtime rules.
+        # Explicit replacement/reset remains restricted to an inactive prefix.
+        changed_rules=requested_rules!=runtime_rules and (requested_rules!=original_rules or c.get('inactive_quadrature_replay',False))
         if changed_rules:
             if not c.get('inactive_quadrature_replay') or not restart.get('contact_free_prefix',False):raise ValueError('Quadrature changes require a certified contact-free checkpoint prefix')
             left=clean(c);right=clean(metadata['config']);left.pop('embedded_quadrature_rules',None);right.pop('embedded_quadrature_rules',None)
@@ -278,7 +283,7 @@ def solve(directory,X,t,c):
         event=dict(operation='periodic_edge_bisection',time_s=time,accepted=False)
         if candidate_context is not None:event['candidate_selection']=candidate_context
         try:
-            if c.get('contact_backend')=='embedded_area' and not contact_free_prefix:raise ValueError('Active embedded remeshing requires inactive-checkpoint replay')
+            if c.get('contact_backend')=='embedded_area' and not contact_free_prefix and not c.get('active_embedded_surface_remesh',False):raise ValueError('Active embedded remeshing requires explicit retained-sample transfer opt-in')
             oldnv=periodic.velocities(v)
             proposal=None
             for edge in choices:
@@ -305,9 +310,17 @@ def solve(directory,X,t,c):
             newcontact=contact_type(p['X'],p['t'],p2,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**remesh_contact_kwargs)
             H=deformation(q[-6:])*periodic.L
             if c.get('contact_backend')=='embedded_area':
-                from .embedded_contact import reinitialize_inactive
-                evaluated=reinitialize_inactive(contact,newcontact,p['x'],p2.velocities(v2),H,contact_free_prefix)
-                event['inactive_quadrature_reinitialized']=True
+                if contact_free_prefix:
+                    from .embedded_contact import reinitialize_inactive
+                    evaluated=reinitialize_inactive(contact,newcontact,p['x'],p2.velocities(v2),H,contact_free_prefix)
+                    event['inactive_quadrature_reinitialized']=True
+                else:
+                    from .embedded_remesh import refine_rules,transfer
+                    rules,point_map,parent=refine_rules(contact,newcontact.faces,p)
+                    remesh_contact_kwargs['quadrature_rules']=rules
+                    newcontact=contact_type(p['X'],p['t'],p2,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**remesh_contact_kwargs)
+                    evaluated,transfer_report=transfer(contact,newcontact,p,H,point_map,parent,(fc,extra),c['remesh_energy_tolerance'])
+                    event['retained_embedded_samples']=transfer_report
             else:evaluated=transfer_contact(contact,newcontact,p,H)
             if newcontact.quadrature_mode=='material':
                 event['material_quadrature']=dict(area_before=float(contact.integration_area0.sum()),area_after=float(newcontact.integration_area0.sum()),points_before=int(np.count_nonzero(contact.integration_area0)),points_after=int(np.count_nonzero(newcontact.integration_area0)),new_geometry_nodes=int(len(p['X'])-len(X)))
@@ -319,7 +332,7 @@ def solve(directory,X,t,c):
             fc2,extra2,_,ci2=evaluated
             newcontact.capture_audit=c.get('save_contact_audit',False)
             if newcontact.capture_audit:
-                if newcontact.quadrature_mode=='material':fc2,extra2,hist2,ci2=newcontact.replay_force_state(p['x'],p2.velocities(v2),H)
+                if newcontact.quadrature_mode in ('material','embedded'):fc2,extra2,hist2,ci2=newcontact.replay_force_state(p['x'],p2.velocities(v2),H)
                 else:fc2,extra2,hist2,ci2=newcontact.evaluate(p['x'],p2.velocities(v2),H,H*0,0.)
                 newcontact.history=hist2
             newcontact.accept_geometry(p['x'],H)
@@ -338,6 +351,7 @@ def solve(directory,X,t,c):
     initial_energy=float(V0@energy)+ci['normal_energy']+ci['tangent_energy']+float(.5*v@(periodic.M@v));dt_min=float('inf');dt_max=0.
     contact_free_prefix=not bool(hist) and ci.get('minimum_separation_mm',0)>=c.get('barrier_thickness_mm',.02)
     initial_available_energy=float(V0@(energy-c['yield_mpa']*ep-.5*c['hardening_mpa']*ep**2))+ci['normal_energy']+ci['tangent_energy']+float(.5*v@(periodic.M@v))
+    if restart is None and 0 in c.get('surface_remesh_steps',[]):try_surface_remesh(0.)
     def snapshot():
         F=deformation(q[-6:]);vc=float(np.linalg.det(F)*periodic.L**3)
         if vc<=0:raise ValueError('Inverted macroscopic cell')

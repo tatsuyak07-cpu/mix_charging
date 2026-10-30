@@ -1,0 +1,39 @@
+{"fraction": 0.2, "slip_mm": 0.0001, "passed": false, "error": "SurfaceResolutionError('Embedded material quadrature requires inactive-checkpoint replay')", "traceback": "Traceback (most recent call last):\n  File \"/workspace/mix_charging/tools/verify_embedded_remesh.py\", line 119, in main\n    result,old,new,p,state=verify(fraction,slip,args.n,target)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/mix_charging/tools/verify_embedded_remesh.py\", line 81, in verify\n    a=old.evaluate(x,x*0,G,G*0,.0001);b=new.evaluate(y,y*0,G,G*0,.0001)\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/mix_charging/packing_fem/embedded_contact.py\", line 113, in evaluate\n    if self._requests:self._raise_refinement()\n                      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/mix_charging/packing_fem/embedded_contact.py\", line 138, in _raise_refinement\n    raise error\npacking_fem.area_contact.SurfaceResolutionError: Embedded material quadrature requires inactive-checkpoint replay\n"}
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 141, in <module>
+    (root/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+                        ^^^^^^
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 119, in main
+    source=root/'source';source.mkdir()
+                                       ^
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 81, in verify
+    y=np.asarray(R@x)
+                      
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 99, in evaluate
+    try:response=self.inner.evaluate(self.P@x,self.P@velocity,H,Hdot,dt)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/area_contact.py", line 210, in evaluate
+    coverage=self.edge_coverage.resolved(ids,shift,ep,distance,point_candidates,x,H,self.guard.trial_shifts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 184, in resolved
+    self._certify(face,keys,groups,point_candidates);checked=True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 213, in _certify
+    try:reference=surface_patch.integrate(source,targets,A,initial_partition=(self.rules.get(str(face),{}).get('partition') if self.retain_partition else None),compress_rule=(not self.retain_partition or 'partition' not in self.rules.get(str(face),{})),kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True,error_budget=self.error_budget,absolute_energy_budget=reference_energy_budget/8,absolute_force_budget=reference_force_budget/8)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 208, in integrate
+    new=build(child,leaf['depth']+1)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 188, in build
+    value,bary,w,distances=rule(child,8);fine+=value;samples.append((bary,w,child,value));minimum=min(minimum,min(distances))
+                           ^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 175, in rule
+    values,gaps,_=grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise);evaluations+=len(bary)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 80, in grouped_field
+    gap_matrix=np.array([density_fast(bary,source,targets[k],kn,thickness)[1] for k in group])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 47, in density_fast
+    values=np.c_[E,(bary[:,:,None]*force[:,None,:]).reshape(-1,9),(-weights[:,:,None]*force[:,None,:]).reshape(-1,9)]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

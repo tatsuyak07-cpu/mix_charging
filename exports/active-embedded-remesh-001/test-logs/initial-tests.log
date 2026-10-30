@@ -1,0 +1,37 @@
+F
+=================================== FAILURES ===================================
+_ test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work[0.0001-0.2] _
+
+fraction = 0.2, slip = 0.0001
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work(fraction,slip):
+        old,new,p,H,before,mapping,parent,state=case(fraction,slip)
+        saved=deepcopy(old.history)
+>       after,report=transfer(old,new,p,H,mapping,parent,before,1e-8)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_embedded_surface_remesh.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packing_fem/embedded_remesh.py:83: in transfer
+    fresh=new.evaluate(proposal['x'],proposal['x']*0,H,H*0,0.)[2]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packing_fem/embedded_contact.py:107: in evaluate
+    if self._requests:self._raise_refinement()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <packing_fem.embedded_contact.EmbeddedContact object at 0x7fd9350d41d0>
+
+    def _raise_refinement(self):
+        error=SurfaceResolutionError('Embedded material quadrature requires inactive-checkpoint replay')
+        error.feature=dict(kind='material_quadrature',requires_quadrature_refinement=True,rules=self._requests)
+>       raise error
+E       packing_fem.area_contact.SurfaceResolutionError: Embedded material quadrature requires inactive-checkpoint replay
+
+packing_fem/embedded_contact.py:132: SurfaceResolutionError
+=========================== short test summary info ============================
+FAILED tests/test_embedded_surface_remesh.py::test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work[0.0001-0.2]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 31.70s

@@ -1,0 +1,43 @@
+.F
+=================================== FAILURES ===================================
+_ test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work[0.0001-0.5] _
+
+fraction = 0.5, slip = 0.0001
+
+    @pytest.mark.parametrize('fraction',[.2,.5,.8])
+    @pytest.mark.parametrize('slip',[.0001,.01])
+    def test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work(fraction,slip):
+        old,new,p,H,before,mapping,parent,state=case(fraction,slip)
+        saved=deepcopy(old.history)
+>       after,report=transfer(old,new,p,H,mapping,parent,before,1e-8)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_embedded_surface_remesh.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packing_fem/embedded_remesh.py:112: in transfer
+    for j,face in enumerate(new.faces):
+      ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+history = {('area', 5): {'peer': 21, 'second': 1, 'anchor_ids': array([14, 18, 30]), 'anchor_shift': array([-1,  0,  0]), ...}, ...('area', 14): {'peer': 30, 'second': 2, 'anchor_ids': array([ 1, 13, 17]), 'anchor_shift': array([0, 0, 0]), ...}, ...}
+
+    # Full-face subtraction can leave positive roundoff weights at newly
+    # inserted geometry vertices. They are mathematically zero-area samples;
+    # retain collision geometry but remove ONLY a bounded subtraction residue.
+    residue=after[n:N].copy();roundoff=128*np.finfo(float).eps*new.node_area0[n:N]
+    if np.any(abs(residue)>roundoff):raise ValueError('New geometry node has a nonzero material integration area')
+    new.inner.quadrature_weights[n:N]=0.;new.inner.guard.node_area0[n:N]=0.
+    # This evaluates independent normal-integration/collision guards as well as
+    # the new patch identities. It is not committed and never initializes old
+    # slipping histories with these zero-state histories.
+    fresh=new.evaluate(proposal['x'],proposal['x']*0,H,H*0,0.)[2]
+    inverse={int(value):i for i,value in enumerate(mapping)}
+>   def migrate(history):
+                          
+E   ValueError: Active material patch correspondence is not one-to-one
+
+packing_fem/embedded_remesh.py:96: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_embedded_surface_remesh.py::test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work[0.0001-0.5]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed in 212.70s (0:03:32)

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "small_probe", line 70, in test_exact_active_embedded_bisection_retains_stick_slip_and_virtual_work
+  File "/workspace/mix_charging/packing_fem/embedded_remesh.py", line 117, in transfer
+    committed=migrate(old.history)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_remesh.py", line 94, in migrate
+    if node is None:raise ValueError('Refinement created an active material sample')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Refinement created an active material sample

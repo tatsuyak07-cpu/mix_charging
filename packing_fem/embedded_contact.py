@@ -35,12 +35,19 @@ class EmbeddedContact:
         # Discover the same physical/cell-cut faces as the existing backend.
         base=AreaContact(X,t,periodic,kn,mu,skin,quadrature_mode='material',**kwargs)
         faces=base.faces;N=len(X);rows=list(range(N));cols=list(range(N));values=[1.]*N
-        added=[];virtual_faces=[];areas=base.integration_area0.copy();self.face_points={}
+        added=[];virtual_faces=[];areas=np.zeros(N);self.face_points={}
+        # Sum uncovered faces directly. Subtracting covered areas can leave
+        # tiny positive weights and invent zero-area friction histories.
+        covered_faces={int(key) for key in self.rules}
+        for face,ids in enumerate(faces):
+            if face in covered_faces:continue
+            tri=X[ids];area=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
+            np.add.at(areas,ids,area/3)
         for key,rule in sorted(self.rules.items(),key=lambda item:int(item[0])):
             face=int(key);B=np.asarray(rule['bary'],float);weights=np.asarray(rule['weights'],float)
             ids=faces[face];tri=X[ids];A=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
             if B.ndim!=2 or B.shape[1]!=3 or weights.shape!=(len(B),) or np.min(B)<-1e-12 or np.max(abs(B.sum(1)-1))>1e-12 or np.any(weights<=0) or abs(weights.sum()-A)>max(1e-12,A*1e-10):raise ValueError('Invalid full-reference-face quadrature rule')
-            areas[ids]-=A/3;nodes=[]
+            nodes=[]
             for bary,w in zip(B,weights):
                 node=N+len(added);added.append((bary@tri,float(w)));virtual_faces.append(face);nodes.append(node)
                 rows.extend([node]*3);cols.extend(ids);values.extend(bary)

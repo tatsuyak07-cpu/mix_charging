@@ -1,0 +1,37 @@
+{"fraction": 0.2, "slip_mm": 0.0001, "passed": false, "error": "TypeError('Object of type bool is not JSON serializable')", "traceback": "Traceback (most recent call last):\n  File \"/workspace/mix_charging/tools/verify_embedded_remesh.py\", line 126, in main\n    result,old,new,p,state=verify(fraction,slip,args.n,target)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/mix_charging/tools/verify_embedded_remesh.py\", line 108, in verify\n    (output/'summary.json').write_text(json.dumps(result,indent=2)+'\\n')\n                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 202, in encode\n    chunks = list(chunks)\n             ^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 432, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 439, in _iterencode\n    o = _default(o)\n        ^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 180, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type bool is not JSON serializable\n"}
+Traceback (most recent call last):
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 148, in <module>
+    
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 126, in main
+    try:
+         
+  File "/workspace/mix_charging/tools/verify_embedded_remesh.py", line 82, in verify
+    a=old.evaluate(x,x*0,G,G*0,.0001);b=new.evaluate(y,y*0,G,G*0,.0001)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 112, in evaluate
+    self._certify(face,keys,groups,{})
+  File "/workspace/mix_charging/packing_fem/embedded_contact.py", line 213, in _certify
+    try:reference=surface_patch.integrate(source,targets,A,initial_partition=(self.rules.get(str(face),{}).get('partition') if self.retain_partition else None),compress_rule=(not self.retain_partition or 'partition' not in self.rules.get(str(face),{})),kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True,error_budget=self.error_budget,absolute_energy_budget=reference_energy_budget/8,absolute_force_budget=reference_force_budget/8)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 218, in integrate
+    low_values,_,_=grouped_field(low_bary,source,targets,groups,kn,thickness,vertex_map,pointwise)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 92, in grouped_field
+    values,_,selected=field(bary[rows],source,targets[facets],kn,thickness,vertex_map[facets])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 53, in field
+    results=[density_fast(bary,source,target,kn,thickness) for target in targets]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mix_charging/packing_fem/surface_patch.py", line 38, in density_fast
+    normal=np.cross(edges[:,0],edges[:,1]);normal/=np.linalg.norm(normal)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/environment/mix_charging/.venv/lib/python3.12/site-packages/numpy/_core/numeric.py", line 1677, in cross
+    a = moveaxis(a, axisa, -1)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/environment/mix_charging/.venv/lib/python3.12/site-packages/numpy/_core/numeric.py", line 1544, in moveaxis
+    source = normalize_axis_tuple(source, a.ndim, 'source')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/environment/mix_charging/.venv/lib/python3.12/site-packages/numpy/_core/numeric.py", line 1472, in normalize_axis_tuple
+    axis = [operator.index(axis)]
+            ^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

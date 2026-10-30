@@ -10,3 +10,7 @@ exports/porosity-cycle-development-001/*/
 # Full contact-atlas diagnostics are preserved in the downloadable ZIP.
 exports/contact-atlas-development-001/*/
 !exports/contact-atlas-development-001/test-logs/
+
+# Raw active-contact refinement diagnostics are included in the downloadable ZIP.
+exports/active-embedded-remesh-001/*/
+!exports/active-embedded-remesh-001/test-logs/

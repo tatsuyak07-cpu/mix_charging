@@ -1,0 +1,6 @@
+{"fraction": 0.5, "slip_mm": 0.0001, "passed": true, "checks": {"instantaneous_audit": true, "virtual_work": true, "continued_path": true, "separated": true, "analytic": true}, "error": null}
+{"fraction": 0.2, "slip_mm": 0.01, "passed": true, "checks": {"instantaneous_audit": true, "virtual_work": true, "continued_path": true, "separated": true, "analytic": true}, "error": null}
+{"fraction": 0.2, "slip_mm": 0.0001, "passed": true, "checks": {"instantaneous_audit": true, "virtual_work": true, "continued_path": true, "separated": true, "analytic": true}, "error": null}
+{"fraction": 0.5, "slip_mm": 0.01, "passed": true, "checks": {"instantaneous_audit": true, "virtual_work": true, "continued_path": true, "separated": true, "analytic": true}, "error": null}
+{"fraction": 0.8, "slip_mm": 0.0001, "passed": true, "checks": {"instantaneous_audit": true, "virtual_work": true, "continued_path": true, "separated": true, "analytic": true}, "error": null}
+{"fraction": 0.8, "slip_mm": 0.01, "passed": true, "checks": {"instantaneous_audit": true, "virtual_work": true, "continued_path": true, "separated": true, "analytic": true}, "error": null}
