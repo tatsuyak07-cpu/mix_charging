@@ -1,0 +1,6 @@
+case,passed,remesh_accepted,steps,angular_momentum_error,kinetic_energy_error,contact_macro_force_error,stop_reason
+moving-final-020,True,True,3,2.2489151079795146e-16,4.0365902823848204e-16,5.096888041951533e-14,RuntimeError('Step budget exhausted; no extrapolation')
+moving-final-010,True,True,3,1.4543749513265032e-16,0.0,4.9629085258160436e-14,RuntimeError('Step budget exhausted; no extrapolation')
+moving-final-005,True,True,3,1.725806318959078e-16,2.6845216660407347e-16,3.609457503979165e-14,RuntimeError('Step budget exhausted; no extrapolation')
+moving-l2-control,False,False,3,0.00999770866857634,0.004797801707367976,5.096888041951533e-14,RuntimeError('Step budget exhausted; no extrapolation')
+moving-stop-control,False,True,2,2.2489151079795146e-16,4.0365902823848204e-16,5.096888041951533e-14,SurfaceResolutionError('Distinct tied closest patch projections require subgradient integration')

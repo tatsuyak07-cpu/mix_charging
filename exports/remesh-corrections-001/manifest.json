@@ -1,0 +1,3466 @@
+{
+  "README.md": {
+    "bytes": 8332,
+    "sha256": "f7e3d77a8e22cd9e62fea21546ed012fccb1c1407f4620858560bf95e2e191da"
+  },
+  "assessment.json": {
+    "bytes": 17488,
+    "sha256": "d41e82f01b8b348292eab9bd51920f827908b90d6dcddaf5519aa7a4196f26c4"
+  },
+  "conservation-errors.png": {
+    "bytes": 56798,
+    "sha256": "53f5893e4278e77d15ad6669411e634d5b796733dae90c841af584492a2e62c1"
+  },
+  "comparison.csv": {
+    "bytes": 912,
+    "sha256": "578705d90007258bcf06a4f2ccd2b368c436da75a373dd77b4cf6cb0253b08a9"
+  },
+  "diagnostics/regression-tests.log": {
+    "bytes": 111,
+    "sha256": "50b3090ac3e217d8696d94b740e7bd56f3148ddd94ec284e99d86e0bb408616f"
+  },
+  "diagnostics/moving-cfl-010.log": {
+    "bytes": 2116,
+    "sha256": "aa27559c6bffa708323879570bda1d54127f2ccd77659bd7035e66cf09f66c95"
+  },
+  "diagnostics/moving-solver.log": {
+    "bytes": 2114,
+    "sha256": "4f44d9d066f8ac9af0c907fd7b4706b2ae87797646d69b6044b7172e57141f93"
+  },
+  "diagnostics/atlas-clarke-tests.log": {
+    "bytes": 257,
+    "sha256": "5f71a4b70b6136e52b005d20a6ea77d1548480e04019fd4623434e03f0ebccb8"
+  },
+  "diagnostics/bisector-before-stop.json": {
+    "bytes": 210,
+    "sha256": "212ab28a721ee272af8381138aa4634f6293d946c2bd2b5bcbe2340735073781"
+  },
+  "diagnostics/moving-cfl-005.log": {
+    "bytes": 2152,
+    "sha256": "28996556a016b48f0d76135abc88059293f523636a71a28e05268e0ce34e5347"
+  },
+  "diagnostics/final-current-tests.log": {
+    "bytes": 111,
+    "sha256": "b8f4866f4e716e516a118c9754138732e737556578169cf2f2f358f2ded28298"
+  },
+  "diagnostics/final-component-tests.log": {
+    "bytes": 99,
+    "sha256": "9e6ab3c6054abf0e7b92bcd34f7b6ee42528e1ac7dca0236ab2f8fa33885fced"
+  },
+  "diagnostics/moving-final-010.log": {
+    "bytes": 2116,
+    "sha256": "aa27559c6bffa708323879570bda1d54127f2ccd77659bd7035e66cf09f66c95"
+  },
+  "diagnostics/atlas-child-tests.log": {
+    "bytes": 926,
+    "sha256": "a2a25af5c7c3a58da37aef87711443e429a746182071644dde82eea0fa453b66"
+  },
+  "diagnostics/velocity-tests.log": {
+    "bytes": 98,
+    "sha256": "beed21eebfb76b7b055d8461a033c0d1d8086da40e785238b219daeb28c5c4e1"
+  },
+  "diagnostics/contact-tests.log": {
+    "bytes": 110,
+    "sha256": "fd1f1f75416e4adee904f4adba13e1a8065bf6e8d38d6db7e8e7a7ad6993131a"
+  },
+  "diagnostics/moving-stop-control.log": {
+    "bytes": 2158,
+    "sha256": "7e4794bf6e889eb42f209952001e8f992705ea16af113748652e7d5ba42f7787"
+  },
+  "diagnostics/final-tests.log": {
+    "bytes": 111,
+    "sha256": "c4bda8fee0ccf43128a3b6de9c89a83abb25f6e90f887950fc4ced50891f1f1a"
+  },
+  "diagnostics/moving-l2-control.log": {
+    "bytes": 1835,
+    "sha256": "420818c16616bbd8f901dff03508e6f88705278a5eb6e11137bd35ddc58b7850"
+  },
+  "diagnostics/moving-final-005.log": {
+    "bytes": 2152,
+    "sha256": "28996556a016b48f0d76135abc88059293f523636a71a28e05268e0ce34e5347"
+  },
+  "diagnostics/final-clarke-tests.log": {
+    "bytes": 98,
+    "sha256": "42211a1517031bdac7ac8582d0b893f0c9bb39056f8fd677c9e735562d099fb5"
+  },
+  "diagnostics/moving-final-020.log": {
+    "bytes": 2114,
+    "sha256": "4f44d9d066f8ac9af0c907fd7b4706b2ae87797646d69b6044b7172e57141f93"
+  },
+  "diagnostics/packing-eligibility.log": {
+    "bytes": 864,
+    "sha256": "606d18aba6644b1dc19fb389ec5e5caebab7107e76205a2c23250f0fdca31dc9"
+  },
+  "test-logs/regression-tests.log": {
+    "bytes": 111,
+    "sha256": "50b3090ac3e217d8696d94b740e7bd56f3148ddd94ec284e99d86e0bb408616f"
+  },
+  "test-logs/moving-cfl-010.log": {
+    "bytes": 2116,
+    "sha256": "aa27559c6bffa708323879570bda1d54127f2ccd77659bd7035e66cf09f66c95"
+  },
+  "test-logs/moving-solver.log": {
+    "bytes": 2114,
+    "sha256": "4f44d9d066f8ac9af0c907fd7b4706b2ae87797646d69b6044b7172e57141f93"
+  },
+  "test-logs/atlas-clarke-tests.log": {
+    "bytes": 257,
+    "sha256": "5f71a4b70b6136e52b005d20a6ea77d1548480e04019fd4623434e03f0ebccb8"
+  },
+  "test-logs/moving-cfl-005.log": {
+    "bytes": 2152,
+    "sha256": "28996556a016b48f0d76135abc88059293f523636a71a28e05268e0ce34e5347"
+  },
+  "test-logs/final-current-tests.log": {
+    "bytes": 111,
+    "sha256": "b8f4866f4e716e516a118c9754138732e737556578169cf2f2f358f2ded28298"
+  },
+  "test-logs/final-component-tests.log": {
+    "bytes": 99,
+    "sha256": "9e6ab3c6054abf0e7b92bcd34f7b6ee42528e1ac7dca0236ab2f8fa33885fced"
+  },
+  "test-logs/moving-final-010.log": {
+    "bytes": 2116,
+    "sha256": "aa27559c6bffa708323879570bda1d54127f2ccd77659bd7035e66cf09f66c95"
+  },
+  "test-logs/atlas-child-tests.log": {
+    "bytes": 926,
+    "sha256": "a2a25af5c7c3a58da37aef87711443e429a746182071644dde82eea0fa453b66"
+  },
+  "test-logs/velocity-tests.log": {
+    "bytes": 98,
+    "sha256": "beed21eebfb76b7b055d8461a033c0d1d8086da40e785238b219daeb28c5c4e1"
+  },
+  "test-logs/contact-tests.log": {
+    "bytes": 110,
+    "sha256": "fd1f1f75416e4adee904f4adba13e1a8065bf6e8d38d6db7e8e7a7ad6993131a"
+  },
+  "test-logs/moving-stop-control.log": {
+    "bytes": 2158,
+    "sha256": "7e4794bf6e889eb42f209952001e8f992705ea16af113748652e7d5ba42f7787"
+  },
+  "test-logs/final-tests.log": {
+    "bytes": 111,
+    "sha256": "c4bda8fee0ccf43128a3b6de9c89a83abb25f6e90f887950fc4ced50891f1f1a"
+  },
+  "test-logs/moving-l2-control.log": {
+    "bytes": 1835,
+    "sha256": "420818c16616bbd8f901dff03508e6f88705278a5eb6e11137bd35ddc58b7850"
+  },
+  "test-logs/moving-final-005.log": {
+    "bytes": 2152,
+    "sha256": "28996556a016b48f0d76135abc88059293f523636a71a28e05268e0ce34e5347"
+  },
+  "test-logs/final-clarke-tests.log": {
+    "bytes": 98,
+    "sha256": "42211a1517031bdac7ac8582d0b893f0c9bb39056f8fd677c9e735562d099fb5"
+  },
+  "test-logs/moving-final-020.log": {
+    "bytes": 2114,
+    "sha256": "4f44d9d066f8ac9af0c907fd7b4706b2ae87797646d69b6044b7172e57141f93"
+  },
+  "test-logs/packing-eligibility.log": {
+    "bytes": 864,
+    "sha256": "606d18aba6644b1dc19fb389ec5e5caebab7107e76205a2c23250f0fdca31dc9"
+  },
+  "diagnostics/moving-final-010/summary.json": {
+    "bytes": 2862,
+    "sha256": "99ff749cce47344d382e583f70f872ba7557ed7df34d84098a765b04a802e25d"
+  },
+  "diagnostics/moving-solver/summary.json": {
+    "bytes": 2860,
+    "sha256": "e0be3ef260627b96d4c9bee03b835a1085d354e23c5c9f8cd19f0d8dfef160eb"
+  },
+  "diagnostics/moving-l2-control/summary.json": {
+    "bytes": 2487,
+    "sha256": "4811df20f796d1f53a33dc8e040d5bcc47ca8a39a5bd9900cb98899121dbb0d4"
+  },
+  "diagnostics/moving-cfl-005/summary.json": {
+    "bytes": 2898,
+    "sha256": "952b01fb96543635d13861fe3067d96cddd5f336f7cb9fa06bd0ce45dfeecd15"
+  },
+  "diagnostics/moving-cfl-010/summary.json": {
+    "bytes": 2862,
+    "sha256": "99ff749cce47344d382e583f70f872ba7557ed7df34d84098a765b04a802e25d"
+  },
+  "diagnostics/moving-final-020/summary.json": {
+    "bytes": 2860,
+    "sha256": "e0be3ef260627b96d4c9bee03b835a1085d354e23c5c9f8cd19f0d8dfef160eb"
+  },
+  "diagnostics/moving-final-005/summary.json": {
+    "bytes": 2898,
+    "sha256": "952b01fb96543635d13861fe3067d96cddd5f336f7cb9fa06bd0ce45dfeecd15"
+  },
+  "diagnostics/bisector-before-source/test_patch_subgradient.py": {
+    "bytes": 2350,
+    "sha256": "18f19084ffd706ce84f968f7e5d7b530be05b0f2f4b64cb5c421847d81fd67c5"
+  },
+  "diagnostics/bisector-before-source/surface_patch.py": {
+    "bytes": 15149,
+    "sha256": "32bad90589949e53ffd093ecfbdde8018adf92301e4af2aee2777b3ae98dbd41"
+  },
+  "diagnostics/moving-stop-control/summary.json": {
+    "bytes": 2904,
+    "sha256": "9e16f3a4d4caed26475342ea73097b45b6dc1c80d58608ebeb25a699d1da3325"
+  },
+  "diagnostics/packing-eligibility/summary.json": {
+    "bytes": 1044,
+    "sha256": "55ceb980e858206b3b275652f8a5af4916d8466e1b4be104794ef13ee5ec91ba"
+  },
+  "diagnostics/moving-final-010/disabled/contact-audit.json": {
+    "bytes": 2036032,
+    "sha256": "b8dc3a503cdac0308477e2050c040085e614d3d2f2686037b3ac8db80e67024a"
+  },
+  "diagnostics/moving-final-010/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "ad9ee3cacaee4c91da4f6bf6d98b5ca5ebb4bc80f532d7f4ed2dba91d6ac7637"
+  },
+  "diagnostics/moving-final-010/disabled/history.csv": {
+    "bytes": 2827,
+    "sha256": "3b393968f8fa47268b0bc70c65f4f0a60f8264fb156fc41edbb341c9091f35fe"
+  },
+  "diagnostics/moving-final-010/disabled/progress.jsonl": {
+    "bytes": 1391,
+    "sha256": "c356411798d2812753146cea3569fca191d2f57f95aa53e302f84437aa5af4c0"
+  },
+  "diagnostics/moving-final-010/disabled/last-state.npz": {
+    "bytes": 2495,
+    "sha256": "8341fea92a67f6f850ea9899255e8f774d08ffad4a0519c94bbd57877ae5fd3a"
+  },
+  "diagnostics/moving-final-010/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-010/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-final-010/disabled/config.json": {
+    "bytes": 85481,
+    "sha256": "88b5c5b4747071276fa0cf23065cb11f1a9b30558748607cc8b32a6dbf2911cc"
+  },
+  "diagnostics/moving-final-010/disabled/last-mesh.vtu": {
+    "bytes": 2155,
+    "sha256": "b6e6b51fcc2db6e2fef1c9a782bfcf712af746946e2d9622135587dde14749c2"
+  },
+  "diagnostics/moving-final-010/disabled/summary.json": {
+    "bytes": 4257,
+    "sha256": "220abbe5f6df3961a98e37bc5188327f5e10e9d7e92b7ce1602cb2e2390a5e52"
+  },
+  "diagnostics/moving-final-010/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-final-010/baseline/contact-audit.json": {
+    "bytes": 2036032,
+    "sha256": "b8dc3a503cdac0308477e2050c040085e614d3d2f2686037b3ac8db80e67024a"
+  },
+  "diagnostics/moving-final-010/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "72d9df4cac39835017c7cc6798c165f6d63582f4d421fc7f7f994e48a81b97d8"
+  },
+  "diagnostics/moving-final-010/baseline/history.csv": {
+    "bytes": 2827,
+    "sha256": "3b393968f8fa47268b0bc70c65f4f0a60f8264fb156fc41edbb341c9091f35fe"
+  },
+  "diagnostics/moving-final-010/baseline/progress.jsonl": {
+    "bytes": 1391,
+    "sha256": "c356411798d2812753146cea3569fca191d2f57f95aa53e302f84437aa5af4c0"
+  },
+  "diagnostics/moving-final-010/baseline/last-state.npz": {
+    "bytes": 2495,
+    "sha256": "8341fea92a67f6f850ea9899255e8f774d08ffad4a0519c94bbd57877ae5fd3a"
+  },
+  "diagnostics/moving-final-010/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-010/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-final-010/baseline/config.json": {
+    "bytes": 85472,
+    "sha256": "330d71fba6c3aa48c74355629164bc6d2c43c2acae005e2c4aa399fc53841895"
+  },
+  "diagnostics/moving-final-010/baseline/last-mesh.vtu": {
+    "bytes": 2155,
+    "sha256": "b6e6b51fcc2db6e2fef1c9a782bfcf712af746946e2d9622135587dde14749c2"
+  },
+  "diagnostics/moving-final-010/baseline/summary.json": {
+    "bytes": 4037,
+    "sha256": "4c587b3610d360db7d38ed56328db725db5f7b957bf4cc400e03ffcb8fa9a2f8"
+  },
+  "diagnostics/moving-final-010/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/contact-audit.json": {
+    "bytes": 2048702,
+    "sha256": "0a59f2b166212e939ad9b49e636a4a4bcce5ebf7d6051eabd65fa07947d27bd2"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "641a33b2f1b2e66d379723f43e6da7be7d59c0e0bb56a791d89596d1b566c1a3"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/history.csv": {
+    "bytes": 2220,
+    "sha256": "b5d593c77a5a0fd7aa2d8493886a2a7c81469e824e66d4977bddbbb7803875cb"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/progress.jsonl": {
+    "bytes": 1023,
+    "sha256": "e36ae4f4f3595470992aab5ab752d7b1898bdfaab5057dbe63e09c9a26453595"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/last-state.npz": {
+    "bytes": 2736,
+    "sha256": "8ba5cc018e5b516caf44521daaee0bcd22364512d6fcaaa7c022ab1b5848f951"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/config.json": {
+    "bytes": 85590,
+    "sha256": "73883fb28af880050a49779d7f4a5cc66a72831ef99d5bd589cc3722eff8ff71"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2383,
+    "sha256": "d761c77987dd11c8c746257aed6e8bd3489bb7c54287c6d2f31318b523c78ca5"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/summary.json": {
+    "bytes": 5819,
+    "sha256": "e748a23c9f2107267ebddd04569ec09df4c668b1a0dd3b5c38b3dd8f9a719fe0"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-010/enabled/contact-audit.json": {
+    "bytes": 2048702,
+    "sha256": "0a59f2b166212e939ad9b49e636a4a4bcce5ebf7d6051eabd65fa07947d27bd2"
+  },
+  "diagnostics/moving-final-010/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "63c012ae6de413618cdeae5b805c10f029aeb95701d8ccfab175b55ca106a2b3"
+  },
+  "diagnostics/moving-final-010/enabled/history.csv": {
+    "bytes": 2825,
+    "sha256": "9051ee276d56c732ff73a758daac522fded0e63be2d85d6f06a9b568dbb343c3"
+  },
+  "diagnostics/moving-final-010/enabled/progress.jsonl": {
+    "bytes": 1390,
+    "sha256": "2cee8b03395fcbf6b5bad2ae8f19119bccc3e16979af534a474087863bba2fcb"
+  },
+  "diagnostics/moving-final-010/enabled/last-state.npz": {
+    "bytes": 2736,
+    "sha256": "8ba5cc018e5b516caf44521daaee0bcd22364512d6fcaaa7c022ab1b5848f951"
+  },
+  "diagnostics/moving-final-010/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-010/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-010/enabled/config.json": {
+    "bytes": 85480,
+    "sha256": "41f218c01097bffe993615a3946248b203769213e4462ae65588c8d133fb405c"
+  },
+  "diagnostics/moving-final-010/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2410,
+    "sha256": "f7f970c80130ee7ca17e876e0b1f5dcc48a72786ec39b517409187ea73553cd8"
+  },
+  "diagnostics/moving-final-010/enabled/last-mesh.vtu": {
+    "bytes": 2383,
+    "sha256": "d761c77987dd11c8c746257aed6e8bd3489bb7c54287c6d2f31318b523c78ca5"
+  },
+  "diagnostics/moving-final-010/enabled/summary.json": {
+    "bytes": 5809,
+    "sha256": "77fa6a649fd4d8f7e6a864d58a804426038bfb4bd0d4498d40297e66b4a8f0dc"
+  },
+  "diagnostics/moving-final-010/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/contact-audit.json": {
+    "bytes": 1975202,
+    "sha256": "bd8899764d00485b72135972179cab63259e4ab22b231788414d0589186f5608"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 350,
+    "sha256": "0b7d49e29ab4f64e99f8bd765bff576d5bda74813e8722412f92ddb5759aed3e"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/history.csv": {
+    "bytes": 1612,
+    "sha256": "c9d0cbeb1e594f9798e78e7e4d435fa10121d5e28c49185603ecd66bd6d51bd3"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/last-state.npz": {
+    "bytes": 2401,
+    "sha256": "a311d68960dd6daa830dfebb500e4493e2db1f600af514dfdad80a667b1691d8"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/config.json": {
+    "bytes": 85510,
+    "sha256": "d702d55ecad9a5213228bf562c2f87f832f6636a280c11e36cc947843fbb98aa"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2410,
+    "sha256": "f7f970c80130ee7ca17e876e0b1f5dcc48a72786ec39b517409187ea73553cd8"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 1987,
+    "sha256": "96d8ec88816b08fee6c7d4f08ecb9293fae4c9d47bbb9343cc36e4d9de4a7525"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/summary.json": {
+    "bytes": 5921,
+    "sha256": "1486763a5504d203714bc95f62a30fbb4913ad5bb5369e5b5a3b4d491f895a72"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-010/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 145083,
+    "sha256": "87f3d64772cd1aa042321c6062bbc3c62be11fc477bc90b758b5c1f5c82de3bd"
+  },
+  "diagnostics/moving-final-010/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "df2e5e16c8fed53e92747d5c6e426fcf43c8ebc77d2bf8ecc4fe1b8ed8dda540"
+  },
+  "diagnostics/moving-final-010/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063654,
+    "sha256": "dbdf76eeeea127c94e2fc9e83064f221c9c8a7bec7e15a9a663fb8853ebfd68a"
+  },
+  "diagnostics/moving-final-010/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 145083,
+    "sha256": "87f3d64772cd1aa042321c6062bbc3c62be11fc477bc90b758b5c1f5c82de3bd"
+  },
+  "diagnostics/moving-final-010/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "a3b2bed5c5d4b2a60007bd9fd563cbae8633ed45a7da86ff06b72c35763728da"
+  },
+  "diagnostics/moving-final-010/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063461,
+    "sha256": "66d5577a0d46821b47d4e41253df9bfd58ea32b2cb6e240a484b949d4590fdc8"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 168507,
+    "sha256": "c91ec1600ad436fc493199591f2ca2dfb493a89c8b8c0460c9b57c3669e5e877"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "256747e28a215232a74d127e413cdb91e58beb3be70bd12d4e2f133f2c68e804"
+  },
+  "diagnostics/moving-final-010/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1073656,
+    "sha256": "479e660efda90a32b1d825628fccd41926346c1643c404008d1ccf644214372a"
+  },
+  "diagnostics/moving-final-010/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 168507,
+    "sha256": "c91ec1600ad436fc493199591f2ca2dfb493a89c8b8c0460c9b57c3669e5e877"
+  },
+  "diagnostics/moving-final-010/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "b49f4cf76616df5c0506494452f72054780fb27b231a3423f9b6075017fe347d"
+  },
+  "diagnostics/moving-final-010/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1074034,
+    "sha256": "db2f2ad4595d49e8301ea8abeef0364d82e38718d5d51f101802ee6d5ca0c80a"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 140053,
+    "sha256": "e69270677c67174897c16650dc41622870b32c174e3c14b92ce5fe2599ff36fe"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "1af23b4c3ab02f8d8e7dc79663f1c523e241e0e07a5f55430d625b9f11e96235"
+  },
+  "diagnostics/moving-final-010/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072490,
+    "sha256": "30aa13360c066a3a1fceb416d1327588783ed1c2b66421fc19ce76b74053c727"
+  },
+  "diagnostics/moving-solver/disabled/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-solver/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "76de46587a7862a6b17532ff1c9a9e6fbe41167d26879591f70c00efd97dc939"
+  },
+  "diagnostics/moving-solver/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-solver/disabled/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-solver/disabled/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-solver/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-solver/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-solver/disabled/config.json": {
+    "bytes": 85481,
+    "sha256": "7ac7e215e1e4f706e57ebb07a834666d9b696f567ed97113f67e5fd10d0f54fe"
+  },
+  "diagnostics/moving-solver/disabled/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-solver/disabled/summary.json": {
+    "bytes": 4254,
+    "sha256": "9fb00a99f9876156f1afd97427836799f4bf44423b49b22d9b64a5930a597c11"
+  },
+  "diagnostics/moving-solver/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-solver/baseline/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-solver/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "ccba455ae6445bec5e9bad8592bf959d864da9875019cbb5655cb65cc4bf276d"
+  },
+  "diagnostics/moving-solver/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-solver/baseline/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-solver/baseline/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-solver/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-solver/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-solver/baseline/config.json": {
+    "bytes": 85472,
+    "sha256": "b7cfd34a630a115bc04f5036aa6425c45e22c38f792849ec9ad9509cac34da34"
+  },
+  "diagnostics/moving-solver/baseline/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-solver/baseline/summary.json": {
+    "bytes": 4035,
+    "sha256": "16de372952550be0f4209bca87142584b9187f9413a9d151b0c858c47a5e37fb"
+  },
+  "diagnostics/moving-solver/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/contact-audit.json": {
+    "bytes": 2049039,
+    "sha256": "24a9ad57941ad21bdbaff8c851261d2c36a3da72ab720fb2ebf7c677eae9ce3d"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "0cf7f320e14be4c22836ac604c5b06e51d3967be6c4c6e8532dce27b51b693d0"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/history.csv": {
+    "bytes": 2219,
+    "sha256": "eb7809c0d916100d83bd0e5b250c4fe6964649eed552c4741047c91a62c5c221"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/progress.jsonl": {
+    "bytes": 1021,
+    "sha256": "0ca9b4491804f889aa044b03c510bed0a69203b4dd58a1138ead2509700dbdde"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/last-state.npz": {
+    "bytes": 2753,
+    "sha256": "094f5dc6052295155da3df0c4f4ea50212df6c3e8f59f5f550e6c2ffb0cbac46"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/config.json": {
+    "bytes": 85587,
+    "sha256": "b7627605f75e602ed8ba872e3a79b20afbc05d30df9065b7c02719307ced203c"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2391,
+    "sha256": "a1578c894da61dfa8a47fb5a6f0a12d3b973a0684e0dedacd6cdfe57fe1693f8"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/summary.json": {
+    "bytes": 5790,
+    "sha256": "a0c7fd3eaea5d4046681a964cb672e097752923bf436b3ff6a341c09c7cd87f3"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/moving-solver/enabled/contact-audit.json": {
+    "bytes": 2049039,
+    "sha256": "24a9ad57941ad21bdbaff8c851261d2c36a3da72ab720fb2ebf7c677eae9ce3d"
+  },
+  "diagnostics/moving-solver/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "1662e29ed3c58265ba284dfda9a3f90f6f6fc8aa0ccb1983f8554aa4a5e95792"
+  },
+  "diagnostics/moving-solver/enabled/history.csv": {
+    "bytes": 2825,
+    "sha256": "c7c52ff3615cab4635c6e84df5cad5bfde395683d9dbf889a4e99a35e71c24d3"
+  },
+  "diagnostics/moving-solver/enabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "b34acfdc4572c9f2ddb5900e9f241ee71cca98a0185362508dce5be7c94bdc0b"
+  },
+  "diagnostics/moving-solver/enabled/last-state.npz": {
+    "bytes": 2753,
+    "sha256": "094f5dc6052295155da3df0c4f4ea50212df6c3e8f59f5f550e6c2ffb0cbac46"
+  },
+  "diagnostics/moving-solver/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-solver/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-solver/enabled/config.json": {
+    "bytes": 85480,
+    "sha256": "58b3c660b538b811c0377779a82a5b1f698cce8adb8c55966873726e6cfe28c8"
+  },
+  "diagnostics/moving-solver/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-solver/enabled/last-mesh.vtu": {
+    "bytes": 2391,
+    "sha256": "a1578c894da61dfa8a47fb5a6f0a12d3b973a0684e0dedacd6cdfe57fe1693f8"
+  },
+  "diagnostics/moving-solver/enabled/summary.json": {
+    "bytes": 5780,
+    "sha256": "0ce9c6a8e90ffd2ae6fc30d06f4a923ff4f3525898540f416acb8b1ae0a9ab5b"
+  },
+  "diagnostics/moving-solver/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/contact-audit.json": {
+    "bytes": 1975790,
+    "sha256": "f0c6159293b9c502fd2133cd2d3b77551242664c75c5402b05556aa7ad69de7c"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 351,
+    "sha256": "de1cf331ee1b73bea975ac3d16cbd856a8edbe05ab470021103e4eb4db38f307"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/history.csv": {
+    "bytes": 1613,
+    "sha256": "359e140b970639d125c4f78992833efc8780d389961b76655e2e96f8b586d001"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/last-state.npz": {
+    "bytes": 2368,
+    "sha256": "e25b6f1748d37408763d0d91040b9baeb5a16819a68707b32b69e85666345dd6"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/config.json": {
+    "bytes": 85510,
+    "sha256": "9ef77b696af86607ba759219777ed24fc0d3c1928eba4c04f9d71e2aa868da35"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 1939,
+    "sha256": "371734ddaad210ba38dae73e63f9d12362ec1d7048cb2d19abdc1fa85048bfb7"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/summary.json": {
+    "bytes": 5894,
+    "sha256": "ba0d578d81c92d0b5ce4a0ac4ab9bf96311febf047de7053151165896146ddaa"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51114,
+    "sha256": "32e4ec0a08f35a734bbf764cadd55f6e42e1323974b7aaf50269e5b5a47aa50f"
+  },
+  "diagnostics/moving-solver/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-solver/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "6a325d6884ed8beb91e242a53d137add5c325d8d50a9f414d9fd893839b0b2c6"
+  },
+  "diagnostics/moving-solver/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063777,
+    "sha256": "9ac99024eb80122d3e1fd99bfb66347fabd8dd119986b31dc8e018da2b6ce908"
+  },
+  "diagnostics/moving-solver/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-solver/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "77ec7ab746a1934c0b57db1ff5c2a418ebc5e00c338dc24e2d7300a50c338fc2"
+  },
+  "diagnostics/moving-solver/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063585,
+    "sha256": "16f05fe2b3621984683db4de3e398176e5c79d910b940e20581668288014c185"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 170366,
+    "sha256": "2ea7fa2dc3631e010820abb3fcbcca6816547c135a37aea905926ee42ebfe885"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "cd733ffbce98f8f3ff02f552d109acfcd8255fa7f8a7b8068fd57beec262dc8b"
+  },
+  "diagnostics/moving-solver/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1073569,
+    "sha256": "eeb0b99934c3bdbdfc6bb4e02c63574365c313f2e5f4a0daf6a5e23fe76b2b0b"
+  },
+  "diagnostics/moving-solver/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 170366,
+    "sha256": "2ea7fa2dc3631e010820abb3fcbcca6816547c135a37aea905926ee42ebfe885"
+  },
+  "diagnostics/moving-solver/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "591695b838ef7a09c7b699d4198048c38cf81bc1926c6f08ae56b80d9509b171"
+  },
+  "diagnostics/moving-solver/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1073950,
+    "sha256": "719199b2e648ec6dba381fdaade1ec69d3451381aad7b59203d1fda0d222e3d3"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 138724,
+    "sha256": "f2c89338a51779487c7f1fd843054315fc9631987111cac97cb6f1463a933f99"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "1e02cb3fd3a1db9f101aedd94e9672b0fd162351f12e005b1c4a6cd3b5478958"
+  },
+  "diagnostics/moving-solver/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072386,
+    "sha256": "a949752c4796e7cbc4fc280a342349c3b6a1ed25caa13852aa78dfc24b2769ac"
+  },
+  "diagnostics/moving-l2-control/disabled/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-l2-control/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "a3fb7185c4fe8d12776c6c1140f115a0e1492027c5ac2123652bf6834349830b"
+  },
+  "diagnostics/moving-l2-control/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-l2-control/disabled/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-l2-control/disabled/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-l2-control/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-l2-control/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-l2-control/disabled/config.json": {
+    "bytes": 85468,
+    "sha256": "e8c694784609719cb165af44acfd7a30d2ad76ecd2f95f9b882e02c4a4101437"
+  },
+  "diagnostics/moving-l2-control/disabled/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-l2-control/disabled/summary.json": {
+    "bytes": 4258,
+    "sha256": "d1eed274f92eb8727297e69fe2d23287fbfd738bbd23e3da412d905d0d1992ea"
+  },
+  "diagnostics/moving-l2-control/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-l2-control/baseline/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-l2-control/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "61d26850c8e5ca094793ba20a87737ca7a8c16d3231694a021ba085ec8932033"
+  },
+  "diagnostics/moving-l2-control/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-l2-control/baseline/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-l2-control/baseline/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-l2-control/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-l2-control/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-l2-control/baseline/config.json": {
+    "bytes": 85459,
+    "sha256": "56953c270558b9a1b911777ec894107c75babf096cffa12423ec7a499eadfc1b"
+  },
+  "diagnostics/moving-l2-control/baseline/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-l2-control/baseline/summary.json": {
+    "bytes": 4039,
+    "sha256": "4d99f122add4c9e95a381d51d27ed24264c99858dab56fcdd969b8e430d25327"
+  },
+  "diagnostics/moving-l2-control/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "234cd9da4c68eccb15f7bdfd91821264de7e0b2e2f6b1514d71392f22482a0ad"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/history.csv": {
+    "bytes": 2221,
+    "sha256": "1aa8d79174ebec04014674290ca4dfbe2d15519f0a442b0709a41c5ebe7cf85c"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/progress.jsonl": {
+    "bytes": 1024,
+    "sha256": "0a5e845eaad8339a68f70e9d889cfab92bb56c4f7c66c8e1a3513dced19b07d3"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/config.json": {
+    "bytes": 85578,
+    "sha256": "f9b2394a92552709c4c34e4c3572a883cd86eae89974bfb1f71d420d4233654e"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/summary.json": {
+    "bytes": 5475,
+    "sha256": "8760335f773bdc3a6f1e6a4080a44720f52ee2412856857b920bd138207c721c"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-l2-control/enabled/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-l2-control/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "aca97ecdd3289512ed156ad383e7db4a083141f9ad75cd676cdaffef7856daac"
+  },
+  "diagnostics/moving-l2-control/enabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-l2-control/enabled/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-l2-control/enabled/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-l2-control/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-l2-control/enabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-l2-control/enabled/config.json": {
+    "bytes": 85467,
+    "sha256": "f60f624ce03ccfefb07c8de269754721eb2ef9b56e83e1360eede95903df1fce"
+  },
+  "diagnostics/moving-l2-control/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-l2-control/enabled/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-l2-control/enabled/summary.json": {
+    "bytes": 5465,
+    "sha256": "20cd199d2f530272d59f1a782c5f4e735988474c057d974d8b60728d6a65b1e7"
+  },
+  "diagnostics/moving-l2-control/enabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/contact-audit.json": {
+    "bytes": 1977428,
+    "sha256": "7658b6933ba7a95a4f2559380518b19d64586adc7599d48b607d621eb402c8e2"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 351,
+    "sha256": "544ca988cbb9c92418849cc068644d355e212c39483c2003c3c8883450c8ee3e"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/history.csv": {
+    "bytes": 1614,
+    "sha256": "9fab710949d285c5103a5c6b06d276e56d81962dc39a268e094e786838fe2c5a"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/last-state.npz": {
+    "bytes": 2314,
+    "sha256": "46c2c99bbfc3a24b0cc336622cf91c2be8ae90c1820e2acecba3445a4ce493fb"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/config.json": {
+    "bytes": 85497,
+    "sha256": "76a8a1ab33c204600dcbf1566edba77e3595b19fab76fdc137036acc78d27773"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 1915,
+    "sha256": "c5f70abeacb67596b5fd2bac11b99bcaec86a7b79680a15bd72d0b6f7d711c64"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/summary.json": {
+    "bytes": 5555,
+    "sha256": "2e572bd6dadbec8d3bf8c42632fa1bcda29f561bb0b56dfb52bb85bf222744e7"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-l2-control/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-l2-control/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "3c7789fc051bcd2ea60a75113997f129dd5f7bb48586490faf1280202da45082"
+  },
+  "diagnostics/moving-l2-control/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063764,
+    "sha256": "05746c54c20c05d2883f056214aedb24dd537a489ae25caa5414aebb15a3800d"
+  },
+  "diagnostics/moving-l2-control/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-l2-control/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "d953bc662593984cc2ffd2a0e4bc81c2c352f27dcb54a4614d05f2bf57f3985b"
+  },
+  "diagnostics/moving-l2-control/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063572,
+    "sha256": "1bd18b10483f23336f623fbc9eaad71c07a6cca10414048c115f64693ab0949b"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "44c40784c0e5bb40f339f39d9fa449e34d6aa824d3d82c35987abcee43455e91"
+  },
+  "diagnostics/moving-l2-control/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1064348,
+    "sha256": "f411e330c63e7932bc65c27340d1dfce1c4c4ddd619e42b2c4b3c99f4001f4d7"
+  },
+  "diagnostics/moving-l2-control/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-l2-control/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "cf919b7bee9a0e6756bf4cf5520e99f804a324e03fb08571b0b86403a8a2b7e4"
+  },
+  "diagnostics/moving-l2-control/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1064725,
+    "sha256": "28db7e4a6d70ad4c8aab9a60ced0c37390ce2a4f11f1e4a96fa3821766457a6a"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 130973,
+    "sha256": "77ae166cfd3b3a743ee64c4bbd6bdc7740ca50184bd2524be44ac4f0f2079c95"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "c84b8299f392ef8bf97d5d7c55748532e14c45c47b3ff7a516bbf923caaa9d0e"
+  },
+  "diagnostics/moving-l2-control/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1063189,
+    "sha256": "dc1ad9f520572b8fd40e81d9f55a35049f66e5b31a985882116bb7a37a3eacd9"
+  },
+  "diagnostics/moving-cfl-005/disabled/contact-audit.json": {
+    "bytes": 2036826,
+    "sha256": "b68a5b817ed592ff5e6eec587da86f0507a17cbb3d473064272b638535b71891"
+  },
+  "diagnostics/moving-cfl-005/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 530,
+    "sha256": "814318791a9a11cc8b6204e0c7c80b535176a1ec70960ea86a51b015311c4324"
+  },
+  "diagnostics/moving-cfl-005/disabled/history.csv": {
+    "bytes": 2827,
+    "sha256": "1d3c134c8c6adad1ab5cca7a73b4a23b1bea14be19824700d7fd96bd7dae6568"
+  },
+  "diagnostics/moving-cfl-005/disabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "b1fa0c50776fd59e8295130c86e01ee1e257616a1b2e233c49893b7532b5b9da"
+  },
+  "diagnostics/moving-cfl-005/disabled/last-state.npz": {
+    "bytes": 2509,
+    "sha256": "416805fc911cb351e1e20b719f8932b3ddfa65cbb0381a32ac0712eb986a2b5b"
+  },
+  "diagnostics/moving-cfl-005/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-005/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-cfl-005/disabled/config.json": {
+    "bytes": 85482,
+    "sha256": "b7486eba943449ca51f62e352724ab4f19e9e240293a4a4fed987a99af0ce647"
+  },
+  "diagnostics/moving-cfl-005/disabled/last-mesh.vtu": {
+    "bytes": 2179,
+    "sha256": "a8d67d6189c6c793215e73a48b3400b8dfd1f6f93b36071360d0d58fd6bcd5f9"
+  },
+  "diagnostics/moving-cfl-005/disabled/summary.json": {
+    "bytes": 4256,
+    "sha256": "15b8dc72579860f2644c9f99ef01669635d3f1ce91e97cf46e0a90c50e72bc49"
+  },
+  "diagnostics/moving-cfl-005/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-cfl-005/baseline/contact-audit.json": {
+    "bytes": 2036826,
+    "sha256": "b68a5b817ed592ff5e6eec587da86f0507a17cbb3d473064272b638535b71891"
+  },
+  "diagnostics/moving-cfl-005/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 530,
+    "sha256": "c579abaca7e4537adf79cb1e289f75c87ccb78820faccaa8c33b67f2edc5b48e"
+  },
+  "diagnostics/moving-cfl-005/baseline/history.csv": {
+    "bytes": 2827,
+    "sha256": "1d3c134c8c6adad1ab5cca7a73b4a23b1bea14be19824700d7fd96bd7dae6568"
+  },
+  "diagnostics/moving-cfl-005/baseline/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "b1fa0c50776fd59e8295130c86e01ee1e257616a1b2e233c49893b7532b5b9da"
+  },
+  "diagnostics/moving-cfl-005/baseline/last-state.npz": {
+    "bytes": 2509,
+    "sha256": "416805fc911cb351e1e20b719f8932b3ddfa65cbb0381a32ac0712eb986a2b5b"
+  },
+  "diagnostics/moving-cfl-005/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-005/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-cfl-005/baseline/config.json": {
+    "bytes": 85473,
+    "sha256": "02a1afdefbf01a294796e131b590cf1e8da9cbe0ec92898258ee2164d98d2d00"
+  },
+  "diagnostics/moving-cfl-005/baseline/last-mesh.vtu": {
+    "bytes": 2179,
+    "sha256": "a8d67d6189c6c793215e73a48b3400b8dfd1f6f93b36071360d0d58fd6bcd5f9"
+  },
+  "diagnostics/moving-cfl-005/baseline/summary.json": {
+    "bytes": 4036,
+    "sha256": "83535f3083c4318d8a3792e3a547504a1740e2f47c368496a9c30e6d58efcf31"
+  },
+  "diagnostics/moving-cfl-005/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/contact-audit.json": {
+    "bytes": 2047181,
+    "sha256": "4f1ffe452b20ce5a302f4453392f0f996006ba311588c0e99a8ef4f447964365"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 536,
+    "sha256": "a0d9c1ac0f0bb7d5989d32eb9f6a011aacbae71e265baff548f742c03f5d9768"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/history.csv": {
+    "bytes": 2221,
+    "sha256": "57e921902460aa2ad45163b7349f2edce73d5641ba1b4e0dcb988d03e96d471c"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/progress.jsonl": {
+    "bytes": 1020,
+    "sha256": "4aa819f946709eb614b45b9fe3a319a19e6ad88f1647ef92bc7d4277db22cf80"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/last-state.npz": {
+    "bytes": 2686,
+    "sha256": "401b7f8a4cad5dd81122dff2a2ea34bb4e1cd65895bf723ac1ef2974e06b253d"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/config.json": {
+    "bytes": 85589,
+    "sha256": "afdb8b25361375f5eba0e84ef74d68154641233d78118e13a3fbd55560de2b39"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2363,
+    "sha256": "9585afc20671b95cd49eae4cce2ae9b471f8579db56b14d3350284262ef133bf"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/summary.json": {
+    "bytes": 5849,
+    "sha256": "dda82d55ce2381b1e2c5220874798f9f7fc42ec53cc29acbe0dcc1cbf742dc4f"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-cfl-005/enabled/contact-audit.json": {
+    "bytes": 2047181,
+    "sha256": "4f1ffe452b20ce5a302f4453392f0f996006ba311588c0e99a8ef4f447964365"
+  },
+  "diagnostics/moving-cfl-005/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 536,
+    "sha256": "7c42bc1cd788d792dfd6812e2780ab41351845a91e87b7acff3269e1796c203a"
+  },
+  "diagnostics/moving-cfl-005/enabled/history.csv": {
+    "bytes": 2827,
+    "sha256": "c9e32685ac0fb241a78b2dc6e22c12a9b9b782cf2515a3b343b577b2fb600a09"
+  },
+  "diagnostics/moving-cfl-005/enabled/progress.jsonl": {
+    "bytes": 1387,
+    "sha256": "5ad159a5974afa88925909a8d544dca3bd5a2205d94054d0b433a66667fa2b51"
+  },
+  "diagnostics/moving-cfl-005/enabled/last-state.npz": {
+    "bytes": 2686,
+    "sha256": "401b7f8a4cad5dd81122dff2a2ea34bb4e1cd65895bf723ac1ef2974e06b253d"
+  },
+  "diagnostics/moving-cfl-005/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-005/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-cfl-005/enabled/config.json": {
+    "bytes": 85481,
+    "sha256": "a9545467bd018bba75c3e2d1b39971fa7063d0b76c66abe7dfb40fac824ef76a"
+  },
+  "diagnostics/moving-cfl-005/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2443,
+    "sha256": "d6594d34b2dc340a1c3ead4d418f4bc2ec60baa2f75f7c8fc0cd916268ab4a96"
+  },
+  "diagnostics/moving-cfl-005/enabled/last-mesh.vtu": {
+    "bytes": 2363,
+    "sha256": "9585afc20671b95cd49eae4cce2ae9b471f8579db56b14d3350284262ef133bf"
+  },
+  "diagnostics/moving-cfl-005/enabled/summary.json": {
+    "bytes": 5839,
+    "sha256": "927885f92006a772c451113bd9ac8d2bc03d6074a7a19f158c259c62d590f6c3"
+  },
+  "diagnostics/moving-cfl-005/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/contact-audit.json": {
+    "bytes": 1973750,
+    "sha256": "f3375da2c66a1dbfeb42dff2569d272f5e860e26a4ba953ef367a8ea6a7ed489"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 349,
+    "sha256": "f66ac4abe6bf8e09ae12ef30e1ac638ebb7f8a5c8a7cde6c8d92e0f9b38eace9"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/history.csv": {
+    "bytes": 1613,
+    "sha256": "e5f44d65ad18b630325c7ba2324b9101749b7792184fcc20c2803811ae1ae48b"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/last-state.npz": {
+    "bytes": 2434,
+    "sha256": "39a040f4b3a831922a92997ec87c9600fd298e29c69a01e771ce02a08ba8f272"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/config.json": {
+    "bytes": 85511,
+    "sha256": "f06befc72dd5d75e74ba0a7d9708012d97b403a5b153a2e439585db28a32a04b"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2443,
+    "sha256": "d6594d34b2dc340a1c3ead4d418f4bc2ec60baa2f75f7c8fc0cd916268ab4a96"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "66e16b8249610d0fa5de1b847b405496d2dc896eabfc182865637c10b59ada65"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/summary.json": {
+    "bytes": 5946,
+    "sha256": "a71673453d038b0b5ca4bcb26dd358cf6a8a93d2ace55b7ceaf00588e3ae157e"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-cfl-005/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 144764,
+    "sha256": "f6bf6f31f7e69bedec423fa5abc75294fc384e01f1d8bbc14161f390292bbcd9"
+  },
+  "diagnostics/moving-cfl-005/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "7a07d57637f4d7ad01278beb7ea6b9cf3fce36246edee6114cfbede8b44e1831"
+  },
+  "diagnostics/moving-cfl-005/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063729,
+    "sha256": "89e4e0b59767447d8dcba50cb1696466120a0cf5d10634ab8ff856193e1fb0a3"
+  },
+  "diagnostics/moving-cfl-005/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 144764,
+    "sha256": "f6bf6f31f7e69bedec423fa5abc75294fc384e01f1d8bbc14161f390292bbcd9"
+  },
+  "diagnostics/moving-cfl-005/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "0d8c4515ef362ffbb720d0730794b50245a4a595d446165dc3f9fbb91148bca1"
+  },
+  "diagnostics/moving-cfl-005/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063536,
+    "sha256": "9f51b1ccca7649a36e369fa4850880885d35e53dc222d3451b7e5172df4fbc8b"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 167208,
+    "sha256": "ec13e758f57ae5678f4ebf81a271dd3c084712815d6429644d6c5e2309414d70"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "309d11c167dcc688e359061b41a23a469f45650cdce990deab1c42cf0876846a"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1073768,
+    "sha256": "2637315c98725c0a7d2674318a3afde025c208639c9b32b93f860513d82c3e3d"
+  },
+  "diagnostics/moving-cfl-005/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 167208,
+    "sha256": "ec13e758f57ae5678f4ebf81a271dd3c084712815d6429644d6c5e2309414d70"
+  },
+  "diagnostics/moving-cfl-005/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "82c5537fee944dde17ec82f2661e82333a523b2f38b01f1967026844014fb7f1"
+  },
+  "diagnostics/moving-cfl-005/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1074147,
+    "sha256": "f1a524e606d4ed1444d494420a9e13327d7ad49314c468808f07d02e1ae86a8b"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 141079,
+    "sha256": "77600335deb915120f5e2f9d0b1ddae3c88afc2d3b063d31cffdfe307f2d8880"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "511752b77257fcd24259373d61782a9e3d0ff40c030b708db8d04296712d7d4e"
+  },
+  "diagnostics/moving-cfl-005/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072666,
+    "sha256": "df4bac3fca142a6f6c6351fe9818d408235f33f9cdb4a81c6e1bffe3c61cb5a2"
+  },
+  "diagnostics/moving-cfl-010/disabled/contact-audit.json": {
+    "bytes": 2036032,
+    "sha256": "b8dc3a503cdac0308477e2050c040085e614d3d2f2686037b3ac8db80e67024a"
+  },
+  "diagnostics/moving-cfl-010/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "a4a47097e6635bb81e8b4c102285ce13f649af2880041121993feaab7f85b411"
+  },
+  "diagnostics/moving-cfl-010/disabled/history.csv": {
+    "bytes": 2827,
+    "sha256": "3b393968f8fa47268b0bc70c65f4f0a60f8264fb156fc41edbb341c9091f35fe"
+  },
+  "diagnostics/moving-cfl-010/disabled/progress.jsonl": {
+    "bytes": 1391,
+    "sha256": "c356411798d2812753146cea3569fca191d2f57f95aa53e302f84437aa5af4c0"
+  },
+  "diagnostics/moving-cfl-010/disabled/last-state.npz": {
+    "bytes": 2495,
+    "sha256": "8341fea92a67f6f850ea9899255e8f774d08ffad4a0519c94bbd57877ae5fd3a"
+  },
+  "diagnostics/moving-cfl-010/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-010/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-cfl-010/disabled/config.json": {
+    "bytes": 85481,
+    "sha256": "88b5c5b4747071276fa0cf23065cb11f1a9b30558748607cc8b32a6dbf2911cc"
+  },
+  "diagnostics/moving-cfl-010/disabled/last-mesh.vtu": {
+    "bytes": 2155,
+    "sha256": "b6e6b51fcc2db6e2fef1c9a782bfcf712af746946e2d9622135587dde14749c2"
+  },
+  "diagnostics/moving-cfl-010/disabled/summary.json": {
+    "bytes": 4255,
+    "sha256": "630684ffb00aee60e911082ea5e29c774696c3db16d217a306295c3508b4a079"
+  },
+  "diagnostics/moving-cfl-010/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-cfl-010/baseline/contact-audit.json": {
+    "bytes": 2036032,
+    "sha256": "b8dc3a503cdac0308477e2050c040085e614d3d2f2686037b3ac8db80e67024a"
+  },
+  "diagnostics/moving-cfl-010/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "2e13b04bf4a27b5007c6d3cc579b79440e9d0462b7d49ea5e0793b03b2f316de"
+  },
+  "diagnostics/moving-cfl-010/baseline/history.csv": {
+    "bytes": 2827,
+    "sha256": "3b393968f8fa47268b0bc70c65f4f0a60f8264fb156fc41edbb341c9091f35fe"
+  },
+  "diagnostics/moving-cfl-010/baseline/progress.jsonl": {
+    "bytes": 1391,
+    "sha256": "c356411798d2812753146cea3569fca191d2f57f95aa53e302f84437aa5af4c0"
+  },
+  "diagnostics/moving-cfl-010/baseline/last-state.npz": {
+    "bytes": 2495,
+    "sha256": "8341fea92a67f6f850ea9899255e8f774d08ffad4a0519c94bbd57877ae5fd3a"
+  },
+  "diagnostics/moving-cfl-010/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-010/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-cfl-010/baseline/config.json": {
+    "bytes": 85472,
+    "sha256": "330d71fba6c3aa48c74355629164bc6d2c43c2acae005e2c4aa399fc53841895"
+  },
+  "diagnostics/moving-cfl-010/baseline/last-mesh.vtu": {
+    "bytes": 2155,
+    "sha256": "b6e6b51fcc2db6e2fef1c9a782bfcf712af746946e2d9622135587dde14749c2"
+  },
+  "diagnostics/moving-cfl-010/baseline/summary.json": {
+    "bytes": 4035,
+    "sha256": "333abc7831ec81f5f34a4eece6f809bbfa1876d12ec3107c31afb88d546cb8fc"
+  },
+  "diagnostics/moving-cfl-010/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/contact-audit.json": {
+    "bytes": 2048702,
+    "sha256": "0a59f2b166212e939ad9b49e636a4a4bcce5ebf7d6051eabd65fa07947d27bd2"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "4293e339620cce43643b4d72f2c6da2242fef98ab0b50fb2241d9a7a8690dd70"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/history.csv": {
+    "bytes": 2220,
+    "sha256": "b5d593c77a5a0fd7aa2d8493886a2a7c81469e824e66d4977bddbbb7803875cb"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/progress.jsonl": {
+    "bytes": 1023,
+    "sha256": "e36ae4f4f3595470992aab5ab752d7b1898bdfaab5057dbe63e09c9a26453595"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/last-state.npz": {
+    "bytes": 2736,
+    "sha256": "8ba5cc018e5b516caf44521daaee0bcd22364512d6fcaaa7c022ab1b5848f951"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/config.json": {
+    "bytes": 85588,
+    "sha256": "828680032a307cb4d6c9c574db4d85d599c07934383d3906221168403872777b"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2383,
+    "sha256": "d761c77987dd11c8c746257aed6e8bd3489bb7c54287c6d2f31318b523c78ca5"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/summary.json": {
+    "bytes": 5817,
+    "sha256": "f26e9e720e105bd706e9605fe390e5b3e59dd2d27432452fc22dd95e1b73347e"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-cfl-010/enabled/contact-audit.json": {
+    "bytes": 2048702,
+    "sha256": "0a59f2b166212e939ad9b49e636a4a4bcce5ebf7d6051eabd65fa07947d27bd2"
+  },
+  "diagnostics/moving-cfl-010/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 535,
+    "sha256": "685d31931dca5a110d7e3658f329c1941dc049d776e24dbc227dbfd9e0501c4a"
+  },
+  "diagnostics/moving-cfl-010/enabled/history.csv": {
+    "bytes": 2825,
+    "sha256": "9051ee276d56c732ff73a758daac522fded0e63be2d85d6f06a9b568dbb343c3"
+  },
+  "diagnostics/moving-cfl-010/enabled/progress.jsonl": {
+    "bytes": 1390,
+    "sha256": "2cee8b03395fcbf6b5bad2ae8f19119bccc3e16979af534a474087863bba2fcb"
+  },
+  "diagnostics/moving-cfl-010/enabled/last-state.npz": {
+    "bytes": 2736,
+    "sha256": "8ba5cc018e5b516caf44521daaee0bcd22364512d6fcaaa7c022ab1b5848f951"
+  },
+  "diagnostics/moving-cfl-010/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-010/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-cfl-010/enabled/config.json": {
+    "bytes": 85480,
+    "sha256": "41f218c01097bffe993615a3946248b203769213e4462ae65588c8d133fb405c"
+  },
+  "diagnostics/moving-cfl-010/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2410,
+    "sha256": "f7f970c80130ee7ca17e876e0b1f5dcc48a72786ec39b517409187ea73553cd8"
+  },
+  "diagnostics/moving-cfl-010/enabled/last-mesh.vtu": {
+    "bytes": 2383,
+    "sha256": "d761c77987dd11c8c746257aed6e8bd3489bb7c54287c6d2f31318b523c78ca5"
+  },
+  "diagnostics/moving-cfl-010/enabled/summary.json": {
+    "bytes": 5807,
+    "sha256": "e4cf7f89522359bfa19692ec94ccbee3ad8295a6be2bc2718befb6bec46cc229"
+  },
+  "diagnostics/moving-cfl-010/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/contact-audit.json": {
+    "bytes": 1975202,
+    "sha256": "bd8899764d00485b72135972179cab63259e4ab22b231788414d0589186f5608"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 350,
+    "sha256": "4aa984221ed598c3df28c263c666958154e6d9e160c0b7a736d321ce1adb2ec9"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/history.csv": {
+    "bytes": 1612,
+    "sha256": "c9d0cbeb1e594f9798e78e7e4d435fa10121d5e28c49185603ecd66bd6d51bd3"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/last-state.npz": {
+    "bytes": 2401,
+    "sha256": "a311d68960dd6daa830dfebb500e4493e2db1f600af514dfdad80a667b1691d8"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/config.json": {
+    "bytes": 85510,
+    "sha256": "d702d55ecad9a5213228bf562c2f87f832f6636a280c11e36cc947843fbb98aa"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2410,
+    "sha256": "f7f970c80130ee7ca17e876e0b1f5dcc48a72786ec39b517409187ea73553cd8"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 1987,
+    "sha256": "96d8ec88816b08fee6c7d4f08ecb9293fae4c9d47bbb9343cc36e4d9de4a7525"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/summary.json": {
+    "bytes": 5917,
+    "sha256": "531c0afce88f7e7c6f5b4020476218cdd6d971796fb3fe90f6a04cb893afdc14"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-cfl-010/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 145083,
+    "sha256": "87f3d64772cd1aa042321c6062bbc3c62be11fc477bc90b758b5c1f5c82de3bd"
+  },
+  "diagnostics/moving-cfl-010/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "a6dfd150eecee66bc75ae88bd8d51d008bba63adfe772d89c28cf6e48fff8d8d"
+  },
+  "diagnostics/moving-cfl-010/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063654,
+    "sha256": "d87ca8fabd9948215f8fa99e4f04290bc030f46a8ba801f8022d4f1b3e7a865e"
+  },
+  "diagnostics/moving-cfl-010/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 145083,
+    "sha256": "87f3d64772cd1aa042321c6062bbc3c62be11fc477bc90b758b5c1f5c82de3bd"
+  },
+  "diagnostics/moving-cfl-010/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "54b8a5b500072109dcc22f5e0a3b6842b520ec2b2c2311e9eb26087f079e7d2b"
+  },
+  "diagnostics/moving-cfl-010/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063461,
+    "sha256": "15ca0f714b3ac123ab66f0b5e69c58bed49a4fde24013378e4f2218d019e18b5"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 168507,
+    "sha256": "c91ec1600ad436fc493199591f2ca2dfb493a89c8b8c0460c9b57c3669e5e877"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "6672852b50fcefe294e3e4f6cf487f3ffc6346583b22b4e28ce6fcb1ae6b99aa"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1073656,
+    "sha256": "89810cffa23051a7d8ab8838f3a4168ce554eb0fa2d2924c1cd7a30e0be21b21"
+  },
+  "diagnostics/moving-cfl-010/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 168507,
+    "sha256": "c91ec1600ad436fc493199591f2ca2dfb493a89c8b8c0460c9b57c3669e5e877"
+  },
+  "diagnostics/moving-cfl-010/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "1c7d9812700b91d0449181feaf5390efd64f8b9b8c104b11c10185ec0e804757"
+  },
+  "diagnostics/moving-cfl-010/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1074034,
+    "sha256": "de2fdb6e57acdad99e5a858e7a40545b86b91fa1fa27fffb7fce65c5917b967d"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 140053,
+    "sha256": "e69270677c67174897c16650dc41622870b32c174e3c14b92ce5fe2599ff36fe"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "6bce9aae2c46a71aa04585e4f0de3a792c30c765131ef7c1ab1009f923bc7c58"
+  },
+  "diagnostics/moving-cfl-010/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072490,
+    "sha256": "1e958de99f796fc0a3e3a1ba26be9f6f738397990540f08dd44db54d8aff818e"
+  },
+  "diagnostics/moving-final-020/disabled/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-final-020/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "f52cec3dd492851f7261b2c341dac219a742957b77584ee8749f0c13acda9a66"
+  },
+  "diagnostics/moving-final-020/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-final-020/disabled/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-final-020/disabled/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-final-020/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-020/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-final-020/disabled/config.json": {
+    "bytes": 85481,
+    "sha256": "7ac7e215e1e4f706e57ebb07a834666d9b696f567ed97113f67e5fd10d0f54fe"
+  },
+  "diagnostics/moving-final-020/disabled/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-final-020/disabled/summary.json": {
+    "bytes": 4257,
+    "sha256": "41edfe4963fd3ea60ac976c24ab5caecc7bf9236dc115ae22be39565c4925c91"
+  },
+  "diagnostics/moving-final-020/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-final-020/baseline/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-final-020/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "a2364f4427df5d6739c83020557a41ee98874cbc721ac8489a4b71e540b4189e"
+  },
+  "diagnostics/moving-final-020/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-final-020/baseline/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-final-020/baseline/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-final-020/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-020/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-final-020/baseline/config.json": {
+    "bytes": 85472,
+    "sha256": "b7cfd34a630a115bc04f5036aa6425c45e22c38f792849ec9ad9509cac34da34"
+  },
+  "diagnostics/moving-final-020/baseline/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-final-020/baseline/summary.json": {
+    "bytes": 4038,
+    "sha256": "f4864be371b20e53c48e8011ed490b0577c6f3b899943b916dd1e73d3d21b850"
+  },
+  "diagnostics/moving-final-020/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/contact-audit.json": {
+    "bytes": 2049039,
+    "sha256": "24a9ad57941ad21bdbaff8c851261d2c36a3da72ab720fb2ebf7c677eae9ce3d"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "a8751c5f3726a3c0e0ed25d50d6729e09f1e2ea5d61d4f2228246ae81823c34f"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/history.csv": {
+    "bytes": 2219,
+    "sha256": "eb7809c0d916100d83bd0e5b250c4fe6964649eed552c4741047c91a62c5c221"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/progress.jsonl": {
+    "bytes": 1021,
+    "sha256": "0ca9b4491804f889aa044b03c510bed0a69203b4dd58a1138ead2509700dbdde"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/last-state.npz": {
+    "bytes": 2753,
+    "sha256": "094f5dc6052295155da3df0c4f4ea50212df6c3e8f59f5f550e6c2ffb0cbac46"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/config.json": {
+    "bytes": 85590,
+    "sha256": "1321629c4bb0472de21f55c86863778c46a726692b09da99cbcdc3ada61b0641"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2391,
+    "sha256": "a1578c894da61dfa8a47fb5a6f0a12d3b973a0684e0dedacd6cdfe57fe1693f8"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/summary.json": {
+    "bytes": 5793,
+    "sha256": "899a0179993be0cbce632d88e8322fdc9f7f16cee5ce23d06bab5dcf974d5227"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-020/enabled/contact-audit.json": {
+    "bytes": 2049039,
+    "sha256": "24a9ad57941ad21bdbaff8c851261d2c36a3da72ab720fb2ebf7c677eae9ce3d"
+  },
+  "diagnostics/moving-final-020/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "a92d968b6f9fc4c138f416d7f51859c1f63a3f7719bb2a5ec8f09f418d5f1b97"
+  },
+  "diagnostics/moving-final-020/enabled/history.csv": {
+    "bytes": 2825,
+    "sha256": "c7c52ff3615cab4635c6e84df5cad5bfde395683d9dbf889a4e99a35e71c24d3"
+  },
+  "diagnostics/moving-final-020/enabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "b34acfdc4572c9f2ddb5900e9f241ee71cca98a0185362508dce5be7c94bdc0b"
+  },
+  "diagnostics/moving-final-020/enabled/last-state.npz": {
+    "bytes": 2753,
+    "sha256": "094f5dc6052295155da3df0c4f4ea50212df6c3e8f59f5f550e6c2ffb0cbac46"
+  },
+  "diagnostics/moving-final-020/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-020/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-020/enabled/config.json": {
+    "bytes": 85480,
+    "sha256": "58b3c660b538b811c0377779a82a5b1f698cce8adb8c55966873726e6cfe28c8"
+  },
+  "diagnostics/moving-final-020/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-final-020/enabled/last-mesh.vtu": {
+    "bytes": 2391,
+    "sha256": "a1578c894da61dfa8a47fb5a6f0a12d3b973a0684e0dedacd6cdfe57fe1693f8"
+  },
+  "diagnostics/moving-final-020/enabled/summary.json": {
+    "bytes": 5783,
+    "sha256": "97b31e3e0bbd1356f719ae6baccd71ce8d96483bdb8312c834953a9d95371913"
+  },
+  "diagnostics/moving-final-020/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/contact-audit.json": {
+    "bytes": 1975790,
+    "sha256": "f0c6159293b9c502fd2133cd2d3b77551242664c75c5402b05556aa7ad69de7c"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 351,
+    "sha256": "bb78d93e30c10298fc6027793595f6791ce0002cbc03fa3701b4bbbdee618b05"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/history.csv": {
+    "bytes": 1613,
+    "sha256": "359e140b970639d125c4f78992833efc8780d389961b76655e2e96f8b586d001"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/last-state.npz": {
+    "bytes": 2368,
+    "sha256": "e25b6f1748d37408763d0d91040b9baeb5a16819a68707b32b69e85666345dd6"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/config.json": {
+    "bytes": 85510,
+    "sha256": "9ef77b696af86607ba759219777ed24fc0d3c1928eba4c04f9d71e2aa868da35"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 1939,
+    "sha256": "371734ddaad210ba38dae73e63f9d12362ec1d7048cb2d19abdc1fa85048bfb7"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/summary.json": {
+    "bytes": 5900,
+    "sha256": "b1b05eb5facc18cb3df0017cf23e803a89e9ddeebe8f0c706d00bce915a53ae6"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-020/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-final-020/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "d1e62d973319bdd93bfc351dfb17a2cb19a68c4f0e8c97608ccae7887b1fe57e"
+  },
+  "diagnostics/moving-final-020/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063777,
+    "sha256": "69044259255a5d313323488305996cdfb9d37d8b40799d9dbf144def10c20bd9"
+  },
+  "diagnostics/moving-final-020/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-final-020/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "99bdc2e14aa1ec8f6e0acf7add3e15b8b7746e4b14f80630a7eacacaff967d2e"
+  },
+  "diagnostics/moving-final-020/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063585,
+    "sha256": "689a72feeb9a7060939147343f61b3742511aad5178ddd0c21f258c21c84c5b7"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 170366,
+    "sha256": "2ea7fa2dc3631e010820abb3fcbcca6816547c135a37aea905926ee42ebfe885"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "3b3c91889e6697e21393673aa987adeab502429db1bc4157f6cf65397a837eba"
+  },
+  "diagnostics/moving-final-020/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1073689,
+    "sha256": "95e906a49b6c11173489a177cdb47cc19dadd91f7b8262fd05026f8f9e964d88"
+  },
+  "diagnostics/moving-final-020/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 170366,
+    "sha256": "2ea7fa2dc3631e010820abb3fcbcca6816547c135a37aea905926ee42ebfe885"
+  },
+  "diagnostics/moving-final-020/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "5be603df6c3c12cb04b399d5692080c179537cda77c60ad910c1348ef86fc100"
+  },
+  "diagnostics/moving-final-020/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1074070,
+    "sha256": "6e9da454ccba16687627199e7076d834993ca3d7938ee513cb6ca3447d51ae30"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 138724,
+    "sha256": "f2c89338a51779487c7f1fd843054315fc9631987111cac97cb6f1463a933f99"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "39744bde2c24d4e230af2bd40146475c71350b1371c153659931621a095b975f"
+  },
+  "diagnostics/moving-final-020/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072506,
+    "sha256": "35659afd3f2e90c93cd8fa24e6770f7b55ee780b99f3038ce1fec27f727e2fd8"
+  },
+  "diagnostics/moving-final-005/disabled/contact-audit.json": {
+    "bytes": 2036826,
+    "sha256": "b68a5b817ed592ff5e6eec587da86f0507a17cbb3d473064272b638535b71891"
+  },
+  "diagnostics/moving-final-005/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 530,
+    "sha256": "769684f16e0b612e1accdf9ee8aec3445112e0148dca5398d24fb10fb3188711"
+  },
+  "diagnostics/moving-final-005/disabled/history.csv": {
+    "bytes": 2827,
+    "sha256": "1d3c134c8c6adad1ab5cca7a73b4a23b1bea14be19824700d7fd96bd7dae6568"
+  },
+  "diagnostics/moving-final-005/disabled/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "b1fa0c50776fd59e8295130c86e01ee1e257616a1b2e233c49893b7532b5b9da"
+  },
+  "diagnostics/moving-final-005/disabled/last-state.npz": {
+    "bytes": 2509,
+    "sha256": "416805fc911cb351e1e20b719f8932b3ddfa65cbb0381a32ac0712eb986a2b5b"
+  },
+  "diagnostics/moving-final-005/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-005/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-final-005/disabled/config.json": {
+    "bytes": 85482,
+    "sha256": "b7486eba943449ca51f62e352724ab4f19e9e240293a4a4fed987a99af0ce647"
+  },
+  "diagnostics/moving-final-005/disabled/last-mesh.vtu": {
+    "bytes": 2179,
+    "sha256": "a8d67d6189c6c793215e73a48b3400b8dfd1f6f93b36071360d0d58fd6bcd5f9"
+  },
+  "diagnostics/moving-final-005/disabled/summary.json": {
+    "bytes": 4258,
+    "sha256": "f211bde0c7b0993e9ba084c7d896ade01493997feb59998807e741646678b559"
+  },
+  "diagnostics/moving-final-005/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-final-005/baseline/contact-audit.json": {
+    "bytes": 2036826,
+    "sha256": "b68a5b817ed592ff5e6eec587da86f0507a17cbb3d473064272b638535b71891"
+  },
+  "diagnostics/moving-final-005/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 530,
+    "sha256": "86dcef4772788ae0d94df1c19ec7c425c8e4ff03ba2704b4da108de2d05b0fdc"
+  },
+  "diagnostics/moving-final-005/baseline/history.csv": {
+    "bytes": 2827,
+    "sha256": "1d3c134c8c6adad1ab5cca7a73b4a23b1bea14be19824700d7fd96bd7dae6568"
+  },
+  "diagnostics/moving-final-005/baseline/progress.jsonl": {
+    "bytes": 1388,
+    "sha256": "b1fa0c50776fd59e8295130c86e01ee1e257616a1b2e233c49893b7532b5b9da"
+  },
+  "diagnostics/moving-final-005/baseline/last-state.npz": {
+    "bytes": 2509,
+    "sha256": "416805fc911cb351e1e20b719f8932b3ddfa65cbb0381a32ac0712eb986a2b5b"
+  },
+  "diagnostics/moving-final-005/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-005/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-final-005/baseline/config.json": {
+    "bytes": 85473,
+    "sha256": "02a1afdefbf01a294796e131b590cf1e8da9cbe0ec92898258ee2164d98d2d00"
+  },
+  "diagnostics/moving-final-005/baseline/last-mesh.vtu": {
+    "bytes": 2179,
+    "sha256": "a8d67d6189c6c793215e73a48b3400b8dfd1f6f93b36071360d0d58fd6bcd5f9"
+  },
+  "diagnostics/moving-final-005/baseline/summary.json": {
+    "bytes": 4038,
+    "sha256": "5d1e62186e16fd40607cd574f62c39d11b5151490c1d4eaef48d7adb31e03a9b"
+  },
+  "diagnostics/moving-final-005/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/contact-audit.json": {
+    "bytes": 2047181,
+    "sha256": "4f1ffe452b20ce5a302f4453392f0f996006ba311588c0e99a8ef4f447964365"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 536,
+    "sha256": "ec862051fdec7a9abe29990db9066e32edf5ab9cbcd41a38c7f4f7dc7b4c55fa"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/history.csv": {
+    "bytes": 2221,
+    "sha256": "57e921902460aa2ad45163b7349f2edce73d5641ba1b4e0dcb988d03e96d471c"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/progress.jsonl": {
+    "bytes": 1020,
+    "sha256": "4aa819f946709eb614b45b9fe3a319a19e6ad88f1647ef92bc7d4277db22cf80"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/last-state.npz": {
+    "bytes": 2686,
+    "sha256": "401b7f8a4cad5dd81122dff2a2ea34bb4e1cd65895bf723ac1ef2974e06b253d"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/config.json": {
+    "bytes": 85591,
+    "sha256": "0df22b94188ad4a8433ac33fcd241d4b8b6b73547830f3dcb4ab0fa7c3acda5f"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2363,
+    "sha256": "9585afc20671b95cd49eae4cce2ae9b471f8579db56b14d3350284262ef133bf"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/summary.json": {
+    "bytes": 5851,
+    "sha256": "532b9411909a1d9797af235b9193348b8dd0b5876e775432d81e59b83e8189fe"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-005/enabled/contact-audit.json": {
+    "bytes": 2047181,
+    "sha256": "4f1ffe452b20ce5a302f4453392f0f996006ba311588c0e99a8ef4f447964365"
+  },
+  "diagnostics/moving-final-005/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 536,
+    "sha256": "a4b80523afe272d6119e87344294041976a54383fb6d75e52ecb7c73e34c5b51"
+  },
+  "diagnostics/moving-final-005/enabled/history.csv": {
+    "bytes": 2827,
+    "sha256": "c9e32685ac0fb241a78b2dc6e22c12a9b9b782cf2515a3b343b577b2fb600a09"
+  },
+  "diagnostics/moving-final-005/enabled/progress.jsonl": {
+    "bytes": 1387,
+    "sha256": "5ad159a5974afa88925909a8d544dca3bd5a2205d94054d0b433a66667fa2b51"
+  },
+  "diagnostics/moving-final-005/enabled/last-state.npz": {
+    "bytes": 2686,
+    "sha256": "401b7f8a4cad5dd81122dff2a2ea34bb4e1cd65895bf723ac1ef2974e06b253d"
+  },
+  "diagnostics/moving-final-005/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-005/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-005/enabled/config.json": {
+    "bytes": 85481,
+    "sha256": "a9545467bd018bba75c3e2d1b39971fa7063d0b76c66abe7dfb40fac824ef76a"
+  },
+  "diagnostics/moving-final-005/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2443,
+    "sha256": "d6594d34b2dc340a1c3ead4d418f4bc2ec60baa2f75f7c8fc0cd916268ab4a96"
+  },
+  "diagnostics/moving-final-005/enabled/last-mesh.vtu": {
+    "bytes": 2363,
+    "sha256": "9585afc20671b95cd49eae4cce2ae9b471f8579db56b14d3350284262ef133bf"
+  },
+  "diagnostics/moving-final-005/enabled/summary.json": {
+    "bytes": 5841,
+    "sha256": "ff21a091986cd27006ece6032ce5d886a645a24427ceb4f99ab602e3886ce023"
+  },
+  "diagnostics/moving-final-005/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/contact-audit.json": {
+    "bytes": 1973750,
+    "sha256": "f3375da2c66a1dbfeb42dff2569d272f5e860e26a4ba953ef367a8ea6a7ed489"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 349,
+    "sha256": "005e06db675462daa65a707118b02a070f1507282b948986eeea68331e2e123b"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/history.csv": {
+    "bytes": 1613,
+    "sha256": "e5f44d65ad18b630325c7ba2324b9101749b7792184fcc20c2803811ae1ae48b"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/last-state.npz": {
+    "bytes": 2434,
+    "sha256": "39a040f4b3a831922a92997ec87c9600fd298e29c69a01e771ce02a08ba8f272"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/config.json": {
+    "bytes": 85511,
+    "sha256": "f06befc72dd5d75e74ba0a7d9708012d97b403a5b153a2e439585db28a32a04b"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2443,
+    "sha256": "d6594d34b2dc340a1c3ead4d418f4bc2ec60baa2f75f7c8fc0cd916268ab4a96"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "66e16b8249610d0fa5de1b847b405496d2dc896eabfc182865637c10b59ada65"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/summary.json": {
+    "bytes": 5950,
+    "sha256": "fd158882a7f438387bfdf8217ead05d8647f4fbf220044030f2f94ab1f9131e9"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-final-005/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 144764,
+    "sha256": "f6bf6f31f7e69bedec423fa5abc75294fc384e01f1d8bbc14161f390292bbcd9"
+  },
+  "diagnostics/moving-final-005/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "d51614c5718e475b387422e3e6e1bd4a28718556110630cf5dbd39659cb44020"
+  },
+  "diagnostics/moving-final-005/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063729,
+    "sha256": "b19fb7d43d84c0a17e09c83b1d318921d2e293b56b4dd7f69ea0f0cb9819ba34"
+  },
+  "diagnostics/moving-final-005/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 144764,
+    "sha256": "f6bf6f31f7e69bedec423fa5abc75294fc384e01f1d8bbc14161f390292bbcd9"
+  },
+  "diagnostics/moving-final-005/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "f6016fef2e25a84d12bbf978a04467283835bb8edfa1c0fb7274fd4dc87a28f4"
+  },
+  "diagnostics/moving-final-005/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063536,
+    "sha256": "a95c0a6d6d94dc74dab2d3b998660259c20a110406147546fb5356fcf8943b7b"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/checkpoint-00000003/arrays.npz": {
+    "bytes": 167208,
+    "sha256": "ec13e758f57ae5678f4ebf81a271dd3c084712815d6429644d6c5e2309414d70"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "e12213a0445ceb25eb92cb221e4b279ae7007bd0636c484eb3604a2310db0344"
+  },
+  "diagnostics/moving-final-005/checkpoint-resume/checkpoint-00000003/state.json": {
+    "bytes": 1073768,
+    "sha256": "cdf501efcc37013248f2a10f36cc0634b3739d793e447caae0bba6786b16b949"
+  },
+  "diagnostics/moving-final-005/enabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 167208,
+    "sha256": "ec13e758f57ae5678f4ebf81a271dd3c084712815d6429644d6c5e2309414d70"
+  },
+  "diagnostics/moving-final-005/enabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "da0a6e1151b359ee07448217e68c56a08d1cbd30de1f9e9d0e241d87312cfd6e"
+  },
+  "diagnostics/moving-final-005/enabled/checkpoint-00000003/state.json": {
+    "bytes": 1074147,
+    "sha256": "1c11ae067af63c98789772ce3b6308020924efc0ad2b70373867d2d3b5bc15be"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 141079,
+    "sha256": "77600335deb915120f5e2f9d0b1ddae3c88afc2d3b063d31cffdfe307f2d8880"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "ac7c7ddced6335eade2a9d74aa2eace2f206b30b056727536e8eef357c012254"
+  },
+  "diagnostics/moving-final-005/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072666,
+    "sha256": "f191f92500273bf2f725633296464940714b7c422d1ed12d2092735e8c553548"
+  },
+  "diagnostics/moving-stop-control/disabled/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-stop-control/disabled/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "8282a3fac4e8e570d8ee6ce9bbc28c81d5f3ffc3ac0382cd6060010de0c6ea4a"
+  },
+  "diagnostics/moving-stop-control/disabled/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-stop-control/disabled/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-stop-control/disabled/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-stop-control/disabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-stop-control/disabled/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-stop-control/disabled/config.json": {
+    "bytes": 85479,
+    "sha256": "f3bdddeafb3f111fec1686fcf71da0db0aa1cd9b6b65d579f0b53f67690d392f"
+  },
+  "diagnostics/moving-stop-control/disabled/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-stop-control/disabled/summary.json": {
+    "bytes": 4260,
+    "sha256": "1388b2310f2fae96051a8cc9720a1d4c6ce4368a1611211ecbfd547231529fa0"
+  },
+  "diagnostics/moving-stop-control/disabled/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-stop-control/baseline/contact-audit.json": {
+    "bytes": 2039616,
+    "sha256": "7aeafddcc4d6fc1b8dda43ce0d9f04d82f6edfea92eb477c2b6212001e72712e"
+  },
+  "diagnostics/moving-stop-control/baseline/accepted-step-audit.csv.gz": {
+    "bytes": 538,
+    "sha256": "a580bfaaf5e17670eee29ffef6d50a45b741d76a7733b4e6936ce1c0ae977ab9"
+  },
+  "diagnostics/moving-stop-control/baseline/history.csv": {
+    "bytes": 2828,
+    "sha256": "ecd431ae0bd18a3de0d728d2c8040c8bad365402dc75e997aef089d2eb0d036a"
+  },
+  "diagnostics/moving-stop-control/baseline/progress.jsonl": {
+    "bytes": 1386,
+    "sha256": "ecb8cfa72efcfd1082966411aaf81c8eecb1654d3bf37e310c854d85f9167e88"
+  },
+  "diagnostics/moving-stop-control/baseline/last-state.npz": {
+    "bytes": 2525,
+    "sha256": "0a10b438089331958caadc99715e504c735c0531a90961f4453c59d1cc72419e"
+  },
+  "diagnostics/moving-stop-control/baseline/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-stop-control/baseline/contact-quadrature.npz": {
+    "bytes": 731,
+    "sha256": "0eb629dcd1c900d8e3f3f9c18a33af2bc1c600c67ac07000e82a27b595e96606"
+  },
+  "diagnostics/moving-stop-control/baseline/config.json": {
+    "bytes": 85470,
+    "sha256": "25fa9be61da3bd1cdafd4443719720109b0f48c8575e68863a1111085fc14b69"
+  },
+  "diagnostics/moving-stop-control/baseline/last-mesh.vtu": {
+    "bytes": 2143,
+    "sha256": "7803355f6534be35aa2e57f18c2f90d2ec907ca1e7093ce28b222aa3a9606c28"
+  },
+  "diagnostics/moving-stop-control/baseline/summary.json": {
+    "bytes": 4041,
+    "sha256": "5a8deacdd612c0e673ffcd7b609bec16e20a86badeed0a7264e0d5de62148800"
+  },
+  "diagnostics/moving-stop-control/baseline/embedded-quadrature-rules.json": {
+    "bytes": 50987,
+    "sha256": "fe82577b1e3aa66981bf5f9482714eca9194a530edef341d275ff4bdadb18fe7"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/contact-audit.json": {
+    "bytes": 2043128,
+    "sha256": "72635b9fa18f11bab48d2afc45beea6bb52430d00c975e43f1139ac4d1426e6e"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/accepted-step-audit.csv.gz": {
+    "bytes": 446,
+    "sha256": "ff04a633e3345438c99822528d818c98967e44771edc1005b123326e8f2c330f"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/history.csv": {
+    "bytes": 1613,
+    "sha256": "a273065e079522d095ca4aec8af532d2aa967e865669e315856873936ae4c0dd"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/progress.jsonl": {
+    "bytes": 654,
+    "sha256": "0dc1651493220da78a14ced199fa4d438133b92aab49d7898baa7c2863c25384"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/last-state.npz": {
+    "bytes": 2688,
+    "sha256": "c4931d82477d4916c2cd583b786f729a35c97f89a1d2338a5ddbe0d67bb54bcd"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/initial-mesh.npz": {
+    "bytes": 552,
+    "sha256": "4bb89201567c08365d484208242bcef297760ffa2247fb1299c1fbec4a64780a"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/config.json": {
+    "bytes": 85591,
+    "sha256": "bd49b7d729c8434673caecfad1c3de74500bf5949f893c2336ad5bc10cd055b7"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/last-mesh.vtu": {
+    "bytes": 2339,
+    "sha256": "f538c665e68249d0499ce0ffd57301316f086813ed3a0fe34077d8757dc5ed14"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/surface-resolution-attempts.json": {
+    "bytes": 273,
+    "sha256": "db166cc8c60f8c9a7e2494b1b5d240ac1c144b4a93d0c6c8bff837e54c90d21f"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/summary.json": {
+    "bytes": 6145,
+    "sha256": "c127e6123a1ad86f27f11454a1c703c8d37dc7f310568e22ffa6d99d983e445a"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-stop-control/enabled/contact-audit.json": {
+    "bytes": 2043128,
+    "sha256": "72635b9fa18f11bab48d2afc45beea6bb52430d00c975e43f1139ac4d1426e6e"
+  },
+  "diagnostics/moving-stop-control/enabled/accepted-step-audit.csv.gz": {
+    "bytes": 446,
+    "sha256": "6e9ef8b6ed968929902bde4aeedf4764f1a1c038d3d7c2e5f0786127ed2f0c26"
+  },
+  "diagnostics/moving-stop-control/enabled/history.csv": {
+    "bytes": 2219,
+    "sha256": "88d7065347c1192f14c5c786eaf0d3c394f59159599b94e5962a2a096ef29b7a"
+  },
+  "diagnostics/moving-stop-control/enabled/progress.jsonl": {
+    "bytes": 1021,
+    "sha256": "ef6f8bc28e5a771728dda3c39d616e72063377210f25cb8d132c441d8f44cb83"
+  },
+  "diagnostics/moving-stop-control/enabled/last-state.npz": {
+    "bytes": 2688,
+    "sha256": "c4931d82477d4916c2cd583b786f729a35c97f89a1d2338a5ddbe0d67bb54bcd"
+  },
+  "diagnostics/moving-stop-control/enabled/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-stop-control/enabled/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-stop-control/enabled/config.json": {
+    "bytes": 85478,
+    "sha256": "ecf5a3fb356953900395dc43ae95c76947bfa704c941720ca0e6c0a2721459cc"
+  },
+  "diagnostics/moving-stop-control/enabled/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-stop-control/enabled/last-mesh.vtu": {
+    "bytes": 2339,
+    "sha256": "f538c665e68249d0499ce0ffd57301316f086813ed3a0fe34077d8757dc5ed14"
+  },
+  "diagnostics/moving-stop-control/enabled/surface-resolution-attempts.json": {
+    "bytes": 273,
+    "sha256": "db166cc8c60f8c9a7e2494b1b5d240ac1c144b4a93d0c6c8bff837e54c90d21f"
+  },
+  "diagnostics/moving-stop-control/enabled/summary.json": {
+    "bytes": 6135,
+    "sha256": "50db142c9dfde2f08da383c93749fe37549eb7ca826e81b1f674483b87ca3c10"
+  },
+  "diagnostics/moving-stop-control/enabled/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/contact-audit.json": {
+    "bytes": 1975790,
+    "sha256": "f0c6159293b9c502fd2133cd2d3b77551242664c75c5402b05556aa7ad69de7c"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/accepted-step-audit.csv.gz": {
+    "bytes": 351,
+    "sha256": "532354bdaa25f06aa35d27c29335d6442fa9fdfed586be6a1e13e8c155ee06ac"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/history.csv": {
+    "bytes": 1613,
+    "sha256": "359e140b970639d125c4f78992833efc8780d389961b76655e2e96f8b586d001"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/progress.jsonl": {
+    "bytes": 292,
+    "sha256": "87453cd3eda22d913682b8b370922973fd3c71567106a978ca0e9b27af0a45f6"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/last-state.npz": {
+    "bytes": 2368,
+    "sha256": "e25b6f1748d37408763d0d91040b9baeb5a16819a68707b32b69e85666345dd6"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/initial-mesh.npz": {
+    "bytes": 536,
+    "sha256": "1e3d40e6e4f55361f5d3ef59925fe91fc6b8188a7d9d5bbf3cdd07afec798963"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/contact-quadrature.npz": {
+    "bytes": 739,
+    "sha256": "d8a05e3af45da1b5dd9d4d8dfc6f927944456951eb414bfbcc627bc400d86deb"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/config.json": {
+    "bytes": 85508,
+    "sha256": "f44215e73de1c391fb0727cea5619fcd0fb988556a18b48f70f90cfc155afdc4"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/surface-remesh-attempt-0001.npz": {
+    "bytes": 2372,
+    "sha256": "e660daffd041e01b63a7d3c5d9844a9a446d96c9d7799d4b18219c356adcf2fe"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/last-mesh.vtu": {
+    "bytes": 1939,
+    "sha256": "371734ddaad210ba38dae73e63f9d12362ec1d7048cb2d19abdc1fa85048bfb7"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/summary.json": {
+    "bytes": 5906,
+    "sha256": "da89ff7548da67da672f66cc3147c243b378830a0a8b760de478459d7b072f2b"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/embedded-quadrature-rules.json": {
+    "bytes": 51234,
+    "sha256": "afb5f3c518bce4b0094e9e39979ad9f6e1dddcab33552821df8da7ed2689da9b"
+  },
+  "diagnostics/moving-stop-control/disabled/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-stop-control/disabled/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "cec2d31b77f44e577c0866689a2d46633db08298562babf812d998b5c145d24a"
+  },
+  "diagnostics/moving-stop-control/disabled/checkpoint-00000003/state.json": {
+    "bytes": 1063775,
+    "sha256": "5a8b900318947b388ca1cd8aba61b90fd51c2bae55c39788ce55f8a535209335"
+  },
+  "diagnostics/moving-stop-control/baseline/checkpoint-00000003/arrays.npz": {
+    "bytes": 143910,
+    "sha256": "82ccd8d2924ecca0aa333d45995fa7d67bd4e4a63884d3c4f75c5ee038e03a8f"
+  },
+  "diagnostics/moving-stop-control/baseline/checkpoint-00000003/manifest.json": {
+    "bytes": 89,
+    "sha256": "f8308915a9b32e7ae83e70311807cd5d703ed9947de9e484e00f4194514ba24b"
+  },
+  "diagnostics/moving-stop-control/baseline/checkpoint-00000003/state.json": {
+    "bytes": 1063583,
+    "sha256": "9adf4fc39c27a475ba3e413cd360344cd4a7bdfe30637e435b628b3d9214bd1a"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/checkpoint-00000002/arrays.npz": {
+    "bytes": 174172,
+    "sha256": "9237f78ea95aa5a9db7c1392c77d7cc8bac0f0e4972fc24f0da46e7e84e7ccb8"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/checkpoint-00000002/manifest.json": {
+    "bytes": 89,
+    "sha256": "45478ba34fc2cd6b82605dcce8baaf77b326f97db045aab4a2cf038ff783c9b7"
+  },
+  "diagnostics/moving-stop-control/checkpoint-resume/checkpoint-00000002/state.json": {
+    "bytes": 785450,
+    "sha256": "a3c0fb2d378071b2fcf38c7cf3fde7943b2a60422bef4a94af3ed9ce87b9309e"
+  },
+  "diagnostics/moving-stop-control/enabled/checkpoint-00000002/arrays.npz": {
+    "bytes": 174172,
+    "sha256": "9237f78ea95aa5a9db7c1392c77d7cc8bac0f0e4972fc24f0da46e7e84e7ccb8"
+  },
+  "diagnostics/moving-stop-control/enabled/checkpoint-00000002/manifest.json": {
+    "bytes": 89,
+    "sha256": "5accc655ca0037b1baa251d3e0619ffebfada35d03c74e0a687b514808abfe58"
+  },
+  "diagnostics/moving-stop-control/enabled/checkpoint-00000002/state.json": {
+    "bytes": 785831,
+    "sha256": "35391e9052708be6d830289b7645110087f9b1987fcc5ffb66a68bf13741c07b"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/checkpoint-00000001/arrays.npz": {
+    "bytes": 138724,
+    "sha256": "f2c89338a51779487c7f1fd843054315fc9631987111cac97cb6f1463a933f99"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/checkpoint-00000001/manifest.json": {
+    "bytes": 89,
+    "sha256": "2fa2c79e80074b4462288e6dca3bc8a0197075480d6f2028f88dc2f68dbfd59b"
+  },
+  "diagnostics/moving-stop-control/checkpoint-stop/checkpoint-00000001/state.json": {
+    "bytes": 1072504,
+    "sha256": "3b23bb1f2873989f29f37c3a6ba4194797c7766a0006c221bc6995cc675f9e8f"
+  },
+  "implementation/tests/test_edge_coverage.py": {
+    "bytes": 3838,
+    "sha256": "91daf2b947fd2a3fb2ef6676fcf6c18b2b447e2ebb48732a69e7180495019389"
+  },
+  "implementation/tests/test_absolute_contact_budget.py": {
+    "bytes": 2925,
+    "sha256": "3ab5939b2c1a88baf2f7bb5716497262d52b10e79e57ef5497252d2752f07bff"
+  },
+  "implementation/tests/test_onset_budget.py": {
+    "bytes": 1050,
+    "sha256": "b19acf8053aedf7134779a2aec32fbcffc9577f9582e6d723a657353f2fb9c7d"
+  },
+  "implementation/tests/test_near_edge.py": {
+    "bytes": 2753,
+    "sha256": "6b11506183d77b9864def6949951fd376b1cf3a0f8c9d1ad8813ebd56d382b4a"
+  },
+  "implementation/tests/test_material_quadrature.py": {
+    "bytes": 9658,
+    "sha256": "1bae245a542fc4f36a8f3e09bf86178d0e83e4fa47b233157592552c62ed1ac1"
+  },
+  "implementation/tests/test_plastic_cycle_reference.py": {
+    "bytes": 2087,
+    "sha256": "08259814791451ed15a23756f2290bf150bb0a7296285adfea049a12c9d6148e"
+  },
+  "implementation/tests/test_continuum.py": {
+    "bytes": 1185,
+    "sha256": "6a49ac5bde894ff5e9f2c95e5ccbe3aedc8f5f031f6265150c74e4df908d4c00"
+  },
+  "implementation/tests/test_explicit_audit.py": {
+    "bytes": 1543,
+    "sha256": "7837e4c5c1cfaeb0eef1837ad92b06034bd48fdc379db6ca52d9f245974a5dc6"
+  },
+  "implementation/tests/test_cycle_operator_restart.py": {
+    "bytes": 1530,
+    "sha256": "b6ef3ecc078b995b0d994d3d0feae628c78009e2bbdfd28a280be2956fd2b755"
+  },
+  "implementation/tests/test_layered_verification.py": {
+    "bytes": 1737,
+    "sha256": "396bd5d2e2b23cb3dbd6c177e8edf621b4c720faa9cefeeb10405f7ce28e1269"
+  },
+  "implementation/tests/test_refinement_diagnostics.py": {
+    "bytes": 2274,
+    "sha256": "3ef31d80717d6d2d93c1685edf1b3fa49bf15a9f7805582a60ed0201105e73eb"
+  },
+  "implementation/tests/test_surface_development.py": {
+    "bytes": 10544,
+    "sha256": "a148c46258053e25fb093b3aa6e8d7a676438f8f387b7b9c33e3d6e8fa466ce0"
+  },
+  "implementation/tests/test_closest_selection.py": {
+    "bytes": 2886,
+    "sha256": "236a8b396fbb899e6a32435c8e0449db6d1f6e4ee8e01e98d2d5292de98689dc"
+  },
+  "implementation/tests/test_packing_rve.py": {
+    "bytes": 7242,
+    "sha256": "b1c33307770433b9601a7d776a0d3315b96d5e5991fe04e576ab425afe565d72"
+  },
+  "implementation/tests/test_surface_patch.py": {
+    "bytes": 5591,
+    "sha256": "d34aefe8e0c4f67c58de050b7b531d1e48a07584c584eb6894be6fc193342ecd"
+  },
+  "implementation/tests/test_porosity_cycle.py": {
+    "bytes": 3684,
+    "sha256": "a6626835452fd6b31b7d787848e16f14c51060c8b0c67d48959a24fa4efc4c24"
+  },
+  "implementation/tests/test_structured_extension.py": {
+    "bytes": 6068,
+    "sha256": "a7dbff4d383e1a890e26e4da94bf5a2e8d0286d2dc7d1ae81fcfd5d76c6d1270"
+  },
+  "implementation/tests/test_cauchy_unloading.py": {
+    "bytes": 1514,
+    "sha256": "fd836b573bb92015738c54285e7ae31aaa9b9a7a12daee1e3e760d02fb70d892"
+  },
+  "implementation/tests/test_aabb_search.py": {
+    "bytes": 3778,
+    "sha256": "194fc802d180d2f225d4d02927be019535da81a1a66a79707b737d762c66ab24"
+  },
+  "implementation/tests/test_friction.py": {
+    "bytes": 2371,
+    "sha256": "1df516ac4877ad0db4e128d239d178e9787f0c3fbaec699566fe77c481b97c45"
+  },
+  "implementation/tests/test_unload_reference.py": {
+    "bytes": 1722,
+    "sha256": "aa2baf653a4e832ace4aa72165453431bd9da8824c72d0936de1f33d58e31e0b"
+  },
+  "implementation/tests/test_checkpoint_solver.py": {
+    "bytes": 9651,
+    "sha256": "dabe6322df7fc46bcc4076f2b9a3ab277a41a536de83bd41ef3886def547c34b"
+  },
+  "implementation/tests/test_atlas_history.py": {
+    "bytes": 3211,
+    "sha256": "19117b6a08f66d8a6364dd7951497923cc2de658f4c383d8436062add529c905"
+  },
+  "implementation/tests/test_contact_integration.py": {
+    "bytes": 7021,
+    "sha256": "c0506c15b3f9718e7d514c26067f6e69ef54c611d07867a85791c01ad489bf5f"
+  },
+  "implementation/tests/test_atlas_controls.py": {
+    "bytes": 1364,
+    "sha256": "209ebbc5795d096eb47d2df21d19c191c43ac2853b6f723accc9a401e3ab6010"
+  },
+  "implementation/tests/test_geometry.py": {
+    "bytes": 2594,
+    "sha256": "5371bdf2817a476ac43c1f4ddf9464129f8a51f652ec35b23d41afba4c3ae641"
+  },
+  "implementation/tests/test_contact_probe.py": {
+    "bytes": 5189,
+    "sha256": "179af7a929274753bce7350a9265a9183fa6547f2c445dbadd9a15d462679033"
+  },
+  "implementation/tests/test_incompatible.py": {
+    "bytes": 4694,
+    "sha256": "1348e8c552ce65b5c5802a3e94481a0394f3f17e3ee96f1db2f23d97b32b4da0"
+  },
+  "implementation/tests/test_porosity_target.py": {
+    "bytes": 1263,
+    "sha256": "d480d9f0ebf67ec7c9c9a686145b4e7b1f5c58b55c8aa31398135025e5e10f7e"
+  },
+  "implementation/tests/test_embedded_surface_remesh.py": {
+    "bytes": 3090,
+    "sha256": "8658993e04af9a87a602195fadc6db63612d63e1ae3cee01fc790ff9370b141a"
+  },
+  "implementation/tests/test_conservative_velocity.py": {
+    "bytes": 2112,
+    "sha256": "52bb67591f213fd6ea103773d779b94ef7e04906b55fecfb5a073e6f033dbf12"
+  },
+  "implementation/tests/test_neck_validation.py": {
+    "bytes": 2226,
+    "sha256": "5e3d9892da49e98b4843782b4f9233d1f00b526778b1325e555de92eb4cfff19"
+  },
+  "implementation/tests/test_plane_contact_verification.py": {
+    "bytes": 1525,
+    "sha256": "3eeaf007d9c87b8afe0b548f84730e91cbc1829c9c8a162bb8158d19936e2793"
+  },
+  "implementation/tests/test_explicit_backend.py": {
+    "bytes": 12301,
+    "sha256": "2d30c27decc935f67556983ad7697cb1c8e577264622b62f6ff255a86bd78dd0"
+  },
+  "implementation/tests/test_plastic.py": {
+    "bytes": 3336,
+    "sha256": "abc16abb9a26919166ee9fb54a8d750ba451be01da6a0ccebd56224924e21f4b"
+  },
+  "implementation/tests/test_contact_mesh_preflight.py": {
+    "bytes": 1409,
+    "sha256": "46f68965af73192e559f1bc7d01fe6ea8a5318d627433b108c0fd2cd6fd8f21d"
+  },
+  "implementation/tests/test_triangle_quadrature.py": {
+    "bytes": 4730,
+    "sha256": "c916d7e0e6c3dbe2eca5a4435a53469699de5151dc83e47969c0b4e26fc260a6"
+  },
+  "implementation/tests/test_contact_cfl_audit.py": {
+    "bytes": 1629,
+    "sha256": "79a10624834107fd01e801aa0dbb5fe6ca2230f95f7848be78da4aefe8c220fc"
+  },
+  "implementation/tests/test_model.py": {
+    "bytes": 3055,
+    "sha256": "a2a63cac7b60121b2508e3262b1014765975cb8ec38588da3e1e497d1d3eb069"
+  },
+  "implementation/tests/test_calculix.py": {
+    "bytes": 1556,
+    "sha256": "46504234afa1276198ebaece119173fd0d6760d056ea3f53bad4c46bc80bd6e2"
+  },
+  "implementation/tests/test_barrier_contact.py": {
+    "bytes": 19773,
+    "sha256": "3d3b0195f901e69ead9df864e57f36fae231320c4f29a42bd8f1591709596ff2"
+  },
+  "implementation/tests/test_contact_audit.py": {
+    "bytes": 3378,
+    "sha256": "e944e92ad1b8036294d7ea1ffe3404bcf77d107b2178fe18072378536b97d9a0"
+  },
+  "implementation/tests/test_point_stationarity.py": {
+    "bytes": 5146,
+    "sha256": "f2c403de361ba4c1c1e58987080bf48a3ca5c7dee3c7e77d117bbc25b6bf91d7"
+  },
+  "implementation/tests/test_coulomb_stick_history.py": {
+    "bytes": 1763,
+    "sha256": "f832c888cee21b4dad89f46c46880dd95775dc717ed9b69868acb53acac28e36"
+  },
+  "implementation/tests/test_atlas_child_migration.py": {
+    "bytes": 1827,
+    "sha256": "0b3c99fcfb3aed7f5e644afbab3a9e0e8e85e8332fc6e8d0228ef8cd0796787f"
+  },
+  "implementation/tests/test_contact_atlas.py": {
+    "bytes": 4232,
+    "sha256": "11e0634ac4362340a3782a9c5ed1705756b7e8b7d56b8f28467010c749f81a1f"
+  },
+  "implementation/tests/test_patch_subgradient.py": {
+    "bytes": 2879,
+    "sha256": "ae77b5cef77c33c6b93a3cf0e0fea82d66fe171fc3e0f49c81df20956fc27e72"
+  },
+  "implementation/tests/test_area_contact.py": {
+    "bytes": 8476,
+    "sha256": "a98875a0ac71e3c37c52aa92ddc33f309ad6caf2801e29c04b0cdd99d4847dd7"
+  },
+  "implementation/tests/test_surface_partition.py": {
+    "bytes": 2116,
+    "sha256": "ee424f383775358b03eeee52d4232743a371085db923cdb1d9c95cd31d8475ae"
+  },
+  "implementation/tests/test_macro_loading.py": {
+    "bytes": 3679,
+    "sha256": "11ae8224638f4e7138cae9367f439aa085994528c2fb42944500d69b40bd86be"
+  },
+  "implementation/tests/test_edge_contact.py": {
+    "bytes": 3048,
+    "sha256": "93a72e3ecb2377621b7a5f99df835bce2a45b36d020893dc101e1429b6da464a"
+  },
+  "implementation/tests/test_contact_geometry.py": {
+    "bytes": 4301,
+    "sha256": "2d4c8081d367da75a202869790ebde111f5d30307d611fe6d191d59d25726389"
+  },
+  "implementation/tests/test_native_kernel.py": {
+    "bytes": 4210,
+    "sha256": "e6f1c3b78ea9698cc698529af9b282a6e591372e5ef30ad1549c6200ef503c04"
+  },
+  "implementation/tests/test_porosity_convergence.py": {
+    "bytes": 2652,
+    "sha256": "ab2298d9ba7496e75ac11db03f380928ce2aa6d2ad83fe91b7fa88941ba0bea0"
+  },
+  "implementation/tests/test_material_neighborhood.py": {
+    "bytes": 6830,
+    "sha256": "5aa19077fc2d9cdcb1aca29aa51137b6adaa19571c14e4a12d3fb3172b2caa44"
+  },
+  "implementation/tests/test_weighted_surface_transfer.py": {
+    "bytes": 5543,
+    "sha256": "bb4a9af5ab702ec23b9c0ee08c5d98687c8e8aa7177245b0b6b60ef8136506f0"
+  },
+  "implementation/tests/test_embedded_contact.py": {
+    "bytes": 6613,
+    "sha256": "0a9223f0259b3986cf71871415034681c0014c9eef026ccbe68a23db4611a27e"
+  },
+  "implementation/tests/test_closest_tie.py": {
+    "bytes": 5262,
+    "sha256": "994f19cb63ddff2a2923cec88c01ca093d7d90a7a853d117bf6bf514dda055c9"
+  },
+  "implementation/tests/test_reconnection.py": {
+    "bytes": 3759,
+    "sha256": "a773180e973b76e3e94fc72ced11aabce4880a25f6015ed6ca0ae61c57196927"
+  },
+  "implementation/tests/test_surface_stationarity.py": {
+    "bytes": 5833,
+    "sha256": "fb6bdc3e33448f6d040b436126bb60d9bb3b6e1e501e6ced36d002c14e8d947a"
+  },
+  "implementation/tests/test_sintered.py": {
+    "bytes": 3549,
+    "sha256": "bf0dae2a23862d4b71a6d04ae57a7ace6cebf3d5c2ae6a26d2662efdfe38fd71"
+  },
+  "implementation/tools/diagnose_last_contact_retry.py": {
+    "bytes": 5500,
+    "sha256": "00a946485211582934e375a5c453eb29b8e8a6786fa211c9eee977000cd97f44"
+  },
+  "implementation/tools/bootstrap_calculix.py": {
+    "bytes": 2185,
+    "sha256": "84c0fed8673dc431f7068e5f6fd1aec9a07dec42c182876198976239a7d19552"
+  },
+  "implementation/tools/export_compaction_stages.py": {
+    "bytes": 5526,
+    "sha256": "9cb2d801e2be9e9fab02783bcc8bf6a83e9102777b40b0aa4bd704f18e75ec70"
+  },
+  "implementation/tools/run_barrier_compaction.py": {
+    "bytes": 4360,
+    "sha256": "9a1624c2719b528f83d4311b2a6bd248b74d07aec239b5722998ba3815ae4700"
+  },
+  "implementation/tools/verify_explicit_backend.py": {
+    "bytes": 2297,
+    "sha256": "0ca7005036ed83b529f226277ed882b3436a930ccbbeb6f3157c386344df9cfb"
+  },
+  "implementation/tools/export_pressure_ramp.py": {
+    "bytes": 4945,
+    "sha256": "f4a1d3fe59b8117da9646bcbf23eda7f8180b51a25c1a1cd7cb5d083120f04ec"
+  },
+  "implementation/tools/verify_edge_pair.py": {
+    "bytes": 2747,
+    "sha256": "5395f748b6ed085cbb0d1cdc6e48c9f339c09c9867af812e2a201bfe50114d9a"
+  },
+  "implementation/tools/verify_area_friction_path.py": {
+    "bytes": 2909,
+    "sha256": "a9b0f7ef90756281cafce15caf6951e46587c7c7d501601e4cd631c65fb584ff"
+  },
+  "implementation/tools/audit_contact_capture.py": {
+    "bytes": 7977,
+    "sha256": "e6745c2bd53f30f271c6377a6e7048fe6deb64f7f7cda071e4cba432d86ff4af"
+  },
+  "implementation/tools/verify_explicit_impact.py": {
+    "bytes": 1616,
+    "sha256": "0fd2a653b88fb8c986c6f5be14f9fce95a28ca3c1e152eee78661dc00682c757"
+  },
+  "implementation/tools/verify_tracked_node_impact.py": {
+    "bytes": 3116,
+    "sha256": "f4e7d4763d4c2b730c2c7f7930e58fcf442c5b0d509dcb114cb85399009e05f2"
+  },
+  "implementation/tools/diagnose_new_history.py": {
+    "bytes": 2827,
+    "sha256": "aa3fa409b5ebe7d20b7866057dcee6619f0d388346f4aa0d04392ab72f3de5a8"
+  },
+  "implementation/tools/preflight_barrier_model.py": {
+    "bytes": 2195,
+    "sha256": "a3b9591022ed31fe63cd4c04020f9e908542d51322b22bc26b11c7877840d52d"
+  },
+  "implementation/tools/assess_compaction_stages.py": {
+    "bytes": 4980,
+    "sha256": "23c4c6c6f2c6d02a5926470dd94c742ee78afd63da94626b6a12400ddba9af4b"
+  },
+  "implementation/tools/verify_connected_initial_stiffness.py": {
+    "bytes": 3099,
+    "sha256": "afa20ddafdda2f9f9c6f7053bcf4917795e7f7d822375a08174f75a4450cfafb"
+  },
+  "implementation/tools/verify_area_pressure.py": {
+    "bytes": 2596,
+    "sha256": "79c70edfb0470e8bb739ad3c872ad3aebb731e1f81525011586ef1a7feb7436e"
+  },
+  "implementation/tools/verify_embedded_pipeline.py": {
+    "bytes": 3975,
+    "sha256": "fb00e47bae51169e0bf98c43a9de11d54ae38f53c8706ea17c1bd1d7967d0254"
+  },
+  "implementation/tools/verify_periodic_contact_probe.py": {
+    "bytes": 5817,
+    "sha256": "99112fbb59458af79ef80fcec7063484d6266a54f3eb97b3f956bd8f14842613"
+  },
+  "implementation/tools/run_pressure_ramp.py": {
+    "bytes": 2081,
+    "sha256": "8ee6d90dc60bfd7feea1a1e75c102c747704e9baec4e139a9233578e0bcc942c"
+  },
+  "implementation/tools/verify_cauchy_pressure.py": {
+    "bytes": 6487,
+    "sha256": "c7f2698f551ae4b1aed8f2f6849295a97be7854049379320369fe4fe2eae88a9"
+  },
+  "implementation/tools/export_rve_replay.py": {
+    "bytes": 3923,
+    "sha256": "9b30a8fe7f826737e85ff48c07c6f58c722b740a9a4a9eb5d049b3fb78ac6a90"
+  },
+  "implementation/tools/verify_active_remesh_solver.py": {
+    "bytes": 5191,
+    "sha256": "0f81174a555ae784fbf1b679e38ab645dc9b449dc8c39ec8f5b73afccf30c5bf"
+  },
+  "implementation/tools/export_triangle_integration.py": {
+    "bytes": 5211,
+    "sha256": "a6367317353421a19fe0c4076c8350522d8ca9edfc7f316a5977ca1de48e11c7"
+  },
+  "implementation/tools/compare_pressure_ramps.py": {
+    "bytes": 2752,
+    "sha256": "4e1b73d557d5b7eb0d6d0839ab3bee2179664cf286fad79406bd5df5b977a6f5"
+  },
+  "implementation/tools/assess_atlas_sensitivity.py": {
+    "bytes": 4583,
+    "sha256": "31d94dd119c678168345231ae4607853b5ec165985a67b18ad85b1400296eac7"
+  },
+  "implementation/tools/summarize_neck_elements.py": {
+    "bytes": 7303,
+    "sha256": "6aef4e5290d5b0b022643cfd17dc46317aae80275ab4005a03a70c506a9ba79a"
+  },
+  "implementation/tools/diagnose_rve_stop.py": {
+    "bytes": 4362,
+    "sha256": "b37da4a60fd09537a44389339295ab8c513eefae52f48a490aa1d53a5a63801e"
+  },
+  "implementation/tools/verify_plastic_cycle_reference.py": {
+    "bytes": 6703,
+    "sha256": "059b15eab63111b1e87ba3de15ee468439649455600c18e0abe5864a20bba03c"
+  },
+  "implementation/tools/verify_periodic_modes.py": {
+    "bytes": 2931,
+    "sha256": "182c4f586cea03f6887b25b8e340138c1786f394a7b36424143daabfc14e4a95"
+  },
+  "implementation/tools/compare_onset_legacy.py": {
+    "bytes": 2414,
+    "sha256": "f0c49f90f1067fd212be08f72a8ca41e68e21acc4fb70b207956a5b5da5def8c"
+  },
+  "implementation/tools/export_weighted_transfer.py": {
+    "bytes": 3748,
+    "sha256": "277b3bfc49c116936432c979043ff65dce58611d4e1c2ff78ccc57beacf5f7b9"
+  },
+  "implementation/tools/summarize_periodic_modes.py": {
+    "bytes": 5018,
+    "sha256": "10a5d29f851e0f33c9d4dd24c6934654c64da58c635cf7e6b2a1a8d90ecfd6b6"
+  },
+  "implementation/tools/verify_area_equilibrium.py": {
+    "bytes": 2705,
+    "sha256": "13998949818e9ce200846599bc47a06cb5052a8f5c4ec23316721f27377dbc8a"
+  },
+  "implementation/tools/export_packing_rve.py": {
+    "bytes": 8527,
+    "sha256": "226e25e0fd6b2fe8e8699cc0faf15e80121121a3b4080d9270d22a48551f19fe"
+  },
+  "implementation/tools/export_plastic_unloading.py": {
+    "bytes": 12281,
+    "sha256": "be9c41472f0100068cf4748d7e6679616f4c2628c3b3415c68d14f04eb9b8b41"
+  },
+  "implementation/tools/run_pressure_stages.py": {
+    "bytes": 5326,
+    "sha256": "44430023e9a13d546b96b29023010f65efd2cd5b07d2e2dc419fd7909f152c80"
+  },
+  "implementation/tools/verify_embedded_remesh.py": {
+    "bytes": 10688,
+    "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+  },
+  "implementation/tools/export_plane_verification.py": {
+    "bytes": 6541,
+    "sha256": "3b385972d4017b9e04e56a4db5b7dc0d4df2d71f8e74e5d7f533b60f931923ef"
+  },
+  "implementation/tools/verify_explicit_remesh.py": {
+    "bytes": 1967,
+    "sha256": "aa2f1f5c2570929c7e5c6aa85897c3a5ddee29ce7c0ec692dd2c1b5862c3e842"
+  },
+  "implementation/tools/export_unload_sensitivity.py": {
+    "bytes": 11123,
+    "sha256": "897770657867e6d066cb09b8297f16cb2317ed880a92132763375cdad636f169"
+  },
+  "implementation/tools/diagnose_atlas_fit.py": {
+    "bytes": 3030,
+    "sha256": "89ce90d2f83488d992ffe05c3dfab36ddb9cae8443e08b53fbb9561fbbf5cc8d"
+  },
+  "implementation/tools/export_material_neighborhood.py": {
+    "bytes": 5489,
+    "sha256": "7fa30d99ce863f6f5a283451b60de262eaa10fa84687636fbbd06d893d69651c"
+  },
+  "implementation/tools/validate_plastic.py": {
+    "bytes": 4379,
+    "sha256": "0dbc09c3de9e0b9d81291e71ba133e3c16058a4f2b7a3e6577e79a0bea3147f4"
+  },
+  "implementation/tools/verify_compaction_matrix.py": {
+    "bytes": 2095,
+    "sha256": "1685e9e25c8762ff29f08c7cdb1fed2dc1273778b50900df5c39a995fdbeeb7d"
+  },
+  "implementation/tools/verify_contact_features.py": {
+    "bytes": 5089,
+    "sha256": "08ef0c1040005bff6de74503c83f7b802f310cd0656661e8c1322a4b7a966c14"
+  },
+  "implementation/tools/verify_contact_search.py": {
+    "bytes": 2694,
+    "sha256": "4386704d93a19263107e3538698b1912ceacdff9d13894a133ded318e4ba52a5"
+  },
+  "implementation/tools/verify_layered_mechanism.py": {
+    "bytes": 3641,
+    "sha256": "b2a5ee6179e8e191b8d295eec6a353c511d9685ba3c4295af1d35b52e911bd60"
+  },
+  "implementation/tools/experimental_surface_budget.py": {
+    "bytes": 13005,
+    "sha256": "685ecee851b48d8569fd2af114aed97ff9df3e6b0c8a0f56ae730b3906afb36c"
+  },
+  "implementation/tools/audit_rve_remesh_proposal.py": {
+    "bytes": 5904,
+    "sha256": "8922909c3304574e61d33868938ff19685cf0ff8c65259b071041393a6cdbe81"
+  },
+  "implementation/tools/export_integration_replay.py": {
+    "bytes": 6826,
+    "sha256": "08eb73176e14013c156633c8bdec469e9c9432fd7a4567ef9bcffbb0a425ca8e"
+  },
+  "implementation/tools/export_mesh_images.py": {
+    "bytes": 4469,
+    "sha256": "702486d6425675c490c6fb50e3d1b6ae68abe6275f7fe1295062f81e0cfa626c"
+  },
+  "implementation/tools/probe_refinement_location.py": {
+    "bytes": 5169,
+    "sha256": "896c0b294ad91c0fa4b05e2cf86ae306cbcd148553720ec256528ad767c76a60"
+  },
+  "implementation/tools/export_closest_selection.py": {
+    "bytes": 4610,
+    "sha256": "86ffc239b0b9870e174f6759f3754835855dbb08459ed603bf38c21e4e406b23"
+  },
+  "implementation/tools/export_area_contact_fix.py": {
+    "bytes": 8386,
+    "sha256": "f0220484deabfaecaa980484e280cf4e2464b30997fbb90317555cc3d6dcff2e"
+  },
+  "implementation/tools/verify_explicit_contact.py": {
+    "bytes": 1769,
+    "sha256": "bf83fcd510932c70b4362ad38296c601f0c661cd8da62e5a6c46c1105384714e"
+  },
+  "implementation/tools/verify_triangle_integration.py": {
+    "bytes": 7771,
+    "sha256": "90fce759f58866454eccd4fa6392b8742d0a2621f67390ba07f0ec5f5685b2a8"
+  },
+  "implementation/tools/export_onset_budget.py": {
+    "bytes": 6598,
+    "sha256": "673c4f3a43c5f4f290b3f30dc6ed8622be9528b75bca697b94e70782ba623274"
+  },
+  "implementation/tools/export_material_quadrature.py": {
+    "bytes": 5116,
+    "sha256": "623d4d347b334fdee9840723351d75b5fbeb43cc7b5d87b071a53f349aee303b"
+  },
+  "implementation/tools/verify_persistent_surface.py": {
+    "bytes": 2690,
+    "sha256": "60c3426df53dd95aaff3cf4c412b7cb39b2b92e97190fd2dd6aa72c21ede3eff"
+  },
+  "implementation/tools/export_deformed_mesh.py": {
+    "bytes": 3977,
+    "sha256": "f08cc38427c145015e1c19d2c6d01011a3536a9a72fab107fbe1b5da44f3cc8d"
+  },
+  "implementation/tools/export_remesh_corrections.py": {
+    "bytes": 4485,
+    "sha256": "fac81fc80d2c22539b1a0bc0f42748435665758da40100d800ce86f81c039c88"
+  },
+  "implementation/tools/plot_tracked_solver.py": {
+    "bytes": 2822,
+    "sha256": "6c1d7692234c3e8ae5b5caeaf87b0d80a47fb09eb48ab0e25b8584b7ccdcc057"
+  },
+  "implementation/tools/assess_contact_passage.py": {
+    "bytes": 2275,
+    "sha256": "8bb5da6695b31b81cc0d601578ef900da42289ef88f3524b9eeb9bdaa0c40c07"
+  },
+  "implementation/tools/verify_material_quadrature.py": {
+    "bytes": 4818,
+    "sha256": "47719e443f2952078cb94f0a6fa3c1a6a2c3ddb24b23c0a1a9cc59fd6ea8c447"
+  },
+  "implementation/tools/export_pressure_stages.py": {
+    "bytes": 11031,
+    "sha256": "364a25fb56720a5acbf6dc3a7950fea83bd97dc4b3253633f13ef94cd2b553ad"
+  },
+  "implementation/tools/verify_near_edge.py": {
+    "bytes": 8252,
+    "sha256": "904bbf06195739aaec744434af380ffef3c3dfe26b8bf7ccc567ed9a73d9cc0d"
+  },
+  "implementation/tools/compare_contact_cfl.py": {
+    "bytes": 5407,
+    "sha256": "08233ec8503330da77e8132f89ab494d6e668c48328853babf0e786e27e68b34"
+  },
+  "implementation/tools/verify_edge_solver.py": {
+    "bytes": 2496,
+    "sha256": "2d78658dd602519c659b999fa0f9054d79954fe5cbb06055ed7f51c95415ce6d"
+  },
+  "implementation/tools/plot_periodic_contact_probe.py": {
+    "bytes": 2316,
+    "sha256": "a5e3cea7a3eec0b07b69107b67c4fb679c872ec9426747ae801f363788c31546"
+  },
+  "implementation/tools/verify_periodic_connectivity.py": {
+    "bytes": 3683,
+    "sha256": "2ed8bedf36f92aa36050e04f858e09b6a9f9d11799be3e9bc131abe9a4426f5d"
+  },
+  "implementation/tools/verify_rve_position_transfer.py": {
+    "bytes": 1858,
+    "sha256": "bed661d99f33acaa457a971ccf21764d1206956b963c0cff12dba78f476a5496"
+  },
+  "implementation/tools/diagnose_refinement_chain.py": {
+    "bytes": 8502,
+    "sha256": "7807f64d0f1736f44934af6c7442c843b61183ecddacfd0cb5cbe6f2b2593369"
+  },
+  "implementation/tools/summarize_layered_pressure.py": {
+    "bytes": 10763,
+    "sha256": "651c48916590657c488506b37f1d4274772f0b5ad91df0278ff22fa416f74109"
+  },
+  "implementation/tools/verify_closest_retry.py": {
+    "bytes": 3404,
+    "sha256": "17e51d9c04cefde1ee0f34ab17767e2780ee978195d8a91e00c26241c8770e8f"
+  },
+  "implementation/tools/verify_unload_quasistatic.py": {
+    "bytes": 7353,
+    "sha256": "9dbb8cfd95dd5f9c2f5e46155614db50a53570aaf7664f6e75bc873abe656e94"
+  },
+  "implementation/tools/verify_edge_stationarity.py": {
+    "bytes": 11133,
+    "sha256": "ec374873f84919dcba30ca530cec64f0c0b0d277e474b37452bf73651c79b3da"
+  },
+  "implementation/tools/export_near_edge.py": {
+    "bytes": 5000,
+    "sha256": "ff53347ac2d5b9e4150b123a4c693d0f5def587c027567b094368f0b82b861b5"
+  },
+  "implementation/tools/verify_surface_force_budget.py": {
+    "bytes": 3544,
+    "sha256": "cb9a4c8ab796cc0cafe6b6fd64f2f2e08f33c9a08106160a1d0331bc05f1d5cd"
+  },
+  "implementation/tools/verify_contact_atlas.py": {
+    "bytes": 2740,
+    "sha256": "84bad0505f70bbbd6c53b838d391548bdbb67353d42b9fa64421a97ed33a2c2c"
+  },
+  "implementation/tools/diagnose_explicit_contact.py": {
+    "bytes": 3594,
+    "sha256": "45c6f8f7354fabe1d0e1062b2c20afc204abbf3a7483b3ca2487ebd2942d51e9"
+  },
+  "implementation/tools/verify_point_stationarity.py": {
+    "bytes": 11599,
+    "sha256": "c036786a796200734920b6a2e03466f8f6089719ac46f0fe3e130b8036d2ed23"
+  },
+  "implementation/tools/verify_neck_elements.py": {
+    "bytes": 2552,
+    "sha256": "14ed13264feb2eff109878194183e69d77c794075b1205ba41aaa333473dbd42"
+  },
+  "implementation/tools/assess_porosity_convergence.py": {
+    "bytes": 6263,
+    "sha256": "645e944b7e4b1ee1103915e558c6ec38659e0851e5a0ed489285219bb34aa8a9"
+  },
+  "implementation/tools/export_connected_unloading.py": {
+    "bytes": 6944,
+    "sha256": "8f7b0ff5bba203c4291e04bed6a619d8793d19b1d5796fdfde2336e091bab90f"
+  },
+  "implementation/tools/verify_solver_equivalence.py": {
+    "bytes": 4916,
+    "sha256": "e94188485209faf0dce9a506dd9d42d1b1a6faf267e5370fb734f034a118b85b"
+  },
+  "implementation/tools/verify_onset_budget.py": {
+    "bytes": 11245,
+    "sha256": "f70ec0fb52d01c8608bdae6f6ba5ac157badcc0b60fef42b64e6b3763e5a8b9a"
+  },
+  "implementation/tools/compare_rve_backends.py": {
+    "bytes": 2252,
+    "sha256": "df69d7547d301b9557eba1169fb3146fbb60b2f82612473a689d29f5a4cd62b8"
+  },
+  "implementation/tools/export_embedded_remesh.py": {
+    "bytes": 4221,
+    "sha256": "232dfe387ff2d4f34edd6c4b3b8e3d82c9808772143435ce75bfdeeca2ee4400"
+  },
+  "implementation/tools/complete_embedded_remesh_matrix.py": {
+    "bytes": 4553,
+    "sha256": "dc48485b18aea37b993e6823bba77f0cc48f44b133456f65190b65c5a9314d94"
+  },
+  "implementation/tools/run_packing_rve.py": {
+    "bytes": 2376,
+    "sha256": "df0d471fb282f58d1c7be96539663d152b474b34b8201eeeff754cd29f5c45f3"
+  },
+  "implementation/tools/verify_triangle_partition.py": {
+    "bytes": 3637,
+    "sha256": "488cbe3ce740c7c30e7f0a00136d0529b0b9bd41f7f93b9f277c65245e0144ac"
+  },
+  "implementation/tools/run_explicit_model.py": {
+    "bytes": 2419,
+    "sha256": "ee70563e5869786236264f256ef7ca6bf5950da29e3a1732ba442cd563ef88b5"
+  },
+  "implementation/tools/export_contact_atlas.py": {
+    "bytes": 7943,
+    "sha256": "a507c94804e19957bc998d708d9496fb4f4883ea405a1d36113d415d95c2872f"
+  },
+  "implementation/tools/verify_atlas_batch_invariance.py": {
+    "bytes": 1811,
+    "sha256": "1c6495d868cbbb2a479abba89042d907091cb6b5af1d824e73abaf8632a2bba9"
+  },
+  "implementation/tools/verify_tracked_solver.py": {
+    "bytes": 4894,
+    "sha256": "81a28d371106ce675c49b5f99693b3cdd3b6d617a405b078e14eddb36d321504"
+  },
+  "implementation/tools/export_objective_pressure.py": {
+    "bytes": 5804,
+    "sha256": "658979d8304fbb564445aa4984816e16c8b6754c8a1c8c976acce1ebe160ff66"
+  },
+  "implementation/tools/run_porosity_target.py": {
+    "bytes": 2021,
+    "sha256": "094ec94f86549a78f040c3a1eb9c2d126cc3225ca983a44b5f1193a09c252fd0"
+  },
+  "implementation/tools/build_periodic_sintered.py": {
+    "bytes": 7776,
+    "sha256": "3e4427764368e6ea4c23b48c317d556099acf1322553006304dbea90e30ef0e6"
+  },
+  "implementation/tools/verify_connected_pressure.py": {
+    "bytes": 4573,
+    "sha256": "c0e9299d8d19f6b41ebe98fd0c6a361be462f6ca392a9002a591bb4e298b6a71"
+  },
+  "implementation/tools/verify_area_sliding.py": {
+    "bytes": 2496,
+    "sha256": "b226dccecd618a9184a16625fce37a1dc420ae67cb568e85daba91cd0901e198"
+  },
+  "implementation/tools/plot_surface_bisection.py": {
+    "bytes": 2073,
+    "sha256": "f870e19258b73a48b13fd1555977950fdf165b44f2f010d57708a989f6d79e08"
+  },
+  "implementation/tools/run_porosity_cycle.py": {
+    "bytes": 6371,
+    "sha256": "3edbf6b1b0ad70001751cc146bcf50691e083d094f1403c96a476523857f77d9"
+  },
+  "implementation/tools/scan_mesh_phase.py": {
+    "bytes": 2166,
+    "sha256": "4768fa30882724066f47d777ee642bb7bb0110c4051eb267a93978678963b47a"
+  },
+  "implementation/tools/verify_layered_pressure.py": {
+    "bytes": 6901,
+    "sha256": "3cbc7bf5e5b0ae53d3ff7e4400bab724cd2f4fadae34cbd9116b698b2950fc45"
+  },
+  "implementation/tools/diagnose_embedded_refinement.py": {
+    "bytes": 2640,
+    "sha256": "e17256ee1ee5fe78b77f4c3c9bcf9c215a2780d0945a7b13f88683b961bc9b87"
+  },
+  "implementation/tools/build_native_kernel.py": {
+    "bytes": 778,
+    "sha256": "4ae243419bbee7b2a4f5566e3c9fa159fcc4cccbe1366b404bd38ae781375397"
+  },
+  "implementation/tools/verify_structured_extension.py": {
+    "bytes": 11856,
+    "sha256": "9859440f8aa005d46bb4126a9b00a5c52e76ebebe153b1a8307ca5f321307851"
+  },
+  "implementation/tools/verify_lazy_candidates.py": {
+    "bytes": 2135,
+    "sha256": "e7cbef555e72542a3738eba688a9a26a6fb4ef5c58fbf5cb44e18c1137bf75f4"
+  },
+  "implementation/tools/export_connected_pressure.py": {
+    "bytes": 12416,
+    "sha256": "b490491307b5f6a3e43bde6c3df6c876e9ea6b9dd72bd087688fa132b22c3a20"
+  },
+  "implementation/tools/monitor_pressure_ramp.py": {
+    "bytes": 5117,
+    "sha256": "8fa5dbfa15f518adc13def743ec5828d1ca330684712f9514706726634c0689d"
+  },
+  "implementation/tools/export_barrier_compaction.py": {
+    "bytes": 9185,
+    "sha256": "bae6a3e245ac76c7fd54e719d65042715fafc98c9ac12a9c652c4083a896308c"
+  },
+  "implementation/tools/verify_surface_development.py": {
+    "bytes": 8957,
+    "sha256": "2e6ebe3bf83814be93d57033f6c8cd5856bc75f4ef0a6b8deef01c7008f2442e"
+  },
+  "implementation/tools/plot_contact_features.py": {
+    "bytes": 1484,
+    "sha256": "3d6ea26fbb2f263ec20b05aff55aca683146f8b519bcef973189f8259878afab"
+  },
+  "implementation/tools/export_porosity_cycle.py": {
+    "bytes": 5526,
+    "sha256": "46bae136154f8bbd7048a79ba836afc5d40e5ba74553900e3c3f0c2de8dce412"
+  },
+  "implementation/tools/export_contact_audit.py": {
+    "bytes": 5454,
+    "sha256": "ea26f522d6ccf02bb3cdb8cf996de2a6a0b0dde1f7535e90035a93730b5d5c1c"
+  },
+  "implementation/tools/plot_edge_verification.py": {
+    "bytes": 2930,
+    "sha256": "2cadd78800468e47f309fc11a6c5c91d7bdfedf96c55dad17aed5573c94f5ae1"
+  },
+  "implementation/tools/verify_integration_replay.py": {
+    "bytes": 9459,
+    "sha256": "a1ac56713ab79361b87bdf5fbd9f3413f36ed053ba6977c628d2d49221f577bf"
+  },
+  "implementation/tools/check_modulus_comparison.py": {
+    "bytes": 2981,
+    "sha256": "e564a960f7cc02b5de0369501ab22d98a8f5ac2de69f19ece976ed02c12d19db"
+  },
+  "implementation/tools/plastic_cycle_audit.py": {
+    "bytes": 2140,
+    "sha256": "1c644c9565122a63c6faa471104f0f1b411a299e132066d6220e56f1ad0a5ef5"
+  },
+  "implementation/tools/verify_plane_contact.py": {
+    "bytes": 6876,
+    "sha256": "dbb849ce81a806760cb9c88ef15522960037b293065ea664fcab188d15e8d34e"
+  },
+  "implementation/tools/verify_contact_mesh_preflight.py": {
+    "bytes": 12052,
+    "sha256": "94349b86fef3f6806ef8e142d437e967d449d0a5d4cbecc55dca30e7aaf639ee"
+  },
+  "implementation/tools/summarize_plastic_verification.py": {
+    "bytes": 7012,
+    "sha256": "43d2efb6b3892cf81e72e97563c0172c9efa1cc304eb47862a43861ab62a5387"
+  },
+  "implementation/tools/export_porosity_target.py": {
+    "bytes": 6090,
+    "sha256": "68e9f855f97bf96ebcc8b145e3f2b98e33169f69f7f16cc2bbf2fd829cccc19d"
+  },
+  "implementation/tools/replay_explicit.py": {
+    "bytes": 858,
+    "sha256": "5dce120e57d6694e9aa471cb7e6d46069fa0bef8df290ca4fb4cb1ed419ca125"
+  },
+  "implementation/tools/export_explicit_results.py": {
+    "bytes": 10043,
+    "sha256": "8ea1f3ffdaab74adeb431ec61c76911727f5e85c08adde81a887c78c665cd761"
+  },
+  "implementation/tools/verify_narrow_integration.py": {
+    "bytes": 6224,
+    "sha256": "2676f332692bf9b613a71a664d1483f5d243b962ad6ece9a9cb3d697d5d19d16"
+  },
+  "implementation/tools/recover_pressure_endpoints.py": {
+    "bytes": 2748,
+    "sha256": "6bd1f9c4a166c4a5409f2e537183dceb20f6296316bc557655dececced6b07d2"
+  },
+  "implementation/packing_fem/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "implementation/packing_fem/conservative_velocity.py": {
+    "bytes": 3172,
+    "sha256": "315b591b676d2b823740d434e93caf67fd2f4368424d3699e9d2e40985bdbf62"
+  },
+  "implementation/packing_fem/linear_rve.py": {
+    "bytes": 2307,
+    "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+  },
+  "implementation/packing_fem/checkpoint.py": {
+    "bytes": 4519,
+    "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+  },
+  "implementation/packing_fem/embedded_remesh.py": {
+    "bytes": 9855,
+    "sha256": "7bc22c392bc87408ceddc1e8304f65161a0b03eb2008cf0a0360e77a9d4c4271"
+  },
+  "implementation/packing_fem/contact_probe.py": {
+    "bytes": 5889,
+    "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+  },
+  "implementation/packing_fem/explicit_solver.py": {
+    "bytes": 63156,
+    "sha256": "8d62d879144d1d02a3b86ec755e63cb089899d4987dc3aa0f524c9d3d06bc037"
+  },
+  "implementation/packing_fem/area_contact.py": {
+    "bytes": 20830,
+    "sha256": "be8273ee4b9293ec585c8c9bce8085c85383998993e120bee315e0d2ea28d7a3"
+  },
+  "implementation/packing_fem/contact_tracking.py": {
+    "bytes": 4256,
+    "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+  },
+  "implementation/packing_fem/continuum.py": {
+    "bytes": 1131,
+    "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+  },
+  "implementation/packing_fem/adaptive_tet.py": {
+    "bytes": 3659,
+    "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+  },
+  "implementation/packing_fem/porosity_cycle.py": {
+    "bytes": 5216,
+    "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+  },
+  "implementation/packing_fem/macro_loading.py": {
+    "bytes": 2479,
+    "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+  },
+  "implementation/packing_fem/energy.py": {
+    "bytes": 4429,
+    "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+  },
+  "implementation/packing_fem/contact_atlas.py": {
+    "bytes": 12344,
+    "sha256": "cc968c5084d70d90c0eab1281eb94b0bdc5d18b4392c35a1cab107f576a77dfd"
+  },
+  "implementation/packing_fem/explicit_timestep.py": {
+    "bytes": 2598,
+    "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+  },
+  "implementation/packing_fem/geometry.py": {
+    "bytes": 6046,
+    "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+  },
+  "implementation/packing_fem/tracked_contact.py": {
+    "bytes": 7990,
+    "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+  },
+  "implementation/packing_fem/refined_extension.py": {
+    "bytes": 2978,
+    "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+  },
+  "implementation/packing_fem/embedded_contact.py": {
+    "bytes": 22177,
+    "sha256": "7ea331001dc60fc814c8ee80060f715220f5a34381074073f650806a8e7ae186"
+  },
+  "implementation/packing_fem/neck_validation.py": {
+    "bytes": 12184,
+    "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+  },
+  "implementation/packing_fem/periodic_contact.py": {
+    "bytes": 7443,
+    "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+  },
+  "implementation/packing_fem/cli.py": {
+    "bytes": 9038,
+    "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+  },
+  "implementation/packing_fem/model.py": {
+    "bytes": 10003,
+    "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+  },
+  "implementation/packing_fem/packing_rve.py": {
+    "bytes": 2529,
+    "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+  },
+  "implementation/packing_fem/__init__.py": {
+    "bytes": 64,
+    "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+  },
+  "implementation/packing_fem/incompatible.py": {
+    "bytes": 15431,
+    "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+  },
+  "implementation/packing_fem/structured_extension.py": {
+    "bytes": 5564,
+    "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+  },
+  "implementation/packing_fem/aabb_search.py": {
+    "bytes": 2330,
+    "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+  },
+  "implementation/packing_fem/triangle_quadrature.py": {
+    "bytes": 8272,
+    "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+  },
+  "implementation/packing_fem/explicit_audit.py": {
+    "bytes": 1220,
+    "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+  },
+  "implementation/packing_fem/reconnection.py": {
+    "bytes": 3832,
+    "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+  },
+  "implementation/packing_fem/contact_audit.py": {
+    "bytes": 3386,
+    "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+  },
+  "implementation/packing_fem/edge_coverage.py": {
+    "bytes": 5078,
+    "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+  },
+  "implementation/packing_fem/surface_stationarity.py": {
+    "bytes": 5188,
+    "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+  },
+  "implementation/packing_fem/surface_patch.py": {
+    "bytes": 16024,
+    "sha256": "3cfc46b7ca4281aa305ee537370090700f4419705ba63620c61753740197e8fa"
+  },
+  "implementation/packing_fem/edge_tracked_contact.py": {
+    "bytes": 3427,
+    "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+  },
+  "implementation/packing_fem/edge_contact.py": {
+    "bytes": 3606,
+    "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+  },
+  "implementation/packing_fem/explicit_periodic.py": {
+    "bytes": 5625,
+    "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+  },
+  "implementation/packing_fem/sintered.py": {
+    "bytes": 15233,
+    "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+  },
+  "implementation/packing_fem/native_kernel.py": {
+    "bytes": 3619,
+    "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+  },
+  "implementation/packing_fem/barrier_contact.py": {
+    "bytes": 19256,
+    "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+  },
+  "implementation/packing_fem/material_quadrature.py": {
+    "bytes": 4232,
+    "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+  },
+  "implementation/packing_fem/material_neighborhood.py": {
+    "bytes": 4737,
+    "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+  },
+  "implementation/packing_fem/contact_geometry.py": {
+    "bytes": 3321,
+    "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+  },
+  "implementation/packing_fem/explicit_material.py": {
+    "bytes": 2668,
+    "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+  },
+  "implementation/packing_fem/plastic.py": {
+    "bytes": 11318,
+    "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+  },
+  "implementation/packing_fem/results.py": {
+    "bytes": 12145,
+    "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "component_corrections_verified": true,
+  "stage3_completed": false,
+  "full_compaction_completed": false,
+  "final_current_tests_passed": 50,
+  "solver_cases": {
+    "moving-final-020": {
+      "passed": true,
+      "checks": {
+        "active_restart_exact": true,
+        "active_transfer_committed": true,
+        "opt_in_required": true,
+        "rejected_trajectory_unchanged": true,
+        "bounded_three_steps": true
+      },
+      "scope": "Bounded dynamic transaction test; not a quasi-static compaction result.",
+      "results": {
+        "enabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 9.536256929850897e-08,
+              "accepted": true,
+              "fraction": 0.5,
+              "periodic_edges": 1,
+              "new_nodes": 1,
+              "reference_volume_error": 0.0,
+              "current_volume_error": 0.0,
+              "minimum_quality_before": 0.54865390426639,
+              "minimum_quality_after": 0.4323270300730482,
+              "velocity_transfer": {
+                "method": "momentum_energy",
+                "momentum_scaled_error": 2.5472383876230014e-16,
+                "kinetic_relative_error": 2.6910601882565484e-16,
+                "constraint_rank": 6,
+                "minimum_kinetic_energy_Nmm": 3.037754752201079e-09,
+                "target_kinetic_energy_Nmm": 1.9672380214465444e-07
+              },
+              "retained_embedded_samples": {
+                "retained_samples": 604,
+                "active_histories": 332,
+                "new_material_samples": 0,
+                "periodic_virtual_work_relative_error": 9.02427390425736e-15,
+                "history_interpolation": false
+              },
+              "checks": {
+                "mass": true,
+                "linear_momentum": true,
+                "angular_momentum": true,
+                "kinetic_energy": true,
+                "material_energy": true,
+                "contact_energy": true,
+                "normal_energy": true,
+                "tangent_energy": true,
+                "contact_macro_force": true,
+                "coulomb": true
+              },
+              "scaled_errors": {
+                "mass": 0.0,
+                "linear_momentum": 1.1961622968818712e-16,
+                "angular_momentum": 2.2489151079795146e-16,
+                "kinetic_energy": 4.0365902823848204e-16,
+                "material_energy": 0.0,
+                "contact_energy": 1.3561013929935313e-15,
+                "normal_energy": 1.3561013929971234e-15,
+                "tangent_energy": 3.3173276719236716e-10,
+                "contact_macro_force": 5.096888041951533e-14
+              },
+              "tolerance": 0.001
+            }
+          ]
+        },
+        "disabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 9.536256929850897e-08,
+              "accepted": false,
+              "reason": "Active embedded remeshing requires explicit retained-sample transfer opt-in"
+            }
+          ]
+        }
+      },
+      "full_compaction_completed": false
+    },
+    "moving-final-010": {
+      "passed": true,
+      "checks": {
+        "active_restart_exact": true,
+        "active_transfer_committed": true,
+        "opt_in_required": true,
+        "rejected_trajectory_unchanged": true,
+        "bounded_three_steps": true
+      },
+      "scope": "Bounded dynamic transaction test; not a quasi-static compaction result.",
+      "results": {
+        "enabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 4.7681284649254486e-08,
+              "accepted": true,
+              "fraction": 0.5,
+              "periodic_edges": 1,
+              "new_nodes": 1,
+              "reference_volume_error": 0.0,
+              "current_volume_error": 2.220446049250313e-16,
+              "minimum_quality_before": 0.5486550140374418,
+              "minimum_quality_after": 0.43232778110196807,
+              "velocity_transfer": {
+                "method": "momentum_energy",
+                "momentum_scaled_error": 2.0678652549534858e-16,
+                "kinetic_relative_error": 1.3429522601090048e-16,
+                "constraint_rank": 6,
+                "minimum_kinetic_energy_Nmm": 7.584192625956018e-10,
+                "target_kinetic_energy_Nmm": 4.927535473142654e-08
+              },
+              "retained_embedded_samples": {
+                "retained_samples": 604,
+                "active_histories": 332,
+                "new_material_samples": 0,
+                "periodic_virtual_work_relative_error": 9.615723202427635e-15,
+                "history_interpolation": false
+              },
+              "checks": {
+                "mass": true,
+                "linear_momentum": true,
+                "angular_momentum": true,
+                "kinetic_energy": true,
+                "material_energy": true,
+                "contact_energy": true,
+                "normal_energy": true,
+                "tangent_energy": true,
+                "contact_macro_force": true,
+                "coulomb": true
+              },
+              "scaled_errors": {
+                "mass": 0.0,
+                "linear_momentum": 1.4699864671478703e-16,
+                "angular_momentum": 1.4543749513265032e-16,
+                "kinetic_energy": 0.0,
+                "material_energy": 0.0,
+                "contact_energy": 6.155819243479053e-16,
+                "normal_energy": 6.155819243480069e-16,
+                "tangent_energy": 3.338008145943237e-10,
+                "contact_macro_force": 4.9629085258160436e-14
+              },
+              "tolerance": 0.001
+            }
+          ]
+        },
+        "disabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 4.7681284649254486e-08,
+              "accepted": false,
+              "reason": "Active embedded remeshing requires explicit retained-sample transfer opt-in"
+            }
+          ]
+        }
+      },
+      "full_compaction_completed": false
+    },
+    "moving-final-005": {
+      "passed": true,
+      "checks": {
+        "active_restart_exact": true,
+        "active_transfer_committed": true,
+        "opt_in_required": true,
+        "rejected_trajectory_unchanged": true,
+        "bounded_three_steps": true
+      },
+      "scope": "Bounded dynamic transaction test; not a quasi-static compaction result.",
+      "results": {
+        "enabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 2.3840642324627243e-08,
+              "accepted": true,
+              "fraction": 0.5,
+              "periodic_edges": 1,
+              "new_nodes": 1,
+              "reference_volume_error": 0.0,
+              "current_volume_error": 2.220446049250313e-16,
+              "minimum_quality_before": 0.5486552914797208,
+              "minimum_quality_after": 0.43232796885890545,
+              "velocity_transfer": {
+                "method": "momentum_energy",
+                "momentum_scaled_error": 2.1832352335687267e-16,
+                "kinetic_relative_error": 4.0267824990611026e-16,
+                "constraint_rank": 6,
+                "minimum_kinetic_energy_Nmm": 1.895479178048214e-10,
+                "target_kinetic_energy_Nmm": 1.2325184378533916e-08
+              },
+              "retained_embedded_samples": {
+                "retained_samples": 604,
+                "active_histories": 332,
+                "new_material_samples": 0,
+                "periodic_virtual_work_relative_error": 1.041710215561975e-14,
+                "history_interpolation": false
+              },
+              "checks": {
+                "mass": true,
+                "linear_momentum": true,
+                "angular_momentum": true,
+                "kinetic_energy": true,
+                "material_energy": true,
+                "contact_energy": true,
+                "normal_energy": true,
+                "tangent_energy": true,
+                "contact_macro_force": true,
+                "coulomb": true
+              },
+              "scaled_errors": {
+                "mass": 0.0,
+                "linear_momentum": 1.3372017927511204e-16,
+                "angular_momentum": 1.725806318959078e-16,
+                "kinetic_energy": 2.6845216660407347e-16,
+                "material_energy": 8.192509967165328e-21,
+                "contact_energy": 6.64605228103264e-15,
+                "normal_energy": 6.6460522810327084e-15,
+                "tangent_energy": 3.277938623170349e-10,
+                "contact_macro_force": 3.609457503979165e-14
+              },
+              "tolerance": 0.001
+            }
+          ]
+        },
+        "disabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 2.3840642324627243e-08,
+              "accepted": false,
+              "reason": "Active embedded remeshing requires explicit retained-sample transfer opt-in"
+            }
+          ]
+        }
+      },
+      "full_compaction_completed": false
+    },
+    "moving-l2-control": {
+      "passed": false,
+      "checks": {
+        "active_restart_exact": true,
+        "active_transfer_committed": false,
+        "opt_in_required": true,
+        "rejected_trajectory_unchanged": true,
+        "bounded_three_steps": true
+      },
+      "scope": "Bounded dynamic transaction test; not a quasi-static compaction result.",
+      "results": {
+        "enabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 9.536256929850897e-08,
+              "accepted": false,
+              "fraction": 0.5,
+              "periodic_edges": 1,
+              "new_nodes": 1,
+              "reference_volume_error": 0.0,
+              "current_volume_error": 0.0,
+              "minimum_quality_before": 0.54865390426639,
+              "minimum_quality_after": 0.4323270300730482,
+              "retained_embedded_samples": {
+                "retained_samples": 604,
+                "active_histories": 332,
+                "new_material_samples": 0,
+                "periodic_virtual_work_relative_error": 9.02427390425736e-15,
+                "history_interpolation": false
+              },
+              "checks": {
+                "mass": true,
+                "linear_momentum": true,
+                "angular_momentum": false,
+                "kinetic_energy": false,
+                "material_energy": true,
+                "contact_energy": true,
+                "normal_energy": true,
+                "tangent_energy": true,
+                "contact_macro_force": true,
+                "coulomb": true
+              },
+              "scaled_errors": {
+                "mass": 0.0,
+                "linear_momentum": 1.4259717879692825e-17,
+                "angular_momentum": 0.00999770866857634,
+                "kinetic_energy": 0.004797801707367976,
+                "material_energy": 0.0,
+                "contact_energy": 1.3561013929935313e-15,
+                "normal_energy": 1.3561013929971234e-15,
+                "tangent_energy": 3.3173276719236716e-10,
+                "contact_macro_force": 5.096888041951533e-14
+              },
+              "tolerance": 0.001
+            }
+          ]
+        },
+        "disabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 9.536256929850897e-08,
+              "accepted": false,
+              "reason": "Active embedded remeshing requires explicit retained-sample transfer opt-in"
+            }
+          ]
+        }
+      },
+      "full_compaction_completed": false
+    },
+    "moving-stop-control": {
+      "passed": false,
+      "checks": {
+        "active_restart_exact": true,
+        "active_transfer_committed": true,
+        "opt_in_required": true,
+        "rejected_trajectory_unchanged": true,
+        "bounded_three_steps": false
+      },
+      "scope": "Bounded dynamic transaction test; not a quasi-static compaction result.",
+      "results": {
+        "enabled": {
+          "failure": "SurfaceResolutionError('Distinct tied closest patch projections require subgradient integration')",
+          "steps": 2,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 9.536256929850897e-08,
+              "accepted": true,
+              "fraction": 0.5,
+              "periodic_edges": 1,
+              "new_nodes": 1,
+              "reference_volume_error": 0.0,
+              "current_volume_error": 0.0,
+              "minimum_quality_before": 0.54865390426639,
+              "minimum_quality_after": 0.4323270300730482,
+              "velocity_transfer": {
+                "method": "momentum_energy",
+                "momentum_scaled_error": 2.5472383876230014e-16,
+                "kinetic_relative_error": 2.6910601882565484e-16,
+                "constraint_rank": 6,
+                "minimum_kinetic_energy_Nmm": 3.037754752201079e-09,
+                "target_kinetic_energy_Nmm": 1.9672380214465444e-07
+              },
+              "retained_embedded_samples": {
+                "retained_samples": 604,
+                "active_histories": 332,
+                "new_material_samples": 0,
+                "periodic_virtual_work_relative_error": 9.02427390425736e-15,
+                "history_interpolation": false
+              },
+              "checks": {
+                "mass": true,
+                "linear_momentum": true,
+                "angular_momentum": true,
+                "kinetic_energy": true,
+                "material_energy": true,
+                "contact_energy": true,
+                "normal_energy": true,
+                "tangent_energy": true,
+                "contact_macro_force": true,
+                "coulomb": true
+              },
+              "scaled_errors": {
+                "mass": 0.0,
+                "linear_momentum": 1.1961622968818712e-16,
+                "angular_momentum": 2.2489151079795146e-16,
+                "kinetic_energy": 4.0365902823848204e-16,
+                "material_energy": 0.0,
+                "contact_energy": 1.3561013929935313e-15,
+                "normal_energy": 1.3561013929971234e-15,
+                "tangent_energy": 3.3173276719236716e-10,
+                "contact_macro_force": 5.096888041951533e-14
+              },
+              "tolerance": 0.001
+            }
+          ]
+        },
+        "disabled": {
+          "failure": "RuntimeError('Step budget exhausted; no extrapolation')",
+          "steps": 3,
+          "events": [
+            {
+              "operation": "periodic_edge_bisection",
+              "time_s": 9.536256929850897e-08,
+              "accepted": false,
+              "reason": "Active embedded remeshing requires explicit retained-sample transfer opt-in"
+            }
+          ]
+        }
+      },
+      "full_compaction_completed": false
+    }
+  },
+  "packing_eligibility": {
+    "scope": "Check nested-refinement eligibility at a saved packing state, without advancing it.",
+    "checkpoint": "results/contact-atlas-development-001/global-cycle-2-v7/attempt-002/checkpoint-00090250",
+    "step": 90250,
+    "active_histories": 69,
+    "source_face": 1521,
+    "candidates": [
+      {
+        "edge": [
+          1740,
+          1725
+        ],
+        "eligible": false,
+        "reason": "Existing sample weights do not partition child-face area; active reweighting prohibited"
+      },
+      {
+        "edge": [
+          1725,
+          1917
+        ],
+        "eligible": false,
+        "reason": "Existing sample weights do not partition child-face area; active reweighting prohibited"
+      },
+      {
+        "edge": [
+          1917,
+          1740
+        ],
+        "eligible": false,
+        "reason": "Active embedded split requires a pre-existing partition-aligned quadrature rule"
+      }
+    ],
+    "eligible_candidates": 0,
+    "packing_remesh_completed": false,
+    "interpretation": "Eligibility only; no contact/material transfer or physical trajectory accepted."
+  },
+  "limits": [
+    "Three bounded steps on manufactured planar contact, not quasi-static compression.",
+    "CFL levels test transfer invariants, not same-time response convergence.",
+    "Packing still has incompatible child areas/sample masses; no history reset or reweighting allowed.",
+    "No general sample insertion/coarsening, retained-partition clipping, quality recovery, loaded 10% equilibrium or unload result."
+  ]
+}

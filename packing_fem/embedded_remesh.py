@@ -43,8 +43,8 @@ def refine_rules(old,new_faces,proposal):
         original=old.rules.get(str(i))
         if split and original is None:raise ValueError('Active embedded split requires a pre-existing partition-aligned quadrature rule')
         if original is None:continue
-        if split and (original.get('atlas') or original.get('partition')):
-            raise ValueError('Splitting atlas/partition metadata requires explicit retained-pose migration')
+        if split and len(original.get('partition',[])):
+            raise ValueError('Splitting retained integration partitions requires explicit cell-intersection migration')
         B=np.asarray(original['bary']);weights=np.asarray(original['weights']);points=B@old.X[old.faces[i]]
         assignment={j:[] for j in child};representations={}
         for k,point in enumerate(points):
@@ -57,13 +57,28 @@ def refine_rules(old,new_faces,proposal):
             tri=X[new_faces[j]];area=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
             if not indices or abs(weights[indices].sum()-area)>max(1e-12,area*1e-10):
                 raise ValueError('Existing sample weights do not partition child-face area; active reweighting prohibited')
-            rule={} if split else deepcopy(original)
-            if not split:
-                C=coordinates(old.X[old.faces[i]],X[new_faces[j]],tol)
-                for name in ('atlas','atlas_controls'):
-                    for pose in rule.get(name,[]):pose['source']=(C@np.asarray(pose['source'])).tolist()
-                if 'partition' in rule:rule['partition']=(np.asarray(rule['partition'])@np.linalg.inv(C)).tolist()
+            rule=deepcopy(original)
+            C=coordinates(old.X[old.faces[i]],X[new_faces[j]],tol)
+            for name in ('atlas','atlas_controls'):
+                for pose in rule.get(name,[]):pose['source']=(C@np.asarray(pose['source'])).tolist()
+            if 'partition' in rule:rule['partition']=(np.asarray(rule['partition'])@np.linalg.inv(C)).tolist()
             rule.update(bary=[representations[j,k].tolist() for k in indices],weights=weights[indices].tolist())
+            if split:
+                # Retain EVERY historical/control pose in child coordinates,
+                # then independently audit its inherited, unchanged samples.
+                from . import surface_patch
+                from .contact_atlas import density,scales
+                audits=[]
+                for name in ('atlas','atlas_controls'):
+                    for k,pose in enumerate(rule.get(name,[])):
+                        reference=surface_patch.integrate(np.asarray(pose['source']),np.asarray(pose['targets']),area,
+                            kn=.5*old.kn,thickness=old.thickness,tolerance=old.quadrature_tolerance/16,
+                            vertex_map=np.asarray(pose['mapping'],int),groups=pose['groups'],pointwise=True,error_budget='normalized',tie_rule=pose.get('tie_rule','stop'))['value']
+                        applied=np.asarray(rule['weights'])@density(np.asarray(rule['bary']),pose,.5*old.kn,old.thickness)
+                        error=abs(applied-reference)/scales(reference)
+                        audits.append(dict(kind=name,index=k,energy_error=float(error[0]),force_error=float(error[1:].max())))
+                        if error.max()>old.quadrature_tolerance:raise ValueError('Inherited child cubature fails retained-pose audit; no reweighting/history reset')
+                rule['refinement_pose_audits']=audits
             rules[str(j)]=rule
             for local,k in enumerate(indices):point_map[i,k]=(j,local)
     return rules,point_map,parent

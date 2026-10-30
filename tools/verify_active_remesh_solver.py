@@ -14,20 +14,20 @@ from tools.verify_plane_contact import fixture
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--remesh-step',type=int,default=1);parser.add_argument('--cfl',type=float,default=.2);parser.add_argument('--velocity-transfer',choices=['l2','momentum_energy'],default='momentum_energy');parser.add_argument('--tie-rule',choices=['stop','clarke'],default='clarke');a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     _,t,X,_,_=fixture(1,.015,0.);L=1.;H=np.eye(3)
     b=np.repeat(np.eye(3)[None],len(t),0);V=geometry(X,t)[0]
-    base=EmbeddedContact(X,t,Periodic(X,L),20.,.3,.1,thickness=.02,error_budget='normalized')
+    base=EmbeddedContact(X,t,Periodic(X,L),20.,.3,.1,thickness=.02,error_budget='normalized',closest_tie_rule=a.tie_rule)
     face=next(face for face in base.faces if np.all(np.isclose(X[face,2],.415)))
     edges=[face[[i,j]] for i,j in ((0,1),(1,2),(2,0))];edge=max(edges,key=lambda e:np.linalg.norm(X[e[1]]-X[e[0]]))
     p=bisect(X,X,t,b,np.zeros(len(t)),V,X*0,edge,L)
-    child=EmbeddedContact(p['X'],p['t'],Periodic(p['X'],L),20.,.3,.1,thickness=.02,error_budget='normalized')
+    child=EmbeddedContact(p['X'],p['t'],Periodic(p['X'],L),20.,.3,.1,thickness=.02,error_budget='normalized',closest_tie_rule=a.tie_rule)
     child_rules={};B,w=RULES[8]
     for j,ids in enumerate(child.faces):
         tri=p['X'][ids];A=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
         child_rules[str(j)]=dict(bary=B.tolist(),weights=(A*w).tolist())
     for replay in range(12):
-        c=EmbeddedContact(p['X'],p['t'],Periodic(p['X'],L),20.,.3,.1,thickness=.02,error_budget='normalized',quadrature_rules=child_rules)
+        c=EmbeddedContact(p['X'],p['t'],Periodic(p['X'],L),20.,.3,.1,thickness=.02,error_budget='normalized',quadrature_rules=child_rules,closest_tie_rule=a.tie_rule)
         try:c.evaluate(p['X'],p['X']*0,H,H*0,0.);break
         except SurfaceResolutionError as exc:
             if not getattr(exc,'feature',{}).get('rules'):raise
@@ -43,8 +43,8 @@ def main():
         rules[str(i)]=dict(bary=np.asarray(points).tolist(),weights=weights)
     c=json.loads(Path('configs/explicit-prototype.json').read_text())
     c.update(length_mm=L,contact_backend='embedded_area',surface_error_budget='normalized',embedded_quadrature_rules=rules,
-             compression_fraction=0.,ramp_s=1e-5,hold_s=0.,max_steps=3,output_every=1,remesh_every=0,surface_remesh_steps=[0],surface_remesh_edge=edge.tolist(),surface_remesh_max_events=1,
-             active_embedded_surface_remesh=True,save_checkpoint=True,save_contact_audit=True)
+             compression_fraction=0.,ramp_s=1e-5,hold_s=0.,max_steps=3,output_every=1,remesh_every=0,surface_remesh_steps=[a.remesh_step],surface_remesh_edge=edge.tolist(),surface_remesh_max_events=1,
+             active_embedded_surface_remesh=True,surface_velocity_transfer=a.velocity_transfer,closest_tie_rule=a.tie_rule,cfl=a.cfl,save_checkpoint=True,save_contact_audit=True)
     results={}
     for name,flag in (('enabled',True),('disabled',False)):
         result=solve(a.output/name,X,t,dict(c,active_embedded_surface_remesh=flag))

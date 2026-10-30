@@ -14,3 +14,7 @@ exports/contact-atlas-development-001/*/
 # Raw active-contact refinement diagnostics are included in the downloadable ZIP.
 exports/active-embedded-remesh-001/*/
 !exports/active-embedded-remesh-001/test-logs/
+
+# Full remesh-correction diagnostics are preserved in the downloadable ZIP.
+exports/remesh-corrections-001/*/
+!exports/remesh-corrections-001/test-logs/

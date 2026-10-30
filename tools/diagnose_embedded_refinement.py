@@ -14,7 +14,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     state,metadata=load(a.checkpoint);c=metadata['config'];X=state['X'];t=state['t'];L=c['length_mm'];periodic=Periodic(X,L)
     surface=Contact(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'])
-    rules=state['runtime_rules'];old=SimpleNamespace(X=X,L=L,faces=surface.faces,rules=rules)
+    rules=state['runtime_rules'];old=SimpleNamespace(X=X,L=L,faces=surface.faces,rules=rules,kn=c['contact_penalty_mpa_mm'],thickness=c.get('barrier_thickness_mm',.02),quadrature_tolerance=c.get('surface_quadrature_tolerance',.001))
     active={key[1] for key in state['contact']['history']};start=len(X);faces=[]
     for key,rule in sorted(rules.items(),key=lambda item:int(item[0])):
         stop=start+len(rule['weights'])

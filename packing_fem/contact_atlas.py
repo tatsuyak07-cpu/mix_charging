@@ -18,7 +18,7 @@ def scales(value,energy_budget=0.,force_budget=0.,tolerance=.001):
 
 
 def density(bary,pose,kn,thickness):
-    return patch.grouped_field(bary,np.asarray(pose['source'],float),np.asarray(pose['targets'],float),pose['groups'],kn,thickness,np.asarray(pose['mapping'],int),True)[0]
+    return patch.grouped_field(bary,np.asarray(pose['source'],float),np.asarray(pose['targets'],float),pose['groups'],kn,thickness,np.asarray(pose['mapping'],int),True,pose.get('tie_rule','stop'))[0]
 
 
 def refine_weights(matrix,rhs,weights):
@@ -126,7 +126,7 @@ def build(poses,area,kn,thickness,tolerance=.001,previous_bary=None,max_poses=32
     references=[];candidates=[]
     for pose in poses:
         r=patch.integrate(np.asarray(pose['source'],float),np.asarray(pose['targets'],float),area,kn=kn,thickness=thickness,
-                          tolerance=tolerance/16,vertex_map=np.asarray(pose['mapping'],int),groups=pose['groups'],pointwise=True,error_budget='normalized',absolute_energy_budget=energy_budget/16,absolute_force_budget=force_budget/16)
+                          tolerance=tolerance/16,vertex_map=np.asarray(pose['mapping'],int),groups=pose['groups'],pointwise=True,error_budget='normalized',absolute_energy_budget=energy_budget/16,absolute_force_budget=force_budget/16,tie_rule=pose.get('tie_rule','stop'))
         references.append(r['value']);candidates.append(r['bary'])
     # Try the previously certified positive support plus the new pose first.
     # If this support is insufficient, use the union of every reference rule.

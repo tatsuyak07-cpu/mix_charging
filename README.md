@@ -6,8 +6,9 @@
 工程1・2では、過去姿勢を保持する接触積分と摩擦履歴の再実行を接続し、保守的な境界箱探索を追加しました。同じ98,320接触候補を保ち、広域候補を1,569,093→489,681件へ削減。
 [工程1・2の報告](docs/contact-atlas-development.md)・[検証画像](exports/contact-atlas-development-001/coupled-prefix.png)・[CSV](exports/contact-atlas-development-001/coupled-contact-prefix.csv)・[全データZIP](exports/contact-atlas-development-001.zip)。短区間の検証であり、圧密完走の結果ではありません。
 
-工程3では、積分点と摩擦履歴を保持する限定的な接触中の面細分化を追加しました。固着時のアンカー更新の丸め誤差を修正し、平面接触6条件で逆すべり・離間までの比較に合格。静止接触での移行は保存監査に合格しましたが、**速度のある状態の保存監査と、移行後の動的継続は未合格**。保存済み充填層の接触面3辺はいずれも適用条件を満たしませんでした。
-[工程3の実装・制限](docs/active-embedded-remesh.md)・[検証画像](exports/active-embedded-remesh-001/retained-samples.png)・[判定結果](exports/active-embedded-remesh-001/assessment.json)・[データZIP](exports/active-embedded-remesh-001.zip)。
+工程3では、積分点・摩擦履歴を保つ限定的な面分割に加え、速度の保存射影、同距離投影の参照積分、過去姿勢の子面への移行を追加しました。速度のある平面接触の分割・保存/再開・3刻み継続がCFL 3水準で合格。**実充填層の接触面3辺は積分点と子面面積が整合せず、工程3全体は未完了**です。
+[今回の修正報告](docs/remesh-corrections.md)・[保存誤差の比較](exports/remesh-corrections-001/conservation-errors.png)・[CSV](exports/remesh-corrections-001/comparison.csv)・[データZIP](exports/remesh-corrections-001.zip)。
+[前段の履歴移行・固着アンカー修正](docs/active-embedded-remesh.md)では、平面接触6条件の逆すべり・離間を比較しています。
 
 以下は過去の各工程の記録です。過去の0.1 MPa目標は今回の完了条件に含みません。
 

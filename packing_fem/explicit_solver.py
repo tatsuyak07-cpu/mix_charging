@@ -72,6 +72,7 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
 
 
 def validate(c):
+    if c.get('surface_velocity_transfer','l2') not in ('l2','momentum_energy'):raise ValueError('Unknown surface velocity transfer')
     if c.get('surface_remesh_strategy','midpoint') not in ('midpoint','closest_quality'):raise ValueError('Unknown surface remesh strategy')
     if c.get('closest_tie_rule','stop') not in ('stop','clarke'):raise ValueError('Unknown closest tie rule')
     if c.get('element_backend','numpy') not in ('numpy','native'):raise ValueError('Unknown element backend')
@@ -129,7 +130,7 @@ def solve(directory,X,t,c):
         differences=[name for name in set(old_implementation)|set(implementation) if old_implementation.get(name)!=implementation.get(name)]
         if differences:
             compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py','embedded_remesh.py'}
-            if c.get('allow_solver_update_at_inactive_checkpoint'):compatible.add('explicit_solver.py')
+            if c.get('allow_solver_update_at_inactive_checkpoint'):compatible.update({'explicit_solver.py','conservative_velocity.py'})
             if not c.get('allow_contact_operator_update') or not restart.get('contact_free_prefix',False) or not set(differences)<=compatible:raise ValueError('Checkpoint implementation mismatch')
             operator_update=sorted(differences)
         ignored={'resume_checkpoint','checkpoint_every','checkpoint_stop_after','max_steps','output_every','inactive_quadrature_replay','allow_contact_operator_update','allow_solver_update_at_inactive_checkpoint','extend_stage_hold_budget','checkpoint_free_every','stop_request_file'}
@@ -300,6 +301,10 @@ def solve(directory,X,t,c):
             if np.max(abs(p2.positions(q2)-p['x']))>periodic.L*1e-10:raise ValueError('Periodic displacement transfer failed')
             if np.max(abs(q2[-6:]-q[-6:]))>1e-10:raise ValueError('Remesh changes macroscopic cell')
             v2=p2.remap_velocity(p2.force(m2[:,None]*p['velocity']),v[periodic.prescribed])
+            if c.get('surface_velocity_transfer','l2')=='momentum_energy':
+                from .conservative_velocity import project,moments
+                v2,velocity_report=project(p2,p['x'],m2,v2,moments(x,mass,oldnv),float(.5*v@(periodic.M@v)))
+                event['velocity_transfer']=velocity_report
             p['velocity']=p2.velocities(v2)
             remesh_contact_kwargs=dict(contact_kwargs)
             if contact.extension is not None:

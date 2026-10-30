@@ -48,7 +48,8 @@ def density_fast(bary,source,target,kn,thickness):
     return values,gap,point-offset
 
 
-def field(bary,source,targets,kn,thickness,vertex_map=None):
+def field(bary,source,targets,kn,thickness,vertex_map=None,tie_rule="stop"):
+    if tie_rule not in ("stop","clarke"):raise ValueError("Unknown closest-patch tie rule")
     bary=np.asarray(bary);targets=np.asarray(targets)
     results=[density_fast(bary,source,target,kn,thickness) for target in targets]
     distances=np.array([r[1] for r in results]);selected=np.argmin(distances,axis=0)
@@ -58,24 +59,33 @@ def field(bary,source,targets,kn,thickness,vertex_map=None):
     for k,(density,gaps,_) in enumerate(results):
         take=selected==k;values[take,:10]=density[take,:10]
         for j,node in enumerate(vertex_map[k]):values[take,10+3*node:13+3*node]+=density[take,10+3*j:13+3*j]
-    # Distinct equally closest points are not silently turned into one plane.
-    for k,(_,gaps,projection) in enumerate(results):
-        tie=128*np.finfo(float).eps*max(1.,float(abs(source).max()))
-        same=abs(gaps-distances.min(0))<=tie
-        other=same&(selected!=k)&(gaps<thickness)
-        if np.any(other):
-            chosen_projection=np.array([results[selected[i]][2][i] for i in np.flatnonzero(other)])
-            error=np.linalg.norm(projection[other]-chosen_projection,axis=1)
-            if np.any(error>np.maximum(1e-10,4*np.sqrt(2*gaps[other]*tie))):raise IntegrationRefinement('Distinct tied closest patch projections require subgradient integration')
+    # Use one representative per DISTINCT closest projection, exactly as the
+    # production point-contact law. Repeated facets at a shared edge do not
+    # receive additional weight. Energy remains the closest-patch potential.
+    tie=128*np.finfo(float).eps*max(1.,float(abs(source).max()))
+    minimum=distances.min(0)
+    tied=(abs(distances-minimum)<=tie)&(distances<thickness)
+    for row in np.flatnonzero(tied.sum(0)>1):
+        branches=[int(selected[row])]
+        for k in np.flatnonzero(tied[:,row]):
+            threshold=max(1e-10,4*np.sqrt(2*distances[k,row]*tie))
+            if all(np.linalg.norm(results[k][2][row]-results[j][2][row])>threshold for j in branches):branches.append(int(k))
+        if len(branches)==1:continue
+        if tie_rule=='stop':raise IntegrationRefinement('Distinct tied closest patch projections require subgradient integration')
+        values[row,1:]=0.
+        for k in branches:
+            density=results[k][0][row]/len(branches)
+            values[row,1:10]+=density[1:10]
+            for j,node in enumerate(vertex_map[k]):values[row,10+3*node:13+3*node]+=density[10+3*j:13+3*j]
     return values,distances.min(0),selected
 
 
-def grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise=False):
+def grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise=False,tie_rule="stop"):
     size=10+3*(int(np.max(vertex_map))+1);total=np.zeros((len(bary),size));distances=[];selections=[]
     for group in groups:
         group=np.asarray(group,int)
         if not pointwise:
-            values,gaps,selected=field(bary,source,targets[group],kn,thickness,vertex_map[group])
+            values,gaps,selected=field(bary,source,targets[group],kn,thickness,vertex_map[group],tie_rule)
             total[:,:values.shape[1]]+=values;distances.append(gaps);selections.append(group[selected]);continue
         gap_matrix=np.array([density_fast(bary,source,targets[k],kn,thickness)[1] for k in group])
         distances.append(gap_matrix.min(0));active=(gap_matrix<thickness).T
@@ -89,7 +99,7 @@ def grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise=F
                     i=queue.pop();linked=sorted(j for j in remaining if adjacency[i,j])
                     remaining.difference_update(linked);connected.extend(linked);queue.extend(linked)
                 facets=group[connected]
-                values,_,selected=field(bary[rows],source,targets[facets],kn,thickness,vertex_map[facets])
+                values,_,selected=field(bary[rows],source,targets[facets],kn,thickness,vertex_map[facets],tie_rule)
                 total[rows,:values.shape[1]]+=values
                 choice=np.full(len(bary),-1,int);choice[rows]=facets[selected];selections.append(choice)
     if not distances:return total,np.full(len(bary),np.inf),[]
@@ -109,6 +119,20 @@ def feature_children(B,source,targets,selected,distances):
             low,high=float(min(values)),float(max(values))
             if low< -1e-10 and high>1e-10:
                 candidates.append((min(-low,high)/(high-low),values))
+    # Interior closest-plane branches switch on signed-distance bisectors.
+    # Cutting BOTH signs handles arbitrary facet orientations. These are only
+    # integration cuts; every child keeps its complete collision/force audit.
+    active=np.unique(np.asarray(selected)[np.asarray(selected)>=0])
+    planes=[]
+    for k in active:
+        tri=targets[int(k)];normal=np.cross(tri[1]-tri[0],tri[2]-tri[0]);normal/=np.linalg.norm(normal)
+        planes.append((points-tri[0])@normal)
+    cut_tol=128*np.finfo(float).eps*max(1.,float(abs(source).max()),float(abs(targets).max()))
+    for i in range(len(planes)):
+        for j in range(i):
+            for values in (planes[i]-planes[j],planes[i]+planes[j]):
+                low,high=float(min(values)),float(max(values))
+                if low< -cut_tol and high>cut_tol:candidates.append((min(-low,high)/(high-low),values))
     if not candidates:return split(B,distances)
     _,values=max(candidates,key=lambda item:item[0]);children=[]
     for sign in (1.,-1.):
@@ -155,7 +179,7 @@ def validate_partition(partition):
     return cells
 
 
-def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,error_budget='component',initial_partition=None,absolute_energy_budget=0.,absolute_force_budget=0.):
+def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,max_depth=28,max_cells=20000,vertex_map=None,groups=None,compress_rule=True,pointwise=False,error_budget='component',initial_partition=None,absolute_energy_budget=0.,absolute_force_budget=0.,tie_rule="stop"):
     """Adaptive reference-area rule, including points on inactive subdomains."""
     source=np.asarray(source);targets=np.asarray(targets)
     if vertex_map is None:vertex_map=np.arange(3*len(targets)).reshape(-1,3)
@@ -172,7 +196,7 @@ def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,
     def rule(B,order):
         nonlocal evaluations
         nodes,w=RULES[order];bary=nodes@B
-        values,gaps,_=grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise);evaluations+=len(bary)
+        values,gaps,_=grouped_field(bary,source,targets,groups,kn,thickness,vertex_map,pointwise,tie_rule);evaluations+=len(bary)
         return area(B)*(w@values),bary,area(B)*w,gaps
     def build(B,depth):
         nonlocal cells
@@ -180,8 +204,8 @@ def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,
         if bound>=thickness:
             inactive.append(B);return None
         coarse,_,_,gaps=rule(B,4)
-        _,vertex_gaps,vertex_selected=grouped_field(B,source,targets,groups,kn,thickness,vertex_map,pointwise)
-        _,_,middle_selected=grouped_field(RULES[4][0]@B,source,targets,groups,kn,thickness,vertex_map,pointwise)
+        _,vertex_gaps,vertex_selected=grouped_field(B,source,targets,groups,kn,thickness,vertex_map,pointwise,tie_rule)
+        _,_,middle_selected=grouped_field(RULES[4][0]@B,source,targets,groups,kn,thickness,vertex_map,pointwise,tie_rule)
         selected=np.concatenate(vertex_selected+middle_selected) if vertex_selected+middle_selected else np.empty(0,int)
         children=feature_children(B,source,targets,selected,vertex_gaps);fine=np.zeros(size);samples=[];minimum=min(gaps)
         for child in children:
@@ -215,7 +239,7 @@ def integrate(source,targets,reference_area,kn=20.,thickness=.02,tolerance=1e-3,
         for bary,w,B,value in leaf['samples']:
             partition.append(B)
             low_bary=degree2@B;low_weights=np.full(3,area(B)/3)
-            low_values,_,_=grouped_field(low_bary,source,targets,groups,kn,thickness,vertex_map,pointwise)
+            low_values,_,_=grouped_field(low_bary,source,targets,groups,kn,thickness,vertex_map,pointwise,tie_rule)
             low=low_weights@low_values
             error=abs(low-value)
             permitted=(np.all(compression_error+error<=compression_budget) if error_budget=='normalized' else np.all(error<=.1*tolerance*abs(value)+absolute*area(B)/reference_area))

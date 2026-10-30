@@ -211,7 +211,7 @@ class EmbeddedContact:
         reference_force_budget=self.absolute_force_budget/len(self.faces)
         energy_budget,force_budget=self._face_allocation.get(face,(self.absolute_energy_budget,self.absolute_force_budget))
         if groups:
-            try:reference=surface_patch.integrate(source,targets,A,initial_partition=(self.rules.get(str(face),{}).get('partition') if self.retain_partition else None),compress_rule=(not self.retain_partition or 'partition' not in self.rules.get(str(face),{})),kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True,error_budget=self.error_budget,absolute_energy_budget=reference_energy_budget/8,absolute_force_budget=reference_force_budget/8)
+            try:reference=surface_patch.integrate(source,targets,A,initial_partition=(self.rules.get(str(face),{}).get('partition') if self.retain_partition else None),compress_rule=(not self.retain_partition or 'partition' not in self.rules.get(str(face),{})),kn=.5*self.kn,thickness=self.thickness,tolerance=self.quadrature_tolerance*.25,vertex_map=mapping,groups=groups,pointwise=True,error_budget=self.error_budget,absolute_energy_budget=reference_energy_budget/8,absolute_force_budget=reference_force_budget/8,tie_rule=self.inner.closest_tie_rule)
             except surface_patch.IntegrationRefinement as exc:raise SurfaceResolutionError(str(exc)) from exc
         else:reference=dict(value=np.zeros(size),bary=np.array([[2/3,1/6,1/6],[1/6,2/3,1/6],[1/6,1/6,2/3]]),weights=np.full(3,A/3))
         current=np.zeros(size)
@@ -236,7 +236,7 @@ class EmbeddedContact:
             if self.rule_strategy=='pose_atlas' and groups:
                 from .contact_atlas import build
                 old=self.rules.get(str(face),{});poses=list(old.get('atlas',[]))
-                pose=dict(source=source.tolist(),targets=targets.tolist(),mapping=mapping.tolist(),groups=groups)
+                pose=dict(source=source.tolist(),targets=targets.tolist(),mapping=mapping.tolist(),groups=groups,tie_rule=self.inner.closest_tie_rule)
                 if pose not in poses:poses.append(pose)
                 controls=[]
                 # Integration-only predicted geometries; never accepted bulk
@@ -247,7 +247,7 @@ class EmbeddedContact:
                     predicted_source=source+delta*self._velocity[self.faces[face]]
                     predicted_targets=np.array([self._x[self.faces[j]]+self._H@shift+delta*(self._velocity[self.faces[j]]+self._Hdot@shift) for j,shift in all_keys])
                     if any(surface_patch.separation_bound(predicted_source,target)<=0 for target in predicted_targets):continue
-                    controls.append(dict(source=predicted_source.tolist(),targets=predicted_targets.tolist(),mapping=mapping.tolist(),groups=groups,lookahead_steps=steps))
+                    controls.append(dict(source=predicted_source.tolist(),targets=predicted_targets.tolist(),mapping=mapping.tolist(),groups=groups,lookahead_steps=steps,tie_rule=self.inner.closest_tie_rule))
                 try:rule=build(poses+controls,A,.5*self.kn,self.thickness,self.quadrature_tolerance,old.get('bary'),max_points=self.atlas_max_points,max_entries=self.atlas_max_entries,energy_budget=energy_budget/2,force_budget=force_budget/2)
                 except surface_patch.IntegrationRefinement as exc:
                     error=SurfaceResolutionError(str(exc))
