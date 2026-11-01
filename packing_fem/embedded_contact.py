@@ -17,7 +17,14 @@ class EmbeddedContact:
     def __init__(self,X,t,periodic,kn,mu,skin,quadrature_rules=None,quadrature_tolerance=.001,error_budget='component',**kwargs):
         self.X=np.array(X,copy=True);self.periodic=periodic;self.rules=deepcopy(quadrature_rules or {});self.quadrature_tolerance=quadrature_tolerance
         if error_budget not in ('component','normalized'):raise ValueError('Unknown embedded error budget')
+        if not np.isfinite(quadrature_tolerance) or quadrature_tolerance<=0:raise ValueError('Positive surface quadrature tolerance required')
         self.error_budget=error_budget
+        self.redistribution_factor=kwargs.pop('redistribution_factor',2.)
+        if not np.isfinite(self.redistribution_factor) or self.redistribution_factor<=1:raise ValueError('Weight redistribution factor must exceed one')
+        self.audit_mode=kwargs.pop('audit_mode','face')
+        if self.audit_mode not in ('face','parent'):raise ValueError('Unknown surface audit mode')
+        if self.audit_mode=='parent' and error_budget!='normalized':raise ValueError('Parent audit requires normalized error accounting')
+        self._parent_transfer_probe=False;self.parent_contexts={}
         self.retain_partition=bool(kwargs.pop('retain_partition',False))
         self.rule_strategy=kwargs.pop('rule_strategy','single_pose')
         self.lookahead=tuple(kwargs.pop('lookahead_steps',()))
@@ -35,6 +42,9 @@ class EmbeddedContact:
         # Discover the same physical/cell-cut faces as the existing backend.
         base=AreaContact(X,t,periodic,kn,mu,skin,quadrature_mode='material',**kwargs)
         faces=base.faces;N=len(X);rows=list(range(N));cols=list(range(N));values=[1.]*N
+        from .parent_quadrature import groups
+        self.parent_groups,self.parent_owner=groups(X,faces,self.rules,periodic.L)
+        if self.parent_groups and self.audit_mode!='parent':raise ValueError('Parent rules require explicit parent audit mode')
         added=[];virtual_faces=[];areas=np.zeros(N);self.face_points={}
         # Sum uncovered faces directly. Subtracting covered areas can leave
         # tiny positive weights and invent zero-area friction histories.
@@ -46,7 +56,8 @@ class EmbeddedContact:
         for key,rule in sorted(self.rules.items(),key=lambda item:int(item[0])):
             face=int(key);B=np.asarray(rule['bary'],float);weights=np.asarray(rule['weights'],float)
             ids=faces[face];tri=X[ids];A=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
-            if B.ndim!=2 or B.shape[1]!=3 or weights.shape!=(len(B),) or np.min(B)<-1e-12 or np.max(abs(B.sum(1)-1))>1e-12 or np.any(weights<=0) or abs(weights.sum()-A)>max(1e-12,A*1e-10):raise ValueError('Invalid full-reference-face quadrature rule')
+            if B.size==0:B=B.reshape(0,3)
+            if not np.isfinite(B).all() or not np.isfinite(weights).all() or B.ndim!=2 or B.shape[1]!=3 or weights.shape!=(len(B),) or (len(B) and (np.min(B)<-1e-12 or np.max(abs(B.sum(1)-1))>1e-12)) or np.any(weights<=0) or (face not in self.parent_owner and (not len(B) or abs(weights.sum()-A)>max(1e-12,A*1e-10))):raise ValueError('Invalid full-reference-face quadrature rule')
             nodes=[]
             for bary,w in zip(B,weights):
                 node=N+len(added);added.append((bary@tri,float(w)));virtual_faces.append(face);nodes.append(node)
@@ -90,22 +101,27 @@ class EmbeddedContact:
     def accept_geometry(self,x,H):self.inner.accept_geometry(self.P@x,H)
     def replay_force_state(self,x,velocity,H):
         self._velocity=velocity;self._Hdot=H*0;self._dt=0.
-        self._face_allocation={};self._certificates={};self._requests={};self._branch_index=None;self._base_coverage.cache={};self._x=x;self._H=H
+        self.parent_contexts={};self._face_allocation={};self._certificates={};self._requests={};self._branch_index=None;self._base_coverage.cache={};self._x=x;self._H=H
         response=self.inner.replay_force_state(self.P@x,self.P@velocity,H)
+        if self.parent_groups:self._audit_material_faces()
         return self._collapse(response)
     def _collapse(self,response):return np.asarray(self.P.T@response[0]),response[1],response[2],response[3]
     def evaluate(self,x,velocity,H,Hdot,dt):
         self._velocity=velocity;self._Hdot=Hdot;self._dt=dt
-        self._face_allocation={};self._certificates={};self._requests={};self._branch_index=None;self._base_coverage.cache={};self._x=x;self._H=H
+        self.parent_contexts={};self._face_allocation={};self._certificates={};self._requests={};self._branch_index=None;self._base_coverage.cache={};self._x=x;self._H=H
         try:response=self.inner.evaluate(self.P@x,self.P@velocity,H,Hdot,dt)
         except (ValueError,RuntimeError):
             if self._requests:self._raise_refinement()
             raise
+        self._audit_material_faces()
+        return self._collapse(response)
+    def _audit_material_faces(self):
         active=set(key[1] for key in self.inner.trial_patch_branches)
         faces=set()
         for node in active:
             if node<len(self.X):faces.update(i for i,face in enumerate(self.faces) if node in face)
             else:faces.add(self._virtual_faces[node-len(self.X)])
+        faces.update(self.parent_groups)
         if faces:self._candidates(faces)
         for face in sorted(faces):
             keys=sorted(set(self._face_candidates.get(face,[])))
@@ -120,6 +136,7 @@ class EmbeddedContact:
                 energy=sum(v[0] for v in per_face.values());force=sum(v[1] for v in per_face.values())
                 passed=energy<=self.absolute_energy_budget*.5*(1+1e-12)+1e-30 and force<=self.absolute_force_budget*.5*(1+1e-12)+1e-30
                 if passed:break
+                if self._parent_transfer_probe:break
                 if audit_pass:raise SurfaceResolutionError('Assembled absolute integration budget exceeded')
                 # Redistribute ONLY if the measured assembled excess uses up
                 # the global budget. Inactive faces consume no applied budget.
@@ -132,8 +149,11 @@ class EmbeddedContact:
                     self._certify(face,list(keys),groups,{})
                 if self._requests:self._raise_refinement()
             self.last_integration_audit=dict(absolute_energy_excess_Nmm=energy,absolute_force_excess_L1_N=force,energy_budget_Nmm=self.absolute_energy_budget,force_budget_N=self.absolute_force_budget,certified_faces=len(per_face))
-        return self._collapse(response)
     def _raise_refinement(self):
+        if self.parent_groups:
+            error=SurfaceResolutionError('Parent mesh sample insertion requires lineage-aware coupled replay; unknown histories prohibited')
+            error.feature=dict(kind='parent_sample_refinement',requires_quadrature_refinement=True,lineage_aware_replay_required=True,proposed_rules=self._requests)
+            raise error
         error=SurfaceResolutionError('Embedded material quadrature requires inactive-checkpoint replay')
         error.feature=dict(kind='material_quadrature',requires_quadrature_refinement=True,rules=self._requests)
         raise error
@@ -187,6 +207,9 @@ class EmbeddedContact:
         return self._base_coverage.resolved(ids,shift,points,distance,point_candidates,x,H,shifts)
 
     def _certify(self,face,keys,groups,point_candidates):
+        if face in self.parent_owner:
+            from .parent_quadrature import certify
+            return certify(self,face)
         key=(face,tuple(keys))
         if key in self._certificates:return
         source=self._x[self.faces[face]]

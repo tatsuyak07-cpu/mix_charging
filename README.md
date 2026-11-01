@@ -1,5 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
+**最新：親面全体の積分監査と、力・エネルギー・履歴を保つ既存積分点の重み再配分を実装しました。**
+実充填層で接触中の再メッシュを承認し、その後12刻み継続しました。以後の積分精度不足で停止しており、空隙率40%→10%・保持/除荷完走・収束確認は未達成です。
+[開発報告](docs/parent-hybrid-development.md)・[検証画像](exports/parent-hybrid-development-002/verification.png)・[実メッシュ](exports/parent-hybrid-development-002/packing-mesh.png)・[CSVと判定](exports/parent-hybrid-development-002/README.md)・[データZIP](exports/parent-hybrid-development-002.zip)。
+以下は今回の開発に至る各工程の記録です。
+
 現在の到達目標を**載荷・平衡状態の空隙率40%→10%**に限定し、圧密・保持・除荷の制御と内部再接続を追加しました。
 実充填層は空隙率37.61%までの保持が合格。接触開始後の44刻みを3水準の積分誤差予算で通過しました。**10%到達・除荷完走・空間収束確認は未達成**です。
 [今回の開発報告](docs/porosity-cycle-development.md)・[平衡保持CSV](exports/porosity-cycle-development-001/equilibrated-holds.csv)・[実メッシュ画像](exports/porosity-cycle-development-001/last-equilibrated-mesh.png)・[データZIP](exports/porosity-cycle-development-001.zip)。

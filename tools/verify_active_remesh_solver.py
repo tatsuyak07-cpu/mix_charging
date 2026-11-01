@@ -14,7 +14,7 @@ from tools.verify_plane_contact import fixture
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--remesh-step',type=int,default=1);parser.add_argument('--cfl',type=float,default=.2);parser.add_argument('--velocity-transfer',choices=['l2','momentum_energy'],default='momentum_energy');parser.add_argument('--tie-rule',choices=['stop','clarke'],default='clarke');a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--remesh-step',type=int,default=1);parser.add_argument('--cfl',type=float,default=.2);parser.add_argument('--velocity-transfer',choices=['l2','momentum_energy'],default='momentum_energy');parser.add_argument('--tie-rule',choices=['stop','clarke'],default='clarke');parser.add_argument('--audit-mode',choices=['face','parent'],default='face');parser.add_argument('--redistribution',choices=['stop','conservative'],default='stop');parser.add_argument('--quadrature-source',choices=['partitioned','parent'],default='partitioned');a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     _,t,X,_,_=fixture(1,.015,0.);L=1.;H=np.eye(3)
     b=np.repeat(np.eye(3)[None],len(t),0);V=geometry(X,t)[0]
     base=EmbeddedContact(X,t,Periodic(X,L),20.,.3,.1,thickness=.02,error_budget='normalized',closest_tie_rule=a.tie_rule)
@@ -41,10 +41,15 @@ def main():
             if C is not None:
                 points.extend(np.asarray(child_rules[str(j)]['bary'])@C);weights.extend(child_rules[str(j)]['weights'])
         rules[str(i)]=dict(bary=np.asarray(points).tolist(),weights=weights)
+    if a.quadrature_source=='parent':
+        rules={}
+        for i,ids in enumerate(base.faces):
+            tri=X[ids];A=np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2
+            rules[str(i)]=dict(bary=B.tolist(),weights=(A*w).tolist())
     c=json.loads(Path('configs/explicit-prototype.json').read_text())
     c.update(length_mm=L,contact_backend='embedded_area',surface_error_budget='normalized',embedded_quadrature_rules=rules,
              compression_fraction=0.,ramp_s=1e-5,hold_s=0.,max_steps=3,output_every=1,remesh_every=0,surface_remesh_steps=[a.remesh_step],surface_remesh_edge=edge.tolist(),surface_remesh_max_events=1,
-             active_embedded_surface_remesh=True,surface_velocity_transfer=a.velocity_transfer,closest_tie_rule=a.tie_rule,cfl=a.cfl,save_checkpoint=True,save_contact_audit=True)
+             active_embedded_surface_remesh=True,surface_audit_mode=a.audit_mode,surface_redistribution=a.redistribution,surface_velocity_transfer=a.velocity_transfer,closest_tie_rule=a.tie_rule,cfl=a.cfl,save_checkpoint=True,save_contact_audit=True)
     results={}
     for name,flag in (('enabled',True),('disabled',False)):
         result=solve(a.output/name,X,t,dict(c,active_embedded_surface_remesh=flag))

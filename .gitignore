@@ -28,3 +28,9 @@ exports/cut-balance-verification-001/
 exports/cut-balance-verification-001.zip
 exports/cut-balance-verification-002/*/
 !exports/cut-balance-verification-002/test-logs/
+
+# Large raw parent-contact diagnostics are preserved in the downloadable ZIP.
+exports/parent-hybrid-development-001/*/
+exports/parent-hybrid-development-001/
+exports/parent-hybrid-development-001.zip
+exports/parent-hybrid-development-002/*/

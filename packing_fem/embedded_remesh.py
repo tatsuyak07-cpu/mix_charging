@@ -146,3 +146,71 @@ def transfer(old,new,proposal,H,point_map,parent,old_response,tolerance):
     if abs(evaluated[-1]['friction_increment'])>1e-12 or abs(evaluated[-1]['released_history_energy'])>1e-12:
         raise ValueError('Refinement invents frictional dissipation or releases history')
     return evaluated,report
+
+
+def refine_parent_rules(old,new_faces,proposal):
+    """Retain parent quadrature rather than enforce child area masses.
+
+    Initially supports faces with explicit material samples. Unknown nodal
+    sample splitting and a second split of an already refined parent reject.
+    Every inherited point still has an exact child support; audit is mandatory.
+    """
+    X=proposal['X'];tol=old.L*1e-10
+    if getattr(old,'parent_groups',{}):raise ValueError('Repeated parent remesh needs multi-event pose/sample lineage')
+    if not np.array_equal(X[:len(old.X)],old.X):raise ValueError('Parent refinement requires retained source nodes')
+    parent={};children={i:[] for i in range(len(old.faces))};lookup={tuple(sorted(map(int,ids))):i for i,ids in enumerate(old.faces)}
+    for j,ids in enumerate(new_faces):
+        key=tuple(sorted(map(int,ids)))
+        matches=[lookup[key]] if key in lookup else [i for i,f in enumerate(old.faces) if coordinates(old.X[f],X[ids],tol) is not None]
+        if len(matches)!=1:raise ValueError('Parent refinement lacks unique reference lineage')
+        parent[j]=matches[0];children[matches[0]].append(j)
+    result={};point_map={}
+    for face,members in children.items():
+        if not members:raise ValueError('Parent refinement loses reference face')
+        original=old.rules.get(str(face));split=len(members)>1
+        if original is None:
+            if split:raise ValueError('Parent refinement needs explicit samples; nodal-history splitting not implemented')
+            continue
+        if 'parent_vertices' in original and split:raise ValueError('Repeated parent surface split needs piecewise pose-lineage migration')
+        if len(original.get('partition',[])) and split:raise ValueError('Retained partition intersection not implemented')
+        vertices=list(original.get('parent_vertices',old.faces[face].tolist()))
+        B=np.asarray(original['bary']);weights=np.asarray(original['weights']);positions=B@old.X[old.faces[face]]
+        assignment={j:[] for j in members};representations={}
+        for k,point in enumerate(positions):
+            for j in sorted(members):
+                bary=coordinates(X[new_faces[j]],point[None],tol)
+                if bary is not None:assignment[j].append(k);representations[j,k]=bary[0];break
+            else:raise ValueError('Retained parent sample has no exact child support')
+        for j,indices in assignment.items():
+            rule=dict(parent_vertices=vertices,bary=[representations[j,k].tolist() for k in indices],weights=weights[indices].tolist(),
+                      parent_atlas=deepcopy(original.get('parent_atlas',original.get('atlas',[]))),parent_controls=deepcopy(original.get('parent_controls',original.get('atlas_controls',[]))))
+            result[str(j)]=rule
+            for local,k in enumerate(indices):point_map[face,k]=(j,local)
+    return result,point_map,parent
+
+
+def transfer_parent(old,new,proposal,H,point_map,parent,old_response,tolerance,redistribute=False):
+    """Audit parent first; bounded reweighting is a transactional fallback."""
+    was_capture=new.capture_audit;new.capture_audit=True;new._parent_transfer_probe=True
+    try:
+        before,report=transfer(old,new,proposal,H,point_map,parent,old_response,tolerance)
+        failures=[k for k,c in new.parent_contexts.items() if not c['passed']]
+        ledger=getattr(new,'last_integration_audit',{})
+        exceeded=(ledger.get('absolute_energy_excess_Nmm',0)>new.absolute_energy_budget/2 or ledger.get('absolute_force_excess_L1_N',0)>new.absolute_force_budget/2)
+        report.update(parent_groups=len(new.parent_groups),parent_audit_failed_groups=failures,redistribution_used=False)
+        if failures or exceeded:
+            if not redistribute:raise ValueError('Parent audit failed; conservative redistribution disabled: '+str(failures))
+            from .conservative_quadrature import redistribute as reweight
+            report['redistribution']=reweight(old,new,proposal);report['redistribution_used']=True
+        new._parent_transfer_probe=False
+        after=new.replay_force_state(proposal['x'],proposal['x']*0,H)
+        R=csr_matrix((proposal['weights'].ravel(),(np.repeat(np.arange(len(new.X)),2),proposal['supports'].ravel())),shape=(len(new.X),len(old.X)))
+        f0=old.periodic.force(before[0] if len(before[0])==len(old.X) else np.asarray(R.T@before[0]),before[1])
+        f1=old.periodic.force(np.asarray(R.T@after[0]),after[1])
+        work_error=float(np.linalg.norm(f1-f0)/max(np.linalg.norm(f0),1e-16))
+        energy_errors={name:abs(after[-1][name]-before[-1][name])/max(abs(before[-1][name]),1e-18) for name in ('normal_energy','tangent_energy')}
+        if max(work_error,*energy_errors.values())>1e-8:raise ValueError('Conservative redistribution changes applied work/energy')
+        if abs(after[-1]['friction_increment'])>1e-12 or abs(after[-1]['released_history_energy'])>1e-12:raise ValueError('Redistribution invents frictional dissipation/release')
+        report.update(redistribution_work_error=work_error,redistribution_energy_errors=energy_errors,parent_audit_passed=True)
+        return after,report
+    finally:new._parent_transfer_probe=False;new.capture_audit=was_capture

@@ -72,6 +72,8 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
 
 
 def validate(c):
+    if c.get('surface_audit_mode','face') not in ('face','parent'):raise ValueError('Unknown surface audit mode')
+    if c.get('surface_redistribution','stop') not in ('stop','conservative'):raise ValueError('Unknown surface redistribution')
     if c.get('surface_velocity_transfer','l2') not in ('l2','momentum_energy'):raise ValueError('Unknown surface velocity transfer')
     if c.get('surface_remesh_strategy','midpoint') not in ('midpoint','closest_quality'):raise ValueError('Unknown surface remesh strategy')
     if c.get('closest_tie_rule','stop') not in ('stop','clarke'):raise ValueError('Unknown closest tie rule')
@@ -129,7 +131,7 @@ def solve(directory,X,t,c):
         old_implementation=metadata.get('implementation_sha256',{})
         differences=[name for name in set(old_implementation)|set(implementation) if old_implementation.get(name)!=implementation.get(name)]
         if differences:
-            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py','embedded_remesh.py'}
+            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py','embedded_remesh.py','parent_quadrature.py','conservative_quadrature.py'}
             if c.get('allow_solver_update_at_inactive_checkpoint'):compatible.update({'explicit_solver.py','conservative_velocity.py'})
             if not c.get('allow_contact_operator_update') or not restart.get('contact_free_prefix',False) or not set(differences)<=compatible:raise ValueError('Checkpoint implementation mismatch')
             operator_update=sorted(differences)
@@ -148,6 +150,7 @@ def solve(directory,X,t,c):
             # Both methods are audited contact operators, mutable only before
             # any contact under the existing explicit operator-update opt-in.
             if c.get('allow_contact_operator_update') and restart.get('contact_free_prefix',False):
+                for name in ('surface_audit_mode','surface_redistribution','surface_redistribution_factor','surface_velocity_transfer','active_embedded_surface_remesh','surface_remesh_steps','surface_remesh_edge','surface_remesh_max_events'):result.pop(name,None)
                 result.pop('surface_rule_strategy',None);result.pop('contact_search_method',None);result.pop('atlas_lookahead_steps',None);result.pop('atlas_max_matrix_entries',None);result.pop('atlas_max_candidate_points',None);result.pop('contact_absolute_energy_budget_Nmm',None);result.pop('contact_absolute_force_budget_N',None)
             else:
                 result.setdefault('surface_rule_strategy','single_pose');result.setdefault('contact_search_method','aabb');result.setdefault('atlas_lookahead_steps',[]);result.setdefault('atlas_max_matrix_entries',12000000);result.setdefault('atlas_max_candidate_points',80000);result.setdefault('contact_absolute_energy_budget_Nmm',0.);result.setdefault('contact_absolute_force_budget_N',0.)
@@ -196,7 +199,7 @@ def solve(directory,X,t,c):
     if c.get('contact_backend')=='embedded_area':
         from .embedded_contact import EmbeddedContact
         contact_type=EmbeddedContact
-        contact_kwargs.update(quadrature_rules=(restart.get('runtime_rules',c.get('embedded_quadrature_rules',{})) if restart is not None and not changed_rules else c.get('embedded_quadrature_rules',{})),quadrature_tolerance=c.get('surface_quadrature_tolerance',.001),error_budget=c.get('surface_error_budget','component'),retain_partition=c.get('retain_surface_partition',False),rule_strategy=c.get('surface_rule_strategy','single_pose'),lookahead_steps=c.get('atlas_lookahead_steps',[]),atlas_max_entries=c.get('atlas_max_matrix_entries',12000000),atlas_max_points=c.get('atlas_max_candidate_points',80000),absolute_energy_budget=c.get('contact_absolute_energy_budget_Nmm',0.),absolute_force_budget=c.get('contact_absolute_force_budget_N',0.))
+        contact_kwargs.update(quadrature_rules=(restart.get('runtime_rules',c.get('embedded_quadrature_rules',{})) if restart is not None and not changed_rules else c.get('embedded_quadrature_rules',{})),quadrature_tolerance=c.get('surface_quadrature_tolerance',.001),error_budget=c.get('surface_error_budget','component'),retain_partition=c.get('retain_surface_partition',False),rule_strategy=c.get('surface_rule_strategy','single_pose'),audit_mode=c.get('surface_audit_mode','face'),redistribution_factor=c.get('surface_redistribution_factor',2.),lookahead_steps=c.get('atlas_lookahead_steps',[]),atlas_max_entries=c.get('atlas_max_matrix_entries',12000000),atlas_max_points=c.get('atlas_max_candidate_points',80000),absolute_energy_budget=c.get('contact_absolute_energy_budget_Nmm',0.),absolute_force_budget=c.get('contact_absolute_force_budget_N',0.))
     contact=contact_type(X,t,periodic,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**contact_kwargs)
     if c.get('save_contact_audit',False):
         if c.get('contact_backend') not in ('area_guarded','embedded_area'):raise ValueError('Contact audit capture requires area_guarded')
@@ -320,11 +323,14 @@ def solve(directory,X,t,c):
                     evaluated=reinitialize_inactive(contact,newcontact,p['x'],p2.velocities(v2),H,contact_free_prefix)
                     event['inactive_quadrature_reinitialized']=True
                 else:
-                    from .embedded_remesh import refine_rules,transfer
-                    rules,point_map,parent=refine_rules(contact,newcontact.faces,p)
+                    from .embedded_remesh import refine_rules,refine_parent_rules,transfer,transfer_parent
+                    parent_mode=c.get('surface_audit_mode','face')=='parent'
+                    rules,point_map,parent=(refine_parent_rules if parent_mode else refine_rules)(contact,newcontact.faces,p)
                     remesh_contact_kwargs['quadrature_rules']=rules
                     newcontact=contact_type(p['X'],p['t'],p2,c['contact_penalty_mpa_mm'],c['friction'],c['contact_skin_mm'],**remesh_contact_kwargs)
-                    evaluated,transfer_report=transfer(contact,newcontact,p,H,point_map,parent,(fc,extra),c['remesh_energy_tolerance'])
+                    if parent_mode:
+                        evaluated,transfer_report=transfer_parent(contact,newcontact,p,H,point_map,parent,(fc,extra),c['remesh_energy_tolerance'],redistribute=c.get('surface_redistribution','stop')=='conservative')
+                    else:evaluated,transfer_report=transfer(contact,newcontact,p,H,point_map,parent,(fc,extra),c['remesh_energy_tolerance'])
                     event['retained_embedded_samples']=transfer_report
             else:evaluated=transfer_contact(contact,newcontact,p,H)
             if newcontact.quadrature_mode=='material':

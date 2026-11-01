@@ -1,0 +1,11 @@
+{
+  "component_checks_passed": true,
+  "packing_remesh_accepted": true,
+  "packing_last_accepted_step": 90262,
+  "packing_transient_porosity": 0.3694169748224255,
+  "packing_failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.010377743063960328, 'force_error': 0.02104232241953249, 'absolute_energy_excess_Nmm': 3.326633854279134e-12, 'absolute_force_excess_L1_N': 1.3421242994668177e-07}\")",
+  "full_compaction_completed": false,
+  "general_repeated_remesh_completed": false,
+  "stage3_completed": false,
+  "tests_log": "diagnostics/final-tests-ipm.log"
+}
