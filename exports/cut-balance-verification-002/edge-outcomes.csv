@@ -1,0 +1,11 @@
+edge_a,edge_b,missing_rule_faces,common_interval_count,audited_candidates,eligible_candidates,midpoint_reason
+1724,1725,1506,0,0,0,Active embedded split requires a pre-existing partition-aligned quadrature rule
+1724,1740,1520,0,0,0,Active embedded split requires a pre-existing partition-aligned quadrature rule
+1725,1740,,0,0,0,Existing sample weights do not partition child-face area; active reweighting prohibited
+1725,1917,1523,0,0,0,Existing sample weights do not partition child-face area; active reweighting prohibited
+1740,1917,1519,0,0,0,Active embedded split requires a pre-existing partition-aligned quadrature rule
+1886,1887,1511,0,0,0,Active embedded split requires a pre-existing partition-aligned quadrature rule
+1886,2064,1655,0,0,0,Existing sample weights do not partition child-face area; active reweighting prohibited
+1887,2064,,0,0,0,Existing sample weights do not partition child-face area; active reweighting prohibited
+1887,2079,1651,0,0,0,Active embedded split requires a pre-existing partition-aligned quadrature rule
+2064,2079,1654,0,0,0,Existing sample weights do not partition child-face area; active reweighting prohibited

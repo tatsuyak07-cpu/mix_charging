@@ -10,6 +10,9 @@
 [今回の修正報告](docs/remesh-corrections.md)・[保存誤差の比較](exports/remesh-corrections-001/conservation-errors.png)・[CSV](exports/remesh-corrections-001/comparison.csv)・[データZIP](exports/remesh-corrections-001.zip)。
 [前段の履歴移行・固着アンカー修正](docs/active-embedded-remesh.md)では、平面接触6条件の逆すべり・離間を比較しています。
 
+保存充填層の接触4面・全10辺を追加検証しました。既存の点・重みを保持したまま面積条件を満たす分割位置は、8辺で必要な積分則がなく、残る2辺でも隣接面の許容位置が一致せず、**適用可能0/10**でした。分割位置を変えるだけでは解消できません。
+[分割位置の検証報告](docs/cut-balance-verification.md)・[比較図](exports/cut-balance-verification-002/cut-balance.png)・[CSV・全データZIP](exports/cut-balance-verification-002.zip)。
+
 以下は過去の各工程の記録です。過去の0.1 MPa目標は今回の完了条件に含みません。
 
 

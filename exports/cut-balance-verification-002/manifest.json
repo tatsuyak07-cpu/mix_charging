@@ -1,0 +1,122 @@
+{
+  "edge-outcomes.csv": {
+    "bytes": 1163,
+    "sha256": "51e00c3e0af600c1e48e238dff6ee7e6cf345861d3978463ba6f581e864baf2a"
+  },
+  "cut-balance.png": {
+    "bytes": 143172,
+    "sha256": "3a143aa7177e90665f9636c2192275e07f162f932bcae0493ed300e2465aa2cf"
+  },
+  "README.md": {
+    "bytes": 5947,
+    "sha256": "96131ae18ad653e8414dccba699361310b5b8b23418e8bb7c89e52fcdb4c7de6"
+  },
+  "assessment.json": {
+    "bytes": 49412,
+    "sha256": "a2c009e4ceb2ef632538bb5bb3f3035fdd06b12b86dffb02b1e85b8974bcc7ef"
+  },
+  "face-balance.csv": {
+    "bytes": 1958,
+    "sha256": "678eacc93c8d501c438a162bea3bcd8261d05c2ee1a605531313a1a263552b00"
+  },
+  "diagnostics/unit-tests-002.log": {
+    "bytes": 98,
+    "sha256": "a0ba7f2fb96adfb2c2564a1053a85160f60c5f008ba0c8c06a58a8cb23d1fc2b"
+  },
+  "diagnostics/final-boundary-tests.log": {
+    "bytes": 1346,
+    "sha256": "fba598ae0b2081358028302b97c6fc7fcb4f35ce4c4c977c31e2fcbf2ae83d57"
+  },
+  "diagnostics/final-boundary-tests-002.log": {
+    "bytes": 99,
+    "sha256": "d256e3701ca9d10da3400ba9ca79948cb03252cdcb14842428f801ec509f76b4"
+  },
+  "diagnostics/final-tests.log": {
+    "bytes": 99,
+    "sha256": "5cbe0e97201751676307bd7d1f722a7efd5c29226c63ecaeab92e2a2d244b502"
+  },
+  "diagnostics/rve-analysis.log": {
+    "bytes": 942,
+    "sha256": "c8293ee8463ad10443f87882fcc0230816132f011f46a41de8175ba58619c57b"
+  },
+  "diagnostics/unit-tests.log": {
+    "bytes": 953,
+    "sha256": "304243f887802f67b00175822faf93a9191bc8516477913816e5e8d7ad341288"
+  },
+  "test-logs/unit-tests-002.log": {
+    "bytes": 98,
+    "sha256": "a0ba7f2fb96adfb2c2564a1053a85160f60c5f008ba0c8c06a58a8cb23d1fc2b"
+  },
+  "test-logs/final-boundary-tests.log": {
+    "bytes": 1346,
+    "sha256": "fba598ae0b2081358028302b97c6fc7fcb4f35ce4c4c977c31e2fcbf2ae83d57"
+  },
+  "test-logs/final-boundary-tests-002.log": {
+    "bytes": 99,
+    "sha256": "d256e3701ca9d10da3400ba9ca79948cb03252cdcb14842428f801ec509f76b4"
+  },
+  "test-logs/final-tests.log": {
+    "bytes": 99,
+    "sha256": "5cbe0e97201751676307bd7d1f722a7efd5c29226c63ecaeab92e2a2d244b502"
+  },
+  "test-logs/rve-analysis.log": {
+    "bytes": 942,
+    "sha256": "c8293ee8463ad10443f87882fcc0230816132f011f46a41de8175ba58619c57b"
+  },
+  "test-logs/unit-tests.log": {
+    "bytes": 953,
+    "sha256": "304243f887802f67b00175822faf93a9191bc8516477913816e5e8d7ad341288"
+  },
+  "implementation/test_cut_balance.py": {
+    "bytes": 3233,
+    "sha256": "53cce395b6e8cf94a1a47a4091ab739f014e3b790c74c4a653301eb85e44c3d8"
+  },
+  "implementation/check_cut_boundaries.py": {
+    "bytes": 2073,
+    "sha256": "3ef369374666097c40eca82282d735d5a807b801a1de7a9008da37cdb7662365"
+  },
+  "implementation/cut_balance.py": {
+    "bytes": 3402,
+    "sha256": "2704143b343963d567360406af8958ce45a01ae378871e177ac17cddc096c957"
+  },
+  "implementation/export_cut_balance.py": {
+    "bytes": 3421,
+    "sha256": "d5c42c1f041652cec94ca8d77bc8f4dd74b4d5b280819094bac53ab347feed9e"
+  },
+  "implementation/verify_packing_cut_balance.py": {
+    "bytes": 8132,
+    "sha256": "f87fd57c7da93190f713e660b0c2d10a3a5977cea49440e0f756f720d3044e99"
+  },
+  "diagnostics/rve-analysis/edge-outcomes.csv": {
+    "bytes": 1163,
+    "sha256": "51e00c3e0af600c1e48e238dff6ee7e6cf345861d3978463ba6f581e864baf2a"
+  },
+  "diagnostics/rve-analysis/face-balance.csv": {
+    "bytes": 1958,
+    "sha256": "678eacc93c8d501c438a162bea3bcd8261d05c2ee1a605531313a1a263552b00"
+  },
+  "diagnostics/rve-analysis/summary.json": {
+    "bytes": 44240,
+    "sha256": "f2b48b0230ee543d12b458b40091c0d7e1c6c97ed02b8a16a54dd3917b629e61"
+  },
+  "diagnostics/boundary-robustness/summary.json": {
+    "bytes": 1438,
+    "sha256": "c679bc9c112d146d99833dfdc0307e0da3906dcc06800d0d1a554eacb9c91a1a"
+  },
+  "diagnostics/rve-analysis/source/surface_remesh.py": {
+    "bytes": 11942,
+    "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+  },
+  "diagnostics/rve-analysis/source/embedded_remesh.py": {
+    "bytes": 9855,
+    "sha256": "7bc22c392bc87408ceddc1e8304f65161a0b03eb2008cf0a0360e77a9d4c4271"
+  },
+  "diagnostics/rve-analysis/source/cut_balance.py": {
+    "bytes": 3402,
+    "sha256": "2704143b343963d567360406af8958ce45a01ae378871e177ac17cddc096c957"
+  },
+  "diagnostics/rve-analysis/source/verify_packing_cut_balance.py": {
+    "bytes": 8132,
+    "sha256": "f87fd57c7da93190f713e660b0c2d10a3a5977cea49440e0f756f720d3044e99"
+  }
+}

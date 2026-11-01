@@ -1,0 +1,10 @@
+{"edge": [1724, 1725], "missing_rules": [1506], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1724, 1740], "missing_rules": [1520], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1725, 1740], "missing_rules": [], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1725, 1917], "missing_rules": [1523], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1740, 1917], "missing_rules": [1519], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1886, 1887], "missing_rules": [1511], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1886, 2064], "missing_rules": [1655], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1887, 2064], "missing_rules": [], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [1887, 2079], "missing_rules": [1651], "common_intervals": 0, "verified_eligible": 0}
+{"edge": [2064, 2079], "missing_rules": [1654], "common_intervals": 0, "verified_eligible": 0}

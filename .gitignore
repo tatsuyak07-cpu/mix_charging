@@ -18,3 +18,13 @@ exports/active-embedded-remesh-001/*/
 # Full remesh-correction diagnostics are preserved in the downloadable ZIP.
 exports/remesh-corrections-001/*/
 !exports/remesh-corrections-001/test-logs/
+
+# Full cut-balance diagnostics are included in the downloadable ZIP.
+exports/cut-balance-verification-001/*/
+!exports/cut-balance-verification-001/test-logs/
+
+# Superseded review export remains local; final export includes boundary robustness.
+exports/cut-balance-verification-001/
+exports/cut-balance-verification-001.zip
+exports/cut-balance-verification-002/*/
+!exports/cut-balance-verification-002/test-logs/

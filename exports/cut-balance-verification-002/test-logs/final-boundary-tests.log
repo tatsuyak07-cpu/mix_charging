@@ -1,0 +1,23 @@
+....F..............                                                      [100%]
+=================================== FAILURES ===================================
+_ test_cut_boundary_relaxation_includes_fractional_but_not_actual_point_split __
+
+    def test_cut_boundary_relaxation_includes_fractional_but_not_actual_point_split():
+        from tools.check_cut_boundaries import relaxed_intervals
+        # Both samples lie on f=.5. Current deterministic ownership cannot assign
+        # half their combined mass, but the deliberately relaxed bound can.
+        b=np.array([[.4,.4,.2],[.2,.2,.6]])
+        report=balance(b,[.3,.7],0,1,1.,1e-10)
+        assert report['intervals']==[]
+        assert relaxed_intervals(report)==[[.5,.5]]
+        a=balance(B,[.5,.5],0,1,1.,1e-10);c=balance(B,[.4,.6],0,1,1.,1e-10)
+>       assert intersect(relaxed_intervals(a,1e-8),relaxed_intervals(c,1e-8))==[]
+E       assert [[0.199999990...000100000001]] == []
+E         
+E         Left contains 2 more items, first extra item: [0.19999999000000002, 0.20000001]
+E         Use -v to get more diff
+
+tests/test_cut_balance.py:64: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cut_balance.py::test_cut_boundary_relaxation_includes_fractional_but_not_actual_point_split
+1 failed, 18 passed in 1.39s
