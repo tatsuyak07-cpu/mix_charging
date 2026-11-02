@@ -1,0 +1,10 @@
+{
+  "accepted_energy_excess_Nmm": 4.476627670286756e-12,
+  "accepted_force_excess_L1_N": 1.1982371903149437e-07,
+  "energy_limit_Nmm": 1.25e-07,
+  "force_limit_L1_N": 1.25e-07,
+  "max_uniform_component_allowance_ratio": 9.831113926459892,
+  "max_half_margin_component_ratio": 19.662227852919784,
+  "note": "Ratios >1 fail the projection inequalities; L1 totals use the actual global audit.",
+  "actual_global_audit_passed": true
+}

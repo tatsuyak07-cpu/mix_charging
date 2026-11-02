@@ -10,9 +10,11 @@ from scipy.sparse import csr_matrix,hstack,vstack,eye
 from .explicit_periodic import affine_basis
 
 
-def project(weights,conservation,contexts,tolerance=.001,factor=2.,max_entries=12000000,conservation_scales=None):
+def project(weights,conservation,contexts,tolerance=.001,factor=2.,max_entries=12000000,conservation_scales=None,reference_weights=None):
     w=np.asarray(weights,float);C=np.asarray(conservation,float);n=len(w)
     if n==0 or np.any(w<=0) or factor<=1 or not np.isfinite(factor):raise ValueError('Positive samples and weight factor >1 required')
+    fixed_reference=w if reference_weights is None else np.asarray(reference_weights,float)
+    if fixed_reference.shape!=w.shape or not np.isfinite(fixed_reference).all() or np.any(fixed_reference<=0):raise ValueError('Invalid fixed reference weights')
     if (len(C)+sum(len(c['exact']) for c in contexts))*n>max_entries:raise ValueError('Conservative quadrature matrix budget exhausted')
     C=C*w;target=C.sum(1)
     scale=np.maximum(np.maximum(np.max(abs(C),axis=1),abs(target)),1e-30) if conservation_scales is None else np.asarray(conservation_scales,float)
@@ -36,7 +38,7 @@ def project(weights,conservation,contexts,tolerance=.001,factor=2.,max_entries=1
         upper.extend([(reference+allowance-baseline)/normalizer,(-reference+allowance+baseline)/normalizer])
     # Positive bounded weights and the L1 change objective.
     rows.extend([csr_matrix(Z),csr_matrix(-Z),csr_matrix(Z),csr_matrix(-Z)])
-    upper.extend([np.full(n,factor-1),np.full(n,1-1/factor),np.zeros(n),np.zeros(n)])
+    upper.extend([factor*fixed_reference/w-1,1-fixed_reference/(factor*w),np.zeros(n),np.zeros(n)])
     A=vstack(rows).tocsr();b=np.r_[*upper]
     slack=vstack([csr_matrix((A.shape[0]-2*n,n)),-eye(n),-eye(n)]).tocsr()
     if free==0:
@@ -50,14 +52,14 @@ def project(weights,conservation,contexts,tolerance=.001,factor=2.,max_entries=1
         change=Z@result.x[:free]
     proposed=w*(1+change)
     error=float(np.max(abs(C@change)/scale)) if len(C) else 0.
-    if error>1e-9 or np.any(proposed<=0) or np.min(proposed/w)<1/factor-1e-9 or np.max(proposed/w)>factor+1e-9:raise ValueError('Conservative quadrature failed independent conservation audit')
+    if error>1e-9 or np.any(proposed<=0) or np.min(proposed/fixed_reference)<1/factor-1e-9 or np.max(proposed/fixed_reference)>factor+1e-9:raise ValueError('Conservative quadrature failed independent conservation audit')
     for ctx in contexts:
         absolute=np.r_[ctx.get('energy_budget',0.),np.full(len(ctx['exact'])-1,ctx.get('force_budget',0.)/max(1,len(ctx['exact'])-1))]
         if np.any(abs(ctx['matrix']@proposed-ctx['exact'])>tolerance*ctx['scales']+absolute+1e-30):raise ValueError('Redistribution failed retained-response audit')
     return proposed,dict(relative_weight_factor=factor,conservation_error=error,conservation_nullity=free,relative_area_weight_change=float(np.sum(abs(proposed-w))/w.sum()),new_samples=0)
 
 
-def redistribute(old,new,proposal):
+def redistribute(old,new,proposal,additional_contexts=(),reference_weights=None):
     """Construct linear conservation constraints from the applied potential."""
     from .parent_quadrature import historical
     contexts=list(new.parent_contexts.values());nodes=np.array(sorted({int(n) for c in contexts for n in c['nodes']}),int);index={int(n):i for i,n in enumerate(nodes)};w=new.inner.integration_area0[nodes].copy();n=len(nodes)
@@ -92,6 +94,11 @@ def redistribute(old,new,proposal):
         rule=new.rules[str(group['faces'][0])]
         for name in ('parent_atlas','parent_controls'):
             for pose in rule.get(name,[]):normal.append(expand(historical(new,leader,pose)))
+    for ctx in additional_contexts:
+        expanded=expand(ctx)
+        expanded['energy_budget']=min(ctx['energy_budget'],new.absolute_energy_budget/(2*len(contexts)))
+        expanded['force_budget']=min(ctx['force_budget'],new.absolute_force_budget/(2*len(contexts)))
+        normal.append(expanded)
     # A vanishing Cartesian component is judged against the physical force
     # block, not relative to its own cancellation roundoff. Keep EVERY row.
     work[-6:]/=old.L
@@ -99,7 +106,8 @@ def redistribute(old,new,proposal):
     energy_scales=np.maximum(np.maximum(np.max(abs(energies*w),axis=1),abs(energies@w)),1e-18)
     moment_scales=np.concatenate([np.full(6,new.parent_groups[k]['area']) for k in new.parent_contexts])
     conservation_scales=np.r_[np.full(len(work),force_scale),energy_scales,moment_scales]
-    proposed,report=project(w,np.r_[work,energies,*constraints],normal,new.quadrature_tolerance,new.redistribution_factor,new.atlas_max_entries,conservation_scales=conservation_scales)
+    reference=None if reference_weights is None else np.array([reference_weights[int(node)] for node in nodes])
+    proposed,report=project(w,np.r_[work,energies,*constraints],normal,new.quadrature_tolerance,new.redistribution_factor,new.atlas_max_entries,conservation_scales=conservation_scales,reference_weights=reference)
     ratio=dict(zip(map(int,nodes),proposed/w))
     for face,(point_nodes,B,weights) in list(new.face_points.items()):
         updated=np.array([weight*ratio.get(int(node),1.) for node,weight in zip(point_nodes,weights)])

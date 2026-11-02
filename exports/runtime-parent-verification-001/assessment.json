@@ -1,0 +1,44 @@
+{
+  "plane_cycle_passed": true,
+  "plane_cases": 6,
+  "runtime_repairs": 0,
+  "packing_last_accepted_step": 90262,
+  "packing_transient_porosity": 0.3694169748224255,
+  "failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.010377743063960328, 'force_error': 0.02104232241953249, 'absolute_energy_excess_Nmm': 3.326633854279134e-12, 'absolute_force_excess_L1_N': 1.3421242994668177e-07}\")",
+  "parent_attempts": [
+    {
+      "accepted_time_s": 0.046435233507766925,
+      "trial_time_s": 0.0464355684470197,
+      "repaired": false,
+      "weight_change": null,
+      "work_error": null,
+      "reason": "Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+    }
+  ],
+  "previous_prefix_identity": {
+    "shared_accepted_steps": 56,
+    "last_shared_step": 90262,
+    "max_absolute_differences": {
+      "time_s": 0.0,
+      "porosity": 0.0,
+      "axial_compression": 0.0,
+      "nominal_pressure_MPa": 0.0,
+      "kinetic_Nmm": 0.0,
+      "internal_Nmm": 0.0
+    },
+    "exact": true
+  },
+  "accepted_budget_consistency": {
+    "accepted_energy_excess_Nmm": 4.476627670286756e-12,
+    "accepted_force_excess_L1_N": 1.1982371903149437e-07,
+    "energy_limit_Nmm": 1.25e-07,
+    "force_limit_L1_N": 1.25e-07,
+    "max_uniform_component_allowance_ratio": 9.831113926459892,
+    "max_half_margin_component_ratio": 19.662227852919784,
+    "note": "Ratios >1 fail the projection inequalities; L1 totals use the actual global audit.",
+    "actual_global_audit_passed": true
+  },
+  "full_compaction_completed": false,
+  "loaded_target_equilibrated": false,
+  "convergence_verified": false
+}

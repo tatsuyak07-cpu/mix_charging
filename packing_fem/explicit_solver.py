@@ -74,6 +74,7 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
 def validate(c):
     if c.get('surface_audit_mode','face') not in ('face','parent'):raise ValueError('Unknown surface audit mode')
     if c.get('surface_redistribution','stop') not in ('stop','conservative'):raise ValueError('Unknown surface redistribution')
+    if c.get('surface_runtime_redistribution','stop') not in ('stop','conservative'):raise ValueError('Unknown runtime surface redistribution')
     if c.get('surface_velocity_transfer','l2') not in ('l2','momentum_energy'):raise ValueError('Unknown surface velocity transfer')
     if c.get('surface_remesh_strategy','midpoint') not in ('midpoint','closest_quality'):raise ValueError('Unknown surface remesh strategy')
     if c.get('closest_tie_rule','stop') not in ('stop','clarke'):raise ValueError('Unknown closest tie rule')
@@ -131,7 +132,7 @@ def solve(directory,X,t,c):
         old_implementation=metadata.get('implementation_sha256',{})
         differences=[name for name in set(old_implementation)|set(implementation) if old_implementation.get(name)!=implementation.get(name)]
         if differences:
-            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py','embedded_remesh.py','parent_quadrature.py','conservative_quadrature.py'}
+            compatible={'area_contact.py','embedded_contact.py','surface_patch.py','barrier_contact.py','aabb_search.py','contact_atlas.py','embedded_remesh.py','parent_quadrature.py','conservative_quadrature.py','runtime_quadrature.py'}
             if c.get('allow_solver_update_at_inactive_checkpoint'):compatible.update({'explicit_solver.py','conservative_velocity.py'})
             if not c.get('allow_contact_operator_update') or not restart.get('contact_free_prefix',False) or not set(differences)<=compatible:raise ValueError('Checkpoint implementation mismatch')
             operator_update=sorted(differences)
@@ -150,7 +151,7 @@ def solve(directory,X,t,c):
             # Both methods are audited contact operators, mutable only before
             # any contact under the existing explicit operator-update opt-in.
             if c.get('allow_contact_operator_update') and restart.get('contact_free_prefix',False):
-                for name in ('surface_audit_mode','surface_redistribution','surface_redistribution_factor','surface_velocity_transfer','active_embedded_surface_remesh','surface_remesh_steps','surface_remesh_edge','surface_remesh_max_events'):result.pop(name,None)
+                for name in ('surface_audit_mode','surface_redistribution','surface_runtime_redistribution','surface_redistribution_factor','surface_velocity_transfer','active_embedded_surface_remesh','surface_remesh_steps','surface_remesh_edge','surface_remesh_max_events'):result.pop(name,None)
                 result.pop('surface_rule_strategy',None);result.pop('contact_search_method',None);result.pop('atlas_lookahead_steps',None);result.pop('atlas_max_matrix_entries',None);result.pop('atlas_max_candidate_points',None);result.pop('contact_absolute_energy_budget_Nmm',None);result.pop('contact_absolute_force_budget_N',None)
             else:
                 result.setdefault('surface_rule_strategy','single_pose');result.setdefault('contact_search_method','aabb');result.setdefault('atlas_lookahead_steps',[]);result.setdefault('atlas_max_matrix_entries',12000000);result.setdefault('atlas_max_candidate_points',80000);result.setdefault('contact_absolute_energy_budget_Nmm',0.);result.setdefault('contact_absolute_force_budget_N',0.)
@@ -470,32 +471,43 @@ def solve(directory,X,t,c):
                 feature=getattr(exc,'feature',None)
                 attempt=dict(accepted_time_s=time,trial_time_s=next_time,trial_dt_s=dt,reason=str(exc),feature=feature,repaired=False)
                 resolution_attempts.append(attempt)
-                if feature is not None and feature.get('requires_quadrature_refinement',False):
-                    attempt['repair_stop']='Material quadrature refinement is required; geometry-only splitting cannot add material integration history'
+                if feature is not None and feature.get('kind')=='parent_quadrature' and c.get('surface_runtime_redistribution','stop')=='conservative':
+                    from .runtime_quadrature import repair as repair_quadrature
+                    try:
+                        candidate,response,report=repair_quadrature(contact,t,x,periodic.velocities(v),deformation(q[-6:])*periodic.L,
+                            xnew,periodic.velocities(vhalf),H,Hdot,dt,(fc,extra,contact.history,ci))
+                        contact=candidate;fc,extra,newhist,cnew=response
+                        attempt.update(repaired=True,runtime_redistribution=report)
+                    except ValueError as repair_error:
+                        attempt['repair_stop']=str(repair_error)
+                        raise exc from repair_error
+                if not attempt['repaired']:
+                    if feature is not None and feature.get('requires_quadrature_refinement',False):
+                        attempt['repair_stop']='Material quadrature refinement is required; geometry-only splitting cannot add material integration history'
+                        raise
+                    if c.get('surface_remesh_on_edge_guard',False) and feature is not None and feature['kind']=='ee':
+                        # Refine the accepted state, discard the failed trial, and
+                        # recompute its step with the new mass/kinematics/history.
+                        if c.get('surface_remesh_strategy','midpoint')=='closest_quality':
+                            from .surface_remesh import closest_edge_candidates
+                            candidates=closest_edge_candidates(X,x,t,b,ep,V0,periodic.velocities(v),feature,periodic.L)
+                            attempt['candidate_selection']=candidates;attempt['candidate_event_indices']=[]
+                            repaired=False
+                            for candidate in candidates:
+                                if not candidate['geometrically_valid'] or candidate['minimum_quality']<c['minimum_quality']:continue
+                                if sum(e.get('accepted',False) and e.get('operation')=='periodic_edge_bisection' for e in remesh_events)>=c.get('surface_remesh_max_events',1):
+                                    attempt['repair_stop']='surface remesh cap reached';break
+                                index=len(remesh_events)
+                                repaired=try_surface_remesh(profile(time,c)[2],candidate['edge'],candidate['fraction'],dict(candidate=candidate,ranking=candidates))
+                                attempt['candidate_event_indices'].append(index)
+                                if repaired:break
+                        else:repaired=try_surface_remesh(profile(time,c)[2],feature['ids'][:2])
+                        attempt['repaired']=bool(repaired)
+                        if repaired:
+                            contact_retries+=1
+                            if contact_retries>c.get('max_contact_retries',10000):raise RuntimeError('Contact retry budget exhausted')
+                            continue
                     raise
-                if c.get('surface_remesh_on_edge_guard',False) and feature is not None and feature['kind']=='ee':
-                    # Refine the accepted state, discard the failed trial, and
-                    # recompute its step with the new mass/kinematics/history.
-                    if c.get('surface_remesh_strategy','midpoint')=='closest_quality':
-                        from .surface_remesh import closest_edge_candidates
-                        candidates=closest_edge_candidates(X,x,t,b,ep,V0,periodic.velocities(v),feature,periodic.L)
-                        attempt['candidate_selection']=candidates;attempt['candidate_event_indices']=[]
-                        repaired=False
-                        for candidate in candidates:
-                            if not candidate['geometrically_valid'] or candidate['minimum_quality']<c['minimum_quality']:continue
-                            if sum(e.get('accepted',False) and e.get('operation')=='periodic_edge_bisection' for e in remesh_events)>=c.get('surface_remesh_max_events',1):
-                                attempt['repair_stop']='surface remesh cap reached';break
-                            index=len(remesh_events)
-                            repaired=try_surface_remesh(profile(time,c)[2],candidate['edge'],candidate['fraction'],dict(candidate=candidate,ranking=candidates))
-                            attempt['candidate_event_indices'].append(index)
-                            if repaired:break
-                    else:repaired=try_surface_remesh(profile(time,c)[2],feature['ids'][:2])
-                    attempt['repaired']=bool(repaired)
-                    if repaired:
-                        contact_retries+=1
-                        if contact_retries>c.get('max_contact_retries',10000):raise RuntimeError('Contact retry budget exhausted')
-                        continue
-                raise
             except ContactResolutionError as exc:
                 if c.get('contact_backend') not in ('distance_barrier','area_guarded','embedded_area'):raise
                 contact_retries+=1;retry_limit=dt*.5

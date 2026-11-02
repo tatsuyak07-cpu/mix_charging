@@ -15,6 +15,7 @@ from . import surface_patch
 
 class EmbeddedContact:
     def __init__(self,X,t,periodic,kn,mu,skin,quadrature_rules=None,quadrature_tolerance=.001,error_budget='component',**kwargs):
+        self._constructor_options=dict(quadrature_tolerance=quadrature_tolerance,error_budget=error_budget,**deepcopy(kwargs))
         self.X=np.array(X,copy=True);self.periodic=periodic;self.rules=deepcopy(quadrature_rules or {});self.quadrature_tolerance=quadrature_tolerance
         if error_budget not in ('component','normalized'):raise ValueError('Unknown embedded error budget')
         if not np.isfinite(quadrature_tolerance) or quadrature_tolerance<=0:raise ValueError('Positive surface quadrature tolerance required')

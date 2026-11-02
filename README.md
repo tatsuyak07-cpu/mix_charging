@@ -1,6 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
-**最新：親面全体の積分監査と、力・エネルギー・履歴を保つ既存積分点の重み再配分を実装しました。**
+**最新：時間発展中の保存再配分を追加し、平面接触6条件と関連73テストに合格しました。**
+実充填層では保存制約付きの再配分が実行不能となり、前回と同じ90,262刻みで停止しました。空隙率40%→10%の完走は未達成です。
+[検証報告](docs/runtime-parent-verification.md)・[比較画像](exports/runtime-parent-verification-001/verification.png)・[実メッシュ](exports/runtime-parent-verification-001/packing-mesh.png)・[CSV・結果一覧](exports/runtime-parent-verification-001/README.md)・[データZIP](exports/runtime-parent-verification-001.zip)。
+
+**前回：親面全体の積分監査と、力・エネルギー・履歴を保つ既存積分点の重み再配分を実装しました。**
 実充填層で接触中の再メッシュを承認し、その後12刻み継続しました。以後の積分精度不足で停止しており、空隙率40%→10%・保持/除荷完走・収束確認は未達成です。
 [開発報告](docs/parent-hybrid-development.md)・[検証画像](exports/parent-hybrid-development-002/verification.png)・[実メッシュ](exports/parent-hybrid-development-002/packing-mesh.png)・[CSVと判定](exports/parent-hybrid-development-002/README.md)・[データZIP](exports/parent-hybrid-development-002.zip)。
 以下は今回の開発に至る各工程の記録です。

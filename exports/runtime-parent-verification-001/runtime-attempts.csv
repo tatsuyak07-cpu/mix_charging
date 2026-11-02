@@ -1,0 +1,2 @@
+accepted_time_s,trial_time_s,repaired,weight_change,work_error,reason
+0.046435233507766925,0.0464355684470197,False,,,Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)

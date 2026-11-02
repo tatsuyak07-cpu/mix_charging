@@ -1,0 +1,13 @@
+{
+  "shared_accepted_steps": 56,
+  "last_shared_step": 90262,
+  "max_absolute_differences": {
+    "time_s": 0.0,
+    "porosity": 0.0,
+    "axial_compression": 0.0,
+    "nominal_pressure_MPa": 0.0,
+    "kinetic_Nmm": 0.0,
+    "internal_Nmm": 0.0
+  },
+  "exact": true
+}

@@ -1,0 +1,6 @@
+block,feasible,response_blocks,samples,conservation_rows,accepted_as_physical_result
+full,False,17,96,9748,False
+without_next_pose,False,13,96,9748,False
+accepted_pose_only,False,4,96,9748,False
+next_pose_only,False,4,96,9748,False
+no_accuracy_constraints,True,0,96,9748,False
