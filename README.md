@@ -1,6 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
-**最新：時間発展中の保存再配分を追加し、平面接触6条件と関連73テストに合格しました。**
+**最新：再配分の成分別予算を共有L1予算へ修正し、受理済み状態の誤った除外を解消しました。**
+関連84テスト・平面接触6条件に合格。実充填層は次配置の保存射影が実行不能で、90,262刻みの停止は未解消です。空隙率40%→10%・保持/除荷・収束確認は未達成です。
+[検証報告](docs/l1-budget-verification.md)・[検証画像](exports/l1-budget-verification-001/verification.png)・[メッシュ](exports/l1-budget-verification-001/packing-mesh.png)・[CSV・結果一覧](exports/l1-budget-verification-001/README.md)・[データZIP](exports/l1-budget-verification-001.zip)。
+
+**前回：時間発展中の保存再配分を追加し、平面接触6条件と関連73テストに合格しました。**
 実充填層では保存制約付きの再配分が実行不能となり、前回と同じ90,262刻みで停止しました。空隙率40%→10%の完走は未達成です。
 [検証報告](docs/runtime-parent-verification.md)・[比較画像](exports/runtime-parent-verification-001/verification.png)・[実メッシュ](exports/runtime-parent-verification-001/packing-mesh.png)・[CSV・結果一覧](exports/runtime-parent-verification-001/README.md)・[データZIP](exports/runtime-parent-verification-001.zip)。
 

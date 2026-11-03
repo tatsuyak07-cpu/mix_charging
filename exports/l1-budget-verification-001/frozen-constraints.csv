@@ -1,0 +1,5 @@
+block,feasible,weights_unchanged,reason
+accepted_pose_only,True,True,
+trial_only,False,,Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)
+without_trial,False,,Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)
+full,False,,Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)

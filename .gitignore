@@ -37,3 +37,6 @@ exports/parent-hybrid-development-002/*/
 
 # Runtime-contact diagnostics and checkpoints are retained in the ZIP.
 exports/runtime-parent-verification-001/*/
+
+# L1 projection diagnostics and checkpoints are preserved in the ZIP.
+exports/l1-budget-verification-001/*/

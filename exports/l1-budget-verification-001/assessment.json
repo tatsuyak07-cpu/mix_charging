@@ -1,0 +1,45 @@
+{
+  "accepted_rule_admissible": true,
+  "accepted_force_L1": {
+    "energy_excess": 4.476627670286756e-12,
+    "force_excess_L1": 1.1982371903149437e-07,
+    "energy_limit": 1.25e-07,
+    "force_limit": 1.25e-07
+  },
+  "regression_tests": 84,
+  "plane_cases": 6,
+  "moving_solver_passed": true,
+  "packing_steps": 90262,
+  "packing_transient_porosity": 0.3694169748224255,
+  "failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.010377743063960328, 'force_error': 0.02104232241953249, 'absolute_energy_excess_Nmm': 3.326633854279134e-12, 'absolute_force_excess_L1_N': 1.3421242994668177e-07}\")",
+  "last_resolution_attempt": {
+    "accepted_time_s": 0.046435233507766925,
+    "trial_time_s": 0.0464355684470197,
+    "trial_dt_s": 3.349392527744356e-07,
+    "reason": "Parent contact audit requires conservative sample redistribution: {'energy_error': 0.010377743063960328, 'force_error': 0.02104232241953249, 'absolute_energy_excess_Nmm': 3.326633854279134e-12, 'absolute_force_excess_L1_N': 1.3421242994668177e-07}",
+    "feature": {
+      "kind": "parent_quadrature",
+      "group": 3166,
+      "energy_error": 0.010377743063960328,
+      "force_error": 0.02104232241953249,
+      "absolute_energy_excess_Nmm": 3.326633854279134e-12,
+      "absolute_force_excess_L1_N": 1.3421242994668177e-07
+    },
+    "repaired": false,
+    "repair_stop": "Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  "previous_prefix_identity": {
+    "shared_steps": 56,
+    "max_absolute_differences": {
+      "time_s": 0.0,
+      "porosity": 0.0,
+      "axial_compression": 0.0,
+      "nominal_pressure_MPa": 0.0,
+      "kinetic_Nmm": 0.0,
+      "internal_Nmm": 0.0
+    },
+    "exact": true
+  },
+  "full_compaction_completed": false,
+  "convergence_verified": false
+}
