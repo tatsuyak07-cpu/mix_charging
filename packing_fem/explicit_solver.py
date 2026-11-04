@@ -72,6 +72,7 @@ def stable_dt(x,t,V0,mass,c,velocity,contact,stress=None,elastic_b=None):
 
 
 def validate(c):
+    if not isinstance(c.get('surface_preemptive_horizon',16),int) or c.get('surface_preemptive_horizon',16)<1:raise ValueError('Positive integer forecast horizon required')
     if c.get('surface_audit_mode','face') not in ('face','parent'):raise ValueError('Unknown surface audit mode')
     if c.get('surface_redistribution','stop') not in ('stop','conservative'):raise ValueError('Unknown surface redistribution')
     if c.get('surface_runtime_redistribution','stop') not in ('stop','conservative'):raise ValueError('Unknown runtime surface redistribution')
@@ -151,7 +152,7 @@ def solve(directory,X,t,c):
             # Both methods are audited contact operators, mutable only before
             # any contact under the existing explicit operator-update opt-in.
             if c.get('allow_contact_operator_update') and restart.get('contact_free_prefix',False):
-                for name in ('surface_audit_mode','surface_redistribution','surface_runtime_redistribution','surface_redistribution_factor','surface_velocity_transfer','active_embedded_surface_remesh','surface_remesh_steps','surface_remesh_edge','surface_remesh_max_events'):result.pop(name,None)
+                for name in ('surface_audit_mode','surface_redistribution','surface_runtime_redistribution','surface_redistribution_factor','surface_velocity_transfer','active_embedded_surface_remesh','surface_remesh_steps','surface_remesh_edge','surface_remesh_max_events','surface_preemptive_steps','surface_preemptive_horizon'):result.pop(name,None)
                 result.pop('surface_rule_strategy',None);result.pop('contact_search_method',None);result.pop('atlas_lookahead_steps',None);result.pop('atlas_max_matrix_entries',None);result.pop('atlas_max_candidate_points',None);result.pop('contact_absolute_energy_budget_Nmm',None);result.pop('contact_absolute_force_budget_N',None)
             else:
                 result.setdefault('surface_rule_strategy','single_pose');result.setdefault('contact_search_method','aabb');result.setdefault('atlas_lookahead_steps',[]);result.setdefault('atlas_max_matrix_entries',12000000);result.setdefault('atlas_max_candidate_points',80000);result.setdefault('contact_absolute_energy_budget_Nmm',0.);result.setdefault('contact_absolute_force_budget_N',0.)
@@ -465,6 +466,24 @@ def solve(directory,X,t,c):
             vhalf=v+.5*dt*a
             if periodic.prescribed_active:vhalf[periodic.prescribed]=vp
             H=deformation(qnew[-6:])*periodic.L;Hdot=(deformation(vhalf[-6:])-np.eye(3))*periodic.L
+            if steps in c.get('surface_preemptive_steps',[]) and not any(e.get('operation')=='preemptive_quadrature' and e.get('accepted_step')==steps for e in resolution_attempts):
+                event=dict(operation='preemptive_quadrature',accepted_step=steps,accepted_time_s=time,repaired=False)
+                resolution_attempts.append(event)
+                try:
+                    if c.get('contact_backend')!='embedded_area' or not contact.parent_groups:raise ValueError('Preemptive redistribution requires parent contact groups')
+                    horizon=c.get('surface_preemptive_horizon',16);h=min(horizon*dt,duration-time)
+                    if cycle is not None and cycle.interval_end()-time>1e-14:h=min(h,cycle.interval_end()-time)
+                    qf=q+h*v+.5*h*h*a;vf=v+.5*h*a
+                    pf=cycle.displacement(time+h) if cycle is not None else profile(time+h,c)
+                    if periodic.prescribed_active:qf[periodic.prescribed]=pf[0];vf[periodic.prescribed]=pf[1]
+                    Hf=deformation(qf[-6:])*periodic.L;Hdf=(deformation(vf[-6:])-np.eye(3))*periodic.L
+                    from .runtime_quadrature import repair as forecast_repair
+                    candidate,_,report=forecast_repair(contact,t,x,periodic.velocities(v),deformation(q[-6:])*periodic.L,
+                        periodic.positions(qf),periodic.velocities(vf),Hf,Hdf,h,(fc,extra,contact.history,ci),prediction_only=True)
+                    contact=candidate;event.update(repaired=True,forecast_time_s=time+h,horizon=horizon,runtime_redistribution=report)
+                    # Recompute the timestep with the new accepted stiffness.
+                    continue
+                except ValueError as forecast_error:event['repair_stop']=str(forecast_error)
             try:
                 fc,extra,newhist,cnew=contact.evaluate(xnew,periodic.velocities(vhalf),H,Hdot,dt)
             except SurfaceResolutionError as exc:

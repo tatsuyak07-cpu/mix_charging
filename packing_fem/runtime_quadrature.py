@@ -11,7 +11,7 @@ from .checkpoint import contact_state,restore_contact
 from .conservative_quadrature import redistribute
 
 
-def repair(contact,t,accepted_x,accepted_velocity,accepted_H,trial_x,trial_velocity,trial_H,trial_Hdot,dt,accepted_response):
+def repair(contact,t,accepted_x,accepted_velocity,accepted_H,trial_x,trial_velocity,trial_H,trial_Hdot,dt,accepted_response,prediction_only=False):
     if not contact.parent_groups:raise ValueError('Runtime redistribution requires material parent groups')
     new=EmbeddedContact(contact.X,t,contact.periodic,contact.kn,contact.mu,contact.skin,
                         quadrature_rules=contact.rules,**contact._constructor_options)
@@ -40,9 +40,19 @@ def repair(contact,t,accepted_x,accepted_velocity,accepted_H,trial_x,trial_veloc
         energy_errors={name:abs(after[-1][name]-before[-1][name])/max(abs(before[-1][name]),1e-18) for name in ('normal_energy','tangent_energy')}
         if max(work_error,*energy_errors.values())>1e-8:raise ValueError('Runtime redistribution changes accepted work/energy')
         if abs(after[-1]['friction_increment'])>1e-12 or abs(after[-1]['released_history_energy'])>1e-12:raise ValueError('Runtime redistribution invents dissipation/release')
+        accepted_state=deepcopy(contact_state(new)) if prediction_only else None
         response=new.evaluate(trial_x,trial_velocity,trial_H,trial_Hdot,dt)
+        if prediction_only:
+            # Forecast history is never committed. Rebuild accepted caches and
+            # stiffness bounds while retaining the applied lagged potential.
+            restore_contact(new,accepted_state)
+            response=new.replay_force_state(accepted_x,accepted_velocity,accepted_H)
+            new.inner.guard.accept_geometry(new.P@accepted_x,accepted_H)
+            new.inner.accepted_audit=deepcopy(new.inner.trial_audit)
+            new.inner.accepted_history=new.history
+            if work_error>1e-10:raise ValueError('Preemptive replay force mismatch')
         report.update(accepted_replay_error=baseline_error,accepted_work_error=work_error,accepted_energy_errors=energy_errors,
-                      parent_audit_passed=True,new_samples=0,history_interpolation=False,fixed_reference_bounds=True)
+                      parent_audit_passed=True,new_samples=0,history_interpolation=False,fixed_reference_bounds=True,prediction_only=bool(prediction_only))
         new.capture_audit=contact.capture_audit
         return new,response,report
     finally:new._parent_transfer_probe=False

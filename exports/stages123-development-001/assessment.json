@@ -1,0 +1,87 @@
+{
+  "regression_tests": 92,
+  "old_rejected_trial_time_s": 0.0464355684470197,
+  "cases": [
+    {
+      "case": "baseline_early",
+      "last_step": 90262,
+      "time_s": 0.046435233507766925,
+      "axial_compression": 0.12363360879606505,
+      "transient_porosity": 0.3694169748224255,
+      "old_failed_trial_time_crossed": false,
+      "history_entries": 70,
+      "early_attempts": 1,
+      "early_accepted": 0,
+      "failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.010377743063960328, 'force_error': 0.02104232241953249, 'absolute_energy_excess_Nmm': 3.326633854279134e-12, 'absolute_force_excess_L1_N': 1.3421242994668177e-07}\")"
+    },
+    {
+      "case": "rebuilt_99",
+      "last_step": 90265,
+      "time_s": 0.04643623832560326,
+      "axial_compression": 0.12363594116292362,
+      "transient_porosity": 0.3694164244093202,
+      "old_failed_trial_time_crossed": true,
+      "history_entries": 73,
+      "early_attempts": 0,
+      "early_accepted": 0,
+      "failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.0009495001634665964, 'force_error': 0.009813998152752385, 'absolute_energy_excess_Nmm': 0.0, 'absolute_force_excess_L1_N': 5.046345717378564e-08}\")"
+    },
+    {
+      "case": "added_197",
+      "last_step": 90273,
+      "time_s": 0.04643891789307113,
+      "axial_compression": 0.12364214984999337,
+      "transient_porosity": 0.3694149726898769,
+      "old_failed_trial_time_crossed": true,
+      "history_entries": 151,
+      "early_attempts": 0,
+      "early_accepted": 0,
+      "failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.7490103306882101, 'force_error': 5.802686458218368, 'absolute_energy_excess_Nmm': 1.1095034945255205e-12, 'absolute_force_excess_L1_N': 1.550240149855254e-07}\")"
+    },
+    {
+      "case": "added_197_early",
+      "last_step": 90273,
+      "time_s": 0.04643891789307113,
+      "axial_compression": 0.12364214984999337,
+      "transient_porosity": 0.3694149726898769,
+      "old_failed_trial_time_crossed": true,
+      "history_entries": 151,
+      "early_attempts": 1,
+      "early_accepted": 0,
+      "failure": "SurfaceResolutionError(\"Parent contact audit requires conservative sample redistribution: {'energy_error': 0.7490103306882101, 'force_error': 5.802686458218368, 'absolute_energy_excess_Nmm': 1.1095034945255205e-12, 'absolute_force_excess_L1_N': 1.550240149855254e-07}\")"
+    }
+  ],
+  "forecast_attempts": [
+    {
+      "case": "baseline_early",
+      "operation": "preemptive_quadrature",
+      "accepted_step": 90250,
+      "accepted_time_s": 0.04643121587642931,
+      "repaired": false,
+      "repair_stop": "Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+    },
+    {
+      "case": "added_197_early",
+      "operation": "preemptive_quadrature",
+      "accepted_step": 90250,
+      "accepted_time_s": 0.04643121587642931,
+      "repaired": false,
+      "repair_stop": "Conservative existing-sample redistribution infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+    }
+  ],
+  "moving_forecast_control": {
+    "active_restart_exact": true,
+    "active_transfer_committed": true,
+    "opt_in_required": true,
+    "rejected_trajectory_unchanged": true,
+    "bounded_three_steps": true,
+    "preemptive_repair_committed": true
+  },
+  "stage1_diagnosis_performed": true,
+  "stage2_old_interval_passed": true,
+  "stage3_timing_comparison_performed": true,
+  "packing_early_redistribution_effect_demonstrated": false,
+  "new_integration_stop_step": 90273,
+  "full_compaction_completed": false,
+  "convergence_verified": false
+}

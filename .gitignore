@@ -40,3 +40,6 @@ exports/runtime-parent-verification-001/*/
 
 # L1 projection diagnostics and checkpoints are preserved in the ZIP.
 exports/l1-budget-verification-001/*/
+
+# Full stage 1-3 replay diagnostics and restart inputs are in the ZIP.
+exports/stages123-development-001/*/

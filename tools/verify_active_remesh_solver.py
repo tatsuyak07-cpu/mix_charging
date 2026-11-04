@@ -14,7 +14,7 @@ from tools.verify_plane_contact import fixture
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--remesh-step',type=int,default=1);parser.add_argument('--cfl',type=float,default=.2);parser.add_argument('--velocity-transfer',choices=['l2','momentum_energy'],default='momentum_energy');parser.add_argument('--tie-rule',choices=['stop','clarke'],default='clarke');parser.add_argument('--audit-mode',choices=['face','parent'],default='face');parser.add_argument('--redistribution',choices=['stop','conservative'],default='stop');parser.add_argument('--quadrature-source',choices=['partitioned','parent'],default='partitioned');a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--remesh-step',type=int,default=1);parser.add_argument('--cfl',type=float,default=.2);parser.add_argument('--velocity-transfer',choices=['l2','momentum_energy'],default='momentum_energy');parser.add_argument('--tie-rule',choices=['stop','clarke'],default='clarke');parser.add_argument('--audit-mode',choices=['face','parent'],default='face');parser.add_argument('--redistribution',choices=['stop','conservative'],default='stop');parser.add_argument('--quadrature-source',choices=['partitioned','parent'],default='partitioned');parser.add_argument('--preemptive-step',type=int);a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     _,t,X,_,_=fixture(1,.015,0.);L=1.;H=np.eye(3)
     b=np.repeat(np.eye(3)[None],len(t),0);V=geometry(X,t)[0]
     base=EmbeddedContact(X,t,Periodic(X,L),20.,.3,.1,thickness=.02,error_budget='normalized',closest_tie_rule=a.tie_rule)
@@ -50,10 +50,11 @@ def main():
     c.update(length_mm=L,contact_backend='embedded_area',surface_error_budget='normalized',embedded_quadrature_rules=rules,
              compression_fraction=0.,ramp_s=1e-5,hold_s=0.,max_steps=3,output_every=1,remesh_every=0,surface_remesh_steps=[a.remesh_step],surface_remesh_edge=edge.tolist(),surface_remesh_max_events=1,
              active_embedded_surface_remesh=True,surface_audit_mode=a.audit_mode,surface_redistribution=a.redistribution,surface_velocity_transfer=a.velocity_transfer,closest_tie_rule=a.tie_rule,cfl=a.cfl,save_checkpoint=True,save_contact_audit=True)
+    if a.preemptive_step is not None:c.update(surface_preemptive_steps=[a.preemptive_step],surface_preemptive_horizon=1)
     results={}
     for name,flag in (('enabled',True),('disabled',False)):
         result=solve(a.output/name,X,t,dict(c,active_embedded_surface_remesh=flag))
-        results[name]=dict(failure=result['failure'],steps=result['steps'],events=result['remesh_events'])
+        results[name]=dict(failure=result['failure'],steps=result['steps'],events=result['remesh_events'],resolutions=result['surface_resolution_attempts'])
     stopped=solve(a.output/'checkpoint-stop',X,t,dict(c,checkpoint_stop_after=1))
     resumed=solve(a.output/'checkpoint-resume',X,t,dict(c,resume_checkpoint=stopped['checkpoint_paths'][-1]))
     with np.load(a.output/'enabled/last-state.npz') as whole,np.load(a.output/'checkpoint-resume/last-state.npz') as continued:
@@ -66,6 +67,7 @@ def main():
     checks=dict(active_restart_exact=restart_exact,active_transfer_committed=bool(enabled) and enabled[0]['accepted'] and 'retained_embedded_samples' in enabled[0],
                 opt_in_required=bool(disabled) and not disabled[0]['accepted'],rejected_trajectory_unchanged=unchanged,
                 bounded_three_steps=all(r['steps']==3 for r in results.values()))
+    if a.preemptive_step is not None:checks['preemptive_repair_committed']=any(e.get('operation')=='preemptive_quadrature' and e['repaired'] for e in results['enabled']['resolutions'])
     summary=dict(passed=all(checks.values()),checks=checks,scope=__doc__,results=results,full_compaction_completed=False)
     (a.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
     if not summary['passed']:raise SystemExit(2)

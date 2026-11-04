@@ -93,6 +93,16 @@ def certify(contact,face):
         exc.feature=dict(kind='parent_quadrature',group=leader,**record);raise exc
 
 
+def source_on_child(C,pose):
+    """Evaluate a retained piecewise source geometry on a material child."""
+    if 'child_sources' not in pose:return C@np.asarray(pose['source'])
+    if len(pose.get('source_cells',[]))!=len(pose['child_sources']):raise ValueError('Retained curved source loses material-cell lineage')
+    for cell,source in zip(pose['source_cells'],pose['child_sources']):
+        local=C@np.linalg.inv(np.asarray(cell))
+        if np.min(local)>=-1e-10:return local@np.asarray(source)
+    raise ValueError('Retained curved pose does not cover refined material child')
+
+
 def historical(contact,leader,pose):
     """Fine source-node responses on an inherited pre-refinement parent pose."""
     group=contact.parent_groups[leader];vertices=list(group['vertices']);parent=contact.X[vertices];E=(parent[1:]-parent[0]).T
@@ -100,7 +110,7 @@ def historical(contact,leader,pose):
     targets=np.asarray(pose['targets']);mapping=np.asarray(pose['mapping'],int);nt=int(mapping.max())+1;ns=len(source_nodes);size=1+3*ns+3*nt
     exact=np.zeros(size);nodes=[];weights=[];columns=[]
     for child in group['faces']:
-        ids=contact.faces[child];uv=(contact.X[ids]-parent[0])@np.linalg.pinv(E).T;C=np.c_[1-uv.sum(1),uv];source=C@np.asarray(pose['source'])
+        ids=contact.faces[child];uv=(contact.X[ids]-parent[0])@np.linalg.pinv(E).T;C=np.c_[1-uv.sum(1),uv];source=source_on_child(C,pose)
         tri=contact.X[ids];area=float(np.linalg.norm(np.cross(tri[1]-tri[0],tri[2]-tri[0]))/2)
         ref=surface_patch.integrate(source,targets,area,kn=.5*contact.kn,thickness=contact.thickness,tolerance=contact.quadrature_tolerance/16,
             vertex_map=mapping,groups=pose['groups'],pointwise=True,error_budget='normalized',tie_rule=pose.get('tie_rule','stop'))['value']

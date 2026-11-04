@@ -1,6 +1,10 @@
 # Periodic sphere-packing compression — solid FEM
 
-**最新：再配分の成分別予算を共有L1予算へ修正し、受理済み状態の誤った除外を解消しました。**
+**最新：工程1〜3を実装・比較し、対象4面の点追加と履歴再計算で旧停止区間を通過しました。**
+埋込積分点96→197点、90,262→90,273刻み。物理時刻でも通過を確認し、関連92テストが合格。早期再配分の独立した改善効果は充填層では未確認で、新しい積分誤差による停止が残ります。空隙率40%→10%・保持/除荷・収束確認は未達成です。
+[工程1〜3の報告](docs/stages123-development.md)・[比較図](exports/stages123-development-001/comparison.png)・[積分点配置](exports/stages123-development-001/quadrature-points.png)・[メッシュ](exports/stages123-development-001/packing-mesh.png)・[CSV・結果一覧](exports/stages123-development-001/README.md)・[データZIP](exports/stages123-development-001.zip)。
+
+**前回：再配分の成分別予算を共有L1予算へ修正し、受理済み状態の誤った除外を解消しました。**
 関連84テスト・平面接触6条件に合格。実充填層は次配置の保存射影が実行不能で、90,262刻みの停止は未解消です。空隙率40%→10%・保持/除荷・収束確認は未達成です。
 [検証報告](docs/l1-budget-verification.md)・[検証画像](exports/l1-budget-verification-001/verification.png)・[メッシュ](exports/l1-budget-verification-001/packing-mesh.png)・[CSV・結果一覧](exports/l1-budget-verification-001/README.md)・[データZIP](exports/l1-budget-verification-001.zip)。
 
