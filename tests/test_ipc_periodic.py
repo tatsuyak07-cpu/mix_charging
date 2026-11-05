@@ -1,0 +1,40 @@
+"""Small, reproducible contact integration checks; optional IPC dependency."""
+import numpy as np
+import pytest
+pytest.importorskip('ipctk')
+from packing_fem.explicit_material import oriented
+from packing_fem.explicit_periodic import Periodic
+from packing_fem.ipc_periodic import PeriodicIPC
+
+C=dict(friction=.3,ipc_dhat_mm=.02,ipc_stiffness_mpa=10.,ipc_slip_regularization_mm=1e-4)
+X=np.array([[1.,1,1],[2,1,1],[1,2,1],[1,1,2],[2.03,.2,.2],[2.03,1.8,.2],[2.03,.2,2.2],[3.03,1,1]])
+T=oriented(X,np.array([[0,1,2,3],[4,5,6,7]]))
+
+
+def moved(p,distance):
+    q=np.zeros(p.ndof)
+    for node in range(4,8):q[3*(p.classes[node]-1)]=distance
+    return q
+
+
+def test_contact_potential_gradient_and_periodic_image_ownership():
+    p=Periodic(X,10.);q=moved(p,-.02);values=[]
+    for radius in [1,2]:
+        contact=PeriodicIPC(X,T,p,C,radius);contact.set_lag(q,q)
+        energy,g,_,count=contact.evaluate(q)
+        assert count>0
+        values.append((energy,g,count))
+    np.testing.assert_allclose(values[0][0],values[1][0],rtol=1e-12)
+    np.testing.assert_allclose(values[0][1],values[1][1],rtol=1e-11,atol=1e-12)
+    assert values[0][2]==values[1][2]
+    d=np.random.default_rng(14).normal(size=p.ndof);d[-6:]=0;h=1e-7
+    finite=(contact.evaluate(q+h*d)[0]-contact.evaluate(q-h*d)[0])/(2*h)
+    np.testing.assert_allclose(finite,values[1][1]@d,rtol=1e-6,atol=1e-7)
+
+
+def test_continuous_collision_detection_blocks_crossing():
+    p=Periodic(X,10.);contact=PeriodicIPC(X,T,p,C)
+    q=np.zeros(p.ndof)
+    assert contact.ccd(q,moved(p,-.02))==pytest.approx(1.)
+    alpha=contact.ccd(q,moved(p,-.05))
+    assert 0<alpha<.7

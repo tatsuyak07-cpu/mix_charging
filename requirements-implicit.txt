@@ -1,0 +1,4 @@
+# Optional full-path implicit contact experiment. Install outside solver code.
+-r requirements-lock.txt
+ipctk==1.6.1
+tetgen==0.8.4

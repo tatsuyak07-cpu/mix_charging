@@ -1,0 +1,9 @@
+{
+  "status": "diagnostic_cycle_completed_target_not_reached",
+  "initial_porosity": 0.4116199849746327,
+  "loaded_porosity": 0.2710284977678469,
+  "recovered_porosity": 0.2894265208864609,
+  "target_porosity": 0.1,
+  "target_reached": false,
+  "validated": false
+}

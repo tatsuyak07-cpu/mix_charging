@@ -1,6 +1,15 @@
 # Periodic sphere-packing compression — solid FEM
 
-**最新：工程1〜3を実装・比較し、対象4面の点追加と履歴再計算で旧停止区間を通過しました。**
+<!-- large-deformation-first -->
+**最新：有限変形の陰解法FEM＋IPC周期自己接触＋適応再メッシュへ変更し、95%圧縮まで実計算しました。**
+最終空隙率25.816%、経路中の最小空隙率25.137%。**10%到達は未達成**です。
+別分岐では57.5%圧縮・保持・ゼロ軸荷重への除荷を完走し、空隙率27.103%→28.943%、残留圧縮率55.593%を確認しました。
+材料E=10 MPa、摩擦0.3と横方向応力自由の周期条件を維持。初期メッシュの測定空隙率は41.162%で、物理的なメッシュ・増分収束は未認定です。
+保存51状態で正の四面体体積と非交差を確認し、周期画像27→125個で接触数・力・エネルギーが一致。関連28テスト合格。
+[開発・計算報告](docs/large-deformation-first.md)・[大変形と永久変形の比較画像](exports/large-deformation-first-001/demonstration-cycle.png)・[95%圧縮メッシュ](exports/large-deformation-first-001/latest-mesh.png)・[空隙率曲線](exports/large-deformation-first-001/porosity-path.png)・[CSVと結果一覧](exports/large-deformation-first-001/README.md)・[全データZIP](exports/large-deformation-first-001.zip)。
+<!-- /large-deformation-first -->
+
+**前回：工程1〜3を実装・比較し、対象4面の点追加と履歴再計算で旧停止区間を通過しました。**
 埋込積分点96→197点、90,262→90,273刻み。物理時刻でも通過を確認し、関連92テストが合格。早期再配分の独立した改善効果は充填層では未確認で、新しい積分誤差による停止が残ります。空隙率40%→10%・保持/除荷・収束確認は未達成です。
 [工程1〜3の報告](docs/stages123-development.md)・[比較図](exports/stages123-development-001/comparison.png)・[積分点配置](exports/stages123-development-001/quadrature-points.png)・[メッシュ](exports/stages123-development-001/packing-mesh.png)・[CSV・結果一覧](exports/stages123-development-001/README.md)・[データZIP](exports/stages123-development-001.zip)。
 

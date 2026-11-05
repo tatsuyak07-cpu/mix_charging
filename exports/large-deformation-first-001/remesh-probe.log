@@ -1,0 +1,7 @@
+wall_s 61.37427151299198
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/workspace/mix_charging/packing_fem/implicit_remesh.py", line 83, in remesh
+    if energy_error>c['remesh_energy_tolerance']:raise ValueError(f'Remesh state transfer energy error {energy_error}; report={report}')
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Remesh state transfer energy error 0.20242181460486797; report={'current_volume_relative_error': np.float64(0.0), 'reference_volume_relative_error': 7.887121795368954e-12, 'overlap_row_error': 3.9632593444672365e-10, 'overlap_column_error': 8.991457635671212e-11, 'energy_relative_error': 0.20242181460486797, 'quality_before': 0.29944588707018893, 'quality_after': 0.1070226624527616, 'elements_before': 10653, 'elements_after': 7619, 'boundary_preserved': True}

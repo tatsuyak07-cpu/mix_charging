@@ -1,0 +1,3 @@
+{"operation": "periodic_deformed_edge_refinement", "events": [{"edge_subdivision": {"operation": "periodic_edge_bisection", "periodic_edges": 1, "new_nodes": 1}, "affected_quality_after": 0.29857941732829985}], "quality_before": 0.24075636099527506, "quality_after": 0.29857941732829985, "boundary_geometry_preserved": true, "history_values_preserved": true, "history_points_after": 10659}
+reference volume error 0.0
+wall_s 0.5957326540083159
