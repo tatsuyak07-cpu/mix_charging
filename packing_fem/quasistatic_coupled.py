@@ -1,5 +1,7 @@
 """Newton solve of the actual coupled solid/contact/Coulomb equilibrium residual."""
 import numpy as np
+from pathlib import Path
+import time
 from scipy.sparse import diags
 from scipy.sparse.linalg import splu, lsmr
 from .fixed_point import affine_predictor
@@ -7,6 +9,23 @@ from .implicit_material import evaluate
 
 
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
+    multipliers=c.get('implicit_friction_smoothing_multipliers')
+    if multipliers:
+        if multipliers[-1]!=1 or any(m<1 for m in multipliers) or any(a<=b for a,b in zip(multipliers,multipliers[1:])):raise ValueError('Friction smoothing continuation must decrease to the original value')
+        import ipctk as ipc
+        original=contact.friction;guess=initial_guess
+        try:
+            for multiplier in multipliers:
+                phase=dict(c);phase.pop('implicit_friction_smoothing_multipliers')
+                phase['ipc_slip_regularization_mm']=c['ipc_slip_regularization_mm']*multiplier
+                if multiplier>1:phase['implicit_coupled_max_iterations']=c.get('implicit_friction_smoothing_max_iterations',30)
+                contact.friction=ipc.FrictionPotential(phase['ipc_slip_regularization_mm'])
+                log(dict(friction_smoothing_multiplier=multiplier,trial_initialization_only=multiplier>1,accepted_material_history_unchanged=True))
+                solution=equilibrium(p,t,q,b,ep,inverse,V0,phase,contact,prescribed,external,log,parent,guess)
+                guess=solution['iterate'] if isinstance(solution,dict) else solution[0]
+                if isinstance(solution,dict):log(dict(friction_smoothing_phase_failed=multiplier,reason=solution['reason'],iterate_used_only_as_initial_guess=True))
+            return solution
+        finally:contact.friction=original
     oldq=q.copy();trial=q.copy() if initial_guess is None else initial_guess.copy()
     if prescribed is None or c.get('transverse_boundary')!='fixed_cell':return dict(reason='Coupled Newton requires prescribed axial compression and fixed transverse cell',iterate=trial)
     trial=affine_predictor(p,trial,prescribed)
@@ -20,6 +39,11 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
         return internal,state,n,J
     try:
         for it in range(c.get('implicit_coupled_max_iterations',c['implicit_max_newton'])):
+            checkpoint_every=int(c.get('implicit_iterate_checkpoint_every',0))
+            if checkpoint_every>0 and it>0 and it%checkpoint_every==0 and c.get('_iterate_checkpoint_directory'):
+                checkpoint=Path(c['_iterate_checkpoint_directory'])/f'iterate-{time.time_ns()}-{it:04d}.npz'
+                np.savez_compressed(checkpoint,q=trial,X=p.X,t=t,oldq=oldq,b=b,ep=ep)
+                log(dict(iterate_checkpoint=str(checkpoint),iterate_is_solution=False))
             internal,state,n,J=values(trial,True);gradient=(internal-external)[:p.nmicro]
             norm=float(np.max(abs(gradient),initial=0.))
             weighted=c.get('implicit_coupled_merit_weighting','none')=='diagonal'

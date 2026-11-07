@@ -7,14 +7,14 @@ from packing_fem.explicit_periodic import Periodic,deformation
 from tools.run_implicit_compaction import active_dofs,equilibrium,affine_predictor
 
 class NoContact:
-    def __init__(self,n):self.n=n
+    def __init__(self,n):self.n=n;self.friction=object()
     def set_lag(self,*args):pass
     def evaluate(self,q,tangent=False,project_hessian=None):return 0.,np.zeros(self.n),csr_matrix((self.n,self.n)),0
     def ccd(self,*args):return 1.
     def evaluate_coupled(self,q,old,tangent=False):return self.evaluate(q,tangent)
 
 @pytest.mark.parametrize('acceleration_depth',[0,4])
-@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal')])
+@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy')])
 @pytest.mark.parametrize('use_initial_guess',[False,True])
 def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,search,use_initial_guess):
     X=np.array([[i/2,j/2,k/2] for i in range(3) for j in range(3) for k in range(3)])
@@ -30,11 +30,14 @@ def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_de
     c['implicit_lbfgs_line_search']=search
     c['implicit_coupled_merit_weighting']='diagonal' if search=='diagonal' else 'none'
     c['implicit_coupled_least_squares_fallback']=search=='diagonal'
+    if search=='homotopy':c.update(implicit_friction_smoothing_multipliers=[100.,10.,1.],ipc_slip_regularization_mm=1e-4)
     q=np.zeros(p.ndof);b=np.tile(np.eye(3),(len(t),1,1));ep=np.zeros(len(t))
     guess=q.copy() if use_initial_guess else None
     if guess is not None:
         guess[p.prescribed]=-.00008;guess[:p.nmicro]=np.random.default_rng(14).normal(scale=1e-6,size=p.nmicro)
-    result=equilibrium(p,t,q,b,ep,np.linalg.inv(D),v,c,NoContact(p.ndof),-.0001,np.zeros(p.ndof),lambda row:None,initial_guess=guess)
+    contact=NoContact(p.ndof);original_friction=contact.friction
+    result=equilibrium(p,t,q,b,ep,np.linalg.inv(D),v,c,contact,-.0001,np.zeros(p.ndof),lambda row:None,initial_guess=guess)
+    assert contact.friction is original_friction
     assert not isinstance(result,dict),result
     q,state,g,_,_,_=result
     np.testing.assert_array_equal(q[-6:][[0,1,3,4,5]],0)

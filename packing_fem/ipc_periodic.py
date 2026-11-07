@@ -53,7 +53,14 @@ class PeriodicIPC:
     def collisions(self,x):
         n=ipc.NormalCollisions();n.use_area_weighting=True
         n.collision_set_type=ipc.NormalCollisions.IMPROVED_MAX_APPROX
-        n.build(self.mesh,x,self.c['ipc_dhat_mm'])
+        cache=getattr(self,'_swept_cache',None);covered=False
+        if cache is not None:
+            candidates,start,delta,pivot=cache
+            fraction=float((x.ravel()[pivot]-start.ravel()[pivot])/delta.ravel()[pivot])
+            covered=(-1e-12<=fraction<=1+1e-12 and np.max(abs(x-start-fraction*delta))<1e-10)
+        self.last_collision_cache_hit=bool(covered)
+        if covered:n.build(candidates,self.mesh,x,self.c['ipc_dhat_mm'])
+        else:n.build(self.mesh,x,self.c['ipc_dhat_mm'])
         # Select using rest coordinates, so ownership never jumps with deformation.
         for name in ('vv_collisions','ev_collisions','ee_collisions','fv_collisions'):
             entries=getattr(n,name)
@@ -117,4 +124,11 @@ class PeriodicIPC:
         if maximum==0:return 1.
         # A conservative horizon avoids enormous swept boxes for poor Newton /
         # quasi-Newton proposals. It bounds the query, not the physical solution.
-        return horizon*ipc.compute_collision_free_stepsize(self.mesh,self.positions(q),self.positions(q+horizon*dq))
+        start=self.positions(q);end=self.positions(q+horizon*dq)
+        if self.c.get('ipc_cache_swept_candidates',False):
+            candidates=ipc.Candidates();candidates.build(self.mesh,start,end,self.c['ipc_dhat_mm']+1e-8)
+            delta=end-start;pivot=int(np.argmax(abs(delta)))
+            if delta.ravel()[pivot]!=0:self._swept_cache=(candidates,start,delta,pivot)
+            else:self._swept_cache=None
+            return horizon*candidates.compute_collision_free_stepsize(self.mesh,start,end)
+        return horizon*ipc.compute_collision_free_stepsize(self.mesh,start,end)

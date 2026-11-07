@@ -173,6 +173,8 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
     (out/'config.json').write_text(json.dumps(c,indent=2))
     if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton'):raise ValueError('Unknown implicit optimizer')
     if c.get('implicit_optimizer') in ('lbfgs','coupled_newton') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
+    if c.get('implicit_iterate_checkpoint_every',0)>0:
+        trace=out/'iterate-trace';trace.mkdir();c['_iterate_checkpoint_directory']=str(trace)
     sources=out/'source';sources.mkdir()
     manifest={}
     for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:

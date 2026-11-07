@@ -71,3 +71,31 @@ def test_coupled_friction_force_jacobian_includes_normal_force_variation():
     fd=(contact.evaluate_coupled(q+h*d,old)[1]-contact.evaluate_coupled(q-h*d,old)[1])/(2*h)
     np.testing.assert_allclose(J@d,fd,rtol=1e-5,atol=1e-6)
     assert np.max(abs((J-J.T).data))>1e-3
+
+
+def test_swept_candidates_preserve_contact_and_reject_queries_outside_sweep():
+    p=Periodic(X,10.);q=moved(p,-.005);dq=moved(p,-.02)
+    cached=PeriodicIPC(X,T,p,dict(C,ipc_cache_swept_candidates=True))
+    fresh=PeriodicIPC(X,T,p,C)
+    np.testing.assert_allclose(cached.ccd(q,dq),fresh.ccd(q,dq),rtol=1e-12)
+    for fraction in [0.,.25,.75,1.]:
+        query=q+fraction*dq
+        a=cached.evaluate_coupled(query,q);b=fresh.evaluate_coupled(query,q)
+        assert cached.last_collision_cache_hit
+        assert a[3]==b[3]
+        np.testing.assert_allclose(a[0],b[0],rtol=1e-12,atol=1e-12)
+        np.testing.assert_allclose(a[1],b[1],rtol=1e-11,atol=1e-11)
+    cached.evaluate_coupled(q+1.01*dq,q)
+    assert not cached.last_collision_cache_hit
+    outside=q+.5*dq;outside[1]+=.0001
+    cached.evaluate_coupled(outside,q)
+    assert not cached.last_collision_cache_hit
+
+
+def test_swept_candidates_ccd_blocks_a_crossing_trajectory():
+    p=Periodic(X,10.);q=np.zeros(p.ndof);dq=moved(p,-.05)
+    cached=PeriodicIPC(X,T,p,dict(C,ipc_cache_swept_candidates=True))
+    fresh=PeriodicIPC(X,T,p,C)
+    a=cached.ccd(q,dq);b=fresh.ccd(q,dq)
+    assert 0<a<1
+    np.testing.assert_allclose(a,b,rtol=1e-9,atol=1e-12)
