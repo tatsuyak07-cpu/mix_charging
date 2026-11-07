@@ -38,3 +38,13 @@ def test_continuous_collision_detection_blocks_crossing():
     assert contact.ccd(q,moved(p,-.02))==pytest.approx(1.)
     alpha=contact.ccd(q,moved(p,-.05))
     assert 0<alpha<.7
+
+
+def test_unprojected_contact_tangent_matches_force_derivative():
+    p=Periodic(X,10.);q=moved(p,-.02)
+    contact=PeriodicIPC(X,T,p,dict(C,friction=0.,ipc_project_tangent=False));contact.set_lag(q,q)
+    _,_,K,count=contact.evaluate(q,True)
+    assert count>0
+    d=np.random.default_rng(18).normal(size=p.ndof);d[-6:]=0;h=1e-7
+    gp=contact.evaluate(q+h*d)[1];gm=contact.evaluate(q-h*d)[1]
+    np.testing.assert_allclose(K@d,(gp-gm)/(2*h),rtol=1e-5,atol=1e-6)

@@ -32,6 +32,20 @@ def test_elastic_tangent_matches_force_derivative_and_translation_nullspace():
     np.testing.assert_allclose(K@np.tile([1.,2.,3.],4),0,atol=1e-12)
 
 
+def test_unprojected_plastic_consistent_tangent_matches_force_derivative():
+    V,_,D=geometry(X,T);B=np.eye(3)[None];ep=np.zeros(1)
+    c=dict(C,implicit_project_material_tangent=False)
+    x=X@np.array([[.8,.1,0],[0,1.1,.03],[0,0,1.05]]).T
+    direction=np.random.default_rng(17).normal(size=x.shape)
+    _,_,K,state=evaluate(x,T,B,ep,np.linalg.inv(D),V,c,True)
+    assert state['ep'][0]>0
+    h=1e-7
+    gp=evaluate(x+h*direction,T,B,ep,np.linalg.inv(D),V,c)[1]
+    gm=evaluate(x-h*direction,T,B,ep,np.linalg.inv(D),V,c)[1]
+    np.testing.assert_allclose(K@direction.ravel(),((gp-gm)/(2*h)).ravel(),rtol=1e-6,atol=1e-7)
+    np.testing.assert_allclose(K@np.tile([1.,2.,3.],4),0,atol=1e-12)
+
+
 def test_history_subcells_preserve_potential_without_averaging_plastic_strain():
     V,_,D=geometry(X,T)
     B=np.array([np.diag([1.02,.99,1/1.0098]),np.eye(3)])

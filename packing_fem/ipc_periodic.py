@@ -70,7 +70,7 @@ class PeriodicIPC:
         self.lag=ipc.TangentialCollisions();self.lag.build(self.mesh,x,n,self.barrier,self.c['friction'])
         self.qold=qold.copy()
 
-    def evaluate(self,q,tangent=False):
+    def evaluate(self,q,tangent=False,project_hessian=None):
         x=self.positions(q);n=self.collisions(x)
         value=self.barrier(n,self.mesh,x)
         g=self.barrier.gradient(n,self.mesh,x)
@@ -79,8 +79,10 @@ class PeriodicIPC:
         g+=self.friction.gradient(self.lag,self.mesh,u)
         K=None
         if tangent:
-            H=self.barrier.hessian(n,self.mesh,x,ipc.PSDProjectionMethod.CLAMP)
-            H+=self.friction.hessian(self.lag,self.mesh,u,ipc.PSDProjectionMethod.CLAMP)
+            projected=self.c.get('ipc_project_tangent',True) if project_hessian is None else project_hessian
+            projection=ipc.PSDProjectionMethod.CLAMP if projected else ipc.PSDProjectionMethod.NONE
+            H=self.barrier.hessian(n,self.mesh,x,projection)
+            H+=self.friction.hessian(self.lag,self.mesh,u,projection)
             K=self.R.T@H@self.R
         return value,np.asarray(self.R.T@g).ravel(),K,len(n)
 

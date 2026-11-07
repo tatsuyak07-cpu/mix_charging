@@ -7,6 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from tools.export_pressure_stages import render
 from packing_fem.explicit_periodic import deformation,Periodic
+from packing_fem.explicit_material import geometry
 
 
 def export(root,out,run_name="run-001",caption=None,make_archive=True):
@@ -14,6 +15,9 @@ def export(root,out,run_name="run-001",caption=None,make_archive=True):
     c=json.loads((run/'config.json').read_text());status=json.loads((run/'status.json').read_text())
     with (run/'history.csv').open() as f:rows=list(csv.DictReader(f))
     initial_porosity=float(status['initial_porosity'])
+    with np.load(run/'state-0000.npz') as initial_state:
+        initial_compression=float(-initial_state['q'][-4])
+        initial_porosity=float(1-geometry(initial_state['x'],initial_state['t'])[0].sum()/(c['length_mm']**3*np.linalg.det(deformation(initial_state['q'][-6:]))))
     errors=[];pair_errors=[]
     for row in rows:
         path=run/f"state-{int(row['step']):04d}.npz"
@@ -45,7 +49,10 @@ def export(root,out,run_name="run-001",caption=None,make_archive=True):
     for phase,color in [('compression','#1267a5'),('hold','#c57a00'),('unload','#a52c48')]:
         selected=[r for r in rows if r['phase']==phase]
         if selected:
-            axes[0].plot([100*float(r['compression']) for r in selected],[100*float(r['porosity']) for r in selected],'.-',color=color,label=phase)
+            compression_values=[100*float(r['compression']) for r in selected];porosity_values=[100*float(r['porosity']) for r in selected]
+            if phase=='compression' and initial_compression<float(selected[0]['compression']):
+                compression_values.insert(0,100*initial_compression);porosity_values.insert(0,100*initial_porosity)
+            axes[0].plot(compression_values,porosity_values,'.-',color=color,label=phase)
     axes[0].axhline(10,ls='--',color='gray',lw=.8);axes[0].set(xlabel='Axial compression (%)',ylabel='Measured porosity (%)');axes[0].legend();axes[0].grid(alpha=.25)
     for key,label in [('lateral_length_x_mm','Lx'),('lateral_length_y_mm','Ly')]:axes[1].plot([int(r['step']) for r in rows],[float(r[key]) for r in rows],label=label)
     axes[1].set(xlabel='Accepted step',ylabel='Periodic cell length (mm)',ylim=(.95*c['length_mm'],1.05*c['length_mm']));axes[1].legend();axes[1].grid(alpha=.25)

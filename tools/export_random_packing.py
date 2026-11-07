@@ -5,11 +5,11 @@ from tools.export_fixed_cell import export
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--out',required=True);a=p.parse_args()
-    root=Path(a.root);out=Path(a.out);run=root/'compression-001'
+    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--out',required=True);p.add_argument('--run',default='compression-001');a=p.parse_args()
+    root=Path(a.root);out=Path(a.out);run=root/a.run
     packing=json.loads((root/'packing.json').read_text());mesh=json.loads((root/'mesh-007/metadata.json').read_text());status=json.loads((run/'status.json').read_text())
-    export(root,out,run_name='compression-001',caption=f"Random sintered packing: {packing['particle_count']} particles (prototype)",make_archive=False)
-    for name in ['centers.csv','bonds.csv','packing.json','tests.log','loading-only-tests.log','final-tests.log','volume-audit-tests.log','contact-audit.json','volume-history-audit.json','input-reproduction.json']:
+    export(root,out,run_name=a.run,caption=f"Random sintered packing: {packing['particle_count']} particles (prototype)",make_archive=False)
+    for name in ['centers.csv','bonds.csv','packing.json','tests.log','loading-only-tests.log','final-tests.log','volume-audit-tests.log','acceleration-tests.log','consistent-warm-tests-002.log','full-tangent-tests.log','affine-hybrid-tests.log','lbfgs-tests.log','contact-audit.json','volume-history-audit.json','input-reproduction.json','increment-comparison.json','acceleration-comparison.json']:
         if (root/name).exists():shutil.copy2(root/name,out/name)
     (out/'mesh-metadata.json').write_text(json.dumps(mesh,indent=2)+'\n')
     with (run/'history.csv').open() as stream:rows=list(csv.DictReader(stream))
@@ -22,8 +22,9 @@ def main():
     items += [(path,'exports/'+path.name) for path in sorted(out.iterdir()) if path.is_file()]
     for directory in ['packing_fem','tools','tests']:
         items += [(path,'source/'+str(path)) for path in sorted(Path(directory).glob('*.py'))]
-    for name in ['configs/random-periodic-compaction.json','docs/random-packing-development.md','requirements-implicit.txt','requirements-lock.txt','AGENTS.md']:
-        items.append((Path(name),'source/'+name))
+    source_files=list(Path('configs').glob('random-periodic-compaction*.json'))
+    source_files += [Path(name) for name in ['docs/random-packing-development.md','requirements-implicit.txt','requirements-lock.txt','AGENTS.md','README.md']]
+    for path in source_files:items.append((path,'source/'+str(path)))
     archives=[];z=None;count=0
     def finish():
         nonlocal z

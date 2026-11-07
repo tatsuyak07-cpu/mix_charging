@@ -49,8 +49,9 @@ def evaluate(x,t,old_b,old_ep,old_inverse,reference_volume,c,tangent=False,paren
             column=np.zeros((len(t),4,3));np.add.at(column,parent,dg)
             blocks[:,:,3*node+axis]=column.reshape(-1,12)
     blocks=.5*(blocks+blocks.swapaxes(1,2))
-    eig,U=np.linalg.eigh(blocks)
-    blocks=(U*np.maximum(eig,0)[:,None,:])@U.swapaxes(1,2)
+    if c.get('implicit_project_material_tangent',True):
+        eig,U=np.linalg.eigh(blocks)
+        blocks=(U*np.maximum(eig,0)[:,None,:])@U.swapaxes(1,2)
     ids=(3*t[:,:,None]+np.arange(3)).reshape(-1,12)
     rows=np.broadcast_to(ids[:,:,None],blocks.shape).ravel();cols=np.broadcast_to(ids[:,None,:],blocks.shape).ravel()
     stiffness=coo_matrix((blocks.ravel(),(rows,cols)),shape=(x.size,x.size)).tocsr()

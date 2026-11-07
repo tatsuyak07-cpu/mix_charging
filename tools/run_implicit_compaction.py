@@ -13,6 +13,7 @@ from packing_fem.explicit_periodic import Periodic,deformation
 from packing_fem.implicit_material import evaluate
 from packing_fem.ipc_periodic import PeriodicIPC
 from packing_fem.adaptive_tet import quality
+from packing_fem.fixed_point import anderson_candidate,affine_predictor
 
 
 def active_dofs(p,c,prescribed):
@@ -29,8 +30,15 @@ def active_dofs(p,c,prescribed):
     return active,physical
 
 
-def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None):
-    oldq=q.copy();trial=q.copy()
+def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
+    if c.get('implicit_optimizer','newton')=='lbfgs':
+        from packing_fem.quasistatic_lbfgs import equilibrium as lbfgs_equilibrium
+        return lbfgs_equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
+    oldq=q.copy();trial=q.copy() if initial_guess is None else initial_guess.copy()
+    use_initial_guess=initial_guess is not None
+    if prescribed is not None and c.get('implicit_affine_predictor',False):
+        trial=affine_predictor(p,trial,prescribed);use_initial_guess=True
+        log(dict(affine_predictor=True,compression=float(-trial[p.prescribed])))
     actuator=c.get('implicit_actuator_Nmm',1e5) if prescribed is not None else 0.
     multiplier=0.
     free,physical_free=active_dofs(p,c,prescribed)
@@ -38,6 +46,8 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
     if np.any(abs(q[fixed])>1e-12):raise ValueError('Fixed-cell restart must have the initial transverse lattice; start from the unloaded initial mesh')
     scale=np.ones(p.ndof);scale[-6:]=1/p.L
     contact.set_lag(oldq,oldq)
+    depth=c.get('implicit_anderson_depth',0);outputs=[];residuals=[];lag_input=trial.copy()
+    displacement_scale=np.ones(p.ndof);displacement_scale[-6:]=p.L
     try:
         if prescribed is not None:
             _,old_g,old_K,_=evaluate(p.positions(oldq),t,b,ep,inverse,V0,c,True,parent)
@@ -46,6 +56,13 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             column=p.A[:,p.prescribed]
             affine_tangent=float((column.T@old_K@column).toarray()[0,0]+contact_K[p.prescribed,p.prescribed])
             actuator=max(actuator,c.get('implicit_actuator_tangent_multiplier',10.)*abs(affine_tangent))
+        if use_initial_guess:
+            if np.any(abs(trial[fixed])>1e-12) or np.linalg.det(deformation(trial[-6:]))<=0 or np.min(geometry(p.positions(trial),t)[0])<=0:raise ValueError('Inadmissible initial iterate')
+            contact.set_lag(trial,oldq)
+            if prescribed is not None:
+                _,wg,_,_=evaluate(p.positions(trial),t,b,ep,inverse,V0,c,parent=parent)
+                _,wcg,_,_=contact.evaluate(trial)
+                multiplier=-float((p.A.T@wg.ravel()+wcg)[p.prescribed])
         for lag in range(c['implicit_max_lag']):
             converged=False
             for it in range(c['implicit_max_newton']):
@@ -60,22 +77,44 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 norm=float(np.max(abs(g[free]*scale[free])))
                 log(dict(lag=lag,newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,contacts=n,actuator_Nmm=actuator))
                 if norm<c['implicit_force_tolerance_N']:converged=True;break
-                K=(p.A.T@Km@p.A+Kc).tocsr()
-                add=np.zeros(p.ndof);add[p.prescribed]=actuator;K=K+diags(add);Kf=K[free][:,free]
-                diagonal=np.maximum(abs(Kf.diagonal()),1e-6)
-                d=np.zeros(p.ndof);d[free]=block_solve(Kf+diags(diagonal*c['implicit_regularization']),-g[free],p.nmicro)
-                if not np.all(np.isfinite(d)) or g@d>=0:raise ValueError('Newton direction is not a descent direction')
+                projected=c.get('implicit_project_material_tangent',True) and c.get('ipc_project_tangent',True)
+                if not projected and norm>c.get('implicit_exact_tangent_max_residual_N',float('inf')):
+                    _,_,Km,_=evaluate(p.positions(trial),t,b,ep,inverse,V0,dict(c,implicit_project_material_tangent=True),True,parent)
+                    if not c.get('ipc_project_tangent',True):_,_,Kc,_=contact.evaluate(trial,True,project_hessian=True)
+                    projected=True
+                for project in ([True] if projected else [False,True]):
+                    if project and not projected:
+                        _,_,Km,_=evaluate(p.positions(trial),t,b,ep,inverse,V0,dict(c,implicit_project_material_tangent=True),True,parent)
+                        if not c.get('ipc_project_tangent',True):_,_,Kc,_=contact.evaluate(trial,True,project_hessian=True)
+                        log(dict(projected_tangent_fallback=True,lag=lag,newton=it))
+                    K=(p.A.T@Km@p.A+Kc).tocsr()
+                    add=np.zeros(p.ndof);add[p.prescribed]=actuator;K=K+diags(add);Kf=K[free][:,free]
+                    diagonal=np.maximum(abs(Kf.diagonal()),1e-6)
+                    try:
+                        d=np.zeros(p.ndof);d[free]=block_solve(Kf+diags(diagonal*c['implicit_regularization']),-g[free],p.nmicro)
+                        if not np.all(np.isfinite(d)) or g@d>=0:raise ValueError('Newton direction is not a descent direction')
+                        break
+                    except (ValueError,RuntimeError):
+                        if project:raise
                 bound=contact.ccd(trial,d);alpha=1. if bound>=1 else .9*bound
                 accepted=False
+                roundoff=32*np.finfo(float).eps*max(c['young_mpa']*float(V0.sum()),abs(energy),1e-30)
                 for ls in range(35):
                     candidate=trial+alpha*d
                     try:
                         if np.linalg.det(deformation(candidate[-6:]))<=0:raise ValueError('Nonpositive periodic cell volume')
-                        ve,_,_,_=evaluate(p.positions(candidate),t,b,ep,inverse,V0,c,parent=parent)
-                        ce,_,_,_=contact.evaluate(candidate)
+                        ve,vg,_,_=evaluate(p.positions(candidate),t,b,ep,inverse,V0,c,parent=parent)
+                        ce,vcg,_,_=contact.evaluate(candidate)
                         candidate_error=0. if prescribed is None else candidate[p.prescribed]-prescribed
                         candidate_energy=ve+ce-float(external@candidate)+multiplier*candidate_error+.5*actuator*candidate_error**2
                         if candidate_energy<=energy+1e-4*alpha*(g@d):accepted=True;break
+                        if candidate_energy<=energy+roundoff:
+                            candidate_g=np.asarray(p.A.T@vg.ravel()).ravel()+vcg-external
+                            candidate_g[p.prescribed]+=multiplier+actuator*candidate_error
+                            candidate_norm=float(np.max(abs(candidate_g[free]*scale[free])))
+                            if candidate_norm<norm*(1-1e-4*alpha):
+                                log(dict(roundoff_residual_guard=True,residual_before_N=norm,residual_after_N=candidate_norm,energy_window_Nmm=roundoff))
+                                accepted=True;break
                     except (ValueError,RuntimeError):pass
                     alpha*=.5
                 if not accepted:raise ValueError('Line search failed')
@@ -90,20 +129,53 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             multiplier+=actuator*error
             if norm<c['implicit_force_tolerance_N'] and abs(error)<c.get('implicit_macro_tolerance',1e-7):
                 return trial,state,internal,n,it,norm
+            if depth>1:
+                outputs.append(trial.copy());residuals.append(trial-lag_input)
+                outputs=outputs[-depth:];residuals=residuals[-depth:]
+                candidate=anderson_candidate(outputs,residuals,displacement_scale)
+                if candidate is not None:
+                    candidate[fixed]=0.;direction=candidate-trial
+                    bound=contact.ccd(trial,direction);fraction=1. if bound>=1 else .9*bound
+                    accepted_acceleration=False
+                    for safeguard in range(20):
+                        candidate=trial+fraction*direction
+                        candidate_error=0. if prescribed is None else candidate[p.prescribed]-prescribed
+                        if abs(candidate_error)>max(abs(error),c.get('implicit_macro_tolerance',1e-7)):
+                            fraction*=.5;continue
+                        try:
+                            if np.linalg.det(deformation(candidate[-6:]))<=0 or np.min(geometry(p.positions(candidate),t)[0])<=0:raise ValueError('Inadmissible Anderson proposal')
+                            _,cg,_,cs=evaluate(p.positions(candidate),t,b,ep,inverse,V0,c,parent=parent)
+                            contact.set_lag(candidate,oldq)
+                            _,ccg,_,cn=contact.evaluate(candidate)
+                            ci=np.asarray(p.A.T@cg.ravel()).ravel()+ccg
+                            candidate_norm=float(np.max(abs((ci-external)[physical_free]*scale[physical_free])))
+                            if candidate_norm<norm:
+                                log(dict(anderson_lag=lag,residual_before_N=norm,residual_after_N=candidate_norm,fraction=fraction,history=len(outputs)))
+                                trial=candidate;accepted_acceleration=True
+                                if candidate_norm<c['implicit_force_tolerance_N'] and abs(candidate_error)<c.get('implicit_macro_tolerance',1e-7):
+                                    return trial,cs,ci,cn,it,candidate_norm
+                                break
+                        except (ValueError,RuntimeError):pass
+                        # A non-improving proposal restores the established map.
+                        break
+                    if not accepted_acceleration:contact.set_lag(trial,oldq)
+            lag_input=trial.copy()
         raise ValueError('Friction lag iterations did not converge')
     except (ValueError,RuntimeError) as exc:
         return dict(reason=str(exc),iterate=trial)
 
 
-def run(config,mesh,out,restart=None):
+def run(config,mesh,out,restart=None,initial_iterate=None):
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
+    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs'):raise ValueError('Unknown implicit optimizer')
+    if c.get('implicit_optimizer')=='lbfgs' and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('L-BFGS development backend currently requires fixed transverse vectors and compression-only scope')
     sources=out/'source';sources.mkdir()
     manifest={}
-    for name in ['tools/run_implicit_compaction.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
+    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/quasistatic_lbfgs.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
         source=Path(name);target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
-    (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart)),indent=2))
+    (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True),indent=2))
     data=np.load(mesh);X=data['points'];t=oriented(X,data['tets'])
     if restart:
         r=np.load(restart);X=r['X'];t=oriented(X,r['t'])
@@ -116,6 +188,15 @@ def run(config,mesh,out,restart=None):
     initial_mesh_porosity=float(1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3)
     if 'initial_porosity_tolerance' in c and abs(initial_mesh_porosity-c['requested_initial_porosity'])>c['initial_porosity_tolerance']:raise ValueError('Measured mesh porosity outside the configured initial geometry tolerance')
     contact=PeriodicIPC(X,t,p,c)
+    warm_guess=None;warm_X=None;warm_t=None
+    if initial_iterate:
+        if not restart:raise ValueError('An initial iterate requires an accepted restart state')
+        with np.load(initial_iterate) as guess:
+            for name,expected in [('X',X),('t',t),('oldq',q),('b',b),('ep',ep)]:
+                if not np.array_equal(guess[name],expected):raise ValueError('Initial iterate does not belong to this accepted material history')
+            warm_guess=guess['q'].copy();warm_X=X.copy();warm_t=t.copy()
+        import ipctk as ipc
+        if ipc.has_intersections(contact.mesh,contact.positions(warm_guess)):raise ValueError('Initial iterate has surface intersections')
     print('mesh',len(X),len(t),'ghost',len(contact.X),'ndof',p.ndof,flush=True)
     initial=1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3
     rows=[];start=time.monotonic();increment=c['implicit_strain_increment'];index=0;failed=0
@@ -176,7 +257,10 @@ def run(config,mesh,out,restart=None):
         elif phase=='hold':prescribed=q[p.prescribed];external=zero.copy()
         else:
             prescribed=None;external=zero.copy();external[p.prescribed]=unload_reaction*(1-min(1.,unload_fraction+increment))
-        solution=equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent)
+        if warm_guess is not None and (not np.array_equal(X,warm_X) or not np.array_equal(t,warm_t)):
+            log(dict(initial_iterate_discarded='Accepted remesh changed its topology'));warm_guess=None
+        solution=equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess=warm_guess)
+        warm_guess=None
         if isinstance(solution,dict):
             failed+=1;np.savez_compressed(out/f'failed-{failed:04d}.npz',q=solution['iterate'],X=X,t=t,oldq=q,b=b,ep=ep)
             log(dict(rejected_stage=index+1,reason=solution['reason'],increment=increment));increment*=.5
@@ -210,8 +294,8 @@ def run(config,mesh,out,restart=None):
     raise RuntimeError('Stage budget exhausted')
 
 if __name__=='__main__':
-    a=argparse.ArgumentParser();a.add_argument('--config',required=True);a.add_argument('--mesh',required=True);a.add_argument('--out',required=True);a.add_argument('--restart');args=a.parse_args()
-    try:run(args.config,args.mesh,args.out,args.restart)
+    a=argparse.ArgumentParser();a.add_argument('--config',required=True);a.add_argument('--mesh',required=True);a.add_argument('--out',required=True);a.add_argument('--restart');a.add_argument('--initial-iterate');args=a.parse_args()
+    try:run(args.config,args.mesh,args.out,args.restart,args.initial_iterate)
     except FileExistsError:
         raise
     except BaseException:
