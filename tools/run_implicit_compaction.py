@@ -113,6 +113,8 @@ def run(config,mesh,out,restart=None):
         r=np.load(restart)
         if abs(r['V0'].sum()/geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()-1)>1e-6:raise ValueError('Restart material volume mismatch')
         q=r['q'];b=r['b'];ep=r['ep'];V0=r['V0'];parent=r['parent'] if 'parent' in r else np.arange(len(t));inverse=np.linalg.inv(geometry(p.positions(q),t)[2])
+    initial_mesh_porosity=float(1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3)
+    if 'initial_porosity_tolerance' in c and abs(initial_mesh_porosity-c['requested_initial_porosity'])>c['initial_porosity_tolerance']:raise ValueError('Measured mesh porosity outside the configured initial geometry tolerance')
     contact=PeriodicIPC(X,t,p,c)
     print('mesh',len(X),len(t),'ghost',len(contact.X),'ndof',p.ndof,flush=True)
     initial=1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3
@@ -123,9 +125,12 @@ def run(config,mesh,out,restart=None):
     zero=np.zeros(p.ndof);unload_fraction=0.;unload_reaction=None;loaded_porosity=None
     def log(v):print(json.dumps(v),flush=True)
     def phi_now():return float(1-geometry(p.positions(q),t)[0].sum()/(p.L**3*np.linalg.det(deformation(q[-6:]))))
-    if phase=='compression' and phi_now()<=c['target_final_porosity']+c['porosity_tolerance']:phase='hold'
+    already_loaded=phase=='compression' and phi_now()<=c['target_final_porosity']+c['porosity_tolerance']
+    if already_loaded and not c.get('loading_only',False):phase='hold'
     if phase=='hold':loaded_porosity=phi_now()
     np.savez_compressed(out/'state-0000.npz',X=X,x=p.positions(q),t=t,q=q,b=b,ep=ep,V0=V0,parent=parent)
+    if already_loaded and c.get('loading_only',False):
+        (out/'status.json').write_text(json.dumps(dict(status='loaded_target_reached',initial_porosity=float(initial),loaded_porosity=phi_now(),target_porosity=c['target_final_porosity'],target_reached=True,validated=False),indent=2));return
     while index<c['implicit_max_stages']:
         if (phase!='unload' and c.get('implicit_remesh',False) and index!=remesh_attempted_at
                 and quality(p.positions(q),t).min()<c['implicit_remesh_quality']):
@@ -190,6 +195,8 @@ def run(config,mesh,out,restart=None):
         log(row)
         (out/'status.json').write_text(json.dumps(dict(status='running',phase=phase,initial_porosity=initial,last_converged_porosity=phi,validated=False),indent=2))
         if phase=='compression' and phi<=c['target_final_porosity']+c['porosity_tolerance']:
+            if c.get('loading_only',False):
+                (out/'status.json').write_text(json.dumps(dict(status='loaded_target_reached',initial_porosity=float(initial),loaded_porosity=phi,target_porosity=c['target_final_porosity'],target_reached=True,validated=False),indent=2));return
             phase='hold';loaded_porosity=phi
         elif phase=='hold':
             phase='unload';loaded_porosity=phi;unload_reaction=float(g[p.prescribed]);increment=.05

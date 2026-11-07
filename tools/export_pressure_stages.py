@@ -24,7 +24,7 @@ def boundary(t):
     return faces[keep],np.repeat(np.arange(len(t)),4)[keep]
 
 
-def render(path,state,title,L):
+def render(path,state,title,L,footer=None):
     x=state['x'];faces,owners=boundary(state['t'])
     colors=plt.get_cmap('viridis')(plt.Normalize(0,max(float(state['ep'].max()),1e-6))(state['ep'][owners]))
     fig=plt.figure(figsize=(9,8),layout='constrained')
@@ -44,7 +44,7 @@ def render(path,state,title,L):
     axis.set_box_aspect(hi-lo);axis.view_init(elev=23,azim=-53)
     sm=plt.cm.ScalarMappable(norm=plt.Normalize(0,max(float(state['ep'].max()),1e-6)),cmap='viridis')
     fig.colorbar(sm,ax=axis,shrink=.55,label='Equivalent plastic strain')
-    fig.text(.5,.015,'Actual nodal positions, displacement scale 1x; no smoothing\nSmall BCC test cell; mesh convergence unverified',ha='center',fontsize=9)
+    fig.text(.5,.015,footer or 'Actual nodal positions, displacement scale 1x; no smoothing\nSmall BCC test cell; mesh convergence unverified',ha='center',fontsize=9)
     fig.savefig(path,dpi=170);plt.close(fig)
 
 
