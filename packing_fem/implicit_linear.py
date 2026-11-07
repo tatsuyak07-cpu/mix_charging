@@ -1,4 +1,4 @@
-"""Exact block elimination of the six periodic macro deformation unknowns."""
+"""Exact block elimination of the active periodic macro deformation unknowns."""
 import numpy as np
 from scipy.sparse.linalg import splu
 

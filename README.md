@@ -1,7 +1,16 @@
 # Periodic sphere-packing compression — solid FEM
 
+**現在の指定：横方向の周期セル寸法を初期値に固定します。**
+`Fbar=diag(1,1,lambda_z)` とし、圧縮・保持・ゼロ軸荷重への除荷を通してX・Yの周期ベクトルを維持します。
+周期的な微視的変位の揺らぎは許し、横方向反力を記録します。
+[固定セル用設定](configs/implicit-ipc-fixed-cell.json)・[変更内容](docs/fixed-transverse.md)。
+同じ試作メッシュの再計算で、軸方向35.40%圧縮時に空隙率10.05%へ到達。保持・ゼロ軸荷重回復も完走し、回復後は11.57%。
+全27状態でX・Y周期寸法12.1 mmを維持しました。
+[載荷メッシュ](exports/fixed-transverse-001/loaded-mesh.png)・[空隙率と横寸法](exports/fixed-transverse-001/porosity-and-cell-size.png)・[CSVと結果](exports/fixed-transverse-001/README.md)・[全データZIP](exports/fixed-transverse-001.zip)。
+過去の横方向応力自由の設定・結果は比較用として残しています。
+
 <!-- large-deformation-first -->
-**最新：有限変形の陰解法FEM＋IPC周期自己接触＋適応再メッシュへ変更し、95%圧縮まで実計算しました。**
+**前回（横方向応力自由）：有限変形の陰解法FEM＋IPC周期自己接触＋適応再メッシュへ変更し、95%圧縮まで実計算しました。**
 最終空隙率25.816%、経路中の最小空隙率25.137%。**10%到達は未達成**です。
 別分岐では57.5%圧縮・保持・ゼロ軸荷重への除荷を完走し、空隙率27.103%→28.943%、残留圧縮率55.593%を確認しました。
 材料E=10 MPa、摩擦0.3と横方向応力自由の周期条件を維持。初期メッシュの測定空隙率は41.162%で、物理的なメッシュ・増分収束は未認定です。

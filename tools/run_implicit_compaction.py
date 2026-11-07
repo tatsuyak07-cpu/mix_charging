@@ -15,12 +15,27 @@ from packing_fem.ipc_periodic import PeriodicIPC
 from packing_fem.adaptive_tet import quality
 
 
+def active_dofs(p,c,prescribed):
+    """Fixed transverse lattice vectors: only Fzz is a macro unknown.
+
+    Periodic microscopic fluctuations remain free. Transverse reactions are
+    constraint reactions, not equilibrium errors. Unloading keeps the same box.
+    """
+    mode=c.get('transverse_boundary','stress_free')
+    if mode=='stress_free':active=np.arange(p.ndof)
+    elif mode=='fixed_cell':active=np.r_[np.arange(p.nmicro),p.prescribed]
+    else:raise ValueError('Unknown transverse_boundary')
+    physical=active[active!=p.prescribed] if prescribed is not None else active
+    return active,physical
+
+
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None):
     oldq=q.copy();trial=q.copy()
     actuator=c.get('implicit_actuator_Nmm',1e5) if prescribed is not None else 0.
     multiplier=0.
-    physical_free=np.delete(np.arange(p.ndof),p.prescribed) if prescribed is not None else np.arange(p.ndof)
-    free=np.arange(p.ndof)
+    free,physical_free=active_dofs(p,c,prescribed)
+    fixed=np.setdiff1d(np.arange(p.ndof),free)
+    if np.any(abs(q[fixed])>1e-12):raise ValueError('Fixed-cell restart must have the initial transverse lattice; start from the unloaded initial mesh')
     scale=np.ones(p.ndof);scale[-6:]=1/p.L
     contact.set_lag(oldq,oldq)
     try:
@@ -164,11 +179,11 @@ def run(config,mesh,out,restart=None):
             continue
         q,state,g,n,it,norm=solution;b=state['b'];ep=state['ep'];inverse=np.linalg.inv(state['D']);index+=1
         phi=phi_now();H=deformation(q[-6:]);area=p.L**2*np.linalg.norm(np.cross(H[:,0],H[:,1]))
-        free_mask=np.delete(np.arange(p.ndof),p.prescribed) if prescribed is not None else np.arange(p.ndof)
+        _,free_mask=active_dofs(p,c,prescribed)
         scaled=g-external;scaled[-6:]/=p.L
         l2=float(np.linalg.norm(scaled[free_mask]))
         macro_error=0. if prescribed is None else abs(q[p.prescribed]-prescribed)
-        row=dict(macro_target_error=macro_error,step=index,phase=phase,porosity=phi,compression=float(-q[p.prescribed]),axial_reaction_N=float(g[p.prescribed]/p.L),nominal_pressure_MPa=float(-g[p.prescribed]/p.L**3),free_residual_N=norm,free_residual_l2_N=l2,residual_l2_to_axial_reaction=l2/max(abs(g[p.prescribed])/p.L,1e-12),history_points=len(parent),contacts=n,minimum_quality=float(quality(p.positions(q),t).min()),maximum_peeq=float(ep.max()),iterations=it,wall_s=time.monotonic()-start)
+        row=dict(transverse_boundary=c.get('transverse_boundary','stress_free'),lateral_length_x_mm=float(p.L*np.linalg.norm(H[:,0])),lateral_length_y_mm=float(p.L*np.linalg.norm(H[:,1])),transverse_area_ratio=float(area/p.L**2),lateral_reaction_x_N=float(g[p.nmicro]/p.L),lateral_reaction_y_N=float(g[p.nmicro+1]/p.L),macro_target_error=macro_error,step=index,phase=phase,porosity=phi,compression=float(-q[p.prescribed]),axial_reaction_N=float(g[p.prescribed]/p.L),nominal_pressure_MPa=float(-g[p.prescribed]/p.L**3),free_residual_N=norm,free_residual_l2_N=l2,residual_l2_to_axial_reaction=l2/max(abs(g[p.prescribed])/p.L,1e-12),history_points=len(parent),contacts=n,minimum_quality=float(quality(p.positions(q),t).min()),maximum_peeq=float(ep.max()),iterations=it,wall_s=time.monotonic()-start)
         rows.append(row)
         with (out/'history.csv').open('w') as f:w=csv.DictWriter(f,fieldnames=row.keys());w.writeheader();w.writerows(rows)
         np.savez_compressed(out/f'state-{index:04d}.npz',X=X,x=p.positions(q),t=t,q=q,b=b,ep=ep,V0=V0,parent=parent)
@@ -181,7 +196,7 @@ def run(config,mesh,out,restart=None):
         elif phase=='unload':
             unload_fraction=min(1.,unload_fraction+increment)
             if unload_fraction>=1:
-                (out/'status.json').write_text(json.dumps(dict(status='cycle_completed' if loaded_porosity<=c['target_final_porosity']+c['porosity_tolerance'] else 'diagnostic_cycle_completed_target_not_reached',initial_porosity=initial,loaded_porosity=loaded_porosity,recovered_porosity=phi,target_porosity=c['target_final_porosity'],target_reached=bool(loaded_porosity<=c['target_final_porosity']+c['porosity_tolerance']),validated=False),indent=2));return
+                (out/'status.json').write_text(json.dumps(dict(status='cycle_completed' if loaded_porosity<=c['target_final_porosity']+c['porosity_tolerance'] else 'diagnostic_cycle_completed_target_not_reached',initial_porosity=initial,loaded_porosity=loaded_porosity,recovered_porosity=phi,recovery_boundary=c.get('transverse_boundary','stress_free'),recovery_load='zero_axial_load',target_porosity=c['target_final_porosity'],target_reached=bool(loaded_porosity<=c['target_final_porosity']+c['porosity_tolerance']),validated=False),indent=2));return
         if phase=='compression' and -q[p.prescribed]>=c['maximum_axial_compression']-c.get('implicit_macro_tolerance',1e-6):
             (out/'status.json').write_text(json.dumps(dict(status='compression_limit_reached_target_not_reached',initial_porosity=initial,last_converged_porosity=phi,target_porosity=c['target_final_porosity'],target_reached=False,validated=False),indent=2));return
         increment=min(.1 if phase=='unload' else c['implicit_strain_increment'],increment*1.25)

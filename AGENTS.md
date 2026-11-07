@@ -29,3 +29,9 @@
   rigid inclusion are not completion gates for this scope. Preserve the
   material and existing transverse-stress-free periodic conditions unless
   the user changes them. Report loaded and recovered porosity separately.
+
+- User update (2026-11-07): transverse periodic cell sizes must stay fixed.
+  Use fixed transverse lattice vectors (Fxx=Fyy=1, all macro shear zero),
+  retaining periodic microscopic fluctuations. Keep these constraints during
+  axial unloading; report lateral reactions and distinguish zero axial load
+  from a completely traction-free state. Preserve the older stress-free runs.

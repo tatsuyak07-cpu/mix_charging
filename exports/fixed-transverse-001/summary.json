@@ -1,0 +1,11 @@
+{
+  "status": "cycle_completed",
+  "initial_porosity": 0.4116199849746327,
+  "loaded_porosity": 0.10047951731723448,
+  "recovered_porosity": 0.11571566967310765,
+  "recovery_boundary": "fixed_cell",
+  "recovery_load": "zero_axial_load",
+  "target_porosity": 0.1,
+  "target_reached": true,
+  "validated": false
+}

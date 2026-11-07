@@ -1,0 +1,9 @@
+{
+  "accepted_states": 27,
+  "maximum_paired_boundary_vector_error_mm": 1.7763568394002505e-15,
+  "maximum_transverse_macro_error": 0.0,
+  "lateral_length_mm": 12.1,
+  "transverse_area_ratio": 1.0,
+  "recovery": "zero axial load with transverse constraints retained",
+  "validated": false
+}
