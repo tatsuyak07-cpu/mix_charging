@@ -1,0 +1,20 @@
+[
+  {
+    "state": "results/random-packing-001/compression-007/state-0001.npz",
+    "compression": 0.19999966095812288,
+    "porosity": 0.25783954090952466,
+    "elements": 66049,
+    "history_points": 66122,
+    "minimum_volume_mm3": 0.00024603413962761325,
+    "material_volume_consistency": 1.9379405549065077e-10,
+    "required_relative_shift_bound": 1,
+    "enlarged_radius": 2,
+    "contacts_radius1": 910,
+    "contacts_enlarged": 910,
+    "barrier_energy_relative_difference": 3.821374828728527e-16,
+    "barrier_gradient_max_difference": 1.865174681370263e-14,
+    "intersections_radius1": false,
+    "intersections_enlarged": false,
+    "passed": true
+  }
+]
