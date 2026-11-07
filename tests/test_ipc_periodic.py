@@ -56,3 +56,18 @@ def test_large_proposal_uses_bounded_ccd_sweep_and_remains_collision_free():
     assert 0<alpha<=1e-7
     assert contact.last_ccd_horizon==pytest.approx(1e-7)
     assert not ipc.has_intersections(contact.mesh,contact.positions(q+.9*alpha*dq))
+
+
+def test_coupled_friction_force_jacobian_includes_normal_force_variation():
+    p=Periodic(X,10.);q=moved(p,-.02);old=moved(p,-.01)
+    for node in range(4,8):old[3*(p.classes[node]-1)+1]=-.005
+    contact=PeriodicIPC(X,T,p,C)
+    value,g,J,count=contact.evaluate_coupled(q,old,True)
+    contact.set_lag(q,old);ve,vg,_,cn=contact.evaluate(q)
+    assert count==cn and count>0
+    np.testing.assert_allclose(value,ve,rtol=1e-12)
+    np.testing.assert_allclose(g,vg,atol=1e-12)
+    d=np.random.default_rng(181).normal(size=p.ndof);d[-6:]=0;h=1e-7
+    fd=(contact.evaluate_coupled(q+h*d,old)[1]-contact.evaluate_coupled(q-h*d,old)[1])/(2*h)
+    np.testing.assert_allclose(J@d,fd,rtol=1e-5,atol=1e-6)
+    assert np.max(abs((J-J.T).data))>1e-3

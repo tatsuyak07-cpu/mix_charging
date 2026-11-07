@@ -11,11 +11,12 @@ class NoContact:
     def set_lag(self,*args):pass
     def evaluate(self,q,tangent=False,project_hessian=None):return 0.,np.zeros(self.n),csr_matrix((self.n,self.n)),0
     def ccd(self,*args):return 1.
+    def evaluate_coupled(self,q,old,tangent=False):return self.evaluate(q,tangent)
 
 @pytest.mark.parametrize('acceleration_depth',[0,4])
-@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch',[('newton',False,np.inf),('newton',False,1e-3),('newton',True,np.inf),('lbfgs',True,1e-3)])
+@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal')])
 @pytest.mark.parametrize('use_initial_guess',[False,True])
-def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,use_initial_guess):
+def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,search,use_initial_guess):
     X=np.array([[i/2,j/2,k/2] for i in range(3) for j in range(3) for k in range(3)])
     def node(i,j,k):return i*9+j*3+k
     hexes=np.array([[node(i,j,k),node(i+1,j,k),node(i+1,j+1,k),node(i,j+1,k),node(i,j,k+1),node(i+1,j,k+1),node(i+1,j+1,k+1),node(i,j+1,k+1)] for i in range(2) for j in range(2) for k in range(2)])
@@ -26,6 +27,9 @@ def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_de
     c['implicit_exact_tangent_max_residual_N']=tangent_switch
     c['implicit_affine_predictor']=np.isfinite(tangent_switch)
     c['implicit_optimizer']=optimizer
+    c['implicit_lbfgs_line_search']=search
+    c['implicit_coupled_merit_weighting']='diagonal' if search=='diagonal' else 'none'
+    c['implicit_coupled_least_squares_fallback']=search=='diagonal'
     q=np.zeros(p.ndof);b=np.tile(np.eye(3),(len(t),1,1));ep=np.zeros(len(t))
     guess=q.copy() if use_initial_guess else None
     if guess is not None:

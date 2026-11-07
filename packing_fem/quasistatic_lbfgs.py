@@ -4,6 +4,7 @@ from scipy.sparse import diags
 from scipy.sparse.linalg import splu
 from .implicit_material import evaluate
 from .fixed_point import affine_predictor,anderson_candidate
+from .line_search import bounded_wolfe
 
 
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
@@ -51,11 +52,29 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                     pairs=[];dq[:p.nmicro]=-factor.solve(gradient)
                 slope=float(gradient@dq[:p.nmicro])
                 if not np.all(np.isfinite(dq)) or not np.isfinite(slope) or slope>=0:raise ValueError('L-BFGS preconditioner did not produce descent')
-                bound=contact.ccd(trial,dq);alpha=1. if bound>=1 else .9*bound
-                if getattr(contact,'last_ccd_horizon',1.)<1:
-                    log(dict(ccd_horizon=contact.last_ccd_horizon,proposed_max_displacement_mm=contact.last_ccd_max_displacement_mm))
                 accepted=False;roundoff=32*np.finfo(float).eps*max(c['young_mpa']*float(V0.sum()),abs(energy),1e-30)
-                for ls in range(35):
+                wolfe_mode=c.get('implicit_lbfgs_line_search','armijo')=='strong_wolfe'
+                if wolfe_mode:
+                    maximum=float(np.max(np.linalg.norm((p.A@dq).reshape(-1,3),axis=1)))
+                    if not maximum>0:raise ValueError('Zero L-BFGS search direction')
+                    search_length=c.get('implicit_lbfgs_search_step_mm',.05)
+                    dq=(dq/maximum)*search_length;slope=float(gradient@dq[:p.nmicro])
+                    extension=c.get('ipc_ccd_maximum_displacement_mm',.1)/search_length
+                    bound=contact.ccd(trial,extension*dq);maximum_alpha=.9*extension*bound
+                    def line_values(micro):
+                        candidate=trial.copy();candidate[:p.nmicro]=micro
+                        ve,vi,vs,vn=values(candidate)
+                        return ve,(vi-external)[:p.nmicro],(candidate,vi,vs,vn)
+                    result=bounded_wolfe(trial[:p.nmicro],dq[:p.nmicro],energy,gradient,line_values,maximum_alpha,roundoff)
+                    if result is not None:
+                        candidate,vi,vs,vn=result['payload'];ve=result['energy'];vg=result['gradient'];alpha=result['alpha'];accepted=True
+                        log(dict(lbfgs_wolfe=result['wolfe'],alpha=alpha,energy_decrease_Nmm=energy-ve,line_search_warnings=result['warnings']))
+                    else:alpha=min(1.,maximum_alpha)
+                else:
+                    bound=contact.ccd(trial,dq);alpha=1. if bound>=1 else .9*bound
+                    if getattr(contact,'last_ccd_horizon',1.)<1:
+                        log(dict(ccd_horizon=contact.last_ccd_horizon,proposed_max_displacement_mm=contact.last_ccd_max_displacement_mm))
+                for ls in range(0 if accepted else 35):
                     candidate=trial+alpha*dq
                     try:
                         ve,vi,vs,vn=values(candidate);vg=(vi-external)[:p.nmicro]
@@ -68,7 +87,8 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                         pairs=[];factor=None;log(dict(lbfgs_reset='Line search rejected history direction'));continue
                     raise ValueError('L-BFGS line search failed')
                 s=(candidate-trial)[:p.nmicro];y=vg-gradient;curvature=float(s@y)
-                if curvature>1e-12*np.linalg.norm(s)*np.linalg.norm(y) and curvature>0:
+                curvature_safe=not wolfe_mode or curvature>=.1*max(0.,-float(s@gradient))
+                if curvature_safe and curvature>1e-12*np.linalg.norm(s)*np.linalg.norm(y) and curvature>0:
                     pairs.append((s.copy(),y.copy(),1/curvature));pairs=pairs[-memory:]
                 trial=candidate;energy=ve;internal=vi;state=vs;n=vn
             else:raise ValueError('L-BFGS iteration budget exhausted')

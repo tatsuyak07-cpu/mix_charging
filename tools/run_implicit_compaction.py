@@ -34,6 +34,9 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
     if c.get('implicit_optimizer','newton')=='lbfgs':
         from packing_fem.quasistatic_lbfgs import equilibrium as lbfgs_equilibrium
         return lbfgs_equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
+    if c.get('implicit_optimizer')=='coupled_newton':
+        from packing_fem.quasistatic_coupled import equilibrium as coupled_equilibrium
+        return coupled_equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
     oldq=q.copy();trial=q.copy() if initial_guess is None else initial_guess.copy()
     use_initial_guess=initial_guess is not None
     if prescribed is not None and c.get('implicit_affine_predictor',False):
@@ -168,11 +171,11 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
 def run(config,mesh,out,restart=None,initial_iterate=None):
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
-    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs'):raise ValueError('Unknown implicit optimizer')
-    if c.get('implicit_optimizer')=='lbfgs' and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('L-BFGS development backend currently requires fixed transverse vectors and compression-only scope')
+    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton'):raise ValueError('Unknown implicit optimizer')
+    if c.get('implicit_optimizer') in ('lbfgs','coupled_newton') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
     sources=out/'source';sources.mkdir()
     manifest={}
-    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/quasistatic_lbfgs.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
+    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
         source=Path(name);target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
     (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True),indent=2))

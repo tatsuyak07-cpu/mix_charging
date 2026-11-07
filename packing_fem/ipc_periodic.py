@@ -86,6 +86,26 @@ class PeriodicIPC:
             K=self.R.T@H@self.R
         return value,np.asarray(self.R.T@g).ravel(),K,len(n)
 
+    def evaluate_coupled(self,q,qold,tangent=False):
+        """Self-consistent Coulomb force and its nonsymmetric position Jacobian.
+
+        The reported energy is diagnostic; its derivative also differentiates
+        normal-force-dependent dissipation and is not this equilibrium force.
+        """
+        x=self.positions(q);n=self.collisions(x)
+        self.lag=ipc.TangentialCollisions();self.lag.build(self.mesh,x,n,self.barrier,self.c['friction']);self.qold=qold.copy()
+        u=np.asfortranarray((self.R@(q-qold)).reshape(-1,3))
+        value=self.barrier(n,self.mesh,x)+self.friction(self.lag,self.mesh,u)
+        g=self.barrier.gradient(n,self.mesh,x)+self.friction.gradient(self.lag,self.mesh,u)
+        K=None
+        if tangent:
+            rest=np.asfortranarray(self.X);lagged=np.asfortranarray((self.R@q).reshape(-1,3))
+            H=self.barrier.hessian(n,self.mesh,x,ipc.PSDProjectionMethod.NONE)
+            for wrt in [ipc.TangentialPotential.DiffWRT.LAGGED_DISPLACEMENTS,ipc.TangentialPotential.DiffWRT.VELOCITIES]:
+                H-=self.friction.force_jacobian(self.lag,self.mesh,rest,lagged,u,self.barrier,wrt)
+            K=self.R.T@H@self.R
+        return value,np.asarray(self.R.T@g).ravel(),K,len(n)
+
     def ccd(self,q,dq):
         motion=(self.R@dq).reshape(-1,3)
         maximum=float(np.max(np.linalg.norm(motion,axis=1),initial=0.))
