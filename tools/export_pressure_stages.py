@@ -14,6 +14,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from packing_fem.checkpoint import load
+from packing_fem.plot_fields import element_peeq
 from packing_fem.explicit_periodic import deformation
 
 
@@ -26,7 +27,8 @@ def boundary(t):
 
 def render(path,state,title,L,footer=None):
     x=state['x'];faces,owners=boundary(state['t'])
-    colors=plt.get_cmap('viridis')(plt.Normalize(0,max(float(state['ep'].max()),1e-6))(state['ep'][owners]))
+    field=element_peeq(state)
+    colors=plt.get_cmap('viridis')(plt.Normalize(0,max(float(field.max()),1e-6))(field[owners]))
     fig=plt.figure(figsize=(9,8),layout='constrained')
     fig.get_layout_engine().set(rect=(0,.07,1,.93))
     axis=fig.add_subplot(projection='3d')
@@ -42,8 +44,8 @@ def render(path,state,title,L,footer=None):
     hi=np.maximum(x.max(axis=0),np.maximum(corners.max(axis=0),moved.max(axis=0)))+.3
     axis.set(xlim=(lo[0],hi[0]),ylim=(lo[1],hi[1]),zlim=(lo[2],hi[2]),xlabel='X (mm)',ylabel='Y (mm)',zlabel='Z (mm)',title=title)
     axis.set_box_aspect(hi-lo);axis.view_init(elev=23,azim=-53)
-    sm=plt.cm.ScalarMappable(norm=plt.Normalize(0,max(float(state['ep'].max()),1e-6)),cmap='viridis')
-    fig.colorbar(sm,ax=axis,shrink=.55,label='Equivalent plastic strain')
+    sm=plt.cm.ScalarMappable(norm=plt.Normalize(0,max(float(field.max()),1e-6)),cmap='viridis')
+    fig.colorbar(sm,ax=axis,shrink=.55,label='Volume-averaged equivalent plastic strain' if 'parent' in state else 'Equivalent plastic strain')
     fig.text(.5,.015,footer or 'Actual nodal positions, displacement scale 1x; no smoothing\nSmall BCC test cell; mesh convergence unverified',ha='center',fontsize=9)
     fig.savefig(path,dpi=170);plt.close(fig)
 
