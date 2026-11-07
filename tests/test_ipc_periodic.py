@@ -1,7 +1,7 @@
 """Small, reproducible contact integration checks; optional IPC dependency."""
 import numpy as np
 import pytest
-pytest.importorskip('ipctk')
+ipc=pytest.importorskip('ipctk')
 from packing_fem.explicit_material import oriented
 from packing_fem.explicit_periodic import Periodic
 from packing_fem.ipc_periodic import PeriodicIPC
@@ -48,3 +48,11 @@ def test_unprojected_contact_tangent_matches_force_derivative():
     d=np.random.default_rng(18).normal(size=p.ndof);d[-6:]=0;h=1e-7
     gp=contact.evaluate(q+h*d)[1];gm=contact.evaluate(q-h*d)[1]
     np.testing.assert_allclose(K@d,(gp-gm)/(2*h),rtol=1e-5,atol=1e-6)
+
+
+def test_large_proposal_uses_bounded_ccd_sweep_and_remains_collision_free():
+    p=Periodic(X,10.);contact=PeriodicIPC(X,T,p,dict(C,ipc_ccd_maximum_displacement_mm=.1))
+    q=np.zeros(p.ndof);dq=moved(p,-1e6);alpha=contact.ccd(q,dq)
+    assert 0<alpha<=1e-7
+    assert contact.last_ccd_horizon==pytest.approx(1e-7)
+    assert not ipc.has_intersections(contact.mesh,contact.positions(q+.9*alpha*dq))

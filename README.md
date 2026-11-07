@@ -1,10 +1,17 @@
 # Periodic sphere-packing compression — solid FEM
 
+**ランダム充填層の工程1〜4を開発中です。**
+16粒子・球径10 mm・焼結ネック径2 mmの周期固体FEMを作成し、
+初期メッシュ空隙率40.404%から、20%圧縮時の25.784%まで収束しました。
+両横周期寸法24.109757 mmを固定し、載荷空隙率10%への計算を続けています。
+[開発・計算報告](docs/random-packing-development.md)・[単一計算用設定](configs/random-periodic-compaction-lbfgs-bounded.json)。
+単一16粒子の試作で、統計的等方性・メッシュ・増分収束は未認定です。
+
 **現在の指定：横方向の周期セル寸法を初期値に固定します。**
 `Fbar=diag(1,1,lambda_z)` とし、圧縮・保持・ゼロ軸荷重への除荷を通してX・Yの周期ベクトルを維持します。
 周期的な微視的変位の揺らぎは許し、横方向反力を記録します。
 [固定セル用設定](configs/implicit-ipc-fixed-cell.json)・[変更内容](docs/fixed-transverse.md)。
-同じ試作メッシュの再計算で、軸方向35.40%圧縮時に空隙率10.05%へ到達。保持・ゼロ軸荷重回復も完走し、回復後は11.57%。
+前回のBCC試作メッシュの再計算では、軸方向35.40%圧縮時に空隙率10.05%へ到達。保持・ゼロ軸荷重回復も完走し、回復後は11.57%。
 全27状態でX・Y周期寸法12.1 mmを維持しました。
 [載荷メッシュ](exports/fixed-transverse-001/loaded-mesh.png)・[空隙率と横寸法](exports/fixed-transverse-001/porosity-and-cell-size.png)・[CSVと結果](exports/fixed-transverse-001/README.md)・[全データZIP](exports/fixed-transverse-001.zip)。
 過去の横方向応力自由の設定・結果は比較用として残しています。

@@ -87,4 +87,14 @@ class PeriodicIPC:
         return value,np.asarray(self.R.T@g).ravel(),K,len(n)
 
     def ccd(self,q,dq):
-        return ipc.compute_collision_free_stepsize(self.mesh,self.positions(q),self.positions(q+dq))
+        motion=(self.R@dq).reshape(-1,3)
+        maximum=float(np.max(np.linalg.norm(motion,axis=1),initial=0.))
+        if not np.isfinite(maximum):raise ValueError('Nonfinite CCD proposal')
+        limit=float(self.c.get('ipc_ccd_maximum_displacement_mm',.1))
+        if limit<=0:raise ValueError('CCD sweep limit must be positive')
+        horizon=limit/maximum if maximum>limit else 1.
+        self.last_ccd_horizon=horizon;self.last_ccd_max_displacement_mm=maximum
+        if maximum==0:return 1.
+        # A conservative horizon avoids enormous swept boxes for poor Newton /
+        # quasi-Newton proposals. It bounds the query, not the physical solution.
+        return horizon*ipc.compute_collision_free_stepsize(self.mesh,self.positions(q),self.positions(q+horizon*dq))

@@ -32,12 +32,14 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 if factor is None or it%refresh==0 or changed or growth:
                     if changed or growth:pairs=[]
                     log(dict(lbfgs_preconditioner_update=True,contacts=n,previous_contacts=factor_contacts,contact_change=changed,residual_growth=growth))
+                    factor=None  # Release the old sparse LU before building another.
                     _,_,Km,_=evaluate(p.positions(trial),t,b,ep,inverse,V0,dict(c,implicit_project_material_tangent=True),True,parent)
                     _,_,Kc,_=contact.evaluate(trial,True,project_hessian=True)
                     K=(p.A.T@Km@p.A+Kc)[:p.nmicro,:p.nmicro].tocsc()
                     diagonal=np.maximum(abs(K.diagonal()),1e-6)
                     factor=splu(K+diags(diagonal*c['implicit_regularization']),permc_spec='COLAMD')
                     factor_contacts=n;factor_norm=norm
+                    del K,Km,Kc
                 vector=gradient.copy();coefficients=[]
                 for s,y,rho in reversed(pairs):
                     a=rho*float(s@vector);coefficients.append(a);vector-=a*y
@@ -45,11 +47,13 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 for (s,y,rho),a in zip(pairs,reversed(coefficients)):
                     direction+=s*(a-rho*float(y@direction))
                 dq=np.zeros(p.ndof);dq[:p.nmicro]=-direction
-                if not np.all(np.isfinite(dq)) or float(gradient@dq[:p.nmicro])>=0:
+                if not np.all(np.isfinite(dq)) or not np.isfinite(float(gradient@dq[:p.nmicro])) or float(gradient@dq[:p.nmicro])>=0:
                     pairs=[];dq[:p.nmicro]=-factor.solve(gradient)
                 slope=float(gradient@dq[:p.nmicro])
-                if not np.all(np.isfinite(dq)) or slope>=0:raise ValueError('L-BFGS preconditioner did not produce descent')
+                if not np.all(np.isfinite(dq)) or not np.isfinite(slope) or slope>=0:raise ValueError('L-BFGS preconditioner did not produce descent')
                 bound=contact.ccd(trial,dq);alpha=1. if bound>=1 else .9*bound
+                if getattr(contact,'last_ccd_horizon',1.)<1:
+                    log(dict(ccd_horizon=contact.last_ccd_horizon,proposed_max_displacement_mm=contact.last_ccd_max_displacement_mm))
                 accepted=False;roundoff=32*np.finfo(float).eps*max(c['young_mpa']*float(V0.sum()),abs(energy),1e-30)
                 for ls in range(35):
                     candidate=trial+alpha*dq

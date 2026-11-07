@@ -9,7 +9,7 @@ def main():
     root=Path(a.root);out=Path(a.out);run=root/a.run
     packing=json.loads((root/'packing.json').read_text());mesh=json.loads((root/'mesh-007/metadata.json').read_text());status=json.loads((run/'status.json').read_text())
     export(root,out,run_name=a.run,caption=f"Random sintered packing: {packing['particle_count']} particles (prototype)",make_archive=False)
-    for name in ['centers.csv','bonds.csv','packing.json','tests.log','loading-only-tests.log','final-tests.log','volume-audit-tests.log','acceleration-tests.log','consistent-warm-tests-002.log','full-tangent-tests.log','affine-hybrid-tests.log','lbfgs-tests.log','contact-audit.json','volume-history-audit.json','input-reproduction.json','increment-comparison.json','acceleration-comparison.json']:
+    for name in ['centers.csv','bonds.csv','packing.json','tests.log','loading-only-tests.log','final-tests.log','volume-audit-tests.log','acceleration-tests.log','consistent-warm-tests-002.log','full-tangent-tests.log','affine-hybrid-tests.log','lbfgs-tests.log','lbfgs-active-tests.log','bounded-ccd-tests.log','resource-stop.json','contact-audit.json','volume-history-audit.json','input-reproduction.json','increment-comparison.json','acceleration-comparison.json']:
         if (root/name).exists():shutil.copy2(root/name,out/name)
     (out/'mesh-metadata.json').write_text(json.dumps(mesh,indent=2)+'\n')
     with (run/'history.csv').open() as stream:rows=list(csv.DictReader(stream))
