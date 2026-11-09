@@ -31,7 +31,7 @@ def export(root,out,run_name="run-001",caption=None,make_archive=True):
         errors.append(float(np.max(abs(H-np.diag([1.,1.,H[2,2]])))))
     if max(pair_errors,default=0.)>1e-8:raise ValueError('Paired transverse boundary vectors changed')
     if max(errors)>1e-12:raise ValueError('Transverse cell changed')
-    verification=dict(accepted_states=len(rows),maximum_paired_boundary_vector_error_mm=max(pair_errors,default=0.),maximum_transverse_macro_error=max(errors),lateral_length_mm=c['length_mm'],transverse_area_ratio=1.,recovery='zero axial load with transverse constraints retained',validated=False)
+    verification=dict(accepted_states=len(rows),maximum_paired_boundary_vector_error_mm=max(pair_errors,default=0.),maximum_transverse_macro_error=max(errors),lateral_length_mm=c['length_mm'],transverse_area_ratio=1.,recovery='unloading data present; completion is recorded in summary.json' if any(row['phase']=='unload' for row in rows) else 'not performed',holding_performed=any(row['phase']=='hold' for row in rows),unloading_performed=any(row['phase']=='unload' for row in rows),validated=False)
     (out/'boundary-verification.json').write_text(json.dumps(verification,indent=2)+'\n')
     shutil.copy2(run/'history.csv',out/'history.csv');shutil.copy2(run/'status.json',out/'summary.json')
     compression=[r for r in rows if r['phase']=='compression'];holds=[r for r in rows if r['phase']=='hold']
@@ -40,8 +40,6 @@ def export(root,out,run_name="run-001",caption=None,make_archive=True):
     for name,row in selections:
         path=run/('state-0000.npz' if row is None else f"state-{int(row['step']):04d}.npz")
         with np.load(path) as r:state=dict(r)
-        parent=state['parent'];weight=state['V0']
-        state['ep']=np.bincount(parent,weights=weight*state['ep'],minlength=len(state['t']))/np.bincount(parent,weights=weight,minlength=len(state['t']))
         title=f'Initial mesh: measured porosity {100*initial_porosity:.3f}%' if row is None else f"{row['phase']}: porosity {100*float(row['porosity']):.3f}%\nAxial compression {100*float(row['compression']):.3f}%"
         render(out/(name+'-mesh.png'),state,(caption or 'Fixed transverse periodic cell: prototype')+'\n'+title,c['length_mm'],footer=None if caption is None else 'Actual FEM mesh; displacement scale 1x\n'+caption+'; mesh / increment convergence unverified')
         shutil.copy2(path,out/(name+'-mesh.npz'))

@@ -37,7 +37,7 @@ def merge(segments,out):
         target=out/f'state-{step:04d}.npz';shutil.copy2(source,target)
         manifest.append(dict(step=step,source=str(source),sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
     c['usage_scope']='Merged accepted restart chain; source segments remain unmodified.'
-    c['wall_time_interpretation']='Cumulative wall times along the selected restart path; excludes other trial branches.'
+    c['wall_time_interpretation']='Cumulative wall times along selected accepted segments; excludes other trial branches and initial-guess preparation outside those segments.'
     (out/'config.json').write_text(json.dumps(c,indent=2)+'\n')
     (out/'status.json').write_text(json.dumps(dict(status,merged_path=True,validated=False),indent=2)+'\n')
     (out/'provenance.json').write_text(json.dumps(dict(segments=provenance,states=manifest),indent=2)+'\n')

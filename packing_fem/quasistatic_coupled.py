@@ -6,6 +6,7 @@ from scipy.sparse import diags
 from scipy.sparse.linalg import splu, lsmr
 from .fixed_point import affine_predictor
 from .implicit_material import evaluate
+from .load_predictor import search_stalled
 
 
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
@@ -37,7 +38,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
         if not np.all(np.isfinite(internal)):raise ValueError('Nonfinite coupled force')
         J=None if not tangent else (p.A.T@Km@p.A+Kc)[:p.nmicro,:p.nmicro].tocsc()
         return internal,state,n,J
-    norm_mode=c.get('implicit_coupled_merit_norm','l2');maximum_stage=False
+    norm_mode=c.get('implicit_coupled_merit_norm','l2');maximum_stage=False;norm_history=[];l2_history=[];step_history=[]
     if norm_mode not in ('l2','maximum','hybrid'):raise ValueError('Unknown residual merit norm')
     try:
         for it in range(c.get('implicit_coupled_max_iterations',c['implicit_max_newton'])):
@@ -61,6 +62,8 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 merit_force=np.where(active,gradient/max(int(active.sum()),1),0.)
             log(dict(coupled_newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,residual_l2_N=float(np.linalg.norm(gradient)),contacts=n,search_merit_norm='maximum' if maximum_merit else 'l2'))
             if norm<c['implicit_force_tolerance_N']:return trial,state,internal,n,it,norm
+            norm_history.append(norm);l2_history.append(float(np.linalg.norm(gradient)))
+            if c.get('implicit_stagnation_window',0)>0 and search_stalled(norm_history,step_history,c['implicit_stagnation_window']) and search_stalled(l2_history,step_history,c['implicit_stagnation_window']):raise ValueError('Force residual stalled with negligible displacement updates; reduce load increment')
             diagonal=np.maximum(abs(J.diagonal()),1e-6)
             merit_gradient=np.asarray(J.T@merit_force).ravel()
             # Nonlinear smoothing of residual peaks. Solve the SAME force
@@ -83,6 +86,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                                     ci,_,_,_=values(candidate);cg=(ci-external)[:p.nmicro];cm=measure(cg)
                                     if cm<.9*merit and cm<=merit+1e-4*local_alpha*local_slope and cg@cg<=(gradient@gradient)*(1+1e-10):
                                         log(dict(local_force_relaxation=True,dofs=len(neighborhood),residual_before_N=norm,residual_after_N=float(np.max(abs(cg))),residual_l2_after_N=float(np.linalg.norm(cg)),alpha=local_alpha))
+                                        step_history.append(float(np.max(abs(candidate[:p.nmicro]-trial[:p.nmicro]),initial=0.)))
                                         trial=candidate;break
                                 except (ValueError,RuntimeError):pass
                                 local_alpha*=.5
@@ -139,6 +143,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 if best is not None:candidate_merit,alpha,candidate=best;accepted=True
             if not accepted:raise ValueError('Coupled residual line search failed')
             log(dict(coupled_alpha=alpha,merit_before=merit,merit_after=candidate_merit,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2')))
+            step_history.append(float(np.max(abs(candidate[:p.nmicro]-trial[:p.nmicro]),initial=0.)))
             trial=candidate
         raise ValueError('Coupled Newton iteration budget exhausted')
     except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial)

@@ -168,7 +168,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
         return dict(reason=str(exc),iterate=trial)
 
 
-def run(config,mesh,out,restart=None,initial_iterate=None):
+def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None):
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
     if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton'):raise ValueError('Unknown implicit optimizer')
@@ -177,10 +177,10 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
         trace=out/'iterate-trace';trace.mkdir();c['_iterate_checkpoint_directory']=str(trace)
     sources=out/'source';sources.mkdir()
     manifest={}
-    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
+    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
         source=Path(name);target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
-    (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True),indent=2))
+    (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True,rejected_geometry=None if rejected_geometry is None else str(rejected_geometry),rejected_geometry_sha256=None if rejected_geometry is None else hashlib.sha256(Path(rejected_geometry).read_bytes()).hexdigest(),rejected_geometry_material_history_used=False),indent=2))
     data=np.load(mesh);X=data['points'];t=oriented(X,data['tets'])
     if restart:
         r=np.load(restart);X=r['X'];t=oriented(X,r['t'])
@@ -206,7 +206,12 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
     initial=1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3
     rows=[];start=time.monotonic();increment=c.get('implicit_initial_strain_increment',c['implicit_strain_increment']);index=0;failed=0
     if not 0<increment<=c['implicit_strain_increment']:raise ValueError('Initial load increment must be positive and no larger than its ceiling')
-    remesh_events=0;remesh_attempted_at=-1
+    remesh_events=0;remesh_attempted_at=-1;predictor_index=0;pending_geometry=None
+    if rejected_geometry:
+        if not c.get('implicit_bisection_predictor',False):raise ValueError('Rejected geometry requires the bisection predictor')
+        with np.load(rejected_geometry) as g:
+            if not np.array_equal(g['X'],X) or not np.array_equal(g['t'],t) or g['q'].shape!=q.shape or not np.all(np.isfinite(g['q'])):raise ValueError('Rejected geometry has a different periodic chart')
+            pending_geometry=dict(q=g['q'].copy(),X=X.copy(),t=t.copy(),source=str(rejected_geometry))
     phase=c.get('initial_phase','compression')
     if phase not in ('compression','hold'):raise ValueError('initial_phase must be compression or hold')
     zero=np.zeros(p.ndof);unload_fraction=0.;unload_reaction=None;loaded_porosity=None
@@ -252,6 +257,14 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
                 log(dict(remesh_rejected=str(exc)))
                 (out/f'remesh-rejected-{index:04d}.txt').write_text(str(exc))
         if phase=='compression':
+            if pending_geometry is not None:
+                if not np.array_equal(X,pending_geometry['X']) or not np.array_equal(t,pending_geometry['t']):
+                    log(dict(rejected_geometry_discarded='Accepted remesh changed the chart'));pending_geometry=None
+                else:
+                    gap=q[p.prescribed]-pending_geometry['q'][p.prescribed]
+                    if gap<=c.get('implicit_macro_tolerance',1e-6):pending_geometry=None
+                    # The rejected load is not a required output station; keep
+                    # the original adaptive schedule even when advancing beyond it.
             remaining=c['maximum_axial_compression']+q[p.prescribed]
             if remaining<=c.get('implicit_macro_tolerance',1e-6):
                 (out/'status.json').write_text(json.dumps(dict(status='compression_limit_reached_target_not_reached',initial_porosity=initial,last_converged_porosity=phi_now(),target_porosity=c['target_final_porosity'],target_reached=False,validated=False),indent=2));return
@@ -265,12 +278,24 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
             prescribed=None;external=zero.copy();external[p.prescribed]=unload_reaction*(1-min(1.,unload_fraction+increment))
         if warm_guess is not None and (not np.array_equal(X,warm_X) or not np.array_equal(t,warm_t)):
             log(dict(initial_iterate_discarded='Accepted remesh changed its topology'));warm_guess=None
+        if warm_guess is None and phase=='compression' and pending_geometry is not None:
+            try:
+                from packing_fem.load_predictor import bisected_initial_guess
+                warm_guess,report=bisected_initial_guess(p,t,q,pending_geometry['q'],prescribed,b,ep,inverse,V0,parent,c,contact)
+                warm_X=X.copy();warm_t=t.copy();predictor_index+=1
+                np.savez_compressed(out/f'predictor-{predictor_index:04d}.npz',q=warm_guess,X=X,t=t,oldq=q,b=b,ep=ep)
+                report.update(source_geometry=pending_geometry['source'],accepted_predecessor_step=index,target_compression=float(-prescribed))
+                (out/f'predictor-{predictor_index:04d}.json').write_text(json.dumps(report,indent=2)+'\n')
+                log(dict(load_bisection_predictor=report))
+            except (ValueError,RuntimeError) as exc:log(dict(load_bisection_predictor_rejected=str(exc)));warm_guess=None
         solution=equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess=warm_guess)
         warm_guess=None
         if isinstance(solution,dict):
             failed+=1;np.savez_compressed(out/f'failed-{failed:04d}.npz',q=solution['iterate'],X=X,t=t,oldq=q,b=b,ep=ep)
             log(dict(rejected_stage=index+1,reason=solution['reason'],increment=increment));increment*=.5
             if increment<c['implicit_minimum_increment']:raise RuntimeError('Minimum increment reached; rejected iterates are NOT solutions')
+            if phase=='compression' and c.get('implicit_bisection_predictor',False):
+                pending_geometry=dict(q=solution['iterate'].copy(),X=X.copy(),t=t.copy(),source=str(out/f'failed-{failed:04d}.npz'))
             continue
         q,state,g,n,it,norm=solution;b=state['b'];ep=state['ep'];inverse=np.linalg.inv(state['D']);index+=1
         phi=phi_now();H=deformation(q[-6:]);area=p.L**2*np.linalg.norm(np.cross(H[:,0],H[:,1]))
@@ -300,8 +325,8 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
     raise RuntimeError('Stage budget exhausted')
 
 if __name__=='__main__':
-    a=argparse.ArgumentParser();a.add_argument('--config',required=True);a.add_argument('--mesh',required=True);a.add_argument('--out',required=True);a.add_argument('--restart');a.add_argument('--initial-iterate');args=a.parse_args()
-    try:run(args.config,args.mesh,args.out,args.restart,args.initial_iterate)
+    a=argparse.ArgumentParser();a.add_argument('--config',required=True);a.add_argument('--mesh',required=True);a.add_argument('--out',required=True);a.add_argument('--restart');a.add_argument('--initial-iterate');a.add_argument('--rejected-geometry');args=a.parse_args()
+    try:run(args.config,args.mesh,args.out,args.restart,args.initial_iterate,args.rejected_geometry)
     except FileExistsError:
         raise
     except BaseException:
