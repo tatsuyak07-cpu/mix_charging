@@ -1,0 +1,37 @@
+{
+  "exact_restart_checks": [
+    {
+      "previous": "results/random-packing-001/compression-001/state-0006.npz",
+      "restart": "results/random-packing-001/compression-007/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-007/state-0001.npz",
+      "restart": "results/random-packing-001/compression-018/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-018/state-0001.npz",
+      "restart": "results/random-packing-001/compression-021/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-021/state-0003.npz",
+      "restart": "results/random-packing-001/compression-022/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-022/state-0001.npz",
+      "restart": "results/random-packing-001/compression-025/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-025/state-0001.npz",
+      "restart": "results/random-packing-001/compression-026/state-0000.npz",
+      "exact_arrays": true
+    }
+  ],
+  "final_state_sha256": "0b0ec3b4c2448c4599bad9d9b8c731fd703503e1739c56c8e93459e1caf21001",
+  "target_reached": false,
+  "wall_time_interpretation": "Selected path only; excludes other branches and initial-guess preparation outside selected segments."
+}

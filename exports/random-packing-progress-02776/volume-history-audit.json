@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "missing_steps": [],
+  "interpretation": "Reference material volume is conserved. Current solid volume includes elastic compression; exact incompressibility is not imposed.",
+  "spatial_and_increment_convergence_verified": false,
+  "states": [
+    {
+      "step": 0,
+      "porosity": 0.20326133106067756,
+      "solid_volume_mm3": 8305.608827033288,
+      "reference_material_volume_mm3": 8352.138482637389,
+      "solid_volume_to_initial_ratio": 0.9944290129167724,
+      "cell_volume_mm3": 10424.508249474486,
+      "minimum_element_volume_mm3": 0.00023462233269185982,
+      "reference_material_relative_error": 0.0,
+      "quadrature_geometry_relative_error": 1.9379343732282432e-10,
+      "saved_position_error_mm": 0.0,
+      "csv_porosity_error": 0.0,
+      "macro_fixed_cell_error": 0.0,
+      "passed": true
+    },
+    {
+      "step": 1,
+      "porosity": 0.19333631075325786,
+      "solid_volume_mm3": 8301.259290132273,
+      "reference_material_volume_mm3": 8352.138482637389,
+      "solid_volume_to_initial_ratio": 0.9939082436658726,
+      "cell_volume_mm3": 10290.85528553286,
+      "minimum_element_volume_mm3": 0.00023178097201502856,
+      "reference_material_relative_error": 0.0,
+      "quadrature_geometry_relative_error": 1.9379496895961604e-10,
+      "saved_position_error_mm": 0.0,
+      "csv_porosity_error": 0.0,
+      "macro_fixed_cell_error": 0.0,
+      "free_residual_N": 0.004654327075337486,
+      "macro_target_error": 0.0,
+      "passed": true
+    },
+    {
+      "step": 2,
+      "porosity": 0.1805887904530311,
+      "solid_volume_mm3": 8295.546255737616,
+      "reference_material_volume_mm3": 8352.138482637389,
+      "solid_volume_to_initial_ratio": 0.9932242231115519,
+      "cell_volume_mm3": 10123.789080605826,
+      "minimum_element_volume_mm3": 0.0002277860611612386,
+      "reference_material_relative_error": 0.0,
+      "quadrature_geometry_relative_error": 1.937968167741419e-10,
+      "saved_position_error_mm": 0.0,
+      "csv_porosity_error": 0.0,
+      "macro_fixed_cell_error": 0.0,
+      "free_residual_N": 0.004777856657115684,
+      "macro_target_error": 0.0,
+      "passed": true
+    }
+  ]
+}
