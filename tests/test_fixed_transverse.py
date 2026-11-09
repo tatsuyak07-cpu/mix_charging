@@ -14,7 +14,7 @@ class NoContact:
     def evaluate_coupled(self,q,old,tangent=False):return self.evaluate(q,tangent)
 
 @pytest.mark.parametrize('acceleration_depth',[0,4])
-@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy'),('coupled_newton',False,1e-3,'maximum'),('coupled_newton',False,1e-3,'local'),('coupled_newton',False,1e-3,'hybrid')])
+@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy'),('coupled_newton',False,1e-3,'maximum'),('coupled_newton',False,1e-3,'local'),('coupled_newton',False,1e-3,'hybrid'),('coupled_newton',False,1e-3,'peak')])
 @pytest.mark.parametrize('use_initial_guess',[False,True])
 def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,search,use_initial_guess):
     X=np.array([[i/2,j/2,k/2] for i in range(3) for j in range(3) for k in range(3)])
@@ -29,8 +29,9 @@ def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_de
     c['implicit_optimizer']=optimizer
     c['implicit_lbfgs_line_search']=search
     c['implicit_coupled_merit_weighting']='diagonal' if search=='diagonal' else 'none'
-    c['implicit_coupled_least_squares_fallback']=search in ('diagonal','maximum','local','hybrid')
-    c['implicit_coupled_merit_norm']='hybrid' if search=='hybrid' else ('maximum' if search in ('maximum','local') else 'l2')
+    c['implicit_coupled_least_squares_fallback']=search in ('diagonal','maximum','local','hybrid','peak')
+    c['implicit_coupled_merit_norm']='hybrid' if search=='hybrid' else ('maximum' if search in ('maximum','local','peak') else 'l2')
+    if search=='peak':c['implicit_coupled_peak_lsmr']=True
     if search=='local':c.update(implicit_coupled_local_relaxation=True,implicit_local_force_threshold_multiplier=1e8)
     if search=='homotopy':c.update(implicit_friction_smoothing_multipliers=[100.,10.,1.],ipc_slip_regularization_mm=1e-4)
     q=np.zeros(p.ndof);b=np.tile(np.eye(3),(len(t),1,1));ep=np.zeros(len(t))

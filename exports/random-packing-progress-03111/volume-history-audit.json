@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "missing_steps": [],
+  "interpretation": "Reference material volume is conserved. Current solid volume includes elastic compression; exact incompressibility is not imposed.",
+  "spatial_and_increment_convergence_verified": false,
+  "states": [
+    {
+      "step": 0,
+      "porosity": 0.16396980627606306,
+      "solid_volume_mm3": 8289.202856691829,
+      "reference_material_volume_mm3": 8352.138482637389,
+      "solid_volume_to_initial_ratio": 0.9924647291138201,
+      "cell_volume_mm3": 9914.956324447036,
+      "minimum_element_volume_mm3": 0.00022206377441035015,
+      "reference_material_relative_error": 0.0,
+      "quadrature_geometry_relative_error": 1.9379459589625284e-10,
+      "saved_position_error_mm": 0.0,
+      "csv_porosity_error": 0.0,
+      "macro_fixed_cell_error": 0.0,
+      "passed": true
+    },
+    {
+      "step": 1,
+      "porosity": 0.14258017931127076,
+      "solid_volume_mm3": 8277.458393419452,
+      "reference_material_volume_mm3": 8352.138482637389,
+      "solid_volume_to_initial_ratio": 0.9910585666924485,
+      "cell_volume_mm3": 9653.915379248545,
+      "minimum_element_volume_mm3": 0.00021476864735675704,
+      "reference_material_relative_error": 0.0,
+      "quadrature_geometry_relative_error": 1.9379653371793627e-10,
+      "saved_position_error_mm": 0.0,
+      "csv_porosity_error": 0.0,
+      "macro_fixed_cell_error": 0.0,
+      "free_residual_N": 0.00357698644000294,
+      "macro_target_error": 0.0,
+      "passed": true
+    }
+  ]
+}

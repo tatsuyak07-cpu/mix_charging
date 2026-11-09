@@ -1,0 +1,2 @@
+{"state": "/tmp/mix-charging-audit-smoke-20261109/state.npz", "compression": -0.0, "porosity": 0.9993, "elements": 2, "history_points": 2, "minimum_volume_mm3": 0.16666666666666666, "material_volume_consistency": 0.0, "required_relative_shift_bound": 1, "enlarged_radius": 2, "contacts_radius1": 1, "contacts_enlarged": 1, "barrier_energy_relative_difference": 0.0, "barrier_gradient_max_difference": 0.0, "intersections_radius1": false, "intersections_enlarged": false, "passed": true}
+PASS: sequential tilings preserve active contact counts, energy, force and nonintersection

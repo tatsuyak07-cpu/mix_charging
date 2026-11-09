@@ -1,5 +1,5 @@
 """Audit actual saved large-deformation states with an enlarged periodic tiling."""
-import argparse,csv,json
+import argparse,csv,json,gc
 from pathlib import Path
 import numpy as np
 import ipctk as ipc
@@ -21,12 +21,15 @@ def audit(paths,config,out):
         widths=np.ptp(fractional,axis=0)+c['ipc_dhat_mm']*np.linalg.norm(inv,axis=1)/p.L
         required=max(1,int(np.floor(widths.max())))
         radius=max(2,required+1)
-        contact1=PeriodicIPC(X,t,p,c,radius=1);contact2=PeriodicIPC(X,t,p,c,radius=radius)
         energies=[];gradients=[];counts=[];intersections=[]
-        for a in [contact1,contact2]:
+        # Keep only one tiling / BVH alive; enlarged audits can dominate memory.
+        for image_radius in [1,radius]:
+            a=PeriodicIPC(X,t,p,c,radius=image_radius)
             x=a.positions(q);n=a.collisions(x)
             energies.append(a.barrier(n,a.mesh,x));gradients.append(np.asarray(a.R.T@a.barrier.gradient(n,a.mesh,x)).ravel());counts.append(len(n))
             intersections.append(bool(ipc.has_intersections(a.mesh,x)))
+            del n,x,a
+            gc.collect()
         row=dict(state=str(path),compression=float(-q[p.prescribed]),porosity=float(1-volume.sum()/(p.L**3*np.linalg.det(deformation(q[-6:])))),elements=len(t),history_points=len(parent),minimum_volume_mm3=float(volume.min()),material_volume_consistency=float(np.max(abs(local-volume)/volume)),required_relative_shift_bound=required,enlarged_radius=radius,contacts_radius1=counts[0],contacts_enlarged=counts[1],barrier_energy_relative_difference=float(abs(energies[1]-energies[0])/max(abs(energies[1]),1e-15)),barrier_gradient_max_difference=float(np.max(abs(gradients[1]-gradients[0]))),intersections_radius1=intersections[0],intersections_enlarged=intersections[1])
         row['passed']=bool(not any(intersections) and row['material_volume_consistency']<1e-7 and counts[0]==counts[1] and row['barrier_energy_relative_difference']<1e-7 and row['barrier_gradient_max_difference']<1e-6)
         results.append(row);print(json.dumps(row),flush=True)

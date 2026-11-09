@@ -1,0 +1,32 @@
+{
+  "step": 1,
+  "contacts": 3071,
+  "free_residual_N": 0.00357698644000294,
+  "saved_free_residual_N": 0.00357698644000294,
+  "nominal_pressure_MPa": 0.10954494747476824,
+  "pressure_replay_difference_MPa": 0.0,
+  "material_b_replay_max_error": 0.0,
+  "plastic_strain_replay_max_error": 0.0,
+  "force_acceptance_N": 0.005,
+  "free_residual_l2_N": 0.05746563575105817,
+  "residual_l2_to_axial_reaction": 0.0009024646358397987,
+  "l2_replay_difference_N": 0.0,
+  "passed": true,
+  "coulomb": {
+    "stencils": 3066,
+    "negative_weight_stencils": 3,
+    "friction_coefficient": 0.3,
+    "maximum_coefficient_error": 0.0,
+    "maximum_weighted_coulomb_ratio": 1.0000000000000009,
+    "maximum_bound_excess_N": 3.469446951953614e-17,
+    "maximum_tangent_reconstruction_error_N": 4.163336342344337e-17,
+    "dissipated_work_Nmm": 0.14825872889983294,
+    "positive_stencil_work_Nmm": 0.14826016516507148,
+    "negative_stencil_work_Nmm": -1.436265238064337e-06,
+    "zero_normal_force_violations": 0,
+    "physical_friction_work_Nmm": -0.14825872889983294,
+    "work_assembly_error_Nmm": 4.718447854656915e-16,
+    "interpretation": "Magnitude bound on weighted integration stencils; negative-weight stencils, if present, are not separate physical contact pairs.",
+    "passed": true
+  }
+}

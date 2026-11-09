@@ -118,28 +118,35 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             # singular Newton direction. They change only the numerical search:
             # values() and the final force acceptance remain exactly the same.
             if c.get('implicit_coupled_least_squares_fallback',False) and (not accepted or candidate_merit>merit*.9):
-                row_scale=np.sqrt(weights)
-                row_scaled=diags(row_scale)@J
-                column_scale=1/np.sqrt(np.maximum(np.asarray(row_scaled.power(2).sum(axis=0)).ravel(),1e-12))
-                scaled=row_scaled@diags(column_scale)
+                scales=[(np.sqrt(weights),False)]
+                if maximum_merit and c.get('implicit_coupled_peak_lsmr',False):
+                    scales.insert(0,(np.sqrt(weights)*np.maximum((abs(gradient)/norm)**2,.05),True))
                 best=None if not accepted else (candidate_merit,alpha,candidate)
-                for damping in [.01,.1,1.]:
-                    linear=lsmr(scaled,-row_scale*gradient,damp=damping,atol=1e-4,btol=1e-4,maxiter=500)
-                    alternative=np.zeros(p.ndof);alternative[:p.nmicro]=column_scale*linear[0]
-                    alternative_slope=float(merit_gradient@alternative[:p.nmicro])
-                    if not np.isfinite(alternative_slope) or alternative_slope>=0:continue
-                    ab=contact.ccd(trial,alternative);aa=1. if ab>=1 else .9*ab
-                    for als in range(25):
-                        ac=trial+aa*alternative
-                        try:
-                            ai,_,_,_=values(ac);ag=(ai-external)[:p.nmicro];am=measure(ag)
-                            if am<=merit+1e-4*aa*alternative_slope:
-                                if best is None or am<best[0]:best=(am,aa,ac)
-                                log(dict(coupled_least_squares_damping=damping,linear_iterations=int(linear[2]),merit_after=am,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2'),alpha=aa))
-                                break
-                        except (ValueError,RuntimeError):pass
-                        aa*=.5
-                    if best is not None and best[0]<.5*merit:break
+                for row_scale,peak_search in scales:
+                    row_scaled=diags(row_scale)@J
+                    column_scale=1/np.sqrt(np.maximum(np.asarray(row_scaled.power(2).sum(axis=0)).ravel(),1e-12))
+                    scaled=row_scaled@diags(column_scale)
+                    for damping in ([.01] if peak_search else [.01,.1,1.]):
+                        linear=lsmr(scaled,-row_scale*gradient,damp=damping,atol=1e-4,btol=1e-4,maxiter=500)
+                        alternative=np.zeros(p.ndof);alternative[:p.nmicro]=column_scale*linear[0]
+                        alternative_slope=float(merit_gradient@alternative[:p.nmicro])
+                        if not np.isfinite(alternative_slope) or alternative_slope>=0:continue
+                        ab=contact.ccd(trial,alternative);aa=1. if ab>=1 else .9*ab
+                        for als in range(25):
+                            ac=trial+aa*alternative
+                            try:
+                                ai,_,_,_=values(ac);ag=(ai-external)[:p.nmicro];am=measure(ag)
+                                if am<=merit+1e-4*aa*alternative_slope and (not peak_search or ag@ag<=max(gradient@gradient,(c.get('implicit_hybrid_rms_fraction',.2)*c['implicit_force_tolerance_N'])**2*len(gradient))*(1+1e-10)):
+                                    if best is None or am<best[0]:best=(am,aa,ac)
+                                    log(dict(coupled_least_squares_damping=damping,linear_iterations=int(linear[2]),merit_after=am,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2'),alpha=aa,**(dict(peak_weighted_search=True) if peak_search else {})))
+                                    break
+                            except (ValueError,RuntimeError):pass
+                            aa*=.5
+                        if best is not None and best[0]<.5*merit:break
+                    # A peak-focused direction must reduce maximum-force merit
+                    # by 20% within the existing hybrid RMS budget. Final force
+                    # acceptance is unchanged; large residuals may be redistributed.
+                    if best is not None and best[0]<(.8 if peak_search else .5)*merit:break
                 if best is not None:candidate_merit,alpha,candidate=best;accepted=True
             if not accepted:raise ValueError('Coupled residual line search failed')
             log(dict(coupled_alpha=alpha,merit_before=merit,merit_after=candidate_merit,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2')))

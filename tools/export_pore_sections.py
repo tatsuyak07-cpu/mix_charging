@@ -62,11 +62,11 @@ def render_sections(initial,loaded,L,out):
             if lengths[axes[1]]<L-1e-10:
                 ax.add_patch(Rectangle((0,lengths[axes[1]]),L,L-lengths[axes[1]],facecolor='#e5e5e5',edgecolor='#bdbdbd',hatch='///',linewidth=.4,zorder=2))
                 ax.text(L/2,(L+lengths[axes[1]])/2,'Outside current cell',ha='center',va='center',fontsize=9,zorder=4)
-            ax.set(xlim=(0,L),ylim=(0,L),xlabel='XYZ'[axes[0]]+' (mm)',ylabel='XYZ'[axes[1]]+' (mm)',title=f'{name}: 3D porosity{100*phi:.3f}%\n'+'XYZ'[normal]+f' = {lengths[normal]/2:.3f} mm')
+            ax.set(xlim=(0,L),ylim=(0,L),xlabel='XYZ'[axes[0]]+' (mm)',ylabel='XYZ'[axes[1]]+' (mm)',title=f'{name}: 3D porosity {100*phi:.3f}%\n'+'XYZ'[normal]+f' = {lengths[normal]/2:.3f} mm')
             ax.set_aspect('equal');ax.set_facecolor('white')
-    fig.suptitle('Periodic packing: actual FEM mid-plane sections\nFixed transverse cell; displacement scale1x')
+    fig.suptitle('Periodic packing: actual FEM mid-plane sections\nFixed transverse cell; displacement scale 1x')
     fig.get_layout_engine().set(rect=(0,.055,1,.95))
-    fig.text(.5,.012,'White: section voids. Gray: outside current cell. All panels use the same physical scale.\nTitles use3D element-volume porosity; mesh / increment convergence unverified.',ha='center',fontsize=10)
+    fig.text(.5,.012,'White: section voids. Gray: outside current cell. All panels use the same physical scale.\nTitles use 3D element-volume porosity; mesh / increment convergence unverified.',ha='center',fontsize=10)
     fig.savefig(out,dpi=180);plt.close(fig)
 
 
