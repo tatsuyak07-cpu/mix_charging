@@ -37,6 +37,8 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
         if not np.all(np.isfinite(internal)):raise ValueError('Nonfinite coupled force')
         J=None if not tangent else (p.A.T@Km@p.A+Kc)[:p.nmicro,:p.nmicro].tocsc()
         return internal,state,n,J
+    norm_mode=c.get('implicit_coupled_merit_norm','l2');maximum_stage=False
+    if norm_mode not in ('l2','maximum','hybrid'):raise ValueError('Unknown residual merit norm')
     try:
         for it in range(c.get('implicit_coupled_max_iterations',c['implicit_max_newton'])):
             checkpoint_every=int(c.get('implicit_iterate_checkpoint_every',0))
@@ -48,15 +50,50 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             norm=float(np.max(abs(gradient),initial=0.))
             weighted=c.get('implicit_coupled_merit_weighting','none')=='diagonal'
             weights=1/np.maximum(abs(J.diagonal()),1e-6) if weighted else np.ones_like(gradient)
-            merit=.5*float(gradient@(weights*gradient))
-            log(dict(coupled_newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,residual_l2_N=float(np.linalg.norm(gradient)),contacts=n))
+            if norm_mode=='hybrid' and np.linalg.norm(gradient)<=c.get('implicit_hybrid_rms_fraction',.2)*c['implicit_force_tolerance_N']*np.sqrt(len(gradient)):maximum_stage=True
+            maximum_merit=norm_mode=='maximum' or maximum_stage
+            def measure(force):
+                return .5*float(np.max(abs(force),initial=0.)**2) if maximum_merit else .5*float(force@(weights*force))
+            merit=measure(gradient)
+            merit_force=weights*gradient
+            if maximum_merit:
+                active=abs(gradient)>=norm*(1-1e-12)
+                merit_force=np.where(active,gradient/max(int(active.sum()),1),0.)
+            log(dict(coupled_newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,residual_l2_N=float(np.linalg.norm(gradient)),contacts=n,search_merit_norm='maximum' if maximum_merit else 'l2'))
             if norm<c['implicit_force_tolerance_N']:return trial,state,internal,n,it,norm
-            diagonal=np.maximum(abs(J.diagonal()),1e-6);dq=np.zeros(p.ndof)
+            diagonal=np.maximum(abs(J.diagonal()),1e-6)
+            merit_gradient=np.asarray(J.T@merit_force).ravel()
+            # Nonlinear smoothing of residual peaks. Solve the SAME force
+            # Jacobian on a small neighborhood, keeping far-field increments
+            # zero. Both maximum force and full residual must decrease.
+            if c.get('implicit_coupled_local_relaxation',False) and maximum_merit and it%5==0 and norm<c.get('implicit_local_force_threshold_multiplier',4.)*c['implicit_force_tolerance_N']:
+                peak=np.argsort(abs(gradient))[-min(32,len(gradient)):]
+                neighborhood=np.unique(np.r_[peak,J[peak,:].tocsr().indices])
+                if len(neighborhood)<=c.get('implicit_local_max_dofs',4096):
+                    try:
+                        block=J[neighborhood,:][:,neighborhood].tocsc()+diags(diagonal[neighborhood]*c['implicit_regularization'])
+                        local_factor=splu(block,permc_spec='COLAMD');local=np.zeros(p.ndof)
+                        local[neighborhood]=local_factor.solve(-gradient[neighborhood]);del local_factor
+                        local_slope=float(merit_gradient@local[:p.nmicro])
+                        if np.all(np.isfinite(local)) and local_slope<0:
+                            local_bound=contact.ccd(trial,local);local_alpha=1. if local_bound>=1 else .9*local_bound
+                            for _ in range(12):
+                                candidate=trial+local_alpha*local
+                                try:
+                                    ci,_,_,_=values(candidate);cg=(ci-external)[:p.nmicro];cm=measure(cg)
+                                    if cm<.9*merit and cm<=merit+1e-4*local_alpha*local_slope and cg@cg<=(gradient@gradient)*(1+1e-10):
+                                        log(dict(local_force_relaxation=True,dofs=len(neighborhood),residual_before_N=norm,residual_after_N=float(np.max(abs(cg))),residual_l2_after_N=float(np.linalg.norm(cg)),alpha=local_alpha))
+                                        trial=candidate;break
+                                except (ValueError,RuntimeError):pass
+                                local_alpha*=.5
+                            else:local_alpha=0.
+                            if local_alpha>0:continue
+                    except RuntimeError:pass
+            dq=np.zeros(p.ndof)
             try:
                 factor=splu(J+diags(diagonal*c['implicit_regularization']),permc_spec='COLAMD')
                 dq[:p.nmicro]=factor.solve(-gradient);del factor
             except RuntimeError:dq[:p.nmicro]=np.nan
-            merit_gradient=np.asarray(J.T@(weights*gradient)).ravel()
             slope=float(merit_gradient@dq[:p.nmicro])
             if not np.all(np.isfinite(dq)) or not np.isfinite(slope) or slope>=0:
                 column_norm=np.asarray(J.power(2).sum(axis=0)).ravel()
@@ -68,7 +105,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             for ls in range(35):
                 candidate=trial+alpha*dq
                 try:
-                    ci,_,_,_=values(candidate);cg=(ci-external)[:p.nmicro];candidate_merit=.5*float(cg@(weights*cg))
+                    ci,_,_,_=values(candidate);cg=(ci-external)[:p.nmicro];candidate_merit=measure(cg)
                     if candidate_merit<=merit+1e-4*alpha*slope:
                         accepted=True;break
                 except (ValueError,RuntimeError):pass
@@ -91,17 +128,17 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                     for als in range(25):
                         ac=trial+aa*alternative
                         try:
-                            ai,_,_,_=values(ac);ag=(ai-external)[:p.nmicro];am=.5*float(ag@(weights*ag))
+                            ai,_,_,_=values(ac);ag=(ai-external)[:p.nmicro];am=measure(ag)
                             if am<=merit+1e-4*aa*alternative_slope:
                                 if best is None or am<best[0]:best=(am,aa,ac)
-                                log(dict(coupled_least_squares_damping=damping,linear_iterations=int(linear[2]),merit_after=am,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),alpha=aa))
+                                log(dict(coupled_least_squares_damping=damping,linear_iterations=int(linear[2]),merit_after=am,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2'),alpha=aa))
                                 break
                         except (ValueError,RuntimeError):pass
                         aa*=.5
                     if best is not None and best[0]<.5*merit:break
                 if best is not None:candidate_merit,alpha,candidate=best;accepted=True
             if not accepted:raise ValueError('Coupled residual line search failed')
-            log(dict(coupled_alpha=alpha,merit_before=merit,merit_after=candidate_merit,merit_weighting=c.get('implicit_coupled_merit_weighting','none')))
+            log(dict(coupled_alpha=alpha,merit_before=merit,merit_after=candidate_merit,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2')))
             trial=candidate
         raise ValueError('Coupled Newton iteration budget exhausted')
     except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial)

@@ -2,10 +2,10 @@
 
 **ランダム充填層の工程1〜4を開発中です。**
 16粒子・球径10 mm・焼結ネック径2 mmの周期固体FEMを作成し、
-初期メッシュ空隙率40.404%から、21.25%圧縮時の24.632%まで収束しました。
+初期メッシュ空隙率40.404%から、24.85%圧縮時の21.118%まで収束しました。
 両横周期寸法24.109757 mmを固定し、載荷空隙率10%への計算を続けています。
-[開発・計算報告](docs/random-packing-development.md)・[目標載荷の設定](configs/random-periodic-compaction-coupled-target.json)。
-[21.25%圧縮時点のメッシュPNG・履歴CSV](exports/random-packing-progress-02125/README.md)。
+[開発・計算報告](docs/random-packing-development.md)・[計算継続の設定](configs/random-periodic-compaction-target-025.json)。
+[24.85%圧縮時点のメッシュPNG・履歴CSV](exports/random-packing-progress-02485/README.md)。
 単一16粒子の試作で、統計的等方性・メッシュ・増分収束は未認定です。
 
 **現在の指定：横方向の周期セル寸法を初期値に固定します。**

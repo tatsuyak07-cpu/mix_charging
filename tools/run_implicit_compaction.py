@@ -204,7 +204,8 @@ def run(config,mesh,out,restart=None,initial_iterate=None):
         if ipc.has_intersections(contact.mesh,contact.positions(warm_guess)):raise ValueError('Initial iterate has surface intersections')
     print('mesh',len(X),len(t),'ghost',len(contact.X),'ndof',p.ndof,flush=True)
     initial=1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3
-    rows=[];start=time.monotonic();increment=c['implicit_strain_increment'];index=0;failed=0
+    rows=[];start=time.monotonic();increment=c.get('implicit_initial_strain_increment',c['implicit_strain_increment']);index=0;failed=0
+    if not 0<increment<=c['implicit_strain_increment']:raise ValueError('Initial load increment must be positive and no larger than its ceiling')
     remesh_events=0;remesh_attempted_at=-1
     phase=c.get('initial_phase','compression')
     if phase not in ('compression','hold'):raise ValueError('initial_phase must be compression or hold')

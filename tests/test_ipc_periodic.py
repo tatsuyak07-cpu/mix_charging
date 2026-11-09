@@ -99,3 +99,15 @@ def test_swept_candidates_ccd_blocks_a_crossing_trajectory():
     a=cached.ccd(q,dq);b=fresh.ccd(q,dq)
     assert 0<a<1
     np.testing.assert_allclose(a,b,rtol=1e-9,atol=1e-12)
+
+
+@pytest.mark.parametrize('tangential_slip',[.005,.000001])
+def test_weighted_coulomb_bound_and_nonnegative_dissipation(tangential_slip):
+    from packing_fem.friction_audit import friction_report
+    p=Periodic(X,10.);q=moved(p,-.02);old=moved(p,-.01)
+    for node in range(4,8):old[3*(p.classes[node]-1)+1]=-tangential_slip
+    contact=PeriodicIPC(X,T,p,C);report=friction_report(contact,q,old,.3)
+    assert report['passed'] and report['stencils']>0
+    assert report['dissipated_work_Nmm']>0
+    if tangential_slip>.0001:assert report['maximum_weighted_coulomb_ratio']==pytest.approx(1.,rel=1e-10)
+    else:assert 0<report['maximum_weighted_coulomb_ratio']<1

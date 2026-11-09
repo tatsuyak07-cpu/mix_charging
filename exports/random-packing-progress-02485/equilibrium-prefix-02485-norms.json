@@ -1,0 +1,15 @@
+{
+  "step": 1,
+  "contacts": 1567,
+  "free_residual_N": 0.0049287971908427985,
+  "saved_free_residual_N": 0.0049287971908427985,
+  "nominal_pressure_MPa": 0.06591056808901158,
+  "pressure_replay_difference_MPa": 0.0,
+  "material_b_replay_max_error": 0.0,
+  "plastic_strain_replay_max_error": 0.0,
+  "force_acceptance_N": 0.005,
+  "free_residual_l2_N": 0.08891978704744125,
+  "residual_l2_to_axial_reaction": 0.0023209067272565386,
+  "l2_replay_difference_N": 1.3877787807814457e-17,
+  "passed": true
+}

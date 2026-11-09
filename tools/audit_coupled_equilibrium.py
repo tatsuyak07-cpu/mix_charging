@@ -6,6 +6,7 @@ from packing_fem.explicit_material import geometry
 from packing_fem.explicit_periodic import Periodic
 from packing_fem.implicit_material import evaluate
 from packing_fem.ipc_periodic import PeriodicIPC
+from packing_fem.friction_audit import friction_report
 
 
 def main():
@@ -24,7 +25,10 @@ def main():
     with (run/'history.csv').open() as f:row=next(r for r in csv.DictReader(f) if int(r['step'])==a.step)
     residual=float(np.max(abs(force[:p.nmicro]),initial=0.));pressure=float(-force[p.prescribed]/p.L**3)
     report=dict(step=a.step,contacts=count,free_residual_N=residual,saved_free_residual_N=float(row['free_residual_N']),nominal_pressure_MPa=pressure,pressure_replay_difference_MPa=abs(pressure-float(row['nominal_pressure_MPa'])),material_b_replay_max_error=float(np.max(abs(state['b']-new['b']))),plastic_strain_replay_max_error=float(np.max(abs(state['ep']-new['ep']))),force_acceptance_N=c['implicit_force_tolerance_N'])
-    report['passed']=bool(residual<c['implicit_force_tolerance_N'] and report['pressure_replay_difference_MPa']<1e-8 and report['material_b_replay_max_error']<1e-7 and report['plastic_strain_replay_max_error']<1e-7)
+    report.update(free_residual_l2_N=float(np.linalg.norm(force[:p.nmicro])),residual_l2_to_axial_reaction=float(np.linalg.norm(force[:p.nmicro])/max(abs(force[p.prescribed]/p.L),1e-12)),l2_replay_difference_N=abs(float(np.linalg.norm(force[:p.nmicro]))-float(row['free_residual_l2_N'])))
+    report['passed']=bool(report['l2_replay_difference_N']<1e-8 and residual<c['implicit_force_tolerance_N'] and report['pressure_replay_difference_MPa']<1e-8 and report['material_b_replay_max_error']<1e-7 and report['plastic_strain_replay_max_error']<1e-7)
+    report['coulomb']=friction_report(contact,new['q'],old['q'],c['friction'])
+    report['passed']=report['passed'] and report['coulomb']['passed']
     out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report),flush=True)
     if not report['passed']:raise SystemExit(1)
 

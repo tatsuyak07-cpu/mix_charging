@@ -1,0 +1,26 @@
+{
+  "exact_restart_checks": [
+    {
+      "previous": "results/random-packing-001/compression-001/state-0006.npz",
+      "restart": "results/random-packing-001/compression-007/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-007/state-0001.npz",
+      "restart": "results/random-packing-001/compression-018/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-018/state-0001.npz",
+      "restart": "results/random-packing-001/compression-021/state-0000.npz",
+      "exact_arrays": true
+    },
+    {
+      "previous": "results/random-packing-001/compression-021/state-0003.npz",
+      "restart": "results/random-packing-001/compression-022/state-0000.npz",
+      "exact_arrays": true
+    }
+  ],
+  "final_state_sha256": "4335e8741963a9a53639b0e0c14f8b0d44f46deae6fa0b5d224a455fed93b13f",
+  "target_reached": false
+}
