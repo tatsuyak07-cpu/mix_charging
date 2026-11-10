@@ -1,0 +1,23 @@
+{
+  "same_compression": 0.3344325609100577,
+  "same_predecessor": "compression-028/state-0001.npz",
+  "conservative": {
+    "run": "compression-028",
+    "rms_fraction": 0.2,
+    "pressure_MPa": 0.14223367417441127,
+    "porosity": 0.11513432347128316,
+    "residual_l2_N": 0.22469721899889578
+  },
+  "early": {
+    "run": "compression-029",
+    "rms_fraction": 1.0,
+    "pressure_MPa": 0.1432362456365994,
+    "porosity": 0.11523920812792776,
+    "residual_l2_N": 0.38832134967336107
+  },
+  "relative_pressure_difference": 0.007048763016265447,
+  "porosity_difference": 0.00010488465664459934,
+  "selected_run": "compression-028",
+  "convergence_verified": false,
+  "note": "Same-load search comparison, not mesh/increment convergence. Final paths use different increments; do not infer same-load final pressure sensitivity."
+}

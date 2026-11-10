@@ -1,0 +1,11 @@
+{
+  "accepted_states": 20,
+  "maximum_paired_boundary_vector_error_mm": 3.552713678800501e-15,
+  "maximum_transverse_macro_error": 0.0,
+  "lateral_length_mm": 24.10975714822187,
+  "transverse_area_ratio": 1.0,
+  "recovery": "not performed",
+  "holding_performed": false,
+  "unloading_performed": false,
+  "validated": false
+}

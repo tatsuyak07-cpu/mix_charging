@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "source_files": [
+    "tools/run_implicit_compaction.py",
+    "packing_fem/fixed_point.py",
+    "packing_fem/load_predictor.py",
+    "packing_fem/line_search.py",
+    "packing_fem/quasistatic_lbfgs.py",
+    "packing_fem/quasistatic_coupled.py",
+    "packing_fem/implicit_material.py",
+    "packing_fem/ipc_periodic.py",
+    "packing_fem/implicit_remesh.py",
+    "packing_fem/implicit_linear.py",
+    "packing_fem/explicit_material.py",
+    "packing_fem/explicit_periodic.py"
+  ],
+  "snapshot_sha256_verified": true,
+  "current_solver_ast_identical": true,
+  "note": "Current comments may differ; saved runtime snapshots remain byte-identical to their manifest."
+}

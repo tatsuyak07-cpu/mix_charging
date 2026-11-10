@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "selected_run": "compression-028",
+  "verified_files": 12,
+  "runtime_snapshot_sha256_verified": true,
+  "current_solver_ast_identical": true
+}

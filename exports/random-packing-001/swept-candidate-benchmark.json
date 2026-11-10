@@ -1,0 +1,40 @@
+{
+  "state": "results/random-packing-001/compression-007/state-0001.npz",
+  "ccd_cached": 1.0,
+  "ccd_fresh": 1.0,
+  "ccd_cached_s": 1.5467389020050177,
+  "ccd_fresh_s": 1.3827487230009865,
+  "queries": [
+    {
+      "fraction": 0.1,
+      "cache_hit": true,
+      "contacts_cached": 902,
+      "contacts_fresh": 902,
+      "energy_absolute_difference_Nmm": 0.0,
+      "force_max_difference_N": 1.4210854715202004e-14,
+      "cached_s": 0.41442992200609297,
+      "fresh_s": 1.1683407050004462
+    },
+    {
+      "fraction": 0.5,
+      "cache_hit": true,
+      "contacts_cached": 868,
+      "contacts_fresh": 868,
+      "energy_absolute_difference_Nmm": 2.7755575615628914e-16,
+      "force_max_difference_N": 5.329070518200751e-15,
+      "cached_s": 0.3854097690054914,
+      "fresh_s": 1.026003032005974
+    },
+    {
+      "fraction": 0.9,
+      "cache_hit": true,
+      "contacts_cached": 812,
+      "contacts_fresh": 812,
+      "energy_absolute_difference_Nmm": 0.0,
+      "force_max_difference_N": 3.9968028886505635e-14,
+      "cached_s": 0.4505877430055989,
+      "fresh_s": 0.9012370510026813
+    }
+  ],
+  "passed": true
+}

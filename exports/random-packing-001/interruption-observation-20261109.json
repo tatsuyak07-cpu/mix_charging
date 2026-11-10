@@ -1,0 +1,5 @@
+{
+  "observation": "No calculation Python processes exist in the selected environment. Run020/021 logs stopped2026-11-07T16:42 UTC;021 status remains running. Stop cause unknown; no inferred solver convergence or failure.",
+  "last_accepted": "compression-021/state-0003.npz",
+  "restart_initial_guess": "compression-021/iterate-trace/iterate-1794069738532751161-0060.npz"
+}

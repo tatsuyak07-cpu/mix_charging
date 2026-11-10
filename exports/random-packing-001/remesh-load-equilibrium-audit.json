@@ -1,0 +1,40 @@
+{
+  "step": 3,
+  "contacts": 4386,
+  "free_residual_N": 0.004896251432381479,
+  "saved_free_residual_N": 0.004896251432381479,
+  "nominal_pressure_MPa": 0.163194534774205,
+  "pressure_replay_difference_MPa": 0.0,
+  "material_b_replay_max_error": 0.0,
+  "plastic_strain_replay_max_error": 0.0,
+  "force_acceptance_N": 0.005,
+  "free_residual_l2_N": 0.15625999146363334,
+  "residual_l2_to_axial_reaction": 0.0016472386127225891,
+  "l2_replay_difference_N": 0.0,
+  "predecessor_state": "results/random-packing-001/compression-028/remesh-001.npz",
+  "gauge_reaction_N": [
+    -0.0002098945550451029,
+    0.0039055887378989206,
+    0.008999626811323467
+  ],
+  "gauge_reaction_norm_N": 0.009812795822645687,
+  "gauge_reaction_to_axial_reaction": 0.00010344308883177418,
+  "passed": true,
+  "coulomb": {
+    "stencils": 4371,
+    "negative_weight_stencils": 1,
+    "friction_coefficient": 0.3,
+    "maximum_coefficient_error": 0.0,
+    "maximum_weighted_coulomb_ratio": 1.0000000000000009,
+    "maximum_bound_excess_N": 5.551115123125783e-17,
+    "maximum_tangent_reconstruction_error_N": 3.469446951953614e-17,
+    "dissipated_work_Nmm": 0.07766884364891899,
+    "positive_stencil_work_Nmm": 0.0776690961256567,
+    "negative_stencil_work_Nmm": -2.5247673770147194e-07,
+    "zero_normal_force_violations": 0,
+    "physical_friction_work_Nmm": -0.07766884364891899,
+    "work_assembly_error_Nmm": 1.3877787807814457e-17,
+    "interpretation": "Magnitude bound on weighted integration stencils; negative-weight stencils, if present, are not separate physical contact pairs.",
+    "passed": true
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "adopted_in_solver": false,
+  "l2_relative_improvement": 0.004958026864265386,
+  "maximum_force_ratio": 2.462678382358828,
+  "reason": "New contacts restrict the extrapolation. L2 improves only about0.5%, while the maximum force worsens; retain the already advanced original solve and do not restart from this diagnostic predictor."
+}

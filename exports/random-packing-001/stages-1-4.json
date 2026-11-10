@@ -1,0 +1,15 @@
+{
+  "stage1": "seeded random nonoverlapping centers generated",
+  "stage2": "periodic sinter graph and CAD volume verified",
+  "stage3": "periodic mesh within 0.5 percentage point initial porosity tolerance",
+  "stage4": "loaded_target_reached",
+  "initial_porosity": 0.40403716288414004,
+  "final_porosity": 0.09986962045030912,
+  "final_compression": 0.34685383095141364,
+  "loaded_target_reached": true,
+  "holding_and_unloading_performed": false,
+  "statistical_isotropy_verified": false,
+  "mesh_and_increment_convergence_verified": false,
+  "final_nominal_pressure_MPa": 0.16207050236635248,
+  "final_free_residual_N": 0.00473241966549805
+}

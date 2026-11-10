@@ -1,0 +1,7 @@
+{
+  "fractional_centers": true,
+  "initial_fractional_centers": true,
+  "bonds": true,
+  "bond_images": true,
+  "length_mm": true
+}

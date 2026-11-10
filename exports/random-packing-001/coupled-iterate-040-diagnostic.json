@@ -1,0 +1,138 @@
+{
+  "iterate_is_solution": false,
+  "state": "results/random-packing-001/compression-007/state-0001.npz",
+  "iterate": "results/random-packing-001/compression-017/iterate-trace/iterate-1794057465941034815-0040.npz",
+  "contacts": 1089,
+  "free_residual_N": 0.02743668280748202,
+  "free_residual_l2_N": 0.0647250524266491,
+  "maximum_raw_newton_micro_displacement_mm": 0.020479817259178894,
+  "relative_linear_residual": 2.9426167493991864e-05,
+  "derivative_checks": [
+    {
+      "direction": "random",
+      "component": "material",
+      "h": 1e-05,
+      "relative_l2_error": 6.829344143999336e-05,
+      "maximum_error_N_per_mm": 0.033322182518137566
+    },
+    {
+      "direction": "random",
+      "component": "contact",
+      "h": 1e-05,
+      "relative_l2_error": 0.0014656784345879702,
+      "maximum_error_N_per_mm": 1.0847706135801332
+    },
+    {
+      "direction": "random",
+      "component": "total",
+      "h": 1e-05,
+      "relative_l2_error": 0.0012903330714825962,
+      "maximum_error_N_per_mm": 1.0847707182085458
+    },
+    {
+      "direction": "random",
+      "component": "material",
+      "h": 1e-06,
+      "relative_l2_error": 1.172105408788253e-08,
+      "maximum_error_N_per_mm": 5.0408509935095935e-06
+    },
+    {
+      "direction": "random",
+      "component": "contact",
+      "h": 1e-06,
+      "relative_l2_error": 1.4767294776856915e-05,
+      "maximum_error_N_per_mm": 0.011328055350958266
+    },
+    {
+      "direction": "random",
+      "component": "total",
+      "h": 1e-06,
+      "relative_l2_error": 1.2999185921563974e-05,
+      "maximum_error_N_per_mm": 0.011328060602778578
+    },
+    {
+      "direction": "random",
+      "component": "material",
+      "h": 1e-07,
+      "relative_l2_error": 2.2516017294042697e-08,
+      "maximum_error_N_per_mm": 1.8289457557330024e-06
+    },
+    {
+      "direction": "random",
+      "component": "contact",
+      "h": 1e-07,
+      "relative_l2_error": 1.4800385026552208e-07,
+      "maximum_error_N_per_mm": 0.00011324911275778504
+    },
+    {
+      "direction": "random",
+      "component": "total",
+      "h": 1e-07,
+      "relative_l2_error": 1.3066724778056636e-07,
+      "maximum_error_N_per_mm": 0.0001132433022519308
+    },
+    {
+      "direction": "Newton",
+      "component": "material",
+      "h": 1e-05,
+      "relative_l2_error": 5.89111299135424e-08,
+      "maximum_error_N_per_mm": 2.321969821625358e-08
+    },
+    {
+      "direction": "Newton",
+      "component": "contact",
+      "h": 1e-05,
+      "relative_l2_error": 0.0001579164380750935,
+      "maximum_error_N_per_mm": 0.00036740485944797285
+    },
+    {
+      "direction": "Newton",
+      "component": "total",
+      "h": 1e-05,
+      "relative_l2_error": 0.00018560349664479347,
+      "maximum_error_N_per_mm": 0.00036740662331219334
+    },
+    {
+      "direction": "Newton",
+      "component": "material",
+      "h": 1e-06,
+      "relative_l2_error": 5.814153834738735e-07,
+      "maximum_error_N_per_mm": 1.489308437685466e-07
+    },
+    {
+      "direction": "Newton",
+      "component": "contact",
+      "h": 1e-06,
+      "relative_l2_error": 7.507850341145936e-07,
+      "maximum_error_N_per_mm": 8.388022216809787e-07
+    },
+    {
+      "direction": "Newton",
+      "component": "total",
+      "h": 1e-06,
+      "relative_l2_error": 1.229423148158928e-06,
+      "maximum_error_N_per_mm": 8.32035923881147e-07
+    },
+    {
+      "direction": "Newton",
+      "component": "material",
+      "h": 1e-07,
+      "relative_l2_error": 5.7980547325916035e-06,
+      "maximum_error_N_per_mm": 2.02451906262599e-06
+    },
+    {
+      "direction": "Newton",
+      "component": "contact",
+      "h": 1e-07,
+      "relative_l2_error": 6.292559342893592e-06,
+      "maximum_error_N_per_mm": 4.711680503977078e-06
+    },
+    {
+      "direction": "Newton",
+      "component": "total",
+      "h": 1e-07,
+      "relative_l2_error": 1.127003790867156e-05,
+      "maximum_error_N_per_mm": 4.8517716206841754e-06
+    }
+  ]
+}

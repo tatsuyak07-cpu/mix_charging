@@ -1,0 +1,5 @@
+{
+  "status": "not_evaluated",
+  "reason": "The unaccelerated and accelerated Newton comparison trajectories were interrupted before a common accepted endpoint.",
+  "physical_convergence_certified": false
+}

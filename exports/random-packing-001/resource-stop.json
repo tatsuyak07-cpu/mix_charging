@@ -1,0 +1,52 @@
+{
+  "memory_limit_bytes": 34359738368,
+  "cgroup_memory_events": "low 0\nhigh 0\nmax 6481\noom 13\noom_kill 4\noom_group_kill 0\n",
+  "runs": [
+    {
+      "run": "results/random-packing-001/compression-001",
+      "cause": "manual_resource_cleanup",
+      "last_converged_checkpoint": "state-0006.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-002",
+      "cause": "manual_resource_cleanup",
+      "last_converged_checkpoint": "state-0000.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-003",
+      "cause": "os_oom_kill",
+      "last_converged_checkpoint": "state-0000.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-004",
+      "cause": "manual_resource_cleanup",
+      "last_converged_checkpoint": "state-0000.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-005",
+      "cause": "manual_resource_cleanup",
+      "last_converged_checkpoint": "state-0000.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-006",
+      "cause": "manual_resource_cleanup",
+      "last_converged_checkpoint": "state-0000.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-007",
+      "cause": "os_oom_kill",
+      "last_converged_checkpoint": "state-0001.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-008",
+      "cause": "os_oom_kill",
+      "last_converged_checkpoint": "state-0001.npz"
+    },
+    {
+      "run": "results/random-packing-001/compression-009",
+      "cause": "os_oom_kill",
+      "last_converged_checkpoint": "state-0000.npz"
+    }
+  ],
+  "correction": "Run one FEM trajectory at a time; audit after FEM completion; bound CCD swept displacement; release old LU before rebuilding."
+}

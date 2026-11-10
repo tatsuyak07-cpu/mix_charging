@@ -1,0 +1,87 @@
+[
+  {
+    "file": "random-packing-001-part-01.zip",
+    "bytes": 70579197,
+    "sha256": "f4f0f7424329bbd2f7ef71e1c63ce419a878c89265a21f50f240bf7e7fba795d"
+  },
+  {
+    "file": "random-packing-001-part-02.zip",
+    "bytes": 69120291,
+    "sha256": "671df9c55458bea2a71d6827c8f2549c9e3bf48171b0028db5a99511130be9fd"
+  },
+  {
+    "file": "random-packing-001-part-03.zip",
+    "bytes": 68819435,
+    "sha256": "e7b94ffdfec09b5ef693bad6a5b7dbd683ecc40ff860ba101f7e06a74cce2903"
+  },
+  {
+    "file": "random-packing-001-part-04.zip",
+    "bytes": 71669669,
+    "sha256": "2f03405f40876fc8b1b18dd7ed21599a756dcc661b8c4863a40641a8bf739baf"
+  },
+  {
+    "file": "random-packing-001-part-05.zip",
+    "bytes": 69990766,
+    "sha256": "a6e67fdeb8dca8b485332531d56f2774bb4fb47d8e2ecd69668609b47e2962b0"
+  },
+  {
+    "file": "random-packing-001-part-06.zip",
+    "bytes": 69388929,
+    "sha256": "340ad6793712e555eb27758bd132088144a096cd6e8fd5b535fa72ee8e827929"
+  },
+  {
+    "file": "random-packing-001-part-07.zip",
+    "bytes": 68233650,
+    "sha256": "84e00a9c37ef7396350af4be06089042dd4101c92dc5c8bbfebe8268c8d25481"
+  },
+  {
+    "file": "random-packing-001-part-08.zip",
+    "bytes": 71227884,
+    "sha256": "da7a03883ca621417598953dd6bcec4237ec4579ad5282849e3ba4c93ed87e5d"
+  },
+  {
+    "file": "random-packing-001-part-09.zip",
+    "bytes": 72400157,
+    "sha256": "e67b131344d635f95c18856a31527727914cdc0a65c8ab43b6c7a8e9ba882d48"
+  },
+  {
+    "file": "random-packing-001-part-10.zip",
+    "bytes": 67525943,
+    "sha256": "3a5c00b35efbcb0c7eeb3eff6ee34a39bdb74215fbd3f9061003abba198c7eaf"
+  },
+  {
+    "file": "random-packing-001-part-11.zip",
+    "bytes": 69775975,
+    "sha256": "8869f46ddcbd6b345f05ff99f9e1357110b0ce5ba4493c1dc42c539653c9580c"
+  },
+  {
+    "file": "random-packing-001-part-12.zip",
+    "bytes": 70183056,
+    "sha256": "91c4999fc471a990fb809037f9aa55fd7f4e6410b0aedae222c1aedcf2d535c5"
+  },
+  {
+    "file": "random-packing-001-part-13.zip",
+    "bytes": 67113502,
+    "sha256": "562f97e41cafb520926199de3bed8f48b62065d723d75958631418d8df3f4498"
+  },
+  {
+    "file": "random-packing-001-part-14.zip",
+    "bytes": 70762561,
+    "sha256": "23ec6ad7f959965beae465f017261715a5ccbcdb8871a411b24b25bc83f94d19"
+  },
+  {
+    "file": "random-packing-001-part-15.zip",
+    "bytes": 67879707,
+    "sha256": "78c1f979fa2e5c7edb85c8ec1290f91895d3f7001701fcddcabacf80711f0ef1"
+  },
+  {
+    "file": "random-packing-001-part-16.zip",
+    "bytes": 72336274,
+    "sha256": "ccd8b1af5721d433810c4bad37b73a4c0224b96ee3def283d236dfef07b19415"
+  },
+  {
+    "file": "random-packing-001-part-17.zip",
+    "bytes": 28522973,
+    "sha256": "62702b966dc2fb244e8c738f0833aa6f33f39c2f4704d34ff28947857310344a"
+  }
+]

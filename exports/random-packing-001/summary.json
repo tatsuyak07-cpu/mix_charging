@@ -1,0 +1,9 @@
+{
+  "status": "loaded_target_reached",
+  "initial_porosity": 0.40403716288414004,
+  "loaded_porosity": 0.09986962045030912,
+  "target_porosity": 0.1,
+  "target_reached": true,
+  "validated": false,
+  "merged_path": true
+}

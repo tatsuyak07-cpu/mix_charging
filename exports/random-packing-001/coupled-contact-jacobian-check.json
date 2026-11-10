@@ -1,0 +1,19 @@
+{
+  "current": "results/random-packing-001/compression-007/state-0001.npz",
+  "previous": "results/random-packing-001/compression-007/state-0000.npz",
+  "contacts": 910,
+  "force_definition_max_difference_N": 8.881784197001252e-15,
+  "checks": [
+    {
+      "h": 1e-05,
+      "relative_l2_error": 3.83892812649349e-07,
+      "max_absolute_error": 5.944699610793691e-06
+    },
+    {
+      "h": 1e-06,
+      "relative_l2_error": 5.0528411575273e-08,
+      "max_absolute_error": 3.5081537574921384e-07
+    }
+  ],
+  "passed": true
+}

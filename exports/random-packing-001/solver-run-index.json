@@ -1,0 +1,147 @@
+{
+  "note": "All solver attempts retained. Only accepted states belong to a physical path; exact restart provenance will select the final path.",
+  "runs": [
+    {
+      "run": "compression-001",
+      "status": {
+        "status": "interrupted_manual_resource_cleanup",
+        "phase": "compression",
+        "initial_porosity": 0.40403716288414004,
+        "last_converged_porosity": 0.3008423918011768,
+        "validated": false,
+        "target_reached": false,
+        "last_converged_checkpoint": "state-0006.npz"
+      },
+      "accepted_new_states": 6
+    },
+    {
+      "run": "compression-002",
+      "status": {
+        "status": "interrupted_manual_resource_cleanup",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz"
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-003",
+      "status": {
+        "status": "interrupted_os_oom_kill",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz"
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-004",
+      "status": {
+        "status": "interrupted_manual_resource_cleanup",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz"
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-005",
+      "status": {
+        "status": "interrupted_manual_resource_cleanup",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz"
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-006",
+      "status": {
+        "status": "interrupted_manual_resource_cleanup",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz"
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-007",
+      "status": {
+        "status": "interrupted_os_oom_kill",
+        "phase": "compression",
+        "initial_porosity": 0.40403716288414004,
+        "last_converged_porosity": 0.25783954090952466,
+        "validated": false,
+        "target_reached": false,
+        "last_converged_checkpoint": "state-0001.npz"
+      },
+      "accepted_new_states": 1
+    },
+    {
+      "run": "compression-008",
+      "status": {
+        "status": "interrupted_os_oom_kill",
+        "phase": "compression",
+        "initial_porosity": 0.40403716288414004,
+        "last_converged_porosity": 0.27998267595863546,
+        "validated": false,
+        "target_reached": false,
+        "last_converged_checkpoint": "state-0001.npz"
+      },
+      "accepted_new_states": 1
+    },
+    {
+      "run": "compression-009",
+      "status": {
+        "status": "interrupted_os_oom_kill",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz"
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-010",
+      "status": {
+        "status": "stopped_for_coupled_solver_comparison",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz",
+        "reason": "Replace costly lagged-friction iteration with the analytically verified self-consistent force Jacobian."
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-011",
+      "status": {
+        "status": "stopped_for_load_increment_refinement",
+        "target_reached": false,
+        "validated": false,
+        "last_converged_checkpoint": "state-0000.npz",
+        "reason": "Coarse 5 percent increments create large contact-set changes; restart a refined trajectory from accepted 17.5 percent."
+      },
+      "accepted_new_states": 0
+    },
+    {
+      "run": "compression-012",
+      "status": {
+        "status": "stopped_for_coupled_solver",
+        "phase": "compression",
+        "initial_porosity": 0.40403716288414004,
+        "last_converged_porosity": 0.26910044354812634,
+        "validated": false,
+        "reason": "Preserve the accepted 18.75% state and release resources for the same-force coupled Newton solve.",
+        "last_checkpoint": "state-0001.npz",
+        "target_reached": false
+      },
+      "accepted_new_states": 1
+    },
+    {
+      "run": "compression-013",
+      "status": {
+        "status": "running_without_first_new_accepted_state"
+      },
+      "accepted_new_states": 0
+    }
+  ]
+}

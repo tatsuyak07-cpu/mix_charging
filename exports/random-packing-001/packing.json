@@ -1,0 +1,148 @@
+{
+  "particle_count": 16,
+  "packing_seed": 20261109,
+  "generation": "uniform random centers + periodic overlap minimization; no lattice initialization",
+  "minimum_center_distance_mm": 10.012473891610993,
+  "maximum_overlap_mm": 0.0,
+  "neck_count": 56,
+  "maximum_neck_gap_mm": 0.31665728023124906,
+  "minimum_coordination": 4,
+  "mean_coordination": 7.0,
+  "periodic_components": 1,
+  "winding_rank": 3,
+  "analytic_porosity": 0.3999999999999999,
+  "fabric_eigenvalues": [
+    0.2673985801862088,
+    0.3628286655370617,
+    0.36977275427672945
+  ],
+  "statistical_isotropy_verified": false,
+  "packing_optimization_log": [
+    {
+      "diameter_mm": 5.0,
+      "objective": 0.0,
+      "iterations": 4,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 5.25,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 5.5,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 5.75,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 6.0,
+      "objective": 0.0,
+      "iterations": 3,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 6.25,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 6.5,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 6.75,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 7.0,
+      "objective": 0.0,
+      "iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 7.25,
+      "objective": 0.0,
+      "iterations": 3,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 7.5,
+      "objective": 0.0,
+      "iterations": 3,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 7.75,
+      "objective": 0.0,
+      "iterations": 5,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 8.0,
+      "objective": 0.0,
+      "iterations": 12,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 8.25,
+      "objective": 0.0,
+      "iterations": 7,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 8.5,
+      "objective": 0.0,
+      "iterations": 7,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 8.75,
+      "objective": 0.0,
+      "iterations": 8,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 9.0,
+      "objective": 0.0,
+      "iterations": 15,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 9.25,
+      "objective": 0.0,
+      "iterations": 19,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 9.5,
+      "objective": 0.0,
+      "iterations": 50,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 9.75,
+      "objective": 0.0,
+      "iterations": 60,
+      "optimizer_success": true
+    },
+    {
+      "diameter_mm": 10.0,
+      "objective": 0.0,
+      "iterations": 67,
+      "optimizer_success": true
+    }
+  ]
+}

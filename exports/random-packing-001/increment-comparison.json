@@ -1,0 +1,8 @@
+{
+  "status": "not_evaluated",
+  "comparison_compression": 0.2,
+  "coarse_accepted": true,
+  "fine_accepted": false,
+  "reason": "Fine trajectory was interrupted by OS OOM before reaching an accepted 20 percent state.",
+  "global_increment_convergence_verified": false
+}
