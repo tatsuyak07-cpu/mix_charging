@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "contacts_cached": 73,
+  "contacts_fresh": 73,
+  "maximum_force_difference_N": 1.7763568394002505e-15,
+  "cached_evaluation_s": 0.22776399200665765,
+  "fresh_evaluation_s": 0.5899288250075188,
+  "note": "Same physical query and force law; individual timing diagnostic, not whole-model speed claim."
+}

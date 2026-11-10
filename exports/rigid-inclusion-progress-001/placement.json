@@ -1,0 +1,16 @@
+{
+  "source": "results/random-packing-001/packing.npz",
+  "length_mm": 24.140717635130514,
+  "rigid_diameter_mm": 4.0,
+  "rigid_height_mm": 4.0,
+  "placement_fractional": [
+    0.654519009960618,
+    0.9999999989159791,
+    0.8232989867325115
+  ],
+  "minimum_sphere_clearance_mm": 0.5530236732680409,
+  "minimum_neck_clearance_mm": 2.5045627926304994,
+  "matrix_cad_porosity": 0.4,
+  "geometry_only_selection": true,
+  "statistical_isotropy_verified": false
+}

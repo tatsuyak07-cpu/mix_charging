@@ -35,3 +35,13 @@
   retaining periodic microscopic fluctuations. Keep these constraints during
   axial unloading; report lateral reactions and distinguish zero axial load
   from a completely traction-free state. Preserve the older stress-free runs.
+
+- User update (2026-11-10): implement stages1-3 of the approved floating rigid
+  cylinder plan:6DOF nondeforming inclusion, periodic contact and remesh/history
+  integration, then small-packing loaded matrix-region porosity40% to10%.
+  The final physical specification remains cylinderD20mm,H20mm in a100mm cell.
+  Developer-defined integration prototype: cylinderD4mm,H4mm in the existing
+  16-grain D10mm packing, with nonoverlap geometry selected before any loading.
+  Distinguish prototype dimensions and matrix-region / total-cell porosity.
+  Keep the cylinder free to translate/rotate; adding a fixed support requires
+  a separate explicitly labeled physical case. Preserve prior no-cylinder runs.

@@ -16,6 +16,28 @@ from packing_fem.adaptive_tet import quality
 from packing_fem.fixed_point import anderson_candidate,affine_predictor
 
 
+
+def periodic_model(X,c):
+    if c.get('rigid_inclusion',False):
+        from packing_fem.rigid_inclusion import make_periodic
+        return make_periodic(X,c['length_mm'],c)
+    return Periodic(X,c['length_mm'])
+
+
+def contact_model(X,t,p,c):
+    if c.get('rigid_inclusion',False):
+        from packing_fem.rigid_inclusion import make_contact
+        return make_contact(X,t,p,c)
+    return PeriodicIPC(X,t,p,c)
+
+
+def measured_porosity(volume,cell,c):
+    if c.get('rigid_inclusion',False):
+        from packing_fem.rigid_inclusion import porosities
+        return porosities(volume,cell,c)[0]
+    return float(1-volume/cell)
+
+
 def active_dofs(p,c,prescribed):
     """Fixed transverse lattice vectors: only Fzz is a macro unknown.
 
@@ -172,27 +194,28 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
     if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton'):raise ValueError('Unknown implicit optimizer')
+    if c.get('rigid_inclusion',False) and c.get('implicit_optimizer')!='coupled_newton':raise ValueError('Floating rigid inclusion requires the nonlinear coupled_newton backend')
     if c.get('implicit_optimizer') in ('lbfgs','coupled_newton') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
     if c.get('implicit_iterate_checkpoint_every',0)>0:
         trace=out/'iterate-trace';trace.mkdir();c['_iterate_checkpoint_directory']=str(trace)
     sources=out/'source';sources.mkdir()
     manifest={}
-    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
+    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/rigid_inclusion.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
         source=Path(name);target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
     (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True,rejected_geometry=None if rejected_geometry is None else str(rejected_geometry),rejected_geometry_sha256=None if rejected_geometry is None else hashlib.sha256(Path(rejected_geometry).read_bytes()).hexdigest(),rejected_geometry_material_history_used=False),indent=2))
     data=np.load(mesh);X=data['points'];t=oriented(X,data['tets'])
     if restart:
         r=np.load(restart);X=r['X'];t=oriented(X,r['t'])
-    p=Periodic(X,c['length_mm']);q=np.zeros(p.ndof);b=np.tile(np.eye(3),(len(t),1,1));ep=np.zeros(len(t))
+    p=periodic_model(X,c);q=np.zeros(p.ndof);b=np.tile(np.eye(3),(len(t),1,1));ep=np.zeros(len(t))
     V0,_,D=geometry(X,t);inverse=np.linalg.inv(D);parent=np.arange(len(t))
     if restart:
         r=np.load(restart)
         if abs(r['V0'].sum()/geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()-1)>1e-6:raise ValueError('Restart material volume mismatch')
         q=r['q'];b=r['b'];ep=r['ep'];V0=r['V0'];parent=r['parent'] if 'parent' in r else np.arange(len(t));inverse=np.linalg.inv(geometry(p.positions(q),t)[2])
-    initial_mesh_porosity=float(1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3)
-    if 'initial_porosity_tolerance' in c and abs(initial_mesh_porosity-c['requested_initial_porosity'])>c['initial_porosity_tolerance']:raise ValueError('Measured mesh porosity outside the configured initial geometry tolerance')
-    contact=PeriodicIPC(X,t,p,c)
+    initial_mesh_porosity=measured_porosity(geometry(data['points'],oriented(data['points'],data['tets']))[0].sum(),p.L**3,c)
+    if 'initial_porosity_tolerance' in c and abs(initial_mesh_porosity-c.get('requested_matrix_porosity',c['requested_initial_porosity']))>c['initial_porosity_tolerance']:raise ValueError('Measured mesh porosity outside the configured initial geometry tolerance')
+    contact=contact_model(X,t,p,c)
     warm_guess=None;warm_X=None;warm_t=None
     if initial_iterate:
         if not restart:raise ValueError('An initial iterate requires an accepted restart state')
@@ -203,7 +226,7 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
         import ipctk as ipc
         if ipc.has_intersections(contact.mesh,contact.positions(warm_guess)):raise ValueError('Initial iterate has surface intersections')
     print('mesh',len(X),len(t),'ghost',len(contact.X),'ndof',p.ndof,flush=True)
-    initial=1-geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()/p.L**3
+    initial=initial_mesh_porosity
     rows=[];start=time.monotonic();increment=c.get('implicit_initial_strain_increment',c['implicit_strain_increment']);index=0;failed=0
     if not 0<increment<=c['implicit_strain_increment']:raise ValueError('Initial load increment must be positive and no larger than its ceiling')
     remesh_events=0;remesh_attempted_at=-1;predictor_index=0;pending_geometry=None
@@ -216,7 +239,7 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
     if phase not in ('compression','hold'):raise ValueError('initial_phase must be compression or hold')
     zero=np.zeros(p.ndof);unload_fraction=0.;unload_reaction=None;loaded_porosity=None
     def log(v):print(json.dumps(v),flush=True)
-    def phi_now():return float(1-geometry(p.positions(q),t)[0].sum()/(p.L**3*np.linalg.det(deformation(q[-6:]))))
+    def phi_now():return measured_porosity(geometry(p.positions(q),t)[0].sum(),p.L**3*np.linalg.det(deformation(q[-6:])),c)
     already_loaded=phase=='compression' and phi_now()<=c['target_final_porosity']+c['porosity_tolerance']
     if already_loaded and not c.get('loading_only',False):phase='hold'
     if phase=='hold':loaded_porosity=phi_now()
@@ -233,17 +256,23 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
                     nx,nt,nb,ne,nv,nparent,report=refine_deformed_edges(p.positions(q),t,b,ep,V0,c,parent,X,p.L)
                 except ValueError:
                     nx,nt,nb,ne,nv,nparent,report=adaptive_remesh(p.positions(q),t,b,ep,V0,c,parent=parent)
+                rigid_pose=q[p.rigid_dofs].copy() if hasattr(p,'rigid_dofs') else None
                 macro=q[-6:].copy();newX=report.pop('_reference_points',None)
                 if newX is None:
                     newX=nx@np.linalg.inv(deformation(macro)).T;report['reference_chart_reset']=True
                 else:report['reference_chart_reset']=False
-                np_new=Periodic(newX,p.L)
+                np_new=periodic_model(newX,c)
                 if report['reference_chart_reset']:
                     nq=np.zeros(np_new.ndof);nq[-6:]=macro
                 else:nq=np_new.remap_positions(nx,macro)
+                if rigid_pose is not None:
+                    nq[np_new.rigid_dofs]=rigid_pose
+                    old_center,(old_rotation,_,_)=p.pose(q);new_center,(new_rotation,_,_)=np_new.pose(nq)
+                    np.testing.assert_allclose(old_center,new_center,atol=1e-10);np.testing.assert_allclose(old_rotation,new_rotation,atol=1e-12)
+                    report['rigid_pose_preserved']=True
                 np.testing.assert_allclose(np_new.positions(nq),nx,atol=1e-9)
                 new_inverse=np.linalg.inv(geometry(nx,nt)[2])
-                new_contact=PeriodicIPC(newX,nt,np_new,c)
+                new_contact=contact_model(newX,nt,np_new,c)
                 # Commit only after the transferred state has equilibrated.
                 relax=equilibrium(np_new,nt,nq,nb,ne,new_inverse,nv,c,new_contact,nq[np_new.prescribed],np.zeros(np_new.ndof),log,nparent)
                 if isinstance(relax,dict):raise ValueError('Post-remesh equilibrium failed: '+relax['reason'])
@@ -304,6 +333,11 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
         l2=float(np.linalg.norm(scaled[free_mask]))
         macro_error=0. if prescribed is None else abs(q[p.prescribed]-prescribed)
         row=dict(transverse_boundary=c.get('transverse_boundary','stress_free'),lateral_length_x_mm=float(p.L*np.linalg.norm(H[:,0])),lateral_length_y_mm=float(p.L*np.linalg.norm(H[:,1])),transverse_area_ratio=float(area/p.L**2),lateral_reaction_x_N=float(g[p.nmicro]/p.L),lateral_reaction_y_N=float(g[p.nmicro+1]/p.L),macro_target_error=macro_error,step=index,phase=phase,porosity=phi,compression=float(-q[p.prescribed]),axial_reaction_N=float(g[p.prescribed]/p.L),nominal_pressure_MPa=float(-g[p.prescribed]/p.L**3),free_residual_N=norm,free_residual_l2_N=l2,residual_l2_to_axial_reaction=l2/max(abs(g[p.prescribed])/p.L,1e-12),history_points=len(parent),contacts=n,minimum_quality=float(quality(p.positions(q),t).min()),maximum_peeq=float(ep.max()),iterations=it,wall_s=time.monotonic()-start)
+        if hasattr(p,'rigid_dofs'):
+            from packing_fem.rigid_inclusion import porosities,rigid_volume
+            center,(rotation,_,_)=p.pose(q);force_rigid,torque_rigid=contact.rigid_resultant(q)
+            _,total=porosities(geometry(p.positions(q),t)[0].sum(),p.L**3*np.linalg.det(H),c)
+            row.update(total_porosity=total,rigid_contacts=contact.rigid_contact_count(),rigid_volume_mm3=rigid_volume(c),rigid_center_x_mm=float(center[0]),rigid_center_y_mm=float(center[1]),rigid_center_z_mm=float(center[2]),rigid_force_N=float(np.linalg.norm(force_rigid)),rigid_torque_Nmm=float(np.linalg.norm(torque_rigid)),rigid_rotation_rad=float(np.arccos(np.clip((np.trace(rotation)-1)/2,-1,1))))
         rows.append(row)
         with (out/'history.csv').open('w') as f:w=csv.DictWriter(f,fieldnames=row.keys());w.writeheader();w.writerows(rows)
         np.savez_compressed(out/f'state-{index:04d}.npz',X=X,x=p.positions(q),t=t,q=q,b=b,ep=ep,V0=V0,parent=parent)

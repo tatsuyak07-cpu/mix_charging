@@ -29,7 +29,11 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
         finally:contact.friction=original
     oldq=q.copy();trial=q.copy() if initial_guess is None else initial_guess.copy()
     if prescribed is None or c.get('transverse_boundary')!='fixed_cell':return dict(reason='Coupled Newton requires prescribed axial compression and fixed transverse cell',iterate=trial)
-    trial=affine_predictor(p,trial,prescribed)
+    seed=trial.copy()
+    try:
+        trial=affine_predictor(p,trial,prescribed)
+        if hasattr(contact,'loading_path_clear') and seed[p.prescribed]!=prescribed and not contact.loading_path_clear(seed,trial):return dict(reason='Rigid loading predictor has no collision-free loading path; cut increment',iterate=trial)
+    except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial)
     if np.any(abs(trial[-6:][[0,1,3,4,5]])>1e-12):return dict(reason='Fixed transverse lattice changed',iterate=trial)
     def values(v,tangent=False):
         _,g,Km,state=evaluate(p.positions(v),t,b,ep,inverse,V0,dict(c,implicit_project_material_tangent=False),tangent,parent)
@@ -61,7 +65,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 active=abs(gradient)>=norm*(1-1e-12)
                 merit_force=np.where(active,gradient/max(int(active.sum()),1),0.)
             log(dict(coupled_newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,residual_l2_N=float(np.linalg.norm(gradient)),contacts=n,search_merit_norm='maximum' if maximum_merit else 'l2'))
-            if norm<c['implicit_force_tolerance_N']:return trial,state,internal,n,it,norm
+            if norm<c['implicit_force_tolerance_N'] and (not hasattr(contact,'force_balance_ok') or contact.force_balance_ok(trial,c['implicit_force_tolerance_N'])):return trial,state,internal,n,it,norm
             norm_history.append(norm);l2_history.append(float(np.linalg.norm(gradient)))
             if c.get('implicit_stagnation_window',0)>0 and search_stalled(norm_history,step_history,c['implicit_stagnation_window']) and search_stalled(l2_history,step_history,c['implicit_stagnation_window']):raise ValueError('Force residual stalled with negligible displacement updates; reduce load increment')
             diagonal=np.maximum(abs(J.diagonal()),1e-6)
@@ -136,7 +140,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                             ac=trial+aa*alternative
                             try:
                                 ai,_,_,_=values(ac);ag=(ai-external)[:p.nmicro];am=measure(ag)
-                                if am<=merit+1e-4*aa*alternative_slope and (not peak_search or ag@ag<=max(gradient@gradient,(c.get('implicit_hybrid_rms_fraction',.2)*c['implicit_force_tolerance_N'])**2*len(gradient))*(1+1e-10)):
+                                if am<=merit+1e-4*aa*alternative_slope and (not peak_search or ag@ag<=max(gradient@gradient,(c.get('implicit_peak_rms_fraction',c.get('implicit_hybrid_rms_fraction',.2))*c['implicit_force_tolerance_N'])**2*len(gradient))*(1+1e-10)):
                                     if best is None or am<best[0]:best=(am,aa,ac)
                                     log(dict(coupled_least_squares_damping=damping,linear_iterations=int(linear[2]),merit_after=am,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2'),alpha=aa,**(dict(peak_weighted_search=True) if peak_search else {})))
                                     break

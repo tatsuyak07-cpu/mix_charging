@@ -9,7 +9,7 @@ def merge(segments,out):
     if out.exists():raise FileExistsError(out)
     status=json.loads((Path(segments[-1][0])/'status.json').read_text())
     if status.get('status')!='loaded_target_reached' or not status.get('target_reached'):raise ValueError('Final segment has not reached the loaded target')
-    physics=['length_mm','diameter_mm','neck_diameter_mm','young_mpa','poisson','yield_mpa','hardening_mpa','friction','transverse_boundary','ipc_dhat_mm','ipc_stiffness_mpa','ipc_slip_regularization_mm','implicit_force_tolerance_N','implicit_macro_tolerance']
+    physics=['rigid_inclusion','rigid_diameter_mm','rigid_height_mm','rigid_segments','rigid_center_mm','requested_matrix_porosity','length_mm','diameter_mm','neck_diameter_mm','young_mpa','poisson','yield_mpa','hardening_mpa','friction','transverse_boundary','ipc_dhat_mm','ipc_stiffness_mpa','ipc_slip_regularization_mm','implicit_force_tolerance_N','implicit_macro_tolerance']
     records=[];provenance=[];previous=None;base=None;elapsed=0.;copies=[]
     for run,last in segments:
         run=Path(run);c=json.loads((run/'config.json').read_text())
@@ -42,7 +42,8 @@ def merge(segments,out):
     (out/'status.json').write_text(json.dumps(dict(status,merged_path=True,validated=False),indent=2)+'\n')
     (out/'provenance.json').write_text(json.dumps(dict(segments=provenance,states=manifest),indent=2)+'\n')
     with (out/'history.csv').open('w',newline='') as stream:
-        writer=csv.DictWriter(stream,fieldnames=records[0].keys());writer.writeheader();writer.writerows(records)
+        columns=list(dict.fromkeys(key for row in records for key in row))
+        writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader();writer.writerows(records)
     print(json.dumps(dict(states=len(copies),last_porosity=records[-1]['porosity'],out=str(out))),flush=True)
 
 

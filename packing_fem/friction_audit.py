@@ -4,7 +4,7 @@ import numpy as np
 
 def friction_report(contact,q,oldq,mu):
     contact.set_lag(q,oldq)
-    u=np.asfortranarray((contact.R@(q-oldq)).reshape(-1,3))
+    u=contact.displacement(q,oldq) if hasattr(contact,'displacement') else np.asfortranarray((contact.R@(q-oldq)).reshape(-1,3))
     count=0;negative=0;ratio=0.;excess=0.;reconstruction=0.;coefficient_error=0.;work=0.;positive_work=0.;negative_work=0.;zero_normal_violations=0
     for name in ['vv_collisions','ev_collisions','ee_collisions','fv_collisions']:
         for collision in getattr(contact.lag,name):

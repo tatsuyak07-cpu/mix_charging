@@ -4,9 +4,12 @@ from .explicit_periodic import deformation
 
 
 def affine_predictor(p,q,prescribed):
+    if hasattr(p,'predict_loading'):return p.predict_loading(q,prescribed)
     previous=deformation(q[-6:]);result=q.copy();result[p.prescribed]=prescribed
     change=deformation(result[-6:])@np.linalg.inv(previous)
-    result[:p.nmicro]=(q[:p.nmicro].reshape(-1,3)@change.T).ravel()
+    count=getattr(p,'body_nmicro',p.nmicro)
+    result[:count]=(q[:count].reshape(-1,3)@change.T).ravel()
+    if hasattr(p,'rigid_dofs'):result[p.rigid_dofs[:3]]=change@q[p.rigid_dofs[:3]]
     return result
 
 

@@ -25,7 +25,7 @@ def boundary(t):
     return faces[keep],np.repeat(np.arange(len(t)),4)[keep]
 
 
-def render(path,state,title,L,footer=None):
+def render(path,state,title,L,footer=None,rigid_surface=None):
     x=state['x'];faces,owners=boundary(state['t'])
     field=element_peeq(state)
     colors=plt.get_cmap('viridis')(plt.Normalize(0,max(float(field.max()),1e-6))(field[owners]))
@@ -33,6 +33,8 @@ def render(path,state,title,L,footer=None):
     fig.get_layout_engine().set(rect=(0,.07,1,.93))
     axis=fig.add_subplot(projection='3d')
     axis.add_collection3d(Poly3DCollection(x[faces],facecolors=colors,edgecolors='#263e4a',linewidths=.12))
+    if rigid_surface is not None:
+        rx,rt=rigid_surface;axis.add_collection3d(Poly3DCollection(rx[rt],facecolors='#d99b31',edgecolors='#5c4115',linewidths=.25,alpha=1.))
     corners=np.array([[a,b,c] for a in (0.,L) for b in (0.,L) for c in (0.,L)])
     moved=corners@deformation(state['q'][-6:]).T
     for i in range(8):
@@ -42,6 +44,7 @@ def render(path,state,title,L,footer=None):
                 axis.plot(*moved[[i,j]].T,color='#b32929',lw=.8)
     lo=np.minimum(x.min(axis=0),np.minimum(corners.min(axis=0),moved.min(axis=0)))-.3
     hi=np.maximum(x.max(axis=0),np.maximum(corners.max(axis=0),moved.max(axis=0)))+.3
+    if rigid_surface is not None:lo=np.minimum(lo,rigid_surface[0].min(axis=0)-.3);hi=np.maximum(hi,rigid_surface[0].max(axis=0)+.3)
     axis.set(xlim=(lo[0],hi[0]),ylim=(lo[1],hi[1]),zlim=(lo[2],hi[2]),xlabel='X (mm)',ylabel='Y (mm)',zlabel='Z (mm)',title=title)
     axis.set_box_aspect(hi-lo);axis.view_init(elev=23,azim=-53)
     sm=plt.cm.ScalarMappable(norm=plt.Normalize(0,max(float(field.max()),1e-6)),cmap='viridis')

@@ -1,0 +1,10 @@
+{
+  "exact_restart_check_passed": true,
+  "checkpoint_sha256": "078391a7233cad6c83d6edaf310083551314b753cae10c1e89938ec432647c7b",
+  "selected_prefix": [
+    "compression-001:1-2",
+    "compression-002:1"
+  ],
+  "target_reached": false,
+  "wall_time": "Per-source-run wall_s; preparation of an initial guess outside selected prefixes is excluded."
+}

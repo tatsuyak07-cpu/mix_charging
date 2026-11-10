@@ -82,7 +82,9 @@ def remesh(x,t,b,ep,V0,c,parent=None):
     energy_error=abs(newenergy-oldenergy)/max(abs(oldenergy),1e-12)
     report=dict(current_volume_relative_error=volume_error,reference_volume_relative_error=float(abs(newV0.sum()-V0.sum())/V0.sum()),overlap_row_error=row_error,overlap_column_error=col_error,energy_relative_error=energy_error,quality_before=float(quality(x,t).min()),quality_after=float(quality(nx,nt).min()),elements_before=len(t),elements_after=len(nt),history_points_before=len(parent),history_points_after=len(newparent),boundary_preserved=True)
     if energy_error>c['remesh_energy_tolerance']:raise ValueError(f'Remesh state transfer energy error {energy_error}; report={report}')
-    if report['quality_after']<=report['quality_before']:raise ValueError(f'Remesh does not improve worst quality: {report}')
+    gain=report['quality_after']-report['quality_before'];required=max(c.get('remesh_quality_gain_absolute_tolerance',1e-12),c.get('remesh_quality_gain_relative_tolerance',1e-8)*abs(report['quality_before']))
+    report.update(quality_gain=gain,required_quality_gain=required)
+    if gain<=required:raise ValueError(f'Remesh does not resolve a worst-quality improvement: {report}')
     return nx,nt,newb,newep,newV0,newparent,report
 
 
