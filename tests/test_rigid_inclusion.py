@@ -88,3 +88,16 @@ def test_curved_swept_box_cache_preserves_actual_contact_force_and_jacobian():
     a=cached.evaluate_coupled(outside,old);b=fresh.evaluate_coupled(outside,old)
     assert not cached.last_collision_cache_hit and a[3]==b[3]
     np.testing.assert_allclose(a[1],b[1],atol=1e-12)
+
+
+def test_enlarged_tiles_preserve_friction_and_rigid_resultant_across_periodic_seam(tmp_path):
+    import json
+    from tools.audit_rigid_periodic_contact import audit
+    c=dict(C,rigid_center_mm=[.05,5.,5.]);x=X.copy();x[:,0]=15.05-x[:,0]
+    t=oriented(x,np.array([[0,1,2,3]]));p=RigidPeriodic(x,10.,c)
+    old=np.zeros(p.ndof);q=old.copy();q[p.rigid_dofs]=[.01,-.01,.005,.03,.02,-.04]
+    (tmp_path/'config.json').write_text(json.dumps(c))
+    for step,unknown in enumerate([old,q]):np.savez(tmp_path/f'state-{step:04d}.npz',X=x,t=t,V0=np.ones(1),parent=np.zeros(1,int),q=unknown,x=p.positions(unknown))
+    out=tmp_path/'audit.json';assert audit(tmp_path,1,out)
+    report=json.loads(out.read_text());assert report['tiles'][0]['rigid_contacts']>0
+    assert report['generalized_force_max_difference_N']<1e-10

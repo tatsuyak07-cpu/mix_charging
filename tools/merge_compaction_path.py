@@ -10,10 +10,11 @@ def merge(segments,out):
     status=json.loads((Path(segments[-1][0])/'status.json').read_text())
     if status.get('status')!='loaded_target_reached' or not status.get('target_reached'):raise ValueError('Final segment has not reached the loaded target')
     physics=['rigid_inclusion','rigid_diameter_mm','rigid_height_mm','rigid_segments','rigid_center_mm','requested_matrix_porosity','length_mm','diameter_mm','neck_diameter_mm','young_mpa','poisson','yield_mpa','hardening_mpa','friction','transverse_boundary','ipc_dhat_mm','ipc_stiffness_mpa','ipc_slip_regularization_mm','implicit_force_tolerance_N','implicit_macro_tolerance']
-    records=[];provenance=[];previous=None;base=None;elapsed=0.;copies=[]
+    records=[];provenance=[];previous=None;base=None;elapsed=0.;copies=[];initial_porosity=None
     for run,last in segments:
         run=Path(run);c=json.loads((run/'config.json').read_text())
-        if base is None:base=c
+        if base is None:
+            base=c;initial_porosity=json.loads((run/'status.json').read_text())['initial_porosity']
         if any(c.get(key)!=base.get(key) for key in physics):raise ValueError('Physical model or acceptance criteria changed across restart chain')
         initial=run/'state-0000.npz'
         if previous is not None:
@@ -39,7 +40,7 @@ def merge(segments,out):
     c['usage_scope']='Merged accepted restart chain; source segments remain unmodified.'
     c['wall_time_interpretation']='Cumulative wall times along selected accepted segments; excludes other trial branches and initial-guess preparation outside those segments.'
     (out/'config.json').write_text(json.dumps(c,indent=2)+'\n')
-    (out/'status.json').write_text(json.dumps(dict(status,merged_path=True,validated=False),indent=2)+'\n')
+    (out/'status.json').write_text(json.dumps(dict(status,initial_porosity=initial_porosity,merged_path=True,validated=False),indent=2)+'\n')
     (out/'provenance.json').write_text(json.dumps(dict(segments=provenance,states=manifest),indent=2)+'\n')
     with (out/'history.csv').open('w',newline='') as stream:
         columns=list(dict.fromkeys(key for row in records for key in row))

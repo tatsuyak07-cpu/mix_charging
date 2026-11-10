@@ -33,8 +33,11 @@ def audit(run,step,out):
         records.append(dict(image_radius=image_radius,images=(2*image_radius+1)**3,contacts=count,rigid_contacts=contact.rigid_contact_count(),barrier_energy_Nmm=barrier,contact_potential_Nmm=float(value),rigid_force_N=f.tolist(),rigid_torque_Nmm=t.tolist(),intersections=bool(ipc.has_intersections(contact.mesh,x))))
         forces.append(force.copy());del contact,x,n;gc.collect()
     difference=float(abs(forces[1]-forces[0]).max());energy_error=abs(records[1]['barrier_energy_Nmm']-records[0]['barrier_energy_Nmm'])/max(abs(records[1]['barrier_energy_Nmm']),1e-15)
-    passed=not any(r['intersections'] for r in records) and records[0]['contacts']==records[1]['contacts'] and records[0]['rigid_contacts']==records[1]['rigid_contacts'] and difference<1e-6 and energy_error<1e-7
-    result=dict(passed=bool(passed),state=str(run/f'state-{step:04d}.npz'),predecessor=origin,required_relative_shift_bound=required,nonlinear_actual_displacement=True,generalized_force_max_difference_N=difference,barrier_energy_relative_difference=energy_error,tiles=records)
+    potential_error=abs(records[1]['contact_potential_Nmm']-records[0]['contact_potential_Nmm'])/max(abs(records[1]['contact_potential_Nmm']),1e-15)
+    force_error=float(abs(np.asarray(records[1]['rigid_force_N'])-records[0]['rigid_force_N']).max())
+    torque_error=float(abs(np.asarray(records[1]['rigid_torque_Nmm'])-records[0]['rigid_torque_Nmm']).max())
+    passed=not any(r['intersections'] for r in records) and records[0]['contacts']==records[1]['contacts'] and records[0]['rigid_contacts']==records[1]['rigid_contacts'] and difference<1e-6 and energy_error<1e-7 and potential_error<1e-7 and force_error<1e-6 and torque_error<1e-6
+    result=dict(passed=bool(passed),state=str(run/f'state-{step:04d}.npz'),predecessor=origin,required_relative_shift_bound=required,nonlinear_actual_displacement=True,generalized_force_max_difference_N=difference,barrier_energy_relative_difference=energy_error,contact_potential_relative_difference=potential_error,rigid_force_max_difference_N=force_error,rigid_torque_max_difference_Nmm=torque_error,tiles=records)
     out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True);return passed
 
 

@@ -1,0 +1,61 @@
+{
+  "archived_policy_replayed": true,
+  "archived_remesh_source_sha256": "7e35f3b467a84065145be35d6d6fd4a234e21a4f7c047946a3c2138dd33fccb4",
+  "topology_and_quadrature_identical": true,
+  "chart_error_mm": 0.0,
+  "transfer_rigid_pose_error": 0.0,
+  "b_replay_error": 0.0,
+  "ep_replay_error": 0.0,
+  "free_residual_N": 0.004389182856773296,
+  "rigid_force_N": [
+    0.0031904926535829313,
+    0.0036868881983678986,
+    0.003721928867007458
+  ],
+  "rigid_torque_Nmm": [
+    0.006444830207597387,
+    -0.007023398972210413,
+    0.00437892603089563
+  ],
+  "rigid_contacts": 7,
+  "contacts": 82,
+  "coulomb": {
+    "stencils": 80,
+    "negative_weight_stencils": 0,
+    "friction_coefficient": 0.3,
+    "maximum_coefficient_error": 0.0,
+    "maximum_weighted_coulomb_ratio": 1.0000000000000007,
+    "maximum_bound_excess_N": 6.938893903907228e-18,
+    "maximum_tangent_reconstruction_error_N": 6.938893903907228e-18,
+    "dissipated_work_Nmm": 0.0006640536603582198,
+    "positive_stencil_work_Nmm": 0.0006640536603582196,
+    "negative_stencil_work_Nmm": 0.0,
+    "zero_normal_force_violations": 0,
+    "physical_friction_work_Nmm": -0.0006640536603582198,
+    "work_assembly_error_Nmm": 2.168404344971009e-19,
+    "interpretation": "Magnitude bound on weighted integration stencils; negative-weight stencils, if present, are not separate physical contact pairs.",
+    "passed": true
+  },
+  "quality_gain": 6.938893903907228e-17,
+  "required_meaningful_quality_gain": 5.821268295745891e-10,
+  "meaningful_quality_improvement": false,
+  "transfer_report": {
+    "current_volume_relative_error": 4.1909451678828357e-16,
+    "reference_volume_relative_error": 2.964209401142357e-10,
+    "overlap_row_error": 7.579565787531334e-10,
+    "overlap_column_error": 1.0105662164024652e-09,
+    "energy_relative_error": 3.5410832415675276e-10,
+    "quality_before": 0.058212682957458906,
+    "quality_after": 0.058212682957458975,
+    "elements_before": 11,
+    "elements_after": 12,
+    "history_points_before": 64,
+    "history_points_after": 90,
+    "boundary_preserved": true,
+    "cavity_rings": 1,
+    "cavity_elements": 11,
+    "global_elements_after": 65407,
+    "global_history_points_after": 65496
+  },
+  "passed": true
+}

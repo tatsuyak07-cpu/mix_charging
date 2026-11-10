@@ -16,6 +16,7 @@ def bisected_initial_guess(p,t,oldq,failedq,prescribed,b,ep,inverse,V0,parent,c,
     fraction=(prescribed-oldq[p.prescribed])/delta
     if not fraction>0:raise ValueError('Predictor requires a forward load increment')
     affine=affine_predictor(p,oldq,prescribed)
+    if hasattr(contact,'loading_path_clear') and not contact.loading_path_clear(oldq,affine):raise ValueError('Rigid bisection affine seed has no collision-free loading path')
     target=oldq+fraction*(failedq-oldq) if fraction<=1 else affine_predictor(p,failedq,prescribed)
     target[-6:]=affine[-6:]
     feasible=affine.copy()
@@ -36,6 +37,7 @@ def bisected_initial_guess(p,t,oldq,failedq,prescribed,b,ep,inverse,V0,parent,c,
     for blend in [0.,1.,.5,.25]:
         q=affine+blend*(feasible-affine)
         try:
+            if hasattr(contact,'loading_path_clear') and not contact.loading_path_clear(affine,q):raise ValueError('Rigid bisection blend has no collision-free nonlinear path')
             _,g,_,state=evaluate(p.positions(q),t,b,ep,inverse,V0,c,parent=parent)
             _,gc,_,_=contact.evaluate_coupled(q,oldq)
             free=(np.asarray(p.A.T@g.ravel()).ravel()+gc)[:p.nmicro]
