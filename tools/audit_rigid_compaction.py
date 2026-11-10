@@ -2,6 +2,7 @@
 import argparse,csv,gc,json
 from pathlib import Path
 import numpy as np
+import ipctk as ipc
 from scipy.spatial.distance import pdist
 from packing_fem.rigid_inclusion import make_periodic,make_contact,cylinder_surface,rigid_volume,porosities
 from packing_fem.explicit_periodic import deformation
@@ -37,16 +38,19 @@ def audit(run,out):
         J=response(d['b'],d['ep'],c)[2];material=np.bincount(d['parent'],weights=d['V0']*J,minlength=len(d['t']))
         row=dict(step=step,matrix_region_porosity=phi,total_porosity=total,compression=float(-d['q'][p.prescribed]),solid_volume_mm3=float(volume.sum()),reference_volume_mm3=float(d['V0'].sum()),reference_volume_relative_error=abs(float(d['V0'].sum()/reference)-1),minimum_element_volume_mm3=float(volume.min()),quadrature_volume_error=float(np.max(abs(material-volume)/volume)),fixed_lattice_error=float(np.max(abs(H-np.diag([1,1,H[2,2]])))),saved_position_error_mm=float(abs(d['x']-p.positions(d['q'])).max()),rigid_volume_mm3=actual_v,rigid_volume_relative_error=abs(actual_v/vr-1),rigid_pair_distance_error_mm=float(abs(pdist(world)-distances).max()),rigid_center_mm=center.tolist(),rigid_rotation_matrix=R.tolist())
         passed=(volume.min()>0 and row['reference_volume_relative_error']<1e-7 and row['quadrature_volume_error']<1e-7 and row['fixed_lattice_error']<1e-12 and row['saved_position_error_mm']<1e-8 and row['rigid_volume_relative_error']<1e-10 and row['rigid_pair_distance_error_mm']<1e-9 and 0<=total<=phi<=1)
+        contact=make_contact(d['X'],d['t'],p,c)
+        row['surface_intersections']=bool(ipc.has_intersections(contact.mesh,contact.positions(d['q'])))
+        passed=passed and not row['surface_intersections']
         if step in history:
             saved=history[step];old,origin=predecessor(run,step,d,load(run/f'state-{step-1:04d}.npz'))
             inverse=np.linalg.inv(geometry(old['x'],old['t'])[2]);_,gm,_,st=evaluate(d['x'],d['t'],old['b'],old['ep'],inverse,old['V0'],c,parent=old['parent'])
-            contact=make_contact(d['X'],d['t'],p,c);_,gcforce,_,count=contact.evaluate_coupled(d['q'],old['q']);g=np.asarray(p.A.T@gm.ravel()).ravel()+gcforce
+            _,gcforce,_,count=contact.evaluate_coupled(d['q'],old['q']);g=np.asarray(p.A.T@gm.ravel()).ravel()+gcforce
             force,torque=contact.rigid_resultant(d['q']);res=float(abs(g[:p.nmicro]).max());pressure=float(-g[p.prescribed]/p.L**3);gauge=-g[:p.body_nmicro].reshape(-1,3).sum(axis=0)-g[p.rigid_dofs[:3]]
             row.update(predecessor=origin,free_residual_N=res,free_residual_l2_N=float(np.linalg.norm(g[:p.nmicro])),pressure_MPa=pressure,pressure_replay_error_MPa=abs(pressure-float(saved['nominal_pressure_MPa'])),b_replay_error=float(abs(st['b']-d['b']).max()),ep_replay_error=float(abs(st['ep']-d['ep']).max()),rigid_force_N=force.tolist(),rigid_torque_Nmm=torque.tolist(),rigid_force_max_N=float(abs(force).max()),rigid_torque_over_radius_max_N=float(abs(torque).max()/p.rigid_radius),rigid_contacts=contact.rigid_contact_count(),gauge_reaction_N=gauge.tolist(),csv_porosity_error=abs(phi-float(saved['porosity'])))
             row['coulomb']=friction_report(contact,d['q'],old['q'],c['friction'])
             passed=passed and res<c['implicit_force_tolerance_N'] and row['rigid_force_max_N']<c['implicit_force_tolerance_N'] and row['rigid_torque_over_radius_max_N']<c['implicit_force_tolerance_N'] and abs(res-float(saved['free_residual_N']))<1e-8 and row['pressure_replay_error_MPa']<1e-8 and row['b_replay_error']<1e-7 and row['ep_replay_error']<1e-7 and row['csv_porosity_error']<1e-10 and row['coulomb']['passed']
-            del contact;gc.collect()
         else:row['initial_geometry_only']=True
+        del contact;gc.collect()
         row['passed']=bool(passed);records.append(row);print(json.dumps({k:row[k] for k in ['step','matrix_region_porosity','passed']}),flush=True)
     report=dict(passed=bool(records and all(r['passed'] for r in records)),force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
     out.write_text(json.dumps(report,indent=2)+'\n');return report['passed']

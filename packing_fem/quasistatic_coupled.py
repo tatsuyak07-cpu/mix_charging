@@ -9,6 +9,15 @@ from .implicit_material import evaluate
 from .load_predictor import search_stalled
 
 
+def smooth_peak_merit(force,power):
+    """Squared p-norm and its exact force derivative, scaled against overflow."""
+    if not np.isfinite(power) or power<2:raise ValueError('Peak norm power must be finite and >=2')
+    maximum=float(np.max(abs(force),initial=0.))
+    if maximum==0:return 0.,np.zeros_like(force)
+    relative=abs(force)/maximum;total=float(np.sum(relative**power))
+    return .5*maximum**2*total**(2/power),force*relative**(power-2)*total**(2/power-1)
+
+
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
     multipliers=c.get('implicit_friction_smoothing_multipliers')
     if multipliers:
@@ -57,14 +66,18 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             weights=1/np.maximum(abs(J.diagonal()),1e-6) if weighted else np.ones_like(gradient)
             if norm_mode=='hybrid' and np.linalg.norm(gradient)<=c.get('implicit_hybrid_rms_fraction',.2)*c['implicit_force_tolerance_N']*np.sqrt(len(gradient)):maximum_stage=True
             maximum_merit=norm_mode=='maximum' or maximum_stage
+            peak_power=c.get('implicit_peak_norm_power') if maximum_merit else None
             def measure(force):
+                if peak_power is not None:return smooth_peak_merit(force,peak_power)[0]
                 return .5*float(np.max(abs(force),initial=0.)**2) if maximum_merit else .5*float(force@(weights*force))
             merit=measure(gradient)
             merit_force=weights*gradient
             if maximum_merit:
-                active=abs(gradient)>=norm*(1-1e-12)
-                merit_force=np.where(active,gradient/max(int(active.sum()),1),0.)
-            log(dict(coupled_newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,residual_l2_N=float(np.linalg.norm(gradient)),contacts=n,search_merit_norm='maximum' if maximum_merit else 'l2'))
+                if peak_power is not None:merit_force=smooth_peak_merit(gradient,peak_power)[1]
+                else:
+                    active=abs(gradient)>=norm*(1-1e-12)
+                    merit_force=np.where(active,gradient/max(int(active.sum()),1),0.)
+            log(dict(coupled_newton=it,compression=float(-trial[p.prescribed]),residual_N=norm,residual_l2_N=float(np.linalg.norm(gradient)),contacts=n,search_merit_norm=f'p{peak_power}' if peak_power is not None else ('maximum' if maximum_merit else 'l2')))
             if norm<c['implicit_force_tolerance_N'] and (not hasattr(contact,'force_balance_ok') or contact.force_balance_ok(trial,c['implicit_force_tolerance_N'])):return trial,state,internal,n,it,norm
             norm_history.append(norm);l2_history.append(float(np.linalg.norm(gradient)))
             if c.get('implicit_stagnation_window',0)>0 and search_stalled(norm_history,step_history,c['implicit_stagnation_window']) and search_stalled(l2_history,step_history,c['implicit_stagnation_window']):raise ValueError('Force residual stalled with negligible displacement updates; reduce load increment')
@@ -124,7 +137,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             if c.get('implicit_coupled_least_squares_fallback',False) and (not accepted or candidate_merit>merit*.9):
                 scales=[(np.sqrt(weights),False)]
                 if maximum_merit and c.get('implicit_coupled_peak_lsmr',False):
-                    scales.insert(0,(np.sqrt(weights)*np.maximum((abs(gradient)/norm)**2,.05),True))
+                    scales.insert(0,(np.sqrt(weights)*np.maximum((abs(gradient)/norm)**((peak_power-2)/2 if peak_power is not None else 2),.05),True))
                 best=None if not accepted else (candidate_merit,alpha,candidate)
                 for row_scale,peak_search in scales:
                     row_scaled=diags(row_scale)@J
@@ -146,11 +159,11 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                                     break
                             except (ValueError,RuntimeError):pass
                             aa*=.5
-                        if best is not None and best[0]<.5*merit:break
+                        if best is not None and best[0]<(1-c.get('implicit_lsmr_sufficient_reduction',.5))*merit:break
                     # A peak-focused direction must reduce maximum-force merit
                     # by 20% within the existing hybrid RMS budget. Final force
                     # acceptance is unchanged; large residuals may be redistributed.
-                    if best is not None and best[0]<(.8 if peak_search else .5)*merit:break
+                    if best is not None and best[0]<(1-c.get('implicit_lsmr_sufficient_reduction',.2 if peak_search else .5))*merit:break
                 if best is not None:candidate_merit,alpha,candidate=best;accepted=True
             if not accepted:raise ValueError('Coupled residual line search failed')
             log(dict(coupled_alpha=alpha,merit_before=merit,merit_after=candidate_merit,merit_weighting=c.get('implicit_coupled_merit_weighting','none'),merit_norm=c.get('implicit_coupled_merit_norm','l2')))
