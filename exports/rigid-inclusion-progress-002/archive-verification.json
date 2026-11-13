@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "archives": 27,
+  "files": 1049,
+  "all_member_sha256_checked": true,
+  "live_calculation_excluded": [
+    "compression-016"
+  ]
+}

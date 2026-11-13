@@ -1,0 +1,218 @@
+[
+  {
+    "file": "rigid-inclusion-progress-002-part-01.tar.xz",
+    "bytes": 30137668,
+    "sha256": "3fb8db601f30b6ae5429dbb728f49e19f39ddce36ba7c9e0064f86d0dcdfc340",
+    "members": 31,
+    "uncompressed_bytes": 47571219,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-02.tar.xz",
+    "bytes": 23058412,
+    "sha256": "2f71a7a5d11dad397a69e0041be2ebb87eaf5cc11f860a1127a5a0f8c8724945",
+    "members": 32,
+    "uncompressed_bytes": 45718753,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-03.tar.xz",
+    "bytes": 18218664,
+    "sha256": "dd2a8c22d603e9b0ab641e225143d20b94edcf604c46cc6bbb64dc80faa10d84",
+    "members": 30,
+    "uncompressed_bytes": 47552401,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-04.tar.xz",
+    "bytes": 8842796,
+    "sha256": "a917cedd7f105e10b79edc8d836dac4a1cdfd2fc372824e3b0cc0bdc8f828a04",
+    "members": 48,
+    "uncompressed_bytes": 46831424,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-05.tar.xz",
+    "bytes": 8842300,
+    "sha256": "ea5ad290c769b3799960247cdf0c9fab3b66b47554854f7223cd8a6846f173af",
+    "members": 49,
+    "uncompressed_bytes": 46834163,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-06.tar.xz",
+    "bytes": 8416876,
+    "sha256": "b81378037a36c51ce4d75cff12ba57a530ab9cb0bcbff92e1e4e465b39a17049",
+    "members": 86,
+    "uncompressed_bytes": 47712752,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-07.tar.xz",
+    "bytes": 9122844,
+    "sha256": "f1b459727e3ccd482a300d0dd9541be356fb98598cb6b59d255ad36f2a046869",
+    "members": 28,
+    "uncompressed_bytes": 46023298,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-08.tar.xz",
+    "bytes": 8849312,
+    "sha256": "0274e3e80800144afa8a5397138fccd36b5bb5d14c014a8eeca5744d6a124073",
+    "members": 64,
+    "uncompressed_bytes": 47050150,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-09.tar.xz",
+    "bytes": 21481652,
+    "sha256": "699c6258242800016b4cb65dbec49f134401efd26975a6ae5d1085a4d7a326e4",
+    "members": 11,
+    "uncompressed_bytes": 45885468,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-10.tar.xz",
+    "bytes": 34351452,
+    "sha256": "c854ff875384bfeffbdc0d900b05a463891a70889382c4a289f3038f9c95f823",
+    "members": 8,
+    "uncompressed_bytes": 45860627,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-11.tar.xz",
+    "bytes": 13048588,
+    "sha256": "c9c9e04e32a9b2fbf3ff4e12bbf84a0dc8e92585653754e5e7b8d747e2969c2d",
+    "members": 8,
+    "uncompressed_bytes": 45986457,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-12.tar.xz",
+    "bytes": 21327868,
+    "sha256": "6dcafb8348f8e7dc2ec3d5dc9e0398cb3657a3a04fe5f9cfd375a086c8a5b9a9",
+    "members": 12,
+    "uncompressed_bytes": 45710099,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-13.tar.xz",
+    "bytes": 38022340,
+    "sha256": "03c15f8c69a45f9b978e8a0ece782a2def51d59a5870d335abdab2aa242e6056",
+    "members": 16,
+    "uncompressed_bytes": 45300243,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-14.tar.xz",
+    "bytes": 25692328,
+    "sha256": "bb30e50c7467a687f0b74ae87e326213bffadcfc75ec2e11f91589b157464f23",
+    "members": 16,
+    "uncompressed_bytes": 45798717,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-15.tar.xz",
+    "bytes": 39016980,
+    "sha256": "b37c5c951005143912f77534760a156e88a78cfc2d6fb387afc0f8a94ce32641",
+    "members": 102,
+    "uncompressed_bytes": 50085308,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-16.tar.xz",
+    "bytes": 34316620,
+    "sha256": "5773b5f63850fa9c5e1757407181211c14bf3826c6946d020b4f23f92821555a",
+    "members": 7,
+    "uncompressed_bytes": 44140663,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-17.tar.xz",
+    "bytes": 34362616,
+    "sha256": "0091725491ef785da497591448253e09dc4afd6675ea93deca236a40df8fc4a7",
+    "members": 7,
+    "uncompressed_bytes": 44186777,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-18.tar.xz",
+    "bytes": 34456640,
+    "sha256": "8ee1cb304e8885b4788db2ef844c6e6b77833d2a6057b1073008276b74b426fc",
+    "members": 7,
+    "uncompressed_bytes": 44282732,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-19.tar.xz",
+    "bytes": 34574100,
+    "sha256": "4c196d7e9907281c4daf072eb691c226e8336fd44861818d609b9c51ad7b30ee",
+    "members": 7,
+    "uncompressed_bytes": 44399902,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-20.tar.xz",
+    "bytes": 34664640,
+    "sha256": "d85fe56f302e504a5b98ed170eee2b0b4ca8449b4116e0700e24448d71fbd918",
+    "members": 7,
+    "uncompressed_bytes": 44489019,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-21.tar.xz",
+    "bytes": 34763320,
+    "sha256": "e3c7f7cd18dd7b64355c8159cfdbe5c6685d1df6423d8fc8344b97ff0d9762ed",
+    "members": 7,
+    "uncompressed_bytes": 44589100,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-22.tar.xz",
+    "bytes": 34833340,
+    "sha256": "657f5e5af9eab43337eb266cecc480fc58435845a80c4a3a1198d110db055fb3",
+    "members": 7,
+    "uncompressed_bytes": 44658700,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-23.tar.xz",
+    "bytes": 34862248,
+    "sha256": "60ff27b96fb561908700b902fc56438dbbc88b6b359cde723ac323c57c3d4025",
+    "members": 7,
+    "uncompressed_bytes": 44686174,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-24.tar.xz",
+    "bytes": 34880584,
+    "sha256": "0429ac2aab98d3751796e9b3560a2078ba899608080c70df0a33d232960b846e",
+    "members": 7,
+    "uncompressed_bytes": 44706548,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-25.tar.xz",
+    "bytes": 34893088,
+    "sha256": "684cf599d1dfc6ec60905892038f26cce0b83f1dafbafaf5ae91c5cb18904916",
+    "members": 7,
+    "uncompressed_bytes": 44718576,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-26.tar.xz",
+    "bytes": 21145992,
+    "sha256": "841b23490029022e4e1c76b97554251ea007d1307db75f7f720dbd81911ec43f",
+    "members": 419,
+    "uncompressed_bytes": 49860330,
+    "verified": true
+  },
+  {
+    "file": "rigid-inclusion-progress-002-part-27.tar.xz",
+    "bytes": 9080388,
+    "sha256": "b4937136c5d61381b7ab8a11f59444c57efe382e5039ce251cf777b07ac86465",
+    "members": 19,
+    "uncompressed_bytes": 17703966,
+    "verified": true
+  }
+]

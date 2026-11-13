@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "geometry_states": 82,
+  "accepted_steps": 81,
+  "unit_tests_passed": 97,
+  "archives": 27,
+  "archive_bytes": 685263656,
+  "archive_member_files": 1049,
+  "largest_archive_bytes": 39016980,
+  "all_archive_sha256_checked": true,
+  "all_archive_members_preverified": true,
+  "public_npz_crc_checked": true,
+  "public_png_verified": true,
+  "checkpoint_and_resume_inputs_match_actual_run": true,
+  "live_run_excluded": "compression-016"
+}
