@@ -27,7 +27,8 @@ def test_bisection_falls_back_to_exact_affine_elastic_state_without_history_chan
     assert report['initial_guess_only'] and report['load_fraction']==pytest.approx(fraction)
 
 
-def test_driver_bisection_reuses_geometry_but_advances_only_accepted_elastic_history(tmp_path,monkeypatch):
+@pytest.mark.parametrize('target_iterations',[None,1])
+def test_driver_bisection_reuses_geometry_but_advances_only_accepted_elastic_history(tmp_path,monkeypatch,target_iterations):
     import json
     from scipy.sparse import csr_matrix
     import tools.run_implicit_compaction as driver
@@ -47,14 +48,18 @@ def test_driver_bisection_reuses_geometry_but_advances_only_accepted_elastic_his
         return actual(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
     monkeypatch.setattr(driver,'equilibrium',reject_first)
     c=dict(length_mm=1.,young_mpa=10.,poisson=.33,yield_mpa=1e6,hardening_mpa=0.,target_final_porosity=.49,porosity_tolerance=1e-5,maximum_axial_compression=.1,implicit_strain_increment=.04,implicit_minimum_increment=1e-6,implicit_max_stages=8,implicit_max_newton=30,implicit_force_tolerance_N=1e-8,implicit_regularization=1e-8,implicit_macro_tolerance=1e-10,implicit_remesh=False,implicit_optimizer='coupled_newton',transverse_boundary='fixed_cell',loading_only=True,implicit_bisection_predictor=True)
+    if target_iterations is not None:c.update(implicit_target_iterations=target_iterations,implicit_max_stages=32)
     config=tmp_path/'config.json';config.write_text(json.dumps(c));out=tmp_path/'run';driver.run(config,mesh,out)
-    assert len(calls)==3
+    assert len(calls)==3 if target_iterations is None else len(calls)>3
     np.testing.assert_array_equal(calls[1][1],calls[0][1]);np.testing.assert_array_equal(calls[1][2],calls[0][2])
-    assert calls[1][3]==pytest.approx(-.02) and calls[2][3]==pytest.approx(-.045)
+    assert calls[1][3]==pytest.approx(-.02)
+    if target_iterations is None:assert calls[2][3]==pytest.approx(-.045)
+    else:assert -.045<calls[2][3]<-.02
     assert not np.array_equal(calls[2][1],calls[1][1])
-    with np.load(out/'state-0002.npz') as f:
-        expected_stretch=.955**(-.33/(1-.33));F=np.diag([expected_stretch,1.,.955])
-        np.testing.assert_allclose(f['b'],np.broadcast_to(F@F.T,f['b'].shape),rtol=1e-6,atol=1e-8)
-        np.testing.assert_array_equal(f['ep'],0)
+    for path in sorted(out.glob('state-*.npz')):
+        with np.load(path) as f:
+            stretch_z=1+f['q'][-4];expected_stretch=stretch_z**(-.33/(1-.33));F=np.diag([expected_stretch,1.,stretch_z])
+            np.testing.assert_allclose(f['b'],np.broadcast_to(F@F.T,f['b'].shape),rtol=1e-6,atol=1e-8)
+            np.testing.assert_array_equal(f['ep'],0)
     assert json.loads((out/'status.json').read_text())['target_reached']
-    assert len(list(out.glob('predictor-*.npz')))==2
+    assert len(list(out.glob('predictor-*.npz')))>=2

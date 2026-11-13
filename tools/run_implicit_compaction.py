@@ -355,7 +355,11 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
                 (out/'status.json').write_text(json.dumps(dict(status='cycle_completed' if loaded_porosity<=c['target_final_porosity']+c['porosity_tolerance'] else 'diagnostic_cycle_completed_target_not_reached',initial_porosity=initial,loaded_porosity=loaded_porosity,recovered_porosity=phi,recovery_boundary=c.get('transverse_boundary','stress_free'),recovery_load='zero_axial_load',target_porosity=c['target_final_porosity'],target_reached=bool(loaded_porosity<=c['target_final_porosity']+c['porosity_tolerance']),validated=False),indent=2));return
         if phase=='compression' and -q[p.prescribed]>=c['maximum_axial_compression']-c.get('implicit_macro_tolerance',1e-6):
             (out/'status.json').write_text(json.dumps(dict(status='compression_limit_reached_target_not_reached',initial_porosity=initial,last_converged_porosity=phi,target_porosity=c['target_final_porosity'],target_reached=False,validated=False),indent=2));return
-        increment=min(.1 if phase=='unload' else c['implicit_strain_increment'],increment*1.25)
+        growth=1.25
+        if phase=='compression' and c.get('implicit_target_iterations') is not None:
+            if c['implicit_target_iterations']<=0:raise ValueError('Target nonlinear iteration count must be positive')
+            growth=float(np.clip(np.sqrt(c['implicit_target_iterations']/(it+1)),.5,1.25))
+        increment=min(.1 if phase=='unload' else c['implicit_strain_increment'],max(c['implicit_minimum_increment'],increment*growth))
     raise RuntimeError('Stage budget exhausted')
 
 if __name__=='__main__':
@@ -363,7 +367,11 @@ if __name__=='__main__':
     try:run(args.config,args.mesh,args.out,args.restart,args.initial_iterate,args.rejected_geometry)
     except FileExistsError:
         raise
-    except BaseException:
+    except BaseException as exc:
         if Path(args.out).is_dir():
             with Path(args.out,'failure.txt').open('x') as stream:stream.write(traceback.format_exc())
+            status_path=Path(args.out,'status.json')
+            status=json.loads(status_path.read_text()) if status_path.exists() else {}
+            status.update(status='failed',failure_reason=str(exc),target_reached=False,validated=False)
+            status_path.write_text(json.dumps(status,indent=2)+'\n')
         raise

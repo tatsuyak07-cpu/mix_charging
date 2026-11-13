@@ -101,3 +101,49 @@ def test_enlarged_tiles_preserve_friction_and_rigid_resultant_across_periodic_se
     out=tmp_path/'audit.json';assert audit(tmp_path,1,out)
     report=json.loads(out.read_text());assert report['tiles'][0]['rigid_contacts']>0
     assert report['generalized_force_max_difference_N']<1e-10
+
+
+def test_rigid_block_smoothing_reduces_full_contact_residual_without_body_or_history_change():
+    from packing_fem.quasistatic_coupled import rigid_block_relaxation
+    c=dict(C,implicit_regularization=1e-7,implicit_force_tolerance_N=1e-5,implicit_peak_rms_fraction=1.,implicit_rigid_block_iterations=12)
+    p=RigidPeriodic(X,10.,c);contact=RigidPeriodicIPC(X,T,p,c,radius=0);old=np.zeros(p.ndof);q=old.copy()
+    _,g,K,_=contact.evaluate_coupled(q,old,True);initial=float(abs(g[:p.nmicro]).max())
+    def measure(g):return .5*float(abs(g).max())**2
+    def derivative(g):
+        active=abs(g)>=abs(g).max()*(1-1e-12)
+        return np.where(active,g/active.sum(),0.)
+    events=[];candidate=rigid_block_relaxation(p,contact,q,old,g,K[:p.nmicro,:p.nmicro],np.zeros(p.ndof),measure,derivative,c,events.append)
+    assert candidate is not None and events
+    np.testing.assert_array_equal(p.positions(candidate),p.positions(q));np.testing.assert_array_equal(candidate[-6:],q[-6:]);np.testing.assert_array_equal(old,0)
+    _,after,_,_=contact.evaluate_coupled(candidate,old)
+    assert abs(after[:p.nmicro]).max()<.5*initial
+    assert not ipc.has_intersections(contact.mesh,contact.positions(candidate))
+
+
+def test_periodic_audit_does_not_confuse_zero_candidates_with_active_contact():
+    from tools.audit_rigid_periodic_contact import stencil_contribution
+    p=RigidPeriodic(X,10.,C);contact=RigidPeriodicIPC(X,T,p,C,radius=0);q=np.zeros(p.ndof)
+    far=ipc.VertexVertexNormalCollision(0,contact.body_vertices+contact.rigid_local_count-1)
+    assert stencil_contribution(contact,q,q,'vv_collisions',far)['exactly_zero']
+    assert stencil_contribution(contact,q,q,'vv_collisions',far)['inert']
+    normal=contact.collisions(contact.positions(q));active=[]
+    for kind in ['vv_collisions','ev_collisions','ee_collisions','fv_collisions']:
+        active.extend(stencil_contribution(contact,q,q,kind,item) for item in getattr(normal,kind))
+    assert active and any(not r['inert'] and r['normal_generalized_gradient_max']>1e-6 for r in active)
+
+
+@pytest.mark.parametrize('weights,mu',[( [1.5,-.5],0.),([.3,.7],.3)])
+def test_periodic_allocation_audit_checks_summed_signed_forces_energy_and_work(weights,mu):
+    from tools.audit_rigid_periodic_contact import stencil_group_contribution
+    points=X.copy();points[0]=[6.02,5.,6.02];c=dict(C,friction=mu)
+    p=RigidPeriodic(points,10.,c);contact=RigidPeriodicIPC(points,oriented(points,np.array([[0,1,2,3]])),p,c,radius=0)
+    old=np.zeros(p.ndof);q=old.copy();q[p.rigid_dofs[1]]=.001
+    first=ipc.VertexVertexNormalCollision(0,contact.body_vertices+16)
+    split=[]
+    for weight in weights:
+        entry=ipc.VertexVertexNormalCollision(0,contact.body_vertices+16);entry.weight=weight;split.append(('vv_collisions',entry))
+    a,ga,fa=stencil_group_contribution(contact,q,old,[('vv_collisions',first)])
+    b,gb,fb=stencil_group_contribution(contact,q,old,split)
+    assert not a['inert'] and a['normal_generalized_gradient_max']>1e-6
+    np.testing.assert_allclose(ga,gb,rtol=1e-12,atol=1e-12);np.testing.assert_allclose(fa,fb,rtol=1e-12,atol=1e-12)
+    for key in ['weight_sum','normal_energy_Nmm','friction_energy_Nmm','physical_friction_work_Nmm']:assert a[key]==pytest.approx(b[key],rel=1e-12,abs=1e-12)

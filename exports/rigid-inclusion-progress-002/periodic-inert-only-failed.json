@@ -1,0 +1,82 @@
+{
+  "passed": false,
+  "state": "results/rigid-inclusion-001/compression-015/state-0078.npz",
+  "predecessor": "results/rigid-inclusion-001/compression-015/state-0077.npz",
+  "required_relative_shift_bound": 1,
+  "nonlinear_actual_displacement": true,
+  "raw_candidate_counts_equal": false,
+  "allocation_equivalent": false,
+  "unmatched_stencils": [
+    {
+      "image_radius": 1,
+      "feature": "('ee_collisions', (((0, 606557465, 775840995, 65285829), (0, 618446261, 752342462, 85764987)), ((0, 607129804, 769117101, 104510580), (0, 622887021, 751308874, 125217734))))",
+      "kind": "ee_collisions",
+      "weight": 0.07620122591253062,
+      "normal_energy_Nmm": 7.904722926527143e-07,
+      "friction_energy_Nmm": 0.0,
+      "normal_generalized_gradient_max": 0.0029278091918495354,
+      "friction_generalized_gradient_max": 0.0,
+      "exactly_zero": false,
+      "inert": false
+    },
+    {
+      "image_radius": 1,
+      "feature": "('ee_collisions', (((0, 606557465, 775840995, 65285829), (0, 618446261, 752342462, 85764987)), ((0, 607129804, 769117101, 104510580), (0, 622887021, 751308874, 125217734))))",
+      "kind": "ee_collisions",
+      "weight": -0.03542023793057924,
+      "normal_energy_Nmm": -3.6743131554639994e-07,
+      "friction_energy_Nmm": 0.0,
+      "normal_generalized_gradient_max": 0.0013609190265480241,
+      "friction_generalized_gradient_max": 0.0,
+      "exactly_zero": false,
+      "inert": false
+    }
+  ],
+  "inert_generalized_gradient_tolerance": 1e-12,
+  "inert_energy_tolerance_Nmm": 1e-18,
+  "generalized_force_max_difference_N": 2.220446049250313e-14,
+  "barrier_energy_relative_difference": 5.851016742497354e-16,
+  "contact_potential_relative_difference": 4.228716120220134e-16,
+  "rigid_force_max_difference_N": 2.4234086959395995e-15,
+  "rigid_torque_max_difference_Nmm": 8.326672684688674e-16,
+  "tiles": [
+    {
+      "image_radius": 1,
+      "images": 27,
+      "contacts": 935,
+      "rigid_contacts": 38,
+      "barrier_energy_Nmm": 0.023718591859457024,
+      "contact_potential_Nmm": 0.03281796983594164,
+      "rigid_force_N": [
+        0.0039039629936237306,
+        -0.00299329506255952,
+        -0.003972814968322441
+      ],
+      "rigid_torque_Nmm": [
+        -0.007242839532529251,
+        0.0037046043013474923,
+        -0.0028523019244037252
+      ],
+      "intersections": false
+    },
+    {
+      "image_radius": 2,
+      "images": 125,
+      "contacts": 934,
+      "rigid_contacts": 38,
+      "barrier_energy_Nmm": 0.023718591859457037,
+      "contact_potential_Nmm": 0.03281796983594165,
+      "rigid_force_N": [
+        0.003903962993626154,
+        -0.002993295062560977,
+        -0.003972814968320151
+      ],
+      "rigid_torque_Nmm": [
+        -0.007242839532528418,
+        0.003704604301347109,
+        -0.0028523019244038467
+      ],
+      "intersections": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "exact_restart_array_checks_passed": true,
+  "segments": [
+    {
+      "run": "results/rigid-inclusion-001/compression-001",
+      "last_step": 2
+    },
+    {
+      "run": "results/rigid-inclusion-001/compression-002",
+      "last_step": 1
+    },
+    {
+      "run": "results/rigid-inclusion-001/compression-015",
+      "last_step": 78
+    }
+  ],
+  "endpoint_source": "results/rigid-inclusion-001/compression-015/state-0078.npz",
+  "endpoint_sha256": "f3060456a29465d3f0da1e4d4c956936d4a0994042ba9f9058a4e859928732a1",
+  "endpoint_audit_state_sha256": "f3060456a29465d3f0da1e4d4c956936d4a0994042ba9f9058a4e859928732a1",
+  "wall_time": "Cumulative selected-segment wall_s; excludes other trial branches, external initial-guess preparation and failures after the selected prefix."
+}
