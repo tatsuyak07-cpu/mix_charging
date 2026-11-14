@@ -2,6 +2,8 @@
 import argparse,csv,hashlib,json,shutil
 from pathlib import Path
 import numpy as np
+from packing_fem.explicit_material import geometry
+from packing_fem.explicit_periodic import deformation
 
 
 def merge(segments,out):
@@ -14,7 +16,16 @@ def merge(segments,out):
     for run,last in segments:
         run=Path(run);c=json.loads((run/'config.json').read_text())
         if base is None:
-            base=c;initial_porosity=json.loads((run/'status.json').read_text())['initial_porosity']
+            base=c
+            # A source run may have failed AFTER this accepted prefix, leaving
+            # only failure metadata in status.json. Use the actual initial mesh.
+            with np.load(run/'state-0000.npz') as initial:
+                volume=float(geometry(initial['x'],initial['t'])[0].sum())
+                cell=c['length_mm']**3*np.linalg.det(deformation(initial['q'][-6:]))
+                if c.get('rigid_inclusion',False):
+                    from packing_fem.rigid_inclusion import porosities
+                    initial_porosity=porosities(volume,cell,c)[0]
+                else:initial_porosity=1-volume/cell
         if any(c.get(key)!=base.get(key) for key in physics):raise ValueError('Physical model or acceptance criteria changed across restart chain')
         initial=run/'state-0000.npz'
         if previous is not None:
@@ -37,11 +48,21 @@ def merge(segments,out):
     for source,step in copies:
         target=out/f'state-{step:04d}.npz';shutil.copy2(source,target)
         manifest.append(dict(step=step,source=str(source),sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
+    transfers=[]
+    for index,(run,_) in enumerate(segments,1):
+        for source in sorted(Path(run).glob('remesh-*.npz')):
+            target=out/f'remesh-segment-{index:02d}-{source.name.removeprefix("remesh-")}'
+            shutil.copy2(source,target)
+            record=dict(source=str(source),file=target.name,sha256=hashlib.sha256(target.read_bytes()).hexdigest())
+            if source.with_suffix('.json').exists():
+                report=target.with_suffix('.json');shutil.copy2(source.with_suffix('.json'),report)
+                record['report_file']=report.name;record['report_sha256']=hashlib.sha256(report.read_bytes()).hexdigest()
+            transfers.append(record)
     c['usage_scope']='Merged accepted restart chain; source segments remain unmodified.'
     c['wall_time_interpretation']='Cumulative wall times along selected accepted segments; excludes other trial branches and initial-guess preparation outside those segments.'
     (out/'config.json').write_text(json.dumps(c,indent=2)+'\n')
     (out/'status.json').write_text(json.dumps(dict(status,initial_porosity=initial_porosity,merged_path=True,validated=False),indent=2)+'\n')
-    (out/'provenance.json').write_text(json.dumps(dict(segments=provenance,states=manifest),indent=2)+'\n')
+    (out/'provenance.json').write_text(json.dumps(dict(segments=provenance,states=manifest,local_remesh_predecessors=transfers),indent=2)+'\n')
     with (out/'history.csv').open('w',newline='') as stream:
         columns=list(dict.fromkeys(key for row in records for key in row))
         writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader();writer.writerows(records)

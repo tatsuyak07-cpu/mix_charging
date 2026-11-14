@@ -15,11 +15,11 @@ def load(path):
     with np.load(path) as f:return dict(f)
 
 
-def predecessor(run,step,current,old):
+def predecessor(run,step,current,old,local_only=False):
     fields=['X','t','V0','parent']
     if all(np.array_equal(old[k],current[k]) for k in fields):return old,str(run/f'state-{step-1:04d}.npz')
     sources=[run]
-    if (run/'provenance.json').exists():sources.extend(Path(r['run']) for r in json.loads((run/'provenance.json').read_text())['segments'])
+    if not local_only and (run/'provenance.json').exists():sources.extend(Path(r['run']) for r in json.loads((run/'provenance.json').read_text())['segments'])
     for source in sources:
         for path in sorted(source.glob('remesh-*.npz')):
             d=load(path)
@@ -27,7 +27,7 @@ def predecessor(run,step,current,old):
     raise ValueError('Missing actual post-remesh material/rigid predecessor')
 
 
-def audit(run,out,physics_config=None):
+def audit(run,out,physics_config=None,local_predecessors_only=False):
     run=Path(run);out=Path(out)
     if out.exists():raise FileExistsError(out)
     c=json.loads((run/'config.json').read_text())
@@ -52,7 +52,7 @@ def audit(run,out,physics_config=None):
         row['surface_intersections']=bool(ipc.has_intersections(contact.mesh,contact.positions(d['q'])))
         passed=passed and not row['surface_intersections']
         if step in history:
-            saved=history[step];old,origin=predecessor(run,step,d,load(run/f'state-{step-1:04d}.npz'))
+            saved=history[step];old,origin=predecessor(run,step,d,load(run/f'state-{step-1:04d}.npz'),local_predecessors_only)
             inverse=np.linalg.inv(geometry(old['x'],old['t'])[2]);_,gm,_,st=evaluate(d['x'],d['t'],old['b'],old['ep'],inverse,old['V0'],c,parent=old['parent'])
             _,gcforce,_,count=contact.evaluate_coupled(d['q'],old['q']);g=np.asarray(p.A.T@gm.ravel()).ravel()+gcforce
             force,torque=contact.rigid_resultant(d['q']);res=float(abs(g[:p.nmicro]).max());pressure=float(-g[p.prescribed]/p.L**3);gauge=-g[:p.body_nmicro].reshape(-1,3).sum(axis=0)-g[p.rigid_dofs[:3]]
@@ -62,9 +62,9 @@ def audit(run,out,physics_config=None):
         else:row['initial_geometry_only']=True
         row['passed']=bool(passed);records.append(row);print(json.dumps({k:row[k] for k in ['step','matrix_region_porosity','passed']}),flush=True)
     del contact;gc.collect()
-    report=dict(passed=bool(records and all(r['passed'] for r in records)),collision_mesh_builds=mesh_builds,force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,original_physics_config=None if physics_config is None else str(physics_config),original_physics_config_sha256=None if physics_config is None else hashlib.sha256(Path(physics_config).read_bytes()).hexdigest(),initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
+    report=dict(passed=bool(records and all(r['passed'] for r in records)),collision_mesh_builds=mesh_builds,local_predecessors_only=bool(local_predecessors_only),force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,original_physics_config=None if physics_config is None else str(physics_config),original_physics_config_sha256=None if physics_config is None else hashlib.sha256(Path(physics_config).read_bytes()).hexdigest(),initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
     out.write_text(json.dumps(report,indent=2)+'\n');return report['passed']
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--out',required=True);p.add_argument('--physics-config');a=p.parse_args()
-    if not audit(a.run,a.out,a.physics_config):raise SystemExit(1)
+    p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--out',required=True);p.add_argument('--physics-config');p.add_argument('--local-predecessors-only',action='store_true');a=p.parse_args()
+    if not audit(a.run,a.out,a.physics_config,a.local_predecessors_only):raise SystemExit(1)

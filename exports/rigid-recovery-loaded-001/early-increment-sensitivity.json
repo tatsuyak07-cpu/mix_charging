@@ -1,0 +1,106 @@
+{
+  "scope": "Early continuation-increment sensitivity after the SAME accepted24.935036% state. Linear interpolation of accepted scalar curves only, not interpolated FEM fields.",
+  "three_levels": true,
+  "identical_initial_fields": true,
+  "extrapolation_used": false,
+  "interpolation_error_assessed": false,
+  "full40_to10_increment_convergence_verified": false,
+  "station": 0.2188152538922838,
+  "branches": [
+    {
+      "name": "fine",
+      "run": "results/rigid-stages-1-4-001/probe-001",
+      "identical_initial_fields": true,
+      "compression_station": 0.2188152538922838,
+      "pressure_MPa": 0.052527735110624384,
+      "porosity": 0.23967120333453695,
+      "station_is_saved_state": true,
+      "accepted_compressions": [
+        0.2085564648297838,
+        0.2098064648297838,
+        0.2113689648297838,
+        0.2133220898297838,
+        0.2157634960797838,
+        0.2188152538922838
+      ],
+      "accepted_pressures_MPa": [
+        0.04882663910661172,
+        0.049306027625235505,
+        0.04988062402280015,
+        0.050582786776130984,
+        0.051438183060222985,
+        0.052527735110624384
+      ],
+      "accepted_porosities": [
+        0.24935036042808711,
+        0.2481859737352783,
+        0.24672432993073934,
+        0.24488828541633645,
+        0.24257879324664489,
+        0.23967120333453695
+      ]
+    },
+    {
+      "name": "medium",
+      "run": "results/rigid-stages-1-4-001/fine-coupled-prefix-003",
+      "identical_initial_fields": true,
+      "compression_station": 0.2188152538922838,
+      "pressure_MPa": 0.0524879838164258,
+      "porosity": 0.23966172378623862,
+      "station_is_saved_state": false,
+      "accepted_compressions": [
+        0.2085564648297838,
+        0.2135564648297838,
+        0.2198064648297838,
+        0.2276189648297838
+      ],
+      "accepted_pressures_MPa": [
+        0.04882663910661172,
+        0.05063576972281564,
+        0.052837101236112766,
+        0.05575939558613497
+      ],
+      "accepted_porosities": [
+        0.24935036042808711,
+        0.24466504658166743,
+        0.2387186648006564,
+        0.23115889681010138
+      ]
+    },
+    {
+      "name": "coarse",
+      "run": "results/rigid-stages-1-4-001/late-peak-prefix-001",
+      "identical_initial_fields": true,
+      "compression_station": 0.2188152538922838,
+      "pressure_MPa": 0.05242213515617826,
+      "porosity": 0.23953950732956084,
+      "station_is_saved_state": false,
+      "accepted_compressions": [
+        0.2085564648297838,
+        0.22855646482978378
+      ],
+      "accepted_pressures_MPa": [
+        0.04882663910661172,
+        0.0558362306435106
+      ],
+      "accepted_porosities": [
+        0.24935036042808711,
+        0.2302236330165861
+      ]
+    }
+  ],
+  "adjacent_differences": [
+    {
+      "from_level": "coarse",
+      "to_level": "medium",
+      "pressure_relative": 0.0012545473355928477,
+      "porosity_absolute": 0.00012221645667778724
+    },
+    {
+      "from_level": "medium",
+      "to_level": "fine",
+      "pressure_relative": 0.0007567677173757775,
+      "porosity_absolute": 9.479548298330087e-06
+    }
+  ]
+}

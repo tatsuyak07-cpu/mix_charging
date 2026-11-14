@@ -1,0 +1,25 @@
+{
+  "scope": "Nonlinear search dependence at one identical finite-strain load, exact shared accepted predecessor and original physical force criteria. Not mesh or increment convergence.",
+  "both_independent_original_physics_audits_passed": true,
+  "compression": 0.31355646482978383,
+  "cases": [
+    {
+      "run": "results/rigid-stages-1-4-001/continuation-010",
+      "step": 2,
+      "hybrid_rms_fraction": 0.2,
+      "pressure_MPa": 0.11066088384172265,
+      "porosity": 0.13824897313535733
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/force-box-prefix-002",
+      "step": 1,
+      "hybrid_rms_fraction": 0.5,
+      "pressure_MPa": 0.11105060045151256,
+      "porosity": 0.13828245703014064
+    }
+  ],
+  "pressure_relative_difference": 0.003521719656128174,
+  "porosity_absolute_difference": 3.3483894783303825e-05,
+  "nodal_position_max_difference_mm": 0.020243433280368706,
+  "full_path_convergence_verified": false
+}

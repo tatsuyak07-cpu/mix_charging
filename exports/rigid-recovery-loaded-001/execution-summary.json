@@ -1,0 +1,12 @@
+{
+  "completed_utc": "2026-11-14T10:07:53.183425+00:00",
+  "final_run": "continuation-017",
+  "solver_child_return_code": 0,
+  "frozen_runtime_hashes_unchanged": true,
+  "full_path_states": 94,
+  "all_force_geometry_history_audits_passed": true,
+  "periodic_endpoint_audit_passed": true,
+  "engineering_mesh_increment_convergence_qualified": false,
+  "endpoint_package_sha256": "cb59a4af386a427ea16ca831465aba9ad56fca529587ec2cada07f74157ba21a",
+  "earlier_running_receipts_are_historical": true
+}

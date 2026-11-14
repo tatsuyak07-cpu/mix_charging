@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "state": "results/rigid-stages-1-4-001/loaded-path-002/state-0093.npz",
+  "predecessor": "results/rigid-stages-1-4-001/loaded-path-002/state-0092.npz",
+  "required_relative_shift_bound": 1,
+  "nonlinear_actual_displacement": true,
+  "raw_candidate_counts_equal": true,
+  "allocation_equivalent": true,
+  "allocation_group_comparisons": [
+    {
+      "feature": "('ee_collisions', (((0, 144628675, 205367362, 53031213), (0, 150609015, 233170056, 42382838)), ((0, 153291429, 194783872, 17959673), (0, 161447624, 204722519, 0))))",
+      "tiles": [
+        {
+          "allocated": 1,
+          "weights": [
+            0.03539436235723724
+          ],
+          "weight_sum": 0.03539436235723724,
+          "normal_energy_Nmm": 3.2846561094900924e-06,
+          "friction_energy_Nmm": 0.0,
+          "physical_friction_work_Nmm": 0.0,
+          "normal_generalized_gradient_max": 0.010530296387036361,
+          "friction_generalized_gradient_max": 0.0,
+          "exactly_zero": false,
+          "inert": false
+        },
+        {
+          "allocated": 2,
+          "weights": [
+            0.060845340650774515,
+            -0.02545097829353728
+          ],
+          "weight_sum": 0.03539436235723724,
+          "normal_energy_Nmm": 3.2846561094900873e-06,
+          "friction_energy_Nmm": 0.0,
+          "physical_friction_work_Nmm": 0.0,
+          "normal_generalized_gradient_max": 0.010530296387036342,
+          "friction_generalized_gradient_max": 0.0,
+          "exactly_zero": false,
+          "inert": false
+        }
+      ],
+      "weight_sum_difference": 0.0,
+      "normal_energy_difference_Nmm": 5.082197683525802e-21,
+      "friction_energy_difference_Nmm": 0.0,
+      "physical_friction_work_difference_Nmm": 0.0,
+      "normal_generalized_gradient_max_difference": 1.9081958235744878e-17,
+      "friction_generalized_gradient_max_difference": 0.0,
+      "passed": true
+    },
+    {
+      "feature": "('ee_collisions', (((0, 245293407, 279699083, 261937127), (0, 249009889, 302251787, 251977359)), ((0, 265916490, 292936702, 294041717), (0, 282489952, 315407669, 298399993))))",
+      "tiles": [
+        {
+          "allocated": 2,
+          "weights": [
+            0.06107748156849962,
+            -0.029880176521688798
+          ],
+          "weight_sum": 0.03119730504681082,
+          "normal_energy_Nmm": 1.0512501124457788e-07,
+          "friction_energy_Nmm": 0.0,
+          "physical_friction_work_Nmm": 0.0,
+          "normal_generalized_gradient_max": 0.0014464212627216828,
+          "friction_generalized_gradient_max": 0.0,
+          "exactly_zero": false,
+          "inert": false
+        },
+        {
+          "allocated": 1,
+          "weights": [
+            0.03119730504681082
+          ],
+          "weight_sum": 0.03119730504681082,
+          "normal_energy_Nmm": 1.0512501124457761e-07,
+          "friction_energy_Nmm": 0.0,
+          "physical_friction_work_Nmm": 0.0,
+          "normal_generalized_gradient_max": 0.0014464212627216784,
+          "friction_generalized_gradient_max": 0.0,
+          "exactly_zero": false,
+          "inert": false
+        }
+      ],
+      "weight_sum_difference": 0.0,
+      "normal_energy_difference_Nmm": 2.6469779601696886e-22,
+      "friction_energy_difference_Nmm": 0.0,
+      "physical_friction_work_difference_Nmm": 0.0,
+      "normal_generalized_gradient_max_difference": 4.336808689942018e-18,
+      "friction_generalized_gradient_max_difference": 0.0,
+      "passed": true
+    }
+  ],
+  "generalized_force_max_difference_N": 4.547473508864641e-13,
+  "barrier_energy_relative_difference": 1.1070258726653211e-15,
+  "contact_potential_relative_difference": 7.886549668935023e-16,
+  "physical_friction_work_difference_Nmm": 0.0,
+  "rigid_force_max_difference_N": 3.019806626980426e-14,
+  "rigid_torque_max_difference_Nmm": 1.176836406102666e-14,
+  "tiles": [
+    {
+      "image_radius": 1,
+      "images": 27,
+      "contacts": 4795,
+      "rigid_contacts": 351,
+      "barrier_energy_Nmm": 0.17550540968082737,
+      "contact_potential_Nmm": 0.2111613578619125,
+      "physical_friction_work_Nmm": -0.034771710217655426,
+      "rigid_force_N": [
+        -0.001251425287034362,
+        0.0039989878141422075,
+        -0.003805319472692137
+      ],
+      "rigid_torque_Nmm": [
+        -0.004948632235597439,
+        -0.002643378886725962,
+        -0.0012494108098867716
+      ],
+      "intersections": false
+    },
+    {
+      "image_radius": 2,
+      "images": 125,
+      "contacts": 4795,
+      "rigid_contacts": 351,
+      "barrier_energy_Nmm": 0.17550540968082717,
+      "contact_potential_Nmm": 0.21116135786191234,
+      "physical_friction_work_Nmm": -0.034771710217655426,
+      "rigid_force_N": [
+        -0.0012514252870277354,
+        0.003998987814112009,
+        -0.003805319472707458
+      ],
+      "rigid_torque_Nmm": [
+        -0.0049486322355856704,
+        -0.0026433788867253546,
+        -0.0012494108098795031
+      ],
+      "intersections": false
+    }
+  ]
+}

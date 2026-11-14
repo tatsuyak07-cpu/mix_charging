@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "scope": "Pre-archive physical/data/image/package checks; README archive links will be appended and a separate final delivery manifest follows.",
+  "force_audit_states": 94,
+  "accepted_csv_rows": 93,
+  "loaded_npz_matches_audit_sha256": true,
+  "initial_npz_matches_audit_sha256": true,
+  "endpoint_replay_zip_all_member_sha256_checked": true,
+  "calculation_source_files": 16,
+  "calculation_source_files_equal_git_commit": "34d7e31a49ddcef42a79bd24f10f0ec5ddd9fa8a",
+  "images": [
+    {
+      "file": "loaded-mesh.png",
+      "width": 1530,
+      "height": 1360,
+      "format": "PNG"
+    },
+    {
+      "file": "pore-sections.png",
+      "width": 1870,
+      "height": 1700,
+      "format": "PNG"
+    },
+    {
+      "file": "initial-mesh.png",
+      "width": 1530,
+      "height": 1360,
+      "format": "PNG"
+    },
+    {
+      "file": "compression-path.png",
+      "width": 1870,
+      "height": 765,
+      "format": "PNG"
+    }
+  ],
+  "mesh_convergence_qualified": false
+}

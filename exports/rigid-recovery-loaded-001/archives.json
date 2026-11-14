@@ -1,0 +1,186 @@
+[
+  {
+    "file": "rigid-recovery-loaded-001-part-01.tar.xz",
+    "bytes": 18481964,
+    "sha256": "f718518715486f97a5853d9ca89b5f1ca30a02c818046937ab83ead52ebbb822",
+    "members": 25,
+    "uncompressed_bytes": 49164585,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-02.tar.xz",
+    "bytes": 22383120,
+    "sha256": "26349dbef6dd38fd20191c02ce80fa168967bcd6203fa3cbee7605d9efde2cff",
+    "members": 34,
+    "uncompressed_bytes": 49671324,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-03.tar.xz",
+    "bytes": 13314648,
+    "sha256": "171909067dd54bd71ef6c323dfa05f8888b86ccf93817fa878de08a316562d69",
+    "members": 63,
+    "uncompressed_bytes": 49852620,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-04.tar.xz",
+    "bytes": 13094016,
+    "sha256": "8ea99a74c3cdf4d9c0c38564e37c0c051197c396b6687b741f3eeadb705d977f",
+    "members": 11,
+    "uncompressed_bytes": 46126875,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-05.tar.xz",
+    "bytes": 13314816,
+    "sha256": "2530239beec55494337c55680389c253600185a211001b47a629e0c040301987",
+    "members": 63,
+    "uncompressed_bytes": 49846736,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-06.tar.xz",
+    "bytes": 22331000,
+    "sha256": "2aeaa89fc3f7c097091ae83ec1e1ea13697e81044a97d57d0ed9bcd99a8389e0",
+    "members": 37,
+    "uncompressed_bytes": 49055692,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-07.tar.xz",
+    "bytes": 17554768,
+    "sha256": "114715ce8be28ca575b622e34e8e75227317f99e0ada604ba298406ced0a1600",
+    "members": 32,
+    "uncompressed_bytes": 45572966,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-08.tar.xz",
+    "bytes": 25522760,
+    "sha256": "8cc8b91cae1dfb790f62fa0c3d16c1fcbaab6a8f07d686833d6997cc75087b96",
+    "members": 36,
+    "uncompressed_bytes": 45240512,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-09.tar.xz",
+    "bytes": 35876800,
+    "sha256": "4983631be1caeed988c5d49f8f59a68ba74390c0402b7f6ba21ec254653ef4a9",
+    "members": 22,
+    "uncompressed_bytes": 47876926,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-10.tar.xz",
+    "bytes": 34274864,
+    "sha256": "92fb17386fe12daa42b6f0b94240beef63a7bc6fa694a6e9d09986f99219e072",
+    "members": 7,
+    "uncompressed_bytes": 44101776,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-11.tar.xz",
+    "bytes": 34329516,
+    "sha256": "5886af88ae65078fdaa1ed44fa42080a351397fa458fc850fd3709a70201dd1f",
+    "members": 7,
+    "uncompressed_bytes": 44152548,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-12.tar.xz",
+    "bytes": 34382912,
+    "sha256": "1cf15607352fd2b039a9efc74df90266ffb8a6ef43c3db885465ddf85cbb7d86",
+    "members": 7,
+    "uncompressed_bytes": 44206122,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-13.tar.xz",
+    "bytes": 34498408,
+    "sha256": "3cd99d504f00d5509a2faecb6f5d1af6fd5f7fc7a572af7d8ce0254c51690d9e",
+    "members": 7,
+    "uncompressed_bytes": 44321649,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-14.tar.xz",
+    "bytes": 34598204,
+    "sha256": "adfae4be63c1bf22a8a8036b64a9b7220dfe1c490997701222748261255438c0",
+    "members": 7,
+    "uncompressed_bytes": 44422599,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-15.tar.xz",
+    "bytes": 34691780,
+    "sha256": "24c6e9879ea6ebfdb21bfb5d82dbcdfd917484a2fbb55658b30a4207fadff37e",
+    "members": 7,
+    "uncompressed_bytes": 44518606,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-16.tar.xz",
+    "bytes": 34791936,
+    "sha256": "f79015391b5c16616c7cb128c5242767ece3291c2fab9c52cd615d815033f655",
+    "members": 7,
+    "uncompressed_bytes": 44615697,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-17.tar.xz",
+    "bytes": 34841836,
+    "sha256": "87ee61bb608ad4a8f2ade28075d6d4ff123920f912533eb6ae3752d6378ad05f",
+    "members": 7,
+    "uncompressed_bytes": 44666864,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-18.tar.xz",
+    "bytes": 34868876,
+    "sha256": "2896a3108d0132c1adfaa1bc2b15133a826d5787fbebf96185bf205aa0186044",
+    "members": 7,
+    "uncompressed_bytes": 44691924,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-19.tar.xz",
+    "bytes": 34885316,
+    "sha256": "61f80e449b5f15f460a2ef59acf930ea62beef357c090ac3a54125703492d0f3",
+    "members": 7,
+    "uncompressed_bytes": 44711294,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-20.tar.xz",
+    "bytes": 34894476,
+    "sha256": "9e24a952a8a7a9a02e4cb1764c2253b1ef16046fe8be5e0be6383d5b46ec4f85",
+    "members": 7,
+    "uncompressed_bytes": 44719821,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-21.tar.xz",
+    "bytes": 34928044,
+    "sha256": "baef85a961cb5decac717eb8cf6d4721996cccfcd4f5774059b3a93135eea060",
+    "members": 7,
+    "uncompressed_bytes": 44746035,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-22.tar.xz",
+    "bytes": 25860216,
+    "sha256": "37a8ee9a237e6ed9a660e6a5cb6a63c97912db586242e5102f4d87f6e6e155cb",
+    "members": 1731,
+    "uncompressed_bytes": 48872486,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-loaded-001-part-23.tar.xz",
+    "bytes": 32045364,
+    "sha256": "8e211829fa866921f79238867ac313223c20e4d49140668ce18b57de0ab4a97a",
+    "members": 426,
+    "uncompressed_bytes": 47851887,
+    "verified": true
+  }
+]

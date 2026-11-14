@@ -1,0 +1,1307 @@
+{
+  "passed": true,
+  "scope": "Actual independent endpoint replay in isolated source/data directory; not full-path or mesh convergence.",
+  "source_files_matched_calculation": 16,
+  "audit_passed": true,
+  "local_predecessors_only": true,
+  "archive_sha256": "cb59a4af386a427ea16ca831465aba9ad56fca529587ec2cada07f74157ba21a",
+  "archive_bytes": 14263883,
+  "all_zip_member_sha256_checked": true,
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 1913,
+      "sha256": "b3f6ccbc9e8028e94eeb8d443dd46ca1419ac68d24d9c3e88a2d7b80360bbf87"
+    },
+    {
+      "file": "audit.json",
+      "bytes": 4922,
+      "sha256": "f274e40b8f8969c5063030a20d4018d9c2122fde1d7262f5f43bb90f18c7f93a"
+    },
+    {
+      "file": "calculation-source-sha256.json",
+      "bytes": 1671,
+      "sha256": "07936e0f5029f93e426fa7cd10f126a0ebabcb3245a31e24f53e3691763f10d5"
+    },
+    {
+      "file": "data/config.json",
+      "bytes": 3248,
+      "sha256": "be33efbf81c481224abcf3dde9f040c9daf75fae74edb57d2d164c76d7fb132d"
+    },
+    {
+      "file": "data/history.csv",
+      "bytes": 1001,
+      "sha256": "513881660b031172b3a7f3e95b87225a4a4d4a6192a32cbeb74cfec6b72b00c7"
+    },
+    {
+      "file": "data/state-0000.npz",
+      "bytes": 6408471,
+      "sha256": "bf5f0b3692f1fd0095355a4f9df2e3c978a708818513f6ecb538de75f3f36ebf"
+    },
+    {
+      "file": "data/state-0001.npz",
+      "bytes": 6409155,
+      "sha256": "fa9c0bbdfb0ef4ae9689e32d17b486151978d34b3f154acd45b537aa7b8d42e0"
+    },
+    {
+      "file": "data/status.json",
+      "bytes": 199,
+      "sha256": "6794e45dadf310476da6f337ff52a647b614a401f541cc94ead30002d38633b8"
+    },
+    {
+      "file": "executed-config.json",
+      "bytes": 3791,
+      "sha256": "bbeab55aec6e6454be9c65f8637eddc94cdcfc7f80e62e0e4d2b4a648a1cdb74"
+    },
+    {
+      "file": "original-mesh.npz",
+      "bytes": 1046572,
+      "sha256": "b5a5aa299e0d3b4a738b4931ce0c6f051ea1e5bbd88776050b25485268c4c678"
+    },
+    {
+      "file": "original-physics.json",
+      "bytes": 2900,
+      "sha256": "3ce96a6f435d03a16ccb5d483e3967fddce49b3af7e2b84bc6d151da574a30ae"
+    },
+    {
+      "file": "replay.log",
+      "bytes": 150,
+      "sha256": "90ded65a3689907e84e1b682575b15fdf887e878a026eccd82787d59d254084d"
+    },
+    {
+      "file": "source/AGENTS.md",
+      "bytes": 3808,
+      "sha256": "7cfde2f7db741b75e6ab5d77af4ac678cc6c67ceb59bd8dce07bd9852e84c19b"
+    },
+    {
+      "file": "source/packing_fem/__init__.py",
+      "bytes": 64,
+      "sha256": "3c1151bab6a9526904aaad37504aadd3a4534589b1795a2250366554b1f729e2"
+    },
+    {
+      "file": "source/packing_fem/aabb_search.py",
+      "bytes": 2330,
+      "sha256": "06ef6e4dee974d9a65ef05f8367c2d0e43b74a5d0c5872e755b51ab46e712796"
+    },
+    {
+      "file": "source/packing_fem/adaptive_tet.py",
+      "bytes": 3659,
+      "sha256": "28e9f5f5083ddde3a49c8d280095a7a5404d3175100ce4dc8ce737793a829bbf"
+    },
+    {
+      "file": "source/packing_fem/area_contact.py",
+      "bytes": 20830,
+      "sha256": "be8273ee4b9293ec585c8c9bce8085c85383998993e120bee315e0d2ea28d7a3"
+    },
+    {
+      "file": "source/packing_fem/barrier_contact.py",
+      "bytes": 19256,
+      "sha256": "f78126bb87351f935634989e440acd1aac3e0353d91c8164d4de823d297771fc"
+    },
+    {
+      "file": "source/packing_fem/checkpoint.py",
+      "bytes": 4519,
+      "sha256": "593c46ed8ce83e9fa36d40cf39d71def3dd29794e03bc18ea2c73e1fa543ff1a"
+    },
+    {
+      "file": "source/packing_fem/cli.py",
+      "bytes": 9038,
+      "sha256": "57b692956c529dd5c7e1d3ab7823092b9fb039f60168caa6ab7ff13ddc1cd2ae"
+    },
+    {
+      "file": "source/packing_fem/conservative_quadrature.py",
+      "bytes": 11303,
+      "sha256": "baf45ad8f0bc417a5cef9b9cf0fba383af63949f717351256917529bd90f21f4"
+    },
+    {
+      "file": "source/packing_fem/conservative_velocity.py",
+      "bytes": 3172,
+      "sha256": "315b591b676d2b823740d434e93caf67fd2f4368424d3699e9d2e40985bdbf62"
+    },
+    {
+      "file": "source/packing_fem/contact_atlas.py",
+      "bytes": 12344,
+      "sha256": "cc968c5084d70d90c0eab1281eb94b0bdc5d18b4392c35a1cab107f576a77dfd"
+    },
+    {
+      "file": "source/packing_fem/contact_audit.py",
+      "bytes": 3386,
+      "sha256": "90953e0b7c64d52561798fbb00ccb1108ca1d617bba474552ced0287d3a88c4e"
+    },
+    {
+      "file": "source/packing_fem/contact_geometry.py",
+      "bytes": 3321,
+      "sha256": "3cb88887eb16d45d5b7180dc1c66c3729c699bd418e515f9e7911ea492c4cc35"
+    },
+    {
+      "file": "source/packing_fem/contact_probe.py",
+      "bytes": 5889,
+      "sha256": "172465ba258fe9b0e1650d0a0e9a7eed1fb6278cd1aee7668107de3048c18d1d"
+    },
+    {
+      "file": "source/packing_fem/contact_tracking.py",
+      "bytes": 4256,
+      "sha256": "a115b6f34006ff1a2fce60db7bdec18ee69659c9c7e98a3803792e35a29b5e04"
+    },
+    {
+      "file": "source/packing_fem/continuum.py",
+      "bytes": 1131,
+      "sha256": "2325c25333435ef5e3f246c41400f447a19eed306a1f8107c8004d3491355aa2"
+    },
+    {
+      "file": "source/packing_fem/edge_contact.py",
+      "bytes": 3606,
+      "sha256": "3e02798eafc45cb33883f111a16e238365e5f923256b48798e594865c5d87926"
+    },
+    {
+      "file": "source/packing_fem/edge_coverage.py",
+      "bytes": 5078,
+      "sha256": "21ae6541aec6d10298a3218f2452fb9585834a536ce06e41aebf46901587061d"
+    },
+    {
+      "file": "source/packing_fem/edge_tracked_contact.py",
+      "bytes": 3427,
+      "sha256": "bf0e3583500df75024d3b5c1b4d76eb3adb03011a0e03ce448febaddc19e18fc"
+    },
+    {
+      "file": "source/packing_fem/embedded_contact.py",
+      "bytes": 24224,
+      "sha256": "bd420ddd3c4240663c66a0729aed2f4666823f584c9f16186ec22d55a54fa755"
+    },
+    {
+      "file": "source/packing_fem/embedded_remesh.py",
+      "bytes": 15074,
+      "sha256": "39754356ffaf11598b05d9477a84bcde6082cef0f780fb091a59d645cd802ce0"
+    },
+    {
+      "file": "source/packing_fem/energy.py",
+      "bytes": 4429,
+      "sha256": "49166c94e7b4d1cdf3f4c7fa0e3249bc9eca1393baf81ca3cda18a61cb527d19"
+    },
+    {
+      "file": "source/packing_fem/explicit_audit.py",
+      "bytes": 1220,
+      "sha256": "556b79736d33732e315fe41c4c60b9e260227181ff8119d246a8b8027541531b"
+    },
+    {
+      "file": "source/packing_fem/explicit_material.py",
+      "bytes": 2668,
+      "sha256": "55020a009c405f1376508243d182d50c421c3a343473a5bfd1c17c187f945f33"
+    },
+    {
+      "file": "source/packing_fem/explicit_periodic.py",
+      "bytes": 5625,
+      "sha256": "1b481d2be2f29ce7e557d0433a61a5ab0e69251922ee2732f5acd2d2b7da9c17"
+    },
+    {
+      "file": "source/packing_fem/explicit_solver.py",
+      "bytes": 67412,
+      "sha256": "8c47aab6ff184df105ec44e09765c0cb72f275efa77e6b29afb4e8d5c2c31ae8"
+    },
+    {
+      "file": "source/packing_fem/explicit_timestep.py",
+      "bytes": 2598,
+      "sha256": "f22f047b561ab98884efbbbc700eddbcbfcbff948b6509e61ee1f0ea762cbf0b"
+    },
+    {
+      "file": "source/packing_fem/fixed_point.py",
+      "bytes": 1017,
+      "sha256": "a999876e1393ddbb9f96734d145e53f1edea2a58034abd17adb03ba69e9a58af"
+    },
+    {
+      "file": "source/packing_fem/friction_audit.py",
+      "bytes": 2559,
+      "sha256": "92854d052fcf2ae32b39e08b09351893a1d1fd7314a3a2eb90ce5f7705797655"
+    },
+    {
+      "file": "source/packing_fem/geometry.py",
+      "bytes": 6046,
+      "sha256": "94312db51eaccf4b77156cb906bc8ad7d9b79c864687979f3367a3386a9328fb"
+    },
+    {
+      "file": "source/packing_fem/implicit_linear.py",
+      "bytes": 699,
+      "sha256": "92e1108f4c3f422a17fdd5e03e7778607f00cc7892439b0e5e5bd3a544387c30"
+    },
+    {
+      "file": "source/packing_fem/implicit_material.py",
+      "bytes": 3160,
+      "sha256": "882333b4c0dfd88bc8a61af0fd2a8358ba788555a5488cdf43cada6f7d59383b"
+    },
+    {
+      "file": "source/packing_fem/implicit_remesh.py",
+      "bytes": 11201,
+      "sha256": "a8ff0cd741d320e11062bb517db319927e93312b37d897124dcfb2362d1834c5"
+    },
+    {
+      "file": "source/packing_fem/incompatible.py",
+      "bytes": 15431,
+      "sha256": "0526a9e9529538623eeb51105680316eba61455507dc01e3fc9554cd4db462b2"
+    },
+    {
+      "file": "source/packing_fem/ipc_periodic.py",
+      "bytes": 7585,
+      "sha256": "06ee41578a8f0ecb1b6de34c97ceab84fd24bb4a1d815c92d6c6e3f9d83af4d5"
+    },
+    {
+      "file": "source/packing_fem/line_search.py",
+      "bytes": 1884,
+      "sha256": "04ead65445fc2631ed202f8984b93d981fe37ff6b7201be5d8766eff64aec796"
+    },
+    {
+      "file": "source/packing_fem/linear_rve.py",
+      "bytes": 2307,
+      "sha256": "913d72db738dd7125f7547d98b251cbd8a22abbdf4ae91f67c12f8ceeaa3c08f"
+    },
+    {
+      "file": "source/packing_fem/load_predictor.py",
+      "bytes": 2969,
+      "sha256": "13779cdd00cb08d3152ddb65f6dbaa5cce1919e9d7683b4746114aa16f135263"
+    },
+    {
+      "file": "source/packing_fem/macro_loading.py",
+      "bytes": 2479,
+      "sha256": "0eba55e8d643ba8e6999ae142124b4b938c954b7a9f4f62b347d8615148299dd"
+    },
+    {
+      "file": "source/packing_fem/material_neighborhood.py",
+      "bytes": 4737,
+      "sha256": "f397f354ec465ffbc85847678c3afef1e1bdbd73100da85d260c3334a5c3d1ca"
+    },
+    {
+      "file": "source/packing_fem/material_quadrature.py",
+      "bytes": 4232,
+      "sha256": "bf6e11d9e19b65797fa31c63cfddfa657c945ca73519d86bb29c7e964061bc31"
+    },
+    {
+      "file": "source/packing_fem/model.py",
+      "bytes": 10003,
+      "sha256": "48bb0edd31a6f0d8ce47e9ca42feaa9972abb984e97c07682d3b85b22b752b74"
+    },
+    {
+      "file": "source/packing_fem/native_kernel.py",
+      "bytes": 3619,
+      "sha256": "8615699ef3bfbf9933732844437158a7a89fd293f76418a9b8cd376c4fbc07cc"
+    },
+    {
+      "file": "source/packing_fem/neck_validation.py",
+      "bytes": 12184,
+      "sha256": "bf2991094a5fb5711450e2f874d08497b30d02b5ed3c8b78a9db4d767a04a268"
+    },
+    {
+      "file": "source/packing_fem/packing_rve.py",
+      "bytes": 2529,
+      "sha256": "1059b753f34549b7a38bbb241ae9da17f9caf89394e562ba1e397d53d8d94505"
+    },
+    {
+      "file": "source/packing_fem/parent_quadrature.py",
+      "bytes": 9693,
+      "sha256": "06a6530d94b7d7d97e3e02dd9a2e8ba1dedb5681e1daf1c513c2249243c51375"
+    },
+    {
+      "file": "source/packing_fem/periodic_contact.py",
+      "bytes": 7443,
+      "sha256": "db0356b51142f1d2633ac6b19b4383a647f6b87f3a3b97eba3a173f8849f97b2"
+    },
+    {
+      "file": "source/packing_fem/plastic.py",
+      "bytes": 11318,
+      "sha256": "614d10c24d5b56ce0479f55cdbf5fb91b2013dedba8c91ab868f46199beaa5d1"
+    },
+    {
+      "file": "source/packing_fem/plot_fields.py",
+      "bytes": 969,
+      "sha256": "d5eb196c2c64df594559ff777218fae6036937d716da31be6f84515a8db3a70d"
+    },
+    {
+      "file": "source/packing_fem/porosity_control.py",
+      "bytes": 1208,
+      "sha256": "e496b4e2bec1c542aea34234fc5154125cd7d8bb7714aa42091e8d03aa979f82"
+    },
+    {
+      "file": "source/packing_fem/porosity_cycle.py",
+      "bytes": 5216,
+      "sha256": "c4d9f6f5e96fda22e154acba1113aaeb0192c875d33ecf1663065e152d097de0"
+    },
+    {
+      "file": "source/packing_fem/quasistatic_coupled.py",
+      "bytes": 18682,
+      "sha256": "c5ba512e47a23001d3bebcb26df1e3f770d49c866546973c110e875db16e6084"
+    },
+    {
+      "file": "source/packing_fem/quasistatic_hybrid.py",
+      "bytes": 3129,
+      "sha256": "722a40dff81c42e341a26cb6e9f84696dab23f72417105123e3737e4b6486b4a"
+    },
+    {
+      "file": "source/packing_fem/quasistatic_lbfgs.py",
+      "bytes": 13217,
+      "sha256": "6ed6763b047e65e4cc268745a3f77708269b5967891c9069a67b35502a0295d4"
+    },
+    {
+      "file": "source/packing_fem/random_packing.py",
+      "bytes": 5510,
+      "sha256": "4a99bdb44cc66969414484cdda56227f93e0abcbe4dcb5f9b1d5621d0b71ae9e"
+    },
+    {
+      "file": "source/packing_fem/reconnection.py",
+      "bytes": 3832,
+      "sha256": "6d0637a6b81cd0ba28721c683be69e67665f7c0c9d245cd7a10d2a65458b2224"
+    },
+    {
+      "file": "source/packing_fem/refined_extension.py",
+      "bytes": 2978,
+      "sha256": "750ec7f54130368026f0dbdab2e937d9cee4462b3c0f88ddaf601ffb5c9278db"
+    },
+    {
+      "file": "source/packing_fem/results.py",
+      "bytes": 12145,
+      "sha256": "666d8510fec6827953b729b579eebecdd3bcf8b44601978834c162b2ab2d2364"
+    },
+    {
+      "file": "source/packing_fem/rigid_inclusion.py",
+      "bytes": 14226,
+      "sha256": "c75fa36a9c2af8752f4756c95c143f8a3dba4bf769b09530b9a529cea3a63b47"
+    },
+    {
+      "file": "source/packing_fem/runtime_quadrature.py",
+      "bytes": 4286,
+      "sha256": "b2e81f3e42948d924b197f6eccd2b28bb02b1fa371f0448cc4ac4e47089275ca"
+    },
+    {
+      "file": "source/packing_fem/sintered.py",
+      "bytes": 15233,
+      "sha256": "2e21a1fbc453d7f96073e22bc03943f77230bd14d7b6e857161f5cd2de64eb02"
+    },
+    {
+      "file": "source/packing_fem/sparse_factor.py",
+      "bytes": 2922,
+      "sha256": "864dbf80e954c59e8aa61ae1a99734606217112c60b6b729a0d030901eb77e7d"
+    },
+    {
+      "file": "source/packing_fem/structured_extension.py",
+      "bytes": 5564,
+      "sha256": "70bf05739817c2ec0019d33a3df89c3306809c3cd831c624f6bd6182452b9226"
+    },
+    {
+      "file": "source/packing_fem/surface_patch.py",
+      "bytes": 16024,
+      "sha256": "3cfc46b7ca4281aa305ee537370090700f4419705ba63620c61753740197e8fa"
+    },
+    {
+      "file": "source/packing_fem/surface_remesh.py",
+      "bytes": 11942,
+      "sha256": "d9c68f9fb32d43e738e62660f027c754ec7420633995eba2cd0a790b6ff4fd07"
+    },
+    {
+      "file": "source/packing_fem/surface_stationarity.py",
+      "bytes": 5188,
+      "sha256": "8cbf0495613f224ebb771281a9773f77674998cb7bea946b531e0c02ba11e634"
+    },
+    {
+      "file": "source/packing_fem/tracked_contact.py",
+      "bytes": 7990,
+      "sha256": "442cec32739bbca91d0ebb95896086583be178362973b5a90aea1b7b81f49949"
+    },
+    {
+      "file": "source/packing_fem/triangle_quadrature.py",
+      "bytes": 8272,
+      "sha256": "277bebdc1651be0f012cbac475a6bdc945dfc54165ba681581b3aa62d7711f31"
+    },
+    {
+      "file": "source/pyproject.toml",
+      "bytes": 578,
+      "sha256": "a57123eb42468b8d372965d8d42128d88946d85a457ab4d8c6bf2fdbc0933d7d"
+    },
+    {
+      "file": "source/requirements-implicit.txt",
+      "bytes": 131,
+      "sha256": "4f0712968c9b18ed225e71c83871b065e4ca6fa467889032a3345e1277da1c0a"
+    },
+    {
+      "file": "source/requirements-lock.txt",
+      "bytes": 371,
+      "sha256": "de1da0be88e325858d7bff1f85cc33a63913bc229284a9eb173863a38cc54fe1"
+    },
+    {
+      "file": "source/requirements-parallel.txt",
+      "bytes": 273,
+      "sha256": "af1335e27026e21424d78f1dfc5e6da3b7bd076080873bc3a0faeb392c474e3f"
+    },
+    {
+      "file": "source/tools/archive_rigid_snapshot.py",
+      "bytes": 6636,
+      "sha256": "f0ad74044a9fc46e31cafc6d268f5fbf549d9e1c8ff3be45251f61191a6f684a"
+    },
+    {
+      "file": "source/tools/assess_atlas_sensitivity.py",
+      "bytes": 4583,
+      "sha256": "31d94dd119c678168345231ae4607853b5ec165985a67b18ad85b1400296eac7"
+    },
+    {
+      "file": "source/tools/assess_compaction_stages.py",
+      "bytes": 4980,
+      "sha256": "23c4c6c6f2c6d02a5926470dd94c742ee78afd63da94626b6a12400ddba9af4b"
+    },
+    {
+      "file": "source/tools/assess_contact_passage.py",
+      "bytes": 2275,
+      "sha256": "8bb5da6695b31b81cc0d601578ef900da42289ef88f3524b9eeb9bdaa0c40c07"
+    },
+    {
+      "file": "source/tools/assess_porosity_convergence.py",
+      "bytes": 6263,
+      "sha256": "645e944b7e4b1ee1103915e558c6ec38659e0851e5a0ed489285219bb34aa8a9"
+    },
+    {
+      "file": "source/tools/assess_rigid_convergence.py",
+      "bytes": 4368,
+      "sha256": "7126ff7557c041bd26cf7fe5b445e628abd8e149cd273465a3037317bf25a6b6"
+    },
+    {
+      "file": "source/tools/audit_compaction_history.py",
+      "bytes": 3564,
+      "sha256": "11f2bc7b854f8820f7becd85e1c91ebd66c464f0e291cd9f73683e67400ece58"
+    },
+    {
+      "file": "source/tools/audit_contact_capture.py",
+      "bytes": 7977,
+      "sha256": "e6745c2bd53f30f271c6377a6e7048fe6deb64f7f7cda071e4cba432d86ff4af"
+    },
+    {
+      "file": "source/tools/audit_coupled_equilibrium.py",
+      "bytes": 3483,
+      "sha256": "689de840feb3dd86e00db5cb1d6ca2963034e310384777b5f29310f150d1393e"
+    },
+    {
+      "file": "source/tools/audit_implicit_states.py",
+      "bytes": 3009,
+      "sha256": "d3a3b28c72f3b5c762c99125f20b152db676464b8513e59ce72116f6d6ce7f65"
+    },
+    {
+      "file": "source/tools/audit_rigid_compaction.py",
+      "bytes": 7514,
+      "sha256": "f7e28692da09b78113abe0994545bc15da18931bb87fd93eb4fee048d260f5a0"
+    },
+    {
+      "file": "source/tools/audit_rigid_mesh_family.py",
+      "bytes": 2611,
+      "sha256": "c504587aa0b228c535bd7ef38fe523ad828ed0c514bb7f870eb05584f6a7e627"
+    },
+    {
+      "file": "source/tools/audit_rigid_periodic_contact.py",
+      "bytes": 9266,
+      "sha256": "b3325f5152fc068853f82d482b6a9743b98d4481f48ec90c0151688fef50548d"
+    },
+    {
+      "file": "source/tools/audit_rigid_remesh.py",
+      "bytes": 4240,
+      "sha256": "f12065b8ce730f9d4e33f2dbadb120a071d85c02777fe75eb9eb15ddfe7f880f"
+    },
+    {
+      "file": "source/tools/audit_rve_remesh_proposal.py",
+      "bytes": 5904,
+      "sha256": "8922909c3304574e61d33868938ff19685cf0ff8c65259b071041393a6cdbe81"
+    },
+    {
+      "file": "source/tools/benchmark_implicit_ordering.py",
+      "bytes": 2379,
+      "sha256": "58769e3d67a5a987a8ae18e74b997d0996ab7dbae662a6ed79c4c4f091498996"
+    },
+    {
+      "file": "source/tools/benchmark_swept_candidates.py",
+      "bytes": 2322,
+      "sha256": "37705cf7c871bc874e9384b43122244da6155c1a4abbc728cf293ec749fbeff8"
+    },
+    {
+      "file": "source/tools/bootstrap_calculix.py",
+      "bytes": 2185,
+      "sha256": "84c0fed8673dc431f7068e5f6fd1aec9a07dec42c182876198976239a7d19552"
+    },
+    {
+      "file": "source/tools/build_native_kernel.py",
+      "bytes": 778,
+      "sha256": "4ae243419bbee7b2a4f5566e3c9fa159fcc4cccbe1366b404bd38ae781375397"
+    },
+    {
+      "file": "source/tools/build_periodic_sintered.py",
+      "bytes": 7776,
+      "sha256": "3e4427764368e6ea4c23b48c317d556099acf1322553006304dbea90e30ef0e6"
+    },
+    {
+      "file": "source/tools/build_random_sintered.py",
+      "bytes": 9311,
+      "sha256": "b77a070a23744b0efe3a4eb389ebb6a14633df04a7361065fa1bfe0983987096"
+    },
+    {
+      "file": "source/tools/check_coupled_contact_jacobian.py",
+      "bytes": 2075,
+      "sha256": "970d40496fb7e43fd1d1d18deb37e21b498142399d77ab78025f19ebf5d325b6"
+    },
+    {
+      "file": "source/tools/check_cut_boundaries.py",
+      "bytes": 2073,
+      "sha256": "3ef369374666097c40eca82282d735d5a807b801a1de7a9008da37cdb7662365"
+    },
+    {
+      "file": "source/tools/check_modulus_comparison.py",
+      "bytes": 2981,
+      "sha256": "e564a960f7cc02b5de0369501ab22d98a8f5ac2de69f19ece976ed02c12d19db"
+    },
+    {
+      "file": "source/tools/compaction_status.py",
+      "bytes": 2978,
+      "sha256": "30ca2539e23d7adf2eb2b7abf01ca4453289f97dab1e01a49a562d6a90a75f0c"
+    },
+    {
+      "file": "source/tools/compare_contact_cfl.py",
+      "bytes": 5407,
+      "sha256": "08233ec8503330da77e8132f89ab494d6e668c48328853babf0e786e27e68b34"
+    },
+    {
+      "file": "source/tools/compare_onset_legacy.py",
+      "bytes": 2414,
+      "sha256": "f0c49f90f1067fd212be08f72a8ca41e68e21acc4fb70b207956a5b5da5def8c"
+    },
+    {
+      "file": "source/tools/compare_pressure_ramps.py",
+      "bytes": 2752,
+      "sha256": "4e1b73d557d5b7eb0d6d0839ab3bee2179664cf286fad79406bd5df5b977a6f5"
+    },
+    {
+      "file": "source/tools/compare_rve_backends.py",
+      "bytes": 2252,
+      "sha256": "df69d7547d301b9557eba1169fb3146fbb60b2f82612473a689d29f5a4cd62b8"
+    },
+    {
+      "file": "source/tools/complete_embedded_remesh_matrix.py",
+      "bytes": 4553,
+      "sha256": "dc48485b18aea37b993e6823bba77f0cc48f44b133456f65190b65c5a9314d94"
+    },
+    {
+      "file": "source/tools/cut_balance.py",
+      "bytes": 3402,
+      "sha256": "2704143b343963d567360406af8958ce45a01ae378871e177ac17cddc096c957"
+    },
+    {
+      "file": "source/tools/diagnose_atlas_fit.py",
+      "bytes": 3030,
+      "sha256": "89ce90d2f83488d992ffe05c3dfab36ddb9cae8443e08b53fbb9561fbbf5cc8d"
+    },
+    {
+      "file": "source/tools/diagnose_coupled_iterate.py",
+      "bytes": 3077,
+      "sha256": "ba3d2b63089994ae64fd6f4967f86184a702731caec726bf07ca356ae724b641"
+    },
+    {
+      "file": "source/tools/diagnose_embedded_refinement.py",
+      "bytes": 2640,
+      "sha256": "e17256ee1ee5fe78b77f4c3c9bcf9c215a2780d0945a7b13f88683b961bc9b87"
+    },
+    {
+      "file": "source/tools/diagnose_explicit_contact.py",
+      "bytes": 3594,
+      "sha256": "45c6f8f7354fabe1d0e1062b2c20afc204abbf3a7483b3ca2487ebd2942d51e9"
+    },
+    {
+      "file": "source/tools/diagnose_implicit_tangent.py",
+      "bytes": 3594,
+      "sha256": "7de53a7131b0d90418b5640a57f9455d7416077ecc70533c96eab896d3854677"
+    },
+    {
+      "file": "source/tools/diagnose_last_contact_retry.py",
+      "bytes": 5500,
+      "sha256": "00a946485211582934e375a5c453eb29b8e8a6786fa211c9eee977000cd97f44"
+    },
+    {
+      "file": "source/tools/diagnose_new_history.py",
+      "bytes": 2827,
+      "sha256": "aa3fa409b5ebe7d20b7866057dcee6619f0d388346f4aa0d04392ab72f3de5a8"
+    },
+    {
+      "file": "source/tools/diagnose_refinement_chain.py",
+      "bytes": 8502,
+      "sha256": "7807f64d0f1736f44934af6c7442c843b61183ecddacfd0cb5cbe6f2b2593369"
+    },
+    {
+      "file": "source/tools/diagnose_rigid_stall.py",
+      "bytes": 3879,
+      "sha256": "63971309df3caf24cd8c685d609998eedca48b0d104872ff427e8e72f9dd9531"
+    },
+    {
+      "file": "source/tools/diagnose_runtime_constraints.py",
+      "bytes": 4514,
+      "sha256": "10a2b1076189925ac13f2b6ff5827c4ee94329884c4cc4717e8a434c22787e5d"
+    },
+    {
+      "file": "source/tools/diagnose_rve_stop.py",
+      "bytes": 4362,
+      "sha256": "b37da4a60fd09537a44389339295ab8c513eefae52f48a490aa1d53a5a63801e"
+    },
+    {
+      "file": "source/tools/enrich_precontact_rules.py",
+      "bytes": 10142,
+      "sha256": "91e8ee28fca063affb64c31d8b67d37444daceb7acba2b45fab05f8cd783e878"
+    },
+    {
+      "file": "source/tools/experimental_surface_budget.py",
+      "bytes": 13005,
+      "sha256": "685ecee851b48d8569fd2af114aed97ff9df3e6b0c8a0f56ae730b3906afb36c"
+    },
+    {
+      "file": "source/tools/export_area_contact_fix.py",
+      "bytes": 8386,
+      "sha256": "f0220484deabfaecaa980484e280cf4e2464b30997fbb90317555cc3d6dcff2e"
+    },
+    {
+      "file": "source/tools/export_barrier_compaction.py",
+      "bytes": 9185,
+      "sha256": "bae6a3e245ac76c7fd54e719d65042715fafc98c9ac12a9c652c4083a896308c"
+    },
+    {
+      "file": "source/tools/export_closest_selection.py",
+      "bytes": 4610,
+      "sha256": "86ffc239b0b9870e174f6759f3754835855dbb08459ed603bf38c21e4e406b23"
+    },
+    {
+      "file": "source/tools/export_compaction_stages.py",
+      "bytes": 5526,
+      "sha256": "9cb2d801e2be9e9fab02783bcc8bf6a83e9102777b40b0aa4bd704f18e75ec70"
+    },
+    {
+      "file": "source/tools/export_connected_pressure.py",
+      "bytes": 12416,
+      "sha256": "b490491307b5f6a3e43bde6c3df6c876e9ea6b9dd72bd087688fa132b22c3a20"
+    },
+    {
+      "file": "source/tools/export_connected_unloading.py",
+      "bytes": 6944,
+      "sha256": "8f7b0ff5bba203c4291e04bed6a619d8793d19b1d5796fdfde2336e091bab90f"
+    },
+    {
+      "file": "source/tools/export_contact_atlas.py",
+      "bytes": 7943,
+      "sha256": "a507c94804e19957bc998d708d9496fb4f4883ea405a1d36113d415d95c2872f"
+    },
+    {
+      "file": "source/tools/export_contact_audit.py",
+      "bytes": 5454,
+      "sha256": "ea26f522d6ccf02bb3cdb8cf996de2a6a0b0dde1f7535e90035a93730b5d5c1c"
+    },
+    {
+      "file": "source/tools/export_cut_balance.py",
+      "bytes": 3421,
+      "sha256": "d5c42c1f041652cec94ca8d77bc8f4dd74b4d5b280819094bac53ab347feed9e"
+    },
+    {
+      "file": "source/tools/export_deformed_mesh.py",
+      "bytes": 3977,
+      "sha256": "f08cc38427c145015e1c19d2c6d01011a3536a9a72fab107fbe1b5da44f3cc8d"
+    },
+    {
+      "file": "source/tools/export_embedded_remesh.py",
+      "bytes": 4221,
+      "sha256": "232dfe387ff2d4f34edd6c4b3b8e3d82c9808772143435ce75bfdeeca2ee4400"
+    },
+    {
+      "file": "source/tools/export_explicit_results.py",
+      "bytes": 10043,
+      "sha256": "8ea1f3ffdaab74adeb431ec61c76911727f5e85c08adde81a887c78c665cd761"
+    },
+    {
+      "file": "source/tools/export_fixed_cell.py",
+      "bytes": 6810,
+      "sha256": "8579b7f75596f68a3135c3e82c5a5b5875455393d4cff85eed5d8f81d096bb1c"
+    },
+    {
+      "file": "source/tools/export_implicit_compaction.py",
+      "bytes": 10822,
+      "sha256": "2527e20a3555c305c296fbe83e057f3d6509ad99ab21a38b1b82c35d6f4be0b2"
+    },
+    {
+      "file": "source/tools/export_integration_replay.py",
+      "bytes": 6826,
+      "sha256": "08eb73176e14013c156633c8bdec469e9c9432fd7a4567ef9bcffbb0a425ca8e"
+    },
+    {
+      "file": "source/tools/export_l1_budget.py",
+      "bytes": 7238,
+      "sha256": "6ad6314d1d82a819a2b2b5ba3aba212690f3341c0a2765d0765b0bef98268fa2"
+    },
+    {
+      "file": "source/tools/export_material_neighborhood.py",
+      "bytes": 5489,
+      "sha256": "7fa30d99ce863f6f5a283451b60de262eaa10fa84687636fbbd06d893d69651c"
+    },
+    {
+      "file": "source/tools/export_material_quadrature.py",
+      "bytes": 5116,
+      "sha256": "623d4d347b334fdee9840723351d75b5fbeb43cc7b5d87b071a53f349aee303b"
+    },
+    {
+      "file": "source/tools/export_mesh_images.py",
+      "bytes": 4469,
+      "sha256": "702486d6425675c490c6fb50e3d1b6ae68abe6275f7fe1295062f81e0cfa626c"
+    },
+    {
+      "file": "source/tools/export_near_edge.py",
+      "bytes": 5000,
+      "sha256": "ff53347ac2d5b9e4150b123a4c693d0f5def587c027567b094368f0b82b861b5"
+    },
+    {
+      "file": "source/tools/export_objective_pressure.py",
+      "bytes": 5804,
+      "sha256": "658979d8304fbb564445aa4984816e16c8b6754c8a1c8c976acce1ebe160ff66"
+    },
+    {
+      "file": "source/tools/export_onset_budget.py",
+      "bytes": 6598,
+      "sha256": "673c4f3a43c5f4f290b3f30dc6ed8622be9528b75bca697b94e70782ba623274"
+    },
+    {
+      "file": "source/tools/export_packing_rve.py",
+      "bytes": 8527,
+      "sha256": "226e25e0fd6b2fe8e8699cc0faf15e80121121a3b4080d9270d22a48551f19fe"
+    },
+    {
+      "file": "source/tools/export_parent_hybrid.py",
+      "bytes": 7744,
+      "sha256": "80f7a0a64931d92c5da18b4e8e04f73a02117eeef3b74971952405593dcd5791"
+    },
+    {
+      "file": "source/tools/export_plane_verification.py",
+      "bytes": 6541,
+      "sha256": "3b385972d4017b9e04e56a4db5b7dc0d4df2d71f8e74e5d7f533b60f931923ef"
+    },
+    {
+      "file": "source/tools/export_plastic_unloading.py",
+      "bytes": 12281,
+      "sha256": "be9c41472f0100068cf4748d7e6679616f4c2628c3b3415c68d14f04eb9b8b41"
+    },
+    {
+      "file": "source/tools/export_pore_sections.py",
+      "bytes": 4790,
+      "sha256": "98a01cbd4b9a8287cb2ce2f6c9be3ad1641cb9936a071f774949fa0cbd551c76"
+    },
+    {
+      "file": "source/tools/export_porosity_cycle.py",
+      "bytes": 5526,
+      "sha256": "46bae136154f8bbd7048a79ba836afc5d40e5ba74553900e3c3f0c2de8dce412"
+    },
+    {
+      "file": "source/tools/export_porosity_target.py",
+      "bytes": 6090,
+      "sha256": "68e9f855f97bf96ebcc8b145e3f2b98e33169f69f7f16cc2bbf2fd829cccc19d"
+    },
+    {
+      "file": "source/tools/export_pressure_ramp.py",
+      "bytes": 4945,
+      "sha256": "f4a1d3fe59b8117da9646bcbf23eda7f8180b51a25c1a1cd7cb5d083120f04ec"
+    },
+    {
+      "file": "source/tools/export_pressure_stages.py",
+      "bytes": 11512,
+      "sha256": "cbb7ccd67d8a61fb3b2bb1298c6bae360c30f37dbcd77b4360a1aea546db987c"
+    },
+    {
+      "file": "source/tools/export_random_packing.py",
+      "bytes": 8156,
+      "sha256": "a8ca650043974acd32affdf445a3a899982c6a3dd9171c03e467a4fb29c4f71c"
+    },
+    {
+      "file": "source/tools/export_remesh_corrections.py",
+      "bytes": 4485,
+      "sha256": "fac81fc80d2c22539b1a0bc0f42748435665758da40100d800ce86f81c039c88"
+    },
+    {
+      "file": "source/tools/export_rigid_compaction.py",
+      "bytes": 11057,
+      "sha256": "993b779fe55a26ff0aacaaaacdbfa72e8380e3f051020704170dedb189ab0d21"
+    },
+    {
+      "file": "source/tools/export_rigid_progress.py",
+      "bytes": 11461,
+      "sha256": "27844ef5179346e93f5be932367bb8a33105a9998861ea9b38ef1a670a9fed48"
+    },
+    {
+      "file": "source/tools/export_runtime_parent.py",
+      "bytes": 8676,
+      "sha256": "d2e8991da47ebd0b7ca8b2e6078b65b8836db5557eb28c673d22af4a8423eeee"
+    },
+    {
+      "file": "source/tools/export_rve_replay.py",
+      "bytes": 3923,
+      "sha256": "9b30a8fe7f826737e85ff48c07c6f58c722b740a9a4a9eb5d049b3fb78ac6a90"
+    },
+    {
+      "file": "source/tools/export_stages123.py",
+      "bytes": 10226,
+      "sha256": "1ddd01d15802a7f96df079c45b35c0d93c04e48f4cbbfbc10ba0e990cff251b4"
+    },
+    {
+      "file": "source/tools/export_triangle_integration.py",
+      "bytes": 5211,
+      "sha256": "a6367317353421a19fe0c4076c8350522d8ca9edfc7f316a5977ca1de48e11c7"
+    },
+    {
+      "file": "source/tools/export_unload_sensitivity.py",
+      "bytes": 11123,
+      "sha256": "897770657867e6d066cb09b8297f16cb2317ed880a92132763375cdad636f169"
+    },
+    {
+      "file": "source/tools/export_weighted_transfer.py",
+      "bytes": 3748,
+      "sha256": "277b3bfc49c116936432c979043ff65dce58611d4e1c2ff78ccc57beacf5f7b9"
+    },
+    {
+      "file": "source/tools/fit_replay_rules.py",
+      "bytes": 8475,
+      "sha256": "a37a1bc88102e3f7e7ed968008f0d3f4462e722634748526c0c2ecc73eff9c05"
+    },
+    {
+      "file": "source/tools/generate_random_packing.py",
+      "bytes": 2234,
+      "sha256": "7ba5fe48fbecea55d01ec384620f3d0533f5ee51ae4f57a166386ae9a34e71d3"
+    },
+    {
+      "file": "source/tools/merge_compaction_path.py",
+      "bytes": 5611,
+      "sha256": "972abc2e03329a1965b8178fe01f652e15ebe40507370fea82e8c30d633c1f7b"
+    },
+    {
+      "file": "source/tools/monitor_pressure_ramp.py",
+      "bytes": 5117,
+      "sha256": "8fa5dbfa15f518adc13def743ec5828d1ca330684712f9514706726634c0689d"
+    },
+    {
+      "file": "source/tools/plastic_cycle_audit.py",
+      "bytes": 2140,
+      "sha256": "1c644c9565122a63c6faa471104f0f1b411a299e132066d6220e56f1ad0a5ef5"
+    },
+    {
+      "file": "source/tools/plot_contact_features.py",
+      "bytes": 1484,
+      "sha256": "3d6ea26fbb2f263ec20b05aff55aca683146f8b519bcef973189f8259878afab"
+    },
+    {
+      "file": "source/tools/plot_edge_verification.py",
+      "bytes": 2930,
+      "sha256": "2cadd78800468e47f309fc11a6c5c91d7bdfedf96c55dad17aed5573c94f5ae1"
+    },
+    {
+      "file": "source/tools/plot_periodic_contact_probe.py",
+      "bytes": 2316,
+      "sha256": "a5e3cea7a3eec0b07b69107b67c4fb679c872ec9426747ae801f363788c31546"
+    },
+    {
+      "file": "source/tools/plot_surface_bisection.py",
+      "bytes": 2073,
+      "sha256": "f870e19258b73a48b13fd1555977950fdf165b44f2f010d57708a989f6d79e08"
+    },
+    {
+      "file": "source/tools/plot_tracked_solver.py",
+      "bytes": 2822,
+      "sha256": "6c1d7692234c3e8ae5b5caeaf87b0d80a47fb09eb48ab0e25b8584b7ccdcc057"
+    },
+    {
+      "file": "source/tools/predict_compaction_iterate.py",
+      "bytes": 3417,
+      "sha256": "339e712936911b7b4fb348ada2dbff072825490832c0623cd00c141a599d0d24"
+    },
+    {
+      "file": "source/tools/preflight_barrier_model.py",
+      "bytes": 2195,
+      "sha256": "a3b9591022ed31fe63cd4c04020f9e908542d51322b22bc26b11c7877840d52d"
+    },
+    {
+      "file": "source/tools/prepare_rigid_packing.py",
+      "bytes": 3774,
+      "sha256": "2b3f405b3cb8e0c31b6a8df5b2834e5fd540b697d07266146e993094fd45c4f4"
+    },
+    {
+      "file": "source/tools/probe_refinement_location.py",
+      "bytes": 5169,
+      "sha256": "896c0b294ad91c0fa4b05e2cf86ae306cbcd148553720ec256528ad767c76a60"
+    },
+    {
+      "file": "source/tools/recover_pressure_endpoints.py",
+      "bytes": 2748,
+      "sha256": "6bd1f9c4a166c4a5409f2e537183dceb20f6296316bc557655dececced6b07d2"
+    },
+    {
+      "file": "source/tools/reload_periodic_mesh.py",
+      "bytes": 3456,
+      "sha256": "d91baf4939a1fa7c66cd5b3e1a1caa92561958b93363605617fa2a5c24bb3e54"
+    },
+    {
+      "file": "source/tools/replay_explicit.py",
+      "bytes": 858,
+      "sha256": "5dce120e57d6694e9aa471cb7e6d46069fa0bef8df290ca4fb4cb1ed419ca125"
+    },
+    {
+      "file": "source/tools/run_barrier_compaction.py",
+      "bytes": 4360,
+      "sha256": "9a1624c2719b528f83d4311b2a6bd248b74d07aec239b5722998ba3815ae4700"
+    },
+    {
+      "file": "source/tools/run_explicit_model.py",
+      "bytes": 2419,
+      "sha256": "ee70563e5869786236264f256ef7ca6bf5950da29e3a1732ba442cd563ef88b5"
+    },
+    {
+      "file": "source/tools/run_frozen_compaction.py",
+      "bytes": 2766,
+      "sha256": "514a21c44513f4adf6ff08a82d30b8d3c724be8758ec5756a542e6ecefbfddc5"
+    },
+    {
+      "file": "source/tools/run_implicit_compaction.py",
+      "bytes": 34013,
+      "sha256": "5c3d164d612d7843ec816bb8f995086819e572f4908cc0a9f6f4c6fd00749879"
+    },
+    {
+      "file": "source/tools/run_packing_rve.py",
+      "bytes": 2376,
+      "sha256": "df0d471fb282f58d1c7be96539663d152b474b34b8201eeeff754cd29f5c45f3"
+    },
+    {
+      "file": "source/tools/run_parent_replay.py",
+      "bytes": 4769,
+      "sha256": "bb780cc70985d6af6cd272e277effb5ea36c011aa72d855a9ca755c7df4a2772"
+    },
+    {
+      "file": "source/tools/run_porosity_cycle.py",
+      "bytes": 6371,
+      "sha256": "3edbf6b1b0ad70001751cc146bcf50691e083d094f1403c96a476523857f77d9"
+    },
+    {
+      "file": "source/tools/run_porosity_target.py",
+      "bytes": 2021,
+      "sha256": "094ec94f86549a78f040c3a1eb9c2d126cc3225ca983a44b5f1193a09c252fd0"
+    },
+    {
+      "file": "source/tools/run_pressure_ramp.py",
+      "bytes": 2081,
+      "sha256": "8ee6d90dc60bfd7feea1a1e75c102c747704e9baec4e139a9233578e0bcc942c"
+    },
+    {
+      "file": "source/tools/run_pressure_stages.py",
+      "bytes": 5326,
+      "sha256": "44430023e9a13d546b96b29023010f65efd2cd5b07d2e2dc419fd7909f152c80"
+    },
+    {
+      "file": "source/tools/run_rigid_mesh_screen.py",
+      "bytes": 5296,
+      "sha256": "5e31bfcbfe8dd28405fff55de5ed1e3c1b8dd9bd087661cd7ee0e42cd29adf04"
+    },
+    {
+      "file": "source/tools/scan_mesh_phase.py",
+      "bytes": 2166,
+      "sha256": "4768fa30882724066f47d777ee642bb7bb0110c4051eb267a93978678963b47a"
+    },
+    {
+      "file": "source/tools/summarize_layered_pressure.py",
+      "bytes": 10763,
+      "sha256": "651c48916590657c488506b37f1d4274772f0b5ad91df0278ff22fa416f74109"
+    },
+    {
+      "file": "source/tools/summarize_neck_elements.py",
+      "bytes": 7303,
+      "sha256": "6aef4e5290d5b0b022643cfd17dc46317aae80275ab4005a03a70c506a9ba79a"
+    },
+    {
+      "file": "source/tools/summarize_periodic_modes.py",
+      "bytes": 5018,
+      "sha256": "10a5d29f851e0f33c9d4dd24c6934654c64da58c635cf7e6b2a1a8d90ecfd6b6"
+    },
+    {
+      "file": "source/tools/summarize_plastic_verification.py",
+      "bytes": 7012,
+      "sha256": "43d2efb6b3892cf81e72e97563c0172c9efa1cc304eb47862a43861ab62a5387"
+    },
+    {
+      "file": "source/tools/validate_plastic.py",
+      "bytes": 4379,
+      "sha256": "0dbc09c3de9e0b9d81291e71ba133e3c16058a4f2b7a3e6577e79a0bea3147f4"
+    },
+    {
+      "file": "source/tools/verify_active_remesh_solver.py",
+      "bytes": 6182,
+      "sha256": "ade6c63049694a9bc2da1b14429d7a1d93eb09e24321f7211b9e780aca9c169d"
+    },
+    {
+      "file": "source/tools/verify_area_equilibrium.py",
+      "bytes": 2705,
+      "sha256": "13998949818e9ce200846599bc47a06cb5052a8f5c4ec23316721f27377dbc8a"
+    },
+    {
+      "file": "source/tools/verify_area_friction_path.py",
+      "bytes": 2909,
+      "sha256": "a9b0f7ef90756281cafce15caf6951e46587c7c7d501601e4cd631c65fb584ff"
+    },
+    {
+      "file": "source/tools/verify_area_pressure.py",
+      "bytes": 2596,
+      "sha256": "79c70edfb0470e8bb739ad3c872ad3aebb731e1f81525011586ef1a7feb7436e"
+    },
+    {
+      "file": "source/tools/verify_area_sliding.py",
+      "bytes": 2496,
+      "sha256": "b226dccecd618a9184a16625fce37a1dc420ae67cb568e85daba91cd0901e198"
+    },
+    {
+      "file": "source/tools/verify_atlas_batch_invariance.py",
+      "bytes": 1811,
+      "sha256": "1c6495d868cbbb2a479abba89042d907091cb6b5af1d824e73abaf8632a2bba9"
+    },
+    {
+      "file": "source/tools/verify_cauchy_pressure.py",
+      "bytes": 6487,
+      "sha256": "c7f2698f551ae4b1aed8f2f6849295a97be7854049379320369fe4fe2eae88a9"
+    },
+    {
+      "file": "source/tools/verify_closest_retry.py",
+      "bytes": 3404,
+      "sha256": "17e51d9c04cefde1ee0f34ab17767e2780ee978195d8a91e00c26241c8770e8f"
+    },
+    {
+      "file": "source/tools/verify_compaction_matrix.py",
+      "bytes": 2095,
+      "sha256": "1685e9e25c8762ff29f08c7cdb1fed2dc1273778b50900df5c39a995fdbeeb7d"
+    },
+    {
+      "file": "source/tools/verify_connected_initial_stiffness.py",
+      "bytes": 3099,
+      "sha256": "afa20ddafdda2f9f9c6f7053bcf4917795e7f7d822375a08174f75a4450cfafb"
+    },
+    {
+      "file": "source/tools/verify_connected_pressure.py",
+      "bytes": 4573,
+      "sha256": "c0e9299d8d19f6b41ebe98fd0c6a361be462f6ca392a9002a591bb4e298b6a71"
+    },
+    {
+      "file": "source/tools/verify_contact_atlas.py",
+      "bytes": 2740,
+      "sha256": "84bad0505f70bbbd6c53b838d391548bdbb67353d42b9fa64421a97ed33a2c2c"
+    },
+    {
+      "file": "source/tools/verify_contact_features.py",
+      "bytes": 5089,
+      "sha256": "08ef0c1040005bff6de74503c83f7b802f310cd0656661e8c1322a4b7a966c14"
+    },
+    {
+      "file": "source/tools/verify_contact_mesh_preflight.py",
+      "bytes": 12052,
+      "sha256": "94349b86fef3f6806ef8e142d437e967d449d0a5d4cbecc55dca30e7aaf639ee"
+    },
+    {
+      "file": "source/tools/verify_contact_search.py",
+      "bytes": 2694,
+      "sha256": "4386704d93a19263107e3538698b1912ceacdff9d13894a133ded318e4ba52a5"
+    },
+    {
+      "file": "source/tools/verify_edge_pair.py",
+      "bytes": 2747,
+      "sha256": "5395f748b6ed085cbb0d1cdc6e48c9f339c09c9867af812e2a201bfe50114d9a"
+    },
+    {
+      "file": "source/tools/verify_edge_solver.py",
+      "bytes": 2496,
+      "sha256": "2d78658dd602519c659b999fa0f9054d79954fe5cbb06055ed7f51c95415ce6d"
+    },
+    {
+      "file": "source/tools/verify_edge_stationarity.py",
+      "bytes": 11133,
+      "sha256": "ec374873f84919dcba30ca530cec64f0c0b0d277e474b37452bf73651c79b3da"
+    },
+    {
+      "file": "source/tools/verify_embedded_pipeline.py",
+      "bytes": 3975,
+      "sha256": "fb00e47bae51169e0bf98c43a9de11d54ae38f53c8706ea17c1bd1d7967d0254"
+    },
+    {
+      "file": "source/tools/verify_embedded_remesh.py",
+      "bytes": 10688,
+      "sha256": "3da467e6862eef536aac7b63deab0f7bd91055865741332396156b200d071c6d"
+    },
+    {
+      "file": "source/tools/verify_explicit_backend.py",
+      "bytes": 2297,
+      "sha256": "0ca7005036ed83b529f226277ed882b3436a930ccbbeb6f3157c386344df9cfb"
+    },
+    {
+      "file": "source/tools/verify_explicit_contact.py",
+      "bytes": 1769,
+      "sha256": "bf83fcd510932c70b4362ad38296c601f0c661cd8da62e5a6c46c1105384714e"
+    },
+    {
+      "file": "source/tools/verify_explicit_impact.py",
+      "bytes": 1616,
+      "sha256": "0fd2a653b88fb8c986c6f5be14f9fce95a28ca3c1e152eee78661dc00682c757"
+    },
+    {
+      "file": "source/tools/verify_explicit_remesh.py",
+      "bytes": 1967,
+      "sha256": "aa2f1f5c2570929c7e5c6aa85897c3a5ddee29ce7c0ec692dd2c1b5862c3e842"
+    },
+    {
+      "file": "source/tools/verify_forecast_timing.py",
+      "bytes": 4048,
+      "sha256": "19d955aea6c68081e16bfeefe56b097880dbd76e219c3ce2023d2af003199cad"
+    },
+    {
+      "file": "source/tools/verify_integration_replay.py",
+      "bytes": 9459,
+      "sha256": "a1ac56713ab79361b87bdf5fbd9f3413f36ed053ba6977c628d2d49221f577bf"
+    },
+    {
+      "file": "source/tools/verify_l1_matrix.py",
+      "bytes": 3178,
+      "sha256": "aad31c362d9858368f80f78bed804de2744956ac16048029d458777e44a8c261"
+    },
+    {
+      "file": "source/tools/verify_layered_mechanism.py",
+      "bytes": 3641,
+      "sha256": "b2a5ee6179e8e191b8d295eec6a353c511d9685ba3c4295af1d35b52e911bd60"
+    },
+    {
+      "file": "source/tools/verify_layered_pressure.py",
+      "bytes": 6901,
+      "sha256": "3cbc7bf5e5b0ae53d3ff7e4400bab724cd2f4fadae34cbd9116b698b2950fc45"
+    },
+    {
+      "file": "source/tools/verify_lazy_candidates.py",
+      "bytes": 2135,
+      "sha256": "e7cbef555e72542a3738eba688a9a26a6fb4ef5c58fbf5cb44e18c1137bf75f4"
+    },
+    {
+      "file": "source/tools/verify_material_quadrature.py",
+      "bytes": 4818,
+      "sha256": "47719e443f2952078cb94f0a6fa3c1a6a2c3ddb24b23c0a1a9cc59fd6ea8c447"
+    },
+    {
+      "file": "source/tools/verify_narrow_integration.py",
+      "bytes": 6224,
+      "sha256": "2676f332692bf9b613a71a664d1483f5d243b962ad6ece9a9cb3d697d5d19d16"
+    },
+    {
+      "file": "source/tools/verify_near_edge.py",
+      "bytes": 8252,
+      "sha256": "904bbf06195739aaec744434af380ffef3c3dfe26b8bf7ccc567ed9a73d9cc0d"
+    },
+    {
+      "file": "source/tools/verify_neck_elements.py",
+      "bytes": 2552,
+      "sha256": "14ed13264feb2eff109878194183e69d77c794075b1205ba41aaa333473dbd42"
+    },
+    {
+      "file": "source/tools/verify_onset_budget.py",
+      "bytes": 11245,
+      "sha256": "f70ec0fb52d01c8608bdae6f6ba5ac157badcc0b60fef42b64e6b3763e5a8b9a"
+    },
+    {
+      "file": "source/tools/verify_packing_cut_balance.py",
+      "bytes": 8132,
+      "sha256": "f87fd57c7da93190f713e660b0c2d10a3a5977cea49440e0f756f720d3044e99"
+    },
+    {
+      "file": "source/tools/verify_parent_hybrid.py",
+      "bytes": 4970,
+      "sha256": "8e0129d0b6906e09b9037fb3faca06151489073376ab26dbb77f296941148b47"
+    },
+    {
+      "file": "source/tools/verify_parent_packing.py",
+      "bytes": 4366,
+      "sha256": "ff37af1f6d74382596609468effc29dcf16959ed1ed081cd30ce54f85a859cc1"
+    },
+    {
+      "file": "source/tools/verify_periodic_connectivity.py",
+      "bytes": 3683,
+      "sha256": "2ed8bedf36f92aa36050e04f858e09b6a9f9d11799be3e9bc131abe9a4426f5d"
+    },
+    {
+      "file": "source/tools/verify_periodic_contact_probe.py",
+      "bytes": 5817,
+      "sha256": "99112fbb59458af79ef80fcec7063484d6266a54f3eb97b3f956bd8f14842613"
+    },
+    {
+      "file": "source/tools/verify_periodic_modes.py",
+      "bytes": 2931,
+      "sha256": "182c4f586cea03f6887b25b8e340138c1786f394a7b36424143daabfc14e4a95"
+    },
+    {
+      "file": "source/tools/verify_persistent_surface.py",
+      "bytes": 2690,
+      "sha256": "60c3426df53dd95aaff3cf4c412b7cb39b2b92e97190fd2dd6aa72c21ede3eff"
+    },
+    {
+      "file": "source/tools/verify_plane_contact.py",
+      "bytes": 6876,
+      "sha256": "dbb849ce81a806760cb9c88ef15522960037b293065ea664fcab188d15e8d34e"
+    },
+    {
+      "file": "source/tools/verify_plastic_cycle_reference.py",
+      "bytes": 6703,
+      "sha256": "059b15eab63111b1e87ba3de15ee468439649455600c18e0abe5864a20bba03c"
+    },
+    {
+      "file": "source/tools/verify_point_stationarity.py",
+      "bytes": 11599,
+      "sha256": "c036786a796200734920b6a2e03466f8f6089719ac46f0fe3e130b8036d2ed23"
+    },
+    {
+      "file": "source/tools/verify_runtime_parent.py",
+      "bytes": 3322,
+      "sha256": "0c823ca8212b223d1a034b7e0f849ee873e459bfba2f595936e703f754c89321"
+    },
+    {
+      "file": "source/tools/verify_rve_position_transfer.py",
+      "bytes": 1858,
+      "sha256": "bed661d99f33acaa457a971ccf21764d1206956b963c0cff12dba78f476a5496"
+    },
+    {
+      "file": "source/tools/verify_solver_equivalence.py",
+      "bytes": 4916,
+      "sha256": "e94188485209faf0dce9a506dd9d42d1b1a6faf267e5370fb734f034a118b85b"
+    },
+    {
+      "file": "source/tools/verify_structured_extension.py",
+      "bytes": 11856,
+      "sha256": "9859440f8aa005d46bb4126a9b00a5c52e76ebebe153b1a8307ca5f321307851"
+    },
+    {
+      "file": "source/tools/verify_surface_development.py",
+      "bytes": 8957,
+      "sha256": "2e6ebe3bf83814be93d57033f6c8cd5856bc75f4ef0a6b8deef01c7008f2442e"
+    },
+    {
+      "file": "source/tools/verify_surface_force_budget.py",
+      "bytes": 3544,
+      "sha256": "cb9a4c8ab796cc0cafe6b6fd64f2f2e08f33c9a08106160a1d0331bc05f1d5cd"
+    },
+    {
+      "file": "source/tools/verify_tracked_node_impact.py",
+      "bytes": 3116,
+      "sha256": "f4e7d4763d4c2b730c2c7f7930e58fcf442c5b0d509dcb114cb85399009e05f2"
+    },
+    {
+      "file": "source/tools/verify_tracked_solver.py",
+      "bytes": 4894,
+      "sha256": "81a28d371106ce675c49b5f99693b3cdd3b6d617a405b078e14eddb36d321504"
+    },
+    {
+      "file": "source/tools/verify_triangle_integration.py",
+      "bytes": 7771,
+      "sha256": "90fce759f58866454eccd4fa6392b8742d0a2621f67390ba07f0ec5f5685b2a8"
+    },
+    {
+      "file": "source/tools/verify_triangle_partition.py",
+      "bytes": 3637,
+      "sha256": "488cbe3ce740c7c30e7f0a00136d0529b0b9bd41f7f93b9f277c65245e0144ac"
+    },
+    {
+      "file": "source/tools/verify_unload_quasistatic.py",
+      "bytes": 7353,
+      "sha256": "9dbb8cfd95dd5f9c2f5e46155614db50a53570aaf7664f6e75bc873abe656e94"
+    }
+  ]
+}

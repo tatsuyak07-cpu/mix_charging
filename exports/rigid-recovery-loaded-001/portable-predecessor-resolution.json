@@ -1,0 +1,559 @@
+{
+  "passed": true,
+  "scope": "Local-only remesh predecessor resolution against the actual predecessor arrays of the independently force-audited90-state path. No new physical calculation or10% claim.",
+  "reference_audit_sha256": "b4d8e726cf0088193b796f6689d6b4278926ce61b7640bf01c5dc8e51997900c",
+  "states_checked": 89,
+  "copied_transfers": [
+    {
+      "source": "results/rigid-inclusion-001/compression-001/remesh-001.npz",
+      "file": "/workspace/environment/mix_charging/accepted-prefix-001/remesh-segment-01-001.npz",
+      "sha256": "8e035bc5eb5b93ad7257a104ed3ff354c795771e9a3844f4260530cd367134e9"
+    },
+    {
+      "source": "results/rigid-inclusion-001/compression-001/remesh-002.npz",
+      "file": "/workspace/environment/mix_charging/accepted-prefix-001/remesh-segment-01-002.npz",
+      "sha256": "39ea93023fa0986b8f24e27559fcd71690645186144fe9118752d60e8711488c"
+    },
+    {
+      "source": "results/rigid-inclusion-001/compression-002/remesh-001.npz",
+      "file": "/workspace/environment/mix_charging/accepted-prefix-001/remesh-segment-02-001.npz",
+      "sha256": "f363c12f1321729035c7827db53a4d497f41687526f8a70f3e63b30feeb2fd50"
+    }
+  ],
+  "records": [
+    {
+      "step": 1,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/remesh-segment-01-001.npz",
+      "original_predecessor": "results/rigid-inclusion-001/compression-001/remesh-001.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 2,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/remesh-segment-01-002.npz",
+      "original_predecessor": "results/rigid-inclusion-001/compression-001/remesh-002.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 3,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0002.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0002.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 4,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0003.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0003.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 5,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0004.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0004.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 6,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0005.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0005.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 7,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0006.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0006.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 8,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0007.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0007.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 9,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0008.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0008.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 10,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0009.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0009.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 11,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0010.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0010.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 12,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0011.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0011.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 13,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0012.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0012.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 14,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0013.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0013.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 15,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0014.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0014.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 16,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0015.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0015.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 17,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0016.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0016.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 18,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0017.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0017.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 19,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0018.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0018.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 20,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0019.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0019.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 21,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0020.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0020.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 22,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0021.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0021.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 23,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0022.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0022.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 24,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0023.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0023.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 25,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0024.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0024.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 26,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0025.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0025.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 27,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0026.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0026.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 28,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0027.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0027.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 29,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0028.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0028.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 30,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0029.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0029.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 31,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0030.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0030.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 32,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0031.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0031.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 33,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0032.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0032.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 34,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0033.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0033.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 35,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0034.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0034.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 36,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0035.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0035.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 37,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0036.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0036.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 38,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0037.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0037.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 39,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0038.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0038.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 40,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0039.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0039.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 41,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0040.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0040.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 42,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0041.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0041.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 43,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0042.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0042.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 44,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0043.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0043.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 45,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0044.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0044.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 46,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0045.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0045.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 47,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0046.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0046.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 48,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0047.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0047.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 49,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0048.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0048.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 50,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0049.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0049.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 51,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0050.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0050.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 52,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0051.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0051.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 53,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0052.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0052.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 54,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0053.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0053.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 55,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0054.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0054.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 56,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0055.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0055.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 57,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0056.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0056.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 58,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0057.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0057.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 59,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0058.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0058.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 60,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0059.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0059.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 61,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0060.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0060.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 62,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0061.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0061.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 63,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0062.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0062.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 64,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0063.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0063.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 65,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0064.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0064.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 66,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0065.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0065.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 67,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0066.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0066.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 68,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0067.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0067.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 69,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0068.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0068.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 70,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0069.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0069.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 71,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0070.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0070.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 72,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0071.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0071.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 73,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0072.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0072.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 74,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0073.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0073.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 75,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0074.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0074.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 76,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0075.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0075.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 77,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0076.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0076.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 78,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0077.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0077.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 79,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0078.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0078.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 80,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0079.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0079.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 81,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0080.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0080.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 82,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0081.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0081.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 83,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0082.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0082.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 84,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0083.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0083.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 85,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0084.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0084.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 86,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0085.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0085.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 87,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0086.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0086.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 88,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0087.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0087.npz",
+      "all_arrays_bitwise_equal": true
+    },
+    {
+      "step": 89,
+      "local_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0088.npz",
+      "original_predecessor": "/workspace/environment/mix_charging/accepted-prefix-001/state-0088.npz",
+      "all_arrays_bitwise_equal": true
+    }
+  ]
+}

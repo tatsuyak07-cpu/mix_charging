@@ -1,0 +1,77 @@
+# 剛体入り充填層：載荷時の空隙率10%到達
+
+**空隙率40.4057%→10.0652%**。目標10%、許容差±0.1ポイントの範囲に到達しました。軸圧縮率34.4863%、公称軸圧力0.15852854 MPaです。横周期寸法はX/Yとも24.14071764 mmで固定し、せん断成分はゼロです。軸方向変位制御で求めた圧力であり、固定横セルには側方反力が発生します。
+
+**これは16粒子D10 mm・焼結ネックD2 mm、セル24.1407 mm角、自由6DOF円柱D4/H4 mmの統合試験です。100 mm角・円柱D20/H20 mmの本番系ではありません。**
+
+## 画像とCSV
+
+- [最終FEMメッシュPNG](loaded-mesh.png)・[初期メッシュPNG](initial-mesh.png)
+- [剛体中心を通る初期／載荷後断面PNG](pore-sections.png)・[圧縮曲線PNG](compression-path.png)
+- [全93受理増分のCSV](history.csv)・[剛体力と接触数CSV](rigid-history.csv)・[体積内訳CSV](volume-balance.csv)
+- [初期FEM状態NPZ](initial-mesh.npz)・[最終FEM状態NPZ](loaded-mesh.npz)
+
+画像は実節点位置、変位倍率1倍です。青／色付き領域は骨格、橙は非変形円柱、白は空隙、断面図の灰色は現在のセル外です。3D表示では内部円柱が骨格に隠れるため、位置は断面図で確認できます。断面は各時点の剛体中心を通り、題名の空隙率は2D面積率ではなく3D体積率です。
+
+## 工程1–4の結果
+
+工程1の停滞診断、工程2の元の力を保つ摩擦連成の修正と24%通過、工程3の実圧縮による載荷時10%到達を実施しました。計算は有限変形の準静的な陰的平衡解法です。初期幾何＋受理93増分の94状態で、原物理条件による[力・構成則履歴・体積・剛体形状・非交差の独立監査](final-audit.json)が合格しました。初期幾何は力釣合い判定の対象外です。
+
+接触の[27→125周期像による終点監査](periodic-contact-audit.json)も合格し、一般化力の最大差は4.55e-13 Nでした。一部の積分ステンシルの配分は異なりますが、非ゼロの符号付き重みの和・力・接触エネルギー・摩擦仕事が一致しています。異なるステンシルを全て無作用とみなしていません。
+
+**工程4の収束判定は未合格です。** 同じCADの3メッシュによる0.5%圧縮の圧力差は最粗／最細で13.6256%、隣接差6.2240%→6.9679%は縮小していません。[メッシュ比較](mesh-screen-assessment.json)・[図とCSV](../rigid-recovery-verification-001/README.md)。40%→10%全経路のメッシュ・増分収束は未確認で、この圧力を定量的に収束した値とは扱いません。
+
+早期区間の[増分比較](early-increment-sensitivity.json)は一部スカラー線形補間を含み、補間誤差は未評価です。同じ有限荷重での[数値探索比較](search-sensitivity.json)および[一時的な摩擦正則化による初期推定比較](smoothing-sensitivity.json)も保存しています。後者の圧力差は0.09105%、空隙率差0.000816ポイント、節点位置最大差0.02004 mmで、いずれも元の摩擦式で独立監査に合格しています。一点の比較で全経路収束を主張しません。
+
+[工程別判定JSON](stages-assessment.json)・[関連169テスト合格](tests-169.log)。保持・除荷、剛体なしとの定量比較、本番寸法への拡大は今回の到達結果には含みません。
+
+## 保存終点を別環境で確認するデータ
+
+[終点独立再計算パッケージZIP](endpoint-replay.zip)・[パッケージ全メンバーSHA-256と検証結果](endpoint-replay-verification.json)。約14.3 MBで、実際の直前／終点のFEM状態、元の物理設定、Pythonソース、依存関係のピンを同梱しています。実行した16計算ソースは凍結ソースと全てハッシュ一致を確認済みです。別ディレクトリで同梱ソースのみを用いて力・材料履歴を再計算し、古い作業フォルダを参照しない監査に合格しました。これは保存終点の独立リプレイで、初期からの全計算を再実行したという意味ではありません。
+
+全経路の再メッシュ直後の実材料状態もマージデータに同梱しています。[過去状態89組のローカル解決確認](portable-predecessor-resolution.json)では元の監査に使った配列と完全一致し、今回の94状態の全経路監査も外部の旧フォルダ参照を禁止して合格しました。[再開経路とSHA-256](provenance.json)を残しています。
+
+## モデルと空隙率の定義
+
+ユーザー指定のE10 MPa、ν0.33、摩擦0.3を使い、温度・流体は入れていません。粘土のような永久変形の試験仮定として有限Hencky J2塑性を使い、降伏応力0.05 MPa・硬化係数0.2 MPaは未校正の開発用設定です。実鉱石の材料試験で同定した値ではありません。[実行設定](config.json)・[独立監査の元物理設定](original-physics.json)。
+
+目標は剛体体積を除く領域の空隙率 `(Vcell−Vsolid−Vrigid)/(Vcell−Vrigid)` です。セル全体の空隙率は終点で10.0104%となり、CSVに両方を保存しています。初期40%はCADの指定値で、四面体近似の実測値は40.4057%です。
+
+参照骨格体積と剛体形状を監査していますが、骨格の現在体積には弾性圧縮を含みます。塑性流動は等容で、骨格全体の現在体積を一定に拘束した計算ではありません。終点制御の体積予測も荷重刻みの推定にだけ使い、実空隙率を解いた後で確認します。目標を越え過ぎた場合は材料履歴を進めずに増分を半分にします。
+
+最終基準は自由度残差各成分0.005 N未満、円柱の世界座標力各成分0.005 N未満、世界トルク各成分／半径0.005 N未満です。CSVのベクトルノルムはこの成分基準とは区別してください。`summary.json`のvalidated=falseは全体収束を認証していないことを示します。
+
+以前の[途中経過と不採用試行](../rigid-recovery-continuation-raw-002/README.md)も保持しています。
+
+## 実行ソースと終了済み試行の全保存データ
+
+各tar.xzは単独で展開できます。全パートを同じ保存先へ展開します。全て終了済みの計算・監査を保存しています。
+[全ファイルSHA-256](raw-archive-files.json)・[アーカイブ検証](archive-verification.json)。
+
+- [rigid-recovery-loaded-001-part-01.tar.xz](../rigid-recovery-loaded-001-part-01.tar.xz)
+- [rigid-recovery-loaded-001-part-02.tar.xz](../rigid-recovery-loaded-001-part-02.tar.xz)
+- [rigid-recovery-loaded-001-part-03.tar.xz](../rigid-recovery-loaded-001-part-03.tar.xz)
+- [rigid-recovery-loaded-001-part-04.tar.xz](../rigid-recovery-loaded-001-part-04.tar.xz)
+- [rigid-recovery-loaded-001-part-05.tar.xz](../rigid-recovery-loaded-001-part-05.tar.xz)
+- [rigid-recovery-loaded-001-part-06.tar.xz](../rigid-recovery-loaded-001-part-06.tar.xz)
+- [rigid-recovery-loaded-001-part-07.tar.xz](../rigid-recovery-loaded-001-part-07.tar.xz)
+- [rigid-recovery-loaded-001-part-08.tar.xz](../rigid-recovery-loaded-001-part-08.tar.xz)
+- [rigid-recovery-loaded-001-part-09.tar.xz](../rigid-recovery-loaded-001-part-09.tar.xz)
+- [rigid-recovery-loaded-001-part-10.tar.xz](../rigid-recovery-loaded-001-part-10.tar.xz)
+- [rigid-recovery-loaded-001-part-11.tar.xz](../rigid-recovery-loaded-001-part-11.tar.xz)
+- [rigid-recovery-loaded-001-part-12.tar.xz](../rigid-recovery-loaded-001-part-12.tar.xz)
+- [rigid-recovery-loaded-001-part-13.tar.xz](../rigid-recovery-loaded-001-part-13.tar.xz)
+- [rigid-recovery-loaded-001-part-14.tar.xz](../rigid-recovery-loaded-001-part-14.tar.xz)
+- [rigid-recovery-loaded-001-part-15.tar.xz](../rigid-recovery-loaded-001-part-15.tar.xz)
+- [rigid-recovery-loaded-001-part-16.tar.xz](../rigid-recovery-loaded-001-part-16.tar.xz)
+- [rigid-recovery-loaded-001-part-17.tar.xz](../rigid-recovery-loaded-001-part-17.tar.xz)
+- [rigid-recovery-loaded-001-part-18.tar.xz](../rigid-recovery-loaded-001-part-18.tar.xz)
+- [rigid-recovery-loaded-001-part-19.tar.xz](../rigid-recovery-loaded-001-part-19.tar.xz)
+- [rigid-recovery-loaded-001-part-20.tar.xz](../rigid-recovery-loaded-001-part-20.tar.xz)
+- [rigid-recovery-loaded-001-part-21.tar.xz](../rigid-recovery-loaded-001-part-21.tar.xz)
+- [rigid-recovery-loaded-001-part-22.tar.xz](../rigid-recovery-loaded-001-part-22.tar.xz)
+- [rigid-recovery-loaded-001-part-23.tar.xz](../rigid-recovery-loaded-001-part-23.tar.xz)
+
+以前のアーカイブとSHA-256が一致した2939ファイルは重複格納していません。`raw-archive-files.json`の`previous_manifest`が示す以前の全パートを先に展開し、その後に今回の全パートを展開します。再利用したファイルとハッシュも同JSONに記録しています。
+
+展開後の`source/`に実行コードと画像・CSV、`raw/`に終了済み計算の入力・保存状態・不採用試行が入っています。元の相対パスを復元する場合は、`source/results/rigid-stages-1-4-001/`を作成し`raw/`の内容をコピーしてから`source/`で実行します。参照する過去の保存データは対応する公開アーカイブも展開します。
