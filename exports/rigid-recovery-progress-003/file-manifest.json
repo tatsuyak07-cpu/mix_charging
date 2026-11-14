@@ -1,0 +1,55 @@
+{
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 2336,
+      "sha256": "2b8b58430ab1be660839eaa5f4027bc2f563a6fabb1b9b476f46ad4365dfc087"
+    },
+    {
+      "file": "current-state.npz",
+      "bytes": 6404730,
+      "sha256": "72f441f08a5f19bcfeae52d1f2cda888c9a27982635e6e997c2d0bea964faeb3"
+    },
+    {
+      "file": "endpoint-force-audit.json",
+      "bytes": 4849,
+      "sha256": "3f7faa7fbab6ce0ced251f33a9af33c14cef90fd50db38c3eae95cadae30712c"
+    },
+    {
+      "file": "executed-config.json",
+      "bytes": 3447,
+      "sha256": "a45112188736596994db9204631cc4aedf9ff9636c14868dc31a12c339d589ef"
+    },
+    {
+      "file": "finite-load-search-sensitivity.json",
+      "bytes": 938,
+      "sha256": "1deca983d6c327f79c1c7aff21c352a8b715c0adfeae62305ff684322c50a090"
+    },
+    {
+      "file": "history.csv",
+      "bytes": 48866,
+      "sha256": "c8d0486e280e4d90977f256b93493f2b2cb86a6a43c2b2f3b2f2452a8c96ae6c"
+    },
+    {
+      "file": "original-mesh.npz",
+      "bytes": 1046572,
+      "sha256": "b5a5aa299e0d3b4a738b4931ce0c6f051ea1e5bbd88776050b25485268c4c678"
+    },
+    {
+      "file": "previous-state.npz",
+      "bytes": 6401965,
+      "sha256": "a1d52336b66d64c7e7601cdaa9ff1367a270171642cd07bf1d4a5c8525c8642e"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 830,
+      "sha256": "d4d2947294c97bca364a5b0d49331efb2a60b1939dc6869b28c13b2f00d7fd16"
+    },
+    {
+      "file": "resume-config.json",
+      "bytes": 3203,
+      "sha256": "abe00162102fb81f05920bdb62b38f526352d032bb2ba3cb0d8b969e3ca3dfd9"
+    }
+  ],
+  "scope": "Audited13.8282% prefix;10% target not yet reached."
+}

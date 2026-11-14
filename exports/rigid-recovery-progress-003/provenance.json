@@ -1,0 +1,37 @@
+{
+  "segments": [
+    {
+      "run": "results/rigid-inclusion-001/compression-001",
+      "last_step": 2
+    },
+    {
+      "run": "results/rigid-inclusion-001/compression-002",
+      "last_step": 1
+    },
+    {
+      "run": "results/rigid-inclusion-001/compression-015",
+      "last_step": 78
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/legacy-compression-016",
+      "last_step": 3
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/probe-001",
+      "last_step": 1
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/continuation-008",
+      "last_step": 2
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/continuation-010",
+      "last_step": 1
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/continuation-012",
+      "last_step": 1
+    }
+  ],
+  "exact_restart_array_checks_passed": true
+}

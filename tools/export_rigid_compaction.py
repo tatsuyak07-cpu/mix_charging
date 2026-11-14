@@ -52,7 +52,7 @@ def sections(initial,loaded,c,path):
     fig.suptitle('Floating rigid cylinder in periodic solid FEM\nCuts through the moving rigid center; displacement scale 1x');fig.get_layout_engine().set(rect=(0,.06,1,.94));fig.text(.5,.012,'Blue: solid skeleton. Orange: rigid cylinder. White: void. Gray: outside current cell.\nSame mm scale; titles show3D matrix-region porosity. Mesh / increment convergence unverified.',ha='center',fontsize=10);fig.savefig(path,dpi=170);plt.close(fig)
 
 
-def export(root,run,out):
+def export(root,run,out,archive_raw=True):
     root=Path(root);run=Path(run);out=Path(out);c=json.loads((run/'config.json').read_text());status=json.loads((run/'status.json').read_text())
     if status.get('status')!='loaded_target_reached' or c.get('target_final_porosity')!=.1:raise ValueError('Final export requires the loaded10% target; a24% milestone is not the final target')
     audit=json.loads((root/'final-audit.json').read_text());assert audit['passed']
@@ -74,6 +74,7 @@ def export(root,run,out):
     with (out/'rigid-history.csv').open('w',newline='') as f:
         fields=['step','compression','matrix_region_porosity','total_porosity','pressure_MPa','rigid_contacts','rigid_force_max_N','rigid_torque_over_radius_max_N'];w=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');w.writeheader();w.writerows(r for r in audit['states'] if 'pressure_MPa' in r)
     (out/'README.md').write_text(f'''# 剛体円柱：工程1〜3の数値結合試験\n\n16粒子、球径10mm、焼結ネック径2mm、E10MPa、ν0.33、摩擦0.3。\n試験円柱は直径4mm・高さ4mm、自由並進・自由回転、非接着。最終仕様の20x20mm／100mmセルとは区別します。\n\n充填層領域の空隙率{100*audit['states'][0]['matrix_region_porosity']:.4f}%→{100*float(final['porosity']):.4f}%。\n軸圧縮率{100*float(final['compression']):.4f}%、公称圧力{float(final['nominal_pressure_MPa']):.6f}MPa。\n横周期寸法を固定。初期状態は数値緩和前の幾何学形状です。\n\n[最終メッシュ](loaded-mesh.png)・[初期形状](initial-mesh.png)・[剛体中心断面](pore-sections.png)・[圧縮曲線](compression-path.png)・[元CSV](history.csv)・[剛体力／接触CSV](rigid-history.csv)・[独立監査](final-audit.json)。\n\n剛体体積を除いた領域を分母とする空隙率を目標判定に使い、セル全体の空隙率も併記します。\n骨格の現在体積は弾性圧縮を含み、剛体体積は一定です。保持・除荷と剛体なしとの定量比較は未実施。\n単一標本・三角形面による円柱近似で、メッシュ・増分・円柱分割収束は未認定です。\n''')
+    if not archive_raw:return
     items=[(p,'raw/'+str(p.relative_to(root))) for p in sorted(root.rglob('*')) if p.is_file()];items +=[(p,'exports/'+p.name) for p in sorted(out.iterdir()) if p.is_file()]
     for folder in ['packing_fem','tools','tests']:items.extend((p,'source/'+str(p)) for p in sorted(Path(folder).glob('*.py')))
     items.extend((p,'source/'+str(p)) for p in Path('configs').glob('rigid-cylinder*.json'))
@@ -93,4 +94,4 @@ def export(root,run,out):
         for a in archives:f.write(f"- [{a['file']}](../{a['file']})\n")
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--run',required=True);p.add_argument('--out',required=True);a=p.parse_args();export(a.root,a.run,a.out)
+    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--run',required=True);p.add_argument('--out',required=True);p.add_argument('--no-archive',action='store_true',help='Render first; use archive_rigid_snapshot for a separately verified incremental archive.');a=p.parse_args();export(a.root,a.run,a.out,not a.no_archive)
