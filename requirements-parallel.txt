@@ -1,0 +1,11 @@
+# Optional parallel sparse factorization. Install outside calculation code.
+-r requirements-implicit.txt
+pypardiso==0.4.7
+mkl==2025.3.0
+intel-cmplr-lib-ur==2025.3.3
+intel-openmp==2025.3.3
+onemkl-license==2025.3.0
+tbb==2022.3.1
+tcmlib==1.6.0
+umf==1.0.3
+threadpoolctl==3.6.0

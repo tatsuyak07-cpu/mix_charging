@@ -1,9 +1,9 @@
 """Fixed-cell solid FEM minimization; exact axial Dirichlet control, unchanged laws."""
+from packing_fem.sparse_factor import factorize
 import numpy as np
 import time
 from pathlib import Path
 from scipy.sparse import diags
-from scipy.sparse.linalg import splu
 from .implicit_material import evaluate
 from .fixed_point import affine_predictor,anderson_candidate
 from .line_search import bounded_wolfe
@@ -88,7 +88,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                     K=(p.A.T@Km@p.A+Kc)[:p.nmicro,:p.nmicro].tocsc()
                     diagonal=np.maximum(abs(K.diagonal()),1e-6)
                     if hasattr(p,'rigid_dofs'):diagonal[p.rigid_dofs]=np.maximum(diagonal[p.rigid_dofs],c.get('implicit_rigid_step_scale_floor_N_per_mm',0.))
-                    factor=splu(K+diags(diagonal*c['implicit_regularization']),permc_spec='COLAMD')
+                    factor=factorize(K+diags(diagonal*c['implicit_regularization']),c)
                     factor_contacts=n;factor_norm=norm
                     del K,Km,Kc
                 vector=gradient.copy();coefficients=[]
@@ -169,4 +169,4 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                     if not improved:contact.set_lag(trial,oldq)
             lag_input=trial.copy()
         raise ValueError('L-BFGS friction lag iterations did not converge')
-    except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial)
+    except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial,iterations=total_updates)

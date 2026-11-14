@@ -54,10 +54,12 @@ def sections(initial,loaded,c,path):
 
 def export(root,run,out):
     root=Path(root);run=Path(run);out=Path(out);c=json.loads((run/'config.json').read_text());status=json.loads((run/'status.json').read_text())
-    if status.get('status')!='loaded_target_reached':raise ValueError('Final export requires a reached loaded target')
+    if status.get('status')!='loaded_target_reached' or c.get('target_final_porosity')!=.1:raise ValueError('Final export requires the loaded10% target; a24% milestone is not the final target')
     audit=json.loads((root/'final-audit.json').read_text());assert audit['passed']
     with (run/'history.csv').open() as f:rows=list(csv.DictReader(f))
     final=rows[-1];initial=load(run/'state-0000.npz');loaded_path=run/f"state-{int(final['step']):04d}.npz";loaded=load(loaded_path);local,faces=cylinder_surface(c)
+    if float(final['porosity'])>.1+c['porosity_tolerance']:raise ValueError('Saved loading path has not reached10% porosity')
+    if audit['states'][-1].get('state_sha256')!=hashlib.sha256(loaded_path.read_bytes()).hexdigest():raise ValueError('Independent audit does not identify the final checkpoint')
     if np.max(abs(initial['q'][-6:]))>1e-12:raise ValueError('Export the full accepted path from the initial geometry')
     out.mkdir(exist_ok=False,parents=True)
     for name,state,path in [('initial',initial,run/'state-0000.npz'),('loaded',loaded,loaded_path)]:

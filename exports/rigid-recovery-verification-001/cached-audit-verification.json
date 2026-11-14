@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "compared_states": 4,
+  "collision_mesh_builds": 1,
+  "maximum_physical_quantity_difference": 4.85722573273506e-17,
+  "unchanged_reference_mesh_only": true,
+  "all_forces_and_histories_recomputed": true
+}

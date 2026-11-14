@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "reason": "Final export requires the loaded10% target; a24% milestone is not the final target",
+  "milestone_target": 0.24,
+  "project_target": 0.1,
+  "no_final_output_created": true
+}

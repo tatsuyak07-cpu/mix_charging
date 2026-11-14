@@ -18,7 +18,7 @@ def archive(root,out,excluded):
     for directory in ['packing_fem','tools','tests']:
         items.extend((p,'source/'+p.as_posix()) for p in sorted(Path(directory).glob('*.py')))
     items.extend((p,'source/'+p.as_posix()) for p in sorted(Path('configs').glob('rigid-*.json')))
-    for name in ['AGENTS.md','README.md','docs/rigid-inclusion-development.md','docs/rigid-recovery-stages-1-4.md','requirements.txt','requirements-implicit.txt','requirements-lock.txt','pyproject.toml']:
+    for name in ['AGENTS.md','README.md','docs/rigid-inclusion-development.md','docs/rigid-recovery-stages-1-4.md','requirements.txt','requirements-implicit.txt','requirements-parallel.txt','requirements-lock.txt','pyproject.toml']:
         path=Path(name)
         if path.exists():items.append((path,'source/'+path.as_posix()))
     items.extend((p,'source/'+p.as_posix()) for p in sorted(out.iterdir()) if p.is_file() and p.name not in ['README.md','archives.json','raw-archive-files.json','archive-verification.json'])

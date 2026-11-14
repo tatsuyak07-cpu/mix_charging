@@ -1,0 +1,22 @@
+{
+  "common_compression": 0.005,
+  "physics_config": "results/rigid-stages-1-4-001/input/original-config.json",
+  "threshold_spec": "configs/rigid-recovery-convergence-study.json",
+  "cases": [
+    {
+      "config": "configs/rigid-recovery-mesh-screen-000.json",
+      "mesh": "results/rigid-inclusion-001/mesh-001/mesh.npz",
+      "metadata": "results/rigid-inclusion-001/mesh-001/metadata.json"
+    },
+    {
+      "config": "configs/rigid-recovery-mesh-screen-001.json",
+      "mesh": "results/rigid-stages-1-4-001/mesh-001/mesh.npz",
+      "metadata": "results/rigid-stages-1-4-001/mesh-001/metadata.json"
+    },
+    {
+      "config": "configs/rigid-recovery-mesh-screen-002.json",
+      "mesh": "results/rigid-stages-1-4-001/mesh-002/mesh.npz",
+      "metadata": "results/rigid-stages-1-4-001/mesh-002/metadata.json"
+    }
+  ]
+}

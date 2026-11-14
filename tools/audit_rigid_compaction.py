@@ -39,13 +39,16 @@ def audit(run,out,physics_config=None):
         c=original
     initial=load(run/'state-0000.npz');reference=float(initial['V0'].sum());local,faces=cylinder_surface(c);distances=pdist(local);vr=rigid_volume(c);records=[]
     with (run/'history.csv').open() as f:history={int(row['step']):row for row in csv.DictReader(f)}
+    p=None;contact=None;cached_t=None;mesh_builds=0
     for path in sorted(run.glob('state-*.npz')):
-        step=int(path.stem.split('-')[1]);d=load(path);p=make_periodic(d['X'],c['length_mm'],c);H=deformation(d['q'][-6:]);volume=geometry(d['x'],d['t'])[0];cell=p.L**3*np.linalg.det(H);phi,total=porosities(volume.sum(),cell,c)
+        step=int(path.stem.split('-')[1]);d=load(path)
+        if p is None or not np.array_equal(p.X,d['X']) or not np.array_equal(cached_t,d['t']):
+            contact=None;gc.collect();p=make_periodic(d['X'],c['length_mm'],c);cached_t=d['t'].copy();contact=make_contact(d['X'],d['t'],p,c);mesh_builds+=1
+        H=deformation(d['q'][-6:]);volume=geometry(d['x'],d['t'])[0];cell=p.L**3*np.linalg.det(H);phi,total=porosities(volume.sum(),cell,c)
         center,(R,_,_)=p.pose(d['q']);world=local@R.T;actual_v=abs(np.einsum('ij,ij->i',world[faces[:,0]],np.cross(world[faces[:,1]],world[faces[:,2]])).sum()/6)
         J=response(d['b'],d['ep'],c)[2];material=np.bincount(d['parent'],weights=d['V0']*J,minlength=len(d['t']))
-        row=dict(step=step,matrix_region_porosity=phi,total_porosity=total,compression=float(-d['q'][p.prescribed]),solid_volume_mm3=float(volume.sum()),reference_volume_mm3=float(d['V0'].sum()),reference_volume_relative_error=abs(float(d['V0'].sum()/reference)-1),minimum_element_volume_mm3=float(volume.min()),quadrature_volume_error=float(np.max(abs(material-volume)/volume)),fixed_lattice_error=float(np.max(abs(H-np.diag([1,1,H[2,2]])))),saved_position_error_mm=float(abs(d['x']-p.positions(d['q'])).max()),rigid_volume_mm3=actual_v,rigid_volume_relative_error=abs(actual_v/vr-1),rigid_pair_distance_error_mm=float(abs(pdist(world)-distances).max()),rigid_center_mm=center.tolist(),rigid_rotation_matrix=R.tolist())
+        row=dict(step=step,state_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),matrix_region_porosity=phi,total_porosity=total,compression=float(-d['q'][p.prescribed]),solid_volume_mm3=float(volume.sum()),reference_volume_mm3=float(d['V0'].sum()),reference_volume_relative_error=abs(float(d['V0'].sum()/reference)-1),minimum_element_volume_mm3=float(volume.min()),quadrature_volume_error=float(np.max(abs(material-volume)/volume)),fixed_lattice_error=float(np.max(abs(H-np.diag([1,1,H[2,2]])))),saved_position_error_mm=float(abs(d['x']-p.positions(d['q'])).max()),rigid_volume_mm3=actual_v,rigid_volume_relative_error=abs(actual_v/vr-1),rigid_pair_distance_error_mm=float(abs(pdist(world)-distances).max()),rigid_center_mm=center.tolist(),rigid_rotation_matrix=R.tolist())
         passed=(volume.min()>0 and row['reference_volume_relative_error']<1e-7 and row['quadrature_volume_error']<1e-7 and row['fixed_lattice_error']<1e-12 and row['saved_position_error_mm']<1e-8 and row['rigid_volume_relative_error']<1e-10 and row['rigid_pair_distance_error_mm']<1e-9 and 0<=total<=phi<=1)
-        contact=make_contact(d['X'],d['t'],p,c)
         row['surface_intersections']=bool(ipc.has_intersections(contact.mesh,contact.positions(d['q'])))
         passed=passed and not row['surface_intersections']
         if step in history:
@@ -57,9 +60,9 @@ def audit(run,out,physics_config=None):
             row['coulomb']=friction_report(contact,d['q'],old['q'],c['friction'])
             passed=passed and res<c['implicit_force_tolerance_N'] and row['rigid_force_max_N']<c['implicit_force_tolerance_N'] and row['rigid_torque_over_radius_max_N']<c['implicit_force_tolerance_N'] and abs(res-float(saved['free_residual_N']))<1e-8 and row['pressure_replay_error_MPa']<1e-8 and row['b_replay_error']<1e-7 and row['ep_replay_error']<1e-7 and row['csv_porosity_error']<1e-10 and row['coulomb']['passed']
         else:row['initial_geometry_only']=True
-        del contact;gc.collect()
         row['passed']=bool(passed);records.append(row);print(json.dumps({k:row[k] for k in ['step','matrix_region_porosity','passed']}),flush=True)
-    report=dict(passed=bool(records and all(r['passed'] for r in records)),force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,original_physics_config=None if physics_config is None else str(physics_config),original_physics_config_sha256=None if physics_config is None else hashlib.sha256(Path(physics_config).read_bytes()).hexdigest(),initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
+    del contact;gc.collect()
+    report=dict(passed=bool(records and all(r['passed'] for r in records)),collision_mesh_builds=mesh_builds,force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,original_physics_config=None if physics_config is None else str(physics_config),original_physics_config_sha256=None if physics_config is None else hashlib.sha256(Path(physics_config).read_bytes()).hexdigest(),initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
     out.write_text(json.dumps(report,indent=2)+'\n');return report['passed']
 
 if __name__=='__main__':

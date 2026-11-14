@@ -3,6 +3,7 @@
 All accepted states satisfy the reduced force residual. Failed iterates are
 saved separately and are never used as the next material history.
 """
+from packing_fem.porosity_control import limited_increment
 import argparse,csv,json,time,traceback,hashlib,shutil
 from pathlib import Path
 import numpy as np
@@ -53,6 +54,9 @@ def active_dofs(p,c,prescribed):
 
 
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
+    if c.get('implicit_optimizer')=='lagged_coupled':
+        from packing_fem.quasistatic_hybrid import equilibrium as hybrid_equilibrium
+        return hybrid_equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
     if c.get('implicit_optimizer','newton') in ('lbfgs','lagged_lbfgs'):
         from packing_fem.quasistatic_lbfgs import equilibrium as lbfgs_equilibrium
         return lbfgs_equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
@@ -116,7 +120,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                     add=np.zeros(p.ndof);add[p.prescribed]=actuator;K=K+diags(add);Kf=K[free][:,free]
                     diagonal=np.maximum(abs(Kf.diagonal()),1e-6)
                     try:
-                        d=np.zeros(p.ndof);d[free]=block_solve(Kf+diags(diagonal*c['implicit_regularization']),-g[free],p.nmicro)
+                        d=np.zeros(p.ndof);d[free]=block_solve(Kf+diags(diagonal*c['implicit_regularization']),-g[free],p.nmicro,c)
                         if not np.all(np.isfinite(d)) or g@d>=0:raise ValueError('Newton direction is not a descent direction')
                         break
                     except (ValueError,RuntimeError):
@@ -193,14 +197,16 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
 def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None):
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
-    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton','lagged_lbfgs'):raise ValueError('Unknown implicit optimizer')
-    if c.get('rigid_inclusion',False) and c.get('implicit_optimizer') not in ('coupled_newton','lagged_lbfgs'):raise ValueError('Floating rigid inclusion requires a nonlinear rigid-capable backend')
-    if c.get('implicit_optimizer') in ('lbfgs','coupled_newton','lagged_lbfgs') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
+    from packing_fem.sparse_factor import solver_metadata
+    (out/'linear-solver.json').write_text(json.dumps(solver_metadata(c),indent=2)+'\n')
+    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton','lagged_lbfgs','lagged_coupled'):raise ValueError('Unknown implicit optimizer')
+    if c.get('rigid_inclusion',False) and c.get('implicit_optimizer') not in ('coupled_newton','lagged_lbfgs','lagged_coupled'):raise ValueError('Floating rigid inclusion requires a nonlinear rigid-capable backend')
+    if c.get('implicit_optimizer') in ('lbfgs','coupled_newton','lagged_lbfgs','lagged_coupled') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
     if c.get('implicit_iterate_checkpoint_every',0)>0:
         trace=out/'iterate-trace';trace.mkdir();c['_iterate_checkpoint_directory']=str(trace)
     sources=out/'source';sources.mkdir();source_root=Path(__file__).resolve().parents[1]
     manifest={}
-    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/rigid_inclusion.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
+    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/rigid_inclusion.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/quasistatic_hybrid.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/sparse_factor.py','packing_fem/porosity_control.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
         source=source_root/name;target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
     (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True,rejected_geometry=None if rejected_geometry is None else str(rejected_geometry),rejected_geometry_sha256=None if rejected_geometry is None else hashlib.sha256(Path(rejected_geometry).read_bytes()).hexdigest(),rejected_geometry_material_history_used=False),indent=2))
@@ -234,6 +240,7 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
     initial=initial_mesh_porosity
     rows=[];start=time.monotonic();increment=c.get('implicit_initial_strain_increment',c['implicit_strain_increment']);index=0;failed=0
     if not 0<increment<=c['implicit_strain_increment']:raise ValueError('Initial load increment must be positive and no larger than its ceiling')
+    last_porosity_slope=None
     remesh_events=0;remesh_attempted_at=-1;predictor_index=0;pending_geometry=None
     if rejected_geometry:
         if not c.get('implicit_bisection_predictor',False):raise ValueError('Rejected geometry requires the bisection predictor')
@@ -303,9 +310,7 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
             if remaining<=c.get('implicit_macro_tolerance',1e-6):
                 (out/'status.json').write_text(json.dumps(dict(status='compression_limit_reached_target_not_reached',initial_porosity=initial,last_converged_porosity=phi_now(),target_porosity=c['target_final_porosity'],target_reached=False,validated=False),indent=2));return
             increment=min(increment,remaining)
-            if len(rows)>1 and phi_now()<.2:
-                slope=(rows[-2]['porosity']-rows[-1]['porosity'])/max(rows[-1]['compression']-rows[-2]['compression'],1e-10)
-                if slope>0:increment=min(increment,max(c['implicit_minimum_increment'],.9*(phi_now()-c['target_final_porosity'])/slope))
+            increment=limited_increment(increment,phi_now(),-q[p.prescribed],c['target_final_porosity'],c['implicit_minimum_increment'],last_porosity_slope)
             prescribed=q[p.prescribed]-increment;external=zero.copy()
         elif phase=='hold':prescribed=q[p.prescribed];external=zero.copy()
         else:
@@ -322,6 +327,7 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
                 (out/f'predictor-{predictor_index:04d}.json').write_text(json.dumps(report,indent=2)+'\n')
                 log(dict(load_bisection_predictor=report))
             except (ValueError,RuntimeError) as exc:log(dict(load_bisection_predictor_rejected=str(exc)));warm_guess=None
+        old_phi=phi_now();old_compression=float(-q[p.prescribed])
         solution=equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess=warm_guess)
         warm_guess=None
         if isinstance(solution,dict):
@@ -335,7 +341,9 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
             c['_previous_q']=q.copy();c['_previous_X']=X.copy();c['_previous_t']=t.copy()
             np.savez_compressed(out/f'slip-predictor-{index+1:04d}.npz',q=q,X=X,t=t)
         q,state,g,n,it,norm=solution;b=state['b'];ep=state['ep'];inverse=np.linalg.inv(state['D']);index+=1
-        phi=phi_now();H=deformation(q[-6:]);area=p.L**2*np.linalg.norm(np.cross(H[:,0],H[:,1]))
+        phi=phi_now()
+        if phase=='compression':last_porosity_slope=(old_phi-phi)/max(-q[p.prescribed]-old_compression,1e-10)
+        H=deformation(q[-6:]);area=p.L**2*np.linalg.norm(np.cross(H[:,0],H[:,1]))
         _,free_mask=active_dofs(p,c,prescribed)
         scaled=g-external;scaled[-6:]/=p.L
         l2=float(np.linalg.norm(scaled[free_mask]))

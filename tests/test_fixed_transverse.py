@@ -13,15 +13,18 @@ class NoContact:
     def ccd(self,*args):return 1.
     def evaluate_coupled(self,q,old,tangent=False):return self.evaluate(q,tangent)
 
+@pytest.mark.parametrize('sparse_backend',['superlu','pardiso'])
 @pytest.mark.parametrize('acceleration_depth',[0,4])
-@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lagged_lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy'),('coupled_newton',False,1e-3,'maximum'),('coupled_newton',False,1e-3,'local'),('coupled_newton',False,1e-3,'hybrid'),('coupled_newton',False,1e-3,'peak'),('coupled_newton',False,1e-3,'force_box')])
+@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lagged_lbfgs',True,1e-3,'armijo'),('lagged_coupled',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy'),('coupled_newton',False,1e-3,'maximum'),('coupled_newton',False,1e-3,'local'),('coupled_newton',False,1e-3,'hybrid'),('coupled_newton',False,1e-3,'peak'),('coupled_newton',False,1e-3,'force_box')])
 @pytest.mark.parametrize('use_initial_guess',[False,True])
-def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,search,use_initial_guess):
+def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,search,use_initial_guess,sparse_backend):
+    if sparse_backend=='pardiso':pytest.importorskip('pypardiso')
     X=np.array([[i/2,j/2,k/2] for i in range(3) for j in range(3) for k in range(3)])
     def node(i,j,k):return i*9+j*3+k
     hexes=np.array([[node(i,j,k),node(i+1,j,k),node(i+1,j+1,k),node(i,j+1,k),node(i,j,k+1),node(i+1,j,k+1),node(i+1,j+1,k+1),node(i,j+1,k+1)] for i in range(2) for j in range(2) for k in range(2)])
     t=hex_to_tet(X,hexes);p=Periodic(X,1.);v,_,D=geometry(X,t)
     c=dict(transverse_boundary='fixed_cell',young_mpa=10.,poisson=.33,yield_mpa=1e6,hardening_mpa=0.,implicit_max_lag=8,implicit_max_newton=15,implicit_force_tolerance_N=1e-8,implicit_regularization=1e-8,implicit_macro_tolerance=1e-10)
+    c['implicit_sparse_solver']=sparse_backend
     c['implicit_anderson_depth']=acceleration_depth
     c['implicit_project_material_tangent']=project_material_tangent
     c['implicit_exact_tangent_max_residual_N']=tangent_switch

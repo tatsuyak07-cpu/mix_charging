@@ -1,0 +1,71 @@
+{
+  "scope": "Initial0.5% compression screen on identical CAD; no full40% to10% mesh convergence claim.",
+  "screen_completed": true,
+  "early_refinement_sequence_passed": false,
+  "production_coarsest_mesh_screen_passed": false,
+  "full_loaded_path_mesh_convergence_verified": false,
+  "threshold_source": "Previously declared developer screening thresholds; not material specifications.",
+  "thresholds": {
+    "porosity_absolute": 0.005,
+    "pressure_relative": 0.05
+  },
+  "cases": [
+    {
+      "level": 0,
+      "run": "results/rigid-stages-1-4-001/mesh-screen-001/level-000",
+      "calculation_return_code": 0,
+      "passed": true,
+      "compression": 0.005,
+      "pressure_MPa": 0.005536335388713153,
+      "porosity": 0.4013466701299231,
+      "free_residual_N": 0.000958417687852332,
+      "input_nodes": 21561,
+      "input_tetrahedra": 65407,
+      "cad_solid_volume_mm3": 8410.993471104091,
+      "geometry_volume_relative_error": 0.0067559500753941884
+    },
+    {
+      "level": 1,
+      "run": "results/rigid-stages-1-4-001/mesh-screen-001/level-001",
+      "calculation_return_code": 0,
+      "passed": true,
+      "compression": 0.005,
+      "pressure_MPa": 0.005211944829076513,
+      "porosity": 0.3997546345470834,
+      "free_residual_N": 0.0006743419683580441,
+      "input_nodes": 35472,
+      "input_tetrahedra": 113399,
+      "cad_solid_volume_mm3": 8410.993471104099,
+      "geometry_volume_relative_error": 0.004145849439908371
+    },
+    {
+      "level": 2,
+      "run": "results/rigid-stages-1-4-001/mesh-screen-001/level-002",
+      "calculation_return_code": 0,
+      "passed": true,
+      "compression": 0.005,
+      "pressure_MPa": 0.004872436251005703,
+      "porosity": 0.3985907459392566,
+      "free_residual_N": 0.003962893233315447,
+      "input_nodes": 67488,
+      "input_tetrahedra": 228406,
+      "cad_solid_volume_mm3": 8410.993471104099,
+      "geometry_volume_relative_error": 0.0022531963613045807
+    }
+  ],
+  "adjacent_differences": [
+    {
+      "pressure_relative": 0.06223982990512921,
+      "porosity_absolute": 0.0015920355828397126
+    },
+    {
+      "pressure_relative": 0.06967942946420957,
+      "porosity_absolute": 0.0011638886078267907
+    }
+  ],
+  "errors_decrease": false,
+  "production_coarsest_vs_finest": {
+    "pressure_relative": 0.13625609520707763,
+    "porosity_absolute": 0.0027559241906665033
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "scope": "Same actual FEM nonsymmetric Newton matrix; performance/readiness only, no new accepted physical state.",
+  "checkpoint": "results/rigid-stages-1-4-001/continuation-008/iterate-trace/iterate-1794636415782434366-0040.npz",
+  "accepted_predecessor": "results/rigid-stages-1-4-001/continuation-008/state-0001.npz",
+  "shape": [
+    55797,
+    55797
+  ],
+  "nonzeros": 1974159,
+  "superlu_s": 29.081954335000773,
+  "pardiso_s": 1.0767848590003268,
+  "speedup": 27.008138247783393,
+  "superlu_linear_residual_N": 5.2105021686177366e-14,
+  "pardiso_linear_residual_N": 3.606490106555782e-15,
+  "newton_direction_relative_difference": 9.005595780257843e-13,
+  "threadpools": [
+    {
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "version": "0.3.34.106.0"
+    },
+    {
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "version": "0.3.31.dev"
+    },
+    {
+      "internal_api": "mkl",
+      "num_threads": 4,
+      "prefix": "libmkl_rt",
+      "version": "2025.3-Product"
+    },
+    {
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "version": null
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 """Exact block elimination of the active periodic macro deformation unknowns."""
 import numpy as np
-from scipy.sparse.linalg import splu
+from packing_fem.sparse_factor import factorize
 
 
-def solve(K,rhs,nmicro):
+def solve(K,rhs,nmicro,c=None):
     B=K[:nmicro,nmicro:].toarray();C=K[nmicro:,nmicro:].toarray()
-    factor=splu(K[:nmicro,:nmicro].tocsc(),permc_spec='COLAMD')
+    factor=factorize(K[:nmicro,:nmicro],c)
     response=factor.solve(np.column_stack([rhs[:nmicro],B]))
     macro=np.linalg.solve(C-B.T@response[:,1:],rhs[nmicro:]-B.T@response[:,0])
     result=np.r_[response[:,0]-response[:,1:]@macro,macro]

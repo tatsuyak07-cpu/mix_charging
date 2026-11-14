@@ -1,4 +1,5 @@
 """Newton solve of the actual coupled solid/contact/Coulomb equilibrium residual."""
+from packing_fem.sparse_factor import factorize
 import numpy as np
 from pathlib import Path
 import time
@@ -172,7 +173,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
                 dq[:p.nmicro]=columns*linear[0]
             else:
                 try:
-                    factor=splu(J+diags(diagonal*c['implicit_regularization']),permc_spec='COLAMD')
+                    factor=factorize(J+diags(diagonal*c['implicit_regularization']),c)
                     dq[:p.nmicro]=factor.solve(-gradient);del factor
                 except RuntimeError:dq[:p.nmicro]=np.nan
             slope=float(merit_gradient@dq[:p.nmicro])
@@ -230,4 +231,4 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             step_history.append(float(np.max(abs(candidate[:p.nmicro]-trial[:p.nmicro]),initial=0.)))
             trial=candidate
         raise ValueError('Coupled Newton iteration budget exhausted')
-    except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial)
+    except (ValueError,RuntimeError) as exc:return dict(reason=str(exc),iterate=trial,iterations=len(step_history))

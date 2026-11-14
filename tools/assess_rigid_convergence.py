@@ -30,7 +30,7 @@ def assess(spec,out):
     for name,items in definition['families'].items():
         loaded=[read_case(item) for item in items];records=[r for r,_,_ in loaded];curves=[v for _,v,_ in loaded];configs=[c for _,_,c in loaded if c is not None]
         same_physics=bool(configs and all(all(c.get(k)==configs[0].get(k) for k in physical) for c in configs))
-        family=dict(cases=records,same_physics=same_physics,three_levels_available=len(items)>=3,passed=False)
+        family=dict(cases=records,same_physics=same_physics,three_levels_defined=len(items)>=3,three_levels_available=bool(len(items)>=3 and all(v is not None and len(v)>=2 for v in curves)),passed=False)
         if len(items)>=3 and all(v is not None and len(v)>=2 for v in curves):
             lo=max(v[0,0] for v in curves);hi=min(v[-1,0] for v in curves)
             if hi>lo:
