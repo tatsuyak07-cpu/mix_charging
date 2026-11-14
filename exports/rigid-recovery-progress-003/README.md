@@ -16,4 +16,8 @@ GitHubの現行ソースとrequirements-parallel.txtの環境を用意し、こ�
 PYTHONPATH=. OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=4 python tools/run_frozen_compaction.py --config exports/rigid-recovery-progress-003/resume-config.json --mesh exports/rigid-recovery-progress-003/original-mesh.npz --restart exports/rigid-recovery-progress-003/current-state.npz --out results/rigid-portable-resume-001
 ```
 
-このコマンドによる再開自体は未実行です。NPZと実際の受理状態のSHA-256一致、原物理条件の力・履歴・体積・非交差監査を確認しました。全経路の力監査も別途継続中です。
+このコマンドによる再開自体は未実行です。NPZと実際の受理状態のSHA-256一致、原物理条件の力・履歴・体積・非交差監査を確認しました。初期幾何＋受理89増分の90状態について、[原物理条件の全経路監査](accepted-path-force-audit.json)も合格しました。初期形状は力釣合い判定の対象外です。
+
+![13.8282%の実メッシュ](current-mesh.png)
+
+変位倍率1倍。これは途中状態の画像で、目標10%の最終結果ではありません。

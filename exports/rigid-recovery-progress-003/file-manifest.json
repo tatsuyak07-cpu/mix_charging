@@ -2,8 +2,18 @@
   "files": [
     {
       "file": "README.md",
-      "bytes": 2336,
-      "sha256": "2b8b58430ab1be660839eaa5f4027bc2f563a6fabb1b9b476f46ad4365dfc087"
+      "bytes": 2642,
+      "sha256": "7ae1321d245132e308eecee03218d4eb7f3b993095cdd44125f8617f78b41e01"
+    },
+    {
+      "file": "accepted-path-force-audit.json",
+      "bytes": 274687,
+      "sha256": "b4d8e726cf0088193b796f6689d6b4278926ce61b7640bf01c5dc8e51997900c"
+    },
+    {
+      "file": "current-mesh.png",
+      "bytes": 921744,
+      "sha256": "fbb9845cf63ec2e6f41b366905baa6c63441878c09334fa09664523e86d2f153"
     },
     {
       "file": "current-state.npz",
