@@ -252,6 +252,16 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
     zero=np.zeros(p.ndof);unload_fraction=0.;unload_reaction=None;loaded_porosity=None
     def log(v):print(json.dumps(v),flush=True)
     def phi_now():return measured_porosity(geometry(p.positions(q),t)[0].sum(),p.L**3*np.linalg.det(deformation(q[-6:])),c)
+    if restart and previous_path and Path(previous_path).is_file():
+        with np.load(previous_path) as previous:
+            if np.array_equal(previous['X'],X) and np.array_equal(previous['t'],t) and previous['q'].shape==q.shape:
+                delta=float(previous['q'][p.prescribed]-q[p.prescribed])
+                if delta>0:
+                    old_cell=p.L**3*np.linalg.det(deformation(previous['q'][-6:]))
+                    old_phi=measured_porosity(geometry(previous['x'],previous['t'])[0].sum(),old_cell,c)
+                    last_porosity_slope=(old_phi-phi_now())/delta
+                    report=dict(source=previous_path,sha256=hashlib.sha256(Path(previous_path).read_bytes()).hexdigest(),previous_porosity=float(old_phi),accepted_porosity=float(phi_now()),accepted_strain_increment=delta,porosity_slope=float(last_porosity_slope),numerical_endpoint_control_only=True,material_history_unchanged=True)
+                    (out/'endpoint-controller-restart.json').write_text(json.dumps(report,indent=2)+'\n');log(dict(endpoint_controller_restart=report))
     already_loaded=phase=='compression' and phi_now()<=c['target_final_porosity']+c['porosity_tolerance']
     if already_loaded and not c.get('loading_only',False):phase='hold'
     if phase=='hold':loaded_porosity=phi_now()

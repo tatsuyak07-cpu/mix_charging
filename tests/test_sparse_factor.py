@@ -28,3 +28,14 @@ def test_nonsymmetric_multiple_rhs_and_input_preservation(backend):
 def test_unknown_backend_rejected():
     with pytest.raises(ValueError, match='Unknown sparse solver'):
         factorize(csr_matrix(np.eye(2)), dict(implicit_sparse_solver='unknown'))
+
+
+def test_global_factor_lifetime_does_not_raise_during_interpreter_shutdown():
+    pytest.importorskip('pypardiso')
+    import subprocess
+    import sys
+    command="from scipy.sparse import csr_matrix; from packing_fem.sparse_factor import factorize; factor=factorize(csr_matrix([[2.,1.],[0.,3.]]),dict(implicit_sparse_solver='pardiso')); print(factor.solve([4.,6.]))"
+    result=subprocess.run([sys.executable,'-c',command],capture_output=True,text=True,check=False)
+    assert result.returncode==0,result.stderr
+    assert 'Exception ignored' not in result.stderr,result.stderr
+    assert '[1. 2.]' in result.stdout

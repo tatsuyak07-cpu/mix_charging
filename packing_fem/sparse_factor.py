@@ -1,6 +1,7 @@
 """Optional parallel nonsymmetric direct solve; no dependency installation here."""
 import numpy as np
 import importlib.metadata
+import sys
 from scipy.sparse.linalg import splu
 
 
@@ -50,8 +51,11 @@ class PardisoFactor:
             with self._limits(limits=self.threads, user_api='blas'):
                 solver.free_memory(everything=True)
 
-    def __del__(self):
-        self.close()
+    def __del__(self, finalizing=sys.is_finalizing):
+        # Native allocations are reclaimed by process exit. Do not import
+        # SciPy from PyPardiso cleanup after Python module teardown has begun.
+        if not finalizing():
+            self.close()
 
 
 def factorize(matrix, config=None):

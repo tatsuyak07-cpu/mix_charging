@@ -2,8 +2,8 @@
   "files": [
     {
       "file": "README.md",
-      "bytes": 2642,
-      "sha256": "7ae1321d245132e308eecee03218d4eb7f3b993095cdd44125f8617f78b41e01"
+      "bytes": 3152,
+      "sha256": "cdb4a070d4200cf5123e5784bfb7c8f1dae8a75b342dee7c53c6372e1e1a816a"
     },
     {
       "file": "accepted-path-force-audit.json",
@@ -59,6 +59,16 @@
       "file": "resume-config.json",
       "bytes": 3203,
       "sha256": "abe00162102fb81f05920bdb62b38f526352d032bb2ba3cb0d8b969e3ca3dfd9"
+    },
+    {
+      "file": "tests-018.log",
+      "bytes": 261,
+      "sha256": "58881317fb14a4d15fe00f8309ee092b26c717a9b8b821223d1183ebcb5c5d12"
+    },
+    {
+      "file": "tests-019.log",
+      "bytes": 98,
+      "sha256": "0f359b65eb49e1c16fc9873c3238e97ec9b08b15eeb25ade92b23737ec985269"
     }
   ],
   "scope": "Audited13.8282% prefix;10% target not yet reached."
