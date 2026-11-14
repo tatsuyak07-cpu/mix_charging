@@ -1,0 +1,82 @@
+[
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-01.tar.xz",
+    "bytes": 26498772,
+    "sha256": "2652bcedef9bf485e030581f714cc6a93c5fbd8dfb140a74f0a6808ba7064695",
+    "members": 42,
+    "uncompressed_bytes": 49777979,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-02.tar.xz",
+    "bytes": 26299560,
+    "sha256": "559cd7c929f3e16bce06f4ddc52dbc728b67fc6d318ec1a1406866b340a05822",
+    "members": 30,
+    "uncompressed_bytes": 46601112,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-03.tar.xz",
+    "bytes": 17999476,
+    "sha256": "d9a2bb371478cea4d648655eea9dfa0910bf1679e21b825b4910ac696688650c",
+    "members": 33,
+    "uncompressed_bytes": 48957708,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-04.tar.xz",
+    "bytes": 17630764,
+    "sha256": "39e036912bdb0981406cf34e2f7b27c0c4a52a15e4c9948910599a2c2a226a4b",
+    "members": 54,
+    "uncompressed_bytes": 45476596,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-05.tar.xz",
+    "bytes": 21105668,
+    "sha256": "249da8ff352060221da6f4214875af8891138f77b2d5f7c1784e3c4428415b2f",
+    "members": 73,
+    "uncompressed_bytes": 44535170,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-06.tar.xz",
+    "bytes": 30209492,
+    "sha256": "ad8b49058aaa2cdfd61d9d8ad6a1fb4e523f2292b846856cd8894e241af11b41",
+    "members": 60,
+    "uncompressed_bytes": 45029660,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-07.tar.xz",
+    "bytes": 27855296,
+    "sha256": "eb888a7c8d45ee90535970c51248b282586675df3fd1f19d6bc437c766d0b8eb",
+    "members": 71,
+    "uncompressed_bytes": 48231042,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-08.tar.xz",
+    "bytes": 31649324,
+    "sha256": "4ec90b917bbcb1e874b842f8037300f72f27b6757eb8540472abf116a0334594",
+    "members": 1013,
+    "uncompressed_bytes": 48997489,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-09.tar.xz",
+    "bytes": 30185860,
+    "sha256": "091f9941e3628f3b2214ef09003d146cba3b07ec86dd89bc83daff550ff171ab",
+    "members": 27,
+    "uncompressed_bytes": 47293374,
+    "verified": true
+  },
+  {
+    "file": "rigid-recovery-continuation-raw-002-part-10.tar.xz",
+    "bytes": 6826288,
+    "sha256": "e7df22f7d18b9679f89b5c44d78f61c8986ba48c376737a04b61dfe8cbe52a77",
+    "members": 1360,
+    "uncompressed_bytes": 14371036,
+    "verified": true
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "archives": 10,
+  "files": 2763,
+  "all_member_sha256_checked": true,
+  "live_calculation_excluded": [
+    "continuation-010"
+  ],
+  "unchanged_previous_files_sha256_matched": 547
+}

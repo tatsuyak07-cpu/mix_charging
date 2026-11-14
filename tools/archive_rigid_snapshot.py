@@ -7,14 +7,22 @@ def digest(path):
     with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
-def archive(root,out,excluded):
+def archive(root,out,excluded,previous_manifest=None):
     root=Path(root);out=Path(out)
     if (out/'archives.json').exists():raise FileExistsError('Snapshot already archived')
-    items=[]
+    items=[];reused=[];previous={}
+    if previous_manifest is not None:
+        previous_manifest=Path(previous_manifest)
+        prior=json.loads(previous_manifest.read_text())
+        previous={item['file']:item for item in prior['files']+prior.get('reused_previous_files',[])}
     for path in sorted(root.rglob('*')):
         relative=path.relative_to(root)
         if any(name in relative.parts or relative.name==name+'.log' for name in excluded):continue
-        if path.is_file():items.append((path,'raw/'+relative.as_posix()))
+        if path.is_file():
+            name='raw/'+relative.as_posix()
+            if name in previous and digest(path)==previous[name]['sha256']:
+                reused.append(previous[name]);continue
+            items.append((path,name))
     for directory in ['packing_fem','tools','tests']:
         items.extend((p,'source/'+p.as_posix()) for p in sorted(Path(directory).glob('*.py')))
     items.extend((p,'source/'+p.as_posix()) for p in sorted(Path('configs').glob('rigid-*.json')))
@@ -50,13 +58,14 @@ def archive(root,out,excluded):
     records=[part for _,part in parts]
     with (out/'archives.json').open('x') as stream:json.dump(records,stream,indent=2);stream.write('\n')
     manifest=[dict(archive=records[index]['file'],file=item['name'],bytes=item['bytes'],sha256=item['sha256']) for index,group in enumerate(groups) for item in group]
-    with (out/'raw-archive-files.json').open('x') as stream:json.dump(dict(excluded_live_runs=excluded,files=manifest),stream,indent=2);stream.write('\n')
-    with (out/'archive-verification.json').open('x') as stream:json.dump(dict(passed=True,archives=len(records),files=len(manifest),all_member_sha256_checked=True,live_calculation_excluded=excluded),stream,indent=2);stream.write('\n')
+    with (out/'raw-archive-files.json').open('x') as stream:json.dump(dict(excluded_live_runs=excluded,files=manifest,reused_previous_files=reused,previous_manifest=None if previous_manifest is None else str(previous_manifest),previous_manifest_sha256=None if previous_manifest is None else digest(previous_manifest)),stream,indent=2);stream.write('\n')
+    with (out/'archive-verification.json').open('x') as stream:json.dump(dict(passed=True,archives=len(records),files=len(manifest),all_member_sha256_checked=True,live_calculation_excluded=excluded,unchanged_previous_files_sha256_matched=len(reused)),stream,indent=2);stream.write('\n')
     with (out/'README.md').open('a') as stream:
         stream.write('\n## 実行ソースと終了済み試行の全保存データ\n\n各tar.xzは単独で展開できます。全パートを同じ保存先へ展開します。計算中の'+', '.join(excluded)+'は除外しています。\n[全ファイルSHA-256](raw-archive-files.json)・[アーカイブ検証](archive-verification.json)。\n\n')
         for part in records:stream.write(f"- [{part['file']}](../{part['file']})\n")
+        if reused:stream.write(f'\n以前のアーカイブとSHA-256が一致した{len(reused)}ファイルは重複格納していません。`raw-archive-files.json`の`previous_manifest`が示す以前の全パートを先に展開し、その後に今回の全パートを展開します。再利用したファイルとハッシュも同JSONに記録しています。\n')
         stream.write(f'\n展開後の`source/`に実行コードと画像・CSV、`raw/`に終了済み計算の入力・保存状態・不採用試行が入っています。元の相対パスを復元する場合は、`source/{root.as_posix()}/`を作成し`raw/`の内容をコピーしてから`source/`で実行します。参照する過去の保存データは対応する公開アーカイブも展開します。\n')
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--root',required=True);parser.add_argument('--out',required=True);parser.add_argument('--exclude',action='append',default=[]);args=parser.parse_args();archive(args.root,args.out,args.exclude)
+    parser=argparse.ArgumentParser();parser.add_argument('--root',required=True);parser.add_argument('--out',required=True);parser.add_argument('--exclude',action='append',default=[]);parser.add_argument('--previous-manifest');args=parser.parse_args();archive(args.root,args.out,args.exclude,args.previous_manifest)
