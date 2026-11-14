@@ -1,0 +1,37 @@
+{
+  "scope": "Independent numerical-initialization sensitivity at one identical prescribed load and bitwise-identical accepted predecessor; not full-path convergence.",
+  "original_physics_replay_passed": true,
+  "final_slip_regularization_mm": 0.0001,
+  "friction": 0.3,
+  "force_tolerance_N": 0.005,
+  "compression": 0.32186322308385745,
+  "cases": [
+    {
+      "run": "results/rigid-stages-1-4-001/bisected-prefix-001",
+      "temporary_smoothing": false,
+      "pressure_MPa": 0.12125726707144333,
+      "porosity": 0.12845234827906704
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/smoothing-prefix-001",
+      "temporary_smoothing": [
+        10.0,
+        3.0,
+        1.0
+      ],
+      "physical_history_advanced_only_after_original_1x_phase": true,
+      "pressure_MPa": 0.12136767311297686,
+      "porosity": 0.12846050976178036
+    }
+  ],
+  "pressure_relative_difference": 0.0009105107198934645,
+  "porosity_absolute_difference": 8.16148271332029e-06,
+  "nodal_position_max_difference_mm": 0.02003968620173069,
+  "point_screen_passed": true,
+  "thresholds": {
+    "pressure_relative": 0.05,
+    "porosity_absolute": 0.005,
+    "scope": "Previously declared developer screening thresholds, not a physical specification."
+  },
+  "full_path_convergence_verified": false
+}

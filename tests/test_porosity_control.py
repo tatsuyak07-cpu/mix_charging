@@ -1,5 +1,5 @@
 import numpy as np
-from packing_fem.porosity_control import limited_increment
+from packing_fem.porosity_control import limited_increment,volume_limited_increment
 
 
 def test_restart_endpoint_for_finite_elastic_slab():
@@ -26,3 +26,11 @@ def test_restart_endpoint_for_finite_elastic_slab():
 def test_high_porosity_and_existing_smaller_step_preserved():
     assert limited_increment(.03, .25, .2, .1, 1e-6) == .03
     assert limited_increment(1e-5, .13, .3, .1, 1e-6) == 1e-5
+
+
+def test_volume_prediction_reaches_target_for_isochoric_solid_and_fixed_rigid_volume():
+    solid=.6;rigid=.005;cell=.68
+    phi=1-solid/(cell-rigid)
+    increment=volume_limited_increment(.05,phi,1-cell,.1,1e-6,rigid,safety=1.)
+    solved_phi=1-solid/(cell-increment-rigid)
+    assert abs(solved_phi-.1)<1e-14

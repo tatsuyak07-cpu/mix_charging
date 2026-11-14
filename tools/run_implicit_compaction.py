@@ -3,7 +3,7 @@
 All accepted states satisfy the reduced force residual. Failed iterates are
 saved separately and are never used as the next material history.
 """
-from packing_fem.porosity_control import limited_increment
+from packing_fem.porosity_control import limited_increment,volume_limited_increment
 import argparse,csv,json,time,traceback,hashlib,shutil
 from pathlib import Path
 import numpy as np
@@ -197,6 +197,7 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
 def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None):
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
+    if c.get('implicit_endpoint_control','slope') not in ('slope','volume'):raise ValueError('Unknown endpoint controller')
     from packing_fem.sparse_factor import solver_metadata
     (out/'linear-solver.json').write_text(json.dumps(solver_metadata(c),indent=2)+'\n')
     if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton','lagged_lbfgs','lagged_coupled'):raise ValueError('Unknown implicit optimizer')
@@ -320,7 +321,13 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
             if remaining<=c.get('implicit_macro_tolerance',1e-6):
                 (out/'status.json').write_text(json.dumps(dict(status='compression_limit_reached_target_not_reached',initial_porosity=initial,last_converged_porosity=phi_now(),target_porosity=c['target_final_porosity'],target_reached=False,validated=False),indent=2));return
             increment=min(increment,remaining)
-            increment=limited_increment(increment,phi_now(),-q[p.prescribed],c['target_final_porosity'],c['implicit_minimum_increment'],last_porosity_slope)
+            if c.get('implicit_endpoint_control','slope')=='volume':
+                rigid_fraction=0.
+                if c.get('rigid_inclusion',False):
+                    from packing_fem.rigid_inclusion import rigid_volume
+                    rigid_fraction=rigid_volume(c)/p.L**3
+                increment=volume_limited_increment(increment,phi_now(),-q[p.prescribed],c['target_final_porosity'],c['implicit_minimum_increment'],rigid_fraction,c.get('implicit_endpoint_safety',.95))
+            else:increment=limited_increment(increment,phi_now(),-q[p.prescribed],c['target_final_porosity'],c['implicit_minimum_increment'],last_porosity_slope)
             prescribed=q[p.prescribed]-increment;external=zero.copy()
         elif phase=='hold':prescribed=q[p.prescribed];external=zero.copy()
         else:
@@ -340,6 +347,13 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
         old_phi=phi_now();old_compression=float(-q[p.prescribed])
         solution=equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess=warm_guess)
         warm_guess=None
+        if (not isinstance(solution,dict) and phase=='compression'
+                and c.get('implicit_endpoint_reject_overshoot',c.get('implicit_endpoint_control')=='volume')):
+            trial_q,trial_state=solution[:2]
+            trial_cell=p.L**3*np.linalg.det(deformation(trial_q[-6:]))
+            trial_phi=measured_porosity(trial_state['volume'].sum(),trial_cell,c)
+            if trial_phi<c['target_final_porosity']-c['porosity_tolerance']:
+                solution=dict(reason=f'Endpoint porosity overshoot: {trial_phi}; halve load without advancing material history',iterate=trial_q)
         if isinstance(solution,dict):
             failed+=1;np.savez_compressed(out/f'failed-{failed:04d}.npz',q=solution['iterate'],X=X,t=t,oldq=q,b=b,ep=ep)
             log(dict(rejected_stage=index+1,reason=solution['reason'],increment=increment));increment*=.5

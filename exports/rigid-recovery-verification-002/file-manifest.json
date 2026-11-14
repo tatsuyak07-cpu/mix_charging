@@ -1,0 +1,55 @@
+{
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 3010,
+      "sha256": "72627b9486a530a7e767c8ab16b4aaf94c44e29729ad8e64281f594a4afb080e"
+    },
+    {
+      "file": "accepted-increment.csv",
+      "bytes": 982,
+      "sha256": "f168b71d57f4157059325eb343f7a3fff42ce6d6ca62ce5331dfcf67b104d12a"
+    },
+    {
+      "file": "accepted-state.npz",
+      "bytes": 6405175,
+      "sha256": "1068e0cebfc640e7552a149010925541249d04a310fa37cd9137c313d6a195c1"
+    },
+    {
+      "file": "direct-force-audit.json",
+      "bytes": 4838,
+      "sha256": "0314d799fd8754d1267b9f15b844296b4cb86a46255b8c609e24131820f70405"
+    },
+    {
+      "file": "executed-config.json",
+      "bytes": 3579,
+      "sha256": "6d63e66316decd0c94e933bba8c9c1a6ef7a525d60e0d6cf9c828f6fbde4ff9f"
+    },
+    {
+      "file": "smoothing-force-audit.json",
+      "bytes": 4865,
+      "sha256": "c95c64341eaf420864b2143e769b47e0669af60cd77373299f018738f8073963"
+    },
+    {
+      "file": "smoothing-sensitivity.json",
+      "bytes": 1291,
+      "sha256": "31e2903ec96787ecdc37fae194ef20ecbf521dbe169162de4d153943eb79efc6"
+    },
+    {
+      "file": "tests-020.log",
+      "bytes": 39295,
+      "sha256": "f2a64058b2141a270afbb7ce879056a44951c54dee92ad4f62afa864c6a674b8"
+    },
+    {
+      "file": "tests-021.log",
+      "bytes": 99,
+      "sha256": "887ade89c2ab5f1e8a931482b160214ddde5adbbe0691e89d0209cb572d990e7"
+    },
+    {
+      "file": "tests-022.log",
+      "bytes": 261,
+      "sha256": "f294b807d95d52fa3e36f3a58c697f679790c4a810fbb9817851b0ee87ad2ba9"
+    }
+  ],
+  "scope": "Audited12.8452% intermediate checkpoint;10% target pending."
+}
