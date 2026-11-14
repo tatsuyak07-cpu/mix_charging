@@ -1,0 +1,112 @@
+{
+  "accepted_force_replay_passed": true,
+  "same_material_geometry_friction_and_tolerances": true,
+  "interpretation": "The original regularized incremental slip law rebuilds friction from q-oldq; no elastic tangential traction history is stored. Zero-increment residual is diagnostic, not an accepted solution.",
+  "cases": [
+    {
+      "case": "accepted_replay",
+      "compression": 0.2075564648297838,
+      "strain_increment": 4.174737831375008e-06,
+      "free_maximum_N": 0.00499780142638831,
+      "free_l2_N": 0.11599280727680318,
+      "solid_dof_maximum_N": 0.00499780142638831,
+      "rigid_dof_maximum_N": 0.00400001532165211,
+      "material_gradient_maximum_N": 0.31241505123163815,
+      "normal_gradient_maximum_N": 0.3316863553934422,
+      "friction_gradient_maximum_N": 0.19802140142754243,
+      "rigid_force_N": [
+        0.003977284478929832,
+        0.00400001532165211,
+        -0.0039854563405313514
+      ],
+      "rigid_torque_over_radius_N": [
+        -0.0038559297133130208,
+        -0.0009248054837953327,
+        0.0017049221980217962
+      ],
+      "contacts": 936,
+      "slip_regularization_mm": 0.0001,
+      "tangential_stencils": 933,
+      "slips_below_regularization": 898,
+      "slip_min_median_max_mm": [
+        1.8400514108255044e-06,
+        5.538858314326648e-05,
+        0.0005466753956963006
+      ]
+    },
+    {
+      "case": "zero_macro_increment",
+      "compression": 0.2075564648297838,
+      "strain_increment": 0.0,
+      "free_maximum_N": 0.20202141674919455,
+      "free_l2_N": 0.8003407201400041,
+      "solid_dof_maximum_N": 0.07704549544978133,
+      "rigid_dof_maximum_N": 0.20202141674919455,
+      "material_gradient_maximum_N": 0.3124150512316363,
+      "normal_gradient_maximum_N": 0.33168635539344227,
+      "friction_gradient_maximum_N": 5.551115123125783e-17,
+      "rigid_force_N": [
+        0.02598633537900037,
+        0.20202141674919455,
+        -0.1319806073605146
+      ],
+      "rigid_torque_over_radius_N": [
+        -0.029589522694913786,
+        -0.009187976898189005,
+        0.011680773383033183
+      ],
+      "contacts": 936,
+      "slip_regularization_mm": 0.0001,
+      "tangential_stencils": 933,
+      "slips_below_regularization": 933,
+      "slip_min_median_max_mm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "case": "stalled_trial",
+      "compression": 0.207561683252073,
+      "strain_increment": 5.218422289204883e-06,
+      "free_maximum_N": 0.005569863461025101,
+      "free_l2_N": 0.1600955432028166,
+      "solid_dof_maximum_N": 0.005569863461025101,
+      "rigid_dof_maximum_N": 0.004000052226819623,
+      "material_gradient_maximum_N": 0.31254921152108545,
+      "normal_gradient_maximum_N": 0.3327577879140994,
+      "friction_gradient_maximum_N": 0.19535828534854774,
+      "rigid_force_N": [
+        0.003973977143220618,
+        0.004000052226819623,
+        -0.0038831998760139874
+      ],
+      "rigid_torque_over_radius_N": [
+        -0.003939626099088593,
+        -0.0034753052069501165,
+        0.002768303748553901
+      ],
+      "contacts": 936,
+      "slip_regularization_mm": 0.0001,
+      "tangential_stencils": 933,
+      "slips_below_regularization": 911,
+      "slip_min_median_max_mm": [
+        1.0551412832492735e-06,
+        4.615115725489412e-05,
+        0.00039330391553735135
+      ]
+    }
+  ],
+  "rigid_direction_jacobian_checks": [
+    {
+      "h_mm": 1e-07,
+      "relative_l2_error": 2.7231011367263704e-07,
+      "maximum_error": 0.0008507370044981144
+    },
+    {
+      "h_mm": 1e-08,
+      "relative_l2_error": 9.581667208867404e-08,
+      "maximum_error": 0.00020170336347291595
+    }
+  ]
+}

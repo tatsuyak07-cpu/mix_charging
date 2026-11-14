@@ -1,0 +1,39 @@
+{
+  "scope": "Loaded matrix-region porosity40% to10% in the16-grain D4/H4 floating-rigid prototype; fixed transverse lattice. Full paths from original geometry, not short restarted prefixes.",
+  "common_strain_samples": 41,
+  "developer_screening_thresholds": {
+    "porosity_absolute": 0.005,
+    "pressure_relative": 0.05
+  },
+  "requirement": "At least3levels, decreasing adjacent differences, all paths at10% and independently audited. Geometry improvement alone does not pass.",
+  "families": {
+    "increment": [
+      {
+        "name": "maximum increment1%",
+        "run": "results/rigid-stages-1-4-001/full-001"
+      },
+      {
+        "name": "maximum increment0.5%",
+        "run": "results/rigid-stages-1-4-001/increment-001"
+      },
+      {
+        "name": "maximum increment0.25%",
+        "run": "results/rigid-stages-1-4-001/increment-002"
+      }
+    ],
+    "mesh": [
+      {
+        "name": "65407T4",
+        "run": "results/rigid-stages-1-4-001/full-001"
+      },
+      {
+        "name": "113399T4",
+        "run": "results/rigid-stages-1-4-001/refined-001"
+      },
+      {
+        "name": "228406T4",
+        "run": "results/rigid-stages-1-4-001/refined-002"
+      }
+    ]
+  }
+}

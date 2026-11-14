@@ -53,6 +53,79 @@ def test_nonlinear_contact_jacobian_includes_rigid_geometric_curvature(mu):
         assert np.linalg.norm(contact.displacement(q,old).ravel()-contact.R@(q-old))>1e-5
 
 
+def test_frozen_friction_finite_rigid_potential_gradient_hessian_and_refresh():
+    p=RigidPeriodic(X,10.,C);contact=RigidPeriodicIPC(X,T,p,C,radius=0);old=np.zeros(p.ndof);q=old.copy();q[p.rigid_dofs]=[.01,-.01,.005,.03,.02,-.04]
+    contact.set_lag(q*.8,old);energy,g,H,count=contact.evaluate(q,True,project_hessian=False);assert count>0
+    direction=np.random.default_rng(833).normal(size=p.ndof);h=1e-7
+    ep,gp,_,_=contact.evaluate(q+h*direction);em,gm,_,_=contact.evaluate(q-h*direction)
+    np.testing.assert_allclose((ep-em)/(2*h),g@direction,rtol=2e-6,atol=1e-8)
+    np.testing.assert_allclose(H@direction,(gp-gm)/(2*h),rtol=2e-5,atol=3e-7)
+    _,_,projected,_=contact.evaluate(q,True,project_hessian=True);assert np.linalg.eigvalsh(projected.toarray()).min()>-1e-8
+    contact.set_lag(q,old);a=contact.evaluate(q);b=contact.evaluate_coupled(q,old)
+    np.testing.assert_allclose(a[1],b[1],atol=1e-12);assert a[0]==pytest.approx(b[0],abs=1e-12)
+
+
+@pytest.mark.parametrize('memory,inexact_updates,require_convergence',[(10,0,True),(10,10,True),(0,10,True),(0,0,False)])
+def test_lagged_solver_accepts_only_balanced_unloaded_floating_contact_states(tmp_path,inexact_updates,memory,require_convergence):
+    from packing_fem.quasistatic_lbfgs import equilibrium
+    from packing_fem.explicit_material import geometry
+    c=dict(C,young_mpa=10.,poisson=.33,yield_mpa=.05,hardening_mpa=.2,transverse_boundary='fixed_cell',implicit_force_tolerance_N=1e-5,implicit_regularization=1e-7,implicit_max_lag=30,implicit_lbfgs_max_iterations=1000,implicit_lag_inner_tolerance_fraction=.2,implicit_rigid_step_scale_floor_N_per_mm=1.)
+    c.update(implicit_iterate_checkpoint_every=10,_iterate_checkpoint_directory=str(tmp_path))
+    if inexact_updates:c.update(implicit_lbfgs_inexact_lag_updates=inexact_updates,implicit_max_lag=100,implicit_anderson_depth=4)
+    c['implicit_lbfgs_memory']=memory
+    if memory==0:c.update(implicit_lbfgs_refresh=1,implicit_regularization=.001)
+    p=RigidPeriodic(X,10.,c);contact=RigidPeriodicIPC(X,T,p,c,radius=0);q=np.zeros(p.ndof);volume,_,D=geometry(X,T);b=np.eye(3)[None];ep=np.zeros(1);events=[]
+    result=equilibrium(p,T,q,b,ep,np.linalg.inv(D),volume,c,contact,0.,np.zeros(p.ndof),events.append)
+    if isinstance(result,dict) and not require_convergence:
+        # This deliberately hard, fully frozen/damped search exceeded its
+        # budget in the recorded trial. It must reject, never label that
+        # iterate a solution; the inexact-refresh modes must actually converge.
+        assert result['reason']=='L-BFGS iteration budget exhausted'
+        assert [event['residual_N'] for event in events if 'lbfgs_iteration' in event][-1]>=c['implicit_force_tolerance_N']*c['implicit_lag_inner_tolerance_fraction']
+        np.testing.assert_array_equal(q,0);np.testing.assert_array_equal(ep,0)
+        return
+    assert not isinstance(result,dict),result
+    q,state,g,count,iterations,norm=result
+    assert norm<c['implicit_force_tolerance_N'] and contact.force_balance_ok(q,c['implicit_force_tolerance_N'])
+    np.testing.assert_array_equal(q[-6:],0);np.testing.assert_array_equal(ep,0)
+    assert not ipc.has_intersections(contact.mesh,contact.positions(q))
+    checkpoints=list(tmp_path.glob('iterate-*.npz'));assert checkpoints
+    counts=sorted(int(path.stem.rsplit('-',1)[1]) for path in checkpoints)
+    assert counts[0]<=11 and all(b-a<=11 for a,b in zip(counts,counts[1:]))
+    if inexact_updates:assert any('inexact_lag_refresh' in event for event in events)
+    for path in checkpoints:
+        with np.load(path) as data:
+            np.testing.assert_array_equal(data['oldq'],0)
+            np.testing.assert_array_equal(data['b'],b);np.testing.assert_array_equal(data['ep'],ep)
+            np.testing.assert_array_equal(data['X'],X);np.testing.assert_array_equal(data['t'],T)
+
+
+@pytest.mark.parametrize('changed_chart',[False,True])
+def test_slip_initial_guess_preserves_actual_history_and_rejects_changed_chart(changed_chart):
+    from packing_fem.quasistatic_lbfgs import slip_predictor
+    from packing_fem.explicit_material import geometry
+    from packing_fem.implicit_material import evaluate
+    c=dict(C,young_mpa=10.,poisson=.33,yield_mpa=.05,hardening_mpa=.2)
+    p=RigidPeriodic(X,10.,c);contact=RigidPeriodicIPC(X,T,p,c,radius=0)
+    old=np.zeros(p.ndof);old[p.rigid_dofs[:3]]=[.0001,-.0002,.0001]
+    previous=np.zeros(p.ndof);affine=affine_predictor(p,old,-.0001)
+    volume,_,D=geometry(X,T);b=np.eye(3)[None];ep=np.zeros(1);inverse=np.linalg.inv(D)
+    c.update(_previous_q=previous,_previous_X=X.copy(),_previous_t=T.copy())
+    if changed_chart:c['_previous_X'][0,0]+=1e-8
+    snapshots=[v.copy() for v in [old,previous,affine,b,ep]];events=[]
+    result=slip_predictor(p,T,old,affine,b,ep,inverse,volume,c,contact,None,np.zeros(p.ndof),events.append)
+    for actual,expected in zip([old,previous,affine,b,ep],snapshots):np.testing.assert_array_equal(actual,expected)
+    np.testing.assert_array_equal(result[-6:],affine[-6:])
+    if changed_chart:
+        np.testing.assert_array_equal(result,affine);assert 'slip_predictor_discarded' in events[-1]
+    else:
+        def residual(q):
+            _,g,_,_=evaluate(p.positions(q),T,b,ep,inverse,volume,c)
+            return np.linalg.norm((p.A.T@g.ravel()+contact.evaluate_coupled(q,old)[1])[:p.nmicro])
+        assert residual(result)<=residual(affine)*(1+1e-12)
+        assert not ipc.has_intersections(contact.mesh,contact.positions(result))
+
+
 def test_curved_rotation_ccd_prevents_crossing_along_actual_path():
     p=RigidPeriodic(X,10.,C);contact=RigidPeriodicIPC(X,T,p,C,radius=0);q=np.zeros(p.ndof);d=q.copy();d[p.rigid_dofs]=[.15,0,0,0,.6,.2]
     bound=contact.ccd(q,d);assert 0<bound<=1

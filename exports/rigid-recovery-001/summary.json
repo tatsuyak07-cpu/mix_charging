@@ -1,0 +1,13 @@
+{
+  "target_reached": false,
+  "initial_matrix_porosity": 0.40405702781381525,
+  "checkpoint_matrix_porosity": 0.24672432993073934,
+  "checkpoint_total_porosity": 0.24560834180412505,
+  "compression": 0.2113689648297838,
+  "pressure_MPa": 0.04988062402280015,
+  "accepted_steps": 87,
+  "geometry_audited_states": 88,
+  "rigid_volume_mm3": 50.18477584873503,
+  "prototype_only": true,
+  "full_scale_D20_H20_L100_calculated": false
+}

@@ -1,0 +1,29 @@
+{
+  "exact_restart_array_checks_passed": true,
+  "segments": [
+    {
+      "run": "results/rigid-inclusion-001/compression-001",
+      "last_step": 2
+    },
+    {
+      "run": "results/rigid-inclusion-001/compression-002",
+      "last_step": 1
+    },
+    {
+      "run": "results/rigid-inclusion-001/compression-015",
+      "last_step": 78
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/legacy-compression-016",
+      "last_step": 3
+    },
+    {
+      "run": "results/rigid-stages-1-4-001/recovered-prefix-003",
+      "last_step": 3
+    }
+  ],
+  "endpoint_source": "results/rigid-stages-1-4-001/recovered-prefix-003/state-0003.npz",
+  "endpoint_sha256": "2a2abd6f96f652fb92b1e7a0b2d3b3409ff103d5458938aa011f7daa15d45681",
+  "endpoint_audit_state_sha256": "2a2abd6f96f652fb92b1e7a0b2d3b3409ff103d5458938aa011f7daa15d45681",
+  "wall_time": "Cumulative selected-segment wall_s; excludes other trial branches, external initial-guess preparation and failures after the selected prefix."
+}

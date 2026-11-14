@@ -1,0 +1,30 @@
+.....F..............                                                     [100%]
+=================================== FAILURES ===================================
+_____ test_lagged_solver_releases_an_unloaded_floating_rigid_contact[0-0] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_lagged_solver_releases_an0')
+inexact_updates = 0, memory = 0
+
+    @pytest.mark.parametrize('inexact_updates',[0,10])
+    @pytest.mark.parametrize('memory',[0,10])
+    def test_lagged_solver_releases_an_unloaded_floating_rigid_contact(tmp_path,inexact_updates,memory):
+        from packing_fem.quasistatic_lbfgs import equilibrium
+        from packing_fem.explicit_material import geometry
+        c=dict(C,young_mpa=10.,poisson=.33,yield_mpa=.05,hardening_mpa=.2,transverse_boundary='fixed_cell',implicit_force_tolerance_N=1e-5,implicit_regularization=1e-7,implicit_max_lag=30,implicit_lbfgs_max_iterations=1000,implicit_lag_inner_tolerance_fraction=.2,implicit_rigid_step_scale_floor_N_per_mm=1.)
+        c.update(implicit_iterate_checkpoint_every=10,_iterate_checkpoint_directory=str(tmp_path))
+        if inexact_updates:c.update(implicit_lbfgs_inexact_lag_updates=inexact_updates,implicit_max_lag=100)
+        c['implicit_lbfgs_memory']=memory
+        if memory==0:c.update(implicit_lbfgs_refresh=1,implicit_regularization=.001)
+        p=RigidPeriodic(X,10.,c);contact=RigidPeriodicIPC(X,T,p,c,radius=0);q=np.zeros(p.ndof);volume,_,D=geometry(X,T);b=np.eye(3)[None];ep=np.zeros(1);events=[]
+        result=equilibrium(p,T,q,b,ep,np.linalg.inv(D),volume,c,contact,0.,np.zeros(p.ndof),events.append)
+>       assert not isinstance(result,dict),result
+E       AssertionError: {'reason': 'L-BFGS iteration budget exhausted', 'iterate': array([-3.56237056e-01,  2.04858414e+00, -8.74961036e-03,  ...,  0.00000000e+00,
+E                 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  0.00000000e+00,
+E                 0.00000000e+00])}
+E       assert not True
+E        +  where True = isinstance({'reason': 'L-BFGS iteration budget exhausted', 'iterate': array([-3.56237056e-01,  2.04858414e+00, -8.74961036e-03,  ...,  0.00000000e+00,\n        0.00000000e+00,  0.00000000e+00,  0.00000000e+00,  0.00000000e+00,\n        0.00000000e+00])}, dict)
+
+tests/test_rigid_inclusion.py:80: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_rigid_inclusion.py::test_lagged_solver_releases_an_unloaded_floating_rigid_contact[0-0]
+1 failed, 19 passed in 21.09s

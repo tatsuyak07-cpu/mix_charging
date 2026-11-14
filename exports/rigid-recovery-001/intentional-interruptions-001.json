@@ -1,0 +1,18 @@
+[
+  {
+    "run": "full-001",
+    "pid": 7546,
+    "time_utc": "2026-11-14T04:17:26.314034+00:00",
+    "reason": "Intentional interruption to prioritize recovered-state compression with updated nonlinear search. Not an exhausted force-convergence test.",
+    "last_verified_state": "results/rigid-stages-1-4-001/full-001/state-0006.npz",
+    "last_verified_state_sha256": "151b4fe77603e3afdcb7d3ea85fde3d04a8fefc71ad2cad86011cd3e58ef058b"
+  },
+  {
+    "run": "continuation-001",
+    "pid": 8382,
+    "time_utc": "2026-11-14T04:17:26.590496+00:00",
+    "reason": "Intentional interruption to prioritize recovered-state compression with updated nonlinear search. Not an exhausted force-convergence test.",
+    "last_verified_state": "results/rigid-stages-1-4-001/continuation-001/state-0000.npz",
+    "last_verified_state_sha256": "e06fd5a267a69160db8014d067fd94a95aeb1f129f3f258b2a43ea4a9a6f4bf0"
+  }
+]

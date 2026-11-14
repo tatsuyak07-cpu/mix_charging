@@ -14,7 +14,7 @@ class NoContact:
     def evaluate_coupled(self,q,old,tangent=False):return self.evaluate(q,tangent)
 
 @pytest.mark.parametrize('acceleration_depth',[0,4])
-@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy'),('coupled_newton',False,1e-3,'maximum'),('coupled_newton',False,1e-3,'local'),('coupled_newton',False,1e-3,'hybrid'),('coupled_newton',False,1e-3,'peak'),('coupled_newton',False,1e-3,'force_box')])
+@pytest.mark.parametrize('optimizer,project_material_tangent,tangent_switch,search',[('newton',False,np.inf,'armijo'),('newton',False,1e-3,'armijo'),('newton',True,np.inf,'armijo'),('lbfgs',True,1e-3,'armijo'),('lagged_lbfgs',True,1e-3,'armijo'),('lbfgs',True,1e-3,'strong_wolfe'),('coupled_newton',False,1e-3,'armijo'),('coupled_newton',False,1e-3,'diagonal'),('coupled_newton',False,1e-3,'homotopy'),('coupled_newton',False,1e-3,'maximum'),('coupled_newton',False,1e-3,'local'),('coupled_newton',False,1e-3,'hybrid'),('coupled_newton',False,1e-3,'peak'),('coupled_newton',False,1e-3,'force_box')])
 @pytest.mark.parametrize('use_initial_guess',[False,True])
 def test_fixed_cell_matches_finite_elastic_uniaxial_strain_limit(acceleration_depth,optimizer,project_material_tangent,tangent_switch,search,use_initial_guess):
     X=np.array([[i/2,j/2,k/2] for i in range(3) for j in range(3) for k in range(3)])

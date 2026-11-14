@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "same_cad_volume": true,
+  "three_level_geometry_error_decreases": true,
+  "loaded_mesh_convergence_verified": false,
+  "interpretation": "Initial geometry and periodic connectivity only; no claim of converged compression response.",
+  "meshes": [
+    {
+      "mesh": "results/rigid-inclusion-001/mesh-001",
+      "nodes": 21561,
+      "tetrahedra": 65407,
+      "matrix_porosity": 0.40405702781381525,
+      "total_porosity": 0.40261569549551324,
+      "cad_solid_volume_mm3": 8410.993471104091,
+      "geometry_volume_relative_error": 0.0067559500753941884,
+      "minimum_tetrahedron_volume_mm3": 1.0296251008548523e-05,
+      "periodic_node_error_mm": 3.552713678800501e-15,
+      "periodic_components": 1,
+      "winding_rank": 3,
+      "surface_intersections": false,
+      "passed": true
+    },
+    {
+      "mesh": "results/rigid-stages-1-4-001/mesh-001",
+      "nodes": 35472,
+      "tetrahedra": 113399,
+      "matrix_porosity": 0.4024909765190352,
+      "total_porosity": 0.4010552305417393,
+      "cad_solid_volume_mm3": 8410.993471104099,
+      "geometry_volume_relative_error": 0.004145849439908371,
+      "minimum_tetrahedron_volume_mm3": 5.790814344940761e-06,
+      "periodic_node_error_mm": 3.552713678800501e-15,
+      "periodic_components": 1,
+      "winding_rank": 3,
+      "surface_intersections": false,
+      "passed": true
+    },
+    {
+      "mesh": "results/rigid-stages-1-4-001/mesh-002",
+      "nodes": 67488,
+      "tetrahedra": 228406,
+      "matrix_porosity": 0.4013553912607434,
+      "total_porosity": 0.3999236960872209,
+      "cad_solid_volume_mm3": 8410.993471104099,
+      "geometry_volume_relative_error": 0.0022531963613045807,
+      "minimum_tetrahedron_volume_mm3": 5.79081434487681e-06,
+      "periodic_node_error_mm": 3.552713678800501e-15,
+      "periodic_components": 1,
+      "winding_rank": 3,
+      "surface_intersections": false,
+      "passed": true
+    }
+  ]
+}

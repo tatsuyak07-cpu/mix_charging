@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "archives": 14,
+  "files": 938,
+  "all_member_sha256_checked": true,
+  "live_calculation_excluded": [
+    "probe-001",
+    "continuation-005",
+    "continuation-006"
+  ]
+}

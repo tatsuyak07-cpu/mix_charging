@@ -1,0 +1,23 @@
+[
+  {
+    "run": "continuation-002",
+    "pid": 9095,
+    "time_utc": "2026-11-14T04:41:22.354159+00:00",
+    "reason": "Intentional stop to prioritize exact coupled-force polishing of the saved energy-search geometry; no unaccepted iterate is a solution.",
+    "latest_complete_iterate": "results/rigid-stages-1-4-001/continuation-002/iterate-trace/iterate-1794631031918766288-0120.npz"
+  },
+  {
+    "run": "continuation-003",
+    "pid": 9838,
+    "time_utc": "2026-11-14T04:41:22.553001+00:00",
+    "reason": "Intentional stop to prioritize exact coupled-force polishing of the saved energy-search geometry; no unaccepted iterate is a solution.",
+    "latest_complete_iterate": "results/rigid-stages-1-4-001/continuation-003/iterate-trace/iterate-1794630647343379950-0040.npz"
+  },
+  {
+    "run": "continuation-004",
+    "pid": 10361,
+    "time_utc": "2026-11-14T04:41:22.554339+00:00",
+    "reason": "Intentional stop to prioritize exact coupled-force polishing of the saved energy-search geometry; no unaccepted iterate is a solution.",
+    "latest_complete_iterate": null
+  }
+]

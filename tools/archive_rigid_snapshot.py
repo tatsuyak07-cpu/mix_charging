@@ -17,8 +17,8 @@ def archive(root,out,excluded):
         if path.is_file():items.append((path,'raw/'+relative.as_posix()))
     for directory in ['packing_fem','tools','tests']:
         items.extend((p,'source/'+p.as_posix()) for p in sorted(Path(directory).glob('*.py')))
-    items.extend((p,'source/'+p.as_posix()) for p in sorted(Path('configs').glob('rigid-cylinder*.json')))
-    for name in ['AGENTS.md','README.md','docs/rigid-inclusion-development.md','requirements.txt','requirements-implicit.txt','requirements-lock.txt','pyproject.toml']:
+    items.extend((p,'source/'+p.as_posix()) for p in sorted(Path('configs').glob('rigid-*.json')))
+    for name in ['AGENTS.md','README.md','docs/rigid-inclusion-development.md','docs/rigid-recovery-stages-1-4.md','requirements.txt','requirements-implicit.txt','requirements-lock.txt','pyproject.toml']:
         path=Path(name)
         if path.exists():items.append((path,'source/'+path.as_posix()))
     items.extend((p,'source/'+p.as_posix()) for p in sorted(out.iterdir()) if p.is_file() and p.name not in ['README.md','archives.json','raw-archive-files.json','archive-verification.json'])
@@ -55,7 +55,7 @@ def archive(root,out,excluded):
     with (out/'README.md').open('a') as stream:
         stream.write('\n## 実行ソースと終了済み試行の全保存データ\n\n各tar.xzは単独で展開できます。全パートを同じ保存先へ展開します。計算中の'+', '.join(excluded)+'は除外しています。\n[全ファイルSHA-256](raw-archive-files.json)・[アーカイブ検証](archive-verification.json)。\n\n')
         for part in records:stream.write(f"- [{part['file']}](../{part['file']})\n")
-        stream.write('\n展開後の`source/`に実行コードと画像・CSV、`raw/`に終了済み計算の入力・保存状態・不採用試行が入っています。元の相対パスを復元する場合は、`source/results/rigid-inclusion-001/`を作成し`raw/`の内容をコピーしてから`source/`で実行します。\n')
+        stream.write(f'\n展開後の`source/`に実行コードと画像・CSV、`raw/`に終了済み計算の入力・保存状態・不採用試行が入っています。元の相対パスを復元する場合は、`source/{root.as_posix()}/`を作成し`raw/`の内容をコピーしてから`source/`で実行します。参照する過去の保存データは対応する公開アーカイブも展開します。\n')
 
 
 if __name__=='__main__':

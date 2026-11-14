@@ -1,4 +1,4 @@
-"""Floating finite rigid cylinder and conservative periodic nonlinear contact.
+"""Floating finite rigid cylinder and periodic nonlinear contact.
 
 Rigid translations and radius-scaled Euler angles are independent unknowns.
 The macro lattice moves centers/images, never strains the rigid surface.
@@ -129,8 +129,26 @@ class RigidPeriodicIPC(PeriodicIPC):
     def displacement(self,q,old):return np.asfortranarray(self.positions(q)-self.positions(old))
     def set_lag(self,q,qold):
         self.R=self.jacobian(q);super().set_lag(q,qold)
-    def evaluate(self,*args,**kwargs):
-        raise NotImplementedError('Rigid contact requires the nonlinear self-consistent coupled force, not the linear lagged backend')
+    def evaluate(self,q,tangent=False,project_hessian=None):
+        """Exact finite-motion potential with friction coefficients frozen by set_lag.
+
+        The outer solver must refresh the lag and check the original coupled
+        force before accepting a physical state. Projection affects search only.
+        """
+        x=self.positions(q);n=self.collisions(x);u=self.displacement(q,self.qold)
+        self.last_normal=n;self.R=self.jacobian(q)
+        value=self.barrier(n,self.mesh,x)+self.friction(self.lag,self.mesh,u)
+        full=self.barrier.gradient(n,self.mesh,x)+self.friction.gradient(self.lag,self.mesh,u);self.last_full_gradient=full.reshape(-1,3);K=None
+        if tangent:
+            projected=self.c.get('ipc_project_tangent',True) if project_hessian is None else project_hessian
+            projection=ipc.PSDProjectionMethod.CLAMP if projected else ipc.PSDProjectionMethod.NONE
+            H=self.barrier.hessian(n,self.mesh,x,projection)+self.friction.hessian(self.lag,self.mesh,u,projection)
+            K=self.R.T@H@self.R
+            _,(_,_,dd)=self.p.pose(q);curvature=np.einsum('ni,abij,nj->ab',self.last_full_gradient[self.body_vertices:],dd,self.local)/self.p.rigid_radius**2
+            if projected:
+                eigenvalues,eigenvectors=np.linalg.eigh(.5*(curvature+curvature.T));curvature=(eigenvectors*np.maximum(eigenvalues,0))@eigenvectors.T
+            ids=self.p.rigid_dofs[3:];K+=coo_matrix((curvature.ravel(),(np.repeat(ids,3),np.tile(ids,3))),shape=K.shape).tocsr()
+        return value,np.asarray(self.R.T@full).ravel(),K,len(n)
     def evaluate_coupled(self,q,qold,tangent=False):
         x=self.positions(q);n=self.collisions(x);self.last_normal=n;self.R=self.jacobian(q)
         self.lag=ipc.TangentialCollisions();self.lag.build(self.mesh,x,n,self.barrier,self.c['friction']);self.qold=qold.copy();u=self.displacement(q,qold)

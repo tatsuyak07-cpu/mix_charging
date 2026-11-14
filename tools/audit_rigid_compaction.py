@@ -1,5 +1,5 @@
 """Independent material/rigid balance, geometry and Coulomb replay of accepted states."""
-import argparse,csv,gc,json
+import argparse,csv,gc,json,hashlib
 from pathlib import Path
 import numpy as np
 import ipctk as ipc
@@ -27,10 +27,17 @@ def predecessor(run,step,current,old):
     raise ValueError('Missing actual post-remesh material/rigid predecessor')
 
 
-def audit(run,out):
+def audit(run,out,physics_config=None):
     run=Path(run);out=Path(out)
     if out.exists():raise FileExistsError(out)
-    c=json.loads((run/'config.json').read_text());initial=load(run/'state-0000.npz');reference=float(initial['V0'].sum());local,faces=cylinder_surface(c);distances=pdist(local);vr=rigid_volume(c);records=[]
+    c=json.loads((run/'config.json').read_text())
+    if physics_config is not None:
+        original=json.loads(Path(physics_config).read_text())
+        physical=['length_mm','diameter_mm','neck_diameter_mm','young_mpa','poisson','yield_mpa','hardening_mpa','friction','transverse_boundary','rigid_inclusion','rigid_diameter_mm','rigid_height_mm','rigid_segments','rigid_center_mm','ipc_dhat_mm','ipc_stiffness_mpa','ipc_slip_regularization_mm','implicit_force_tolerance_N','implicit_macro_tolerance']
+        differences=[key for key in physical if original.get(key)!=c.get(key)]
+        if differences:raise ValueError('Original physical parameters or acceptance criteria changed: '+str(differences))
+        c=original
+    initial=load(run/'state-0000.npz');reference=float(initial['V0'].sum());local,faces=cylinder_surface(c);distances=pdist(local);vr=rigid_volume(c);records=[]
     with (run/'history.csv').open() as f:history={int(row['step']):row for row in csv.DictReader(f)}
     for path in sorted(run.glob('state-*.npz')):
         step=int(path.stem.split('-')[1]);d=load(path);p=make_periodic(d['X'],c['length_mm'],c);H=deformation(d['q'][-6:]);volume=geometry(d['x'],d['t'])[0];cell=p.L**3*np.linalg.det(H);phi,total=porosities(volume.sum(),cell,c)
@@ -52,9 +59,9 @@ def audit(run,out):
         else:row['initial_geometry_only']=True
         del contact;gc.collect()
         row['passed']=bool(passed);records.append(row);print(json.dumps({k:row[k] for k in ['step','matrix_region_porosity','passed']}),flush=True)
-    report=dict(passed=bool(records and all(r['passed'] for r in records)),force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
+    report=dict(passed=bool(records and all(r['passed'] for r in records)),force_tolerance_N=c['implicit_force_tolerance_N'],torque_scale_radius_mm=c['rigid_diameter_mm']/2,original_physics_config=None if physics_config is None else str(physics_config),original_physics_config_sha256=None if physics_config is None else hashlib.sha256(Path(physics_config).read_bytes()).hexdigest(),initial_state_is_geometry_not_equilibrium=True,mesh_increment_convergence_verified=False,states=records)
     out.write_text(json.dumps(report,indent=2)+'\n');return report['passed']
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--out',required=True);a=p.parse_args()
-    if not audit(a.run,a.out):raise SystemExit(1)
+    p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--out',required=True);p.add_argument('--physics-config');a=p.parse_args()
+    if not audit(a.run,a.out,a.physics_config):raise SystemExit(1)

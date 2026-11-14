@@ -53,7 +53,7 @@ def active_dofs(p,c,prescribed):
 
 
 def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=None,initial_guess=None):
-    if c.get('implicit_optimizer','newton')=='lbfgs':
+    if c.get('implicit_optimizer','newton') in ('lbfgs','lagged_lbfgs'):
         from packing_fem.quasistatic_lbfgs import equilibrium as lbfgs_equilibrium
         return lbfgs_equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent,initial_guess)
     if c.get('implicit_optimizer')=='coupled_newton':
@@ -193,15 +193,15 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
 def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None):
     c=json.loads(Path(config).read_text());out=Path(out);out.mkdir(parents=True,exist_ok=False)
     (out/'config.json').write_text(json.dumps(c,indent=2))
-    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton'):raise ValueError('Unknown implicit optimizer')
-    if c.get('rigid_inclusion',False) and c.get('implicit_optimizer')!='coupled_newton':raise ValueError('Floating rigid inclusion requires the nonlinear coupled_newton backend')
-    if c.get('implicit_optimizer') in ('lbfgs','coupled_newton') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
+    if c.get('implicit_optimizer','newton') not in ('newton','lbfgs','coupled_newton','lagged_lbfgs'):raise ValueError('Unknown implicit optimizer')
+    if c.get('rigid_inclusion',False) and c.get('implicit_optimizer') not in ('coupled_newton','lagged_lbfgs'):raise ValueError('Floating rigid inclusion requires a nonlinear rigid-capable backend')
+    if c.get('implicit_optimizer') in ('lbfgs','coupled_newton','lagged_lbfgs') and (c.get('transverse_boundary')!='fixed_cell' or not c.get('loading_only',False)):raise ValueError('Direct-displacement development backends require fixed transverse vectors and compression-only scope')
     if c.get('implicit_iterate_checkpoint_every',0)>0:
         trace=out/'iterate-trace';trace.mkdir();c['_iterate_checkpoint_directory']=str(trace)
-    sources=out/'source';sources.mkdir()
+    sources=out/'source';sources.mkdir();source_root=Path(__file__).resolve().parents[1]
     manifest={}
     for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/rigid_inclusion.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
-        source=Path(name);target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
+        source=source_root/name;target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
     (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True,rejected_geometry=None if rejected_geometry is None else str(rejected_geometry),rejected_geometry_sha256=None if rejected_geometry is None else hashlib.sha256(Path(rejected_geometry).read_bytes()).hexdigest(),rejected_geometry_material_history_used=False),indent=2))
     data=np.load(mesh);X=data['points'];t=oriented(X,data['tets'])
@@ -213,6 +213,11 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
         r=np.load(restart)
         if abs(r['V0'].sum()/geometry(data['points'],oriented(data['points'],data['tets']))[0].sum()-1)>1e-6:raise ValueError('Restart material volume mismatch')
         q=r['q'];b=r['b'];ep=r['ep'];V0=r['V0'];parent=r['parent'] if 'parent' in r else np.arange(len(t));inverse=np.linalg.inv(geometry(p.positions(q),t)[2])
+    previous_path=c.get('implicit_previous_accepted_state')
+    if c.get('implicit_slip_predictor',False) and previous_path:
+        with np.load(previous_path) as previous:
+            c['_previous_q']=previous['q'].copy();c['_previous_X']=previous['X'].copy();c['_previous_t']=previous['t'].copy()
+        (out/'slip-predictor-input.json').write_text(json.dumps(dict(source=previous_path,sha256=hashlib.sha256(Path(previous_path).read_bytes()).hexdigest(),numerical_initial_guess_only=True),indent=2)+'\n')
     initial_mesh_porosity=measured_porosity(geometry(data['points'],oriented(data['points'],data['tets']))[0].sum(),p.L**3,c)
     if 'initial_porosity_tolerance' in c and abs(initial_mesh_porosity-c.get('requested_matrix_porosity',c['requested_initial_porosity']))>c['initial_porosity_tolerance']:raise ValueError('Measured mesh porosity outside the configured initial geometry tolerance')
     contact=contact_model(X,t,p,c)
@@ -326,6 +331,9 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
             if phase=='compression' and c.get('implicit_bisection_predictor',False):
                 pending_geometry=dict(q=solution['iterate'].copy(),X=X.copy(),t=t.copy(),source=str(out/f'failed-{failed:04d}.npz'))
             continue
+        if c.get('implicit_slip_predictor',False):
+            c['_previous_q']=q.copy();c['_previous_X']=X.copy();c['_previous_t']=t.copy()
+            np.savez_compressed(out/f'slip-predictor-{index+1:04d}.npz',q=q,X=X,t=t)
         q,state,g,n,it,norm=solution;b=state['b'];ep=state['ep'];inverse=np.linalg.inv(state['D']);index+=1
         phi=phi_now();H=deformation(q[-6:]);area=p.L**2*np.linalg.norm(np.cross(H[:,0],H[:,1]))
         _,free_mask=active_dofs(p,c,prescribed)

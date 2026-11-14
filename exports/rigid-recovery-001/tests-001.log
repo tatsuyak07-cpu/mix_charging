@@ -1,0 +1,21 @@
+.....F.................................................................. [100%]
+=================================== FAILURES ===================================
+________ test_lagged_solver_releases_an_unloaded_floating_rigid_contact ________
+
+    def test_lagged_solver_releases_an_unloaded_floating_rigid_contact():
+        from packing_fem.quasistatic_lbfgs import equilibrium
+        from packing_fem.explicit_material import geometry
+        c=dict(C,young_mpa=10.,poisson=.33,yield_mpa=.05,hardening_mpa=.2,transverse_boundary='fixed_cell',implicit_force_tolerance_N=1e-5,implicit_regularization=1e-7,implicit_max_lag=30,implicit_lbfgs_max_iterations=100,implicit_lag_inner_tolerance_fraction=.2,implicit_rigid_step_scale_floor_N_per_mm=1.)
+        p=RigidPeriodic(X,10.,c);contact=RigidPeriodicIPC(X,T,p,c,radius=0);q=np.zeros(p.ndof);volume,_,D=geometry(X,T);b=np.eye(3)[None];ep=np.zeros(1);events=[]
+        result=equilibrium(p,T,q,b,ep,np.linalg.inv(D),volume,c,contact,0.,np.zeros(p.ndof),events.append)
+>       assert not isinstance(result,dict),result
+E       AssertionError: {'reason': 'L-BFGS iteration budget exhausted', 'iterate': array([-0.5205208 ,  1.96028328, -0.15946832,  0.31259564, ... 0.01438504,  0.27955094,
+E                 0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+E                 0.        ])}
+E       assert not True
+E        +  where True = isinstance({'reason': 'L-BFGS iteration budget exhausted', 'iterate': array([-0.5205208 ,  1.96028328, -0.15946832,  0.31259564, ... 0.01438504,  0.27955094,\n        0.        ,  0.        ,  0.        ,  0.        ,  0.        ,\n        0.        ])}, dict)
+
+tests/test_rigid_inclusion.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_rigid_inclusion.py::test_lagged_solver_releases_an_unloaded_floating_rigid_contact
+1 failed, 71 passed in 5.24s

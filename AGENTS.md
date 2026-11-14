@@ -45,3 +45,11 @@
   Distinguish prototype dimensions and matrix-region / total-cell porosity.
   Keep the cylinder free to translate/rotate; adding a fixed support requires
   a separate explicitly labeled physical case. Preserve prior no-cylinder runs.
+
+- Current user scope: carry out stages1-4 of the recovery plan: diagnose the
+  stalled25% state, repair the coupled contact/friction solve, complete loaded
+  matrix-region porosity10%, then assess increment and mesh dependence.
+  Keep the physical parameters, free rigid6DOF and fixed transverse lattice.
+  Changes of numerical search must retain an independent original-force audit;
+  report any failed convergence study separately. Full100mm/D20mm scaling and
+  a no-rigid quantitative comparison are later stages, outside this request.

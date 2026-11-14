@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "Delivery integrity of the frozen partial result, not10% completion or physical convergence.",
+  "target10_reached": false,
+  "mesh_increment_convergence_verified": false,
+  "public_files_verified": 37,
+  "archives": 14,
+  "archive_members": 938,
+  "all_archive_member_sha256_checked": true,
+  "all_archive_sha256_rechecked": true,
+  "total_archive_bytes": 235300284,
+  "maximum_part_bytes": 37952364,
+  "excluded_live_runs": [
+    "probe-001",
+    "continuation-005",
+    "continuation-006"
+  ]
+}
