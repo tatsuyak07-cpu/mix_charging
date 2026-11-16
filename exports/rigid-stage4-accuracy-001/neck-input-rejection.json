@@ -1,0 +1,8 @@
+{
+  "status": "rejected_before_section_evaluation",
+  "reason": "The pre-rigid source packing has a different cell size and coordinate origin from the actual rigid CAD; geometry consistency guard rejected it.",
+  "incorrect_input": "results/rigid-inclusion-001/source-packing.npz",
+  "correct_input": "results/rigid-inclusion-001/input/packing.npz",
+  "successful_attempt": "neck-sections-002",
+  "failed_attempt_and_log_retained": true
+}

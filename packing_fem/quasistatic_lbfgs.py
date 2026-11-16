@@ -44,7 +44,14 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
     memory=c.get('implicit_lbfgs_memory',10);refresh=c.get('implicit_lbfgs_refresh',25)
     if int(memory)!=memory or memory<0:return dict(reason='L-BFGS memory must be a nonnegative integer',iterate=trial)
     memory=int(memory)
-    max_iterations=c.get('implicit_lbfgs_max_iterations',500);tol=c['implicit_force_tolerance_N']
+    max_iterations=c.get('implicit_lbfgs_max_iterations',500)
+    # A numerical accuracy study may tighten the solve without changing the
+    # original physical acceptance criterion used by the independent replay.
+    physical_tol=c['implicit_force_tolerance_N']
+    tol=c.get('implicit_lbfgs_solve_tolerance_N',physical_tol)
+    if not np.isfinite(tol) or not 0<tol<=physical_tol:
+        return dict(reason='L-BFGS solve tolerance must be positive and no larger than physical acceptance',iterate=trial)
+    log(dict(physical_force_tolerance_N=physical_tol,numerical_solve_tolerance_N=tol))
     inexact_updates=c.get('implicit_lbfgs_inexact_lag_updates',0)
     if int(inexact_updates)!=inexact_updates or inexact_updates<0:return dict(reason='Inexact lag update budget must be a nonnegative integer',iterate=trial)
     inner_budget=min(max_iterations,int(inexact_updates)) if inexact_updates else max_iterations

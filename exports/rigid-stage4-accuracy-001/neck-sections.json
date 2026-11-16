@@ -1,0 +1,156 @@
+{
+  "scope": "Geometry-only diagnosis: isolated interior neck mid-gap sections; no mechanical causation or convergence claim.",
+  "exact_area_mm2": 3.141592653589793,
+  "window_halfwidth_mm": 1.1,
+  "packing_sha256": "eb837f7fa32402f2cc74d74981db87d4bc0eada28ff59a803442a54112f4527d",
+  "selected_necks": [
+    0,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18,
+    19,
+    20,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    29,
+    30,
+    31,
+    35,
+    36,
+    39,
+    41,
+    42,
+    44,
+    45,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54
+  ],
+  "excluded": [
+    {
+      "neck": 1,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 2,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 9,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 11,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 15,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 21,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 28,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 32,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 33,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 34,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 37,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 38,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 40,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 43,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 46,
+      "reason": "Window reaches a periodic cell face"
+    },
+    {
+      "neck": 55,
+      "reason": "Window reaches a periodic cell face"
+    }
+  ],
+  "sources": [
+    {
+      "level": 0,
+      "mesh": "results/rigid-inclusion-001/mesh-001/mesh.npz",
+      "sha256": "b5a5aa299e0d3b4a738b4931ce0c6f051ea1e5bbd88776050b25485268c4c678"
+    },
+    {
+      "level": 1,
+      "mesh": "results/rigid-stages-1-4-001/mesh-001/mesh.npz",
+      "sha256": "d9f3c7deb408fbb4814cdb062b983555d51dd46632a96d42ee77dd734f348935"
+    },
+    {
+      "level": 2,
+      "mesh": "results/rigid-stages-1-4-001/mesh-002/mesh.npz",
+      "sha256": "7793424c186a57c0abf13bd89a23f5f4a43b22c39aaa6e6f7e5c196ef255c503"
+    }
+  ],
+  "summaries": [
+    {
+      "level": 0,
+      "sections": 40,
+      "minimum_relative_area_deficit": 0.01636835614903709,
+      "mean_relative_area_deficit": 0.03418609627229885,
+      "maximum_relative_area_deficit": 0.0548822443523973
+    },
+    {
+      "level": 1,
+      "sections": 40,
+      "minimum_relative_area_deficit": 0.009704955699302631,
+      "mean_relative_area_deficit": 0.012837062530987995,
+      "maximum_relative_area_deficit": 0.03617959019560668
+    },
+    {
+      "level": 2,
+      "sections": 40,
+      "minimum_relative_area_deficit": 0.006413148855792361,
+      "mean_relative_area_deficit": 0.009893141534133825,
+      "maximum_relative_area_deficit": 0.023654626992339778
+    }
+  ],
+  "mechanical_cause_established": false,
+  "full_loaded_path_convergence_verified": false
+}

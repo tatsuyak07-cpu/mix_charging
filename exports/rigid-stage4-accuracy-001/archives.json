@@ -1,0 +1,42 @@
+[
+  {
+    "file": "rigid-stage4-accuracy-001-part-01.tar.xz",
+    "bytes": 21496736,
+    "sha256": "5c9c880afea999a5d4920ef481653d3f8cad59040ca873fa1258abf470f1c1fc",
+    "members": 40,
+    "uncompressed_bytes": 36207183,
+    "verified": true
+  },
+  {
+    "file": "rigid-stage4-accuracy-001-part-02.tar.xz",
+    "bytes": 35030620,
+    "sha256": "65b1d3a4489dd5d354e1ffbeb185a35adeab0553769965c0771b2bb603025ffb",
+    "members": 109,
+    "uncompressed_bytes": 48450999,
+    "verified": true
+  },
+  {
+    "file": "rigid-stage4-accuracy-001-part-03.tar.xz",
+    "bytes": 27426296,
+    "sha256": "17b0bf7b82c8529b522f899e68078a0e8d5792f5d0977b0811ce3367c61547db",
+    "members": 1046,
+    "uncompressed_bytes": 48941394,
+    "verified": true
+  },
+  {
+    "file": "rigid-stage4-accuracy-001-part-04.tar.xz",
+    "bytes": 32224160,
+    "sha256": "ce692358969cfd914633b4a9fe5dafcb5c0a15fc395ab435163781e28d067e74",
+    "members": 189,
+    "uncompressed_bytes": 50325458,
+    "verified": true
+  },
+  {
+    "file": "rigid-stage4-accuracy-001-part-05.tar.xz",
+    "bytes": 743256,
+    "sha256": "c668cf80957e74aa343380f60f932235dab26336c015e78a87d45bb93d2ef6ab",
+    "members": 1288,
+    "uncompressed_bytes": 7464698,
+    "verified": true
+  }
+]

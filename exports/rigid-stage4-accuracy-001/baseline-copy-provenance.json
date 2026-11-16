@@ -1,0 +1,80 @@
+{
+  "reason": "Original archived audit predates saved-state SHA binding. Copy actual baseline states and replay original physics with current independent auditor, retaining the old audit.",
+  "files": [
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-000/config.json",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-000/config.json",
+      "sha256": "c6d25826f4ec7adbbeebc10ef077b50aef57ace91b5ba9963ab67b7ee963094e"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-000/history.csv",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-000/history.csv",
+      "sha256": "d8f968093c8a37271b2431d9d467636aaf6f71e589e2816b815b6a360d3cf673"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-000/state-0000.npz",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-000/state-0000.npz",
+      "sha256": "00b5984b27e134d647b80d7fea824305cb37b9acaf75b8e83e9a7eddc6ed6569"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-000/state-0001.npz",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-000/state-0001.npz",
+      "sha256": "29d413971ac024901f9b725fdb324b2abbfa01e40264629089d7114cc5f24ff4"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-000/audit.json",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-000/original-audit.json",
+      "sha256": "95489e9fba7a40c6cee32e8dd96fa2c9db9b7d494aa8ec24fce5168bb72daadb"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-001/config.json",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-001/config.json",
+      "sha256": "0ae6055abb558fd9986c22363cc4ebbafd193738065d57c71c9941dc849dc596"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-001/history.csv",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-001/history.csv",
+      "sha256": "4ea054058b5cd331189e91b33f18c223b2ed88e3612b1c33e95bd5d6e0adcf7c"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-001/state-0000.npz",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-001/state-0000.npz",
+      "sha256": "578c80fcc8b7fcb20bca2ec10053234a41f0280a6d7d35a45b0f91ba9c8fa3a0"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-001/state-0001.npz",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-001/state-0001.npz",
+      "sha256": "6e8354d87b6048063c703eed83f77bf03a64f4fed873e2ddf058a730b3314418"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-001/audit.json",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-001/original-audit.json",
+      "sha256": "1d8514ef9d73e26f6d1fddb2cdb747db710fd927d46a55fd2795e7eee7598912"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-002/config.json",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-002/config.json",
+      "sha256": "c922d3f1fcc27af06157ef8ae43aa113d40d7616181a6ce2f44f2f63e7ce8b08"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-002/history.csv",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-002/history.csv",
+      "sha256": "f1cc1f0654e63bcc46d0f01c51df5e8229bfe1c5ae12e588dbe6f3bf17667df7"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-002/state-0000.npz",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-002/state-0000.npz",
+      "sha256": "fb53f7e3225ac8b4fc1148f713664874859111001e5c667cbd2ae64ecfe18019"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-002/state-0001.npz",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-002/state-0001.npz",
+      "sha256": "a9ade6d3c051ace8fa5c469405e210c0df583233645972e7946ac7ff39500ecd"
+    },
+    {
+      "source": "results/rigid-stages-1-4-001/mesh-screen-001/level-002/audit.json",
+      "copy": "results/rigid-stage4-001/baseline-replayed-001/level-002/original-audit.json",
+      "sha256": "662341dda56b98b6fdc20b75da44b6c96eda9625b62235fcc513bdac8c49bc1e"
+    }
+  ]
+}

@@ -65,12 +65,13 @@ def test_frozen_friction_finite_rigid_potential_gradient_hessian_and_refresh():
     np.testing.assert_allclose(a[1],b[1],atol=1e-12);assert a[0]==pytest.approx(b[0],abs=1e-12)
 
 
-@pytest.mark.parametrize('memory,inexact_updates,require_convergence',[(10,0,True),(10,10,True),(0,10,True),(0,0,False)])
-def test_lagged_solver_accepts_only_balanced_unloaded_floating_contact_states(tmp_path,inexact_updates,memory,require_convergence):
+@pytest.mark.parametrize('memory,inexact_updates,require_convergence,solve_tol',[(10,0,True,None),(10,10,True,None),(0,10,True,None),(0,0,False,None),(10,10,True,1e-6)])
+def test_lagged_solver_accepts_only_balanced_unloaded_floating_contact_states(tmp_path,inexact_updates,memory,require_convergence,solve_tol):
     from packing_fem.quasistatic_lbfgs import equilibrium
     from packing_fem.explicit_material import geometry
     c=dict(C,young_mpa=10.,poisson=.33,yield_mpa=.05,hardening_mpa=.2,transverse_boundary='fixed_cell',implicit_force_tolerance_N=1e-5,implicit_regularization=1e-7,implicit_max_lag=30,implicit_lbfgs_max_iterations=1000,implicit_lag_inner_tolerance_fraction=.2,implicit_rigid_step_scale_floor_N_per_mm=1.)
     c.update(implicit_iterate_checkpoint_every=10,_iterate_checkpoint_directory=str(tmp_path))
+    if solve_tol is not None:c['implicit_lbfgs_solve_tolerance_N']=solve_tol
     if inexact_updates:c.update(implicit_lbfgs_inexact_lag_updates=inexact_updates,implicit_max_lag=100,implicit_anderson_depth=4)
     c['implicit_lbfgs_memory']=memory
     if memory==0:c.update(implicit_lbfgs_refresh=1,implicit_regularization=.001)
@@ -86,7 +87,9 @@ def test_lagged_solver_accepts_only_balanced_unloaded_floating_contact_states(tm
         return
     assert not isinstance(result,dict),result
     q,state,g,count,iterations,norm=result
-    assert norm<c['implicit_force_tolerance_N'] and contact.force_balance_ok(q,c['implicit_force_tolerance_N'])
+    target=c.get('implicit_lbfgs_solve_tolerance_N',c['implicit_force_tolerance_N'])
+    assert norm<target and contact.force_balance_ok(q,target)
+    assert c['implicit_force_tolerance_N']==1e-5
     np.testing.assert_array_equal(q[-6:],0);np.testing.assert_array_equal(ep,0)
     assert not ipc.has_intersections(contact.mesh,contact.positions(q))
     checkpoints=list(tmp_path.glob('iterate-*.npz'));assert checkpoints
@@ -98,6 +101,19 @@ def test_lagged_solver_accepts_only_balanced_unloaded_floating_contact_states(tm
             np.testing.assert_array_equal(data['oldq'],0)
             np.testing.assert_array_equal(data['b'],b);np.testing.assert_array_equal(data['ep'],ep)
             np.testing.assert_array_equal(data['X'],X);np.testing.assert_array_equal(data['t'],T)
+
+
+@pytest.mark.parametrize('solve_tol',[0.,-1e-6,2e-5,float('nan'),float('inf')])
+def test_lagged_accuracy_target_cannot_loosen_original_acceptance(solve_tol):
+    from packing_fem.quasistatic_lbfgs import equilibrium
+    from packing_fem.explicit_material import geometry
+    c=dict(C,transverse_boundary='fixed_cell',implicit_force_tolerance_N=1e-5,
+           implicit_lbfgs_solve_tolerance_N=solve_tol)
+    p=RigidPeriodic(X,10.,c);q=np.zeros(p.ndof);volume,_,D=geometry(X,T)
+    result=equilibrium(p,T,q,np.eye(3)[None],np.zeros(1),np.linalg.inv(D),volume,
+                       c,None,0.,np.zeros(p.ndof),lambda event:None)
+    assert 'no larger than physical acceptance' in result['reason']
+    np.testing.assert_array_equal(q,0.)
 
 
 @pytest.mark.parametrize('changed_chart',[False,True])

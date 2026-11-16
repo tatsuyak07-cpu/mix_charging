@@ -1,0 +1,240 @@
+{
+  "scope": "Initial0.5% only; observed nonlinear-solve sensitivity, not an error bound or full-path convergence proof.",
+  "baseline": "results/rigid-stage4-001/baseline-replayed-001",
+  "strict": "results/rigid-stage4-001/strict-mesh-screen-001",
+  "same_mesh_physics_and_strain_verified": true,
+  "independent_original_force_audits_passed": true,
+  "maximum_observed_pressure_solve_change_relative": 2.6261298321640026e-05,
+  "numerical_settings": [
+    {
+      "level": 0,
+      "baseline_outer_target_N": 0.005,
+      "strict_outer_target_N": 0.0001,
+      "baseline_inner_target_N": 0.0001,
+      "strict_inner_target_N": 2e-05,
+      "baseline_sparse_solver": "superlu",
+      "strict_sparse_solver": "pardiso"
+    },
+    {
+      "level": 1,
+      "baseline_outer_target_N": 0.005,
+      "strict_outer_target_N": 0.0001,
+      "baseline_inner_target_N": 0.0001,
+      "strict_inner_target_N": 2e-05,
+      "baseline_sparse_solver": "superlu",
+      "strict_sparse_solver": "pardiso"
+    },
+    {
+      "level": 2,
+      "baseline_outer_target_N": 0.005,
+      "strict_outer_target_N": 0.0001,
+      "baseline_inner_target_N": 0.0001,
+      "strict_inner_target_N": 2e-05,
+      "baseline_sparse_solver": "superlu",
+      "strict_sparse_solver": "pardiso"
+    }
+  ],
+  "interpretation": "Observed combined numerical-search sensitivity. Outer/inner solve tolerances tightened and independently benchmarked equivalent sparse backend changed; not a one-parameter error bound.",
+  "original_mesh_screen": {
+    "scope": "Initial0.5% compression screen on identical CAD; no full40% to10% mesh convergence claim.",
+    "screen_completed": true,
+    "early_refinement_sequence_passed": false,
+    "production_coarsest_mesh_screen_passed": false,
+    "full_loaded_path_mesh_convergence_verified": false,
+    "threshold_source": "Previously declared developer screening thresholds; not material specifications.",
+    "thresholds": {
+      "porosity_absolute": 0.005,
+      "pressure_relative": 0.05
+    },
+    "cases": [
+      {
+        "level": 0,
+        "run": "results/rigid-stage4-001/baseline-replayed-001/level-000",
+        "calculation_return_code": 0,
+        "passed": true,
+        "compression": 0.005,
+        "pressure_MPa": 0.005536335388713153,
+        "porosity": 0.4013466701299231,
+        "free_residual_N": 0.000958417687852332,
+        "input_nodes": 21561,
+        "input_tetrahedra": 65407,
+        "cad_solid_volume_mm3": 8410.993471104091,
+        "geometry_volume_relative_error": 0.0067559500753941884
+      },
+      {
+        "level": 1,
+        "run": "results/rigid-stage4-001/baseline-replayed-001/level-001",
+        "calculation_return_code": 0,
+        "passed": true,
+        "compression": 0.005,
+        "pressure_MPa": 0.005211944829076513,
+        "porosity": 0.3997546345470834,
+        "free_residual_N": 0.0006743419683580441,
+        "input_nodes": 35472,
+        "input_tetrahedra": 113399,
+        "cad_solid_volume_mm3": 8410.993471104099,
+        "geometry_volume_relative_error": 0.004145849439908371
+      },
+      {
+        "level": 2,
+        "run": "results/rigid-stage4-001/baseline-replayed-001/level-002",
+        "calculation_return_code": 0,
+        "passed": true,
+        "compression": 0.005,
+        "pressure_MPa": 0.004872436251005703,
+        "porosity": 0.3985907459392566,
+        "free_residual_N": 0.003962893233315447,
+        "input_nodes": 67488,
+        "input_tetrahedra": 228406,
+        "cad_solid_volume_mm3": 8410.993471104099,
+        "geometry_volume_relative_error": 0.0022531963613045807
+      }
+    ],
+    "adjacent_differences": [
+      {
+        "pressure_relative": 0.06223982990512921,
+        "porosity_absolute": 0.0015920355828397126
+      },
+      {
+        "pressure_relative": 0.06967942946420957,
+        "porosity_absolute": 0.0011638886078267907
+      }
+    ],
+    "errors_decrease": false,
+    "production_coarsest_vs_finest": {
+      "pressure_relative": 0.13625609520707763,
+      "porosity_absolute": 0.0027559241906665033
+    }
+  },
+  "strict_mesh_screen": {
+    "scope": "Initial0.5% compression screen on identical CAD; no full40% to10% mesh convergence claim.",
+    "screen_completed": true,
+    "early_refinement_sequence_passed": false,
+    "production_coarsest_mesh_screen_passed": false,
+    "full_loaded_path_mesh_convergence_verified": false,
+    "threshold_source": "Previously declared developer screening thresholds; not material specifications.",
+    "thresholds": {
+      "porosity_absolute": 0.005,
+      "pressure_relative": 0.05
+    },
+    "cases": [
+      {
+        "level": 0,
+        "run": "results/rigid-stage4-001/strict-mesh-screen-001/level-000",
+        "calculation_return_code": 0,
+        "passed": true,
+        "compression": 0.005,
+        "pressure_MPa": 0.005536225872292266,
+        "porosity": 0.40134666630727833,
+        "free_residual_N": 3.509275907397601e-05,
+        "input_nodes": 21561,
+        "input_tetrahedra": 65407,
+        "cad_solid_volume_mm3": 8410.993471104091,
+        "geometry_volume_relative_error": 0.0067559500753941884
+      },
+      {
+        "level": 1,
+        "run": "results/rigid-stage4-001/strict-mesh-screen-001/level-001",
+        "calculation_return_code": 0,
+        "passed": true,
+        "compression": 0.005,
+        "pressure_MPa": 0.005212008417702062,
+        "porosity": 0.3997546358035945,
+        "free_residual_N": 2.9133791092095457e-05,
+        "input_nodes": 35472,
+        "input_tetrahedra": 113399,
+        "cad_solid_volume_mm3": 8410.993471104099,
+        "geometry_volume_relative_error": 0.004145849439908371
+      },
+      {
+        "level": 2,
+        "run": "results/rigid-stage4-001/strict-mesh-screen-001/level-002",
+        "calculation_return_code": 0,
+        "passed": true,
+        "compression": 0.005,
+        "pressure_MPa": 0.004872308297863978,
+        "porosity": 0.39859074406719963,
+        "free_residual_N": 7.242100803950385e-05,
+        "input_nodes": 67488,
+        "input_tetrahedra": 228406,
+        "cad_solid_volume_mm3": 8410.993471104099,
+        "geometry_volume_relative_error": 0.0022531963613045807
+      }
+    ],
+    "adjacent_differences": [
+      {
+        "pressure_relative": 0.0622058578203811,
+        "porosity_absolute": 0.001592030503683839
+      },
+      {
+        "pressure_relative": 0.06972057166148715,
+        "porosity_absolute": 0.001163891736394862
+      }
+    ],
+    "errors_decrease": false,
+    "production_coarsest_vs_finest": {
+      "pressure_relative": 0.13626345744979843,
+      "porosity_absolute": 0.002755922240078701
+    }
+  },
+  "full_loaded_path_mesh_convergence_verified": false,
+  "rows": [
+    {
+      "level": 0,
+      "tetrahedra": 65407,
+      "compression": 0.005,
+      "baseline_pressure_MPa": 0.005536335388713153,
+      "strict_pressure_MPa": 0.005536225872292266,
+      "pressure_change_relative": 1.9781783368871875e-05,
+      "baseline_porosity": 0.4013466701299231,
+      "strict_porosity": 0.40134666630727833,
+      "porosity_change_absolute": 3.822644756290572e-09,
+      "initial_porosity": 0.40405702781381525,
+      "compression_porosity_drop": 0.002710361506536918,
+      "baseline_free_residual_N": 0.000958417687852332,
+      "strict_free_residual_N": 3.509275907397557e-05,
+      "strict_rigid_force_max_N": 0.0,
+      "strict_rigid_torque_over_radius_max_N": 0.0,
+      "reference_volume_plastic_fraction": 0.028620101538185484,
+      "reference_volume_mean_ep": 0.00018759668734019352
+    },
+    {
+      "level": 1,
+      "tetrahedra": 113399,
+      "compression": 0.005,
+      "baseline_pressure_MPa": 0.005211944829076513,
+      "strict_pressure_MPa": 0.005212008417702062,
+      "pressure_change_relative": 1.2200407300412488e-05,
+      "baseline_porosity": 0.3997546345470834,
+      "strict_porosity": 0.3997546358035945,
+      "porosity_change_absolute": 1.2565111173756804e-09,
+      "initial_porosity": 0.4024909765190352,
+      "compression_porosity_drop": 0.0027363407154407104,
+      "baseline_free_residual_N": 0.0006743419683580441,
+      "strict_free_residual_N": 2.9133791092095457e-05,
+      "strict_rigid_force_max_N": 0.0,
+      "strict_rigid_torque_over_radius_max_N": 0.0,
+      "reference_volume_plastic_fraction": 0.02632304636373551,
+      "reference_volume_mean_ep": 0.0001816450475264555
+    },
+    {
+      "level": 2,
+      "tetrahedra": 228406,
+      "compression": 0.005,
+      "baseline_pressure_MPa": 0.004872436251005703,
+      "strict_pressure_MPa": 0.004872308297863978,
+      "pressure_change_relative": 2.6261298321640026e-05,
+      "baseline_porosity": 0.3985907459392566,
+      "strict_porosity": 0.39859074406719963,
+      "porosity_change_absolute": 1.8720569538999143e-09,
+      "initial_porosity": 0.4013553912607434,
+      "compression_porosity_drop": 0.0027646471935437456,
+      "baseline_free_residual_N": 0.003962893233315447,
+      "strict_free_residual_N": 7.242100803950385e-05,
+      "strict_rigid_force_max_N": 0.0,
+      "strict_rigid_torque_over_radius_max_N": 0.0,
+      "reference_volume_plastic_fraction": 0.025820687546790067,
+      "reference_volume_mean_ep": 0.0001758763143877714
+    }
+  ]
+}

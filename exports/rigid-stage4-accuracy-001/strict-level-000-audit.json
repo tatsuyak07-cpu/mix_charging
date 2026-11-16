@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "collision_mesh_builds": 1,
+  "local_predecessors_only": false,
+  "force_tolerance_N": 0.005,
+  "torque_scale_radius_mm": 2.0,
+  "original_physics_config": "results/rigid-stage4-001/strict-mesh-screen-001/input/original-physics.json",
+  "original_physics_config_sha256": "3ce96a6f435d03a16ccb5d483e3967fddce49b3af7e2b84bc6d151da574a30ae",
+  "initial_state_is_geometry_not_equilibrium": true,
+  "mesh_increment_convergence_verified": false,
+  "states": [
+    {
+      "step": 0,
+      "state_sha256": "00b5984b27e134d647b80d7fea824305cb37b9acaf75b8e83e9a7eddc6ed6569",
+      "matrix_region_porosity": 0.40405702781381525,
+      "total_porosity": 0.40261569549551324,
+      "compression": -0.0,
+      "solid_volume_mm3": 8354.169219128846,
+      "reference_volume_mm3": 8354.169219128846,
+      "reference_volume_relative_error": 0.0,
+      "minimum_element_volume_mm3": 1.0296251008548523e-05,
+      "quadrature_volume_error": 0.0,
+      "fixed_lattice_error": 0.0,
+      "saved_position_error_mm": 0.0,
+      "rigid_volume_mm3": 50.18477584873502,
+      "rigid_volume_relative_error": 1.1102230246251565e-16,
+      "rigid_pair_distance_error_mm": 0.0,
+      "rigid_center_mm": [
+        12.070358817565257,
+        12.070358817565257,
+        12.070358817565257
+      ],
+      "rigid_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "surface_intersections": false,
+      "initial_geometry_only": true,
+      "passed": true
+    },
+    {
+      "step": 1,
+      "state_sha256": "18fb1bb30c492d1042047ca129667cade5385682c831a479a84becac1928a6ec",
+      "matrix_region_porosity": 0.40134666630727833,
+      "total_porosity": 0.3999078079652698,
+      "compression": 0.005,
+      "solid_volume_mm3": 8350.053123918246,
+      "reference_volume_mm3": 8354.169219128846,
+      "reference_volume_relative_error": 0.0,
+      "minimum_element_volume_mm3": 1.0297306366459721e-05,
+      "quadrature_volume_error": 3.068759604520941e-15,
+      "fixed_lattice_error": 0.0,
+      "saved_position_error_mm": 0.0,
+      "rigid_volume_mm3": 50.18477584873502,
+      "rigid_volume_relative_error": 1.1102230246251565e-16,
+      "rigid_pair_distance_error_mm": 0.0,
+      "rigid_center_mm": [
+        12.070358817565257,
+        12.070358817565257,
+        12.010007023477431
+      ],
+      "rigid_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "surface_intersections": false,
+      "predecessor": "results/rigid-stage4-001/strict-mesh-screen-001/level-000/state-0000.npz",
+      "free_residual_N": 3.509275907397557e-05,
+      "free_residual_l2_N": 5.1055776910165756e-05,
+      "pressure_MPa": 0.005536225872292266,
+      "pressure_replay_error_MPa": 0.0,
+      "b_replay_error": 0.0,
+      "ep_replay_error": 0.0,
+      "rigid_force_N": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rigid_torque_Nmm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rigid_force_max_N": 0.0,
+      "rigid_torque_over_radius_max_N": 0.0,
+      "rigid_contacts": 0,
+      "gauge_reaction_N": [
+        4.3798269425329815e-10,
+        1.92330989186065e-10,
+        5.0764420577397484e-11
+      ],
+      "csv_porosity_error": 0.0,
+      "coulomb": {
+        "stencils": 4,
+        "negative_weight_stencils": 0,
+        "friction_coefficient": 0.3,
+        "maximum_coefficient_error": 0.0,
+        "maximum_weighted_coulomb_ratio": 1.0000000000000007,
+        "maximum_bound_excess_N": 1.3552527156068805e-19,
+        "maximum_tangent_reconstruction_error_N": 2.168404344971009e-19,
+        "dissipated_work_Nmm": 3.2442564928762147e-06,
+        "positive_stencil_work_Nmm": 3.2442564928762164e-06,
+        "negative_stencil_work_Nmm": 0.0,
+        "zero_normal_force_violations": 0,
+        "physical_friction_work_Nmm": -3.2442564928762147e-06,
+        "work_assembly_error_Nmm": 1.6940658945086007e-21,
+        "interpretation": "Magnitude bound on weighted integration stencils; negative-weight stencils, if present, are not separate physical contact pairs.",
+        "passed": true
+      },
+      "passed": true
+    }
+  ]
+}

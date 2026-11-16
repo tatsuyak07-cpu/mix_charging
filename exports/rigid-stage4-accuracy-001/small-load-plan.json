@@ -1,0 +1,8 @@
+{
+  "purpose": "Identify whether mesh differences already exist before plasticity; do not assume elastic behavior until saved ep is measured.",
+  "compression": 0.0001,
+  "numerical_solve_target_N": 2e-06,
+  "original_material_unchanged": true,
+  "geometry_unchanged": true,
+  "convergence_criteria": "Same predeclared5% pressure and0.005 absolute porosity, decreasing adjacent differences. No full-path claim."
+}

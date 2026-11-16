@@ -1,0 +1,119 @@
+{
+  "stage4_qualified": false,
+  "completed_new_loading_cases": 6,
+  "original_physics_audits_passed": true,
+  "original_baseline_states_reaudited": 3,
+  "full_loaded_path_mesh_convergence_verified": false,
+  "full_loaded_path_increment_convergence_verified": false,
+  "launches": [
+    {
+      "study": "strict-mesh-screen-001",
+      "level": 0,
+      "child_return_code": 0,
+      "frozen_source_unchanged": true
+    },
+    {
+      "study": "strict-mesh-screen-001",
+      "level": 1,
+      "child_return_code": 0,
+      "frozen_source_unchanged": true
+    },
+    {
+      "study": "strict-mesh-screen-001",
+      "level": 2,
+      "child_return_code": 0,
+      "frozen_source_unchanged": true
+    },
+    {
+      "study": "small-load-screen-001",
+      "level": 0,
+      "child_return_code": 0,
+      "frozen_source_unchanged": true
+    },
+    {
+      "study": "small-load-screen-001",
+      "level": 1,
+      "child_return_code": 0,
+      "frozen_source_unchanged": true
+    },
+    {
+      "study": "small-load-screen-001",
+      "level": 2,
+      "child_return_code": 0,
+      "frozen_source_unchanged": true
+    }
+  ],
+  "maximum_observed_pressure_solve_change_relative": 2.6261298321640026e-05,
+  "strict_mesh_pressure_difference_relative": 0.13626345744979843,
+  "small_load_mesh_pressure_difference_relative": 0.11698688293496702,
+  "small_load_all_meshes_elastic": false,
+  "initial_contact_preload": [
+    {
+      "level": 0,
+      "tetrahedra": 65407,
+      "contact_stencils": 3,
+      "contact_potential_Nmm": 1.2653489391601095e-06,
+      "maximum_free_contact_force_N": 0.007431810169260301,
+      "contact_force_l2_N": 0.01100367394348282,
+      "initial_contact_macro_pressure_MPa": 9.820034635122248e-09,
+      "initial_to_loaded_pressure_ratio": 1.7737778157263438e-06,
+      "rigid_force_max_N": 0.0,
+      "rigid_torque_over_radius_max_N": 0.0,
+      "starting_geometry_balanced_under_original_contact_law": false,
+      "initial_state_sha256": "00b5984b27e134d647b80d7fea824305cb37b9acaf75b8e83e9a7eddc6ed6569"
+    },
+    {
+      "level": 1,
+      "tetrahedra": 113399,
+      "contact_stencils": 3,
+      "contact_potential_Nmm": 7.969997157410275e-07,
+      "maximum_free_contact_force_N": 0.004928893214959872,
+      "contact_force_l2_N": 0.007316252359426325,
+      "initial_contact_macro_pressure_MPa": 6.499172701609341e-09,
+      "initial_to_loaded_pressure_ratio": 1.2469612826286992e-06,
+      "rigid_force_max_N": 0.0,
+      "rigid_torque_over_radius_max_N": 0.0,
+      "starting_geometry_balanced_under_original_contact_law": true,
+      "initial_state_sha256": "578c80fcc8b7fcb20bca2ec10053234a41f0280a6d7d35a45b0f91ba9c8fa3a0"
+    },
+    {
+      "level": 2,
+      "tetrahedra": 228406,
+      "contact_stencils": 13,
+      "contact_potential_Nmm": 0.0001708995960029762,
+      "maximum_free_contact_force_N": 0.18591511614162387,
+      "contact_force_l2_N": 0.27756051557275185,
+      "initial_contact_macro_pressure_MPa": 2.2353916805955113e-07,
+      "initial_to_loaded_pressure_ratio": 4.587952042311255e-05,
+      "rigid_force_max_N": 0.0,
+      "rigid_torque_over_radius_max_N": 0.0,
+      "starting_geometry_balanced_under_original_contact_law": false,
+      "initial_state_sha256": "fb53f7e3225ac8b4fc1148f713664874859111001e5c667cbd2ae64ecfe18019"
+    }
+  ],
+  "neck_area_summary": [
+    {
+      "level": 0,
+      "sections": 40,
+      "minimum_relative_area_deficit": 0.01636835614903709,
+      "mean_relative_area_deficit": 0.03418609627229885,
+      "maximum_relative_area_deficit": 0.0548822443523973
+    },
+    {
+      "level": 1,
+      "sections": 40,
+      "minimum_relative_area_deficit": 0.009704955699302631,
+      "mean_relative_area_deficit": 0.012837062530987995,
+      "maximum_relative_area_deficit": 0.03617959019560668
+    },
+    {
+      "level": 2,
+      "sections": 40,
+      "minimum_relative_area_deficit": 0.006413148855792361,
+      "mean_relative_area_deficit": 0.009893141534133825,
+      "maximum_relative_area_deficit": 0.023654626992339778
+    }
+  ],
+  "physical_scope": "16grains, freeD4/H4mm cylinder,24.1407176351mm fixed-transverse cell. Not full100mm/D20mm system.",
+  "previous_loaded_target": "exports/rigid-recovery-loaded-001/README.md"
+}

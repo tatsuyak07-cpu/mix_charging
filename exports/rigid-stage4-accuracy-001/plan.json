@@ -1,0 +1,9 @@
+{
+  "purpose": "Separate nonlinear solver residual effects from initial CAD mesh discretization before full-path stage4 qualification.",
+  "physical_acceptance_N": 0.005,
+  "numerical_solve_target_N": 0.0001,
+  "original_reference": "results/rigid-stages-1-4-001/mesh-screen-001/assessment.json",
+  "pressure_threshold": 0.05,
+  "porosity_absolute_threshold": 0.005,
+  "full_loaded_path_convergence_verified": false
+}

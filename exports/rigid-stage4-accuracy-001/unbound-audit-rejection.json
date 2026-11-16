@@ -1,0 +1,5 @@
+{
+  "reason": "Original audit lacks state_sha256; stale/unbound audit cannot qualify the comparison.",
+  "failed_output": "accuracy-comparison-001",
+  "repair": "Recompute independent original-physics audit on bitwise copied baseline states in baseline-replayed-001."
+}
