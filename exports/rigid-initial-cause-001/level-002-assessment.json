@@ -1,0 +1,40 @@
+{
+  "source": "results/rigid-stage4-001/small-load-screen-001/level-002",
+  "initial_state_sha256": "fb53f7e3225ac8b4fc1148f713664874859111001e5c667cbd2ae64ecfe18019",
+  "original_material_and_contact_parameters_unchanged": true,
+  "no_contact_zero_strain_material_force_max_N": 2.1595582011058815e-14,
+  "no_contact_zero_strain_maximum_ep": 0.0,
+  "initial_contact_force_max_N": 0.18591511614162395,
+  "small_load": {
+    "maximum_ep": 0.05255482911345983,
+    "maximum_ep_element": 177942,
+    "maximum_ep_element_center_mm": [
+      14.689825722195069,
+      9.550467294618532,
+      0.03513668249618346
+    ],
+    "plastic_reference_volume_fraction": 7.051454663726656e-08,
+    "plastic_elements": 2,
+    "maximum_ep_element_initial_nodal_contact_force_N": 0.19703952802862554,
+    "initial_peak_force_class_in_maximum_ep_element": true
+  },
+  "scope": "All six macroscopic strains fixed to zero; microscopic periodic fluctuations and rigid6DOF free. Not zero macroscopic stress.",
+  "zero_strain": {
+    "maximum_ep": 0.05265526911961573,
+    "maximum_ep_element": 177942,
+    "maximum_ep_element_center_mm": [
+      14.689825722195069,
+      9.550467294618532,
+      0.03513668249618346
+    ],
+    "plastic_reference_volume_fraction": 1.0785107646865637e-07,
+    "plastic_elements": 3,
+    "maximum_ep_element_initial_nodal_contact_force_N": 0.19703952802862554,
+    "initial_peak_force_class_in_maximum_ep_element": true
+  },
+  "iterations": 19,
+  "final_residual_N": 8.963011412840144e-07,
+  "zero_strain_macro_pressure_MPa": 2.01759429771978e-07,
+  "plastic_elements_shared_with_small_load": 2,
+  "original_physics_audit_passed": true
+}

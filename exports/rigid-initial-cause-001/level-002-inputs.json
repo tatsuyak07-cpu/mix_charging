@@ -1,0 +1,18 @@
+{
+  "state-0000.npz": {
+    "source": "results/rigid-stage4-001/small-load-screen-001/level-002/state-0000.npz",
+    "sha256": "fb53f7e3225ac8b4fc1148f713664874859111001e5c667cbd2ae64ecfe18019",
+    "source_sha256": "fb53f7e3225ac8b4fc1148f713664874859111001e5c667cbd2ae64ecfe18019"
+  },
+  "small-load-state.npz": {
+    "source": "results/rigid-stage4-001/small-load-screen-001/level-002/state-0001.npz",
+    "sha256": "afe0b4ec853b4a3aaed2d16b3ae4d595baa7328747346a6dabf7b2b3c7d1a953",
+    "source_sha256": "afe0b4ec853b4a3aaed2d16b3ae4d595baa7328747346a6dabf7b2b3c7d1a953"
+  },
+  "config.json": {
+    "source": "results/rigid-stage4-001/small-load-screen-001/level-002/config.json",
+    "sha256": "b53336cfa0b9c409f5de67d6168ae57a184c2ddb5489e1b7382ffea9f6b261a6",
+    "source_sha256": "1868f8f6961d27ba8e718906eb5b6eec2a33749e7c8ed50cf9d775a030bab468",
+    "semantic_config_unchanged": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "all_zero_strain_runs_completed": true,
+  "all_zero_strain_original_physics_audits_passed": true,
+  "elastic_study_completed": true,
+  "both_frozen_runtimes_sha256_unchanged": true,
+  "tests_passed": 37,
+  "production_physical_parameters_unchanged": true,
+  "full_compaction_convergence_verified": false
+}

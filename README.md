@@ -6,6 +6,7 @@
 横周期寸法を固定し、E10 MPa・ν0.33・摩擦0.3を維持しました。
 初期幾何＋受理93増分の94状態で原物理条件の力・材料履歴・体積・非交差監査、終点で27→125周期像の接触監査が合格しました。
 **工程4の収束判定は未合格です。** 反復停止条件を50倍厳しくした3メッシュ比較でも初期0.5%圧縮の圧力差13.6263%が残りました。元の探索との差は最大0.00263%。追加した0.01%圧縮でも差11.6987%で、最細にごく局所的な塑性が発生しました。追加6計算の元物理監査は合格。全経路のメッシュ・増分収束は未確認です。[工程4の継続結果・画像・CSV](exports/rigid-stage4-accuracy-001/README.md)。
+原因確認で、初期接触バリアによる局所塑性と、一次四面体の分割不足による初期弾性剛性の過大評価を確認しました。同じ表面形状で要素だけ8分割すると剛性が14.66%低下しました。[原因確認の画像・CSV・報告](exports/rigid-initial-cause-001/README.md)。
 100 mm角・円柱D20/H20 mmの本番系、保持・除荷と剛体なしとの定量対照は未実施です。
 [最終メッシュPNG](exports/rigid-recovery-loaded-001/loaded-mesh.png)・[剛体中心断面PNG](exports/rigid-recovery-loaded-001/pore-sections.png)・[全CSV](exports/rigid-recovery-loaded-001/history.csv)・[検証・再計算ZIP](exports/rigid-recovery-loaded-001/README.md)・[開発報告](docs/rigid-recovery-stages-1-4.md)。
 

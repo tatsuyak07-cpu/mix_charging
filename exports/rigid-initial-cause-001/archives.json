@@ -1,0 +1,26 @@
+[
+  {
+    "file": "rigid-initial-cause-001-part-01.tar.xz",
+    "bytes": 37067364,
+    "sha256": "8dec3c3a4ee9f5a6fff2ca382af96ca1832e03646d697e3c49ed804d31951b40",
+    "members": 291,
+    "uncompressed_bytes": 49411003,
+    "verified": true
+  },
+  {
+    "file": "rigid-initial-cause-001-part-02.tar.xz",
+    "bytes": 27385672,
+    "sha256": "d67ce0e3c7bd2d1b14d7ebbab5883c67c8fcd171ee67966605b27d27cf22bc6a",
+    "members": 12,
+    "uncompressed_bytes": 35224673,
+    "verified": true
+  },
+  {
+    "file": "rigid-initial-cause-001-part-03.tar.xz",
+    "bytes": 18303012,
+    "sha256": "165cf3c9d5db22e7ef4fa66cd63265e7c293ab72ab57df68ec93f2f32bd69c91",
+    "members": 676,
+    "uncompressed_bytes": 21779870,
+    "verified": true
+  }
+]

@@ -1,0 +1,109 @@
+{
+  "rows": [
+    {
+      "level": 0,
+      "tetrahedra": 65407,
+      "initial_contact_force_max_N": 0.007431810169260302,
+      "zero_strain_maximum_ep": 0.0,
+      "small_load_maximum_ep": 0.0,
+      "zero_strain_plastic_elements": 0,
+      "shared_plastic_elements": 0,
+      "zero_strain_macro_pressure_MPa": 2.375531793364957e-08,
+      "elastic_C33_MPa": 1.6025729740612689,
+      "matched_control_pressure_difference_over_strain_MPa": 1.6027629149387692,
+      "relative_difference_from_elastic_tangent": 0.00011852245144194917
+    },
+    {
+      "level": 1,
+      "tetrahedra": 113399,
+      "initial_contact_force_max_N": 0.004928893214959871,
+      "zero_strain_maximum_ep": 0.0,
+      "small_load_maximum_ep": 0.0,
+      "zero_strain_plastic_elements": 0,
+      "shared_plastic_elements": 0,
+      "zero_strain_macro_pressure_MPa": 2.3511791026859076e-08,
+      "elastic_C33_MPa": 1.527686645615277,
+      "matched_control_pressure_difference_over_strain_MPa": 1.527855784595011,
+      "relative_difference_from_elastic_tangent": 0.00011071575458188043
+    },
+    {
+      "level": 2,
+      "tetrahedra": 228406,
+      "initial_contact_force_max_N": 0.18591511614162395,
+      "zero_strain_maximum_ep": 0.05265526911961573,
+      "small_load_maximum_ep": 0.05255482911345983,
+      "zero_strain_plastic_elements": 3,
+      "shared_plastic_elements": 2,
+      "zero_strain_macro_pressure_MPa": 2.01759429771978e-07,
+      "elastic_C33_MPa": 1.43294393675929,
+      "matched_control_pressure_difference_over_strain_MPa": 1.433093679261824,
+      "relative_difference_from_elastic_tangent": 0.00010449990309657764
+    }
+  ],
+  "elastic": {
+    "original_levels": [
+      {
+        "nodes": 21561,
+        "tetrahedra": 65407,
+        "reference_volume_mm3": 8354.169219128846,
+        "effective_C33_MPa": 1.6025729740612689,
+        "free_linear_residual_N": 3.136037436679562e-19,
+        "energy_Nmm": 1.1272969908346297e-08,
+        "reaction_energy_relative_error": 4.402640755426475e-16,
+        "contact_included": false,
+        "plastic_evolution_included": false,
+        "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced."
+      },
+      {
+        "nodes": 35472,
+        "tetrahedra": 113399,
+        "reference_volume_mm3": 8376.122758532849,
+        "effective_C33_MPa": 1.527686645615277,
+        "free_linear_residual_N": 3.0112713809028056e-19,
+        "energy_Nmm": 1.0746197436339089e-08,
+        "reaction_energy_relative_error": 0.0,
+        "contact_included": false,
+        "plastic_evolution_included": false,
+        "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced."
+      },
+      {
+        "nodes": 67488,
+        "tetrahedra": 228406,
+        "reference_volume_mm3": 8392.04185122005,
+        "effective_C33_MPa": 1.43294393675929,
+        "free_linear_residual_N": 2.7856449785756963e-19,
+        "energy_Nmm": 1.007974934114744e-08,
+        "reaction_energy_relative_error": 4.923816562638042e-16,
+        "contact_included": false,
+        "plastic_evolution_included": false,
+        "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced."
+      }
+    ],
+    "same_faceted_boundary_refinement": {
+      "nodes": 126881,
+      "tetrahedra": 523256,
+      "reference_volume_mm3": 8354.169219128846,
+      "effective_C33_MPa": 1.3675659241929405,
+      "free_linear_residual_N": 2.9101048827639976e-19,
+      "energy_Nmm": 9.61986116116633e-09,
+      "reaction_energy_relative_error": 0.0,
+      "contact_included": false,
+      "plastic_evolution_included": false,
+      "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced.",
+      "prolonged_coarse_energy_Nmm": 1.1272969908183015e-08,
+      "nested_space_energy_relative_error": 1.4484413668469642e-11,
+      "refined_to_coarse_energy_ratio": 0.8533564126738211
+    },
+    "original_coarsest_vs_finest_relative": 0.11837799996949472,
+    "same_boundary_refinement_relative_change": 0.1466435873261791,
+    "diagnostic_only": true,
+    "full_compaction_convergence_verified": false
+  },
+  "initial_barrier_drives_zero_strain_local_plasticity_confirmed": true,
+  "same_boundary_discretization_stiffness_sensitivity_confirmed": true,
+  "rigid_contact_in_initial_stencils": false,
+  "plasticity_or_friction_not_required_for_initial_mesh_stiffness_difference": true,
+  "specific_locking_mechanism_proven": false,
+  "full_compaction_convergence_verified": false,
+  "note": "Linear controls are separate diagnostics, not contact-free replacement production calculations. Scalar pressure differences compare two virgin-history solves; no material histories are subtracted or pre-relaxed loading path claimed."
+}

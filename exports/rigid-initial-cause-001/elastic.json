@@ -1,0 +1,59 @@
+{
+  "original_levels": [
+    {
+      "nodes": 21561,
+      "tetrahedra": 65407,
+      "reference_volume_mm3": 8354.169219128846,
+      "effective_C33_MPa": 1.6025729740612689,
+      "free_linear_residual_N": 3.136037436679562e-19,
+      "energy_Nmm": 1.1272969908346297e-08,
+      "reaction_energy_relative_error": 4.402640755426475e-16,
+      "contact_included": false,
+      "plastic_evolution_included": false,
+      "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced."
+    },
+    {
+      "nodes": 35472,
+      "tetrahedra": 113399,
+      "reference_volume_mm3": 8376.122758532849,
+      "effective_C33_MPa": 1.527686645615277,
+      "free_linear_residual_N": 3.0112713809028056e-19,
+      "energy_Nmm": 1.0746197436339089e-08,
+      "reaction_energy_relative_error": 0.0,
+      "contact_included": false,
+      "plastic_evolution_included": false,
+      "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced."
+    },
+    {
+      "nodes": 67488,
+      "tetrahedra": 228406,
+      "reference_volume_mm3": 8392.04185122005,
+      "effective_C33_MPa": 1.43294393675929,
+      "free_linear_residual_N": 2.7856449785756963e-19,
+      "energy_Nmm": 1.007974934114744e-08,
+      "reaction_energy_relative_error": 4.923816562638042e-16,
+      "contact_included": false,
+      "plastic_evolution_included": false,
+      "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced."
+    }
+  ],
+  "same_faceted_boundary_refinement": {
+    "nodes": 126881,
+    "tetrahedra": 523256,
+    "reference_volume_mm3": 8354.169219128846,
+    "effective_C33_MPa": 1.3675659241929405,
+    "free_linear_residual_N": 2.9101048827639976e-19,
+    "energy_Nmm": 9.61986116116633e-09,
+    "reaction_energy_relative_error": 0.0,
+    "contact_included": false,
+    "plastic_evolution_included": false,
+    "scope": "Initial linear elastic tangent only; fixed transverse cell; cylinder has no contact coupling and no support is introduced.",
+    "prolonged_coarse_energy_Nmm": 1.1272969908183015e-08,
+    "nested_space_energy_relative_error": 1.4484413668469642e-11,
+    "refined_to_coarse_energy_ratio": 0.8533564126738211
+  },
+  "original_coarsest_vs_finest_relative": 0.11837799996949472,
+  "same_boundary_refinement_relative_change": 0.1466435873261791,
+  "diagnostic_only": true,
+  "full_compaction_convergence_verified": false
+}
