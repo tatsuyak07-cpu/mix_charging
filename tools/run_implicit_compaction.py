@@ -207,13 +207,22 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
         trace=out/'iterate-trace';trace.mkdir();c['_iterate_checkpoint_directory']=str(trace)
     sources=out/'source';sources.mkdir();source_root=Path(__file__).resolve().parents[1]
     manifest={}
-    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/rigid_inclusion.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/quasistatic_hybrid.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/sparse_factor.py','packing_fem/porosity_control.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
+    for name in ['tools/run_implicit_compaction.py','packing_fem/fixed_point.py','packing_fem/initial_contact.py','packing_fem/rigid_inclusion.py','packing_fem/load_predictor.py','packing_fem/line_search.py','packing_fem/quasistatic_lbfgs.py','packing_fem/quasistatic_coupled.py','packing_fem/quasistatic_hybrid.py','packing_fem/implicit_material.py','packing_fem/ipc_periodic.py','packing_fem/implicit_remesh.py','packing_fem/implicit_linear.py','packing_fem/sparse_factor.py','packing_fem/porosity_control.py','packing_fem/explicit_material.py','packing_fem/explicit_periodic.py']:
         source=source_root/name;target=sources/source.name;shutil.copy2(source,target);manifest[name]=hashlib.sha256(source.read_bytes()).hexdigest()
     (out/'source-sha256.json').write_text(json.dumps(manifest,indent=2))
     (out/'inputs.json').write_text(json.dumps(dict(mesh=str(mesh),mesh_sha256=hashlib.sha256(Path(mesh).read_bytes()).hexdigest(),restart=None if restart is None else str(restart),initial_iterate=None if initial_iterate is None else str(initial_iterate),initial_iterate_sha256=None if initial_iterate is None else hashlib.sha256(Path(initial_iterate).read_bytes()).hexdigest(),iterate_is_initial_guess_only=True,rejected_geometry=None if rejected_geometry is None else str(rejected_geometry),rejected_geometry_sha256=None if rejected_geometry is None else hashlib.sha256(Path(rejected_geometry).read_bytes()).hexdigest(),rejected_geometry_material_history_used=False),indent=2))
+    if c.get('require_prepared_mesh',False) and not c.get('required_mesh_sha256'):
+        raise ValueError('Prepare the refined mesh first and use its generated config.json')
     data=np.load(mesh);X=data['points'];t=oriented(X,data['tets'])
+    if c.get('required_mesh_sha256') and hashlib.sha256(Path(mesh).read_bytes()).hexdigest()!=c['required_mesh_sha256']:
+        raise ValueError('Input mesh differs from the explicitly prepared mesh')
     if restart:
         r=np.load(restart);X=r['X'];t=oriented(X,r['t'])
+        if c.get('required_mesh_sha256') and not (np.array_equal(X,data['points']) and np.array_equal(t,oriented(data['points'],data['tets']))):
+            provenance=Path(str(restart)+'.source-config.json')
+            if not provenance.exists():provenance=Path(restart).parent/'config.json'
+            if not provenance.exists() or json.loads(provenance.read_text()).get('required_mesh_sha256')!=c['required_mesh_sha256']:
+                raise ValueError('Restart does not belong to the prepared mesh; retain its source config provenance')
     p=periodic_model(X,c);q=np.zeros(p.ndof);b=np.tile(np.eye(3),(len(t),1,1));ep=np.zeros(len(t))
     V0,_,D=geometry(X,t);inverse=np.linalg.inv(D);parent=np.arange(len(t))
     if restart:
@@ -228,6 +237,12 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
     initial_mesh_porosity=measured_porosity(geometry(data['points'],oriented(data['points'],data['tets']))[0].sum(),p.L**3,c)
     if 'initial_porosity_tolerance' in c and abs(initial_mesh_porosity-c.get('requested_matrix_porosity',c['requested_initial_porosity']))>c['initial_porosity_tolerance']:raise ValueError('Measured mesh porosity outside the configured initial geometry tolerance')
     contact=contact_model(X,t,p,c)
+    from packing_fem.initial_contact import inspect,virgin_body
+    if c.get('implicit_require_stress_free_initial_contact',False) and (not restart or virgin_body(p,q,b,ep)):
+        preflight=inspect(contact,q,c)
+        (out/'initial-contact-preflight.json').write_text(json.dumps(preflight,indent=2)+'\n')
+        if not preflight['passed']:
+            raise ValueError('Initial contact barrier preloads virgin material; review activation distance and initial gaps. No loading or history update performed.')
     warm_guess=None;warm_X=None;warm_t=None
     if initial_iterate:
         if not restart:raise ValueError('An initial iterate requires an accepted restart state')
@@ -296,6 +311,10 @@ def run(config,mesh,out,restart=None,initial_iterate=None,rejected_geometry=None
                 np.testing.assert_allclose(np_new.positions(nq),nx,atol=1e-9)
                 new_inverse=np.linalg.inv(geometry(nx,nt)[2])
                 new_contact=contact_model(newX,nt,np_new,c)
+                if c.get('implicit_require_stress_free_initial_contact',False) and virgin_body(np_new,nq,nb,ne):
+                    preflight=inspect(new_contact,nq,c)
+                    (out/f'remesh-virgin-contact-preflight-{index:04d}.json').write_text(json.dumps(preflight,indent=2)+'\n')
+                    if not preflight['passed']:raise ValueError('Virgin remesh would introduce contact preload; original state retained')
                 # Commit only after the transferred state has equilibrated.
                 relax=equilibrium(np_new,nt,nq,nb,ne,new_inverse,nv,c,new_contact,nq[np_new.prescribed],np.zeros(np_new.ndof),log,nparent)
                 if isinstance(relax,dict):raise ValueError('Post-remesh equilibrium failed: '+relax['reason'])

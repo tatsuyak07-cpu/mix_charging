@@ -1,0 +1,15 @@
+{
+  "reason": "Original0.01/0.005/0.0025mm family has increasing adjacent pressure and porosity differences; do not qualify it.",
+  "original_family_passed": false,
+  "extended_family_mm": [
+    0.005,
+    0.0025,
+    0.00125
+  ],
+  "candidate_activation_mm": 0.0025,
+  "pressure_relative_threshold": 0.05,
+  "porosity_absolute_threshold": 0.005,
+  "require_decreasing_adjacent_differences": true,
+  "thresholds_relaxed": false,
+  "full_path_convergence_verified": false
+}

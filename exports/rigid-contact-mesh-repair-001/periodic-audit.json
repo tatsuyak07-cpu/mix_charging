@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "state": "results/rigid-contact-mesh-repair-001/active-secant-001/dhat-0025-secant/state-0001.npz",
+  "predecessor": "results/rigid-contact-mesh-repair-001/active-secant-001/dhat-0025-secant/state-0000.npz",
+  "required_relative_shift_bound": 1,
+  "nonlinear_actual_displacement": true,
+  "raw_candidate_counts_equal": true,
+  "allocation_equivalent": true,
+  "allocation_group_comparisons": [],
+  "generalized_force_max_difference_N": 1.6298074001497298e-13,
+  "barrier_energy_relative_difference": 9.124244052217743e-15,
+  "contact_potential_relative_difference": 1.5866627896156758e-15,
+  "physical_friction_work_difference_Nmm": 9.71445146547012e-17,
+  "rigid_force_max_difference_N": 3.5041414214731503e-14,
+  "rigid_torque_max_difference_Nmm": 3.280362093072142e-14,
+  "tiles": [
+    {
+      "image_radius": 1,
+      "images": 27,
+      "contacts": 494,
+      "rigid_contacts": 8,
+      "barrier_energy_Nmm": 0.0019962855436039175,
+      "contact_potential_Nmm": 0.04810589461259623,
+      "physical_friction_work_Nmm": -0.04606013366527549,
+      "rigid_force_N": [
+        -0.0006363699385506099,
+        0.002559293490666555,
+        -0.0010561321077435307
+      ],
+      "rigid_torque_Nmm": [
+        -0.0002283379682523172,
+        -0.00014982052284154333,
+        0.0042588549351079506
+      ],
+      "intersections": false
+    },
+    {
+      "image_radius": 2,
+      "images": 125,
+      "contacts": 494,
+      "rigid_contacts": 8,
+      "barrier_energy_Nmm": 0.0019962855436039357,
+      "contact_potential_Nmm": 0.04810589461259615,
+      "physical_friction_work_Nmm": -0.04606013366527539,
+      "rigid_force_N": [
+        -0.0006363699385329244,
+        0.002559293490646569,
+        -0.001056132107778572
+      ],
+      "rigid_torque_Nmm": [
+        -0.00022833796828512082,
+        -0.00014982052285372977,
+        0.00425885493509835
+      ],
+      "intersections": false
+    }
+  ]
+}

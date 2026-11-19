@@ -1,0 +1,14 @@
+{
+  "scope": "Stress-free initial contact plus original/faceted-refined mesh compression and contact activation sensitivity.",
+  "pressure_relative_threshold": 0.05,
+  "porosity_absolute_threshold": 0.005,
+  "cases": [
+    {
+      "name": "coarse-small",
+      "config": "configs/rigid-repair-coarse-small.json",
+      "mesh": "results/rigid-stages-1-4-001/input/original-mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-coarse-005.json",
+      "compression": 0.0001
+    }
+  ]
+}

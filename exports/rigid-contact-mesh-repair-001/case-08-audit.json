@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "collision_mesh_builds": 1,
+  "local_predecessors_only": true,
+  "force_tolerance_N": 0.005,
+  "torque_scale_radius_mm": 2.0,
+  "original_physics_config": "results/rigid-contact-mesh-repair-001/active-hybrid-001/input/000-physics.json",
+  "original_physics_config_sha256": "84bc49a3e2b3f60fe26c57cfaf456113532dd3442816798762c9b5c2caeeee1f",
+  "initial_state_is_geometry_not_equilibrium": true,
+  "mesh_increment_convergence_verified": false,
+  "states": [
+    {
+      "step": 0,
+      "state_sha256": "e06fd5a267a69160db8014d067fd94a95aeb1f129f3f258b2a43ea4a9a6f4bf0",
+      "matrix_region_porosity": 0.24935036042808711,
+      "total_porosity": 0.24822650221384135,
+      "compression": 0.2085564648297838,
+      "solid_volume_mm3": 8320.432324938654,
+      "reference_volume_mm3": 8354.169219128846,
+      "reference_volume_relative_error": 0.0,
+      "minimum_element_volume_mm3": 5.421061322757816e-06,
+      "quadrature_volume_error": 1.151488104798682e-09,
+      "fixed_lattice_error": 0.0,
+      "saved_position_error_mm": 0.0,
+      "rigid_volume_mm3": 50.184775848735036,
+      "rigid_volume_relative_error": 2.220446049250313e-16,
+      "rigid_pair_distance_error_mm": 1.7763568394002505e-15,
+      "rigid_center_mm": [
+        12.060831698246645,
+        12.740537125703291,
+        9.079897702877318
+      ],
+      "rigid_rotation_matrix": [
+        [
+          0.9830608315972018,
+          0.1830115369884581,
+          -0.009908516969771427
+        ],
+        [
+          -0.1400297719392181,
+          0.7151020630868389,
+          -0.6848508613848692
+        ],
+        [
+          -0.11825000782269986,
+          0.6746375446846025,
+          0.7286158926017621
+        ]
+      ],
+      "surface_intersections": false,
+      "initial_geometry_only": true,
+      "passed": true
+    },
+    {
+      "step": 1,
+      "state_sha256": "fea483e4810381814a119bb2a22e60e9f79324f69d3193db81824c1f05e0d608",
+      "matrix_region_porosity": 0.24801073344933,
+      "total_porosity": 0.2468911448581903,
+      "compression": 0.2098064648297838,
+      "solid_volume_mm3": 8322.056879408967,
+      "reference_volume_mm3": 8354.169219128846,
+      "reference_volume_relative_error": 0.0,
+      "minimum_element_volume_mm3": 5.421486707757244e-06,
+      "quadrature_volume_error": 1.1514875295916804e-09,
+      "fixed_lattice_error": 0.0,
+      "saved_position_error_mm": 0.0,
+      "rigid_volume_mm3": 50.184775848735036,
+      "rigid_volume_relative_error": 2.220446049250313e-16,
+      "rigid_pair_distance_error_mm": 1.7763568394002505e-15,
+      "rigid_center_mm": [
+        12.060879035661637,
+        12.741968809917005,
+        9.054704529647067
+      ],
+      "rigid_rotation_matrix": [
+        [
+          0.982971900431046,
+          0.18326265031083866,
+          -0.013455257857994974
+        ],
+        [
+          -0.1422802468749019,
+          0.7127232688308127,
+          -0.6868637953891136
+        ],
+        [
+          -0.1162866041820589,
+          0.6770822277007191,
+          0.7266616011732262
+        ]
+      ],
+      "surface_intersections": false,
+      "predecessor": "results/rigid-contact-mesh-repair-001/active-hybrid-001/dhat-005-hybrid/state-0000.npz",
+      "free_residual_N": 0.004330476472938178,
+      "free_residual_l2_N": 0.15562366835669406,
+      "pressure_MPa": 0.04680909709348821,
+      "pressure_replay_error_MPa": 0.0,
+      "b_replay_error": 0.0,
+      "ep_replay_error": 0.0,
+      "rigid_force_N": [
+        0.0037896623731973533,
+        0.0017158165743354423,
+        -0.0040003235788451975
+      ],
+      "rigid_torque_Nmm": [
+        -0.0027058622759414883,
+        0.008477237308086905,
+        0.008002108359835537
+      ],
+      "rigid_force_max_N": 0.0040003235788451975,
+      "rigid_torque_over_radius_max_N": 0.004238618654043453,
+      "rigid_contacts": 8,
+      "gauge_reaction_N": [
+        3.0189239726081778e-05,
+        -0.0005254400254553196,
+        0.0006573273229667073
+      ],
+      "csv_porosity_error": 0.0,
+      "coulomb": {
+        "stencils": 571,
+        "negative_weight_stencils": 0,
+        "friction_coefficient": 0.3,
+        "maximum_coefficient_error": 0.0,
+        "maximum_weighted_coulomb_ratio": 1.0000000000000009,
+        "maximum_bound_excess_N": 2.0816681711721685e-17,
+        "maximum_tangent_reconstruction_error_N": 3.469446951953614e-17,
+        "dissipated_work_Nmm": 0.040851704331387406,
+        "positive_stencil_work_Nmm": 0.040851704331387344,
+        "negative_stencil_work_Nmm": 0.0,
+        "zero_normal_force_violations": 0,
+        "physical_friction_work_Nmm": -0.040851704331387406,
+        "work_assembly_error_Nmm": 6.245004513516506e-17,
+        "interpretation": "Magnitude bound on weighted integration stencils; negative-weight stencils, if present, are not separate physical contact pairs.",
+        "passed": true
+      },
+      "passed": true
+    }
+  ]
+}

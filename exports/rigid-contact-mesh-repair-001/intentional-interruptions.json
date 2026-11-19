@@ -1,0 +1,20 @@
+[
+  {
+    "case": "results/rigid-contact-mesh-repair-001/active-study-001/dhat-005",
+    "pid": 2558,
+    "driver_pid": 583,
+    "latest_unaccepted_checkpoint": "results/rigid-contact-mesh-repair-001/active-study-001/dhat-005/iterate-trace/iterate-1795068604941787105-0060.npz",
+    "latest_checkpoint_sha256": "9f7e7a80ae4516883020a319b915f5703d3ecbf6ff343f018afabb47a1e3017c",
+    "reason": "Stop duplicate numerical-search branch after independently audited alternatives; no unconverged iterate is accepted. This interruption is not proof of nonconvergence.",
+    "selected_alternative": "results/rigid-contact-mesh-repair-001/active-hybrid-001/dhat-005-hybrid"
+  },
+  {
+    "case": "results/rigid-contact-mesh-repair-001/active-warm-001/dhat-0025-warm",
+    "pid": 5189,
+    "driver_pid": null,
+    "latest_unaccepted_checkpoint": "results/rigid-contact-mesh-repair-001/active-warm-001/dhat-0025-warm/iterate-trace/iterate-1795069058978300175-0020.npz",
+    "latest_checkpoint_sha256": "b0f9fb012bd6f293dcfa495a0b8d669ebbe90b5558597fad9b3a25c5516905f9",
+    "reason": "Stop duplicate numerical-search branch after independently audited alternatives; no unconverged iterate is accepted. This interruption is not proof of nonconvergence.",
+    "selected_alternative": "results/rigid-contact-mesh-repair-001/active-secant-001/dhat-0025-secant"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "file": "rigid-contact-mesh-repair-001-part-01.tar.xz",
+    "bytes": 13274808,
+    "sha256": "50e997748f0c4d9e47a1bfe0b771c59ffc69370ae65b9ed7e8da15f1bb3fa210",
+    "members": 565,
+    "uncompressed_bytes": 46494330,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-02.tar.xz",
+    "bytes": 12841316,
+    "sha256": "72d849e7d403ebb21af9a86d3543b2e1dcda27a0309e076633ca5292440e23f4",
+    "members": 574,
+    "uncompressed_bytes": 47255122,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-03.tar.xz",
+    "bytes": 13279324,
+    "sha256": "5f1243eb9bbba60df54f76e8500e90fa258e815f93c88d7c60884e7be25c8ef6",
+    "members": 565,
+    "uncompressed_bytes": 46530865,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-04.tar.xz",
+    "bytes": 12410024,
+    "sha256": "7e43976cbcf24f8ae6ea24de2af1c22d9f5210d1256ef89c707d4b5d759cfaab",
+    "members": 816,
+    "uncompressed_bytes": 49700428,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-05.tar.xz",
+    "bytes": 14205804,
+    "sha256": "817dc379c8650de95633d67c8aca44d63742acf7e5012c1c32ad650ced8f92b6",
+    "members": 557,
+    "uncompressed_bytes": 39363791,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-06.tar.xz",
+    "bytes": 38290464,
+    "sha256": "facab8cbad7b340aa69c77804a2f7d53fecffa5783740d4255336735287c2bb6",
+    "members": 7,
+    "uncompressed_bytes": 39669028,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-07.tar.xz",
+    "bytes": 36113052,
+    "sha256": "3b1ec159a37e82db5031526349d2f684153d750d76059ada04ed06ff20e17b38",
+    "members": 53,
+    "uncompressed_bytes": 48490158,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-08.tar.xz",
+    "bytes": 30061940,
+    "sha256": "9dfdd1ec78a1a46abadf5a982e7bbc9bc93d054ad3bcfa310c9585dc2b9ba8ac",
+    "members": 609,
+    "uncompressed_bytes": 47780484,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-09.tar.xz",
+    "bytes": 19970144,
+    "sha256": "c724d3c820d40f21f4bcdf8857a14569c470d55e159d17e98c3363770fd34cc1",
+    "members": 30,
+    "uncompressed_bytes": 35047404,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-10.tar.xz",
+    "bytes": 33382524,
+    "sha256": "c411b89534c574c350c806d88a72a0ebf716868d044feb3b6fb0e6f4d297b79f",
+    "members": 34,
+    "uncompressed_bytes": 46998445,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-11.tar.xz",
+    "bytes": 11430084,
+    "sha256": "a249d8bb62f1d621c74bd935135615d09fc03f3d11a1a5af9997ba9375392d77",
+    "members": 45,
+    "uncompressed_bytes": 39204011,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-12.tar.xz",
+    "bytes": 38325984,
+    "sha256": "5b54b9c62ac0b29c617a0d45f337fe6dc58f021aaed0c5058fd3cad49a91ab54",
+    "members": 28,
+    "uncompressed_bytes": 39800963,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-13.tar.xz",
+    "bytes": 36474332,
+    "sha256": "7b05dbcc1a9974d83b881d648c5805ffba778df95a51eb445bb17a0b663f552d",
+    "members": 338,
+    "uncompressed_bytes": 50327462,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-14.tar.xz",
+    "bytes": 13030324,
+    "sha256": "f6d1facfa928839a85c0095d86c7fdda8e80fcebb1c15b2ae8760588dcb66ce0",
+    "members": 2536,
+    "uncompressed_bytes": 50297039,
+    "verified": true
+  },
+  {
+    "file": "rigid-contact-mesh-repair-001-part-15.tar.xz",
+    "bytes": 9666116,
+    "sha256": "8573a3ab275d77bb7f36699facdf26f3e186b9a551e6d8ddd061d194e00bc2b1",
+    "members": 16,
+    "uncompressed_bytes": 10436701,
+    "verified": true
+  }
+]

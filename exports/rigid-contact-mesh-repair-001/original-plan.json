@@ -1,0 +1,15 @@
+{
+  "contact_activation_mm": [
+    0.01,
+    0.005,
+    0.0025
+  ],
+  "candidate_activation_mm": 0.005,
+  "pressure_relative_screen": 0.05,
+  "porosity_absolute_screen": 0.005,
+  "require_decreasing_adjacent_differences": true,
+  "active_comparison": "Same accepted24.935% history and same prescribed next compression; require contact including rigid contact and one accepted increment for isolated comparison.",
+  "mesh_repair": "Eight-way conforming T4 refinement preserving the faceted boundary and reference volume; input bytes bound by SHA256.",
+  "initial_condition": "Reject virgin contact preload before loading and before virgin remesh relaxation; never reset plastic history.",
+  "engineering_convergence_verified": false
+}

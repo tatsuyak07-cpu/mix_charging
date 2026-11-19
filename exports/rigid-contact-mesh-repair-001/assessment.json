@@ -1,0 +1,424 @@
+{
+  "startup_preload_removed": true,
+  "contact_active_sensitivity_passed": true,
+  "prototype_repairs_verified": true,
+  "candidate_activation_mm": 0.0025,
+  "initially_declared_candidate_mm": 0.005,
+  "original_activation_mm": 0.02,
+  "scope": "Prototype startup and same-faceted-boundary input refinement; active sensitivity is conditional on the SAME old accepted history, not full paths under each new activation.",
+  "material_friction_geometry_boundary_unchanged": true,
+  "initial_cases": [
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-small",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.0001,
+      "pressure_MPa": 0.00014330873939520238,
+      "porosity": 0.40130228001841184,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.0,
+      "free_residual_N": 1.199769847568689e-09,
+      "state_sha256": "6c0f632ea443ed3e8a00de2eff9efb3f8e81cc6887f301bc7ac298d2902dc686",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/refined-small",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.0001,
+      "pressure_MPa": 0.0001367702249214681,
+      "porosity": 0.4040038528571178,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.0,
+      "free_residual_N": 2.0571303744936195e-09,
+      "state_sha256": "e3b72ff6076194ffb1b9d64b3d787e6b2f8fd3822740104befe06ee3cb2d8e71",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-010",
+      "dhat_mm": 0.01,
+      "accepted_increments": 1,
+      "compression": 0.005,
+      "pressure_MPa": 0.004872036797675097,
+      "porosity": 0.39859073827868075,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.16387664923215414,
+      "free_residual_N": 6.827806576668459e-06,
+      "state_sha256": "4fb96a41d0c208ac79f0dd1c3e168b1d746ae3e53851c28079de70d87cba2f03",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-005",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.005,
+      "pressure_MPa": 0.00487203679767517,
+      "porosity": 0.39859073827868075,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.16387664923216344,
+      "free_residual_N": 6.8278065941956715e-06,
+      "state_sha256": "8d0ef65156adc5665e30cb2cbffe3360bc74aa80df1a2ac1e8c275445908ca79",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-0025",
+      "dhat_mm": 0.0025,
+      "accepted_increments": 1,
+      "compression": 0.005,
+      "pressure_MPa": 0.00487203679767506,
+      "porosity": 0.39859073827868075,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.16387664923216555,
+      "free_residual_N": 6.827806585108648e-06,
+      "state_sha256": "f7051c56e84ec9aa4487057cbb87ec1278b4c51d859b10b6e3ac2c5b35aa0319",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/coarse-005",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.005,
+      "pressure_MPa": 0.0055361433744852044,
+      "porosity": 0.40134666403222563,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.15263063194407706,
+      "free_residual_N": 1.0662670908039018e-05,
+      "state_sha256": "eeaaea2d3a7e83f409c0476c026f7f4593d3e0fee718c5620c3a13ec350ff710",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/refined-005",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.005,
+      "pressure_MPa": 0.004434680107059969,
+      "porosity": 0.40128683005695676,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.22192385139988663,
+      "free_residual_N": 1.013695135038783e-05,
+      "state_sha256": "217cb8d01e63a282bd996d9de033f7f4be1caa702333976272e711980d1e7208",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-extra-001/coarse-small",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.0001,
+      "pressure_MPa": 0.00016027571920706644,
+      "porosity": 0.40400509635142157,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.0,
+      "free_residual_N": 1.9138889654179948e-09,
+      "state_sha256": "4657cab56b50687dd71192ff233b41e36fb1d81f26f28bebffde531607a7642b",
+      "audit_passed": true
+    }
+  ],
+  "startup_checks": [
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-small",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.005,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/refined-small",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.005,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-010",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.01,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-005",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.005,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/fine-0025",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.0025,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/coarse-005",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.005,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-study-001/refined-005",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.005,
+      "parameters_or_material_history_changed": false
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/initial-extra-001/coarse-small",
+      "passed": true,
+      "contact_stencils": 0,
+      "contact_potential_Nmm": 0.0,
+      "free_contact_force_max_N": 0.0,
+      "macro_contact_force_max_N": 0.0,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.005,
+      "parameters_or_material_history_changed": false
+    }
+  ],
+  "active_cases": [
+    {
+      "run": "results/rigid-contact-mesh-repair-001/active-hybrid-001/dhat-005-hybrid",
+      "dhat_mm": 0.005,
+      "accepted_increments": 1,
+      "compression": 0.2098064648297838,
+      "pressure_MPa": 0.04680909709348821,
+      "porosity": 0.24801073344933,
+      "contacts": 573,
+      "rigid_contacts": 8,
+      "maximum_ep": 2.9202297514862887,
+      "free_residual_N": 0.004330476472938178,
+      "state_sha256": "fea483e4810381814a119bb2a22e60e9f79324f69d3193db81824c1f05e0d608",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/active-secant-001/dhat-0025-secant",
+      "dhat_mm": 0.0025,
+      "accepted_increments": 1,
+      "compression": 0.2098064648297838,
+      "pressure_MPa": 0.0456783671860416,
+      "porosity": 0.24793349239069407,
+      "contacts": 494,
+      "rigid_contacts": 8,
+      "maximum_ep": 2.9202297514862887,
+      "free_residual_N": 0.004499432229989904,
+      "state_sha256": "863bd4bdbc8a93528a32392bd899032bac8de8cdf4e1ae8af96803ff5abe1630",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/active-extended-001/dhat-00125-secant",
+      "dhat_mm": 0.00125,
+      "accepted_increments": 1,
+      "compression": 0.2098064648297838,
+      "pressure_MPa": 0.045292450548356476,
+      "porosity": 0.24790744998466674,
+      "contacts": 463,
+      "rigid_contacts": 10,
+      "maximum_ep": 2.9202297514862887,
+      "free_residual_N": 0.0047836492712348844,
+      "state_sha256": "9444faa686194d91030712c8d96e983522ffa3616f09c03f5f07054a2e4cad9e",
+      "audit_passed": true
+    }
+  ],
+  "active_adjacent_differences": [
+    {
+      "pressure_relative": 0.024754166514781562,
+      "porosity_absolute": 7.724105863593511e-05
+    },
+    {
+      "pressure_relative": 0.008520551063429502,
+      "porosity_absolute": 2.604240602732677e-05
+    }
+  ],
+  "active_errors_decrease": true,
+  "original_coarser_family_passed": false,
+  "original_coarser_family": {
+    "cases": [
+      {
+        "run": "results/rigid-contact-mesh-repair-001/active-study-001/dhat-010",
+        "dhat_mm": 0.01,
+        "accepted_increments": 1,
+        "compression": 0.2098064648297838,
+        "pressure_MPa": 0.047774720251387445,
+        "porosity": 0.24806077643802416,
+        "contacts": 700,
+        "rigid_contacts": 17,
+        "maximum_ep": 2.9202297514862887,
+        "free_residual_N": 0.0045305473701951655,
+        "state_sha256": "faaa53a3f70674e0022abac460ccb0fe2ce6e3477a018920b9fa6e0ebd86eafa",
+        "audit_passed": true
+      },
+      {
+        "run": "results/rigid-contact-mesh-repair-001/active-hybrid-001/dhat-005-hybrid",
+        "dhat_mm": 0.005,
+        "accepted_increments": 1,
+        "compression": 0.2098064648297838,
+        "pressure_MPa": 0.04680909709348821,
+        "porosity": 0.24801073344933,
+        "contacts": 573,
+        "rigid_contacts": 8,
+        "maximum_ep": 2.9202297514862887,
+        "free_residual_N": 0.004330476472938178,
+        "state_sha256": "fea483e4810381814a119bb2a22e60e9f79324f69d3193db81824c1f05e0d608",
+        "audit_passed": true
+      },
+      {
+        "run": "results/rigid-contact-mesh-repair-001/active-secant-001/dhat-0025-secant",
+        "dhat_mm": 0.0025,
+        "accepted_increments": 1,
+        "compression": 0.2098064648297838,
+        "pressure_MPa": 0.0456783671860416,
+        "porosity": 0.24793349239069407,
+        "contacts": 494,
+        "rigid_contacts": 8,
+        "maximum_ep": 2.9202297514862887,
+        "free_residual_N": 0.004499432229989904,
+        "state_sha256": "863bd4bdbc8a93528a32392bd899032bac8de8cdf4e1ae8af96803ff5abe1630",
+        "audit_passed": true
+      }
+    ],
+    "adjacent_differences": [
+      {
+        "pressure_relative": 0.02062896355318859,
+        "porosity_absolute": 5.0042988694154467e-05
+      },
+      {
+        "pressure_relative": 0.024754166514781562,
+        "porosity_absolute": 7.724105863593511e-05
+      }
+    ],
+    "errors_decrease": false,
+    "passed": false
+  },
+  "extended_study_plan": {
+    "reason": "Original0.01/0.005/0.0025mm family has increasing adjacent pressure and porosity differences; do not qualify it.",
+    "original_family_passed": false,
+    "extended_family_mm": [
+      0.005,
+      0.0025,
+      0.00125
+    ],
+    "candidate_activation_mm": 0.0025,
+    "pressure_relative_threshold": 0.05,
+    "porosity_absolute_threshold": 0.005,
+    "require_decreasing_adjacent_differences": true,
+    "thresholds_relaxed": false,
+    "full_path_convergence_verified": false
+  },
+  "adoption_equilibrium_replays": [
+    {
+      "run": "results/rigid-contact-mesh-repair-001/candidate-replay-0025/refined-small",
+      "dhat_mm": 0.0025,
+      "accepted_increments": 1,
+      "compression": 0.0001,
+      "pressure_MPa": 0.0001367702249214681,
+      "porosity": 0.4040038528571178,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.0,
+      "free_residual_N": 2.0571303744936195e-09,
+      "state_sha256": "e3b72ff6076194ffb1b9d64b3d787e6b2f8fd3822740104befe06ee3cb2d8e71",
+      "audit_passed": true
+    },
+    {
+      "run": "results/rigid-contact-mesh-repair-001/candidate-replay-0025/refined-005",
+      "dhat_mm": 0.0025,
+      "accepted_increments": 1,
+      "compression": 0.005,
+      "pressure_MPa": 0.004434680107059969,
+      "porosity": 0.40128683005695676,
+      "contacts": 0,
+      "rigid_contacts": 0,
+      "maximum_ep": 0.22192385139988663,
+      "free_residual_N": 1.013695135038783e-05,
+      "state_sha256": "217cb8d01e63a282bd996d9de033f7f4be1caa702333976272e711980d1e7208",
+      "audit_passed": true
+    }
+  ],
+  "inactive_initial_screen_has_no_contacts": true,
+  "inactive_initial_screen_is_not_active_contact_validation": true,
+  "same_surface_refinement": {
+    "operation": "uniform_conforming_eight_way_T4_refinement",
+    "levels": 1,
+    "initial": {
+      "nodes": 21561,
+      "tetrahedra": 65407,
+      "volume_mm3": 8354.169219128846,
+      "boundary_area_mm2": 6716.2269916253845
+    },
+    "nodes": 126881,
+    "tetrahedra": 523256,
+    "volume_mm3": 8354.169219128846,
+    "boundary_area_mm2": 6716.2269916253845,
+    "minimum_quality": 0.05028397169120119,
+    "periodic_classes": 115861,
+    "source_mesh_sha256": "b5a5aa299e0d3b4a738b4931ce0c6f051ea1e5bbd88776050b25485268c4c678",
+    "prepared_mesh_sha256": "b00fefaf57b605e7f83929e650ffa83ea3aa66fdfc1533a7edac7295ff674b1b",
+    "geometry_unchanged": true,
+    "mesh_convergence_verified": false
+  },
+  "small_strain_pressure_reduction_relative": 0.14665661400171714,
+  "initial_guard_expected_rejection": {
+    "passed": true,
+    "expected_initial_preload_rejected": true,
+    "source_unchanged": true,
+    "no_loading_or_history_update": true,
+    "preflight": {
+      "passed": false,
+      "contact_stencils": 13,
+      "contact_potential_Nmm": 0.00017089959600297632,
+      "free_contact_force_max_N": 0.18591511614162398,
+      "macro_contact_force_max_N": 0.00013027287055083738,
+      "force_tolerance_N": 1e-10,
+      "energy_tolerance_Nmm": 1e-14,
+      "ipc_dhat_mm": 0.02,
+      "parameters_or_material_history_changed": false
+    }
+  },
+  "full40to10_path_recomputed": false,
+  "mesh_convergence_verified": false,
+  "full_path_increment_convergence_verified": false
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "expected_initial_preload_rejected": true,
+  "source_unchanged": true,
+  "no_loading_or_history_update": true,
+  "preflight": {
+    "passed": false,
+    "contact_stencils": 13,
+    "contact_potential_Nmm": 0.00017089959600297632,
+    "free_contact_force_max_N": 0.18591511614162398,
+    "macro_contact_force_max_N": 0.00013027287055083738,
+    "force_tolerance_N": 1e-10,
+    "energy_tolerance_Nmm": 1e-14,
+    "ipc_dhat_mm": 0.02,
+    "parameters_or_material_history_changed": false
+  }
+}

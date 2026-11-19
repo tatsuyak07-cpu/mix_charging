@@ -1,0 +1,18 @@
+{
+  "run_kind": "zero_contact_equilibrium_revalidation",
+  "new_nonlinear_solve_performed": false,
+  "source": "results/rigid-contact-mesh-repair-001/initial-study-001/refined-005",
+  "source_activation_mm": 0.005,
+  "target_activation_mm": 0.0025,
+  "geometry_and_material_history_copied_without_change": true,
+  "states": [
+    {
+      "file": "state-0000.npz",
+      "sha256": "24eeb25b1c5f8c7cb594486852e5a6fd968f15563ef099641523385d5097a289"
+    },
+    {
+      "file": "state-0001.npz",
+      "sha256": "217cb8d01e63a282bd996d9de033f7f4be1caa702333976272e711980d1e7208"
+    }
+  ]
+}

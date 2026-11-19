@@ -1,0 +1,20 @@
+{
+  "operation": "uniform_conforming_eight_way_T4_refinement",
+  "levels": 1,
+  "initial": {
+    "nodes": 21561,
+    "tetrahedra": 65407,
+    "volume_mm3": 8354.169219128846,
+    "boundary_area_mm2": 6716.2269916253845
+  },
+  "nodes": 126881,
+  "tetrahedra": 523256,
+  "volume_mm3": 8354.169219128846,
+  "boundary_area_mm2": 6716.2269916253845,
+  "minimum_quality": 0.05028397169120119,
+  "periodic_classes": 115861,
+  "source_mesh_sha256": "b5a5aa299e0d3b4a738b4931ce0c6f051ea1e5bbd88776050b25485268c4c678",
+  "prepared_mesh_sha256": "b00fefaf57b605e7f83929e650ffa83ea3aa66fdfc1533a7edac7295ff674b1b",
+  "geometry_unchanged": true,
+  "mesh_convergence_verified": false
+}

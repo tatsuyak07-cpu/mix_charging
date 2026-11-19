@@ -12,6 +12,26 @@ X=np.array([[6.08,5.1,5.1],[7.,4.2,4.],[7.,5.8,4.],[7.,5.,6.]])
 T=oriented(X,np.array([[0,1,2,3]]))
 
 
+def test_virgin_contact_guard_detects_preload_without_changing_pose_or_law():
+    from packing_fem.initial_contact import inspect
+    for dhat,expected in [(.15,False),(.01,True)]:
+        c=dict(C,ipc_dhat_mm=dhat);p=RigidPeriodic(X,10.,c);contact=RigidPeriodicIPC(X,T,p,c,radius=0)
+        q=np.zeros(p.ndof);report=inspect(contact,q,c)
+        assert report['passed']==expected
+        np.testing.assert_array_equal(q,0.)
+        assert c['ipc_dhat_mm']==dhat and c['friction']==.3
+        if expected:assert report['contact_potential_Nmm']==0 and report['free_contact_force_max_N']==0
+
+
+def test_virgin_body_recognition_keeps_rigid_pose_separate_from_material_history():
+    from packing_fem.initial_contact import virgin_body
+    p=RigidPeriodic(X,10.,C);q=np.zeros(p.ndof);b=np.eye(3)[None];ep=np.zeros(1)
+    q[p.rigid_dofs]=[.01,0.,0.,0.,0.,.1]
+    assert virgin_body(p,q,b,ep)
+    q[p.prescribed]=-.001;assert not virgin_body(p,q,b,ep)
+    q[p.prescribed]=0.;ep[0]=.01;assert not virgin_body(p,q,b,ep)
+
+
 def test_rigid_finite_rotation_and_hessian_match_derivatives():
     a=np.array([.2,-.3,.4]);R,d,dd=rotation_derivatives(a);np.testing.assert_allclose(R.T@R,np.eye(3),atol=1e-14)
     assert np.linalg.det(R)==pytest.approx(1.)

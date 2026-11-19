@@ -1,0 +1,16 @@
+{
+  "scope": "Contact-active matched-restart numerical regularization sensitivity; same accepted material history, fixed transverse cell and free rigid6DOF. Baseline0.02mm law is preserved separately.",
+  "pressure_relative_threshold": 0.05,
+  "porosity_absolute_threshold": 0.005,
+  "cases": [
+    {
+      "name": "dhat-005-hybrid",
+      "config": "configs/rigid-repair-active-hybrid-005.json",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-005.json",
+      "mesh": "results/rigid-stages-1-4-001/input/original-mesh.npz",
+      "restart": "results/rigid-stages-1-4-001/probe-001/state-0001.npz",
+      "initial_iterate": "results/rigid-contact-mesh-repair-001/input/active-guess.npz",
+      "compression": 0.2098064648297838
+    }
+  ]
+}

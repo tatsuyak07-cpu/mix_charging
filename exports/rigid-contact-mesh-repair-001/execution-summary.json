@@ -1,0 +1,71 @@
+{
+  "launches": [
+    {
+      "file": "results/rigid-contact-mesh-repair-001/active-study-001/runtime/dhat-005/launch.json",
+      "return_code": -2
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/active-study-001/runtime/dhat-010/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-extra-001/runtime/coarse-small/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/fine-005/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/coarse-005/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/refined-small/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/refined-005/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/fine-small/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/fine-0025/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/initial-study-001/runtime/fine-010/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/active-warm-001/runtime/dhat-0025-warm/launch.json",
+      "return_code": -2
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/active-hybrid-001/runtime/dhat-005-hybrid/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/active-secant-001/runtime/dhat-0025-secant/launch.json",
+      "return_code": 0
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/runtime/guard-rejection-001/launch.json",
+      "return_code": 1
+    },
+    {
+      "file": "results/rigid-contact-mesh-repair-001/active-extended-001/runtime/dhat-00125-secant/launch.json",
+      "return_code": 0
+    }
+  ],
+  "all_snapshots_unchanged": true,
+  "completed_loading_solves": 12,
+  "expected_guard_rejection": 1,
+  "intentionally_interrupted_duplicate_searches": 2,
+  "zero_contact_equilibrium_replays": 2,
+  "delivered_mesh_arrays_equal_verified_mesh": true,
+  "full_path_convergence_verified": false
+}

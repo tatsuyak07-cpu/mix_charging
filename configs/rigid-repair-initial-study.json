@@ -1,0 +1,56 @@
+{
+  "scope": "Stress-free initial contact plus original/faceted-refined mesh compression and contact activation sensitivity.",
+  "pressure_relative_threshold": 0.05,
+  "porosity_absolute_threshold": 0.005,
+  "cases": [
+    {
+      "name": "fine-small",
+      "config": "configs/rigid-repair-fine-small.json",
+      "mesh": "results/rigid-stages-1-4-001/mesh-002/mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-fine-small.json",
+      "compression": 0.0001
+    },
+    {
+      "name": "refined-small",
+      "config": "configs/rigid-repair-refined-small.json",
+      "mesh": "results/rigid-contact-mesh-repair-001/prepared-mesh-001/mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-refined-small.json",
+      "compression": 0.0001
+    },
+    {
+      "name": "fine-010",
+      "config": "configs/rigid-repair-fine-010.json",
+      "mesh": "results/rigid-stages-1-4-001/mesh-002/mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-fine-010.json",
+      "compression": 0.005
+    },
+    {
+      "name": "fine-005",
+      "config": "configs/rigid-repair-fine-005.json",
+      "mesh": "results/rigid-stages-1-4-001/mesh-002/mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-fine-005.json",
+      "compression": 0.005
+    },
+    {
+      "name": "fine-0025",
+      "config": "configs/rigid-repair-fine-0025.json",
+      "mesh": "results/rigid-stages-1-4-001/mesh-002/mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-fine-0025.json",
+      "compression": 0.005
+    },
+    {
+      "name": "coarse-005",
+      "config": "configs/rigid-repair-coarse-005.json",
+      "mesh": "results/rigid-stages-1-4-001/input/original-mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-coarse-005.json",
+      "compression": 0.005
+    },
+    {
+      "name": "refined-005",
+      "config": "configs/rigid-repair-refined-005.json",
+      "mesh": "results/rigid-contact-mesh-repair-001/prepared-mesh-001/mesh.npz",
+      "physics": "results/rigid-contact-mesh-repair-001/input/physics-refined-005.json",
+      "compression": 0.005
+    }
+  ]
+}

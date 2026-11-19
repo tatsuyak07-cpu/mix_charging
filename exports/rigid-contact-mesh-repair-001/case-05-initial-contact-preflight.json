@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "contact_stencils": 0,
+  "contact_potential_Nmm": 0.0,
+  "free_contact_force_max_N": 0.0,
+  "macro_contact_force_max_N": 0.0,
+  "force_tolerance_N": 1e-10,
+  "energy_tolerance_Nmm": 1e-14,
+  "ipc_dhat_mm": 0.005,
+  "parameters_or_material_history_changed": false
+}
