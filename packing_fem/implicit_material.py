@@ -8,6 +8,39 @@ from scipy.sparse import coo_matrix
 from .explicit_material import geometry, advance, response, constants
 
 
+def consistent_blocks(grad,Q,lam,ratio,s,seq,a,da,tau,reference_volume,parent,G,K):
+    """Assemble the same spatial tangent in principal axes, in bounded chunks.
+
+    For L=e_k tensor grad(N_b), the logarithmic variation in principal axes is
+    dh_ij=ratio_ij*(Q_ki*w_bj*lam_j+lam_i*w_bi*Q_kj)/2.
+    Contracting this expression before rotating avoids twelve repeated full
+    tensor variations per quadrature point. The geometric stress term uses the
+    original spatial tau, and subcell weights are accumulated without averaging.
+    """
+    blocks=np.zeros((len(grad),12,12))
+    for start in range(0,len(parent),8192):
+        sl=slice(start,start+8192);ids=parent[sl];basis=Q[sl]
+        gradients=grad[ids];w=gradients@basis
+        # s is diagonal in this basis. Compute it from the original tensor to
+        # retain exactly the return mapping's deviatoric stress convention.
+        principal_s=np.einsum('eji,ejk,eki->ei',basis,s[sl],basis)
+        ga=G*a[sl]
+        plastic=(3*G*da[sl]/np.maximum(seq[sl],1e-30))[:,None,None]
+        coefficient=(K-2*ga/3)[:,None,None]+plastic*principal_s[:,:,None]*principal_s[:,None,:]
+        principal=np.einsum('eik,eai,ebk->eaibk',coefficient,w,w)
+        coefficient=ga[:,None,None]*ratio[sl]*lam[sl,:,None]
+        principal+=np.einsum('eik,ebi,eak->eaibk',coefficient,w,w)
+        diagonal=np.einsum('ein,ean,ebn->eabi',ga[:,None,None]*ratio[sl]*lam[sl,None,:],w,w)
+        for axis in range(3):principal[:,:,axis,:,axis]+=diagonal[:,:,:,axis]
+        spatial=basis[:,None,None]@principal.transpose(0,1,3,2,4)@basis[:,None,None].swapaxes(-1,-2)
+        spatial=spatial.transpose(0,1,3,2,4)
+        stress_gradient=np.einsum('eij,ebj->ebi',tau[sl],gradients)
+        spatial-=stress_gradient.swapaxes(1,2)[:,None,:,:,None]*gradients[:,:,None,None,:]
+        spatial*=reference_volume[sl,None,None,None,None]
+        np.add.at(blocks,ids,spatial.reshape(-1,12,12))
+    return .5*(blocks+blocks.swapaxes(1,2))
+
+
 def evaluate(x,t,old_b,old_ep,old_inverse,reference_volume,c,tangent=False,parent=None):
     volume,grad,D=geometry(x,t)
     if parent is None:parent=np.arange(len(t))
@@ -35,20 +68,7 @@ def evaluate(x,t,old_b,old_ep,old_inverse,reference_volume,c,tangent=False,paren
     close=abs(delta)<1e-7*np.maximum(lam[:,:,None],lam[:,None,:])
     ratio=np.divide(loglam[:,:,None]-loglam[:,None,:],delta,out=np.zeros_like(delta),where=~close)
     ratio[close]=np.broadcast_to(2/(lam[:,:,None]+lam[:,None,:]),delta.shape)[close]
-    blocks=np.empty((len(t),12,12))
-    for node in range(4):
-        for axis in range(3):
-            L=np.zeros_like(trial);L[:,axis,:]=grad[parent,node,:]
-            dB=L@trial+trial@L.swapaxes(1,2)
-            dh=.5*Q@(ratio*(Q.swapaxes(1,2)@dB@Q))@Q.swapaxes(1,2)
-            dtr=np.trace(dh,axis1=1,axis2=2)
-            dq=3*G*np.sum(s*dh,axis=(1,2))/np.maximum(seq,1e-30)
-            dtau=K*dtr[:,None,None]*np.eye(3)+2*G*a[:,None,None]*(dh-dtr[:,None,None]*np.eye(3)/3)+ (da*dq)[:,None,None]*s
-            qp_grad=grad[parent]
-            dg=reference_volume[:,None,None]*(np.einsum('eij,eaj->eai',dtau,qp_grad)-np.einsum('eij,ekj,eak->eai',tau,L,qp_grad))
-            column=np.zeros((len(t),4,3));np.add.at(column,parent,dg)
-            blocks[:,:,3*node+axis]=column.reshape(-1,12)
-    blocks=.5*(blocks+blocks.swapaxes(1,2))
+    blocks=consistent_blocks(grad,Q,lam,ratio,s,seq,a,da,tau,reference_volume,parent,G,K)
     if c.get('implicit_project_material_tangent',True):
         eig,U=np.linalg.eigh(blocks)
         blocks=(U*np.maximum(eig,0)[:,None,:])@U.swapaxes(1,2)
