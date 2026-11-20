@@ -38,6 +38,7 @@ def rigid_block_relaxation(p,contact,q,oldq,internal,J,external,measure,derivati
             _,gc,K,_=contact.evaluate_coupled(current,oldq,True)
             gradient=(solid+gc-external)[:p.nmicro];columns=K[:p.nmicro,ids];block=K[ids,:][:,ids].toarray()
         direction=np.zeros(p.ndof);diagonal=np.maximum(abs(block.diagonal()),1e-6)
+        diagonal=np.maximum(diagonal,c.get('implicit_rigid_step_scale_floor_N_per_mm',0.))
         direction[ids]=np.linalg.lstsq(block+np.diag(diagonal*c['implicit_regularization']),-gradient[ids],rcond=1e-12)[0]
         slope=float(derivative(gradient)@(columns@direction[ids]));merit=measure(gradient)
         if not np.all(np.isfinite(direction)) or not np.isfinite(slope) or slope>=0:break
@@ -133,6 +134,9 @@ def equilibrium(p,t,q,b,ep,inverse,V0,c,contact,prescribed,external,log,parent=N
             norm_history.append(norm);l2_history.append(float(np.linalg.norm(gradient)))
             if c.get('implicit_stagnation_window',0)>0 and search_stalled(norm_history,step_history,c['implicit_stagnation_window']) and search_stalled(l2_history,step_history,c['implicit_stagnation_window']):raise ValueError('Force residual stalled with negligible displacement updates; reduce load increment')
             diagonal=np.maximum(abs(J.diagonal()),1e-6)
+            # Match the energy solver's search-only scaling of free rigid modes.
+            # This changes the direction regularizer, never values() or forces.
+            if hasattr(p,'rigid_dofs'):diagonal[p.rigid_dofs]=np.maximum(diagonal[p.rigid_dofs],c.get('implicit_rigid_step_scale_floor_N_per_mm',0.))
             merit_gradient=np.asarray(J.T@merit_force).ravel()
             if maximum_merit and c.get('implicit_rigid_block_relaxation',False) and hasattr(p,'rigid_dofs') and norm<4*c['implicit_force_tolerance_N']:
                 candidate=rigid_block_relaxation(p,contact,trial,oldq,internal,J,external,measure,derivative,c,log)
