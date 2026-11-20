@@ -7,14 +7,16 @@ def digest(path):
     with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
-def archive(root,out,excluded,previous_manifest=None):
+def archive(root,out,excluded,previous_manifest=None,deduplicate_content=False):
     root=Path(root);out=Path(out)
     if (out/'archives.json').exists():raise FileExistsError('Snapshot already archived')
-    items=[];reused=[];previous={}
+    items=[];reused=[];previous={};aliases=[];alias_sources=[];content={}
     if previous_manifest is not None:
         previous_manifest=Path(previous_manifest)
         prior=json.loads(previous_manifest.read_text())
-        previous={item['file']:item for item in prior['files']+prior.get('reused_previous_files',[])}
+        # Reuse only physically stored members. A previous alias's target may
+        # have changed in this snapshot, so that alias must be reconsidered.
+        previous={item['file']:item for item in prior['files']+prior.get('reused_previous_files',[]) if 'target' not in item}
     for path in sorted(root.rglob('*')):
         relative=path.relative_to(root)
         if any(name in relative.parts or relative.name==name+'.log' for name in excluded):continue
@@ -31,12 +33,18 @@ def archive(root,out,excluded,previous_manifest=None):
         if path.exists():items.append((path,'source/'+path.as_posix()))
     items.extend((p,'source/'+p.as_posix()) for p in sorted(out.iterdir()) if p.is_file() and p.name not in ['README.md','archives.json','raw-archive-files.json','archive-verification.json'])
     groups=[];current=[];size=0;limit=48*1024**2
+    for item in reused:
+        content.setdefault((item['sha256'],item['bytes']),item.get('target',item['file']))
     for path,name in items:
         if path.is_symlink():raise ValueError('Snapshot source must be a regular file: '+str(path))
         length=path.stat().st_size
+        sha=digest(path);key=(sha,length)
+        if deduplicate_content and key in content and name!='source/tools/restore_snapshot_aliases.py':
+            aliases.append(dict(file=name,target=content[key],bytes=length,sha256=sha));alias_sources.append((path,sha));continue
+        content.setdefault(key,name)
         if length>limit:raise ValueError('File exceeds the independently extractable part budget: '+str(path))
         if current and size+length>limit:groups.append(current);current=[];size=0
-        current.append(dict(path=path,name=name,bytes=length,sha256=digest(path)));size+=length
+        current.append(dict(path=path,name=name,bytes=length,sha256=sha));size+=length
     if current:groups.append(current)
     def compress(index_group):
         index,group=index_group;path=out.parent/f'{out.name}-part-{index:02d}.tar.xz'
@@ -55,17 +63,19 @@ def archive(root,out,excluded,previous_manifest=None):
         record=dict(file=path.name,bytes=path.stat().st_size,sha256=digest(path),members=len(group),uncompressed_bytes=sum(i['bytes'] for i in group),verified=True)
         print(json.dumps(record),flush=True);return index,record
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:parts=sorted(executor.map(compress,enumerate(groups,1)))
+    if any(digest(path)!=sha for path,sha in alias_sources):raise ValueError('Aliased snapshot source changed during archiving')
     records=[part for _,part in parts]
     with (out/'archives.json').open('x') as stream:json.dump(records,stream,indent=2);stream.write('\n')
     manifest=[dict(archive=records[index]['file'],file=item['name'],bytes=item['bytes'],sha256=item['sha256']) for index,group in enumerate(groups) for item in group]
-    with (out/'raw-archive-files.json').open('x') as stream:json.dump(dict(excluded_live_runs=excluded,files=manifest,reused_previous_files=reused,previous_manifest=None if previous_manifest is None else str(previous_manifest),previous_manifest_sha256=None if previous_manifest is None else digest(previous_manifest)),stream,indent=2);stream.write('\n')
-    with (out/'archive-verification.json').open('x') as stream:json.dump(dict(passed=True,archives=len(records),files=len(manifest),all_member_sha256_checked=True,live_calculation_excluded=excluded,unchanged_previous_files_sha256_matched=len(reused)),stream,indent=2);stream.write('\n')
+    with (out/'raw-archive-files.json').open('x') as stream:json.dump(dict(excluded_live_runs=excluded,files=manifest,content_aliases=aliases,reused_previous_files=reused,previous_manifest=None if previous_manifest is None else str(previous_manifest),previous_manifest_sha256=None if previous_manifest is None else digest(previous_manifest)),stream,indent=2);stream.write('\n')
+    with (out/'archive-verification.json').open('x') as stream:json.dump(dict(passed=True,archives=len(records),files=len(manifest),content_aliases=len(aliases),all_member_sha256_checked=True,all_content_aliases_sha256_matched=True,live_calculation_excluded=excluded,unchanged_previous_files_sha256_matched=len(reused)),stream,indent=2);stream.write('\n')
     with (out/'README.md').open('a') as stream:
         stream.write('\n## 実行ソースと終了済み試行の全保存データ\n\n各tar.xzは単独で展開できます。全パートを同じ保存先へ展開します。計算中の'+', '.join(excluded)+'は除外しています。\n[全ファイルSHA-256](raw-archive-files.json)・[アーカイブ検証](archive-verification.json)。\n\n')
         for part in records:stream.write(f"- [{part['file']}](../{part['file']})\n")
         if reused:stream.write(f'\n以前のアーカイブとSHA-256が一致した{len(reused)}ファイルは重複格納していません。`raw-archive-files.json`の`previous_manifest`が示す以前の全パートを先に展開し、その後に今回の全パートを展開します。再利用したファイルとハッシュも同JSONに記録しています。\n')
+        if aliases or any('target' in item for item in reused):stream.write(f'\n同一内容の{len(aliases)}ファイルは一度だけ格納しています。全パートを同じフォルダへ展開し、`raw-archive-files.json`も保存した後、`python source/tools/restore_snapshot_aliases.py --manifest raw-archive-files.json --directory .`で元の全ファイル名を復元します。元ファイルと復元先のSHA-256を照合し、内容の異なる既存ファイルは上書きしません。\n')
         stream.write(f'\n展開後の`source/`に実行コードと画像・CSV、`raw/`に終了済み計算の入力・保存状態・不採用試行が入っています。元の相対パスを復元する場合は、`source/{root.as_posix()}/`を作成し`raw/`の内容をコピーしてから`source/`で実行します。参照する過去の保存データは対応する公開アーカイブも展開します。\n')
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--root',required=True);parser.add_argument('--out',required=True);parser.add_argument('--exclude',action='append',default=[]);parser.add_argument('--previous-manifest');args=parser.parse_args();archive(args.root,args.out,args.exclude,args.previous_manifest)
+    parser=argparse.ArgumentParser();parser.add_argument('--root',required=True);parser.add_argument('--out',required=True);parser.add_argument('--exclude',action='append',default=[]);parser.add_argument('--previous-manifest');parser.add_argument('--deduplicate-content',action='store_true');args=parser.parse_args();archive(args.root,args.out,args.exclude,args.previous_manifest,args.deduplicate_content)
