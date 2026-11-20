@@ -114,7 +114,18 @@ def adaptive_remesh(x,t,b,ep,V0,c,parent=None):
 
 
 def periodic_bisection(X,x,t,edge,L):
-    edges=np.unique(np.sort(np.concatenate([t[:,[i,j]] for i,j in combinations(range(4),2)]),axis=1),axis=0)
+    # Every matching edge has one endpoint equal to edge[0] modulo L,
+    # in either orientation. Its owner tets therefore occur in this exact
+    # incident subset. Keep the original coordinate tests and edge ordering.
+    shift=(X-X[edge[0]])/L
+    aliases=np.max(abs(shift-np.rint(shift)),axis=1)<1e-9
+    incident=t[np.any(aliases[t],axis=1)]
+    edges=np.unique(np.sort(np.concatenate([incident[:,[i,j]] for i,j in combinations(range(4),2)]),axis=1),axis=0)
+    return _periodic_bisection(X,x,t,edge,L,edges)
+
+
+def _periodic_bisection(X,x,t,edge,L,edges):
+    """Use the unchanged topology's edge table for several trial subdivisions."""
     a,d=X[list(edge)];matches=np.zeros(len(edges),bool)
     for ordered in (edges,edges[:,::-1]):
         shift=(X[ordered[:,0]]-a)/L
